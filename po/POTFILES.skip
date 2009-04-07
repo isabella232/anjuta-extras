@@ -1,0 +1,6 @@
+plugins/indent/indent-dialog.c
+plugins/indent/indent.glade
+plugins/indent/plugin.c
+plugins/profiler/gprof-function-call-chart-view.c
+plugins/profiler/main.c
+plugins/sample1/plugin.c
