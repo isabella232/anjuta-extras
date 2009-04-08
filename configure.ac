@@ -9,8 +9,11 @@ AM_MAINTAINER_MODE
 
 AC_ISC_POSIX
 AC_PROG_CC
+AC_PROG_CXX
 AM_PROG_CC_STDC
 AC_HEADER_STDC
+AC_PROG_CPP
+AC_LANG_C
 
 BINUTILS_REQUIRED=2.15.92
 LIBGRAPHVIZ_REQUIRED=1.0
@@ -18,6 +21,21 @@ LIBGRAPHVIZ_REQUIRED=1.0
 AC_SUBST(LIBGRAPHVIZ_REQUIRED)
 AC_SUBST(BINUTILS_REQUIRED)
 
+dnl Compiler settings
+dnl ---------------------------------------------------------------------------
+
+GNOME_COMPILE_WARNINGS(maximum)
+GNOME_CXX_WARNINGS(yes)
+AM_CFLAGS="$AM_CFLAGS $WARN_CFLAGS"
+AM_CXXFLAGS="$AM_CXXFLAGS $WARN_CXXFLAGS"
+
+dnl Enable debugging mode
+AC_ARG_ENABLE(debug,
+  AC_HELP_STRING([--enable-debug],[Enable debug messages]),
+  AM_CFLAGS="$AM_CFLAGS -DDEBUG"
+  AM_CXXFLAGS="$AM_CXXFLAGS -DDEBUG")
+AC_SUBST(AM_CFLAGS)
+AC_SUBST(AM_CXXFLAGS)
 
 dnl ***************************************************************************
 dnl Internatinalization
@@ -28,6 +46,9 @@ AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE,"$GETTEXT_PACKAGE", [GETTEXT package name])
 AM_GLIB_GNU_GETTEXT
 IT_PROG_INTLTOOL([0.35.0])
 AM_PROG_LIBTOOL
+
+dnl maintainer mode
+AM_MAINTAINER_MODE
 
 dnl Check for libanjuta
 PKG_CHECK_MODULES(LIBANJUTA, [libanjuta-1.0 >= 2.27.0])
@@ -140,6 +161,25 @@ fi
 
 AM_GCONF_SOURCE_2
 
+dnl Scintilla Editor
+dnl -------------------------------------------------------------
+
+AC_ARG_ENABLE(plugin-scintilla,
+	AC_HELP_STRING([--disable-plugin-scintilla],[ Scintilla based editor in Anjuta]), 
+	[ if test "$enableval" = "no"; then
+		user_disabled_scintilla=1
+	  fi ],
+	[ user_disabled_scintilla=0 ])
+
+AC_MSG_CHECKING(if scintilla plugin is enabled)
+if test "$user_disabled_scintilla" = 1; then
+	AC_MSG_RESULT(no)
+	scintilla="no"
+else
+	AC_MSG_RESULT(yes)
+	scintilla="yes"
+fi
+AM_CONDITIONAL(HAVE_PLUGIN_SCINTILLA, [test x$scintilla = xyes])
 
 dnl Setup Plugin directories
 dnl ------------------------
@@ -170,6 +210,10 @@ plugins/sample1/Makefile
 plugins/indent/Makefile
 plugins/valgrind/Makefile
 plugins/profiler/Makefile
+plugins/scintilla/Makefile
+plugins/scintilla/scintilla/Makefile
+plugins/scintilla/scintilla/include/Makefile
+plugins/scintilla/properties/Makefile
 po/Makefile.in
 scripts/Makefile
 ])
@@ -192,4 +236,9 @@ if [ test x$valgrind = xyes ]; then
 else
         echo "Building Valgrind debugger plugin: .....................NO"
 	echo "		Requires binutils-dev"
+fi
+if [ test x$scintilla = xyes ]; then
+        echo "Building Scintilla based editor: .......................YES"
+else
+        echo "Building Scintilla based editor: .......................NO"
 fi

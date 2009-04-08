@@ -21,6 +21,10 @@ plugins/profiler/profiler-flat-profile.glade
 plugins/profiler/profiler-function-call-tree.glade
 plugins/profiler/profiler.glade
 plugins/profiler/string-utils.c
+plugins/scintilla/anjuta-editor-scintilla.glade
+plugins/scintilla/print.c
+plugins/scintilla/plugin.c
+plugins/scintilla/text_editor.c
 plugins/scratchbox/anjuta-scratchbox.glade
 plugins/scratchbox/plugin.c
 plugins/valgrind/anjuta-valgrind.glade
@@ -38,4 +42,6 @@ plugins/valgrind/vgrule-list.c
 [type: gettext/ini]plugins/class-inheritance/anjuta-class-inheritance.plugin.in
 [type: gettext/ini]plugins/sample1/anjuta-sample.plugin.in
 [type: gettext/ini]plugins/profiler/profiler.plugin.in
+[type: gettext/ini]plugins/scintilla/anjuta-editor.plugin.in
 [type: gettext/ini]plugins/valgrind/anjuta-valgrind.plugin.in
+[type: gettext/ini]plugins/scratchbox/anjuta-scratchbox.plugin.in

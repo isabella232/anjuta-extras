@@ -128,6 +128,8 @@ ALL_LINGUAS =
 AMDEP_FALSE = #
 AMDEP_TRUE = 
 AMTAR = ${SHELL} /home/jhs/devel/anjuta-extras/missing --run tar
+AM_CFLAGS =  -Wall -Wmissing-prototypes -Wnested-externs -Wpointer-arith -Wno-sign-compare 
+AM_CXXFLAGS =  -g -O2 -Wall -Wno-unused -Wshadow -Woverloaded-virtual 
 AR = ar
 AUTOCONF = ${SHELL} /home/jhs/devel/anjuta-extras/missing --run autoconf
 AUTOHEADER = ${SHELL} /home/jhs/devel/anjuta-extras/missing --run autoheader
@@ -141,6 +143,10 @@ CCDEPMODE = depmode=gcc3
 CFLAGS = -g -O2
 CPP = gcc -E
 CPPFLAGS = 
+CXX = g++
+CXXCPP = g++ -E
+CXXDEPMODE = depmode=gcc3
+CXXFLAGS = -g -O2
 CYGPATH_W = echo
 DATADIRNAME = share
 DEFS = -DHAVE_CONFIG_H
@@ -167,6 +173,8 @@ GRAPHVIZ_LIBS = -lgvc -lgraph -lcdt
 GREP = /bin/grep
 HAVE_GRAPHVIZ_FALSE = #
 HAVE_GRAPHVIZ_TRUE = 
+HAVE_PLUGIN_SCINTILLA_FALSE = #
+HAVE_PLUGIN_SCINTILLA_TRUE = 
 HAVE_PLUGIN_VALGRIND_FALSE = #
 HAVE_PLUGIN_VALGRIND_TRUE = 
 INSTALL_DATA = ${INSTALL} -m 644
@@ -209,9 +217,9 @@ LIBTOOL = $(SHELL) $(top_builddir)/libtool
 LIPO = 
 LN_S = ln -s
 LTLIBOBJS = 
-MAINT = #
-MAINTAINER_MODE_FALSE = 
-MAINTAINER_MODE_TRUE = #
+MAINT = 
+MAINTAINER_MODE_FALSE = #
+MAINTAINER_MODE_TRUE = 
 MAKEINFO = ${SHELL} /home/jhs/devel/anjuta-extras/missing --run makeinfo
 MKINSTALLDIRS = ./mkinstalldirs
 MSGFMT = /usr/bin/msgfmt
@@ -243,11 +251,16 @@ SHELL = /bin/bash
 STRIP = strip
 USE_NLS = yes
 VERSION = 2.27.0
+WARN_CFLAGS = -Wall -Wmissing-prototypes -Wnested-externs -Wpointer-arith -Wno-sign-compare 
+WARN_CXXFLAGS = -g -O2 -Wall -Wno-unused -Wshadow -Woverloaded-virtual 
 XGETTEXT = /usr/bin/xgettext
 ac_ct_CC = gcc
+ac_ct_CXX = g++
 ac_ct_DUMPBIN = 
 am__fastdepCC_FALSE = #
 am__fastdepCC_TRUE = 
+am__fastdepCXX_FALSE = #
+am__fastdepCXX_TRUE = 
 am__include = include
 am__leading_dot = .
 am__quote = 
@@ -289,7 +302,7 @@ mandir = ${datarootdir}/man
 mkdir_p = mkdir -p --
 oldincludedir = /usr/include
 pdfdir = ${docdir}
-prefix = /usr/local
+prefix = /usr
 program_transform_name = s,x,x,
 psdir = ${docdir}
 sbindir = ${exec_prefix}/sbin
@@ -421,7 +434,7 @@ all: all-am
 
 .SUFFIXES:
 .SUFFIXES: .c .lo .o .obj
-$(srcdir)/Makefile.in: # $(srcdir)/Makefile.am  $(am__configure_deps)
+$(srcdir)/Makefile.in:  $(srcdir)/Makefile.am  $(am__configure_deps)
 	@for dep in $?; do \
 	  case '$(am__configure_deps)' in \
 	    *$$dep*) \
@@ -446,9 +459,9 @@ Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 $(top_builddir)/config.status: $(top_srcdir)/configure $(CONFIG_STATUS_DEPENDENCIES)
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
 
-$(top_srcdir)/configure: # $(am__configure_deps)
+$(top_srcdir)/configure:  $(am__configure_deps)
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
-$(ACLOCAL_M4): # $(am__aclocal_m4_deps)
+$(ACLOCAL_M4):  $(am__aclocal_m4_deps)
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
 install-pluginLTLIBRARIES: $(plugin_LTLIBRARIES)
 	@$(NORMAL_INSTALL)

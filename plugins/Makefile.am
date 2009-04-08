@@ -1,1 +1,1 @@
-SUBDIRS = class-inheritance valgrind scratchbox profiler
+SUBDIRS = class-inheritance valgrind scratchbox profiler scintilla
