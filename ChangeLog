@@ -1,1 +1,12 @@
-Use the git/svn log instead
+2009-04-08  Massimo Cora'  <mcora@svn.gnome.org>
+
+	* Makefile:
+	* plugins/class-inheritance/Makefile:
+	* plugins/class-inheritance/Makefile.in:
+	* plugins/sample1/Makefile:
+	* plugins/scratchbox/Makefile:
+	* plugins/scratchbox/Makefile.in:
+	* plugins/valgrind/Makefile:
+	* po/POTFILES:
+	removed useless files for a svn repo. They have to be created using
+	automake.
