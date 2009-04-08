@@ -1,4 +1,21 @@
 2009-04-08  Massimo Cora'  <mcora@svn.gnome.org>
+	
+	* (removed) Makefile:
+	* (removed) configure:
+	* (removed) plugins/sample1/Makefile:
+	* (added) plugins/scintilla/Makefile.am:
+	* (removed) plugins/scintilla/properties/Makefile:
+	* (added) plugins/scintilla/properties/Makefile.am:
+	* (removed) plugins/scintilla/properties/Makefile.in:
+	* (added) plugins/scintilla/properties/anjuta.properties:
+	* (added) plugins/scintilla/properties/styles.properties:
+	* (added) plugins/scintilla/properties/user.properties:
+	* (added) plugins/scintilla/scintilla/Makefile.am:
+	* (added) plugins/scintilla/scintilla/lexers.make:
+	* (removed) plugins/valgrind/Makefile:
+	fixes some compilation problems.
+
+2009-04-08  Massimo Cora'  <mcora@svn.gnome.org>
 
 	* Makefile:
 	* plugins/class-inheritance/Makefile:
