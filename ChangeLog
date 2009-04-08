@@ -1,3 +1,85 @@
+2009-04-09  Massimo Cora'  <mcora@svn.gnome.org>
+
+	* Makefile:
+	* configure.ac:
+	* plugins/sample1/Makefile.in:
+	* plugins/scintilla/Makefile.am:
+	* plugins/scintilla/aneditor-autocomplete.cxx:
+	* plugins/scintilla/aneditor-calltip.cxx:
+	* plugins/scintilla/aneditor-indent.cxx:
+	* plugins/scintilla/aneditor-priv.h:
+	* plugins/scintilla/aneditor.cxx:
+	* plugins/scintilla/aneditor.h:
+	* plugins/scintilla/anjuta-bookmark-16.xpm:
+	* plugins/scintilla/anjuta-pcmark-16.xpm:
+	* plugins/scintilla/plugin.c (on_style_button_clicked),
+	(activate_plugin), (deactivate_plugin), (dispose), (finalize),
+	(editor_plugin_instance_init), (editor_plugin_class_init),
+	(itext_editor_factory_new_editor),
+	(itext_editor_factory_iface_init), (ipreferences_merge),
+	(ipreferences_unmerge), (ipreferences_iface_init):
+	* plugins/scintilla/scintilla/Makefile.am:
+	* plugins/scintilla/style-editor.c (style_data_get_string),
+	(style_data_set_font), (style_data_set_font_size_from_pango),
+	(style_data_set_fore), (style_data_set_back),
+	(style_data_set_item), (style_data_new), (style_data_destroy),
+	(style_data_new_parse), (on_use_default_font_toggled),
+	(on_use_default_attrib_toggled), (on_use_default_fore_toggled),
+	(on_use_default_back_toggled), (on_hilite_style_entry_changed),
+	(sync_from_props), (set_one_color), (sync_to_props),
+	(apply_styles), (on_response), (on_delete_event),
+	(create_style_editor_gui), (style_editor_new),
+	(style_editor_destroy), (style_editor_show), (style_editor_hide),
+	(style_editor_save):
+	* plugins/scintilla/style-editor.h:
+	* plugins/scintilla/text-editor-iterable.c (cell_style_destroy),
+	(IntFromHexDigit), (string_to_color), (cell_style_load_font),
+	(cell_style_init), (cell_style_new), (text_editor_cell_get_style),
+	(text_editor_cell_class_init), (text_editor_cell_instance_init),
+	(text_editor_cell_finalize), (text_editor_cell_new),
+	(text_editor_cell_get_editor), (text_editor_cell_set_position),
+	(text_editor_cell_get_position), (icell_get_character),
+	(icell_get_length), (icell_get_char), (icell_get_attribute),
+	(icell_iface_init), (icell_style_get_font_description),
+	(icell_style_get_color), (icell_style_get_background_color),
+	(icell_style_iface_init), (iiter_first), (iiter_next),
+	(iiter_previous), (iiter_last), (iiter_foreach),
+	(iiter_set_position), (iiter_get_position), (iiter_get_length),
+	(iiter_clone), (iiter_assign), (iiter_compare), (iiter_diff),
+	(iiter_iface_init):
+	* plugins/scintilla/text_editor.c (text_editor_instance_init),
+	(text_editor_dispose), (text_editor_hilite_one), (load_from_file),
+	(save_to_file), (text_editor_load_file),
+	(text_editor_set_line_number_width):
+	* plugins/scintilla/text_editor.h:
+	* plugins/scintilla/text_editor_cbs.c
+	(on_text_editor_scintilla_focus_in),
+	(on_text_editor_text_buttonpress_event),
+	(on_text_editor_text_keyrelease_event),
+	(on_text_editor_text_event), (scintilla_uri_dropped),
+	(click_timeout), (on_text_editor_scintilla_notify),
+	(on_text_editor_scintilla_size_allocate):
+	* plugins/scintilla/text_editor_cbs.h:
+	* plugins/scintilla/text_editor_prefs.c (pref_gconf_notify),
+	(on_gconf_notify_disable_hilite), (on_gconf_notify_zoom_factor),
+	(on_gconf_notify_tab_size),
+	(on_gconf_notify_use_tab_for_indentation),
+	(on_gconf_notify_automatic_indentation),
+	(on_gconf_notify_indent_size), (on_gconf_notify_wrap_bookmarks),
+	(on_gconf_notify_braces_check), (on_gconf_notify_indent_opening),
+	(on_gconf_notify_indent_closing),
+	(on_gconf_notify_indent_maintain), (on_gconf_notify_tab_indents),
+	(on_gconf_notify_backspace_unindents), (on_gconf_notify_view_eols),
+	(on_gconf_notify_view_whitespaces),
+	(on_gconf_notify_view_linewrap),
+	(on_gconf_notify_view_indentation_guides),
+	(on_gconf_notify_view_folds), (on_gconf_notify_view_markers),
+	(on_gconf_notify_view_linenums), (on_gconf_notify_fold_symbols),
+	(on_gconf_notify_fold_underline), (on_gconf_notify_edge_column),
+	(text_editor_prefs_init), (text_editor_prefs_finalize):
+	* plugins/valgrind/Makefile.in:
+	scintilla was very broken.
+
 2009-04-08  Massimo Cora'  <mcora@svn.gnome.org>
 
 	* Makefile:

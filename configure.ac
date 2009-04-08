@@ -19,11 +19,25 @@ BINUTILS_REQUIRED=2.15.92
 LIBGRAPHVIZ_REQUIRED=1.0
 GTK_REQUIRED=2.14.0
 GLIB_REQUIRED=2.16.0
+GCONF_REQUIRED=2.12.0
 
 AC_SUBST(LIBGRAPHVIZ_REQUIRED)
 AC_SUBST(BINUTILS_REQUIRED)
 AC_SUBST(GTK_REQUIRED)
 AC_SUBST(GLIB_REQUIRED)
+AC_SUBST(GCONF_REQUIRED)
+
+
+dnl ***************************************************************************
+dnl we need gconftool-2 in order to install the schema
+dnl ***************************************************************************
+AC_PATH_PROG(GCONFTOOL, gconftool-2, no)
+
+if test "x$GCONFTOOL" = "xno"; then
+  AC_MSG_ERROR([gconftool-2 executable not found in your path - should be installed with GConf])
+fi
+AM_GCONF_SOURCE_2
+
 
 dnl Compiler settings
 dnl ---------------------------------------------------------------------------
@@ -56,6 +70,7 @@ AM_MAINTAINER_MODE
 
 dnl Check for libanjuta
 PKG_CHECK_MODULES(LIBANJUTA, [libanjuta-1.0 >= 2.27.0])
+
 
 dnl Valgrind plugin
 dnl check for libbfd

@@ -5,9 +5,12 @@ SUBDIRS = include
 noinst_LTLIBRARIES = libanjuta-scintilla.la
 
 AM_CPPFLAGS = \
+  $(LIBANJUTA_CFLAGS) \
 	$(GTK_CFLAGS) \
+  $(GLIB_CFLAGS) \
 	-I$(srcdir)/include \
   -DGTK -DSCI_LEXER -DUSE_XIM
+
 AM_CXXFLAGS = -DGTK -DSCI_LEXER -DUSE_XIM
 
 include $(srcdir)/lexers.make
@@ -72,6 +75,7 @@ libanjuta_scintilla_la_SOURCES =\
 	$(LEXER_SRCS)
 
 libanjuta_scintilla_la_LIBADD = \
+  $(LIBANJUTA_LIBS) \
 	$(GLIB_LIBS) \
 	$(GTK_LIBS)
 
