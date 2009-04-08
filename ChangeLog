@@ -1,5 +1,30 @@
 2009-04-09  Massimo Cora'  <mcora@svn.gnome.org>
 
+	* plugins/scintilla/anjuta-breakpoint-enabled-16.xpm:
+	* plugins/scintilla/anjuta-editor-scintilla.schemas:
+	* plugins/scintilla/print.c (set_layout_tab_width),
+	(IntFromHexDigit), (string_to_color),
+	(anjuta_print_job_info_style_load_font),
+	(anjuta_print_job_info_style_clear_attributes),
+	(anjuta_print_job_info_style_set_attributes),
+	(anjuta_print_job_info_style_set_color_attributes),
+	(anjuta_print_job_info_style_init),
+	(anjuta_print_job_info_style_destroy),
+	(anjuta_print_job_info_style_new), (anjuta_print_job_info_destroy),
+	(anjuta_print_job_info_new), (anjuta_print_get_style),
+	(anjuta_print_apply_style), (anjuta_setup_layout),
+	(anjuta_print_update_page_size_and_margins),
+	(anjuta_print_layout_line), (anjuta_draw_header),
+	(anjuta_draw_linenum), (anjuta_end_print), (anjuta_draw_page),
+	(anjuta_paginate), (anjuta_print_begin), (anjuta_print_setup),
+	(anjuta_print):
+	* plugins/scintilla/print.h:
+	* plugins/scintilla/properties.cxx:
+	* plugins/scintilla/properties.h:
+	more files.
+
+2009-04-09  Massimo Cora'  <mcora@svn.gnome.org>
+
 	* Makefile:
 	* configure.ac:
 	* plugins/sample1/Makefile.in:
