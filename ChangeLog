@@ -1,5 +1,12 @@
 2009-04-09  Massimo Cora'  <mcora@svn.gnome.org>
 
+	* Makefile:
+	* plugins/sample1/Makefile.in:
+	* plugins/valgrind/Makefile.in:
+	hopefully get rid of these fiels.
+
+2009-04-09  Massimo Cora'  <mcora@svn.gnome.org>
+
 	* plugins/scintilla/anjuta-breakpoint-enabled-16.xpm:
 	* plugins/scintilla/anjuta-editor-scintilla.schemas:
 	* plugins/scintilla/print.c (set_layout_tab_width),
