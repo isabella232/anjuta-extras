@@ -1,9 +1,46 @@
+2009-04-11  Massimo Cora'  <mcora@svn.gnome.org>
+
+	* configure.ac:
+	fixed preferences/data files install. Now they'll be placed under 
+	share/anjuta-extras/properties and similar.
+
+	* plugins/scintilla/Makefile.am:
+	* plugins/scintilla/print.c (anjuta_print_setup):
+	* plugins/scintilla/scintilla/PlatGTK.cxx:
+	* plugins/scintilla/scintilla/ScintillaGTK.cxx:
+	* plugins/scintilla/scintilla/test-scintilla.cxx:
+	* plugins/scintilla/style-editor.c (on_hilite_style_entry_changed),
+	(sync_from_props), (sync_to_props), (create_style_editor_gui):
+	* plugins/scintilla/text-editor-iterable.c:
+	* plugins/scintilla/text_editor.c (text_editor_instance_init),
+	(text_editor_dispose), (text_editor_hilite_one), (load_from_file),
+	(save_to_file), (text_editor_load_file),
+	(text_editor_set_line_number_width):
+	* plugins/scintilla/text_editor.h:
+	* plugins/scintilla/text_editor_cbs.c:
+	* plugins/scintilla/text_editor_cbs.h:
+	* plugins/scintilla/text_editor_prefs.c (pref_notify),
+	(set_n_get_prop_bool), (on_notify_disable_hilite),
+	(on_notify_zoom_factor), (on_notify_tab_size),
+	(on_notify_use_tab_for_indentation), (on_notify_indent_size),
+	(on_notify_wrap_bookmarks), (on_notify_braces_check),
+	(on_notify_indent_maintain), (on_notify_tab_indents),
+	(on_notify_backspace_unindents), (on_notify_view_eols),
+	(on_notify_view_whitespaces), (on_notify_view_linewrap),
+	(on_notify_view_indentation_guides), (on_notify_view_folds),
+	(on_notify_view_markers), (on_notify_view_linenums),
+	(on_notify_fold_symbols), (on_notify_fold_underline),
+	(on_notify_edge_column), (text_editor_prefs_init),
+	(text_editor_prefs_finalize):
+	update scintilla to anjuta rev 4919. This fixes a bunch of errors like
+	preferences management.
+
 2009-04-09  Massimo Cora'  <mcora@svn.gnome.org>
 
 	* Makefile:
 	* plugins/sample1/Makefile.in:
 	* plugins/valgrind/Makefile.in:
-	hopefully get rid of these fiels.
+	hopefully get rid of these files.
 
 2009-04-09  Massimo Cora'  <mcora@svn.gnome.org>
 

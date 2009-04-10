@@ -206,11 +206,11 @@ anjutalibdir=`pkg-config --variable=libdir libanjuta-1.0`
 anjutadatadir=`pkg-config --variable=datadir libanjuta-1.0`
 AC_SUBST(anjutalibdir)
 AC_SUBST(anjutadatadir)
-anjuta_plugin_dir='$(anjutalibdir)/anjuta'
-anjuta_data_dir='$(anjutadatadir)/anjuta'
-anjuta_ui_dir='$(anjutadatadir)/anjuta/ui'
-anjuta_glade_dir='$(anjutadatadir)/anjuta/glade'
-anjuta_image_dir='$(anjutadatadir)/pixmaps/anjuta'
+anjuta_plugin_dir='$(anjutalibdir)/anjuta-extras'
+anjuta_data_dir='$(anjutadatadir)/anjuta-extras'
+anjuta_ui_dir='$(anjutadatadir)/anjuta-extras/ui'
+anjuta_glade_dir='$(anjutadatadir)/anjuta-extras/glade'
+anjuta_image_dir='$(anjutadatadir)/pixmaps/anjuta-extras'
 AC_SUBST(anjuta_plugin_dir)
 AC_SUBST(anjuta_data_dir)
 AC_SUBST(anjuta_ui_dir)
