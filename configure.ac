@@ -217,7 +217,7 @@ AC_SUBST(anjuta_ui_dir)
 AC_SUBST(anjuta_glade_dir)
 AC_SUBST(anjuta_image_dir)
 
-EXTRA_CFLAGS='-DPACKAGE_PIXMAPS_DIR=\""$(datadir)/pixmaps/$(PACKAGE)"\" -DPACKAGE_LIB_DIR=\""$(pkglibdir)"\" -DPACKAGE_DATA_DIR=\""$(datadir)/$(PACKAGE)"\"'
+EXTRA_CFLAGS='-DPACKAGE_PIXMAPS_DIR=\""$(anjuta_image_dir)"\" -DPACKAGE_LIB_DIR=\""$(anjutalibdir)"\" -DPACKAGE_DATA_DIR=\""$(anjuta_data_dir)"\"'
 AC_SUBST(EXTRA_CFLAGS)
 
 AC_OUTPUT([
