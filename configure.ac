@@ -92,9 +92,9 @@ else
 	valgrind="yes"
 fi
 
-AC_CHECK_LIB(bfd, bfd_get_error, [PLUGIN_VALGRIND_LIBS="-Wl,-Bstatic -lbfd -liberty -Wl,-Bdynamic"],
+AC_CHECK_LIB(bfd, bfd_get_error, [PLUGIN_VALGRIND_LIBS="-Wl,-Bstatic -lbfd -liberty -Wl,-Bdynamic -lz"],
    valgrind="no",
-  -liberty)
+  [-liberty -lz])
 
 AC_SUBST(PLUGIN_VALGRIND_LIBS)
 AM_CONDITIONAL(HAVE_PLUGIN_VALGRIND, [test x$valgrind = xyes])
