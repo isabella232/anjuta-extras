@@ -36,7 +36,7 @@
  *---------------------------------------------------------------------------*/
 
 #define ICON_FILE "anjuta-scratchbox-48.png"
-#define GLADE_FILE PACKAGE_DATA_DIR"/glade/anjuta-scratchbox.glade"
+#define GLADE_FILE PACKAGE_DATA_DIR"/glade/anjuta-scratchbox.ui"
 
 #define SB_ENTRY "preferences_folder:text:/scratchbox:0:build.scratchbox.path"
 #define SB_TARGET_ENTRY "combo_target"
@@ -68,7 +68,7 @@ struct _ScratchboxPlugin
 	GString *buffer;
 };
 
-GladeXML *gxml;
+GtkBuilder *bxml;
 
 #define EXECUTE_CMD	0
 #define TARGET_LIST	1
@@ -121,8 +121,8 @@ static void on_list_terminated (AnjutaLauncher *launcher, gint child_pid,
 		str_splitted_length = g_strv_length (plugin->target_list) - 1;
 		
 		GtkWidget* combo_target_entry;
-		combo_target_entry = glade_xml_get_widget(gxml,
-							  SB_TARGET_ENTRY);
+		combo_target_entry = GTK_WIDGET(gtk_builder_get_object(bxml,
+							  SB_TARGET_ENTRY));
 
 		for (i = 1; i < plugin->combo_element; i++)
 			gtk_combo_box_remove_text(GTK_COMBO_BOX(combo_target_entry), 1);
@@ -227,8 +227,8 @@ on_update_target(GtkComboBox *combo, ScratchboxPlugin *plugin)
 		
 		plugin->buffer = g_string_new(NULL);
 
-		combo_target_entry = glade_xml_get_widget(gxml,
-							  SB_TARGET_ENTRY);
+		combo_target_entry = GTK_WIDGET(gtk_builder_get_object(bxml,
+							  SB_TARGET_ENTRY));
 		/* disable target combo box */
 		gtk_widget_set_sensitive(combo_target_entry, FALSE);
 
@@ -248,8 +248,8 @@ on_change_directory(GtkFileChooserButton *FileChooser, gpointer user_data)
 	GtkWidget* combo_sbox_entry;
 	gchar *old_dir;
 
-	combo_sbox_entry = glade_xml_get_widget(gxml,
-						  SB_SBOX_ENTRY);
+	combo_sbox_entry = GTK_WIDGET(gtk_builder_get_object(bxml,
+						  SB_SBOX_ENTRY));
 	old_dir = gtk_file_chooser_get_current_folder (GTK_FILE_CHOOSER(FileChooser));
 
 	if (!plugin->user_dir || strcmp(old_dir, plugin->user_dir) != 0) {
@@ -445,17 +445,23 @@ ipreferences_merge(IAnjutaPreferences* ipref, AnjutaPreferences* prefs, GError**
 	GtkWidget* combo_target_entry;
 	GtkWidget *combo_sbox_entry;
 	GtkWidget *chooser_dir_entry;
+	GError* error = NULL;
 
 	/* Create the preferences page */
-	gxml = glade_xml_new (GLADE_FILE,
-					"preferences_dialog_scratchbox", NULL);
-	combo_target_entry = glade_xml_get_widget(gxml, SB_TARGET_ENTRY);
-	combo_sbox_entry = glade_xml_get_widget(gxml, SB_SBOX_ENTRY);
-	chooser_dir_entry = glade_xml_get_widget(gxml, SB_ENTRY);
+	bxml = gtk_builder_new();
+	if (!gtk_builder_add_from_file(bxml, GLADE_FILE, &error))
+	{
+		g_warning("Couldn't load builder file: %s", error->message);
+		g_error_free(error);
+	}
+
+	combo_target_entry = GTK_WIDGET(gtk_builder_get_object(bxml, SB_TARGET_ENTRY));
+	combo_sbox_entry = GTK_WIDGET(gtk_builder_get_object(bxml, SB_SBOX_ENTRY));
+	chooser_dir_entry = GTK_WIDGET(gtk_builder_get_object(bxml, SB_ENTRY));
 	
 	plugin->id = anjuta_preferences_get_int(prefs, SB_TARGET_ENTRY);
 
-	anjuta_preferences_add_page (prefs, gxml, "Scratchbox", _("Scratchbox"),  ICON_FILE);
+	anjuta_preferences_add_from_builder (prefs, bxml, "Scratchbox", _("Scratchbox"),  ICON_FILE);
 	g_signal_connect(chooser_dir_entry, "current-folder-changed",
 			 G_CALLBACK(on_change_directory),
 			 plugin);
@@ -475,11 +481,11 @@ ipreferences_unmerge(IAnjutaPreferences* ipref, AnjutaPreferences* prefs, GError
 {
 	GtkWidget *sb_entry;
 
-	sb_entry = glade_xml_get_widget(gxml, SB_ENTRY);
+	sb_entry = GTK_WIDGET(gtk_builder_get_object(bxml, SB_ENTRY));
 		
 	anjuta_preferences_remove_page(prefs, _("Scratchbox"));
 	
-	g_object_unref (gxml);
+	g_object_unref (bxml);
 }
 
 static void

@@ -26,7 +26,7 @@
 
 struct _GProfFlatProfileViewPriv
 {
-	GladeXML *gxml;
+	GtkBuilder *bxml;
 	GtkListStore *list_store;
 };
 
@@ -49,7 +49,7 @@ gprof_flat_profile_view_create_columns (GProfFlatProfileView *self)
 	GtkCellRenderer *renderer;
 	GtkWidget *list_view;
 	
-	list_view = glade_xml_get_widget (self->priv->gxml, "flat_profile_view");
+	list_view = GTK_WIDGET (gtk_builder_get_object (self->priv->bxml, "flat_profile_view"));
 	
 	/* Function name */
 	col = gtk_tree_view_column_new ();
@@ -188,13 +188,18 @@ on_list_view_row_activated (GtkTreeView *list_view,
 static void
 gprof_flat_profile_view_init (GProfFlatProfileView *self)
 {
+	GError* error = NULL;
 	GtkWidget *list_view;
 	
 	self->priv = g_new0 (GProfFlatProfileViewPriv, 1);
 	
-	self->priv->gxml = glade_xml_new (PACKAGE_DATA_DIR
-									  "/glade/profiler-flat-profile.glade",  
-									  NULL, NULL);
+	self->priv->bxml = gtk_builder_new ();
+	if (!gtk_builder_add_from_file (self->priv->bxml, PACKAGE_DATA_DIR"/glade/profiler-flat-profile.ui", &error))
+	{
+		g_warning ("Couldn't load builder file: %s", error->message);
+		g_error_free (error);
+	}
+
 	self->priv->list_store = gtk_list_store_new (NUM_COLS, G_TYPE_STRING, 
 												 G_TYPE_FLOAT, G_TYPE_FLOAT,
 												 G_TYPE_FLOAT, G_TYPE_UINT,
@@ -202,7 +207,7 @@ gprof_flat_profile_view_init (GProfFlatProfileView *self)
 	
 	gprof_flat_profile_view_create_columns (self);
 	
-	list_view = glade_xml_get_widget (self->priv->gxml, "flat_profile_view");
+	list_view = GTK_WIDGET (gtk_builder_get_object (self->priv->bxml, "flat_profile_view"));
 	
 	g_signal_connect (list_view, "row-activated", 
 					  G_CALLBACK (on_list_view_row_activated), 
@@ -217,7 +222,7 @@ gprof_flat_profile_view_finalize (GObject *obj)
 	
 	self = (GProfFlatProfileView *) obj;
 	
-	g_object_unref (self->priv->gxml);
+	g_object_unref (self->priv->bxml);
 	g_free (self->priv);
 }
 
@@ -288,7 +293,7 @@ gprof_flat_profile_view_refresh (GProfView *view)
 	GtkTreeIter view_iter;
 	
 	self = GPROF_FLAT_PROFILE_VIEW (view);
-	list_view = glade_xml_get_widget (self->priv->gxml, "flat_profile_view");
+	list_view = GTK_WIDGET (gtk_builder_get_object (self->priv->bxml, "flat_profile_view"));
 	
 	g_object_ref (self->priv->list_store);
 	gtk_tree_view_set_model (GTK_TREE_VIEW (list_view), NULL);
@@ -336,5 +341,5 @@ gprof_flat_profile_view_get_widget (GProfView *view)
 	
 	self = GPROF_FLAT_PROFILE_VIEW (view);
 	
-	return glade_xml_get_widget (self->priv->gxml, "flat_profile_scrolled");
+	return GTK_WIDGET (gtk_builder_get_object (self->priv->bxml, "flat_profile_scrolled"));
 }

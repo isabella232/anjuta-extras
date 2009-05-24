@@ -17,10 +17,9 @@
  
 
 #include <gnome.h>
-#include <glade/glade.h>
 
 #include <sys/wait.h>
-
+#include <glib.h>
 #include <gconf/gconf-client.h>
 
 #include <libanjuta/anjuta-utils.h>
@@ -34,7 +33,7 @@
 
 
 #define INDENT_FILE_INPUT PACKAGE_DATA_DIR"/indent_test.c" 
-#define INDENT_FILE_OUTPUT TMPDIR"/indent_test.c"
+#define INDENT_FILE_OUTPUT "/indent_test.c"
 
 #define AUTOFORMAT_DISABLE         "autoformat.disable"
 #define AUTOFORMAT_STYLE           "autoformat.style"
@@ -478,7 +477,7 @@ indent_execute(gchar *line_option, IndentData *idt)
 	int status;
 
 	options = g_strconcat(line_option, " ",INDENT_FILE_INPUT, NULL);
-	cmd = g_strconcat ("indent ", options, " -o ", INDENT_FILE_OUTPUT, NULL);	
+	cmd = g_strconcat ("indent ", options, " -o ", g_get_tmp_dir (), INDENT_FILE_OUTPUT, NULL);	
 	g_free(options);
 
 	pid = anjuta_util_execute_shell (PACKAGE_DATA_DIR, cmd);	

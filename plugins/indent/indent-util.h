@@ -23,7 +23,7 @@
 
 typedef struct _IndentData
 {
-	GladeXML *xml;
+	GtkBuilder *bxml;
 	GtkWidget *dialog;
 	GHashTable *option_hash;
 	GHashTable *check_hash;

@@ -25,7 +25,6 @@
 #include <gtk/gtk.h>
 #include <gdk/gdk.h>
 #include <gdk/gdkkeysyms.h>
-#include <glade/glade.h>
 
 #include <libanjuta/anjuta-utils.h>
 #include <libanjuta/anjuta-debug.h>
@@ -34,7 +33,7 @@
 #include "style-editor.h"
 
 #define string_assign(dest, src) g_free ((*dest)); (*dest) = g_strdup ((src));
-#define GLADE_FILE PACKAGE_DATA_DIR"/glade/anjuta-editor-scintilla.glade"
+#define GLADE_FILE PACKAGE_DATA_DIR"/glade/anjuta-editor-scintilla.ui"
 
 gchar *hilite_style[] = {
 	"Normal <Default>", "style.anjuta.normal",
@@ -882,31 +881,37 @@ on_delete_event (GtkWidget *dialog, GdkEvent *event, StyleEditor *se)
 static void
 create_style_editor_gui (StyleEditor * se)
 {
-	GladeXML *gxml;
+	GtkBuilder *bxml = gtk_builder_new ();
 	GtkWidget *pref_dialog;
 	gint i;
+	GError* error = NULL;
 
 	g_return_if_fail (se);
 	g_return_if_fail (se->priv->dialog == NULL);
 	
-	gxml = glade_xml_new (GLADE_FILE, "style_editor_dialog", NULL);
-	se->priv->dialog = glade_xml_get_widget (gxml, "style_editor_dialog");
+	if (!gtk_builder_add_from_file (bxml, GLADE_FILE, &error))
+	{
+		g_warning ("Couldn't load builder file: %s", error->message);
+		g_error_free (error);
+	}
+
+	se->priv->dialog = GTK_WIDGET (gtk_builder_get_object (bxml, "style_editor_dialog"));
 	gtk_widget_show (se->priv->dialog);
-	se->priv->font_picker = glade_xml_get_widget (gxml, "font");
-	se->priv->hilite_item_combobox = glade_xml_get_widget (gxml, "comboBox");
-	se->priv->font_bold_check = glade_xml_get_widget (gxml, "bold");
-	se->priv->font_italics_check = glade_xml_get_widget (gxml, "italic");
-	se->priv->font_underlined_check = glade_xml_get_widget (gxml, "underlined");
-	se->priv->fore_colorpicker = glade_xml_get_widget (gxml, "fore_color");
-	se->priv->back_colorpicker = glade_xml_get_widget (gxml, "back_color");
-	se->priv->font_use_default_check = glade_xml_get_widget (gxml, "font_default");
-	se->priv->font_attrib_use_default_check = glade_xml_get_widget (gxml, "attributes_default");
-	se->priv->fore_color_use_default_check = glade_xml_get_widget (gxml, "fore_default");
-	se->priv->back_color_use_default_check = glade_xml_get_widget (gxml, "back_default");
-	se->priv->caret_fore_color = glade_xml_get_widget (gxml, "caret");
-	se->priv->calltip_back_color = glade_xml_get_widget (gxml, "calltip");
-	se->priv->selection_fore_color = glade_xml_get_widget (gxml, "selection_fore");
-	se->priv->selection_back_color = glade_xml_get_widget (gxml, "selection_back");
+	se->priv->font_picker = GTK_WIDGET (gtk_builder_get_object (bxml, "font"));
+	se->priv->hilite_item_combobox = GTK_WIDGET (gtk_builder_get_object (bxml, "comboBox"));
+	se->priv->font_bold_check = GTK_WIDGET (gtk_builder_get_object (bxml, "bold"));
+	se->priv->font_italics_check = GTK_WIDGET (gtk_builder_get_object (bxml, "italic"));
+	se->priv->font_underlined_check = GTK_WIDGET (gtk_builder_get_object (bxml, "underlined"));
+	se->priv->fore_colorpicker = GTK_WIDGET (gtk_builder_get_object (bxml, "fore_color"));
+	se->priv->back_colorpicker = GTK_WIDGET (gtk_builder_get_object (bxml, "back_color"));
+	se->priv->font_use_default_check = GTK_WIDGET (gtk_builder_get_object (bxml, "font_default"));
+	se->priv->font_attrib_use_default_check = GTK_WIDGET (gtk_builder_get_object (bxml, "attributes_default"));
+	se->priv->fore_color_use_default_check = GTK_WIDGET (gtk_builder_get_object (bxml, "fore_default"));
+	se->priv->back_color_use_default_check = GTK_WIDGET (gtk_builder_get_object (bxml, "back_default"));
+	se->priv->caret_fore_color = GTK_WIDGET (gtk_builder_get_object (bxml, "caret"));
+	se->priv->calltip_back_color = GTK_WIDGET (gtk_builder_get_object (bxml, "calltip"));
+	se->priv->selection_fore_color = GTK_WIDGET (gtk_builder_get_object (bxml, "selection_fore"));
+	se->priv->selection_back_color = GTK_WIDGET (gtk_builder_get_object (bxml, "selection_back"));
 	
 	for (i = 0;; i += 2)
 	{
@@ -940,7 +945,7 @@ create_style_editor_gui (StyleEditor * se)
 	g_signal_connect (G_OBJECT (se->priv->dialog),
 					  "response", G_CALLBACK (on_response),
 					  se);
-	g_object_unref (gxml);
+	g_object_unref (bxml);
 }
 
 StyleEditor *

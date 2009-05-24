@@ -36,8 +36,8 @@
 #include "symtab.h"
 
 
-#define UI_FILE PACKAGE_DATA_DIR"/ui/anjuta-valgrind.ui"
-#define GLADE_FILE PACKAGE_DATA_DIR"/glade/anjuta-valgrind.glade"
+#define UI_FILE PACKAGE_DATA_DIR"/ui/anjuta-valgrind.xml"
+#define GLADE_FILE PACKAGE_DATA_DIR"/glade/anjuta-valgrind.ui"
 #define ICON_FILE "anjuta-valgrind-plugin-48.png"
 
 
@@ -121,14 +121,14 @@ load_symtab (const char *progname)
  * tool.
  */
 static void
-on_options_button_clicked (GtkButton *button, GladeXML *gxml) 
+on_options_button_clicked (GtkButton *button, GtkBuilder *bxml) 
 {
 	GtkWidget *tool_combobox, *vgtool;
 	GtkDialog *dlg;
 	gint active_option;
 
 	vgtool = NULL;
-	tool_combobox = glade_xml_get_widget (gxml, "val_tool");
+	tool_combobox = GTK_WIDGET (gtk_builder_get_object (bxml, "val_tool"));
 	
 	active_option = gtk_combo_box_get_active (GTK_COMBO_BOX (tool_combobox));
 	
@@ -188,7 +188,7 @@ on_menu_run_activate (GtkAction *action, AnjutaValgrindPlugin *plugin)
 						 NULL);
 
 	if (exec_targets) {
-		GladeXML *gxml;
+		GtkBuilder *bxml;
 		GtkWidget *dlg, *treeview, *tool_combobox;
 		GtkTreeViewColumn *column;
 		GtkCellRenderer *renderer;
@@ -200,21 +200,28 @@ on_menu_run_activate (GtkAction *action, AnjutaValgrindPlugin *plugin)
 		gchar *project_root_uri;
 		size_t project_root_uri_len;
 		gchar *sel_target = NULL;
+		GError* error = NULL;
 
 		tool_selected = 0;
-		gxml = glade_xml_new (GLADE_FILE, "select_and_run_dialog",
-							  NULL);
-		dlg = glade_xml_get_widget (gxml, "select_and_run_dialog");
-		treeview = glade_xml_get_widget (gxml, "programs_treeview");
+
+		bxml = gtk_builder_new ();
+		if (!gtk_builder_add_from_file (bxml, GLADE_FILE, &error))
+		{
+			g_warning ("Couldn't load builder file: s", error->message);
+			g_error_free (error);
+		}
+
+		dlg = GTK_WIDGET (gtk_builder_get_object (bxml, "select_and_run_dialog"));
+		treeview = GTK_WIDGET (gtk_builder_get_object (bxml, "programs_treeview"));
 		
-		tool_combobox = glade_xml_get_widget (gxml, "val_tool");
+		tool_combobox = GTK_WIDGET (gtk_builder_get_object (bxml, "val_tool"));
 		gtk_combo_box_set_active (GTK_COMBO_BOX (tool_combobox), 0);
 		
-		options_button = GTK_BUTTON (glade_xml_get_widget (gxml, "options_button"));
+		options_button = GTK_BUTTON (gtk_builder_get_object (bxml, "options_button"));
 		
 		/* connect the signal to grab any click on it */
 		g_signal_connect (G_OBJECT (options_button), "clicked",
-				G_CALLBACK (on_options_button_clicked), gxml);
+				G_CALLBACK (on_options_button_clicked), bxml);
 				
 		gtk_window_set_transient_for (GTK_WINDOW (dlg),
 					  GTK_WINDOW (ANJUTA_PLUGIN(plugin)->shell));
@@ -335,7 +342,7 @@ on_menu_run_activate (GtkAction *action, AnjutaValgrindPlugin *plugin)
 			}
 		}
 		
-		g_object_unref (gxml);
+		g_object_unref (bxml);
 	}	
 	else {
 		anjuta_util_dialog_error (GTK_WINDOW (ANJUTA_PLUGIN (plugin)->shell),

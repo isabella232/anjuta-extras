@@ -26,7 +26,7 @@
 
 struct _GProfFunctionCallTreeViewPriv
 {
-	GladeXML *gxml;
+	GtkBuilder *bxml;
 	GtkTreeStore *tree_store;
 };
 
@@ -44,8 +44,8 @@ gprof_function_call_tree_view_create_columns (GProfFunctionCallTreeView *self)
 	GtkCellRenderer *renderer;
 	GtkWidget *tree_view;
 	
-	tree_view = glade_xml_get_widget (self->priv->gxml, 
-									  "function_call_tree_view");
+	tree_view = GTK_WIDGET (gtk_builder_get_object (self->priv->bxml, 
+									  "function_call_tree_view"));
 	
 	/* Recursive icon */
 	col = gtk_tree_view_column_new ();
@@ -154,18 +154,23 @@ static void
 gprof_function_call_tree_view_init (GProfFunctionCallTreeView *self)
 {
 	GtkWidget *list_view;
+	GError* error = NULL;
 	
 	self->priv = g_new0 (GProfFunctionCallTreeViewPriv, 1);
-	
-	self->priv->gxml = glade_xml_new (PACKAGE_DATA_DIR
-									  "/glade/profiler-function-call-tree.glade", 
-									  NULL, NULL);
+
+	self->priv->bxml = gtk_builder_new ();
+	if (!gtk_builder_add_from_file (self->priv->bxml, PACKAGE_DATA_DIR"/glade/profiler-function-call-tree.ui", &error))
+	{
+		g_warning ("Couldn't load builder file: %s", error->message);
+		g_error_free (error);
+	}
+
 	self->priv->tree_store = gtk_tree_store_new (NUM_COLS, G_TYPE_STRING,
 												 G_TYPE_STRING);
 	
 	gprof_function_call_tree_view_create_columns (self);
 	
-	list_view = glade_xml_get_widget (self->priv->gxml, "function_call_tree_view");
+	list_view = GTK_WIDGET (gtk_builder_get_object (self->priv->bxml, "function_call_tree_view"));
 	
 	g_signal_connect (list_view, "row-activated",
 					  G_CALLBACK (on_list_view_row_activated),
@@ -179,7 +184,7 @@ gprof_function_call_tree_view_finalize (GObject *obj)
 	
 	self = (GProfFunctionCallTreeView *) obj;
 	
-	g_object_unref (self->priv->gxml);
+	g_object_unref (self->priv->bxml);
 	g_free (self->priv);
 }
 
@@ -250,8 +255,8 @@ gprof_function_call_tree_view_refresh (GProfView *view)
 	GtkWidget *tree_view;
 	
 	self = GPROF_FUNCTION_CALL_TREE_VIEW (view);
-	tree_view = glade_xml_get_widget (self->priv->gxml, 
-									  "function_call_tree_view");
+	tree_view = GTK_WIDGET (gtk_builder_get_object (self->priv->bxml, 
+									  "function_call_tree_view"));
 	
 	g_object_ref (self->priv->tree_store);
 	
@@ -283,6 +288,6 @@ gprof_function_call_tree_view_get_widget (GProfView *view)
 	
 	self = GPROF_FUNCTION_CALL_TREE_VIEW (view);
 	
-	return glade_xml_get_widget (self->priv->gxml, 
-								 "function_call_tree_scrolled");
+	return GTK_WIDGET (gtk_builder_get_object (self->priv->bxml, 
+								 "function_call_tree_scrolled"));
 }

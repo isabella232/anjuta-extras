@@ -4,7 +4,7 @@ SUBDIRS = scintilla properties
 
 # Plugin glade file
 editor_gladedir = $(anjuta_glade_dir)
-editor_glade_DATA = anjuta-editor-scintilla.glade
+editor_glade_DATA = anjuta-editor-scintilla.ui
 
 # Plugin Icon file
 editor_pixmapsdir = $(anjuta_image_dir)
@@ -26,7 +26,6 @@ AM_CPPFLAGS = \
 	$(LIBANJUTA_CFLAGS) \
 	$(GTK_CFLAGS) \
 	$(GLIB_CFLAGS) \
-  $(GLADE_CFLAGS) \
   $(EXTRA_CFLAGS) \
 	-I$(srcdir)/scintilla/include \
 	-DG_LOG_DOMAIN=\"libanjuta-scintilla\"
@@ -38,7 +37,6 @@ libanjuta_editor_la_LIBADD = \
 	$(LIBANJUTA_LIBS) \
 	$(GTK_LIBS) \
 	$(GLIB_LIBS) \
-	$(GLADE_LIBS) \
   scintilla/libanjuta-scintilla.la
 
 libanjuta_editor_la_SOURCES= \
@@ -72,7 +70,7 @@ libanjuta_editor_la_SOURCES= \
 	anjuta-pcmark-16.xpm \
 	anjuta-linemark-16.xpm
 
-prefs_glade_files = anjuta-editor-scintilla.glade
+prefs_ui_files = anjuta-editor-scintilla.ui
 include $(top_srcdir)/scripts/build-schemas.mk
 
 endif

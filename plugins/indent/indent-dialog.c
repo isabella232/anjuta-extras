@@ -19,7 +19,7 @@
 #endif
 
 #include <gnome.h>
-#include <glade/glade.h>
+#include <glib.h>
 
 #include "indent-util.h"
 #include "indent-dialog.h"
@@ -101,7 +101,7 @@ indent_widget_signal_connect(gchar *name_widget, gchar *signal, gpointer func,
 {
 	GtkWidget *widget;
 	
-	widget = glade_xml_get_widget(idt->xml, name_widget);
+	widget = GTK_WIDGET(gtk_builder_get_object(idt->bxml, name_widget));
 	g_signal_connect(widget, signal, G_CALLBACK (func), idt);
 }
 
@@ -110,7 +110,7 @@ indent_toggle_button_set_active(gchar *name_widget, gboolean active, IndentData 
 {
 	GtkWidget *widget;
 	
-	widget = glade_xml_get_widget(idt->xml, name_widget);
+	widget = GTK_WIDGET(gtk_builder_get_object(idt->bxml, name_widget));
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON (widget), active);
 }
 
@@ -119,7 +119,7 @@ indent_widget_set_sensitive(gchar *name_widget, gboolean sensitive, IndentData *
 {
 	GtkWidget *widget;
 	
-	widget = glade_xml_get_widget(idt->xml, name_widget);
+	widget = GTK_WIDGET(gtk_builder_get_object(idt->bxml, name_widget));
 	gtk_widget_set_sensitive(widget, sensitive);
 }
 
@@ -128,7 +128,7 @@ indent_spinbutton_set_value(gchar *name_widget, gchar *num, IndentData *idt)
 {
 	GtkWidget *widget;
 
-	widget = glade_xml_get_widget(idt->xml, name_widget);
+	widget = GTK_WIDGET(gtk_builder_get_object(idt->bxml, name_widget));
 	gtk_spin_button_set_value(GTK_SPIN_BUTTON (widget), g_strtod(num, NULL));
 }
 
@@ -138,7 +138,7 @@ indent_spinbutton_get_value(gchar *name_widget, IndentData *idt)
 	GtkWidget *widget;
 	gint value;
 
-	widget = glade_xml_get_widget(idt->xml, name_widget);
+	widget = GTK_WIDGET(gtk_builder_get_object(idt->bxml, name_widget));
 	value = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON (widget));
 	return g_strdup_printf("%d", value); 
 }
@@ -208,7 +208,7 @@ indent_entry_get_chars(IndentData *idt)
 {
 	GtkWidget *widget;
 
-	widget = glade_xml_get_widget(idt->xml, PARAMETERS_ENTRY);
+	widget = GTK_WIDGET(gtk_builder_get_object(idt->bxml, PARAMETERS_ENTRY));
 	return gtk_editable_get_chars(GTK_EDITABLE(widget), 0, -1);
 }
 
@@ -217,7 +217,7 @@ indent_entry_set_chars(gchar *text, IndentData *idt)
 {
 	GtkWidget *widget;
 
-	widget = glade_xml_get_widget(idt->xml, PARAMETERS_ENTRY);
+	widget = GTK_WIDGET(gtk_builder_get_object(idt->bxml, PARAMETERS_ENTRY));
 	gtk_entry_set_text(GTK_ENTRY(widget), text);
 }
 
@@ -226,7 +226,7 @@ indent_block_widget(gchar *name_widget, gpointer func, gboolean block, IndentDat
 {
 	GtkWidget *widget;
 
-	widget = glade_xml_get_widget(idt->xml, name_widget);
+	widget = GTK_WIDGET(gtk_builder_get_object(idt->bxml, name_widget));
 	if (block)
 		g_signal_handlers_block_by_func (GTK_OBJECT (widget), func, NULL);
 	else
@@ -330,7 +330,7 @@ indent_display_buffer(gchar *buffer, IndentData *idt)
 	GtkTextTag *tag;
 	GtkTextIter start, end ;
 	
-	widget = glade_xml_get_widget(idt->xml, PREVIEW_TEXTVIEW);
+	widget = GTK_WIDGET(gtk_builder_get_object(idt->bxml, PREVIEW_TEXTVIEW));
 
 	text_buffer = gtk_text_buffer_new(NULL);
 	tag = gtk_text_buffer_create_tag(text_buffer, "police", 
@@ -344,30 +344,30 @@ indent_display_buffer(gchar *buffer, IndentData *idt)
 }
 
 
-#define PREFS_GLADE PACKAGE_DATA_DIR"/glade/indent.glade"
+#define PREFS_GLADE PACKAGE_DATA_DIR"/glade/indent.ui"
 
 GtkWidget *create_dialog(IndentData *idt)
 {
-	idt->xml = glade_xml_new (PREFS_GLADE, DIALOG, NULL);
+	idt->bxml = gtk_builder_new ();
 
-	if (idt->xml == NULL)
+	if (!gtk_builder_add_from_file (idt->bxml, PREFS_GLADE, NULL))
 	{
 		g_warning("Unable to build user interface for Indent\n");
 		return NULL;
 	}
 	
-	glade_xml_signal_autoconnect (idt->xml);
-	idt->dialog = glade_xml_get_widget (idt->xml, DIALOG);
+	gtk_builder_connect_signals (idt->bxml, NULL);
+	idt->dialog = GTK_WIDGET(gtk_builder_get_object(idt->bxml, DIALOG));
 		
 	indent_init_dialog(idt);
 	indent_init_connect(idt);
 	indent_set_style_combo(idt->style_active, idt);
 	
 	g_signal_connect(GTK_OBJECT(idt->dialog), "delete_event",
-                     (GCallBack)indent_exit,
+                     G_CALLBACK (indent_exit),
                      NULL);
 	g_signal_connect(GTK_OBJECT(idt->dialog), "destroy",
-                     (GCallBack)indent_exit,
+                     G_CALLBACK (indent_exit),
                      NULL);
 	return idt->dialog;
 }
@@ -380,7 +380,7 @@ indent_set_style_combo(gint index, IndentData *idt)
 	GList *list;
 	IndentStyle *ist;
 	
-	widget = glade_xml_get_widget(idt->xml, STYLE_COMBOBOX);
+	widget = GTK_WIDGET(gtk_builder_get_object(idt->bxml, STYLE_COMBOBOX));
 
 	list = idt->style_list;
 	while (list)
@@ -456,12 +456,12 @@ on_indent_new_button_clicked(GtkButton *button, IndentData *idt)
 	GtkWidget *message;
 	gint index;
 	
-	widget = glade_xml_get_widget(idt->xml, STYLE_ENTRY);
+	widget = GTK_WIDGET(gtk_builder_get_object(idt->bxml, STYLE_ENTRY));
 	style_name = gtk_editable_get_chars(GTK_EDITABLE(widget), 0, -1);
 	style_name = g_strstrip(style_name);
 	if  (strlen(style_name) < 1)
 		return;
-	widget = glade_xml_get_widget(idt->xml, STYLE_COMBOBOX);
+	widget = GTK_WIDGET(gtk_builder_get_object(idt->bxml, STYLE_COMBOBOX));
 	if (indent_add_style(style_name, idt))
 	{
 		gtk_combo_box_append_text(GTK_COMBO_BOX(widget), style_name);
@@ -471,7 +471,7 @@ on_indent_new_button_clicked(GtkButton *button, IndentData *idt)
 		gtk_combo_box_set_active(GTK_COMBO_BOX(widget), index);
 		gtk_combo_box_set_active(GTK_COMBO_BOX(idt->pref_indent_combo), index);
 		
-		widget = glade_xml_get_widget(idt->xml, STYLE_ENTRY);
+		widget = GTK_WIDGET(gtk_builder_get_object(idt->bxml, STYLE_ENTRY));
 		gtk_editable_delete_text(GTK_EDITABLE(widget), 0, -1);
 		indent_save_all_style(idt);
 	}
@@ -494,9 +494,9 @@ on_indent_update_button_clicked(GtkButton *button, IndentData *idt)
 	GtkWidget *widget;
 	GtkWidget *message;
 	
-	widget = glade_xml_get_widget(idt->xml, STYLE_COMBOBOX);
+	widget = GTK_WIDGET(gtk_builder_get_object(idt->bxml, STYLE_COMBOBOX));
 	style_name = gtk_combo_box_get_active_text(GTK_COMBO_BOX(widget));
-	widget = glade_xml_get_widget(idt->xml, PARAMETERS_ENTRY);
+	widget = GTK_WIDGET(gtk_builder_get_object(idt->bxml, PARAMETERS_ENTRY));
 	options = gtk_editable_get_chars(GTK_EDITABLE(widget), 0, -1);
 	
 	if (indent_update_style(style_name, options, idt))
@@ -523,7 +523,7 @@ on_indent_delete_button_clicked(GtkButton *button, IndentData *idt)
 	gint index;
 	gchar *style_name;
 	
-	widget = glade_xml_get_widget(idt->xml, STYLE_COMBOBOX);
+	widget = GTK_WIDGET(gtk_builder_get_object(idt->bxml, STYLE_COMBOBOX));
 	style_name = gtk_combo_box_get_active_text(GTK_COMBO_BOX(widget));
 	if (indent_remove_style(style_name, idt))
 	{
@@ -555,7 +555,7 @@ on_indent_quit_button_clicked(GtkButton *button, IndentData *idt)
 	gchar *style_name, *options;
 	gint index;
 	
-	widget = glade_xml_get_widget(idt->xml, STYLE_COMBOBOX);
+	widget = GTK_WIDGET(gtk_builder_get_object(idt->bxml, STYLE_COMBOBOX));
 	style_name = gtk_combo_box_get_active_text(GTK_COMBO_BOX(widget));
 	options = indent_find_style(style_name, idt);
 	indent_save_active_style(style_name, options, idt);

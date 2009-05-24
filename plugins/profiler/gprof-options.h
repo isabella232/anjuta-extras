@@ -28,7 +28,6 @@
 #include <glib.h>
 #include <glib-object.h>
 #include <gtk/gtk.h>
-#include <glade/glade.h>
 #include <libxml/parser.h>
 #include <libxml/tree.h>
 
@@ -85,7 +84,7 @@ void gprof_options_register_key (GProfOptions *self, gchar *key_name,
 								 OptionWidgetType widget_type);
 
 
-void gprof_options_create_window (GProfOptions *self, GladeXML *gxml);
+void gprof_options_create_window (GProfOptions *self, GtkBuilder *bxml);
 
 void gprof_options_load (GProfOptions *self, const gchar *path);
 void gprof_options_save (GProfOptions *self, const gchar *path);

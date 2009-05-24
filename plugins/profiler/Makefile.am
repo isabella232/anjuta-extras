@@ -1,14 +1,14 @@
 
 # Plugin UI file
 profiler_uidir = $(anjuta_ui_dir)
-profiler_ui_DATA =  profiler.ui
+profiler_ui_DATA =  profiler.xml
 
 # Plugin glade file
 profiler_gladedir = $(anjuta_glade_dir)
-profiler_glade_DATA = profiler.glade \
-	profiler-flat-profile.glade \
-	profiler-call-graph.glade \
-	profiler-function-call-tree.glade
+profiler_glade_DATA = profiler.ui \
+	profiler-flat-profile.ui \
+	profiler-call-graph.ui \
+	profiler-function-call-tree.ui
 
 # Plugin Icon file
 profiler_pixmapsdir = $(anjuta_image_dir)
@@ -86,7 +86,7 @@ endif
 libanjuta_profiler_la_LDFLAGS = $(ANJUTA_PLUGIN_LDFLAGS)
 
 # Plugin dependencies
-libanjuta_profiler_la_LIBADD = $(LIBANJUTA_LIBS) $(GLADE_LIBS) $(GNOME_CANVAS_LIBS) $(GIO_LIBS) $(LIBXML_LIBS)
+libanjuta_profiler_la_LIBADD = $(LIBANJUTA_LIBS) $(GNOME_CANVAS_LIBS) $(GIO_LIBS) $(LIBXML_LIBS)
 
 if HAVE_GRAPHVIZ
 libanjuta_profiler_la_LIBADD += $(GRAPHVIZ_LIBS)

@@ -35,7 +35,7 @@
 #include "style-editor.h"
 #include "text_editor.h"
 
-#define PREFS_GLADE PACKAGE_DATA_DIR"/glade/anjuta-editor-scintilla.glade"
+#define PREFS_GLADE PACKAGE_DATA_DIR"/glade/anjuta-editor-scintilla.ui"
 #define ICON_FILE "anjuta-editor-scintilla-plugin-48.png"
 
 gpointer parent_class;
@@ -120,15 +120,20 @@ itext_editor_factory_iface_init (IAnjutaEditorFactoryIface *iface)
 static void
 ipreferences_merge(IAnjutaPreferences* ipref, AnjutaPreferences* prefs, GError** e)
 {
-	GladeXML* gxml;
+	GtkBuilder* bxml = gtk_builder_new ();
 	EditorPlugin* plugin = ANJUTA_PLUGIN_EDITOR (ipref);
-	gxml = glade_xml_new (PREFS_GLADE, "preferences_dialog", NULL);
-	plugin->style_button = glade_xml_get_widget(gxml, "style_button");
+	GError* error = NULL;
+	if (!gtk_builder_add_from_file (bxml, PREFS_GLADE, &error))
+	{
+		g_warning ("Couldn't load builder file: %s", error->message);
+		g_error_free (error);
+	}
+	plugin->style_button = GTK_WIDGET (gtk_builder_get_object (bxml, "style_button"));
 	g_signal_connect(G_OBJECT(plugin->style_button), "clicked", 
 		G_CALLBACK(on_style_button_clicked), prefs);
-	anjuta_preferences_add_page (prefs,
-								 gxml, "Editor", _("Scintilla Editor"),  ICON_FILE);
-	g_object_unref(gxml);
+	anjuta_preferences_add_from_builder (prefs,
+								 bxml, "prefs_editor", _("Scintilla Editor"),  ICON_FILE);
+	g_object_unref(bxml);
 }
 
 static void

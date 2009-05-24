@@ -1,6 +1,6 @@
 # Plugin glade file
 anjuta_gladedir = $(anjuta_glade_dir)
-anjuta_glade_DATA = anjuta-scratchbox.glade \
+anjuta_glade_DATA = anjuta-scratchbox.ui \
 		    anjuta-scratchbox-panel.png
 
 # Plugin Icon file
@@ -28,7 +28,6 @@ libanjuta_scratchbox_la_LDFLAGS = $(ANJUTA_PLUGIN_LDFLAGS)
 
 # Plugin dependencies
 libanjuta_scratchbox_la_LIBADD = \
-	$(GLADE_LIBS) \
 	$(GNOME_LIBS) \
 	$(LIBANJUTA_LIBS)
 

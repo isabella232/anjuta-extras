@@ -2,11 +2,11 @@
 
 # Plugin glade file
 indent_gladedir = $(anjuta_glade_dir)
-indent_glade_DATA = indent.glade
+indent_glade_DATA = indent.ui
 
 # Plugin UI file
 indent_uidir = $(anjuta_ui_dir)
-indent_ui_DATA =  anjuta-indent.ui
+indent_ui_DATA =  anjuta-indent.xml
 
 # Plugin Icon file
 indent_pixmapsdir = $(anjuta_image_dir)
@@ -58,7 +58,7 @@ libanjuta_indent_la_LIBADD = \
 	$(GTK_LIBS) \
 	$(LIBANJUTA_LIBS)
 
-prefs_glade_files = indent.glade
+prefs_ui_files = indent.ui
 include $(top_srcdir)/scripts/build-schemas.mk
 
 EXTRA_DIST = \

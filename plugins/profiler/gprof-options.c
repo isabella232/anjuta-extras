@@ -205,13 +205,13 @@ on_option_changed (GtkEditable *editable, Key *key)
 }
 
 static void
-setup_widgets (gchar *key_name, Key *key, GladeXML *gxml)
+setup_widgets (gchar *key_name, Key *key, GtkBuilder *bxml)
 {
 	GtkWidget *widget;
 	GtkTextBuffer *buffer;
 	gchar *string;
 	
-	widget = glade_xml_get_widget (gxml, key->widget_name);
+	widget = GTK_WIDGET (gtk_builder_get_object (bxml, key->widget_name));
 	
 	if (widget)
 	{
@@ -407,10 +407,10 @@ gprof_options_register_key (GProfOptions *self, gchar *key_name,
 }
 
 void
-gprof_options_create_window (GProfOptions *self, GladeXML *gxml)
+gprof_options_create_window (GProfOptions *self, GtkBuilder *bxml)
 {
 	g_hash_table_foreach (self->priv->key_data_table, (GHFunc) setup_widgets,
-						  gxml);
+						  bxml);
 }
 
 void

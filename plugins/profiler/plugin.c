@@ -25,8 +25,8 @@
 #include "plugin.h"
 
 
-#define UI_FILE PACKAGE_DATA_DIR"/ui/profiler.ui"
-#define GLADE_FILE PACKAGE_DATA_DIR"/glade/profiler.glade"
+#define UI_FILE PACKAGE_DATA_DIR"/ui/profiler.xml"
+#define GLADE_FILE PACKAGE_DATA_DIR"/glade/profiler.ui"
 #define ICON_FILE PACKAGE_PIXMAPS_DIR"/anjuta-profiler-plugin-48.png"
 
 static gpointer parent_class;
@@ -365,16 +365,16 @@ register_options ()
 }
 
 static void
-on_profile_data_browse_button_clicked (GtkButton *button, GladeXML *gxml)
+on_profile_data_browse_button_clicked (GtkButton *button, GtkBuilder *bxml)
 {
 	GtkWidget *select_file_dialog;
 	GtkWidget *profile_data_file_entry;
 	GtkWidget *profiling_options_dialog;
 	gchar *selected_file;
 	
-	profile_data_file_entry = glade_xml_get_widget (gxml, "profile_data_file_entry");
-	profiling_options_dialog = glade_xml_get_widget (gxml,
-													 "profiling_options_dialog");
+	profile_data_file_entry = GTK_WIDGET (gtk_builder_get_object (bxml, "profile_data_file_entry"));
+	profiling_options_dialog = GTK_WIDGET (gtk_builder_get_object (bxml,
+													 "profiling_options_dialog"));
 	select_file_dialog = gtk_file_chooser_dialog_new ("Select Data File",
 													  GTK_WINDOW (profiling_options_dialog),
 													  GTK_FILE_CHOOSER_ACTION_OPEN,
@@ -398,32 +398,36 @@ static void
 on_profiling_options_button_clicked (GtkButton *button, gpointer *user_data)
 {													 
 	Profiler *profiler;
-	GladeXML *gxml;
+	GtkBuilder *bxml= gtk_builder_new ();
 	GtkWidget *profiling_options_dialog;
 	GtkWidget *profile_data_browse_button;
+	GError* error = NULL;
 
 	profiler = PROFILER (user_data);
-	gxml = glade_xml_new (GLADE_FILE, "profiling_options_dialog",
-						  NULL);
-	profiling_options_dialog = glade_xml_get_widget (gxml, "profiling_options_dialog");
-	profile_data_browse_button = glade_xml_get_widget (gxml,
-													   "profile_data_browse_button");
+	if (!gtk_builder_add_from_file (bxml, GLADE_FILE, &error))
+	{
+		g_warning ("Couldn't load builder file: %s", error->message);
+		g_error_free (error);
+	}
+	profiling_options_dialog = GTK_WIDGET (gtk_builder_get_object (bxml, "profiling_options_dialog"));
+	profile_data_browse_button = GTK_WIDGET (gtk_builder_get_object (bxml,
+													   "profile_data_browse_button"));
 	
 	g_signal_connect (profile_data_browse_button, "clicked",
 					  G_CALLBACK (on_profile_data_browse_button_clicked),
-					  gxml);
+					  bxml);
 	
 	g_signal_connect (profiling_options_dialog, "response", G_CALLBACK (gtk_widget_hide),
 					  profiling_options_dialog);
 	
-	gprof_options_create_window (profiler->options, gxml);
+	gprof_options_create_window (profiler->options, bxml);
 	
 	gtk_window_set_transient_for (GTK_WINDOW (profiling_options_dialog),
 								  GTK_WINDOW (ANJUTA_PLUGIN(profiler)->shell));
 	
 	gtk_dialog_run (GTK_DIALOG (profiling_options_dialog));
 	
-	g_object_unref (gxml);
+	g_object_unref (bxml);
 }
 
 static void
@@ -499,7 +503,7 @@ on_target_selected (GtkTreeSelection *selection, GtkTreeModel *model,
 static void
 on_profiler_select_target (GtkAction *action, Profiler *profiler)
 {
-	GladeXML *gxml;
+	GtkBuilder *bxml= gtk_builder_new ();
 	GtkWidget *select_target_dialog;
 	GtkWidget *profiling_options_button;
 	GtkWidget *select_other_target_button;
@@ -517,16 +521,22 @@ on_profiler_select_target (GtkAction *action, Profiler *profiler)
 	gchar *target = NULL;
 	gchar *relative_path;
 	guint project_root_uri_length;
-	
-	gxml = glade_xml_new (GLADE_FILE, "select_target_dialog", NULL);
-	select_target_dialog = glade_xml_get_widget (gxml, 
-												 "select_target_dialog");
-	targets_list_view = glade_xml_get_widget (gxml, 
-											  "targets_list_view");
-	profiling_options_button = glade_xml_get_widget (gxml,
-													 "profiling_options_button");
-	select_other_target_button = glade_xml_get_widget (gxml,
-													   "select_other_target_button");
+	GError* error = NULL;
+
+	if (!gtk_builder_add_from_file (bxml, GLADE_FILE, &error))
+	{
+		g_warning ("Couldn't load builder file: %s", error->message);
+		g_error_free (error);
+	}
+
+	select_target_dialog = GTK_WIDGET (gtk_builder_get_object (bxml, 
+												 "select_target_dialog"));
+	targets_list_view = GTK_WIDGET (gtk_builder_get_object (bxml, 
+											  "targets_list_view"));
+	profiling_options_button = GTK_WIDGET (gtk_builder_get_object (bxml,
+													 "profiling_options_button"));
+	select_other_target_button = GTK_WIDGET (gtk_builder_get_object (bxml,
+													   "select_other_target_button"));
 														 
 	g_signal_connect (profiling_options_button, "clicked",
 					  G_CALLBACK (on_profiling_options_button_clicked),
@@ -617,7 +627,7 @@ on_profiler_select_target (GtkAction *action, Profiler *profiler)
 	}
 		
 	gtk_widget_hide (select_target_dialog);
-	g_object_unref (gxml);
+	g_object_unref (bxml);
 }
 
 static void

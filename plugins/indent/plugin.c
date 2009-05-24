@@ -32,8 +32,8 @@
 
 #include "plugin.h"
 
-#define UI_FILE PACKAGE_DATA_DIR"/ui/anjuta-indent.ui"
-#define PREFS_GLADE PACKAGE_DATA_DIR"/glade/indent.glade"
+#define UI_FILE PACKAGE_DATA_DIR"/ui/anjuta-indent.xml"
+#define PREFS_GLADE PACKAGE_DATA_DIR"/glade/indent.ui"
 #define ICON_FILE "anjuta-indent-plugin.png"
 
 static gpointer parent_class;
@@ -318,32 +318,38 @@ ipreferences_merge(IAnjutaPreferences* ipref, AnjutaPreferences* prefs, GError**
 	GtkWidget *indent_button;
 	GtkWidget *indent_combo;
 	GtkWidget *indent_entry;
-	GladeXML* gxml;
+	GError* error = NULL;
+	GtkBuilder* bxml = gtk_builder_new ();
 		
 	AnjutaPlugin* plugin = ANJUTA_PLUGIN (ipref);
 	IndentPlugin* iplugin = ANJUTA_PLUGIN_INDENT (plugin);
 	
 	/* Add preferences */
-	gxml = glade_xml_new (PREFS_GLADE, "indent_prefs_window", NULL);
-	indent_button = glade_xml_get_widget (gxml, "set_indent_button");
+	if (!gtk_builder_add_from_file (bxml, PREFS_GLADE, &error))
+	{
+		g_warning ("Couldn't load builder file: %s", error->message);
+		g_error_free (error);
+	}
+
+	indent_button = GTK_WIDGET (gtk_builder_get_object (bxml, "set_indent_button"));
 	g_signal_connect (G_OBJECT (indent_button), "clicked",
 						  G_CALLBACK (on_edit_editor_indent), plugin);
 		
-	anjuta_preferences_add_page (prefs,
-									gxml, "indent_prefs", _("Indent Utility"),  ICON_FILE);
+	anjuta_preferences_add_from_builder (prefs,
+									bxml, "indent_prefs", _("Indent Utility"),  ICON_FILE);
 		
-	indent_combo = glade_xml_get_widget (gxml, "pref_indent_style_combobox");
+	indent_combo = GTK_WIDGET (gtk_builder_get_object (bxml, "pref_indent_style_combobox"));
 	iplugin->idt->pref_indent_combo = indent_combo;
 	g_signal_connect (G_OBJECT (indent_combo), "changed",
 						  G_CALLBACK (on_style_combo_changed), plugin);
 	
-	indent_entry = glade_xml_get_widget (gxml, "indent_style_entry");
+	indent_entry = GTK_WIDGET (gtk_builder_get_object (bxml, "indent_style_entry"));
 	iplugin->idt->pref_indent_options = indent_entry;
 	iplugin->idt->prefs = prefs;
 	indent_init_load_style (iplugin->idt);
 	
 	pref_set_style_combo (iplugin->idt);
-	g_object_unref (G_OBJECT (gxml));
+	g_object_unref (G_OBJECT (bxml));
 }
 
 static void

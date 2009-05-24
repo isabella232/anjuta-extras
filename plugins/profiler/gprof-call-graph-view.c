@@ -26,7 +26,7 @@
 
 struct _GProfCallGraphViewPriv
 {
-	GladeXML *gxml;
+	GtkBuilder *bxml;
 	GtkListStore *functions_list_store;
 	GtkListStore *called_list_store;
 	GtkListStore *called_by_list_store;
@@ -113,10 +113,10 @@ on_function_selected (GtkTreeSelection *selection, GtkTreeModel *model,
 	self = GPROF_CALL_GRAPH_VIEW (user_data);
 	data = gprof_view_get_data (GPROF_VIEW (self));
 	call_graph = gprof_profile_data_get_call_graph (data);
-	called_list_view = glade_xml_get_widget (self->priv->gxml, 
-											 "called_list_view");
-	called_by_list_view = glade_xml_get_widget (self->priv->gxml,
-												"called_by_list_view");
+	called_list_view = GTK_WIDGET (gtk_builder_get_object (self->priv->bxml, 
+											 "called_list_view"));
+	called_by_list_view = GTK_WIDGET (gtk_builder_get_object (self->priv->bxml,
+												"called_by_list_view"));
 	
 	gtk_tree_model_get_iter (model, &list_iter, path);
 	gtk_tree_model_get (model, &list_iter, FUNCTIONS_COL_NAME, 
@@ -188,8 +188,8 @@ gprof_call_graph_view_select_function (GProfCallGraphView *self, gchar *name)
 	GtkTreeIter *functions_list_iter;
 	GtkTreePath *functions_list_path;
 	
-	functions_list_view = glade_xml_get_widget (self->priv->gxml, 
-												"functions_list_view");
+	functions_list_view = GTK_WIDGET (gtk_builder_get_object (self->priv->bxml, 
+												"functions_list_view"));
 	functions_list_selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (functions_list_view));
 	
 	functions_list_iter = g_hash_table_lookup (self->priv->functions_iter_table,
@@ -271,12 +271,12 @@ gprof_call_graph_view_create_columns (GProfCallGraphView *self)
 	GtkWidget *called_list_view;
 	GtkWidget *called_by_list_view;
 	
-	functions_list_view = glade_xml_get_widget (self->priv->gxml, 
-												"functions_list_view");
-	called_list_view = glade_xml_get_widget (self->priv->gxml,
-											 "called_list_view");
-	called_by_list_view = glade_xml_get_widget (self->priv->gxml,
-												"called_by_list_view");
+	functions_list_view = GTK_WIDGET (gtk_builder_get_object (self->priv->bxml, 
+												"functions_list_view"));
+	called_list_view = GTK_WIDGET (gtk_builder_get_object (self->priv->bxml,
+											 "called_list_view"));
+	called_by_list_view = GTK_WIDGET (gtk_builder_get_object (self->priv->bxml,
+												"called_by_list_view"));
 	
 	/* The Functions list will have all fields; all others have everything 
 	 * except a time field. */
@@ -490,12 +490,17 @@ gprof_call_graph_view_init (GProfCallGraphView *self)
 	GtkWidget *called_jump_to_button;
 	GtkWidget *called_by_jump_to_button;	
 	GtkTreeSelection *functions_list_selection;
+	GError* error = NULL;
 	
 	self->priv = g_new0 (GProfCallGraphViewPriv, 1);
-	
-	self->priv->gxml = glade_xml_new (PACKAGE_DATA_DIR
-									  "/glade/profiler-call-graph.glade",  
-									  NULL, NULL);
+
+	self->priv->bxml = gtk_builder_new ();
+	if (!gtk_builder_add_from_file (self->priv->bxml, PACKAGE_DATA_DIR"/glade/profiler-call-graph.ui", &error))
+	{
+		g_warning ("Couldn't load builder file: %s", error->message);
+		g_error_free (error);
+	}
+
 	self->priv->functions_list_store = gtk_list_store_new (FUNCTIONS_NUM_COLS,
 														   G_TYPE_STRING,
 														   G_TYPE_STRING,
@@ -520,12 +525,12 @@ gprof_call_graph_view_init (GProfCallGraphView *self)
 														   
 	gprof_call_graph_view_create_columns (self);
 	
-	functions_list_view = glade_xml_get_widget (self->priv->gxml,
-												"functions_list_view");
-	called_list_view = glade_xml_get_widget (self->priv->gxml,
-											 "called_list_view");
-	called_by_list_view = glade_xml_get_widget (self->priv->gxml,
-												"called_by_list_view");
+	functions_list_view = GTK_WIDGET (gtk_builder_get_object (self->priv->bxml,
+												"functions_list_view"));
+	called_list_view = GTK_WIDGET (gtk_builder_get_object (self->priv->bxml,
+											 "called_list_view"));
+	called_by_list_view = GTK_WIDGET (gtk_builder_get_object (self->priv->bxml,
+												"called_by_list_view"));
 	
 	/* Function selection */
 	functions_list_selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (functions_list_view));
@@ -534,10 +539,10 @@ gprof_call_graph_view_init (GProfCallGraphView *self)
 											(gpointer) self, NULL);	
 											
 	/* Jump to button callbacks */
-	called_jump_to_button = glade_xml_get_widget (self->priv->gxml, 
-												  "called_jump_to_button");
-	called_by_jump_to_button = glade_xml_get_widget (self->priv->gxml, 
-												  	 "called_by_jump_to_button");
+	called_jump_to_button = GTK_WIDGET (gtk_builder_get_object (self->priv->bxml, 
+												  "called_jump_to_button"));
+	called_by_jump_to_button = GTK_WIDGET (gtk_builder_get_object (self->priv->bxml, 
+												  	 "called_by_jump_to_button"));
 													 
 	g_signal_connect (functions_list_view, "row-activated", 
 					  G_CALLBACK (on_functions_list_view_row_activated), 
@@ -557,7 +562,7 @@ gprof_call_graph_view_finalize (GObject *obj)
 	
 	self = (GProfCallGraphView *) obj;
 	
-	g_object_unref (self->priv->gxml);
+	g_object_unref (self->priv->bxml);
 	
 	if (self->priv->functions_iter_table)
 		g_hash_table_destroy (self->priv->functions_iter_table);
@@ -638,12 +643,12 @@ gprof_call_graph_view_refresh (GProfView *view)
 	data = gprof_view_get_data (view);
 	call_graph = gprof_profile_data_get_call_graph (data);
 	
-	functions_list_view = glade_xml_get_widget (self->priv->gxml, 
-												"functions_list_view");
-	called_list_view = glade_xml_get_widget (self->priv->gxml,
-											 "called_list_view");
-	called_by_list_view = glade_xml_get_widget (self->priv->gxml,
-												"called_by_list_view");
+	functions_list_view = GTK_WIDGET (gtk_builder_get_object (self->priv->bxml, 
+												"functions_list_view"));
+	called_list_view = GTK_WIDGET (gtk_builder_get_object (self->priv->bxml,
+											 "called_list_view"));
+	called_by_list_view = GTK_WIDGET (gtk_builder_get_object (self->priv->bxml,
+												"called_by_list_view"));
 	
 	/* Clear all lists and repopulate the functions list. The two others won't
 	 * be repopulated until a user selects a function from the Functions list */
@@ -731,5 +736,5 @@ gprof_call_graph_view_get_widget (GProfView *view)
 	
 	self = GPROF_CALL_GRAPH_VIEW (view);
 	
-	return glade_xml_get_widget (self->priv->gxml, "call_graph_vbox");
+	return GTK_WIDGET (gtk_builder_get_object (self->priv->bxml, "call_graph_vbox"));
 }

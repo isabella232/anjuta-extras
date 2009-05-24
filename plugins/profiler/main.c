@@ -8,7 +8,6 @@
 #endif
 
 #include <gnome.h>
-#include <glade/glade-xml.h>
 #include <stdlib.h>
 
 #include "gprof-profile-data.h"
@@ -29,11 +28,11 @@ on_main_window_delete_event (GtkWidget *widget, GdkEvent * event,
 }
 
 static GtkWidget *
-create_main_window (GladeXML *glade)
+create_main_window (GtkBuilder *bxml)
 {
 	GtkWidget *window;
 	
-	window = glade_xml_get_widget (glade, "main_window");
+	window = GTK_WIDGET (gtk_builder_get_object (bxml, "main_window"));
 	
 	g_signal_connect (window, "delete-event", 
 					  G_CALLBACK(on_main_window_delete_event), NULL);
@@ -44,20 +43,24 @@ create_main_window (GladeXML *glade)
 int
 main (int argc, char *argv[])
 {
-    GladeXML *main_ui;
+	GtkBuilder *bxml= gtk_builder_new ();
 	GtkWidget *main_window;
 	GProfViewManager *manager;
 	GProfProfileData *data;
+	GError* error = NULL;
 
   gnome_program_init (PACKAGE, VERSION, LIBGNOMEUI_MODULE,
                       argc, argv,
                       GNOME_PARAM_APP_DATADIR, PACKAGE_DATA_DIR,
                       NULL);
-	
-	main_ui = glade_xml_new (PACKAGE_DATA_DIR
-							 "/profileparser-gui/profileparser-gui.glade",  
-							 NULL, NULL);
-	main_window = create_main_window (main_ui);
+
+	if (!gtk_builder_add_from_file (bxml, PACKAGE_DATA_DIR"/profileparser-gui/profileparser-gui.ui", &error))
+	{
+		g_warning ("Couldn't load builder file: %s", error->message);
+		g_error_free (error);
+	}
+
+	main_window = create_main_window (bxml);
 	
 	manager = gprof_view_manager_new ();
 	gtk_widget_show (main_window);

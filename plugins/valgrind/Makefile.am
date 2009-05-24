@@ -2,12 +2,12 @@ if HAVE_PLUGIN_VALGRIND
 
 # Plugin UI file
 valgrind_uidir = $(anjuta_ui_dir)
-valgrind_ui_DATA = anjuta-valgrind.ui
+valgrind_ui_DATA = anjuta-valgrind.xml
 
 
 # Plugin glade file
 valgrind_gladedir = $(anjuta_glade_dir)
-valgrind_glade_DATA = anjuta-valgrind.glade
+valgrind_glade_DATA = anjuta-valgrind.ui
 
 # Plugin Icon file
 valgrind_pixmapsdir = $(anjuta_image_dir)
