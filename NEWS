@@ -1,0 +1,7 @@
+anjuta-extras 2.27.1  (6 May 2009) -- Johannes Schmid
+
+Updates:
+- Build and installation fixes
+
+Bug fixes:
+- #577721 – tooltips appears in wrong position

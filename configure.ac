@@ -1,7 +1,7 @@
 dnl Process this file with autoconf to produce a configure script.
 dnl Created by Anjuta application wizard.
 
-AC_INIT(anjuta-extras, 2.27.0)
+AC_INIT(anjuta-extras, 2.27.1)
 
 AM_INIT_AUTOMAKE(AC_PACKAGE_NAME, AC_PACKAGE_VERSION)
 AC_CONFIG_HEADERS([config.h])
@@ -226,7 +226,6 @@ plugins/Makefile
 plugins/scratchbox/Makefile
 plugins/class-inheritance/Makefile
 plugins/sample1/Makefile
-plugins/indent/Makefile
 plugins/valgrind/Makefile
 plugins/profiler/Makefile
 plugins/scintilla/Makefile
