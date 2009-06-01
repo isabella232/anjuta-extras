@@ -60,7 +60,6 @@ struct _Profiler
 	gint uiid;
 	GtkActionGroup *action_group;
 	GProfOptions *options;
-	GladeXML *prefs_gxml;
 	GProfViewManager *view_manager;
 	GProfProfileData *profile_data;
 	gint project_watch_id;
