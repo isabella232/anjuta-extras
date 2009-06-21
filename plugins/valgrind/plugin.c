@@ -207,7 +207,7 @@ on_menu_run_activate (GtkAction *action, AnjutaValgrindPlugin *plugin)
 		bxml = gtk_builder_new ();
 		if (!gtk_builder_add_from_file (bxml, GLADE_FILE, &error))
 		{
-			g_warning ("Couldn't load builder file: s", error->message);
+			g_warning ("Couldn't load builder file: %s", error->message);
 			g_error_free (error);
 		}
 
@@ -229,7 +229,7 @@ on_menu_run_activate (GtkAction *action, AnjutaValgrindPlugin *plugin)
 		node = exec_targets;	
 
 		anjuta_shell_get (ANJUTA_PLUGIN (plugin)->shell,
-			"project_root_uri", G_TYPE_STRING,
+			IANJUTA_PROJECT_MANAGER_PROJECT_ROOT_URI, G_TYPE_STRING,
 			&project_root_uri, NULL);
 		project_root_uri_len = strlen(project_root_uri) + 1;
 	
