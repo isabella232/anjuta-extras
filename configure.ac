@@ -20,12 +20,14 @@ LIBGRAPHVIZ_REQUIRED=1.0
 GTK_REQUIRED=2.14.0
 GLIB_REQUIRED=2.16.0
 GCONF_REQUIRED=2.12.0
+GNOME_REQUIRED=2.12.0
 
 AC_SUBST(LIBGRAPHVIZ_REQUIRED)
 AC_SUBST(BINUTILS_REQUIRED)
 AC_SUBST(GTK_REQUIRED)
 AC_SUBST(GLIB_REQUIRED)
 AC_SUBST(GCONF_REQUIRED)
+AC_SUBST(GNOME_REQUIRED)
 
 
 dnl ***************************************************************************
@@ -71,6 +73,8 @@ AM_MAINTAINER_MODE
 dnl Check for libanjuta
 PKG_CHECK_MODULES(LIBANJUTA, [libanjuta-1.0 >= 2.27.0])
 
+dnl Check for libgnome
+PKG_CHECK_MODULES(GNOME, libgnome-2.0 >= $GNOME_REQUIRED libgnomeui-2.0 >= $GNOME_REQUIRED libgnomecanvas-2.0 >= $GNOME_REQUIRED)
 
 dnl Valgrind plugin
 dnl check for libbfd

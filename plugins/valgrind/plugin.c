@@ -23,8 +23,6 @@
 
 #include <config.h>
 #include <glib/gi18n.h>
-#include <libgnome/gnome-util.h>
-#include <libgnomeui/gnome-about.h>
 #include <libanjuta/anjuta-shell.h>
 #include <libanjuta/anjuta-debug.h>
 #include <libanjuta/interfaces/ianjuta-document-manager.h>

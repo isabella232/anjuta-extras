@@ -35,7 +35,7 @@
 #include <unistd.h>
 #include <locale.h>
 
-#include <gnome.h>
+#include <gtk/gtk.h>
 
 #define GTK
 #include "Platform.h"

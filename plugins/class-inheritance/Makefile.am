@@ -24,6 +24,7 @@ cls_inheritance_plugin_DATA = $(plugin_in_files:.plugin.in=.plugin)
 
 # Include paths
 AM_CPPFLAGS = \
+	$(GNOME_CFLAGS) \
 	$(LIBANJUTA_CFLAGS) \
 	$(EXTRA_CFLAGS) \
 	$(GRAPHVIZ_CFLAGS) \
@@ -39,6 +40,7 @@ libanjuta_class_inheritance_la_LDFLAGS = $(ANJUTA_PLUGIN_LDFLAGS)
 
 # Plugin dependencies
 libanjuta_class_inheritance_la_LIBADD = \
+	$(GNOME_LIBS) \
 	$(LIBANJUTA_LIBS) \
 	$(GRAPHVIZ_LIBS)
 
