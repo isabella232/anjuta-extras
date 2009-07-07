@@ -102,14 +102,14 @@ libanjuta_valgrind_la_SOURCES = \
 	menu-utils.c 
 
 vgmarshal.h: vgmarshal.list
-        ( @GLIB_GENMARSHAL@ --prefix=vg_marshal $(srcdir)/vgmarshal.list --header > vgmarshal.h.tmp \
-        && mv vgmarshal.h.tmp vgmarshal.h ) \
-        || ( rm -f vgmarshal.h.tmp && exit 1 )
+	( @GLIB_GENMARSHAL@ --prefix=vg_marshal $(srcdir)/vgmarshal.list --header > vgmarshal.h.tmp \
+	&& mv vgmarshal.h.tmp vgmarshal.h ) \
+	|| ( rm -f vgmarshal.h.tmp && exit 1 )
 
 vgmarshal.c: vgmarshal.h
-        ( @GLIB_GENMARSHAL@ --prefix=vg_marshal $(srcdir)/vgmarshal.list --body > vgmarshal.c.tmp \
-        && mv vgmarshal.c.tmp vgmarshal.c ) \
-        || ( rm -f vgmarshal.c.tmp && exit 1 )
+	( @GLIB_GENMARSHAL@ --prefix=vg_marshal $(srcdir)/vgmarshal.list --body > vgmarshal.c.tmp \
+	&& mv vgmarshal.c.tmp vgmarshal.c ) \
+	|| ( rm -f vgmarshal.c.tmp && exit 1 )
 
 MARSHAL_GENERATED = \
 		vgmarshal.c \
@@ -125,13 +125,12 @@ EXTRA_DIST = \
 	$(valgrind_ui_DATA) \
 	$(valgrind_glade_DATA) \
 	$(valgrind_pixmaps_DATA) \
-	$(valgrind_glade_DATA) \
 	$(schema_DATA) \
 	vgmarshal.list
 
 if GCONF_SCHEMAS_INSTALL
 install-data-local:
-        GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(srcdir)/$(schema_DATA)
+	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(srcdir)/$(schema_DATA)
 
 uninstall-local:
 	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-uninstall-rule $(srcdir)/$(schema_DATA)
