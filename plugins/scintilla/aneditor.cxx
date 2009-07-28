@@ -1734,7 +1734,7 @@ long AnEditor::Command(int cmdID, long wParam, long lParam) {
 		break;
 
 	case ANE_SETHILITE:
-		ReadProperties((char*)wParam);
+		ReadProperties((char*)wParam, (char **)lParam);
 		SendEditor(SCI_COLOURISE, 0, -1);
 		break;
 
@@ -2489,7 +2489,7 @@ SString AnEditor::FindLanguageProperty(const char *pattern, const char *defaultV
 	return ret;
 }
 
-void AnEditor::ReadProperties(const char *fileForExt) {
+void AnEditor::ReadProperties(const char *fileForExt, char **typedef_hl) {
 	//DWORD dwStart = timeGetTime();
 	if (fileForExt)
 		strcpy (fileName, fileForExt);
@@ -2519,61 +2519,17 @@ void AnEditor::ReadProperties(const char *fileForExt) {
 	SString kw2 = props->GetNewExpand("keywords3.", fileNameForExtension.c_str());
 	SendEditorString(SCI_SETKEYWORDS, 2, kw2.c_str());
 	/* For C/C++ projects, get list of typedefs for colorizing */
-	/* TODO: Either remove or port to IAnjutaSymbolManager */
-#if 0
 	if (SCLEX_CPP == lexLanguage)
 	{
-		const TMWorkspace *workspace = tm_get_workspace();
-
-		/* Assign global keywords */
-		if ((workspace) && (workspace->global_tags))
+		if (typedef_hl != NULL)
 		{
-			GPtrArray *g_typedefs = tm_tags_extract(workspace->global_tags
-			  , tm_tag_typedef_t | tm_tag_struct_t | tm_tag_class_t);
-			if ((g_typedefs) && (g_typedefs->len > 0))
-			{
-				GString *s = g_string_sized_new(g_typedefs->len * 10);
-				for (guint i = 0; i < g_typedefs->len; ++i)
-				{
-					if (!(TM_TAG(g_typedefs->pdata[i])->atts.entry.scope))
-					{
-						g_string_append(s, TM_TAG(g_typedefs->pdata[i])->name);
-						g_string_append_c(s, ' ');
-					}
-				}
-				SendEditorString(SCI_SETKEYWORDS, 3, s->str);
-				g_string_free(s, TRUE);
-			}
-			g_ptr_array_free(g_typedefs, TRUE);
-		}
-
-		/* Assign project keywords */
-		if ((workspace) && (workspace->work_object.tags_array))
-		{
-			GPtrArray *typedefs = tm_tags_extract(workspace->work_object.tags_array
-			  , tm_tag_typedef_t | tm_tag_struct_t | tm_tag_class_t);
-			if ((typedefs) && (typedefs->len > 0))
-			{
-				GString *s = g_string_sized_new(typedefs->len * 10);
-				for (guint i = 0; i < typedefs->len; ++i)
-				{
-					if (!(TM_TAG(typedefs->pdata[i])->atts.entry.scope))
-					{
-						if (TM_TAG(typedefs->pdata[i])->name)
-						{
-						g_string_append(s, TM_TAG(typedefs->pdata[i])->name);
-						g_string_append_c(s, ' ');
-						}
-					}
-				}
-				SendEditorString(SCI_SETKEYWORDS, 1, s->str);
-				g_string_free(s, TRUE);
-			}
-			g_ptr_array_free(typedefs, TRUE);
+			if (typedef_hl[0] != NULL)
+				SendEditorString(SCI_SETKEYWORDS, 3, typedef_hl[0]);
+			if (typedef_hl[1] != NULL)
+				SendEditorString(SCI_SETKEYWORDS, 1, typedef_hl[1]);
 		}
 	}
 	else
-#endif
 	{
 		SString kw1 = props->GetNewExpand("keywords2.", fileNameForExtension.c_str());
 		SendEditorString(SCI_SETKEYWORDS, 1, kw1.c_str());

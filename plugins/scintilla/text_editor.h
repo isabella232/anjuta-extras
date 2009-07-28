@@ -150,6 +150,12 @@ void text_editor_set_hilite_type (TextEditor * te, const gchar *file_extension);
 void text_editor_hilite (TextEditor *te, gboolean force);
 
 /*
+ * Get list of global (in typedef_hl[0]) and local (in typedef_hl[1]) type
+ * names
+ */
+void text_editor_get_typedef_hl (TextEditor * te, gchar **typedef_hl);
+
+/*
  * Set the zoom factor. Zoom factor basically increases or decreases the
  * text font size by a factor of (2*zfac)
  */

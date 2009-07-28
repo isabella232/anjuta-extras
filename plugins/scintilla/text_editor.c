@@ -60,6 +60,7 @@
 #include <libanjuta/interfaces/ianjuta-indicable.h>
 #include <libanjuta/interfaces/ianjuta-print.h>
 #include <libanjuta/interfaces/ianjuta-document.h>
+#include <libanjuta/interfaces/ianjuta-symbol-manager.h>
 
 #include "properties.h"
 #include "text_editor.h"
@@ -684,9 +685,14 @@ text_editor_hilite_one (TextEditor * te, AnEditorID editor_id,
 	}
 	else if (te->uri)
 	{
-		gchar *basename;
+		gchar *basename, *typedef_hl[2];
 		basename = g_path_get_basename (te->uri);
-		aneditor_command (editor_id, ANE_SETHILITE, (glong) basename, 0);
+		text_editor_get_typedef_hl (te, typedef_hl);
+		aneditor_command (editor_id, ANE_SETHILITE, (glong) basename, (glong) typedef_hl);
+		if (typedef_hl[0] != NULL)
+			g_free (typedef_hl[0]);
+		if (typedef_hl[1] != NULL)
+			g_free (typedef_hl[1]);
 		g_free (basename);
 	}
 	else if (te->filename)
@@ -711,6 +717,60 @@ text_editor_hilite (TextEditor * te, gboolean override_by_pref)
 								override_by_pref);
 		node = g_list_next (node);
 	}
+}
+
+void
+text_editor_get_typedef_hl (TextEditor * te, gchar **typedef_hl)
+{
+        IAnjutaSymbolManager *manager = anjuta_shell_get_interface (te->shell,
+                                                                    IAnjutaSymbolManager, NULL);
+        IAnjutaIterable *iter;
+
+        /* Get global typedefs */
+        iter = ianjuta_symbol_manager_search (manager, IANJUTA_SYMBOL_TYPE_TYPEDEF,
+                                              TRUE, IANJUTA_SYMBOL_FIELD_SIMPLE,  
+                                              NULL, TRUE, TRUE, TRUE, -1, -1, NULL);
+        if (iter)
+        {
+          ianjuta_iterable_first (iter, NULL);
+          if (ianjuta_iterable_get_length (iter, NULL) > 0)
+          {
+            GString *s = g_string_sized_new(ianjuta_iterable_get_length (iter, NULL) * 10);
+            do {
+              IAnjutaSymbol *symbol = IANJUTA_SYMBOL (iter);
+              const gchar *sname = ianjuta_symbol_get_name (symbol, NULL);
+              g_string_append(s, sname);
+              g_string_append_c(s, ' ');
+            } while (ianjuta_iterable_next (iter, NULL));
+            typedef_hl[0] =  g_string_free(s, FALSE);
+          }
+          g_object_unref (iter);
+        }
+        else
+          typedef_hl[0] = NULL;
+        
+        /* Get local typedefs */
+        iter = ianjuta_symbol_manager_search (manager, IANJUTA_SYMBOL_TYPE_TYPEDEF,
+                                              TRUE, IANJUTA_SYMBOL_FIELD_SIMPLE,  
+                                              NULL, TRUE, TRUE, FALSE, -1, -1, NULL);
+        if (iter)
+        {
+          ianjuta_iterable_first (iter, NULL);
+          if (ianjuta_iterable_get_length (iter, NULL) > 0)
+          {
+            GString *s = g_string_sized_new(ianjuta_iterable_get_length (iter, NULL) * 10);
+            do {
+              IAnjutaSymbol *symbol = IANJUTA_SYMBOL (iter);
+              const gchar *sname = ianjuta_symbol_get_name (symbol, NULL);
+              g_string_append(s, sname);
+              g_string_append_c(s, ' ');
+            } while (ianjuta_iterable_next (iter, NULL));
+            typedef_hl[1] = g_string_free(s, FALSE);
+          }
+          g_object_unref (iter);
+        }
+        else
+          typedef_hl[1] = NULL;
 }
 
 void

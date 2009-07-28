@@ -370,7 +370,7 @@ protected:
 	SString FindLanguageProperty(const char *pattern,
 								 const char *defaultValue="");
 	void ReadPropertiesInitial();
-	void ReadProperties(const char* fileForExt);
+	void ReadProperties(const char* fileForExt, char **typedef_hl);
 	long SendEditor(unsigned int msg, unsigned long wParam=0, long lParam=0);
 	long SendEditorString(unsigned int msg, unsigned long wParam,
 						  const char *s);
