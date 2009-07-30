@@ -152,7 +152,7 @@ class_inheritance_show_dynamic_class_popup_menu (GdkEvent *event,
 												   IANJUTA_SYMBOL_FIELD_TYPE |
 												   IANJUTA_SYMBOL_FIELD_ACCESS |
 												   IANJUTA_SYMBOL_FIELD_FILE_PATH,
-												   FALSE, NULL);
+												   NULL);
 		if (iter && ianjuta_iterable_get_length (iter, NULL) > 0)
 		{	
 			do
@@ -365,7 +365,7 @@ cls_inherit_add_node (AnjutaClassInheritance *plugin, const IAnjutaSymbol *node_
 													IANJUTA_SYMBOL_FIELD_SIMPLE|
 												   	IANJUTA_SYMBOL_FIELD_TYPE |
 												   	IANJUTA_SYMBOL_FIELD_ACCESS,													   
-													FALSE, NULL);
+													NULL);
 			real_items_length = ianjuta_iterable_get_length (iter, NULL);
 
 			/* set the max number of items to draw */
@@ -513,7 +513,7 @@ cls_inherit_draw_expanded_node (AnjutaClassInheritance *plugin, Agnode_t *graph_
 												   	IANJUTA_SYMBOL_FIELD_TYPE |
 												   	IANJUTA_SYMBOL_FIELD_ACCESS |
 													IANJUTA_SYMBOL_FIELD_FILE_PATH,
-													FALSE, NULL);
+													NULL);
 
 	g_object_unref (node_sym);
 	
