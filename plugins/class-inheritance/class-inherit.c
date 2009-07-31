@@ -982,7 +982,8 @@ class_inheritance_update_graph (AnjutaClassInheritance *plugin)
 	iter = ianjuta_symbol_manager_search (sm, IANJUTA_SYMBOL_TYPE_CLASS, 
 										  TRUE,
 										  IANJUTA_SYMBOL_FIELD_SIMPLE,
-										  NULL, TRUE, TRUE, FALSE, -1, -1, NULL);
+										  NULL, TRUE, IANJUTA_SYMBOL_MANAGER_SEARCH_FS_PUBLIC, 
+	    								  FALSE, -1, -1, NULL);
 	if (!iter)
 	{
 		DEBUG_PRINT ("%s", "class_inheritance_update_graph (): search returned no items.");
