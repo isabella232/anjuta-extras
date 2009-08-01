@@ -5,11 +5,11 @@ SUBDIRS = include
 noinst_LTLIBRARIES = libanjuta-scintilla.la
 
 AM_CPPFLAGS = \
-  $(LIBANJUTA_CFLAGS) \
-	$(GTK_CFLAGS) \
-  $(GLIB_CFLAGS) \
 	-I$(srcdir)/include \
-  -DGTK -DSCI_LEXER -DUSE_XIM
+	$(LIBANJUTA_CFLAGS) \
+	$(GTK_CFLAGS) \
+	$(GLIB_CFLAGS) \
+	-DGTK -DSCI_LEXER -DUSE_XIM
 
 AM_CXXFLAGS = -DGTK -DSCI_LEXER -DUSE_XIM
 
