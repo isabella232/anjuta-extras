@@ -3154,12 +3154,7 @@ iassist_show_tips (IAnjutaEditorAssist *iassist, GList* tips,
 	gint tips_count;
 	TextEditor *te = TEXT_EDITOR (iassist);
 	TextEditorCell *cell = TEXT_EDITOR_CELL (position);
-	gint column;
-	gint pos;
 	gint calltip_pos;
-	gint line;
-	gint calltip_lines = 0;
-	int i;
 	
 	g_return_if_fail (IS_TEXT_EDITOR (te));
 	g_return_if_fail (tips != NULL);
@@ -3177,23 +3172,11 @@ iassist_show_tips (IAnjutaEditorAssist *iassist, GList* tips,
 		g_string_append (calltip, (gchar*) tip->data);
 		tip = g_list_next (tip);
 	}
-	for (i = 0; calltip->str[i] != '\0'; i++)
-	{
-		if (calltip->str[i] == '\n')
-			calltip_lines++;
-	}
-	/* Calculate real calltip position */
-	pos = text_editor_cell_get_position (cell);
-	column = scintilla_send_message (SCINTILLA (te->scintilla),
-	                                 SCI_GETCOLUMN,
-	                                 pos, 0);
-	line = scintilla_send_message (SCINTILLA (te->scintilla),
-	                               SCI_LINEFROMPOSITION,
-	                               pos, 0);
-	/* Align calltip above function call */
-	line -= (calltip_lines + 3);
-	calltip_pos = scintilla_send_message (SCINTILLA(te->scintilla),
-	                                      SCI_POSITIONFROMLINE, line, 0) + column;
+	
+	/* It is not possible to display the calltip above, as the position is defined
+	 * in characters. We cannot be sure that there is enough characters in
+	 * the line above */
+	calltip_pos = text_editor_cell_get_position (cell);
 	
 	scintilla_send_message (SCINTILLA (te->scintilla),
 							SCI_CALLTIPSHOW,
