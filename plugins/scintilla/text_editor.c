@@ -32,6 +32,7 @@
 #include <gdk/gdk.h>
 #include <errno.h>
 
+#include "plugin.h"
 #include <libanjuta/resources.h>
 #include <libanjuta/anjuta-utils.h>
 #include <libanjuta/anjuta-encodings.h>
@@ -111,8 +112,7 @@ static GHashTable *supported_languages_by_lexer = NULL;
 
 static void text_editor_finalize (GObject *obj);
 static void text_editor_dispose (GObject *obj);
-static void text_editor_hilite_one (TextEditor * te, AnEditorID editor,
-									gboolean force);
+static void text_editor_hilite_one (TextEditor * te, AnEditorID editor);
 
 static GtkVBoxClass *parent_class;
 
@@ -127,6 +127,7 @@ text_editor_instance_init (TextEditor *te)
 	te->monitor = NULL;
 	te->preferences = NULL;
 	te->force_hilite = NULL;
+	te->force_pref = FALSE;
 	te->freeze_count = 0;
 	te->current_line = 0;
 	te->popup_menu = NULL;
@@ -259,7 +260,7 @@ text_editor_add_view (TextEditor *te)
 				G_CALLBACK (on_text_editor_scintilla_focus_in), te);
 	
 	initialize_markers (te, scintilla);
-	text_editor_hilite_one (te, editor_id, FALSE);
+	text_editor_hilite_one (te, editor_id);
 	text_editor_set_line_number_width (te);
 	
 	if (current_line)
@@ -510,6 +511,19 @@ text_editor_update_monitor (TextEditor *te, gboolean disable_it)
 	}
 }
 
+static void
+on_shell_value_changed  (TextEditor *te, const char *name)
+{
+	g_return_if_fail (name != NULL);
+	
+	if ((strcmp (name, TEXT_EDITOR_PROJECT_TYPE_LIST) == 0) ||
+	    (strcmp (name, TEXT_EDITOR_SYSTEM_TYPE_LIST) == 0))
+	{
+		/* Type names list has changed, so refresh highlight */
+		text_editor_hilite (te, te->force_pref);
+	}
+}
+
 GtkWidget *
 text_editor_new (AnjutaStatus *status, AnjutaPreferences *eo, AnjutaShell *shell, const gchar *uri, const gchar *name)
 {
@@ -562,6 +576,10 @@ text_editor_new (AnjutaStatus *status, AnjutaPreferences *eo, AnjutaShell *shell
 	zoom_factor = anjuta_preferences_get_int (te->preferences, TEXT_ZOOM_FACTOR);
 	/* DEBUG_PRINT ("%s", "Initializing zoom factor to: %d", zoom_factor); */
 	text_editor_set_zoom_factor (te, zoom_factor);
+
+	/* Get type name notification */
+	g_signal_connect_swapped (G_OBJECT (shell), "value-added", G_CALLBACK (on_shell_value_changed), te);
+	g_signal_connect_swapped (G_OBJECT (shell), "value-removed", G_CALLBACK (on_shell_value_changed), te);
 	
 #ifdef DEBUG
 	g_object_weak_ref (G_OBJECT (te), on_te_already_destroyed, te);
@@ -573,6 +591,10 @@ void
 text_editor_dispose (GObject *obj)
 {
 	TextEditor *te = TEXT_EDITOR (obj);
+
+	/* Disconnect signal */
+	g_signal_handlers_disconnect_by_func (te->shell, G_CALLBACK (on_shell_value_changed), te);
+	
 	if (te->monitor)
 	{
 		text_editor_update_monitor (te, TRUE);
@@ -669,108 +691,67 @@ text_editor_set_hilite_type (TextEditor * te, const gchar *file_extension)
 }
 
 static void
-text_editor_hilite_one (TextEditor * te, AnEditorID editor_id,
-						gboolean override_by_pref)
+text_editor_hilite_one (TextEditor * te, AnEditorID editor_id)
 {
-	/* If syntax highlighting is disabled ... */
-	if (override_by_pref &&
-		anjuta_preferences_get_bool (ANJUTA_PREFERENCES (te->preferences),
+	const gchar *name = NULL;
+	gchar *basename = NULL;
+	
+	/* syntax highlighting is disabled if te->force_pref && pref is disabled */
+	if (!te->force_pref ||
+		!anjuta_preferences_get_bool (ANJUTA_PREFERENCES (te->preferences),
 									DISABLE_SYNTAX_HILIGHTING))
 	{
-		aneditor_command (editor_id, ANE_SETHILITE, (glong) "plain.txt", 0);
+		if (te->force_hilite)
+		{
+			name = te->force_hilite;
+		}
+		else if (te->uri)
+		{
+			basename = g_path_get_basename (te->uri);
+			name = basename;
+		}
+		else if (te->filename)
+		{
+			name = te->filename;
+		}
 	}
-	else if (te->force_hilite)
+
+	if (name == NULL)
 	{
-		aneditor_command (editor_id, ANE_SETHILITE, (glong) te->force_hilite, 0);
-	}
-	else if (te->uri)
-	{
-		gchar *basename, *typedef_hl[2];
-		basename = g_path_get_basename (te->uri);
-		text_editor_get_typedef_hl (te, typedef_hl);
-		aneditor_command (editor_id, ANE_SETHILITE, (glong) basename, (glong) typedef_hl);
-		if (typedef_hl[0] != NULL)
-			g_free (typedef_hl[0]);
-		if (typedef_hl[1] != NULL)
-			g_free (typedef_hl[1]);
-		g_free (basename);
-	}
-	else if (te->filename)
-	{
-		aneditor_command (editor_id, ANE_SETHILITE, (glong) te->filename, 0);
+		/* No syntax higlight */
+		aneditor_command (editor_id, ANE_SETHILITE, (glong) "plain.txt", (glong) 0);
 	}
 	else
 	{
-		aneditor_command (editor_id, ANE_SETHILITE, (glong) "plain.txt", 0);
-	} 
+		const gchar *typedef_hl[2];
+		GValue sys_value = {0,};
+		GValue prj_value = {0,};
+
+		anjuta_shell_get_value (te->shell, TEXT_EDITOR_SYSTEM_TYPE_LIST, &sys_value, NULL);
+		typedef_hl[0] = G_VALUE_HOLDS_STRING(&sys_value) ? g_value_get_string (&sys_value) : NULL;
+
+		anjuta_shell_get_value (te->shell, TEXT_EDITOR_PROJECT_TYPE_LIST, &prj_value, NULL);
+		typedef_hl[1] = G_VALUE_HOLDS_STRING(&prj_value) ? g_value_get_string (&prj_value) : NULL;
+
+		aneditor_command (editor_id, ANE_SETHILITE, (glong) name, (glong) typedef_hl);
+		if (G_IS_VALUE (&sys_value)) g_value_unset (&sys_value);
+		if (G_IS_VALUE (&prj_value)) g_value_unset (&prj_value);
+	}
+	g_free (basename);
 }
 
 void
 text_editor_hilite (TextEditor * te, gboolean override_by_pref)
 {
 	GList *node;
-	
+
+	te->force_pref = override_by_pref;
 	node = te->views;
 	while (node)
 	{
-		text_editor_hilite_one (te, GPOINTER_TO_INT (node->data),
-								override_by_pref);
+		text_editor_hilite_one (te, GPOINTER_TO_INT (node->data));
 		node = g_list_next (node);
 	}
-}
-
-void
-text_editor_get_typedef_hl (TextEditor * te, gchar **typedef_hl)
-{
-        IAnjutaSymbolManager *manager = anjuta_shell_get_interface (te->shell,
-                                                                    IAnjutaSymbolManager, NULL);
-        IAnjutaIterable *iter;
-
-        /* Get global typedefs */
-        iter = ianjuta_symbol_manager_search (manager, IANJUTA_SYMBOL_TYPE_TYPEDEF,
-                                              TRUE, IANJUTA_SYMBOL_FIELD_SIMPLE,  
-                                              NULL, TRUE, TRUE, TRUE, -1, -1, NULL);
-        if (iter)
-        {
-          ianjuta_iterable_first (iter, NULL);
-          if (ianjuta_iterable_get_length (iter, NULL) > 0)
-          {
-            GString *s = g_string_sized_new(ianjuta_iterable_get_length (iter, NULL) * 10);
-            do {
-              IAnjutaSymbol *symbol = IANJUTA_SYMBOL (iter);
-              const gchar *sname = ianjuta_symbol_get_name (symbol, NULL);
-              g_string_append(s, sname);
-              g_string_append_c(s, ' ');
-            } while (ianjuta_iterable_next (iter, NULL));
-            typedef_hl[0] =  g_string_free(s, FALSE);
-          }
-          g_object_unref (iter);
-        }
-        else
-          typedef_hl[0] = NULL;
-        
-        /* Get local typedefs */
-        iter = ianjuta_symbol_manager_search (manager, IANJUTA_SYMBOL_TYPE_TYPEDEF,
-                                              TRUE, IANJUTA_SYMBOL_FIELD_SIMPLE,  
-                                              NULL, TRUE, TRUE, FALSE, -1, -1, NULL);
-        if (iter)
-        {
-          ianjuta_iterable_first (iter, NULL);
-          if (ianjuta_iterable_get_length (iter, NULL) > 0)
-          {
-            GString *s = g_string_sized_new(ianjuta_iterable_get_length (iter, NULL) * 10);
-            do {
-              IAnjutaSymbol *symbol = IANJUTA_SYMBOL (iter);
-              const gchar *sname = ianjuta_symbol_get_name (symbol, NULL);
-              g_string_append(s, sname);
-              g_string_append_c(s, ' ');
-            } while (ianjuta_iterable_next (iter, NULL));
-            typedef_hl[1] = g_string_free(s, FALSE);
-          }
-          g_object_unref (iter);
-        }
-        else
-          typedef_hl[1] = NULL;
 }
 
 void

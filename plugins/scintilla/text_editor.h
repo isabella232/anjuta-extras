@@ -68,7 +68,8 @@ struct _TextEditor
 	
 	/* File extension that will be used to force hilite type */
 	gchar *force_hilite;
-
+	gboolean force_pref;
+	
 	glong current_line;
 
 	AnjutaPreferences *preferences;
@@ -148,12 +149,6 @@ void text_editor_set_hilite_type (TextEditor * te, const gchar *file_extension);
  * set ON.
  */
 void text_editor_hilite (TextEditor *te, gboolean force);
-
-/*
- * Get list of global (in typedef_hl[0]) and local (in typedef_hl[1]) type
- * names
- */
-void text_editor_get_typedef_hl (TextEditor * te, gchar **typedef_hl);
 
 /*
  * Set the zoom factor. Zoom factor basically increases or decreases the

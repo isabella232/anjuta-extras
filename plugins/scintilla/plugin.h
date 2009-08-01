@@ -34,10 +34,14 @@ typedef struct _EditorPluginClass EditorPluginClass;
 
 struct _EditorPlugin{
 	AnjutaPlugin parent;
-	
+
 	GtkWidget* style_button;
 };
 
 struct _EditorPluginClass{
 	AnjutaPluginClass parent_class;
 };
+
+/* Up to date list of type names, used by scintilla for highlighting */
+#define TEXT_EDITOR_SYSTEM_TYPE_LIST "editor_system_type_list"
+#define TEXT_EDITOR_PROJECT_TYPE_LIST "editor_project_type_list"
