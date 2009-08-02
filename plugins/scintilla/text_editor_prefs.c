@@ -118,7 +118,7 @@ on_notify_disable_hilite (AnjutaPreferences* prefs,
 	TextEditor *te;
 	
 	te = TEXT_EDITOR (user_data);
-	set_n_get_prop_int (te, DISABLE_SYNTAX_HILIGHTING);
+	set_n_get_prop_bool (te, DISABLE_SYNTAX_HILIGHTING);
 	text_editor_hilite (te, TRUE);
 }
 
@@ -161,7 +161,7 @@ on_notify_use_tab_for_indentation(AnjutaPreferences* prefs,
 	gboolean use_tabs;
 
 	te = TEXT_EDITOR (user_data);
-	use_tabs = set_n_get_prop_int (te, USE_TABS);
+	use_tabs = set_n_get_prop_bool (te, USE_TABS);
 	text_editor_command (te, ANE_SETUSETABFORINDENT, use_tabs, 0);
 	// text_editor_scintilla_command (te, SCI_SETTABWIDTH,	use_tabs, 0);
 }
@@ -190,7 +190,7 @@ on_notify_wrap_bookmarks(AnjutaPreferences* prefs,
 	gboolean state;
 
 	te = TEXT_EDITOR (user_data);
-	state = set_n_get_prop_int (te, WRAP_BOOKMARKS);
+	state = set_n_get_prop_bool (te, WRAP_BOOKMARKS);
 	text_editor_command (te, ANE_SETWRAPBOOKMARKS, state, 0);
 }
 
@@ -204,7 +204,7 @@ on_notify_braces_check (AnjutaPreferences* prefs,
 	gboolean state;
 
 	te = TEXT_EDITOR (user_data);
-	state = set_n_get_prop_int (te, BRACES_CHECK);
+	state = set_n_get_prop_bool (te, BRACES_CHECK);
 	text_editor_command (te, ANE_SETINDENTBRACESCHECK, state, 0);
 }
 
@@ -232,7 +232,7 @@ on_notify_tab_indents (AnjutaPreferences* prefs,
 	gboolean state;
 
 	te = TEXT_EDITOR (user_data);
-	state = set_n_get_prop_int (te, TAB_INDENTS);
+	state = set_n_get_prop_bool (te, TAB_INDENTS);
 	text_editor_command (te, ANE_SETTABINDENTS, state, 0);
 }
 
@@ -246,7 +246,7 @@ on_notify_backspace_unindents (AnjutaPreferences* prefs,
 	gboolean state;
 
 	te = TEXT_EDITOR (user_data);
-	state = set_n_get_prop_int (te, BACKSPACE_UNINDENTS);
+	state = set_n_get_prop_bool (te, BACKSPACE_UNINDENTS);
 	text_editor_command (te, ANE_SETBACKSPACEUNINDENTS, state, 0);
 }
 
@@ -260,7 +260,7 @@ on_notify_view_eols (AnjutaPreferences* prefs,
 	gboolean state;
 
 	te = TEXT_EDITOR (user_data);
-	state = set_n_get_prop_int (te, VIEW_EOL);
+	state = set_n_get_prop_bool (te, VIEW_EOL);
 	text_editor_command (te, ANE_VIEWEOL, state, 0);
 }
 
@@ -274,7 +274,7 @@ on_notify_view_whitespaces (AnjutaPreferences* prefs,
 	gboolean state;
 
 	te = TEXT_EDITOR (user_data);
-	state = set_n_get_prop_int (te, VIEW_WHITE_SPACES);
+	state = set_n_get_prop_bool (te, VIEW_WHITE_SPACES);
 	text_editor_command (te, ANE_VIEWSPACE, state, 0);
 }
 
@@ -288,7 +288,7 @@ on_notify_view_linewrap (AnjutaPreferences* prefs,
 	gboolean state;
 
 	te = TEXT_EDITOR (user_data);
-	state = set_n_get_prop_int (te, VIEW_LINE_WRAP);
+	state = set_n_get_prop_bool (te, VIEW_LINE_WRAP);
 	text_editor_command (te, ANE_LINEWRAP, state, 0);
 }
 
@@ -302,7 +302,7 @@ on_notify_view_indentation_guides (AnjutaPreferences* prefs,
 	gboolean state;
 
 	te = TEXT_EDITOR (user_data);
-	state = set_n_get_prop_int (te, VIEW_INDENTATION_GUIDES);
+	state = set_n_get_prop_bool (te, VIEW_INDENTATION_GUIDES);
 	text_editor_command (te, ANE_VIEWGUIDES, state, 0);
 }
 
@@ -316,7 +316,7 @@ on_notify_view_folds (AnjutaPreferences* prefs,
 	gboolean state;
 
 	te = TEXT_EDITOR (user_data);
-	state = set_n_get_prop_int (te, VIEW_FOLD_MARGIN);
+	state = set_n_get_prop_bool (te, VIEW_FOLD_MARGIN);
 	text_editor_command (te, ANE_FOLDMARGIN, state, 0);
 }
 
@@ -330,7 +330,7 @@ on_notify_view_markers (AnjutaPreferences* prefs,
 	gboolean state;
 
 	te = TEXT_EDITOR (user_data);
-	state = set_n_get_prop_int (te, VIEW_MARKER_MARGIN);
+	state = set_n_get_prop_bool (te, VIEW_MARKER_MARGIN);
 	text_editor_command (te, ANE_SELMARGIN, state, 0);
 }
 
@@ -344,7 +344,7 @@ on_notify_view_linenums (AnjutaPreferences* prefs,
 	gboolean state;
 
 	te = TEXT_EDITOR (user_data);
-	state = set_n_get_prop_int (te, VIEW_LINENUMBERS_MARGIN);
+	state = set_n_get_prop_bool (te, VIEW_LINENUMBERS_MARGIN);
 	text_editor_command (te, ANE_LINENUMBERMARGIN, state, 0);
 	/* text_editor_set_line_number_width (te); */
 }
@@ -374,7 +374,7 @@ on_notify_fold_underline (AnjutaPreferences* prefs,
 	gboolean state;
 
 	te = TEXT_EDITOR (user_data);
-	state = set_n_get_prop_int (te, FOLD_UNDERLINE);
+	state = set_n_get_prop_bool (te, FOLD_UNDERLINE);
 	text_editor_command (te, ANE_SETFOLDUNDERLINE, state, 0);
 }
 
