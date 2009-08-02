@@ -218,7 +218,7 @@ on_notify_indent_maintain (AnjutaPreferences* prefs,
 	gboolean state;
 
 	te = TEXT_EDITOR (user_data);
-	state = set_n_get_prop_int (te, INDENT_MAINTAIN);
+	state = set_n_get_prop_bool (te, INDENT_MAINTAIN);
 	text_editor_command (te, ANE_SETINDENTMAINTAIN, state, 0);
 }
 
@@ -416,10 +416,7 @@ text_editor_prefs_init (TextEditor *te)
 	
 	/* This one is special */
 	val = set_n_get_prop_bool (te, INDENT_MAINTAIN);
-	if (val)
-		sci_prop_set_int_with_key (te->props_base, INDENT_MAINTAIN".*", 1);
-	else
-		sci_prop_set_int_with_key (te->props_base, INDENT_MAINTAIN".*", 0);
+	sci_prop_set_int_with_key (te->props_base, INDENT_MAINTAIN".*", val);
 	
 	set_n_get_prop_bool (te, TAB_INDENTS);
 	set_n_get_prop_bool (te, BACKSPACE_UNINDENTS);

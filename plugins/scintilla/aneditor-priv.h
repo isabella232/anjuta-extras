@@ -179,6 +179,7 @@ protected:
 	*/
 	
 	bool indentMaintain;
+	bool indentAutomatic;
 	/*
 	int statementLookback;
 	StyleAndWords statementIndent;

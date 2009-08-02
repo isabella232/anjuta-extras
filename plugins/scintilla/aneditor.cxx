@@ -54,6 +54,7 @@ AnEditor::AnEditor(PropSetFile* p) {
 	statementLookback = 10;
 	*/
 	indentMaintain = true;
+	indentAutomatic = true;
 	
 	wrapLine = true;
 	isReadOnly = false;
@@ -1378,7 +1379,7 @@ void AnEditor::CharAdded(char ch) {
 			} else if (HandleXml(ch)) {
 				// Handled in the routine
 			} else {	// we don't have autocompetion nor calltip active
-					if (indentMaintain)
+					if (indentMaintain && indentAutomatic)
 						MaintainIndentation(ch);
 			}
 		}
@@ -1824,11 +1825,11 @@ long AnEditor::Command(int cmdID, long wParam, long lParam) {
 	case ANE_SETWRAPBOOKMARKS:
 		// Nothing to do.
 		break;
-	/*
+	
 	case ANE_SETAUTOINDENTATION:
-		// Nothing to do.
+		indentAutomatic = wParam;
 		break;
-	*/
+
 	case ANE_SETUSETABFORINDENT:
 		SendEditor(SCI_SETUSETABS, wParam);
 		break;
@@ -1851,10 +1852,7 @@ long AnEditor::Command(int cmdID, long wParam, long lParam) {
 		break;
 	*/
 	case ANE_SETINDENTMAINTAIN:
-		if (wParam)
-			props->Set ("indent.maintain.*", "1");
-		else
-			props->Set ("indent.opening.*", "0");
+		props->Set ("indent.maintain.*", wParam ? "1" : "0");
 		indentMaintain = wParam;
 		break;
 	

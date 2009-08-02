@@ -2226,10 +2226,13 @@ itext_editor_set_use_spaces (IAnjutaEditor *editor, gboolean use_spaces, GError 
 							SCI_SETUSETABS, !use_spaces, 0);
 }
 
+/* This function does not set automatic indentation but allow or not
+ * the editor to indent the text. Used to disable editor indentation when
+ * another plugin take care of it. */
 static void
 itext_editor_set_auto_indent (IAnjutaEditor *editor, gboolean auto_indent, GError **e)
 {
-  text_editor_command (TEXT_EDITOR(editor), ANE_SETINDENTMAINTAIN, auto_indent, 0);
+	text_editor_command (TEXT_EDITOR(editor), ANE_SETAUTOINDENTATION, auto_indent, 0);
 }
 
 static void
