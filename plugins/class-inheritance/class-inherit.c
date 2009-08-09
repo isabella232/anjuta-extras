@@ -1103,22 +1103,6 @@ class_inheritance_update_graph (AnjutaClassInheritance *plugin)
 	cls_inherit_draw_graph (plugin);
 }
 
-static GnomeUIInfo canvas_menu_uiinfo[] = {
-	{ /*0*/
-	 GNOME_APP_UI_ITEM, 
-	 N_("Update"),
-	 N_("Update the graph"),
-	 on_update_menu_item_selected,
-	 NULL, 
-	 NULL,
-	 GNOME_APP_PIXMAP_NONE,
-	 NULL,
-	 0, 
-	 0, 
-	 NULL},
-	GNOMEUIINFO_END
-};
-
 void 
 class_inheritance_gtree_clear (AnjutaClassInheritance *plugin) {
 	
@@ -1186,14 +1170,17 @@ class_inheritance_base_gui_init (AnjutaClassInheritance *plugin)
 
 	/* menu create */
 	plugin->menu = gtk_menu_new ();
+
+	GtkWidget *menu_item = gtk_menu_item_new_with_label (_("Update"));
+	g_signal_connect (menu_item, "activate",
+	    (GCallback)on_update_menu_item_selected, plugin);
 	
 	/* set the user data on update selection */
-	canvas_menu_uiinfo[0].user_data = plugin;
-	
-	gnome_app_fill_menu (GTK_MENU_SHELL (plugin->menu), canvas_menu_uiinfo,
-						NULL, FALSE, 0);
-	
-	plugin->update = canvas_menu_uiinfo[0].widget;
+	gtk_menu_shell_append (GTK_MENU_SHELL (plugin->menu), menu_item);
+	gtk_widget_show_all (plugin->menu);
+
+
+	plugin->update = menu_item;
 	
 	g_object_ref (plugin->menu);
 	g_object_ref (plugin->update);

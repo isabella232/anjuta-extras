@@ -74,7 +74,7 @@ dnl Check for libanjuta
 PKG_CHECK_MODULES(LIBANJUTA, [libanjuta-1.0 >= 2.27.0])
 
 dnl Check for libgnome
-PKG_CHECK_MODULES(GNOME, libgnome-2.0 >= $GNOME_REQUIRED libgnomeui-2.0 >= $GNOME_REQUIRED libgnomecanvas-2.0 >= $GNOME_REQUIRED)
+PKG_CHECK_MODULES(GNOME, libgnomecanvas-2.0 >= $GNOME_REQUIRED)
 
 dnl Valgrind plugin
 dnl check for libbfd
@@ -224,6 +224,7 @@ AC_SUBST(anjuta_image_dir)
 EXTRA_CFLAGS='-DPACKAGE_PIXMAPS_DIR=\""$(anjuta_image_dir)"\" -DPACKAGE_LIB_DIR=\""$(anjutalibdir)"\" -DPACKAGE_DATA_DIR=\""$(anjuta_data_dir)"\"'
 AC_SUBST(EXTRA_CFLAGS)
 
+PKG_CHECK_MODULES(LIBXML, libxml-2.0)
 AC_OUTPUT([
 Makefile
 plugins/Makefile
