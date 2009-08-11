@@ -76,6 +76,9 @@ PKG_CHECK_MODULES(LIBANJUTA, [libanjuta-1.0 >= 2.27.0])
 dnl Check for libgnome
 PKG_CHECK_MODULES(GNOME, libgnomecanvas-2.0 >= $GNOME_REQUIRED)
 
+dnl check for gthread
+PKG_CHECK_MODULES(GTHREAD, gthread-2.0 >= $GLIB_REQUIRED)
+
 dnl Valgrind plugin
 dnl check for libbfd
 dnl -------------------------------------------------------------

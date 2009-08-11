@@ -7,8 +7,7 @@ noinst_LTLIBRARIES = libanjuta-scintilla.la
 AM_CPPFLAGS = \
 	-I$(srcdir)/include \
 	$(LIBANJUTA_CFLAGS) \
-	$(GTK_CFLAGS) \
-	$(GLIB_CFLAGS) \
+	$(GTHREAD_CFLAGS) \
 	-DGTK -DSCI_LEXER -DUSE_XIM
 
 AM_CXXFLAGS = -DGTK -DSCI_LEXER -DUSE_XIM
@@ -75,9 +74,8 @@ libanjuta_scintilla_la_SOURCES =\
 	$(LEXER_SRCS)
 
 libanjuta_scintilla_la_LIBADD = \
-  $(LIBANJUTA_LIBS) \
-	$(GLIB_LIBS) \
-	$(GTK_LIBS)
+	$(LIBANJUTA_LIBS) \
+	$(GTHREAD_LIBS)
 
 noinst_PROGRAMS = test-scintilla
 

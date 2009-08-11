@@ -23,21 +23,15 @@ plugin_LTLIBRARIES = libanjuta-editor.la
 
 AM_CPPFLAGS = \
 	-I$(srcdir)/scintilla/include \
-	$(GIO_CFLAGS) \
 	$(LIBANJUTA_CFLAGS) \
-	$(GTK_CFLAGS) \
-	$(GLIB_CFLAGS) \
 	$(EXTRA_CFLAGS) \
 	-DG_LOG_DOMAIN=\"libanjuta-scintilla\"
 
 libanjuta_editor_la_LDFLAGS = $(ANJUTA_PLUGIN_LDFLAGS)
 
 libanjuta_editor_la_LIBADD = \
-  $(GIO_LIBS) \
-	$(LIBANJUTA_LIBS) \
-	$(GTK_LIBS) \
-	$(GLIB_LIBS) \
-  scintilla/libanjuta-scintilla.la
+	$(LIBANJUTA_LIBS)\
+	scintilla/libanjuta-scintilla.la
 
 libanjuta_editor_la_SOURCES= \
 	properties.cxx \
