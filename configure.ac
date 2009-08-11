@@ -209,8 +209,18 @@ AM_CONDITIONAL(HAVE_PLUGIN_SCINTILLA, [test x$scintilla = xyes])
 
 dnl Setup Plugin directories
 dnl ------------------------
-anjutalibdir=`pkg-config --variable=libdir libanjuta-1.0`
-anjutadatadir=`pkg-config --variable=datadir libanjuta-1.0`
+
+dnl In order to pass distcheck, the script has to install the plugin
+dnl in the correct prefix if defined. This is done using the
+dnl pkg-config option --define-variable.
+if test "x$prefix" = "xNONE" ; then
+	pkg_prefix=""
+else
+	pkg_prefix="--define-variable=prefix=$prefix"
+fi
+
+anjutalibdir=`pkg-config $pkg_prefix --variable=libdir libanjuta-1.0`
+anjutadatadir=`pkg-config $pkg_prefix --variable=datadir libanjuta-1.0`
 AC_SUBST(anjutalibdir)
 AC_SUBST(anjutadatadir)
 anjuta_plugin_dir='$(anjutalibdir)/anjuta'
