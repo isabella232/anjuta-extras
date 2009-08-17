@@ -1399,8 +1399,7 @@ bool AnEditor::HandleXml(char ch) {
 	}
 
 	// This may make sense only in certain languages
-	if (lexLanguage != SCLEX_HTML && lexLanguage != SCLEX_XML &&
-	        lexLanguage != SCLEX_ASP && lexLanguage != SCLEX_PHP) {
+	if (lexLanguage != SCLEX_HTML && lexLanguage != SCLEX_XML) {
 		return false;
 	}
 
@@ -2366,7 +2365,7 @@ static Colour ColourFromString(const char *val) {
 	return Colour(r, g, b);
 }
 
-static long ColourOfProperty(PropSet *props, const char *key, ColourDesired colourDefault) {
+static long ColourOfProperty(PropSetFile *props, const char *key, ColourDesired colourDefault) {
 	SString colour = props->Get(key);
 	if (colour.length()) {
 		return ColourFromString(colour.c_str()).AsLong();
@@ -2519,13 +2518,23 @@ void AnEditor::ReadProperties(const char *fileForExt, char **typedef_hl) {
 	/* For C/C++ projects, get list of typedefs for colorizing */
 	if (SCLEX_CPP == lexLanguage)
 	{
+		SString kw1 = props->GetNewExpand("keywords2.", fileNameForExtension.c_str());
+		SString kw3 = props->GetNewExpand("keywords4.", fileNameForExtension.c_str());
 		if (typedef_hl != NULL)
 		{
 			if (typedef_hl[0] != NULL)
-				SendEditorString(SCI_SETKEYWORDS, 3, typedef_hl[0]);
+			{
+				kw3 += ' ';
+				kw3 += typedef_hl[0];
+			}
 			if (typedef_hl[1] != NULL)
-				SendEditorString(SCI_SETKEYWORDS, 1, typedef_hl[1]);
+			{
+				kw1 +=  ' ';
+				kw1 += typedef_hl[1];
+			}
 		}
+		SendEditorString(SCI_SETKEYWORDS, 3, kw3.c_str());
+		SendEditorString(SCI_SETKEYWORDS, 1, kw1.c_str());
 	}
 	else
 	{

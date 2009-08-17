@@ -36,7 +36,6 @@ libanjuta_editor_la_LIBADD = \
 libanjuta_editor_la_SOURCES= \
 	properties.cxx \
 	properties.h \
-	properties_cxx.h \
 	aneditor.h \
 	aneditor-priv.h \
 	aneditor.cxx \
@@ -58,6 +57,11 @@ libanjuta_editor_la_SOURCES= \
 	style-editor.h \
 	print.c \
 	print.h \
+	PropSetFile.h \
+	PropSetFile.cxx \
+	SString.h \
+	FilePath.cxx \
+	FilePath.h \
 	anjuta-bookmark-16.xpm \
 	anjuta-breakpoint-disabled-16.xpm \
 	anjuta-breakpoint-enabled-16.xpm \

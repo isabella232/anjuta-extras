@@ -46,8 +46,8 @@
 #include "Scintilla.h"
 #include "ScintillaWidget.h"
 #include "SciLexer.h"
+#include "PropSetFile.h"
 #include "lexer.h"
-#include "properties_cxx.h"
 #include "properties.h"
 #include "aneditor.h"
 
@@ -80,7 +80,6 @@ using namespace std;
 // #define DEBUG
 
 #define ANE_MARKER_BOOKMARK 0
-#define MAX_PATH 260
 #define MAXIMUM(x, y)	((x>y)?x:y)
 #define MINIMUM(x,y)	((x<y)?x:y)
 
