@@ -793,6 +793,25 @@ text_editor_get_attribute (TextEditor *te, gint position)
 					break;
 			}
 			break;
+		case SCLEX_PYTHON:
+			switch (style)
+			{
+				case SCE_P_CHARACTER:
+				case SCE_P_STRING:
+				case SCE_P_TRIPLE:
+				case SCE_P_TRIPLEDOUBLE:
+					attrib = TEXT_EDITOR_ATTRIB_STRING;
+					break;
+				case SCE_P_COMMENTLINE:
+				case SCE_P_COMMENTBLOCK:
+					attrib = TEXT_EDITOR_ATTRIB_COMMENT;
+					break;
+				case SCE_P_WORD:
+				case SCE_P_WORD2:
+					attrib = TEXT_EDITOR_ATTRIB_KEYWORD;
+					break;
+			}
+			break;
 	}
 	return attrib;
 }
