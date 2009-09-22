@@ -1,3 +1,25 @@
+anjuta-extras 2.28.0 (22 September 2009) -- Johannes Schmid
+
+Updates:
+- Use scinilla 2.0
+
+Bugs fixed:
+scintilla: bgo #571816 – Scintilla no longer highlights typedefs
+bgo#590334 – Fix -I ordering
+bgo #586750 – Tooltips are interestingly irritating
+scintilla: bgo#575926 – 'Maintain past indentation' disables itself
+class-inheritance: fixed #590522 remove libgnome(ui)
+scintilla: bgo#590633 – Add libgthread-2.0 to link
+bgo#590963 – Anjuta-extras make distcheck fail
+
+anjuta-extras 2.27.3  (18 June 2009) -- Johannes Schmid
+
+Updates:
+- Remove libglade dependency
+
+Bugs fixed:
+- Various build issues
+
 anjuta-extras 2.27.1  (6 May 2009) -- Johannes Schmid
 
 Updates:
