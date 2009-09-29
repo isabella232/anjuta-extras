@@ -2,8 +2,6 @@
 # Copyright (C) 2007 THE Anjuta'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the Anjuta package.
 # Andika Triwidada <andika@gmail.com>, 2007.
-# , fuzzy
-# 
 # 
 msgid ""
 msgstr ""
@@ -14,7 +12,7 @@ msgstr ""
 "Last-Translator: Andika Triwidada <andika@gmail.com>\n"
 "Language-Team: Indonesian\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../anjuta.desktop.in.in.h:1
