@@ -237,6 +237,9 @@ AC_SUBST(anjuta_image_dir)
 EXTRA_CFLAGS='-DPACKAGE_PIXMAPS_DIR=\""$(anjuta_image_dir)"\" -DPACKAGE_LIB_DIR=\""$(anjutalibdir)"\" -DPACKAGE_DATA_DIR=\""$(anjuta_data_dir)"\"'
 AC_SUBST(EXTRA_CFLAGS)
 
+ANJUTA_PLUGIN_LDFLAGS='-module -avoid-version -no-undefined'
+AC_SUBST(ANJUTA_PLUGIN_LDFLAGS)
+
 PKG_CHECK_MODULES(LIBXML, libxml-2.0)
 AC_OUTPUT([
 Makefile
