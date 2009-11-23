@@ -38,7 +38,6 @@
 #include <libanjuta/anjuta-encodings.h>
 #include <libanjuta/anjuta-convert.h>
 #include <libanjuta/anjuta-debug.h>
-#include <libanjuta/anjuta-message-area.h>
 #include <libanjuta/anjuta-shell.h>
 #include <libanjuta/interfaces/ianjuta-document-manager.h>
 #include <libanjuta/interfaces/ianjuta-editor.h>
@@ -140,6 +139,27 @@ text_editor_instance_init (TextEditor *te)
 	te->last_saved_content = NULL;
 	te->force_not_saved = FALSE;
 	te->message_area = NULL;
+}
+
+GtkWidget *
+anjuta_message_area_new (const gchar    *text,
+                         GtkMessageType  type)
+{
+	GtkInfoBar *message_area;
+	GtkWidget *content_area;
+	GtkWidget *message_label = gtk_label_new ("");
+	
+	message_area = GTK_INFO_BAR (gtk_info_bar_new ());
+	gtk_info_bar_set_message_type (message_area, type);
+	content_area = gtk_info_bar_get_content_area (GTK_INFO_BAR (message_area));
+	gtk_widget_show (message_label);
+	gtk_container_add (GTK_CONTAINER (content_area), message_label);
+
+	gchar *markup = g_strdup_printf ("<b>%s</b>", text);
+	gtk_label_set_markup (GTK_LABEL (message_label), markup);
+	g_free (markup);
+
+	return GTK_WIDGET (message_area);
 }
 
 static void
@@ -420,12 +440,12 @@ on_text_editor_uri_changed (GFileMonitor *monitor,
 								  "Do you want to loose your changes and reload it ?"),
 								 te->filename);
 			}
-			message_area = anjuta_message_area_new (buff, GTK_STOCK_DIALOG_WARNING);
+			message_area = anjuta_message_area_new (buff, GTK_MESSAGE_WARNING);
 			g_free (buff);
-			anjuta_message_area_add_button (ANJUTA_MESSAGE_AREA (message_area),
+			gtk_info_bar_add_button (GTK_INFO_BAR (message_area),
 											GTK_STOCK_REFRESH,
 											GTK_RESPONSE_YES);
-			anjuta_message_area_add_button (ANJUTA_MESSAGE_AREA (message_area),
+			gtk_info_bar_add_button (GTK_INFO_BAR (message_area),
 											GTK_STOCK_CANCEL,
 											GTK_RESPONSE_NO);
 			g_signal_connect (G_OBJECT(message_area), "response",
@@ -447,12 +467,12 @@ on_text_editor_uri_changed (GFileMonitor *monitor,
 							  "Do you want to loose your changes and close it ?"),
 							 te->filename);
 			}
-			message_area = anjuta_message_area_new (buff, GTK_STOCK_DIALOG_WARNING);
+			message_area = anjuta_message_area_new (buff, GTK_MESSAGE_WARNING);
 			g_free (buff);
-			anjuta_message_area_add_button (ANJUTA_MESSAGE_AREA (message_area),
+			gtk_info_bar_add_button (GTK_INFO_BAR (message_area),
 											GTK_STOCK_DELETE,
 											GTK_RESPONSE_YES);
-			anjuta_message_area_add_button (ANJUTA_MESSAGE_AREA (message_area),
+			gtk_info_bar_add_button (GTK_INFO_BAR (message_area),
 											GTK_STOCK_CANCEL,
 											GTK_RESPONSE_NO);
 			g_signal_connect (G_OBJECT(message_area), "response",
