@@ -1,7 +1,18 @@
 dnl Process this file with autoconf to produce a configure script.
 dnl Created by Anjuta application wizard.
 
+AC_PREREQ(2.59)
+
+m4_define(anjuta_major_version,  2)
+m4_define(anjuta_minor_version, 29)
+m4_define(anjuta_micro_version,  2)
+m4_define(anjuta_nano_version, 0)
+m4_define(anjuta_version, anjuta_major_version.anjuta_minor_version.anjuta_micro_version.anjuta_nano_version)
+
 AC_INIT(anjuta-extras, 2.28.0)
+
+ANJUTA_EXTRAS_VERSION=anjuta_version
+AC_SUBST(ANJUTA_EXTRAS_VERSION)
 
 AM_INIT_AUTOMAKE(AC_PACKAGE_NAME, AC_PACKAGE_VERSION)
 AC_CONFIG_HEADERS([config.h])
@@ -71,7 +82,7 @@ dnl maintainer mode
 AM_MAINTAINER_MODE
 
 dnl Check for libanjuta
-PKG_CHECK_MODULES(LIBANJUTA, [libanjuta-1.0 >= 2.27.0])
+PKG_CHECK_MODULES(LIBANJUTA, [libanjuta-1.0 >= $ANJUTA_EXTRAS_VERSION])
 
 dnl Check for libgnome
 PKG_CHECK_MODULES(GNOME, libgnomecanvas-2.0 >= $GNOME_REQUIRED)

@@ -51,6 +51,7 @@
 #include <libanjuta/interfaces/ianjuta-editor-zoom.h>
 #include <libanjuta/interfaces/ianjuta-editor-goto.h>
 #include <libanjuta/interfaces/ianjuta-editor-language.h>
+#include <libanjuta/interfaces/ianjuta-editor-tip.h>
 #include <libanjuta/interfaces/ianjuta-editor-assist.h>
 #include <libanjuta/interfaces/ianjuta-editor-search.h>
 #include <libanjuta/interfaces/ianjuta-editor-hover.h>
@@ -3105,8 +3106,71 @@ ilinemode_iface_init (IAnjutaEditorLineModeIface *iface)
 	iface->fix = ilinemode_fix;
 }
 
-/* IAnjutaEditorAssist implementation */
+static void 
+itip_show (IAnjutaEditorTip *itip, GList* tips,
+           IAnjutaIterable *position, gint char_alignment, GError **err)
+{
+	GString *calltip;
+	GList *tip;
+	gint tips_count;
+	TextEditor *te = TEXT_EDITOR (itip);
+	TextEditorCell *cell = TEXT_EDITOR_CELL (position);
+	gint calltip_pos;
+	
+	g_return_if_fail (IS_TEXT_EDITOR (te));
+	g_return_if_fail (tips != NULL);
+	tips_count = g_list_length (tips);
+	g_return_if_fail (tips_count > 0);
+	
+	DEBUG_PRINT ("Number of calltips found %d\n", tips_count);
+	
+	calltip = g_string_sized_new (256);
+	tip = tips;
+	while (tip)
+	{
+		if (calltip->len > 0)
+			g_string_append_c (calltip, '\n');
+		g_string_append (calltip, (gchar*) tip->data);
+		tip = g_list_next (tip);
+	}
+	
+	/* It is not possible to display the calltip above, as the position is defined
+	 * in characters. We cannot be sure that there is enough characters in
+	 * the line above */
+	calltip_pos = text_editor_cell_get_position (cell);
+	
+	scintilla_send_message (SCINTILLA (te->scintilla),
+							SCI_CALLTIPSHOW,
+							calltip_pos,
+							(uptr_t) calltip->str);
+	g_string_free (calltip, TRUE);
+}
 
+static void
+itip_cancel (IAnjutaEditorTip *itip, GError **err)
+{
+	TextEditor *te = TEXT_EDITOR (itip);
+	scintilla_send_message (SCINTILLA (te->scintilla), SCI_CALLTIPCANCEL, 0, 0);
+}
+
+static gboolean
+itip_visible (IAnjutaEditorTip* itip, GError **err)
+{
+	TextEditor *te = TEXT_EDITOR (itip);
+	return scintilla_send_message (SCINTILLA (te->scintilla),
+	                                          SCI_CALLTIPACTIVE, 0, 0);
+}
+
+static void
+itip_iface_init (IAnjutaEditorTipIface *iface)
+{
+	iface->show = itip_show;
+	iface->cancel = itip_cancel;
+	iface->visible = itip_visible;
+}
+
+/* IAnjutaEditorAssist implementation */
+#if 0 /* FIXME: Port to new interface */
 static void
 iassist_suggest (IAnjutaEditorAssist *iassist, GList* choices,
 				 IAnjutaIterable *position, int char_alignment, GError **err)
@@ -3167,61 +3231,6 @@ iassist_get_suggestions (IAnjutaEditorAssist *iassist, const gchar *context, GEr
 	return NULL;
 }
 
-static void 
-iassist_show_tips (IAnjutaEditorAssist *iassist, GList* tips,
-				   IAnjutaIterable *position, gint char_alignment, GError **err)
-{
-	GString *calltip;
-	GList *tip;
-	gint tips_count;
-	TextEditor *te = TEXT_EDITOR (iassist);
-	TextEditorCell *cell = TEXT_EDITOR_CELL (position);
-	gint calltip_pos;
-	
-	g_return_if_fail (IS_TEXT_EDITOR (te));
-	g_return_if_fail (tips != NULL);
-	tips_count = g_list_length (tips);
-	g_return_if_fail (tips_count > 0);
-	
-	DEBUG_PRINT ("Number of calltips found %d\n", tips_count);
-	
-	calltip = g_string_sized_new (256);
-	tip = tips;
-	while (tip)
-	{
-		if (calltip->len > 0)
-			g_string_append_c (calltip, '\n');
-		g_string_append (calltip, (gchar*) tip->data);
-		tip = g_list_next (tip);
-	}
-	
-	/* It is not possible to display the calltip above, as the position is defined
-	 * in characters. We cannot be sure that there is enough characters in
-	 * the line above */
-	calltip_pos = text_editor_cell_get_position (cell);
-	
-	scintilla_send_message (SCINTILLA (te->scintilla),
-							SCI_CALLTIPSHOW,
-							calltip_pos,
-							(uptr_t) calltip->str);
-	g_string_free (calltip, TRUE);
-}
-
-static void
-iassist_cancel_tips (IAnjutaEditorAssist *iassist, GError **err)
-{
-	TextEditor *te = TEXT_EDITOR (iassist);
-	scintilla_send_message (SCINTILLA (te->scintilla), SCI_CALLTIPCANCEL, 0, 0);
-}
-
-static gboolean
-iassist_tip_shown (IAnjutaEditorAssist* iassist, GError **err)
-{
-	TextEditor *te = TEXT_EDITOR (iassist);
-	return scintilla_send_message (SCINTILLA (te->scintilla),
-	                                          SCI_CALLTIPACTIVE, 0, 0);
-}
-
 static void
 iassist_hide_suggestions (IAnjutaEditorAssist *iassist, GError **err)
 {
@@ -3241,7 +3250,7 @@ iassist_iface_init(IAnjutaEditorAssistIface* iface)
 	iface->cancel_tips = iassist_cancel_tips;
 	iface->tip_shown = iassist_tip_shown;
 }
-
+#endif
 /* IAnutaEditorFolds implementation */
 
 static void
@@ -3744,7 +3753,8 @@ ANJUTA_TYPE_ADD_INTERFACE(itext_editor, IANJUTA_TYPE_EDITOR);
 ANJUTA_TYPE_ADD_INTERFACE(ilinemode, IANJUTA_TYPE_EDITOR_LINE_MODE);
 ANJUTA_TYPE_ADD_INTERFACE(iselection, IANJUTA_TYPE_EDITOR_SELECTION);
 ANJUTA_TYPE_ADD_INTERFACE(iconvert, IANJUTA_TYPE_EDITOR_CONVERT);
-ANJUTA_TYPE_ADD_INTERFACE(iassist, IANJUTA_TYPE_EDITOR_ASSIST);
+//ANJUTA_TYPE_ADD_INTERFACE(iassist, IANJUTA_TYPE_EDITOR_ASSIST);
+ANJUTA_TYPE_ADD_INTERFACE(itip, IANJUTA_TYPE_EDITOR_TIP);
 ANJUTA_TYPE_ADD_INTERFACE(ilanguage, IANJUTA_TYPE_EDITOR_LANGUAGE);
 ANJUTA_TYPE_ADD_INTERFACE(iview, IANJUTA_TYPE_EDITOR_VIEW);
 ANJUTA_TYPE_ADD_INTERFACE(ifolds, IANJUTA_TYPE_EDITOR_FOLDS);
