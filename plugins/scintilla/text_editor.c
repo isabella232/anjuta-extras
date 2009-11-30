@@ -139,9 +139,14 @@ text_editor_instance_init (TextEditor *te)
 	te->last_saved_content = NULL;
 	te->force_not_saved = FALSE;
 	te->message_area = NULL;
+
+	te->provider = NULL;
+	te->completion_count = 0;
+	te->completion_string = g_string_sized_new (256);
+	te->completion_finished = FALSE;
 }
 
-GtkWidget *
+static GtkWidget *
 anjuta_message_area_new (const gchar    *text,
                          GtkMessageType  type)
 {
@@ -663,6 +668,16 @@ text_editor_dispose (GObject *obj)
 		text_editor_prefs_finalize (te);
 		te->notify_ids = NULL;
 	}
+	if (te->provider)
+	{
+		g_list_free (te->provider);
+	}
+	if (te->completion_string)
+	{
+		g_string_free (te->completion_string, TRUE);
+		te->completion_string = NULL;
+	}
+	te->completion_count = 0;
 	G_OBJECT_CLASS (parent_class)->dispose (obj);
 }
 
@@ -2208,6 +2223,53 @@ text_editor_hide_hover_tip (TextEditor *te)
 }
 
 void
+text_editor_cancel_completion (TextEditor *te)
+{
+	te->completion_count = 0;
+	g_string_truncate (te->completion_string, 0);
+}
+
+void
+text_editor_suggest_completion (TextEditor *te)
+{
+	GList *node;
+	TextEditorCell *iter;
+	gint position;
+	
+	position = text_editor_get_current_position (te);
+	iter = text_editor_cell_new (te, position);
+	for (node = te->provider; node != NULL; node = g_list_next (node))
+	{
+		ianjuta_provider_populate (IANJUTA_PROVIDER (node->data), IANJUTA_ITERABLE (iter), NULL);
+	}
+	g_object_unref (iter);
+}
+
+void
+text_editor_select_completion (TextEditor *te)
+{
+	TextEditorCell *iter;
+	gint position;
+	gint autoc_sel;
+
+	autoc_sel = (gint) scintilla_send_message (SCINTILLA (te->scintilla),
+											   SCI_AUTOCGETCURRENT,
+											   0, 0);
+	scintilla_send_message (SCINTILLA (te->scintilla),
+							SCI_AUTOCCANCEL, 0, 0);
+	
+	g_return_if_fail (autoc_sel < te->completion_count);
+	
+	position = text_editor_get_current_position (te);
+	iter = text_editor_cell_new (te, position);
+           
+	ianjuta_provider_activate (IANJUTA_PROVIDER (te->completion[autoc_sel].provider),
+	    IANJUTA_ITERABLE (iter),
+	    te->completion[autoc_sel].data, NULL);
+	g_object_unref (iter);
+}
+
+void
 text_editor_command (TextEditor *te, gint command, glong wparam, glong lparam)
 {
 	GList *node;
@@ -3190,39 +3252,72 @@ itip_iface_init (IAnjutaEditorTipIface *iface)
 }
 
 /* IAnjutaEditorAssist implementation */
-#if 0 /* FIXME: Port to new interface */
 static void
-iassist_suggest (IAnjutaEditorAssist *iassist, GList* choices,
-				 IAnjutaIterable *position, int char_alignment, GError **err)
+iassist_add(IAnjutaEditorAssist* iassist, IAnjutaProvider* provider, GError** err)
 {
-	GString *words;
-	GList *choice;
 	TextEditor *te = TEXT_EDITOR (iassist);
-	
-	g_return_if_fail (IS_TEXT_EDITOR (te));
-					 
-	if (!choices)
+	te->provider = g_list_prepend (te->provider, provider);
+}
+
+static void
+iassist_remove(IAnjutaEditorAssist* iassist, IAnjutaProvider* provider, GError** err)
+{
+	TextEditor *te = TEXT_EDITOR (iassist);
+	te->provider = g_list_remove (te->provider, provider);
+}
+
+static void
+iassist_invoke(IAnjutaEditorAssist* iassist, IAnjutaProvider* provider, GError** err)
+{
+	TextEditor *te = TEXT_EDITOR (iassist);
+
+	/* FIXME: Implement new IAnjutaEditorAssist interface */
+}
+
+static void
+iassist_proposals(IAnjutaEditorAssist* iassist, IAnjutaProvider* provider,
+    GList* proposals, gboolean finished, GError** err)
+{
+	TextEditor *te = TEXT_EDITOR (iassist);
+	GList *node;
+	glong length;
+
+	if (proposals == NULL)
 	{
+		te->completion_count = 0;
+		g_string_truncate (te->completion_string, 0);
+		
 		scintilla_send_message (SCINTILLA (te->scintilla), SCI_AUTOCCANCEL,
 								0, 0);
 		scintilla_send_message (SCINTILLA (te->scintilla), SCI_CALLTIPCANCEL,
 								0, 0);
 		return;
 	}
-	
-	words = g_string_sized_new (256);
-	
-	choice = choices;
-	while (choice)
+
+	if (te->completion_finished)
 	{
-		if (choice->data)
-		{
-			if (words->len > 0)
-				g_string_append_c (words, ' ');
-			g_string_append(words, choice->data);
-		}
-		choice = g_list_next (choice);
+		te->completion_count = 0;
+		g_string_truncate (te->completion_string, 0);
 	}
+	te->completion_finished = finished;
+		
+	for (node = proposals; node != NULL; node = g_list_next (node))
+	{
+		IAnjutaEditorAssistProposal* prop = node->data;
+		
+		/* Give up if there is too much completion */
+		if (te->completion_count >= SCINTILLA_MAX_COMPLETION) return;
+		if (prop->label)
+		{
+			if (te->completion_string->len > 0)
+				g_string_append_c (te->completion_string, ' ');
+			g_string_append(te->completion_string, prop->label);
+			te->completion[te->completion_count].provider = provider;
+			te->completion[te->completion_count].data = prop->data;
+			te->completion_count++;
+		}
+	}
+	
 	scintilla_send_message (SCINTILLA (te->scintilla),
 							SCI_AUTOCSETAUTOHIDE, 1, 0);
 	scintilla_send_message (SCINTILLA (te->scintilla),
@@ -3231,46 +3326,24 @@ iassist_suggest (IAnjutaEditorAssist *iassist, GList* choices,
 							SCI_AUTOCSETCANCELATSTART, 0, 0);
 	scintilla_send_message (SCINTILLA (te->scintilla),
 							SCI_AUTOCSETCHOOSESINGLE, 0, 0);
-						 
-	if (char_alignment == 0)
-		scintilla_send_message (SCINTILLA (te->scintilla),
-								SCI_USERLISTSHOW, 1 /* dummy */,
-								(uptr_t) words->str);
-	else
-		scintilla_send_message (SCINTILLA (te->scintilla),
-								SCI_AUTOCSHOW, char_alignment,
-								(uptr_t) words->str);
-	g_string_free (words, TRUE);
-}
 
-static GList*
-iassist_get_suggestions (IAnjutaEditorAssist *iassist, const gchar *context, GError **err)
-{
-	/* FIXME: Implement new IAnjutaEditorAssist interface */
+	length = text_editor_get_current_position (te);
+	length -= text_editor_cell_get_position (TEXT_EDITOR_CELL (ianjuta_provider_get_start_iter (provider, NULL)));
 
-	return NULL;
-}
-
-static void
-iassist_hide_suggestions (IAnjutaEditorAssist *iassist, GError **err)
-{
-	TextEditor *te = TEXT_EDITOR (iassist);
-	
-	g_return_if_fail (IS_TEXT_EDITOR (te));
-	scintilla_send_message (SCINTILLA (te->scintilla), SCI_AUTOCCANCEL, 0, 0);
+	scintilla_send_message (SCINTILLA (te->scintilla),
+							SCI_AUTOCSHOW, length,
+							(uptr_t) te->completion_string->str);
 }
 
 static void
 iassist_iface_init(IAnjutaEditorAssistIface* iface)
 {
-	iface->get_suggestions = iassist_get_suggestions;
-	iface->suggest = iassist_suggest;
-	iface->hide_suggestions = iassist_hide_suggestions;
-	iface->show_tips = iassist_show_tips;
-	iface->cancel_tips = iassist_cancel_tips;
-	iface->tip_shown = iassist_tip_shown;
+	iface->add = iassist_add;
+	iface->remove = iassist_remove;
+	iface->invoke = iassist_invoke;
+	iface->proposals = iassist_proposals;
 }
-#endif
+
 /* IAnutaEditorFolds implementation */
 
 static void
@@ -3773,7 +3846,7 @@ ANJUTA_TYPE_ADD_INTERFACE(itext_editor, IANJUTA_TYPE_EDITOR);
 ANJUTA_TYPE_ADD_INTERFACE(ilinemode, IANJUTA_TYPE_EDITOR_LINE_MODE);
 ANJUTA_TYPE_ADD_INTERFACE(iselection, IANJUTA_TYPE_EDITOR_SELECTION);
 ANJUTA_TYPE_ADD_INTERFACE(iconvert, IANJUTA_TYPE_EDITOR_CONVERT);
-//ANJUTA_TYPE_ADD_INTERFACE(iassist, IANJUTA_TYPE_EDITOR_ASSIST);
+ANJUTA_TYPE_ADD_INTERFACE(iassist, IANJUTA_TYPE_EDITOR_ASSIST);
 ANJUTA_TYPE_ADD_INTERFACE(itip, IANJUTA_TYPE_EDITOR_TIP);
 ANJUTA_TYPE_ADD_INTERFACE(ilanguage, IANJUTA_TYPE_EDITOR_LANGUAGE);
 ANJUTA_TYPE_ADD_INTERFACE(iview, IANJUTA_TYPE_EDITOR_VIEW);

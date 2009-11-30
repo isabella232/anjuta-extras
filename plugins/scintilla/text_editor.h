@@ -26,6 +26,7 @@
 #include <gio/gio.h>
 #include <libanjuta/anjuta-preferences.h>
 #include <libanjuta/anjuta-shell.h>
+#include <libanjuta/interfaces/ianjuta-provider.h>
 
 #include "aneditor.h"
 
@@ -54,6 +55,16 @@ typedef enum _TextEditorAttrib
 
 typedef struct _TextEditor TextEditor;
 typedef struct _TextEditorClass TextEditorClass;
+
+#define SCINTILLA_MAX_COMPLETION 	256
+
+typedef struct _ScintillaCompletion ScintillaCompletion;
+
+struct _ScintillaCompletion
+{
+	IAnjutaProvider *provider;
+	gpointer data;
+};
 
 struct _TextEditor
 {
@@ -114,6 +125,13 @@ struct _TextEditor
 	gboolean force_not_saved;
 	
 	gboolean hover_tip_on;
+
+	/* AutoCompletion IAnjutaProvider list */
+	GList *provider;
+	ScintillaCompletion completion[SCINTILLA_MAX_COMPLETION];
+	gint completion_count;
+	GString *completion_string;
+	gboolean completion_finished;
 };
 
 struct _TextEditorClass
@@ -246,6 +264,11 @@ void text_editor_remove_view (TextEditor *te);
 /* Show/hide hover tips */
 void text_editor_show_hover_tip (TextEditor *te, gint position, const gchar *info);
 void text_editor_hide_hover_tip (TextEditor *te);
+
+/* Completion functions */
+void text_editor_cancel_completion (TextEditor *te);
+void text_editor_suggest_completion (TextEditor *te);
+void text_editor_select_completion (TextEditor *te);
 
 /* Direct editor commands to AnEditor and Scintilla */
 void text_editor_command(TextEditor *te, gint command,

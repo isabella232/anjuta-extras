@@ -155,7 +155,7 @@ on_text_editor_scintilla_notify (GtkWidget * sci, gint wParam, gpointer lParam,
 {
 	TextEditor *te;
 	struct SCNotification *nt;
-	gint line, position, autoc_sel;
+	gint line, position;
 	
 	te = data;
 	if (te->freeze_count != 0)
@@ -189,16 +189,19 @@ on_text_editor_scintilla_notify (GtkWidget * sci, gint wParam, gpointer lParam,
 			g_signal_emit_by_name(G_OBJECT (te), "char-added", position_iter,
 								  (gchar)nt->ch);
 			g_object_unref (position_iter);
+
+            text_editor_suggest_completion (te);
 		}
+		return;
+    case SCN_AUTOCCANCELLED:
+        text_editor_cancel_completion (te);
+        return;
+    case SCN_AUTOCCHARDELETED:
+        text_editor_suggest_completion (te);
 		return;
 	case SCN_AUTOCSELECTION:
 	case SCN_USERLISTSELECTION:
-		autoc_sel = (gint) scintilla_send_message (SCINTILLA (te->scintilla),
-												   SCI_AUTOCGETCURRENT,
-												   0, 0);
-		scintilla_send_message (SCINTILLA (te->scintilla),
-								SCI_AUTOCCANCEL, 0, 0);
-		g_signal_emit_by_name (te, "assist-chosen", autoc_sel);
+        text_editor_select_completion (te);
 		return;
 	case SCN_MODIFIED:
 		if (nt->modificationType & (SC_MOD_INSERTTEXT | SC_MOD_DELETETEXT))
