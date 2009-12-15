@@ -2235,7 +2235,7 @@ text_editor_suggest_completion (TextEditor *te)
 	GList *node;
 	TextEditorCell *iter;
 	gint position;
-	
+
 	position = text_editor_get_current_position (te);
 	iter = text_editor_cell_new (te, position);
 	for (node = te->provider; node != NULL; node = g_list_next (node))
@@ -3270,8 +3270,8 @@ static void
 iassist_invoke(IAnjutaEditorAssist* iassist, IAnjutaProvider* provider, GError** err)
 {
 	TextEditor *te = TEXT_EDITOR (iassist);
-
-	/* FIXME: Implement new IAnjutaEditorAssist interface */
+	
+    text_editor_suggest_completion (te);
 }
 
 static void
