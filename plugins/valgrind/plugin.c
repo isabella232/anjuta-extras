@@ -25,6 +25,7 @@
 #include <glib/gi18n.h>
 #include <libanjuta/anjuta-shell.h>
 #include <libanjuta/anjuta-debug.h>
+#include <libanjuta/anjuta-project.h>
 #include <libanjuta/interfaces/ianjuta-document-manager.h>
 #include <libanjuta/interfaces/ianjuta-project-manager.h>
 #include <libanjuta/interfaces/ianjuta-preferences.h>
@@ -182,7 +183,7 @@ on_menu_run_activate (GtkAction *action, AnjutaValgrindPlugin *plugin)
 			
 	exec_targets =
 		ianjuta_project_manager_get_targets (pm,
-						 IANJUTA_PROJECT_MANAGER_TARGET_EXECUTABLE,
+						 ANJUTA_TARGET_EXECUTABLE,
 						 NULL);
 
 	if (exec_targets) {

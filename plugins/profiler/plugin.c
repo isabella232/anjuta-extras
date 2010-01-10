@@ -23,6 +23,7 @@
 
 
 #include "plugin.h"
+#include "libanjuta/anjuta-project.h"
 
 
 #define UI_FILE PACKAGE_DATA_DIR"/ui/profiler.xml"
@@ -573,7 +574,7 @@ on_profiler_select_target (GtkAction *action, Profiler *profiler)
 													  IAnjutaProjectManager, NULL);
 		
 		exec_targets = ianjuta_project_manager_get_targets (project_manager, 
-							 								IANJUTA_PROJECT_MANAGER_TARGET_EXECUTABLE,
+							 								ANJUTA_TARGET_EXECUTABLE,
 											 				NULL);
 											 				
 		project_root_uri_length = strlen (profiler->project_root_uri) + 1;
