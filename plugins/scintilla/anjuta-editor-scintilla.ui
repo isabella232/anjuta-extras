@@ -1224,7 +1224,7 @@
                             <property name="visible">True</property>
                             <property name="model">model2</property>
                             <child>
-                              <object class="GtkCellRendererText" id="renderer1"/>
+                              <object class="GtkCellRendererText" id="renderer2"/>
                               <attributes>
                                 <attribute name="text">0</attribute>
                               </attributes>
