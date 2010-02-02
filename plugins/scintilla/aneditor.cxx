@@ -136,6 +136,8 @@ AnEditor::AnEditor(PropSetFile* p) {
 	SendEditor(SCI_USEPOPUP, false);
 	/* Set default editor mode */
 	SendEditor(SCI_SETEOLMODE, SC_EOL_LF);
+	/* Allow multiple typing */
+	SendEditor(SCI_SETADDITIONALSELECTIONTYPING, true);
 	
 #if 0
 	// Trap 'TAB' key for automatic indentation.
