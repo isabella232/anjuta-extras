@@ -39,6 +39,7 @@ LEXER_OBJS = \
 	LexLout.o\
 	LexLua.o\
 	LexMagik.o\
+	LexMarkdown.o\
 	LexMatlab.o\
 	LexMetapost.o\
 	LexMMIXAL.o\
@@ -118,6 +119,7 @@ LEXER_SRCS = \
 	LexLout.cxx\
 	LexLua.cxx\
 	LexMagik.cxx\
+	LexMarkdown.cxx\
 	LexMatlab.cxx\
 	LexMetapost.cxx\
 	LexMMIXAL.cxx\

@@ -1,5 +1,5 @@
 --- scintilla/scintilla/include/ScintillaWidget.h	2009-01-08 10:14:54.000000000 +0100
-+++ scintilla/include/ScintillaWidget.h	2009-08-17 16:34:56.000000000 +0200
++++ scintilla/include/ScintillaWidget.h	2010-01-31 19:42:12.000000000 +0100
 @@ -15,9 +15,9 @@
  extern "C" {
  #endif
@@ -13,9 +13,9 @@
  
  typedef struct _ScintillaObject ScintillaObject;
  typedef struct _ScintillaClass  ScintillaClass;
---- scintilla/scintilla/gtk/PlatGTK.cxx	2009-06-13 02:12:31.000000000 +0200
-+++ scintilla/PlatGTK.cxx	2009-08-17 16:44:41.000000000 +0200
-@@ -1776,7 +1776,7 @@
+--- scintilla/scintilla/gtk/PlatGTK.cxx	2010-01-23 22:56:07.000000000 +0100
++++ scintilla/PlatGTK.cxx	2010-01-31 19:42:12.000000000 +0100
+@@ -1803,7 +1803,7 @@
  #else
  
  	gtk_widget_set_uposition(wid, rc.left, rc.top);
@@ -24,7 +24,7 @@
  #endif
  }
  
-@@ -1818,7 +1818,7 @@
+@@ -1845,7 +1845,7 @@
  	alloc.height = rc.bottom - rc.top;
  	gtk_widget_size_allocate(wid, &alloc);
  #endif
@@ -33,7 +33,7 @@
  }
  
  PRectangle Window::GetClientPosition() {
-@@ -1938,7 +1938,7 @@
+@@ -1965,7 +1965,7 @@
  		gdk_bitmap_unref(list_image->bitmap);
  #else
  	if (list_image->pixbuf)
@@ -42,7 +42,7 @@
  #endif
  	g_free(list_image);
  }
-@@ -2210,14 +2210,14 @@
+@@ -2237,14 +2237,14 @@
  		          + 2 * (ythickness
  		                 + GTK_CONTAINER(PWidget(list))->border_width + 1));
  #endif
@@ -59,7 +59,7 @@
  		int width = maxItemCharacters;
  		if (width < 12)
  			width = 12;
-@@ -2285,7 +2285,7 @@
+@@ -2312,7 +2312,7 @@
  	}
  #else
  	if (list_image->pixbuf)
@@ -68,7 +68,7 @@
  	list_image->pixbuf =
  		gdk_pixbuf_new_from_xpm_data((const gchar**)xpm_lineform);
  #endif
-@@ -2520,7 +2520,7 @@
+@@ -2547,7 +2547,7 @@
  		list_image->bitmap = 0;
  #else
  		if (list_image->pixbuf)
@@ -77,9 +77,9 @@
  		list_image->pixbuf = NULL;
  #endif
  		list_image->xpm_data = xpm_data;
---- scintilla/scintilla/gtk/ScintillaGTK.cxx	2009-07-25 04:50:01.000000000 +0200
-+++ scintilla/ScintillaGTK.cxx	2009-08-17 16:35:56.000000000 +0200
-@@ -1056,7 +1056,7 @@
+--- scintilla/scintilla/gtk/ScintillaGTK.cxx	2009-08-28 04:08:48.000000000 +0200
++++ scintilla/ScintillaGTK.cxx	2010-01-31 19:42:12.000000000 +0100
+@@ -1061,7 +1061,7 @@
  	if (timer.ticking != on) {
  		timer.ticking = on;
  		if (timer.ticking) {

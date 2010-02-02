@@ -74,6 +74,12 @@ struct SelectionSegment {
 	bool Empty() const {
 		return start == end;
 	}
+	void Extend(SelectionPosition p) {
+		if (start > p)
+			start = p;
+		if (end < p)
+			end = p;
+	}
 };
 
 struct SelectionRange {
@@ -97,6 +103,9 @@ struct SelectionRange {
 	// int Width() const;	// Like Length but takes virtual space into account
 	bool operator ==(const SelectionRange &other) const {
 		return caret == other.caret && anchor == other.anchor;
+	}
+	bool operator <(const SelectionRange &other) const {
+		return caret < other.caret || ((caret == other.caret) && (anchor < other.anchor));
 	}
 	void Reset() {
 		anchor.Reset();
@@ -138,6 +147,7 @@ public:
 	int MainCaret() const;
 	int MainAnchor() const;
 	SelectionRange &Rectangular();
+	SelectionSegment Limits() const;
 	size_t Count() const;
 	size_t Main() const;
 	void SetMain(size_t r);
@@ -161,6 +171,9 @@ public:
 	void RemoveDuplicates();
 	void RotateMain();
 	bool Tentative() const { return tentativeMain; }
+	std::vector<SelectionRange> RangesCopy() const {
+		return ranges;
+	}
 };
 
 #ifdef SCI_NAMESPACE

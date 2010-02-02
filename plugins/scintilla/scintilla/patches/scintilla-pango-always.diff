@@ -1,5 +1,5 @@
---- scintilla/scintilla/gtk/PlatGTK.cxx	2009-06-13 02:12:31.000000000 +0200
-+++ scintilla/PlatGTK.cxx	2009-08-13 18:15:01.000000000 +0200
+--- scintilla/scintilla/gtk/PlatGTK.cxx	2010-01-23 22:56:07.000000000 +0100
++++ scintilla/PlatGTK.cxx	2010-01-31 19:42:12.000000000 +0100
 @@ -513,16 +513,16 @@
  	charset[0] = '\0';
  

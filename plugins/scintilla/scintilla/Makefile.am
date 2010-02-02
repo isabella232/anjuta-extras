@@ -91,9 +91,9 @@ test_scintilla_LDADD = libanjuta-scintilla.la
 update-scintilla:
 	cd $(srcdir); \
 	cp scintilla/gtk/*.cxx .; \
-	cp scintilla/gtk/*.h .; \ 
+	cp scintilla/gtk/*.h .; \
 	cp scintilla/src/*.cxx .; \
-	cp scintilla/src/*.h ?; \
+	cp scintilla/src/*.h .; \
 	cp scintilla/include/*.h include; \
 	cp scintilla/include/*.py include; \
 	cp scintilla/include/*.iface include; \
