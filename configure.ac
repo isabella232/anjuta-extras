@@ -42,6 +42,23 @@ AC_SUBST(GNOME_REQUIRED)
 
 
 dnl ***************************************************************************
+dnl Check for pkgconfig
+dnl ***************************************************************************
+AC_PATH_PROG(PKG_CONFIG, pkg-config,no)
+if test x$PKGCONFIG_CONFIG = xno; then
+  AC_MSG_ERROR(Please install the pkg-config package from http://www.freedesktop.org/software/pkgconfig/)
+fi
+
+dnl ***************************************************************************
+dnl Check for marshal and enum generators
+dnl ***************************************************************************
+GLIB_GENMARSHAL="`$PKG_CONFIG --variable=glib_genmarshal glib-2.0`"
+AC_SUBST(GLIB_GENMARSHAL)
+GLIB_MKENUMS="`$PKG_CONFIG --variable=glib_mkenums glib-2.0`"
+AC_SUBST(GLIB_MKENUMS)
+
+
+dnl ***************************************************************************
 dnl we need gconftool-2 in order to install the schema
 dnl ***************************************************************************
 AC_PATH_PROG(GCONFTOOL, gconftool-2, no)
