@@ -233,12 +233,20 @@ on_menu_run_activate (GtkAction *action, AnjutaValgrindPlugin *plugin)
 		project_root_uri_len = strlen(project_root_uri) + 1;
 	
 		while (node) {
+			GFile *gfile;
 			const gchar *rel_path;
-			rel_path = (gchar*)node->data + project_root_uri_len;
+			gchar *local_path;
+			gfile = node->data;
+
+			local_path = g_file_get_uri (gfile);
+			
+			rel_path = local_path + project_root_uri_len;
 			gtk_list_store_append (store, &iter);
 			gtk_list_store_set (store, &iter, 0, rel_path, 1,
-								node->data, -1);
-			g_free (node->data);
+								local_path, -1);
+			g_free (local_path);
+			g_object_unref (gfile);
+			
 			node = g_list_next (node);
 		}
 		g_list_free (exec_targets);

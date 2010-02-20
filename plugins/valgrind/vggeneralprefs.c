@@ -191,7 +191,7 @@ vg_general_prefs_init (VgGeneralPrefs *prefs)
 	widget = gtk_spin_button_new_with_range (0, (gdouble) 1024, 1);
 	gtk_widget_show (widget);
 	prefs->num_callers = GTK_SPIN_BUTTON (widget);
-	gtk_spin_button_set_digits (prefs->num_callers, 0);
+	gtk_spin_button_set_digits (prefs->num_callers, 1);
 	gtk_spin_button_set_numeric (prefs->num_callers, TRUE);
 	gtk_spin_button_set_value (prefs->num_callers, (gdouble) num);
 	g_signal_connect (widget, "focus-out-event", G_CALLBACK (spin_focus_out), NUM_CALLERS_KEY);
@@ -342,7 +342,7 @@ general_prefs_get_argv (VgToolPrefs *prefs, const char *tool, GPtrArray *argv)
 	
 	gconf = gconf_client_get_default ();
 	
-	g_ptr_array_add (argv, "--alignment=8");
+	g_ptr_array_add (argv, "--alignment=16");
 	
 	for (i = 0; i < G_N_ELEMENTS (general_args); i++) {
 		const char *arg = general_args[i].arg;
