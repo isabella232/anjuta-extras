@@ -32,9 +32,6 @@ G_BEGIN_DECLS
 #define NODE_SHOW_ALL_MEMBERS_STR			N_("Show all members...")
 #define NODE_SHOW_NORMAL_VIEW_STR			N_("Normal view")
 
-
-
-
 typedef struct _NodeData {
 	GnomeCanvasItem *canvas_item;  	/* item itself */
 	gint klass_id;					/* unique class identifier */
@@ -46,20 +43,17 @@ typedef struct _NodeData {
 	AnjutaClassInheritance *plugin;
 } NodeData;
 
-
 typedef struct _NodeExpansionStatus {	
 	gint klass_id;
 	gint expansion_status;
 	
 } NodeExpansionStatus;
 
-
 enum {
 	NODE_NOT_EXPANDED,
 	NODE_HALF_EXPANDED,
 	NODE_FULL_EXPANDED
 };
-
 
 gchar *
 class_inheritance_create_agnode_key_name (const IAnjutaSymbol* symbol);
