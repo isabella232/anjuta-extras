@@ -235,9 +235,9 @@ on_nodedata_event (GnomeCanvasItem *item, GdkEvent *event, gpointer data)
 		gnome_canvas_item_set (nodedata->canvas_item,
 							   "width_units", 2.5,
 							   "fill_color_gdk",
-							   &plugin->canvas->style->base[GTK_STATE_PRELIGHT],
+							   &plugin->canvas->style->base[GTK_STATE_SELECTED],
 							   "outline_color_gdk",
-							   &plugin->canvas->style->text[GTK_STATE_PRELIGHT],
+							   &plugin->canvas->style->text[GTK_STATE_SELECTED],
 							   NULL);
 		return TRUE;
 

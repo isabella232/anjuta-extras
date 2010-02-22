@@ -1141,7 +1141,11 @@ class_inheritance_base_gui_init (AnjutaClassInheritance *plugin)
 									CANVAS_MIN_SIZE/2,
 									CANVAS_MIN_SIZE/2,
 									-CANVAS_MIN_SIZE/2);
-
+	
+	/* Use text background (normally white) for canvas background */
+	gtk_widget_modify_bg (plugin->canvas, GTK_STATE_NORMAL,
+	                      &plugin->canvas->style->base[GTK_STATE_NORMAL]);
+	
 	g_signal_connect (G_OBJECT (plugin->canvas), "event",
 					  G_CALLBACK (on_canvas_event),
 					  plugin);
