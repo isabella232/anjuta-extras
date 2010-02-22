@@ -312,7 +312,10 @@ cls_inherit_add_node (AnjutaClassInheritance *plugin, const IAnjutaSymbol *node_
 	const gchar *node_sym_name;
 	gint node_sym_id;
 	gchar *graph_node_name;
-	
+	gint font_size;
+
+#define FONT_SIZE_STR_LEN 16
+	gchar font_size_str[FONT_SIZE_STR_LEN];
 	
 	/* if graph isn't initialized, init it */
 	if (!plugin->graph)
@@ -429,9 +432,12 @@ cls_inherit_add_node (AnjutaClassInheritance *plugin, const IAnjutaSymbol *node_
 	/* set the font-size */	
 	if (!(sym = agfindattr(plugin->graph->proto->n, "fontsize")))
 		sym = agnodeattr(plugin->graph, "fontsize", "");
+
+	font_size = pango_font_description_get_size (plugin->canvas->style->font_desc)/ PANGO_SCALE;
 	/* hack: set canvas_text_fontsize + 4 points or text would oversize the block */
 	/* add some more points for icons 16x16 space */
-	agxset(graph_node, sym->index, "17");
+	snprintf (font_size_str, FONT_SIZE_STR_LEN, "%d", font_size);
+	agxset(graph_node, sym->index, font_size_str);
 
 	if (!(sym = agfindattr(plugin->graph->proto->n, "ratio")))
 		sym = agnodeattr(plugin->graph, "ratio", "");
@@ -1125,7 +1131,7 @@ class_inheritance_base_gui_init (AnjutaClassInheritance *plugin)
 	GtkWidget *s_window;
 
 	s_window = gtk_scrolled_window_new (NULL, NULL);
-	plugin->canvas = gnome_canvas_new_aa ();
+	plugin->canvas = gnome_canvas_new ();
 	/*gtk_widget_modify_bg (plugin->canvas, GTK_STATE_NORMAL,
 						  &plugin->canvas->style->base[GTK_STATE_NORMAL]);*/
 	gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (s_window),
