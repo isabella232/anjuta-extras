@@ -772,9 +772,6 @@ cls_inherit_draw_graph (AnjutaClassInheritance *plugin)
 	
 	/* compiles nodes/edges informations, such as positions, coordinates etc */
 	gvLayout (plugin->gvc, plugin->graph, "dot");
-	/* DEBUG */
-	gvRenderFilename (plugin->gvc, plugin->graph, "png", "class-inheritance-test.png");
-	
 	
 	/* set the size of the canvas. We need this to set the scrolling.. */
 	canvas_x1 = canvas_y1 = 0;
