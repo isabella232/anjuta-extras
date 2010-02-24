@@ -54,6 +54,48 @@
 /* TODO: check for symbol_updated event, and check in the nodestatus's hashtable
 for the nodes that are gone. In case remove them.
 */
+typedef enum {
+	CANVAS_ARROW_DIR_UP,
+	CANVAS_ARROW_DIR_DOWN,
+	CANVAS_ARROW_DIR_LEFT,
+	CANVAS_ARROW_DIR_RIGHT
+} CanvasArrowDir;
+
+static GnomeCanvasItem*
+create_canvas_arrow_item (GtkWidget *canvas, CanvasArrowDir direction,
+                          /* Bounding box */
+                          gint x1, gint y1, gint x2, gint y2)
+{
+	gint i;
+	GnomeCanvasItem *item;
+	const gint offset = 4;
+
+	/* FIXME: Use direction to draw different arrows, now it only is down */
+	/* Arrows */
+	GnomeCanvasPoints *triangle = gnome_canvas_points_new (4);
+	triangle->coords[0] = x1 + offset;
+	triangle->coords[1] = y1 + offset;
+	triangle->coords[2] = x2 - offset;
+	triangle->coords[3] = y1 + offset;
+	triangle->coords[4] = x1 + (x2 - x1)/2;
+	triangle->coords[5] = y2 - offset;
+	triangle->coords[6] = x1 + offset;
+	triangle->coords[7] = y1 + offset;
+
+	for (i = 0; i < 8; i++)
+	{
+		g_message ("Arrow[%d] = %f", i, triangle->coords[i]);
+	}
+	item = gnome_canvas_item_new (gnome_canvas_root
+	                              (GNOME_CANVAS (canvas)),
+	                              gnome_canvas_polygon_get_type (),
+	                              "points", triangle,
+	                              "fill_color_gdk",
+	                              &canvas->style->fg[GTK_STATE_NORMAL],
+	                              NULL);
+	gnome_canvas_points_unref (triangle);
+	return item;
+}
 
 static void
 cls_inherit_nodestatus_destroy (NodeExpansionStatus *node) {
@@ -521,6 +563,15 @@ cls_inherit_draw_expanded_node (AnjutaClassInheritance *plugin,
 				g_signal_connect (GTK_OBJECT (node_data->canvas_item), "event",
 								  G_CALLBACK (on_expanded_class_nodedata_event),
 								  node_data);
+				/* Arrow */
+				item = create_canvas_arrow_item (plugin->canvas,
+					                             CANVAS_ARROW_DIR_DOWN,
+				                                 node_pos->x +INCH_TO_PIXELS (node_width)/2 - abs(y1-y2),
+				                                 -node_pos->y -INCH_TO_PIXELS (node_height)/2,
+				                                 node_pos->x +INCH_TO_PIXELS (node_width)/2,
+				                                 -node_pos->y -INCH_TO_PIXELS (node_height)/2 + abs(y1-y2));
+				plugin->drawable_list = g_list_prepend (plugin->drawable_list, item);
+
 				continue;
 			}
 			else /* The "more" item is the last */
