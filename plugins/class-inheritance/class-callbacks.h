@@ -30,15 +30,14 @@ gint on_expanded_class_nodedata_event (GnomeCanvasItem *item, GdkEvent *event,
                                        gpointer data);
 
 gint on_nodedata_expanded_event (GnomeCanvasItem *item, GdkEvent *event, 
-							gpointer data);
+                                 gpointer data);
 
 gint on_nodedata_event (GnomeCanvasItem *item, GdkEvent *event, gpointer data);
 
 void on_update_menu_item_selected (GtkMenuItem *item, 
-							AnjutaClassInheritance *plugin);
+                                   AnjutaClassInheritance *plugin);
 
 void on_style_set (GtkWidget *widget, GtkStyle  *previous_style,
-			  AnjutaClassInheritance *plugin);
-
+                   AnjutaClassInheritance *plugin);
 
 #endif /* _CLASS_CALLBACKS_H */

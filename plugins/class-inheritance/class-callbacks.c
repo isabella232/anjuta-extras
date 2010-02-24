@@ -26,8 +26,6 @@
 #include "class-callbacks.h"
 #include "class-inherit.h"
 
-
-
 gint
 on_canvas_event (GnomeCanvasItem *item, GdkEvent *event, gpointer data) 
 {
@@ -69,9 +67,9 @@ on_nodedata_expanded_event (GnomeCanvasItem *item, GdkEvent *event, gpointer dat
 	case GDK_BUTTON_PRESS:		/* single click */
 		if (event->button.button == 1) {
 			NodeExpansionStatus *node_status;
-			if ( (node_status = 
-				  (NodeExpansionStatus*)g_tree_lookup (plugin->expansion_node_list, 
-												GINT_TO_POINTER (nodedata->klass_id))) 
+			if ((node_status = 
+			     (NodeExpansionStatus*) g_tree_lookup (plugin->expansion_node_list, 
+			                                           GINT_TO_POINTER (nodedata->klass_id))) 
 				== NULL) 
 			{
 				break;
@@ -98,7 +96,7 @@ on_nodedata_expanded_event (GnomeCanvasItem *item, GdkEvent *event, gpointer dat
 					/* Goto uri line */
 					IAnjutaDocumentManager *dm;
 					dm = anjuta_shell_get_interface (ANJUTA_PLUGIN (plugin)->shell,
-											 	IAnjutaDocumentManager, NULL);
+					                                 IAnjutaDocumentManager, NULL);
 					if (dm) 
 					{
 						ianjuta_document_manager_goto_file_line (dm, gfile, line, NULL);
