@@ -66,7 +66,6 @@ create_canvas_arrow_item (GtkWidget *canvas, CanvasArrowDir direction,
                           /* Bounding box */
                           gint x1, gint y1, gint x2, gint y2)
 {
-	gint i;
 	GnomeCanvasItem *item;
 	const gint offset = 4;
 
@@ -160,9 +159,17 @@ class_inheritance_get_symbol_from_agnode_key_name (AnjutaClassInheritance *plugi
 static void
 cls_inherit_graph_init (AnjutaClassInheritance *plugin, gchar* graph_label)
 {
+	Agsym_t *sym;
+	gchar dpi_text[16];
+
+	snprintf (dpi_text, 16, "%d", INCH_TO_PIXELS_CONVERSION_FACTOR);
 	aginit ();
 	plugin->graph = agopen (graph_label, AGDIGRAPH);
 	plugin->gvc = gvContext();
+
+	if (!(sym = agfindattr(plugin->graph->proto->n, "dpi")))
+		sym = agraphattr(plugin->graph, "dpi", dpi_text);
+	agxset(plugin->graph, sym->index, dpi_text);
 }
 
 /*----------------------------------------------------------------------------
@@ -355,7 +362,7 @@ cls_inherit_add_node (AnjutaClassInheritance *plugin, const IAnjutaSymbol *node_
 		/* set the margin for icons */
 		if (!(sym = agfindattr(plugin->graph->proto->n, "margin")))
 			sym = agnodeattr(plugin->graph, "margin", "0.11,0.055");
-		agxset(graph_node, sym->index, "0.3,0.02");
+		agxset(graph_node, sym->index, "0.3,0.03");
 
 		g_string_free (label, TRUE);
 	}
@@ -384,8 +391,16 @@ cls_inherit_add_node (AnjutaClassInheritance *plugin, const IAnjutaSymbol *node_
 		sym = agnodeattr(plugin->graph, "fontsize", "");
 
 	font_size = pango_font_description_get_size (plugin->canvas->style->font_desc)/ PANGO_SCALE;
+
+	/* The above font size in points is with real screen DPI, but graphviz
+	 * rendering is done at fixed INCH_TO_PIXELS_CONVERSION_FACTOR dpi. So
+	 * convert to the right font size points for graphviz.
+	 */
+	font_size = font_size * gdk_screen_get_resolution (gdk_screen_get_default ())
+					/ INCH_TO_PIXELS_CONVERSION_FACTOR;
+	
 	/* hack: set canvas_text_fontsize + 4 points or text would oversize the block */
-	snprintf (font_size_str, FONT_SIZE_STR_LEN, "%d", font_size + 4);
+	snprintf (font_size_str, FONT_SIZE_STR_LEN, "%d", font_size);
 	agxset(graph_node, sym->index, font_size_str);
 
 	if (!(sym = agfindattr(plugin->graph->proto->n, "ratio")))
@@ -609,7 +624,7 @@ cls_inherit_draw_expanded_node (AnjutaClassInheritance *plugin,
 									INCH_TO_PIXELS (node_width)/2 +2),
 									"y", 
 									(gdouble) -node_pos->y -
-									INCH_TO_PIXELS (node_height)/2+(j+0.5)*abs(y1-y2)-5,
+									INCH_TO_PIXELS (node_height)/2+(j+0.5)*abs(y1-y2)-8,
 									"pixbuf", pixbuf,
 									NULL);
 
@@ -669,6 +684,7 @@ cls_inherit_draw_single_node (AnjutaClassInheritance *plugin,
 	gdouble text_width_value;
 	IAnjutaSymbol *node_sym;
 	const gchar* node_sym_name;
+	gint x1, y1, x2, y2;
 
 	node_sym = class_inheritance_get_symbol_from_agnode_key_name (plugin,
 	                                                              graph_node->name);
@@ -682,18 +698,19 @@ cls_inherit_draw_single_node (AnjutaClassInheritance *plugin,
 	node_data->sub_item = NULL;
 		
 	g_object_unref (node_sym);
+
+	x1 = node_pos->x - INCH_TO_PIXELS (node_width)/2;
+	y1 = -(node_pos->y - INCH_TO_PIXELS (node_height)/2);
+	x2 = node_pos->x + INCH_TO_PIXELS (node_width)/2;
+	y2 = -(node_pos->y + INCH_TO_PIXELS (node_height)/2);
 	
 	node_data->canvas_item =
 	gnome_canvas_item_new (gnome_canvas_root (GNOME_CANVAS (plugin->canvas)),
 						   gnome_canvas_rect_get_type (),
-						   "x1",
-						   (gdouble) (node_pos->x - INCH_TO_PIXELS (node_width)/2),
-						   "y1",
-						   (gdouble) -(node_pos->y - INCH_TO_PIXELS (node_height)/2),
-						   "x2",
-						   (gdouble) (node_pos->x + INCH_TO_PIXELS (node_width)/2),
-						   "y2",
-						   (gdouble) -(node_pos->y + INCH_TO_PIXELS (node_height)/2),
+						   "x1", (gdouble) x1,
+						   "y1", (gdouble) y1,
+						   "x2", (gdouble) x2,
+						   "y2", (gdouble) y2,
 						   "fill_color_gdk",
 						   &plugin->canvas->style->base[GTK_STATE_NORMAL],
 						   "outline_color_gdk",
@@ -741,7 +758,7 @@ static void
 cls_inherit_draw_graph (AnjutaClassInheritance *plugin)
 {
 	gint num_nodes;
-	gdouble max_canvas_size_x, max_canvas_size_y;
+	gdouble canvas_x1, canvas_y1, canvas_x2, canvas_y2;
 	GnomeCanvasItem *item;
 	Agnode_t *graph_node;
 	Agedge_t *edge;
@@ -755,9 +772,14 @@ cls_inherit_draw_graph (AnjutaClassInheritance *plugin)
 	
 	/* compiles nodes/edges informations, such as positions, coordinates etc */
 	gvLayout (plugin->gvc, plugin->graph, "dot");
+	/* DEBUG */
+	gvRenderFilename (plugin->gvc, plugin->graph, "png", "class-inheritance-test.png");
+	
 	
 	/* set the size of the canvas. We need this to set the scrolling.. */
-	max_canvas_size_x = max_canvas_size_y = CANVAS_MIN_SIZE;
+	canvas_x1 = canvas_y1 = 0;
+	canvas_x2 = CANVAS_MIN_SIZE;
+	canvas_y2 = -CANVAS_MIN_SIZE;
 	
 	/* check whether we had already drawn something on the canvas.
 	 * In case remove the items so we can clean up the canvas ready
@@ -775,6 +797,7 @@ cls_inherit_draw_graph (AnjutaClassInheritance *plugin)
 	{
 		gdouble node_width;
 		gdouble node_height;
+		gdouble node_x1, node_y1, node_x2, node_y2;
 		point node_pos;
 #ifndef ND_coord_i
 		pointf node_posf;
@@ -787,9 +810,14 @@ cls_inherit_draw_graph (AnjutaClassInheritance *plugin)
 		node_posf = ND_coord(graph_node);
 		PF2P(node_posf,node_pos);
 #endif
-		
+
+		/* Determine node coords and size w.r.t canvas */
 		node_width = ND_width (graph_node);
 		node_height = ND_height (graph_node);
+		node_x1 = node_pos.x - INCH_TO_PIXELS (node_width)/2;
+		node_y1 = -(node_pos.y - INCH_TO_PIXELS (node_height)/2);
+		node_x2 = node_pos.x + INCH_TO_PIXELS (node_width)/2;
+		node_y2 = -(node_pos.y + INCH_TO_PIXELS (node_height)/2);
 
 		if (strcmp ("record", ND_shape (graph_node)->name) == 0 ) 
 		{
@@ -899,18 +927,19 @@ cls_inherit_draw_graph (AnjutaClassInheritance *plugin)
 				g_list_prepend (plugin->drawable_list, item);
 		}
 
-		if (abs(node_pos.x) > max_canvas_size_x ) 
-			max_canvas_size_x = abs(node_pos.x) + INCH_TO_PIXELS (node_width)/2;
-		
-		if (abs(node_pos.y + node_height) > max_canvas_size_y) 
-			max_canvas_size_y = abs(node_pos.y) + INCH_TO_PIXELS (node_height)/2;
+		if (node_x1 < canvas_x1) canvas_x1 = node_x1;
+		if (node_y1 > canvas_y1) canvas_y1 = node_y1;
+		if (node_x2 > canvas_x2) canvas_x2 = node_x2;
+		if (node_y2 < canvas_y2) canvas_y2 = node_y2;
 	}	
-	
-	gtk_widget_set_size_request (plugin->canvas, max_canvas_size_x +100,
-								 max_canvas_size_y +100);
-	gnome_canvas_set_scroll_region (GNOME_CANVAS (plugin->canvas), -50,
-									50, max_canvas_size_x + 50,
-									-max_canvas_size_y -100);
+
+	/* Request extra 20px along x and y for 10px margin around the canvas */
+	gtk_widget_set_size_request (plugin->canvas,
+	                             canvas_x2 - canvas_x1 + 20,
+	                             canvas_y1 - canvas_y2 + 20);
+	gnome_canvas_set_scroll_region (GNOME_CANVAS (plugin->canvas),
+	                                canvas_x1 - 10, canvas_y1 + 10,
+	                                canvas_x2 + 10, canvas_y2 - 10);
 	
 	cls_inherit_graph_cleanup (plugin);
 }
