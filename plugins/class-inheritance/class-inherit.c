@@ -117,101 +117,6 @@ class_inheritance_get_symbol_from_agnode_key_name (AnjutaClassInheritance *plugi
 	
 	return symbol;
 }
-
-void
-class_inheritance_show_dynamic_class_popup_menu (GdkEvent *event,
-										   NodeData* nodedata)
-{
-	GtkWidget *item, *image;
-	GtkWidget *checkitem, *separator;
-		
-	/* Destroy the old menu before creating a new one */
-	if (nodedata->menu)
-	{
-		gtk_widget_destroy (nodedata->menu);
-	}
-		
-	nodedata->menu = gtk_menu_new();
-	if (nodedata->klass_id > 0)
-	{
-		IAnjutaSymbolManager *sm;
-		IAnjutaIterable *iter;
-		IAnjutaSymbol *symbol_searched;
-		sm = anjuta_shell_get_interface (ANJUTA_PLUGIN (nodedata->plugin)->shell,
-										 IAnjutaSymbolManager, NULL);
-		if (sm == NULL)
-			return;
-
-		symbol_searched = ianjuta_symbol_manager_get_symbol_by_id (sm, 
-												 nodedata->klass_id,
-												 IANJUTA_SYMBOL_FIELD_SIMPLE,
-												 NULL);
-												 
-		iter = ianjuta_symbol_manager_get_members (sm, symbol_searched,
-												   IANJUTA_SYMBOL_FIELD_SIMPLE |
-												   IANJUTA_SYMBOL_FIELD_TYPE |
-												   IANJUTA_SYMBOL_FIELD_ACCESS |
-												   IANJUTA_SYMBOL_FIELD_FILE_PATH,
-												   NULL);
-		if (iter && ianjuta_iterable_get_length (iter, NULL) > 0)
-		{	
-			do
-			{
-				const gchar *name, *file;
-				const GdkPixbuf *pixbuf;
-				gint line;		
-				IAnjutaSymbol *symbol = IANJUTA_SYMBOL (iter);
-				
-				name = ianjuta_symbol_get_name (symbol, NULL);
-				pixbuf = ianjuta_symbol_get_icon (symbol, NULL);
-				file = ianjuta_symbol_get_extra_info_string (symbol, 
-								IANJUTA_SYMBOL_FIELD_FILE_PATH, NULL);
-				line = ianjuta_symbol_get_line (symbol, NULL);
-				
-				item = gtk_image_menu_item_new_with_label (name);
-				image = gtk_image_new_from_pixbuf ((GdkPixbuf*)pixbuf);
-				gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM
-											   (item), image);
-				
-				if (file)
-				{
-					g_object_set_data_full (G_OBJECT (item), "__filepath",
-											g_strdup (file), g_free);
-					g_object_set_data (G_OBJECT (item), "__line",
-									   GINT_TO_POINTER (line));
-				}
-				gtk_container_add (GTK_CONTAINER (nodedata->menu),
-								   item);
-				g_signal_connect (G_OBJECT (item), "activate",
-											G_CALLBACK (on_member_menuitem_clicked),
-											nodedata);
-			} while (ianjuta_iterable_next (iter, NULL));
-		}
-		if (iter)  
-		{
-			g_object_unref (iter);
-		}			
-	}
-	
-	
-	separator = gtk_separator_menu_item_new ();
-	/* create the check menuitem */
-	checkitem = gtk_check_menu_item_new_with_label (_("Fixed data-view"));
-	gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (checkitem),
-									nodedata->anchored);
-	
-	g_signal_connect (G_OBJECT (checkitem), "toggled",
-								G_CALLBACK (on_toggled_menuitem_clicked),
-								nodedata);
-	
-	gtk_container_add (GTK_CONTAINER (nodedata->menu), separator);
-	gtk_container_add (GTK_CONTAINER (nodedata->menu), checkitem);
-		
-	gtk_widget_show_all (nodedata->menu);
-	gtk_menu_popup (GTK_MENU (nodedata->menu), NULL, NULL,
-	                NULL, NULL, event->button.button,
-					event->button.time);	
-}
 	
 /*----------------------------------------------------------------------------
  * initialize the internal graphviz structure.
@@ -406,7 +311,7 @@ cls_inherit_add_node (AnjutaClassInheritance *plugin, const IAnjutaSymbol *node_
 			g_string_append_printf (label, "|%s", NODE_SHOW_ALL_MEMBERS_STR);
 		}
 		
-		g_string_append_printf (label, "|%s }", NODE_SHOW_NORMAL_VIEW_STR);
+		g_string_append_printf (label, "}");
 		agxset(graph_node, sym->index, label->str);
 		
 		/* set the margin for icons */
@@ -610,26 +515,26 @@ cls_inherit_draw_expanded_node (AnjutaClassInheritance *plugin, Agnode_t *graph_
 				                       "fill_color_gdk",
 				                       &plugin->canvas->style->bg[GTK_STATE_ACTIVE],
 				                       NULL);
+				g_signal_connect (GTK_OBJECT (node_data->canvas_item), "event",
+								  G_CALLBACK (on_expanded_class_nodedata_event),
+								  node_data);
 				continue;
 			}
-			else					/* we need to draw the last 2 elements differently */
+			else /* The "more" item is the last */
 			{
-				g_signal_connect (GTK_OBJECT (node_data->canvas_item), "event",
-								  G_CALLBACK (on_nodedata_expanded_event),
-								  node_data);
-
 				if (expansion_status == NODE_HALF_EXPANDED && 
-					j > (NODE_NTH_FIELD (graph_node, i)->n_flds -3)) 
+					j == (NODE_NTH_FIELD (graph_node, i)->n_flds - 1)) 
 				{
+					g_signal_connect (GTK_OBJECT (node_data->canvas_item), "event",
+									  G_CALLBACK (on_nodedata_expanded_event),
+									  node_data);
 					continue;
 				}
-				else				/* only the last one. Usually "Normal view" */
+				else /* Normal class item */
 				{
-					if (expansion_status == NODE_FULL_EXPANDED && 
-						j > (NODE_NTH_FIELD (graph_node, i)->n_flds -2)) 
-					{
-						continue;
-					}
+					g_signal_connect (GTK_OBJECT (node_data->canvas_item), "event",
+									  G_CALLBACK (on_nodedata_expanded_event),
+									  node_data);
 				}
 			}
 			
@@ -672,6 +577,7 @@ cls_inherit_draw_expanded_node (AnjutaClassInheritance *plugin, Agnode_t *graph_
 					/* no need to free 'file'. It'll be freed when object'll be unreffed */
 				}
 			}
+			
 			plugin->drawable_list = g_list_prepend (plugin->drawable_list, item);
 			ianjuta_iterable_next (symbol_iter, NULL);
 		} /*- for */
@@ -744,7 +650,7 @@ cls_inherit_draw_single_node (AnjutaClassInheritance *plugin, Agnode_t *graph_no
 	plugin->node_list = g_list_prepend (plugin->node_list, node_data);
 	
 	g_signal_connect (GTK_OBJECT (node_data->canvas_item), "event",
-					  G_CALLBACK (on_nodedata_event),
+					  G_CALLBACK (on_collapsed_class_nodedata_event),
 					  node_data);
 
 	/* --- texts --- */		

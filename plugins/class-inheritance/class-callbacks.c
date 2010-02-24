@@ -53,76 +53,6 @@ on_canvas_event (GnomeCanvasItem *item, GdkEvent *event, gpointer data)
 	return FALSE;
 }
 
-void
-on_toggled_menuitem_clicked (GtkCheckMenuItem *checkmenuitem,
-							 gpointer data)
-{
-	NodeData *node;
-	node = (NodeData*)data;
-		
-	if (node->anchored) 
-	{
-		node->anchored = FALSE;
-		
-		/* remove the key from the hash table, if present */
-		if (g_tree_lookup (node->plugin->expansion_node_list, 
-						   GINT_TO_POINTER (node->klass_id))) 
-		{
-			g_tree_remove (node->plugin->expansion_node_list, 
-						   GINT_TO_POINTER (node->klass_id));
-		}
-	}
-	else 
-	{
-		NodeExpansionStatus *node_status;
-		node->anchored = TRUE;
-		
-		node_status = g_new0 (NodeExpansionStatus, 1);
-		node_status->klass_id = node->klass_id;
-		/* set to half. This will display at least NODE_HALF_DISPLAY_ELEM_NUM.
-		 * User will decide whether to show all elements or not. */
-		node_status->expansion_status = NODE_HALF_EXPANDED;
-		
-		/* insert the class name to the hash_table */
-		g_tree_insert (node->plugin->expansion_node_list, 
-							GINT_TO_POINTER (node->klass_id), 
-							node_status);
-	}
-	
-	class_inheritance_update_graph (node->plugin);
-}
-
-void
-on_member_menuitem_clicked (GtkMenuItem *menuitem, gpointer data)
-{
-	NodeData *node;	
-	const gchar *file;
-	gint line;
-	
-	node = (NodeData*)data;
-	file = g_object_get_data (G_OBJECT (menuitem), "__filepath");
-	line = GPOINTER_TO_INT (g_object_get_data (G_OBJECT (menuitem), "__line"));	
-
-	DEBUG_PRINT ("got uri %s [%d]", file, line);
-	
-	if (file)
-	{
-		GFile* gfile;
-		gfile = g_file_new_for_path (file);
-		/* Goto uri line */
-		IAnjutaDocumentManager *dm;
-		dm = anjuta_shell_get_interface (ANJUTA_PLUGIN (node->plugin)->shell,
-										 IAnjutaDocumentManager, NULL);
-		if (dm)
-		{
-			ianjuta_document_manager_goto_file_line (dm, gfile, line, NULL);
-		}
-
-		if (gfile)
-			g_object_unref (gfile);
-	}
-}
-
 gint
 on_nodedata_expanded_event (GnomeCanvasItem *item, GdkEvent *event, gpointer data)
 {
@@ -151,12 +81,6 @@ on_nodedata_expanded_event (GnomeCanvasItem *item, GdkEvent *event, gpointer dat
 					node_status->expansion_status = NODE_FULL_EXPANDED;
 					class_inheritance_update_graph (plugin);
 			}			
-			else if (strcmp (nodedata->sub_item, NODE_SHOW_NORMAL_VIEW_STR) == 0) 
-			{
-					g_tree_remove (plugin->expansion_node_list, 
-								   GINT_TO_POINTER (nodedata->klass_id));
-					class_inheritance_update_graph (plugin);
-			}
 			else 		/* it's a class member. Take line && uri of definition */
 			{			/* and reach them */
 				const gchar *file;
@@ -210,7 +134,7 @@ on_nodedata_expanded_event (GnomeCanvasItem *item, GdkEvent *event, gpointer dat
 
 
 gint
-on_nodedata_event (GnomeCanvasItem *item, GdkEvent *event, gpointer data)
+on_collapsed_class_nodedata_event (GnomeCanvasItem *item, GdkEvent *event, gpointer data)
 {
 	AnjutaClassInheritance *plugin;
 	NodeData *nodedata;	
@@ -220,35 +144,40 @@ on_nodedata_event (GnomeCanvasItem *item, GdkEvent *event, gpointer data)
 
 	switch (event->type)
 	{
-	case GDK_2BUTTON_PRESS:		/* double click */
-		break;
-
 	case GDK_BUTTON_PRESS:		/* single click */
 		if (event->button.button == 1 && !nodedata->anchored)
 		{
-			class_inheritance_show_dynamic_class_popup_menu  (event, data);
+			NodeExpansionStatus *node_status;
+			nodedata->anchored = TRUE;
+
+			node_status = g_new0 (NodeExpansionStatus, 1);
+			node_status->klass_id = nodedata->klass_id;
+			/* set to half. This will display at least NODE_HALF_DISPLAY_ELEM_NUM.
+			 * User will decide whether to show all elements or not. */
+			node_status->expansion_status = NODE_HALF_EXPANDED;
+
+			/* insert the class name to the hash_table */
+			g_tree_insert (nodedata->plugin->expansion_node_list, 
+			               GINT_TO_POINTER (nodedata->klass_id), 
+			               node_status);
+			class_inheritance_update_graph (nodedata->plugin);
+			return TRUE;
 		}
 		break;
 		
 	case GDK_ENTER_NOTIFY:		/* mouse entered in item's area */
 		/* Make the outline wide */
 		gnome_canvas_item_set (nodedata->canvas_item,
-							   "width_units", 2.5,
 							   "fill_color_gdk",
 							   &plugin->canvas->style->base[GTK_STATE_SELECTED],
-							   "outline_color_gdk",
-							   &plugin->canvas->style->text[GTK_STATE_SELECTED],
 							   NULL);
 		return TRUE;
 
 	case GDK_LEAVE_NOTIFY:		/* mouse exited item's area */
 		/* Make the outline thin */
 		gnome_canvas_item_set (nodedata->canvas_item,
-							   "width_units", 1.0,
 							   "fill_color_gdk",
 							   &plugin->canvas->style->base[GTK_STATE_NORMAL],
-							   "outline_color_gdk",
-							   &plugin->canvas->style->text[GTK_STATE_NORMAL],	
 							   NULL);
 		return TRUE;
 	default:
@@ -258,6 +187,55 @@ on_nodedata_event (GnomeCanvasItem *item, GdkEvent *event, gpointer data)
 	return FALSE;
 }
 
+gint
+on_expanded_class_nodedata_event (GnomeCanvasItem *item, GdkEvent *event, gpointer data)
+{
+	AnjutaClassInheritance *plugin;
+	NodeData *nodedata;	
+	
+	nodedata = (NodeData*)data;
+	plugin = nodedata->plugin;
+
+	switch (event->type)
+	{
+	case GDK_BUTTON_PRESS:		/* single click */
+		if (event->button.button == 1 && nodedata->anchored)
+		{
+			nodedata->anchored = FALSE;
+		
+			/* remove the key from the hash table, if present */
+			if (g_tree_lookup (nodedata->plugin->expansion_node_list, 
+							   GINT_TO_POINTER (nodedata->klass_id))) 
+			{
+				g_tree_remove (nodedata->plugin->expansion_node_list, 
+							   GINT_TO_POINTER (nodedata->klass_id));
+			}
+			class_inheritance_update_graph (nodedata->plugin);
+			return TRUE;
+		}
+		break;
+		
+	case GDK_ENTER_NOTIFY:		/* mouse entered in item's area */
+		/* Make the outline wide */
+		gnome_canvas_item_set (nodedata->canvas_item,
+							   "fill_color_gdk",
+							   &plugin->canvas->style->bg[GTK_STATE_PRELIGHT],
+							   NULL);
+		return TRUE;
+
+	case GDK_LEAVE_NOTIFY:		/* mouse exited item's area */
+		/* Make the outline thin */
+		gnome_canvas_item_set (nodedata->canvas_item,
+							   "fill_color_gdk",
+							   &plugin->canvas->style->bg[GTK_STATE_ACTIVE],
+							   NULL);
+		return TRUE;
+	default:
+		break;
+	}
+	
+	return FALSE;
+}
 
 /*----------------------------------------------------------------------------
  * callback for the canvas' right-click menu - update button.

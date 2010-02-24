@@ -23,12 +23,12 @@
 #include "class-inherit.h"
 
 gint on_canvas_event (GnomeCanvasItem *item, GdkEvent *event, gpointer data);
-	
-void on_toggled_menuitem_clicked (GtkCheckMenuItem *checkmenuitem,
-							 gpointer data);
 
-void on_member_menuitem_clicked (GtkMenuItem *menuitem, gpointer data);
-	
+gint on_collapsed_class_nodedata_event (GnomeCanvasItem *item, GdkEvent *event,
+                                        gpointer data);
+gint on_expanded_class_nodedata_event (GnomeCanvasItem *item, GdkEvent *event,
+                                       gpointer data);
+
 gint on_nodedata_expanded_event (GnomeCanvasItem *item, GdkEvent *event, 
 							gpointer data);
 

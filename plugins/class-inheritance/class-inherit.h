@@ -27,10 +27,8 @@
 
 G_BEGIN_DECLS
 
-#define NODE_FONT_DEFAULT "-*-clean-medium-r-normal-*-10-*-*-*-*-*-*"
-#define NODE_HALF_DISPLAY_ELEM_NUM			10
+#define NODE_HALF_DISPLAY_ELEM_NUM			30
 #define NODE_SHOW_ALL_MEMBERS_STR			N_("Show all members...")
-#define NODE_SHOW_NORMAL_VIEW_STR			N_("Normal view")
 
 typedef struct _NodeData {
 	GnomeCanvasItem *canvas_item;  	/* item itself */
