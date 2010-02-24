@@ -409,6 +409,11 @@ cls_inherit_add_node (AnjutaClassInheritance *plugin, const IAnjutaSymbol *node_
 		g_string_append_printf (label, "|%s }", NODE_SHOW_NORMAL_VIEW_STR);
 		agxset(graph_node, sym->index, label->str);
 		
+		/* set the margin for icons */
+		if (!(sym = agfindattr(plugin->graph->proto->n, "margin")))
+			sym = agnodeattr(plugin->graph, "margin", "0.11,0.055");
+		agxset(graph_node, sym->index, "0.3,0.02");
+
 		g_string_free (label, TRUE);
 	}
 	else {	/* the node isn't in an expansion status. 
@@ -427,7 +432,8 @@ cls_inherit_add_node (AnjutaClassInheritance *plugin, const IAnjutaSymbol *node_
 	/* set the font */
 	if (!(sym = agfindattr(plugin->graph->proto->n, "fontname")))
 		sym = agnodeattr(plugin->graph, "fontname", "");
-	agxset(graph_node, sym->index, "Courier new");
+	const gchar *font_name = pango_font_description_get_family (plugin->canvas->style->font_desc);
+	agxset(graph_node, sym->index, (char*)font_name);
 
 	/* set the font-size */	
 	if (!(sym = agfindattr(plugin->graph->proto->n, "fontsize")))
@@ -435,8 +441,7 @@ cls_inherit_add_node (AnjutaClassInheritance *plugin, const IAnjutaSymbol *node_
 
 	font_size = pango_font_description_get_size (plugin->canvas->style->font_desc)/ PANGO_SCALE;
 	/* hack: set canvas_text_fontsize + 4 points or text would oversize the block */
-	/* add some more points for icons 16x16 space */
-	snprintf (font_size_str, FONT_SIZE_STR_LEN, "%d", font_size);
+	snprintf (font_size_str, FONT_SIZE_STR_LEN, "%d", font_size + 4);
 	agxset(graph_node, sym->index, font_size_str);
 
 	if (!(sym = agfindattr(plugin->graph->proto->n, "ratio")))
@@ -540,7 +545,8 @@ cls_inherit_draw_expanded_node (AnjutaClassInheritance *plugin, Agnode_t *graph_
 		{
 			IAnjutaSymbol *symbol;
 			gint symbol_id;
-			gint y1, y2;			
+			gint y1, y2;
+
 			y1 = NODE_LOWER_LEFT (graph_node, i, j).y;
 			y2 = NODE_UPPER_RIGHT(graph_node, i, j).y;
 
@@ -573,25 +579,19 @@ cls_inherit_draw_expanded_node (AnjutaClassInheritance *plugin, Agnode_t *graph_
 								   (gdouble) -node_pos->y -INCH_TO_PIXELS (node_height)/2 +
 									(j+1)*abs(y1-y2),
 								   "fill_color_gdk",
-								   &plugin->canvas->style->base[GTK_STATE_ACTIVE],
+								   &plugin->canvas->style->base[GTK_STATE_NORMAL],
 								   NULL);
 									
 			/* add to the nodelist: we'll set the __uri and __line properites later
 			 * on this loop, when we'll parse symbols. */			
 			plugin->node_list = g_list_prepend (plugin->node_list, node_data);
 
-			g_signal_connect (GTK_OBJECT (node_data->canvas_item), "event",
-							  G_CALLBACK (on_nodedata_expanded_event),
-							  node_data);
-
 			/* --- texts --- */		
 			item = gnome_canvas_item_new (gnome_canvas_root
 										  (GNOME_CANVAS (plugin->canvas)),
 										  gnome_canvas_text_get_type (),
 										  "text", NODE_NTH_TEXT (graph_node, i, j),
-										  "font", NODE_FONT_DEFAULT,
 										  "justification", GTK_JUSTIFY_CENTER,
-										  "style", PANGO_STYLE_ITALIC,
 										  "anchor", GTK_ANCHOR_CENTER,
 									  	  "x",
 									  	  (gdouble) (node_pos->x - 
@@ -599,28 +599,28 @@ cls_inherit_draw_expanded_node (AnjutaClassInheritance *plugin, Agnode_t *graph_
 									  	  "y", (gdouble) -node_pos->y -
 										  INCH_TO_PIXELS (node_height)/2+(j+0.5)*abs(y1-y2),
 									  	  "fill_color_gdk",
-									  	  &plugin->canvas->style->text[GTK_STATE_ACTIVE],
+									  	  &plugin->canvas->style->text[GTK_STATE_NORMAL],
 									  	  "anchor", GTK_ANCHOR_W,        
 									  	  NULL);
 			plugin->drawable_list = g_list_prepend (plugin->drawable_list, item);
 			
-			if (j == 0) 		/* the Class' name case: make it bold */
+			if (j == 0) 		/* the Class' name case */
 			{				
-				gnome_canvas_item_set (item, 
-							"weight", PANGO_WEIGHT_BOLD, 
-							"style", PANGO_STYLE_NORMAL,
-							NULL);
+				gnome_canvas_item_set (node_data->canvas_item,
+				                       "fill_color_gdk",
+				                       &plugin->canvas->style->bg[GTK_STATE_ACTIVE],
+				                       NULL);
 				continue;
 			}
 			else					/* we need to draw the last 2 elements differently */
 			{
+				g_signal_connect (GTK_OBJECT (node_data->canvas_item), "event",
+								  G_CALLBACK (on_nodedata_expanded_event),
+								  node_data);
+
 				if (expansion_status == NODE_HALF_EXPANDED && 
 					j > (NODE_NTH_FIELD (graph_node, i)->n_flds -3)) 
 				{
-					gnome_canvas_item_set (item, 
-								"weight", PANGO_WEIGHT_HEAVY, 
-								"style", PANGO_STYLE_NORMAL,
-								NULL);						
 					continue;
 				}
 				else				/* only the last one. Usually "Normal view" */
@@ -628,10 +628,6 @@ cls_inherit_draw_expanded_node (AnjutaClassInheritance *plugin, Agnode_t *graph_
 					if (expansion_status == NODE_FULL_EXPANDED && 
 						j > (NODE_NTH_FIELD (graph_node, i)->n_flds -2)) 
 					{
-						gnome_canvas_item_set (item, 
-									"weight", PANGO_WEIGHT_HEAVY,
-									"style", PANGO_STYLE_NORMAL,
-									NULL);
 						continue;
 					}
 				}
@@ -693,7 +689,7 @@ cls_inherit_draw_expanded_node (AnjutaClassInheritance *plugin, Agnode_t *graph_
 							"y1",
 							(gdouble) -node_pos->y -INCH_TO_PIXELS (node_height)/2 -1,
 							"x2",
-							(gdouble) node_pos->x +INCH_TO_PIXELS (node_width)/2+1,
+							(gdouble) node_pos->x +INCH_TO_PIXELS (node_width)/2,
 							"y2",
 							(gdouble) -node_pos->y +INCH_TO_PIXELS (node_height)/2 -1,
   						   "outline_color_gdk",
@@ -756,7 +752,6 @@ cls_inherit_draw_single_node (AnjutaClassInheritance *plugin, Agnode_t *graph_no
 								  (GNOME_CANVAS (plugin->canvas)),
 								  gnome_canvas_text_get_type (),
 								  "text", node_sym_name,
-								  "font", NODE_FONT_DEFAULT,
 								  "justification", GTK_JUSTIFY_CENTER,
 								  "anchor", GTK_ANCHOR_CENTER,
 								  "x",

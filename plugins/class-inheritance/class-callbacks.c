@@ -190,14 +190,14 @@ on_nodedata_expanded_event (GnomeCanvasItem *item, GdkEvent *event, gpointer dat
 	case GDK_ENTER_NOTIFY:		/* mouse entered in item's area */
 		gnome_canvas_item_set (nodedata->canvas_item,
 							   "fill_color_gdk",
-							   &plugin->canvas->style->base[GTK_STATE_PRELIGHT],
+							   &plugin->canvas->style->base[GTK_STATE_SELECTED],
 							   NULL);
 		return TRUE;
 
 	case GDK_LEAVE_NOTIFY:		/* mouse exited item's area */
 		gnome_canvas_item_set (nodedata->canvas_item,
 							   "fill_color_gdk",
-							   &plugin->canvas->style->base[GTK_STATE_ACTIVE],
+							   &plugin->canvas->style->base[GTK_STATE_NORMAL],
 							   NULL);
 		return TRUE;
 	default:
