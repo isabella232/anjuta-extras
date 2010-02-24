@@ -82,10 +82,6 @@ create_canvas_arrow_item (GtkWidget *canvas, CanvasArrowDir direction,
 	triangle->coords[6] = x1 + offset;
 	triangle->coords[7] = y1 + offset;
 
-	for (i = 0; i < 8; i++)
-	{
-		g_message ("Arrow[%d] = %f", i, triangle->coords[i]);
-	}
 	item = gnome_canvas_item_new (gnome_canvas_root
 	                              (GNOME_CANVAS (canvas)),
 	                              gnome_canvas_polygon_get_type (),
