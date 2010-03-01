@@ -2443,19 +2443,20 @@ itext_editor_insert (IAnjutaEditor *editor, IAnjutaIterable *position,
 	gchar *text_to_insert;
 	int pos;
 
-	/* Use replace to move the cursor at the end of the insert text like
-	 * GtkSourceView */
 	pos = text_editor_cell_get_position (TEXT_EDITOR_CELL (position));
+	if (length < 0) length = strlen (txt);
 
-	scintilla_send_message (SCINTILLA (TEXT_EDITOR (editor)->scintilla),
-						    SCI_SETSEL, pos, pos);
+	text_to_insert = g_strndup (txt, length);
 
-	if (length >= 0)
-		text_to_insert = g_strndup (txt, length);
-	else
-		text_to_insert = g_strdup (txt);
-	
-	text_editor_replace_selection (TEXT_EDITOR (editor), text_to_insert);
+	aneditor_command (TEXT_EDITOR(editor)->editor_id, ANE_INSERTTEXT,
+		pos, (long)text_to_insert);
+
+	/* Move the cursor and the iterator at the end of the insert text like
+	 * GtkSourceView */
+	pos += length;
+	text_editor_cell_set_position (TEXT_EDITOR_CELL (position), pos);
+	scintilla_send_message (SCINTILLA(TEXT_EDITOR (editor)->scintilla),
+			SCI_SETSEL, pos, pos);
 
 	g_free (text_to_insert);
 }
