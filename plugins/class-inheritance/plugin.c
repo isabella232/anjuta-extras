@@ -59,7 +59,7 @@ project_root_added (AnjutaPlugin *plugin, const gchar *name,
 		ci_plugin->top_dir = NULL;
 	
 	/* let's update the graph */
-	class_inheritance_update_graph (ci_plugin);
+	cls_inherit_update (ci_plugin);
 }
 
 static void
@@ -70,10 +70,7 @@ project_root_removed (AnjutaPlugin *plugin, const gchar *name,
 	ci_plugin = ANJUTA_PLUGIN_CLASS_INHERITANCE (plugin);
 	
 	/* clean up the canvas */
-	class_inheritance_clean_canvas (ci_plugin);
-
-	/* destroy and re-initialize the hashtable */
-	class_inheritance_gtree_clear (ci_plugin);
+	cls_inherit_clear (ci_plugin);
 	
 	if (ci_plugin->top_dir)
 		g_free(ci_plugin->top_dir);
@@ -98,25 +95,25 @@ register_stock_icons (AnjutaPlugin *plugin)
 static gboolean
 activate_plugin (AnjutaPlugin *plugin)
 {
-	AnjutaClassInheritance *class_inheritance;
+	AnjutaClassInheritance *cls_inherit;
 	static gboolean initialized = FALSE;
 	
 	DEBUG_PRINT ("%s", "AnjutaClassInheritance: Activating plugin ...");
 	
 	register_stock_icons (plugin);
 	
-	class_inheritance = ANJUTA_PLUGIN_CLASS_INHERITANCE (plugin);
+	cls_inherit = ANJUTA_PLUGIN_CLASS_INHERITANCE (plugin);
 	
-	class_inheritance_base_gui_init (class_inheritance);
+	cls_inherit_init (cls_inherit);
 	
-	anjuta_shell_add_widget (plugin->shell, class_inheritance->widget,
+	anjuta_shell_add_widget (plugin->shell, cls_inherit->widget,
 							 "AnjutaClassInheritance", _("Inheritance Graph"),
 							 "class-inheritance-plugin-icon",
 							 ANJUTA_SHELL_PLACEMENT_CENTER, NULL);
-	class_inheritance->top_dir = NULL;
+	cls_inherit->top_dir = NULL;
 	
 	/* set up project directory watch */
-	class_inheritance->root_watch_id = anjuta_plugin_add_watch (plugin,
+	cls_inherit->root_watch_id = anjuta_plugin_add_watch (plugin,
 									IANJUTA_PROJECT_MANAGER_PROJECT_ROOT_URI,
 									project_root_added,
 									project_root_removed, NULL);
@@ -133,13 +130,7 @@ deactivate_plugin (AnjutaPlugin *plugin)
 	class_inheritance = ANJUTA_PLUGIN_CLASS_INHERITANCE (plugin);
 
 	/* clean up the canvas [e.g. destroys it's elements */
-	class_inheritance_clean_canvas (class_inheritance);
-	
-	/* destroy the nodestatus gtree */
-	if (class_inheritance->expansion_node_list) {
-		g_tree_destroy (class_inheritance->expansion_node_list);
-		class_inheritance->expansion_node_list = NULL;
-	}
+	cls_inherit_free (class_inheritance);
 	
 	/* Container holds the last ref to this widget so it will be destroyed as
 	 * soon as removed. No need to separately destroy it. */
@@ -187,7 +178,6 @@ class_inheritance_instance_init (GObject *obj)
 	plugin->widget = NULL;
 	plugin->graph = NULL;
 	plugin->gvc = NULL;
-	plugin->expansion_node_list = NULL;
 }
 
 static void

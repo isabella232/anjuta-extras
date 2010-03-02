@@ -1,7 +1,8 @@
 /* -*- Mode: C; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*- */
 /*
- *  Copyright (C) Massimo Cora' 2005 <maxcvs@email.it>
- *
+ *  Copyright (C) Massimo Cora' 2005 <maxcvs@email.it>,
+ *                2009 Naba Kumar <naba@gnome.org>
+ *  
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation; either version 2 of the License, or
@@ -30,42 +31,72 @@ G_BEGIN_DECLS
 #define NODE_HALF_DISPLAY_ELEM_NUM			30
 #define NODE_SHOW_ALL_MEMBERS_STR			N_("Show all members...")
 
-typedef struct _NodeData {
-	GnomeCanvasItem *canvas_item;  	/* item itself */
-	gint klass_id;					/* unique class identifier */
-	gchar *sub_item;			   	/* case of an expanded node */
-	gboolean anchored;             	/* should it be anchored [e.g. paint all the 
-	                                 * data to the graph?]
-	                                 */
-	GtkWidget *menu;
-	AnjutaClassInheritance *plugin;
-} NodeData;
+typedef enum {
+	CLS_NODE_COLLAPSED,
+	CLS_NODE_SEMI_EXPANDED,
+	CLS_NODE_FULL_EXPANDED
+} ClsNodeExpansionType;
 
-typedef struct _NodeExpansionStatus {	
+typedef struct
+{
+	AnjutaClassInheritance *plugin; /* fixme: remove this */
+	Agraph_t *graph;
+	GtkWidget* canvas;
+
+	IAnjutaSymbolManager *sym_manager;
 	gint klass_id;
-	gint expansion_status;
+	gchar *sym_name;
 	
-} NodeExpansionStatus;
+	Agnode_t *agnode;
 
-enum {
-	NODE_NOT_EXPANDED,
-	NODE_HALF_EXPANDED,
-	NODE_FULL_EXPANDED
-};
+	/* Node's expansion status */
+	ClsNodeExpansionType expansion_status;
 
-gchar *
-class_inheritance_create_agnode_key_name (const IAnjutaSymbol* symbol);
+	/* Holds canvas group item for either collapsed or expanded node */
+	GnomeCanvasItem* canvas_group;
+	
+	/* What expansion type is currently drawn */
+	ClsNodeExpansionType drawn_expansion_status;
+		
+	 /* Absolute coords in canvas. Only valid after node draw is ensured */
+	gint width, height, x1, y1, x2, y2;
 
-IAnjutaSymbol *
-class_inheritance_get_symbol_from_agnode_key_name (AnjutaClassInheritance *plugin,
-												   const gchar *key);
+	/* Class members. Empty for collapsed nodes */
+	GHashTable *members;
 
-void class_inheritance_base_gui_init (AnjutaClassInheritance *plugin);
-void class_inheritance_update_graph (AnjutaClassInheritance *plugin);
-void class_inheritance_clean_canvas (AnjutaClassInheritance *plugin);
-void class_inheritance_show_dynamic_class_popup_menu (GdkEvent *event,
-										   NodeData* nodedata);
-void class_inheritance_gtree_clear (AnjutaClassInheritance *plugin);
+	/* All outgoing edges from this node */
+	GList *edges;
+} ClsNode;
+
+typedef struct {
+	Agedge_t *agedge;
+	GnomeCanvasItem *canvas_line;
+	GnomeCanvasItem *canvas_arrow;
+	ClsNode *cls_node_from;
+	ClsNode *cls_node_to;
+} ClsNodeEdge;
+
+typedef struct {
+	ClsNode *cls_node;
+	GnomeCanvasItem* canvas_node_item;
+	gint sym_id;
+	gchar *sym_name;
+	gchar *args;
+	GFile *file;
+	gint line;
+	GdkPixbuf *icon;
+	gint order;
+} ClsNodeItem;
+
+gboolean cls_node_collapse (ClsNode *cls_node);
+gboolean cls_node_expand (ClsNode *cls_node, ClsNodeExpansionType expand_type);
+
+void cls_inherit_init (AnjutaClassInheritance *plugin);
+void cls_inherit_layout (AnjutaClassInheritance *plugin);
+void cls_inherit_draw (AnjutaClassInheritance *plugin);
+void cls_inherit_update (AnjutaClassInheritance *plugin);
+void cls_inherit_clear (AnjutaClassInheritance *plugin);
+void cls_inherit_free (AnjutaClassInheritance *plugin);
 
 G_END_DECLS
  
