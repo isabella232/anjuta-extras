@@ -830,6 +830,10 @@ cls_inherit_draw (AnjutaClassInheritance *plugin)
 {
 	ClsBox bounds;
 
+	gvLayout (plugin->gvc, plugin->graph, "dot");
+	/* DEBUG */
+	/* gvRenderFilename (plugin->gvc, plugin->graph, "png", "class-inheritance-test.png"); */
+	
 	/* set the size of the canvas. We need this to set the scrolling.. */
 	bounds.x1 = 0;
 	bounds.y1 = 0;
@@ -845,24 +849,8 @@ cls_inherit_draw (AnjutaClassInheritance *plugin)
 	gnome_canvas_set_scroll_region (GNOME_CANVAS (plugin->canvas),
 	                                bounds.x1 - 10, bounds.y1 - 10,
 	                                bounds.x2 + 10, bounds.y2 + 10);
-}
 
-/*----------------------------------------------------------------------------
- * draw the graph on the canvas. So nodes, edges, arrows, texts..
- */
-void
-cls_inherit_layout (AnjutaClassInheritance *plugin)
-{
-	g_return_if_fail (plugin->graph != NULL);
-
-	if (plugin->layout_started)
-		gvFreeLayout(plugin->gvc, plugin->graph);
-
-	gvLayout (plugin->gvc, plugin->graph, "dot");
-	plugin->layout_started = TRUE;
-
-	/* DEBUG */
-	/* gvRenderFilename (plugin->gvc, plugin->graph, "png", "class-inheritance-test.png"); */
+	gvFreeLayout(plugin->gvc, plugin->graph);
 }
 
 /*----------------------------------------------------------------------------
@@ -969,7 +957,6 @@ cls_inherit_update (AnjutaClassInheritance *plugin)
 
 	g_object_unref (iter);
 
-	cls_inherit_layout (plugin);
 	cls_inherit_draw (plugin);
 }
 

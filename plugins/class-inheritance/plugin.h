@@ -55,7 +55,6 @@ struct _AnjutaClassInheritance {
 	/* graphviz stuff */	
 	GVC_t *gvc;
 	Agraph_t *graph;
-	gboolean layout_started;
 	
 	gchar *top_dir;
 	guint root_watch_id;
