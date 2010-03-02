@@ -38,27 +38,24 @@ extern GType class_inheritance_get_type (GTypeModule *module);
 #define ANJUTA_IS_PLUGIN_CLASS_INHERITANCE_CLASS(k)  (G_TYPE_CHECK_CLASS_TYPE ((k), ANJUTA_TYPE_PLUGIN_CLASS_INHERITANCE))
 #define ANJUTA_PLUGIN_CLASS_INHERITANCE_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), ANJUTA_TYPE_PLUGIN_CLASS_INHERITANCE, AnjutaClassInheritanceClass))
 
-
 typedef struct _AnjutaClassInheritance AnjutaClassInheritance;
 typedef struct _AnjutaClassInheritanceClass AnjutaClassInheritanceClass;
 
 struct _AnjutaClassInheritance {
 	AnjutaPlugin parent;
 	
-	GtkWidget *widget;        /* a vbox */
+	GtkWidget *widget; /* a vbox */
 	GtkWidget *update_button;	
 	GtkWidget *menu;
 	GtkWidget *update;
 	
 	GtkWidget *canvas;
-	GList *drawable_list;   		/* GnomeCanvasItem* list. Edges, arrows and texts */
-	GList *node_list;					/* NodeData* list */
-
-	GTree *expansion_node_list;	/* expansion_status for the nodes */
+	GHashTable *nodes;
 
 	/* graphviz stuff */	
 	GVC_t *gvc;
 	Agraph_t *graph;
+	gboolean layout_started;
 	
 	gchar *top_dir;
 	guint root_watch_id;
