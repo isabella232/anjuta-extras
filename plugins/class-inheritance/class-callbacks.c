@@ -62,7 +62,6 @@ on_expanded_class_title_event (GnomeCanvasItem *item, GdkEvent *event,
 		    cls_node->expansion_status != CLS_NODE_COLLAPSED &&
 		    cls_node_collapse (cls_node))
 		{
-			cls_inherit_layout (cls_node->plugin);
 			cls_inherit_draw(cls_node->plugin);
 			return TRUE;
 		}
@@ -152,7 +151,6 @@ on_expanded_class_more_event (GnomeCanvasItem *item, GdkEvent *event,
 		    cls_node->expansion_status == CLS_NODE_SEMI_EXPANDED &&
 		    cls_node_expand (cls_node, CLS_NODE_FULL_EXPANDED))
 		{
-			cls_inherit_layout (cls_node->plugin);
 			cls_inherit_draw(cls_node->plugin);
 		}
 		break;
@@ -193,7 +191,6 @@ on_collapsed_class_event (GnomeCanvasItem *item, GdkEvent *event, gpointer data)
 		{
 			if (cls_node_expand (cls_node, CLS_NODE_SEMI_EXPANDED))
 			{
-			    cls_inherit_layout (plugin);
 			    cls_inherit_draw(plugin);
 		    }
 			return TRUE;
