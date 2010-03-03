@@ -153,8 +153,8 @@ static void
 cls_node_free (ClsNode *cls_node)
 {
 	g_free (cls_node->sym_name);
-	g_list_foreach (cls_node->edges, (GFunc) cls_node_edge_free, NULL);
-	g_list_free (cls_node->edges);
+	g_hash_table_destroy (cls_node->edges_to);
+	g_hash_table_destroy (cls_node->edges_from);
 	g_hash_table_destroy (cls_node->members);
 	if (cls_node->canvas_group)
 		gtk_object_destroy (GTK_OBJECT (cls_node->canvas_group));
@@ -181,7 +181,8 @@ cls_node_add_edge (ClsNode *cls_node_from, ClsNode *cls_node_to)
 		return FALSE;
 	}
 
-	cls_node_from->edges = g_list_prepend (cls_node_from->edges, cls_edge);
+	g_hash_table_insert (cls_node_from->edges_to, cls_node_to, cls_edge);
+	g_hash_table_insert (cls_node_to->edges_from, cls_node_from, cls_edge);
 	return TRUE;
 }
 
@@ -219,6 +220,10 @@ cls_inherit_create_node (AnjutaClassInheritance *plugin,
 		                       (GDestroyNotify) cls_node_item_free);
 	cls_node->expansion_status = CLS_NODE_COLLAPSED;
 	cls_node->drawn_expansion_status = CLS_NODE_COLLAPSED;
+	cls_node->edges_to =
+		g_hash_table_new_full (g_direct_hash, g_direct_equal,
+		                       NULL, (GDestroyNotify)cls_node_edge_free);
+	cls_node->edges_from = g_hash_table_new (g_direct_hash, g_direct_equal);
 	
 	/* let's add the node to the graph */
 	if ((cls_node->agnode = agnode (cls_node->graph,
@@ -703,7 +708,7 @@ create_canvas_edge_arrow_ending (double x1, double y1, double x2, double y2,
 }
 
 static void
-cls_node_draw_edge (ClsNodeEdge *cls_edge, ClsNode *cls_node)
+cls_node_draw_edge (ClsNode *cls_node_to, ClsNodeEdge *cls_edge, ClsNode *cls_node_from)
 {
 	Agedge_t *edge;
 	GnomeCanvasPathDef *path_def;
@@ -743,11 +748,11 @@ cls_node_draw_edge (ClsNodeEdge *cls_edge, ClsNode *cls_node)
 	{
 		cls_edge->canvas_line =
 			gnome_canvas_item_new (gnome_canvas_root
-				                   (GNOME_CANVAS (cls_node->canvas)), 
+				                   (GNOME_CANVAS (cls_node_from->canvas)), 
 				                   gnome_canvas_bpath_get_type(),
 				                   "bpath", path_def,
 				                   "outline_color_gdk",
-				                   &cls_node->canvas->style->text[GTK_STATE_NORMAL],
+				                   &cls_node_from->canvas->style->text[GTK_STATE_NORMAL],
 				                   "width_pixels", 2,
 				                   NULL);
 	}
@@ -789,11 +794,11 @@ cls_node_draw_edge (ClsNodeEdge *cls_edge, ClsNode *cls_node)
 	{
 		cls_edge->canvas_arrow =
 			gnome_canvas_item_new (gnome_canvas_root
-				                   (GNOME_CANVAS (cls_node->canvas)),
+				                   (GNOME_CANVAS (cls_node_from->canvas)),
 				                   gnome_canvas_line_get_type(),
 				                   "points", points,
 				                   "fill_color_gdk",
-				                   &cls_node->canvas->style->text[GTK_STATE_NORMAL],
+				                   &cls_node_from->canvas->style->text[GTK_STATE_NORMAL],
 				                   "last_arrowhead", TRUE,
 				                   "arrow_shape_a", 10.0,
 				                   "arrow_shape_b", 10.0,
@@ -851,7 +856,7 @@ cls_node_ensure_draw (gpointer klass_id, ClsNode *cls_node, ClsBox *bounding_box
 	y = cls_node->y1;
 	gnome_canvas_item_w2i (cls_node->canvas_group, &x, &y);
 	gnome_canvas_item_move (cls_node->canvas_group, x, y);
-	g_list_foreach (cls_node->edges, (GFunc) cls_node_draw_edge, cls_node);
+	g_hash_table_foreach (cls_node->edges_to, (GHFunc) cls_node_draw_edge, cls_node);
 }
 
 /*----------------------------------------------------------------------------

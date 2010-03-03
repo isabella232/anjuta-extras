@@ -65,7 +65,10 @@ typedef struct
 	GHashTable *members;
 
 	/* All outgoing edges from this node */
-	GList *edges;
+	GHashTable *edges_to;
+
+	/* All inbound edges to this node */
+	GHashTable *edges_from;
 } ClsNode;
 
 typedef struct {
