@@ -23,6 +23,9 @@
 #include "class-inherit.h"
 
 gint on_canvas_event (GnomeCanvasItem *item, GdkEvent *event, gpointer data);
+gint on_canvas_event_proxy (GnomeCanvasItem *item, GdkEvent *event,
+                            GnomeCanvasItem *proxy_item);
+
 void on_update_menu_item_selected (GtkMenuItem *item, 
                                    AnjutaClassInheritance *plugin);
 void on_style_set (GtkWidget *widget, GtkStyle  *previous_style,
