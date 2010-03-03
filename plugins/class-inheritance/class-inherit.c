@@ -863,9 +863,7 @@ cls_inherit_draw (AnjutaClassInheritance *plugin)
 	ClsBox bounds;
 
 	gvLayout (plugin->gvc, plugin->graph, "dot");
-	/* DEBUG */
-	/* gvRenderFilename (plugin->gvc, plugin->graph, "png", "class-inheritance-test.png"); */
-	
+
 	/* set the size of the canvas. We need this to set the scrolling.. */
 	bounds.x1 = 0;
 	bounds.y1 = 0;
@@ -875,13 +873,9 @@ cls_inherit_draw (AnjutaClassInheritance *plugin)
 	g_hash_table_foreach (plugin->nodes, (GHFunc) cls_node_ensure_draw, &bounds);
 	
 	/* Request extra 20px along x and y for 10px margin around the canvas */
-	gtk_widget_set_size_request (plugin->canvas,
-	                             bounds.x2 - bounds.x1 + 20,
-	                             bounds.y2 - bounds.y1 + 20);
 	gnome_canvas_set_scroll_region (GNOME_CANVAS (plugin->canvas),
 	                                bounds.x1 - 10, bounds.y1 - 10,
 	                                bounds.x2 + 10, bounds.y2 + 10);
-
 	gvFreeLayout(plugin->gvc, plugin->graph);
 }
 
@@ -975,11 +969,13 @@ cls_inherit_update (AnjutaClassInheritance *plugin)
 			parent_symbol = IANJUTA_SYMBOL (parents);
 			parent_id = ianjuta_symbol_get_id (parent_symbol, NULL);
 			
-			parent_node = g_hash_table_lookup (plugin->nodes, GINT_TO_POINTER (parent_id));
+			parent_node = g_hash_table_lookup (plugin->nodes,
+			                                   GINT_TO_POINTER (parent_id));
 			if (!parent_node)
 			{
 				parent_node = cls_inherit_create_node (plugin, parent_symbol);
-				g_hash_table_insert (plugin->nodes, GINT_TO_POINTER (parent_id), parent_node);
+				g_hash_table_insert (plugin->nodes, GINT_TO_POINTER (parent_id),
+				                     parent_node);
 			}
 			cls_node_add_edge (parent_node, cls_node);
 		} while (ianjuta_iterable_next (parents, NULL) == TRUE);
@@ -1051,23 +1047,17 @@ cls_inherit_init (AnjutaClassInheritance *plugin)
 	cls_inherit_graph_init (plugin, _(DEFAULT_GRAPH_NAME));
 	
 	s_window = gtk_scrolled_window_new (NULL, NULL);
-	plugin->canvas = gnome_canvas_new ();
-	/*gtk_widget_modify_bg (plugin->canvas, GTK_STATE_NORMAL,
-	                        &plugin->canvas->style->base[GTK_STATE_NORMAL]);*/
 	gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (s_window),
 	                                GTK_POLICY_AUTOMATIC, 
 	                                GTK_POLICY_AUTOMATIC);
-	gtk_scrolled_window_add_with_viewport (GTK_SCROLLED_WINDOW (s_window),
-	                                       plugin->canvas);
-
-	gtk_widget_set_size_request (plugin->canvas, CANVAS_MIN_SIZE,
-	                             CANVAS_MIN_SIZE);
+	plugin->canvas = gnome_canvas_new ();
 	gnome_canvas_set_scroll_region (GNOME_CANVAS (plugin->canvas),
 	                                -CANVAS_MIN_SIZE/2, 
 	                                -CANVAS_MIN_SIZE/2,
 	                                CANVAS_MIN_SIZE/2,
 	                                CANVAS_MIN_SIZE/2);
-
+	gtk_container_add (GTK_CONTAINER (s_window), plugin->canvas);
+	
 	/* Use text background (normally white) for canvas background */
 	gtk_widget_modify_bg (plugin->canvas, GTK_STATE_NORMAL,
 	                      &plugin->canvas->style->base[GTK_STATE_NORMAL]);
@@ -1102,7 +1092,6 @@ cls_inherit_init (AnjutaClassInheritance *plugin)
 	/* set the user data on update selection */
 	gtk_menu_shell_append (GTK_MENU_SHELL (plugin->menu), menu_item);
 	gtk_widget_show_all (plugin->menu);
-
 
 	plugin->update = menu_item;
 
