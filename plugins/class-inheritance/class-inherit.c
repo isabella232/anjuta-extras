@@ -169,6 +169,11 @@ cls_node_add_edge (ClsNode *cls_node_from, ClsNode *cls_node_to)
 
 	g_return_val_if_fail (cls_node_from->graph != NULL, FALSE);
 
+	/* Check if the edge already exists */
+	cls_edge = g_hash_table_lookup (cls_node_from->edges_to, cls_node_to);
+	if (cls_edge)
+		return TRUE;
+	
 	cls_edge = g_new0 (ClsNodeEdge, 1);
 	cls_edge->cls_node_from = cls_node_from;
 	cls_edge->cls_node_to = cls_node_to;
@@ -184,6 +189,32 @@ cls_node_add_edge (ClsNode *cls_node_from, ClsNode *cls_node_to)
 	g_hash_table_insert (cls_node_from->edges_to, cls_node_to, cls_edge);
 	g_hash_table_insert (cls_node_to->edges_from, cls_node_from, cls_edge);
 	return TRUE;
+}
+
+static void
+on_cls_node_unlink_from_foreach (ClsNode *cls_node_from, ClsNodeEdge *cls_edge,
+                            ClsNode *cls_node_to)
+{
+	g_hash_table_remove (cls_node_from->edges_to, cls_node_to);
+}
+
+static void
+on_cls_node_unlink_to_foreach (ClsNode *cls_node_to, ClsNodeEdge *cls_edge,
+                            ClsNode *cls_node_from)
+{
+	/* This is will also free cls_edge */
+	g_hash_table_remove (cls_node_to->edges_from, cls_node_from);
+}
+
+static void
+cls_node_unlink (ClsNode *cls_node)
+{
+	g_hash_table_foreach (cls_node->edges_from,
+	                      (GHFunc) on_cls_node_unlink_from_foreach,
+	                      cls_node);
+	g_hash_table_foreach (cls_node->edges_to,
+	                      (GHFunc) on_cls_node_unlink_to_foreach,
+	                      cls_node);
 }
 
 /*----------------------------------------------------------------------------
@@ -884,6 +915,20 @@ cls_inherit_draw (AnjutaClassInheritance *plugin)
 	gvFreeLayout(plugin->gvc, plugin->graph);
 }
 
+static void
+on_cls_node_mark_for_deletion (gpointer key, ClsNode *cls_node, gpointer data)
+{
+	cls_node->marked_for_deletion = TRUE;
+}
+
+static gboolean
+on_cls_node_delete_marked (gpointer key, ClsNode *cls_node, gpointer data)
+{
+	if (!cls_node->marked_for_deletion) return FALSE;
+	cls_node_unlink (cls_node);
+	return TRUE;
+}
+
 /*----------------------------------------------------------------------------
  * update the internal graphviz graph-structure, then redraw the graph on the 
  * canvas
@@ -898,19 +943,18 @@ cls_inherit_update (AnjutaClassInheritance *plugin)
 
 	g_return_if_fail (plugin != NULL);
 
-	/* Recycle graphic engine */
-	cls_inherit_clear (plugin);
-	
+	/* Mark all nodes for deletion. Selectively, they will be unmarked below */
+	g_hash_table_foreach (plugin->nodes,
+	                      (GHFunc) on_cls_node_mark_for_deletion,
+	                      NULL);
+
 	if (plugin->top_dir == NULL)
-		return;
+		goto cleanup;
 	
 	sm = anjuta_shell_get_interface (ANJUTA_PLUGIN (plugin)->shell,
 									 IAnjutaSymbolManager, NULL);
 	if (!sm)
-	{
-		/* fixme: clean grahp here */
-		return;
-	}
+		goto cleanup;
 	
 	/* Get all classes */	
 	iter = ianjuta_symbol_manager_search (sm, IANJUTA_SYMBOL_TYPE_CLASS, 
@@ -922,14 +966,14 @@ cls_inherit_update (AnjutaClassInheritance *plugin)
 	if (!iter)
 	{
 		DEBUG_PRINT ("%s", "cls_inherit_update_graph (): search returned no items.");
-		return;
+		goto cleanup;
 	}
 	
 	ianjuta_iterable_first (iter, NULL);
 	if (ianjuta_iterable_get_length (iter, NULL) <= 0)
 	{
 		g_object_unref (iter);
-		return;
+		goto cleanup;
 	}
 	do 
 	{
@@ -964,6 +1008,7 @@ cls_inherit_update (AnjutaClassInheritance *plugin)
 			cls_node = cls_inherit_create_node (plugin, symbol);
 			g_hash_table_insert (plugin->nodes, GINT_TO_POINTER (klass_id), cls_node);
 		}
+		cls_node->marked_for_deletion = FALSE;
 
 		/* Get parents */
 		do 
@@ -982,6 +1027,7 @@ cls_inherit_update (AnjutaClassInheritance *plugin)
 				g_hash_table_insert (plugin->nodes, GINT_TO_POINTER (parent_id),
 				                     parent_node);
 			}
+			parent_node->marked_for_deletion = FALSE;
 			cls_node_add_edge (parent_node, cls_node);
 		} while (ianjuta_iterable_next (parents, NULL) == TRUE);
 		g_object_unref (parents);
@@ -989,6 +1035,13 @@ cls_inherit_update (AnjutaClassInheritance *plugin)
 	} while (ianjuta_iterable_next (iter, NULL) == TRUE);
 
 	g_object_unref (iter);
+
+cleanup:
+	
+	/* Delete all marked nodes that did not get unmarked above. */
+	g_hash_table_foreach_remove (plugin->nodes,
+	                             (GHRFunc) on_cls_node_delete_marked,
+	                             NULL);
 
 	cls_inherit_draw (plugin);
 }

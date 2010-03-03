@@ -69,6 +69,10 @@ typedef struct
 
 	/* All inbound edges to this node */
 	GHashTable *edges_from;
+
+	/* Used during update scan */
+	gboolean marked_for_deletion;
+	
 } ClsNode;
 
 typedef struct {
