@@ -53,6 +53,8 @@
 #define INCH_TO_PIXELS(inch_size) \
 				INCH_TO_PIXELS_CONVERSION_FACTOR * inch_size
 
+#define NODE_EDGE_ARROW_LENGTH 10
+
 /* TODO: check for symbol_updated event, and check in the nodestatus's hashtable
 for the nodes that are gone. In case remove them.
 */
@@ -681,6 +683,25 @@ cls_node_draw_collapsed (ClsNode *cls_node)
 	                       NULL);
 }
 
+/* This function determins NODE_EDGE_ARROW_LENGTH long arrow destination
+ * as a projection of (x1, y1) - (x2, y2) line.
+ */
+static gboolean
+create_canvas_edge_arrow_ending (double x1, double y1, double x2, double y2,
+                                 double *end_x, double *end_y)
+{
+	double x = x2 - x1;
+	double y = y2 - y1;
+	double h1 = sqrt(y * y + x * x);
+
+	if (h1 == 0) /* Overlapping points, no direction! */
+		return FALSE;
+	
+	*end_x = x2 + NODE_EDGE_ARROW_LENGTH * x / h1;
+	*end_y = y2 + NODE_EDGE_ARROW_LENGTH * y / h1;
+	return TRUE;
+}
+
 static void
 cls_node_draw_edge (ClsNodeEdge *cls_edge, ClsNode *cls_node)
 {
@@ -737,16 +758,27 @@ cls_node_draw_edge (ClsNodeEdge *cls_edge, ClsNode *cls_node)
 	/* let's draw a canvas_line with an arrow-end */
 	points = gnome_canvas_points_new (2);
 
-	/* starting point */
-	points->coords[0] = ((ED_spl(edge))->list->list[num_points - 2]).x;
-	points->coords[1] =
-		GRAPH_TO_CANVAS_Y (((ED_spl(edge))->list->list[num_points - 2]).y);
+	/* Arrow end position */
+	/* Sometimes, last 2 points overlap, resulting in failure to determine
+	 * next point, track back until there is a usable pair of points.
+	 */
+	do
+	{
+		num_points--;
+		
+		/* starting point */
+		points->coords[0] = ((ED_spl(edge))->list->list[num_points]).x;
+		points->coords[1] =
+			GRAPH_TO_CANVAS_Y (((ED_spl(edge))->list->list[num_points]).y);
 	
-	/* pointer */
-	points->coords[2] = ((ED_spl(edge))->list->list[num_points - 1]).x;
-	points->coords[3] =
-		GRAPH_TO_CANVAS_Y (((ED_spl(edge))->list->list[num_points - 1]).y);
-	
+	}
+	while (num_points > 0 &&
+	       !create_canvas_edge_arrow_ending (((ED_spl(edge))->list->list[num_points - 1]).x,
+			                                 GRAPH_TO_CANVAS_Y (((ED_spl(edge))->list->list[num_points - 1]).y),
+			                                 ((ED_spl(edge))->list->list[num_points]).x,
+			                                 GRAPH_TO_CANVAS_Y (((ED_spl(edge))->list->list[num_points]).y),
+			                                 &points->coords[2], &points->coords[3]));
+
 	if (cls_edge->canvas_arrow)
 	{
 		gnome_canvas_item_set (cls_edge->canvas_arrow,
@@ -989,7 +1021,6 @@ cls_inherit_free (AnjutaClassInheritance *plugin)
 	}
 	plugin->graph = NULL;
 	plugin->gvc = NULL;
-	plugin->layout_started = FALSE;
 }
 
 /*----------------------------------------------------------------------------
@@ -1005,7 +1036,6 @@ cls_inherit_graph_init (AnjutaClassInheritance *plugin, gchar* graph_label)
 	aginit ();
 	plugin->graph = agopen (graph_label, AGDIGRAPH);
 	plugin->gvc = gvContext();
-	plugin->layout_started = FALSE;
 	
 	if (!(sym = agfindattr(plugin->graph->proto->n, "dpi")))
 		sym = agraphattr(plugin->graph, "dpi", dpi_text);
