@@ -130,8 +130,12 @@ create_canvas_line_item (GnomeCanvasGroup *canvas_group, GdkColor *fill_color,
 static void
 cls_node_item_free (ClsNodeItem *cls_item)
 {
-	g_free (cls_item->sym_name);
+	g_free (cls_item->label);
 	g_free (cls_item->args);
+	g_free (cls_item->kind);
+	g_free (cls_item->type);
+	g_free (cls_item->type_name);
+	g_free (cls_item->access);
 	if (cls_item->file)
 		g_object_unref (cls_item->file);
 	if (cls_item->icon)
@@ -359,7 +363,9 @@ cls_node_expand (ClsNode *cls_node, ClsNodeExpansionType expansion_type)
 	/* get members from the passed symbol node */
 	iter = ianjuta_symbol_manager_get_members (cls_node->sym_manager, node_sym,
 	                                           IANJUTA_SYMBOL_FIELD_SIMPLE|
+	                                           IANJUTA_SYMBOL_FIELD_KIND |
 	                                           IANJUTA_SYMBOL_FIELD_TYPE |
+	                                           IANJUTA_SYMBOL_FIELD_TYPE_NAME |
 	                                           IANJUTA_SYMBOL_FIELD_ACCESS |
 	                                           IANJUTA_SYMBOL_FIELD_FILE_PATH,
 	                                           NULL);
@@ -386,7 +392,7 @@ cls_node_expand (ClsNode *cls_node, ClsNodeExpansionType expansion_type)
 		/* First member variables */
 		do
 		{
-			const gchar *name, *args;
+			const gchar *name, *args, *kind, *type, *type_name, *access;
 			IAnjutaSymbol *symbol;
 			GdkPixbuf *icon;
 			
@@ -394,21 +400,29 @@ cls_node_expand (ClsNode *cls_node, ClsNodeExpansionType expansion_type)
 			name = g_strdup (ianjuta_symbol_get_name (symbol, NULL));
 			args = ianjuta_symbol_get_args (symbol, NULL);
 			icon = (GdkPixbuf*) ianjuta_symbol_get_icon (symbol, NULL);
+			kind = ianjuta_symbol_get_extra_info_string (symbol, IANJUTA_SYMBOL_FIELD_KIND, NULL);
+			type = ianjuta_symbol_get_extra_info_string (symbol, IANJUTA_SYMBOL_FIELD_TYPE, NULL);
+			type_name = ianjuta_symbol_get_extra_info_string (symbol, IANJUTA_SYMBOL_FIELD_TYPE_NAME, NULL);
+			access = ianjuta_symbol_get_extra_info_string (symbol, IANJUTA_SYMBOL_FIELD_ACCESS, NULL);
 			
 			if (!args) /* Member variables */
 			{
 				ClsNodeItem *cls_item = g_new0 (ClsNodeItem, 1);
 				cls_item->cls_node = cls_node;
-				cls_item->sym_name = g_strdup (name);
+				cls_item->label = g_strconcat (name, " : ", type_name, NULL);
+				cls_item->kind = g_strdup (kind);
+				cls_item->type = g_strdup (type);
+				cls_item->type_name = g_strdup (type_name);
+				cls_item->access = g_strdup (access);
 				cls_item->order = var_order++;
 				if (icon)
 					gdk_pixbuf_ref (icon);
 				cls_item->icon = icon;
 				
 				g_hash_table_insert (cls_node->members,
-				                     g_strdup (cls_item->sym_name),
+				                     g_strdup (cls_item->label),
 				                     cls_item);
-				g_string_append_printf (label, "|%s", cls_item->sym_name);
+				g_string_append_printf (label, "|%s", cls_item->label);
 
 				/* Setup file and line */
 				cls_item->line = ianjuta_symbol_get_line (symbol, NULL);
@@ -444,14 +458,18 @@ cls_node_expand (ClsNode *cls_node, ClsNodeExpansionType expansion_type)
 				{
 					ClsNodeItem *cls_item = g_new0 (ClsNodeItem, 1);
 					cls_item->cls_node = cls_node;
-					cls_item->sym_name = g_strconcat (name, "()", NULL);
+					cls_item->label = g_strconcat (name, "()", NULL);
 					cls_item->args = g_strdup (args);
+					cls_item->kind = g_strdup (kind);
+					cls_item->type = g_strdup (type);
+					cls_item->type_name = g_strdup (type_name);
+					cls_item->access = g_strdup (access);
 					cls_item->order = method_order++;
 					if (icon)
 						gdk_pixbuf_ref (icon);
 					cls_item->icon = icon;
 					
-					g_string_append_printf (label, "|%s()", cls_item->sym_name);
+					g_string_append_printf (label, "|%s", cls_item->label);
 					g_hash_table_insert (cls_node->members, method_key,
 					                     cls_item);
 					
@@ -590,7 +608,7 @@ cls_node_draw_expanded (ClsNode *cls_node)
 		text_item =
 			gnome_canvas_item_new (GNOME_CANVAS_GROUP (cls_node->canvas_group),
 			                       gnome_canvas_text_get_type (),
-			                       "text", node_item->sym_name,
+			                       "text", node_item->label,
 			                       "justification", GTK_JUSTIFY_CENTER,
 			                       "anchor", GTK_ANCHOR_CENTER,
 			                       "x", (gdouble) 20.0,
