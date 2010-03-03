@@ -401,7 +401,8 @@ cls_node_expand (ClsNode *cls_node, ClsNodeExpansionType expansion_type)
 				cls_item->cls_node = cls_node;
 				cls_item->sym_name = g_strdup (name);
 				cls_item->order = var_order++;
-				gdk_pixbuf_ref (icon);
+				if (icon)
+					gdk_pixbuf_ref (icon);
 				cls_item->icon = icon;
 				
 				g_hash_table_insert (cls_node->members,
@@ -446,7 +447,8 @@ cls_node_expand (ClsNode *cls_node, ClsNodeExpansionType expansion_type)
 					cls_item->sym_name = g_strconcat (name, "()", NULL);
 					cls_item->args = g_strdup (args);
 					cls_item->order = method_order++;
-					gdk_pixbuf_ref (icon);
+					if (icon)
+						gdk_pixbuf_ref (icon);
 					cls_item->icon = icon;
 					
 					g_string_append_printf (label, "|%s()", cls_item->sym_name);
