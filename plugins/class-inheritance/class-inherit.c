@@ -501,7 +501,7 @@ on_cls_node_item_compare (ClsNodeItem *a, ClsNodeItem *b)
 static void
 cls_node_draw_expanded (ClsNode *cls_node)
 {
-	GnomeCanvasItem *canvas_item;
+	GnomeCanvasItem *canvas_item, *text_item;
 	gint item_height, j;
 	GList *members, *member;
 
@@ -548,17 +548,22 @@ cls_node_draw_expanded (ClsNode *cls_node)
 	                          cls_node->width - item_height,
 	                          0, cls_node->width, item_height);
 	/* Class title text */
-	gnome_canvas_item_new (GNOME_CANVAS_GROUP (cls_node->canvas_group),
-	                       gnome_canvas_text_get_type (),
-	                       "text", cls_node->sym_name,
-	                       "justification", GTK_JUSTIFY_CENTER,
-	                       "anchor", GTK_ANCHOR_CENTER,
-	                       "x", (gdouble) 20.0,
-	                       "y", (gdouble) (j + 0.5) * item_height,
-	                       "fill_color_gdk",
-	                       &cls_node->canvas->style->text[GTK_STATE_NORMAL],
-	                       "anchor", GTK_ANCHOR_W,
-	                       NULL);
+	text_item = 
+		gnome_canvas_item_new (GNOME_CANVAS_GROUP (cls_node->canvas_group),
+			                   gnome_canvas_text_get_type (),
+			                   "text", cls_node->sym_name,
+			                   "justification", GTK_JUSTIFY_CENTER,
+			                   "anchor", GTK_ANCHOR_CENTER,
+			                   "x", (gdouble) 20.0,
+			                   "y", (gdouble) (j + 0.5) * item_height,
+			                   "fill_color_gdk",
+			                   &cls_node->canvas->style->text[GTK_STATE_NORMAL],
+			                   "anchor", GTK_ANCHOR_W,
+			                   NULL);
+	g_signal_connect (GTK_OBJECT (text_item), "event",
+	                  G_CALLBACK (on_canvas_event_proxy),
+					  canvas_item);
+	
 	/* Member items */
 	j = 1;
 	for (member = members; member; member = member->next) 
@@ -582,17 +587,22 @@ cls_node_draw_expanded (ClsNode *cls_node)
 						  node_item);
 	
 		/* Member item text */
-		gnome_canvas_item_new (GNOME_CANVAS_GROUP (cls_node->canvas_group),
-			                   gnome_canvas_text_get_type (),
-			                   "text", node_item->sym_name,
-			                   "justification", GTK_JUSTIFY_CENTER,
-			                   "anchor", GTK_ANCHOR_CENTER,
-			                   "x", (gdouble) 20.0,
-			                   "y", (gdouble) (j + 0.5) * item_height,
-			                   "fill_color_gdk",
-			                   &cls_node->canvas->style->text[GTK_STATE_NORMAL],
-			                   "anchor", GTK_ANCHOR_W,
-			                   NULL);
+		text_item =
+			gnome_canvas_item_new (GNOME_CANVAS_GROUP (cls_node->canvas_group),
+			                       gnome_canvas_text_get_type (),
+			                       "text", node_item->sym_name,
+			                       "justification", GTK_JUSTIFY_CENTER,
+			                       "anchor", GTK_ANCHOR_CENTER,
+			                       "x", (gdouble) 20.0,
+			                       "y", (gdouble) (j + 0.5) * item_height,
+			                       "fill_color_gdk",
+			                       &cls_node->canvas->style->text[GTK_STATE_NORMAL],
+			                       "anchor", GTK_ANCHOR_W,
+			                       NULL);
+		g_signal_connect (GTK_OBJECT (text_item), "event",
+		                  G_CALLBACK (on_canvas_event_proxy),
+		                  node_item->canvas_node_item);
+
 		/* Member item icon */
 		if (node_item->icon)
 			gnome_canvas_item_new (GNOME_CANVAS_GROUP (cls_node->canvas_group),
@@ -631,17 +641,22 @@ cls_node_draw_expanded (ClsNode *cls_node)
 						  cls_node);
 	
 		/* More expand item text */
-		gnome_canvas_item_new (GNOME_CANVAS_GROUP (cls_node->canvas_group),
-			                   gnome_canvas_text_get_type (),
-			                   "text",  NODE_SHOW_ALL_MEMBERS_STR,
-			                   "justification", GTK_JUSTIFY_CENTER,
-			                   "anchor", GTK_ANCHOR_CENTER,
-			                   "x", (gdouble) 20.0,
-			                   "y", (gdouble) (j + 0.5) * item_height,
-			                   "fill_color_gdk",
-			                   &cls_node->canvas->style->text[GTK_STATE_NORMAL],
-			                   "anchor", GTK_ANCHOR_W,
-			                   NULL);
+		text_item = 
+			gnome_canvas_item_new (GNOME_CANVAS_GROUP (cls_node->canvas_group),
+					               gnome_canvas_text_get_type (),
+					               "text",  NODE_SHOW_ALL_MEMBERS_STR,
+					               "justification", GTK_JUSTIFY_CENTER,
+					               "anchor", GTK_ANCHOR_CENTER,
+					               "x", (gdouble) 20.0,
+					               "y", (gdouble) (j + 0.5) * item_height,
+					               "fill_color_gdk",
+					               &cls_node->canvas->style->text[GTK_STATE_NORMAL],
+					               "anchor", GTK_ANCHOR_W,
+					               NULL);
+		g_signal_connect (GTK_OBJECT (text_item), "event",
+			              G_CALLBACK (on_canvas_event_proxy),
+			              canvas_item);
+
 		create_canvas_line_item (GNOME_CANVAS_GROUP (cls_node->canvas_group),
 		                         &cls_node->canvas->style->text[GTK_STATE_NORMAL],
 		                         0, j * item_height,
@@ -664,7 +679,7 @@ cls_node_draw_expanded (ClsNode *cls_node)
 static void
 cls_node_draw_collapsed (ClsNode *cls_node) 
 {
-	GnomeCanvasItem *item;
+	GnomeCanvasItem *item, *text_item;
 	gdouble text_width_value;
 
 	g_return_if_fail (cls_node->agnode != NULL);
@@ -702,21 +717,25 @@ cls_node_draw_collapsed (ClsNode *cls_node)
 					  cls_node);
 
 	/* --- text --- */
-	item = gnome_canvas_item_new (GNOME_CANVAS_GROUP (cls_node->canvas_group),
-								  gnome_canvas_text_get_type (),
-								  "text", cls_node->sym_name,
-								  "justification", GTK_JUSTIFY_CENTER,
-								  "anchor", GTK_ANCHOR_CENTER,
-								  "x", (gdouble) 0.0,
-								  "y", (gdouble) cls_node->height/2,
-								  "fill_color_gdk",
-								  &cls_node->canvas->style->text[GTK_STATE_NORMAL],
-								  "anchor", GTK_ANCHOR_W,        
-								  NULL );
+	text_item =
+		gnome_canvas_item_new (GNOME_CANVAS_GROUP (cls_node->canvas_group),
+		                       gnome_canvas_text_get_type (),
+		                       "text", cls_node->sym_name,
+		                       "justification", GTK_JUSTIFY_CENTER,
+		                       "anchor", GTK_ANCHOR_CENTER,
+		                       "x", (gdouble) 0.0,
+		                       "y", (gdouble) cls_node->height/2,
+		                       "fill_color_gdk",
+		                       &cls_node->canvas->style->text[GTK_STATE_NORMAL],
+		                       "anchor", GTK_ANCHOR_W,        
+		                       NULL );
+	g_signal_connect (GTK_OBJECT (text_item), "event",
+	                  G_CALLBACK (on_canvas_event_proxy), item);
+	
 	/* center the text in the node... */
-	g_object_get (item, "text_width", &text_width_value, NULL);
+	g_object_get (text_item, "text_width", &text_width_value, NULL);
 						
-	gnome_canvas_item_set (item,
+	gnome_canvas_item_set (text_item,
 	                       "x", (gdouble)((cls_node->width/2 - text_width_value/2)),
 	                       NULL);
 }

@@ -52,6 +52,16 @@ on_canvas_event (GnomeCanvasItem *item, GdkEvent *event, gpointer data)
 }
 
 gint
+on_canvas_event_proxy (GnomeCanvasItem *item, GdkEvent *event,
+                       GnomeCanvasItem *proxy_item)
+{
+	gint ret;
+
+	g_signal_emit_by_name (G_OBJECT (proxy_item), "event", event, &ret);
+	return ret;
+}
+
+gint
 on_expanded_class_title_event (GnomeCanvasItem *item, GdkEvent *event,
                                ClsNode *cls_node)
 {
