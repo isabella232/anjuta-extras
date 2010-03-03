@@ -87,8 +87,9 @@ typedef struct {
 	ClsNode *cls_node;
 	GnomeCanvasItem* canvas_node_item;
 	gint sym_id;
-	gchar *sym_name;
+	gchar *label;
 	gchar *args;
+	gchar *kind, *type, *type_name, *access;
 	GFile *file;
 	gint line;
 	GdkPixbuf *icon;
