@@ -86,6 +86,7 @@ typedef struct {
 typedef struct {
 	ClsNode *cls_node;
 	GnomeCanvasItem* canvas_node_item;
+
 	gint sym_id;
 	gchar *label;
 	gchar *args;
@@ -93,14 +94,22 @@ typedef struct {
 	GFile *file;
 	gint line;
 	GdkPixbuf *icon;
+
+	/* The order in which this item is shown in the list */
 	gint order;
+
+	/* Tooltip shown on item hover */
+	GnomeCanvasItem *tooltip;
+
+	/* Tooltip timout id */
+	guint tooltip_timeout;
+	
 } ClsNodeItem;
 
 gboolean cls_node_collapse (ClsNode *cls_node);
 gboolean cls_node_expand (ClsNode *cls_node, ClsNodeExpansionType expand_type);
 
 void cls_inherit_init (AnjutaClassInheritance *plugin);
-void cls_inherit_layout (AnjutaClassInheritance *plugin);
 void cls_inherit_draw (AnjutaClassInheritance *plugin);
 void cls_inherit_update (AnjutaClassInheritance *plugin);
 void cls_inherit_clear (AnjutaClassInheritance *plugin);

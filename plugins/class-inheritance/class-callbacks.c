@@ -78,7 +78,6 @@ on_expanded_class_title_event (GnomeCanvasItem *item, GdkEvent *event,
 		break;
 		
 	case GDK_ENTER_NOTIFY:		/* mouse entered in item's area */
-		/* Make the outline wide */
 		gnome_canvas_item_set (item,
 							   "fill_color_gdk",
 							   &cls_node->canvas->style->bg[GTK_STATE_PRELIGHT],
@@ -86,7 +85,6 @@ on_expanded_class_title_event (GnomeCanvasItem *item, GdkEvent *event,
 		return TRUE;
 
 	case GDK_LEAVE_NOTIFY:		/* mouse exited item's area */
-		/* Make the outline thin */
 		gnome_canvas_item_set (item,
 							   "fill_color_gdk",
 							   &cls_node->canvas->style->bg[GTK_STATE_ACTIVE],
@@ -94,6 +92,135 @@ on_expanded_class_title_event (GnomeCanvasItem *item, GdkEvent *event,
 		return TRUE;
 	default:
 		break;
+	}
+	return FALSE;
+}
+
+static GnomeCanvasItem*
+create_class_item_tooltip (GtkWidget *canvas, const gchar *tooltip_text)
+{
+	GtkWidget *styler;
+	GnomeCanvasItem *group, *canvas_item, *text_item;
+	gdouble text_width_value, text_height_value;
+
+	styler = gtk_label_new (NULL);
+	gtk_widget_set_name (styler, "gtk-tooltip");
+	gtk_widget_ensure_style (styler);
+	
+	group =
+		gnome_canvas_item_new (gnome_canvas_root
+			                   (GNOME_CANVAS (canvas)),
+			                   gnome_canvas_group_get_type (),
+			                   NULL);
+	
+	text_item =
+		gnome_canvas_item_new (GNOME_CANVAS_GROUP (group),
+					           gnome_canvas_text_get_type (),
+					           "text", tooltip_text,
+					           "justification", GTK_JUSTIFY_LEFT,
+					           "anchor", GTK_ANCHOR_CENTER,
+					           "fill_color_gdk",
+					           &canvas->style->text[GTK_STATE_NORMAL],
+					           NULL);
+
+	g_object_get (text_item, "text_width", &text_width_value,
+	              "text_height", &text_height_value, NULL);
+
+	gnome_canvas_item_set (text_item,
+	                       "x", (gdouble) 10 + text_width_value/2,
+				           "y", (gdouble) 10 + text_height_value/2,
+	                       	NULL);
+	/* Decoration */
+	GnomeCanvasPoints *points = gnome_canvas_points_new (8);
+	gint i = 0;
+	points->coords[i++] = 0;
+	points->coords[i++] = 0;
+	
+	points->coords[i++] = 30;
+	points->coords[i++] = 0;
+
+	points->coords[i++] = 40;
+	points->coords[i++] = -10;
+
+	points->coords[i++] = 50;
+	points->coords[i++] = 0;
+
+	points->coords[i++] = text_width_value + 20;
+	points->coords[i++] = 0;
+
+	points->coords[i++] = text_width_value + 20;
+	points->coords[i++] = text_height_value + 20;
+
+	points->coords[i++] = 0;
+	points->coords[i++] = text_height_value + 20;
+	
+	points->coords[i++] = 0;
+	points->coords[i++] = 0;
+
+	/* background */
+	canvas_item =
+		gnome_canvas_item_new (GNOME_CANVAS_GROUP (group),
+			                   gnome_canvas_polygon_get_type (),
+			                   "points", points,
+			                   "fill_color_gdk",
+			                   &styler->style->base[GTK_STATE_NORMAL],
+			                   NULL);
+	/* border */
+	canvas_item =
+		gnome_canvas_item_new (GNOME_CANVAS_GROUP (group),
+	                       gnome_canvas_line_get_type (),
+	                       "points", points,
+	                       "fill_color_gdk",
+	                       &canvas->style->text[GTK_STATE_NORMAL],
+	                       NULL);
+	/* shadow */
+	canvas_item =
+		gnome_canvas_item_new (GNOME_CANVAS_GROUP (group),
+	                       gnome_canvas_polygon_get_type (),
+	                       "points", points,
+	                       "fill_color_gdk",
+	                       &canvas->style->dark[GTK_STATE_ACTIVE],
+	                       NULL);
+	gnome_canvas_points_unref (points);
+
+	/* Lower shadow */
+	gnome_canvas_item_lower (canvas_item, 10);
+
+	/* Offset shadow */
+	gnome_canvas_item_move (canvas_item, 5, 5);
+
+	/* Raise text */
+	gnome_canvas_item_raise (text_item, 10);
+	return group;
+}
+
+static gboolean
+on_canvas_item_show_tooltip_timeout (ClsNodeItem *node_item)
+{
+	gchar *tooltip;
+	gdouble x, y, x1, x2, y2;
+	
+	if (node_item->tooltip)
+		gtk_object_destroy (GTK_OBJECT (node_item->tooltip));
+	node_item->tooltip = NULL;
+	
+	if (node_item->args && strlen (node_item->args) > 2)
+	{
+		tooltip = g_strdup_printf (_("Args: %s"), node_item->args);
+
+		node_item->tooltip =
+			create_class_item_tooltip (node_item->cls_node->canvas, tooltip);
+		g_free (tooltip);
+	
+		g_object_get (node_item->cls_node->canvas_group, "x", &x, "y", &y, NULL);
+		g_object_get (node_item->canvas_node_item, "x1", &x1, "x2", &x2,
+				      "y2", &y2, NULL);
+		x = x + x1 + 25;
+		y = y + y2 + 10;
+
+		gnome_canvas_item_w2i (node_item->tooltip, &x, &y);
+		gnome_canvas_item_move (node_item->tooltip, x, y);
+		node_item->tooltip_timeout = 0;
 	}
 	return FALSE;
 }
@@ -133,6 +260,16 @@ on_expanded_class_item_event (GnomeCanvasItem *item, GdkEvent *event,
 							   "fill_color_gdk",
 							   &node_item->cls_node->canvas->style->base[GTK_STATE_SELECTED],
 							   NULL);
+		/* Show tooltip */
+		if (!node_item->tooltip)
+		{
+			if (node_item->tooltip_timeout)
+				g_source_remove (node_item->tooltip_timeout);
+			node_item->tooltip_timeout =
+				g_timeout_add (500,
+				               (GSourceFunc)on_canvas_item_show_tooltip_timeout,
+				               node_item);
+		}
 		return TRUE;
 
 	case GDK_LEAVE_NOTIFY:		/* mouse exited item's area */
@@ -140,6 +277,14 @@ on_expanded_class_item_event (GnomeCanvasItem *item, GdkEvent *event,
 							   "fill_color_gdk",
 							   &node_item->cls_node->canvas->style->base[GTK_STATE_NORMAL],
 							   NULL);
+		/* Hide tooltip */
+		if (node_item->tooltip_timeout)
+			g_source_remove (node_item->tooltip_timeout);
+		node_item->tooltip_timeout = 0;
+		if (node_item->tooltip)
+			gtk_object_destroy (GTK_OBJECT (node_item->tooltip));
+		node_item->tooltip = NULL;
+		
 		return TRUE;
 	default:
 		break;

@@ -136,10 +136,18 @@ cls_node_item_free (ClsNodeItem *cls_item)
 	g_free (cls_item->type);
 	g_free (cls_item->type_name);
 	g_free (cls_item->access);
+
 	if (cls_item->file)
 		g_object_unref (cls_item->file);
 	if (cls_item->icon)
 		gdk_pixbuf_unref (cls_item->icon);
+	
+	if (cls_item->tooltip_timeout)
+		g_source_remove (cls_item->tooltip_timeout);
+
+	if (cls_item->tooltip)
+		gtk_object_destroy (GTK_OBJECT (cls_item->tooltip));
+
 	g_free (cls_item);
 }
 
