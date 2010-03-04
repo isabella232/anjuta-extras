@@ -466,7 +466,10 @@ cls_node_expand (ClsNode *cls_node, ClsNodeExpansionType expansion_type)
 				{
 					ClsNodeItem *cls_item = g_new0 (ClsNodeItem, 1);
 					cls_item->cls_node = cls_node;
-					cls_item->label = g_strconcat (name, "()", NULL);
+					if (strlen (args) > 2)
+						cls_item->label = g_strconcat (name, "(...)", NULL);
+					else
+						cls_item->label = g_strconcat (name, "()", NULL);
 					cls_item->args = g_strdup (args);
 					cls_item->kind = g_strdup (kind);
 					cls_item->type = g_strdup (type);
