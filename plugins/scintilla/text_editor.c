@@ -3297,8 +3297,6 @@ iassist_proposals(IAnjutaEditorAssist* iassist, IAnjutaProvider* provider,
 		
 		scintilla_send_message (SCINTILLA (te->scintilla), SCI_AUTOCCANCEL,
 								0, 0);
-		scintilla_send_message (SCINTILLA (te->scintilla), SCI_CALLTIPCANCEL,
-								0, 0);
 		return;
 	}
 
