@@ -3198,7 +3198,7 @@ ilinemode_iface_init (IAnjutaEditorLineModeIface *iface)
 
 static void 
 itip_show (IAnjutaEditorTip *itip, GList* tips,
-           IAnjutaIterable *position, gint char_alignment, GError **err)
+           IAnjutaIterable *position, GError **err)
 {
 	GString *calltip;
 	GList *tip;
