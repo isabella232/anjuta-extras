@@ -90,7 +90,7 @@ typedef struct {
 	gint sym_id;
 	gchar *label;
 	gchar *args;
-	gchar *kind, *type, *type_name, *access;
+	gchar *type_name;
 	GFile *file;
 	gint line;
 	GdkPixbuf *icon;

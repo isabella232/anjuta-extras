@@ -132,10 +132,7 @@ cls_node_item_free (ClsNodeItem *cls_item)
 {
 	g_free (cls_item->label);
 	g_free (cls_item->args);
-	g_free (cls_item->kind);
-	g_free (cls_item->type);
 	g_free (cls_item->type_name);
-	g_free (cls_item->access);
 
 	if (cls_item->file)
 		g_object_unref (cls_item->file);
@@ -400,7 +397,7 @@ cls_node_expand (ClsNode *cls_node, ClsNodeExpansionType expansion_type)
 		/* First member variables */
 		do
 		{
-			const gchar *name, *args, *kind, *type, *type_name, *access;
+			const gchar *name, *args, *type_name;
 			IAnjutaSymbol *symbol;
 			GdkPixbuf *icon;
 			
@@ -408,20 +405,14 @@ cls_node_expand (ClsNode *cls_node, ClsNodeExpansionType expansion_type)
 			name = g_strdup (ianjuta_symbol_get_name (symbol, NULL));
 			args = ianjuta_symbol_get_args (symbol, NULL);
 			icon = (GdkPixbuf*) ianjuta_symbol_get_icon (symbol, NULL);
-			kind = ianjuta_symbol_get_extra_info_string (symbol, IANJUTA_SYMBOL_FIELD_KIND, NULL);
-			type = ianjuta_symbol_get_extra_info_string (symbol, IANJUTA_SYMBOL_FIELD_TYPE, NULL);
-			type_name = ianjuta_symbol_get_extra_info_string (symbol, IANJUTA_SYMBOL_FIELD_TYPE_NAME, NULL);
-			access = ianjuta_symbol_get_extra_info_string (symbol, IANJUTA_SYMBOL_FIELD_ACCESS, NULL);
 			
 			if (!args) /* Member variables */
 			{
 				ClsNodeItem *cls_item = g_new0 (ClsNodeItem, 1);
+
+				type_name = ianjuta_symbol_get_extra_info_string (symbol, IANJUTA_SYMBOL_FIELD_TYPE_NAME, NULL);
 				cls_item->cls_node = cls_node;
 				cls_item->label = g_strconcat (name, " : ", type_name, NULL);
-				cls_item->kind = g_strdup (kind);
-				cls_item->type = g_strdup (type);
-				cls_item->type_name = g_strdup (type_name);
-				cls_item->access = g_strdup (access);
 				cls_item->order = var_order++;
 				if (icon)
 					gdk_pixbuf_ref (icon);
@@ -433,6 +424,7 @@ cls_node_expand (ClsNode *cls_node, ClsNodeExpansionType expansion_type)
 				g_string_append_printf (label, "|%s", cls_item->label);
 
 				/* Setup file and line */
+				cls_item->type_name = g_strdup (type_name);
 				cls_item->line = ianjuta_symbol_get_line (symbol, NULL);
 				cls_item->file = ianjuta_symbol_get_file (symbol, NULL);
 				g_object_ref (cls_item->file);
@@ -465,16 +457,28 @@ cls_node_expand (ClsNode *cls_node, ClsNodeExpansionType expansion_type)
 				else /* We did not find a member entry, create a new one */
 				{
 					ClsNodeItem *cls_item = g_new0 (ClsNodeItem, 1);
+					type_name = ianjuta_symbol_get_returntype (symbol, NULL);
+
 					cls_item->cls_node = cls_node;
-					if (strlen (args) > 2)
-						cls_item->label = g_strconcat (name, "(...)", NULL);
+					if (type_name)
+					{
+						if (strlen (args) > 2)
+							cls_item->label = g_strconcat (name, "(...)",
+							                               " : ", type_name,
+							                               NULL);
+						else
+							cls_item->label = g_strconcat (name, "()", " : ",
+							                               type_name, NULL);
+					}
 					else
-						cls_item->label = g_strconcat (name, "()", NULL);
+					{
+						if (strlen (args) > 2)
+							cls_item->label = g_strconcat (name, "(...)", NULL);
+						else
+							cls_item->label = g_strconcat (name, "()", NULL);
+					}
 					cls_item->args = g_strdup (args);
-					cls_item->kind = g_strdup (kind);
-					cls_item->type = g_strdup (type);
 					cls_item->type_name = g_strdup (type_name);
-					cls_item->access = g_strdup (access);
 					cls_item->order = method_order++;
 					if (icon)
 						gdk_pixbuf_ref (icon);
