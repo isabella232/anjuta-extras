@@ -567,7 +567,7 @@ cls_node_draw_expanded (ClsNode *cls_node)
 		                       "x2", (gdouble) cls_node->width,
 		                       "y2", (gdouble) item_height,
 		                       "fill_color_gdk",
-		                       &cls_node->canvas->style->bg[GTK_STATE_ACTIVE],
+		                       &cls_node->plugin->style[STYLE_TITLE_BG],
 		                       NULL);
 
 	g_signal_connect (GTK_OBJECT (canvas_item), "event",
@@ -577,7 +577,7 @@ cls_node_draw_expanded (ClsNode *cls_node)
 	/* Arrow on the right of class title */
 	create_canvas_arrow_item (GNOME_CANVAS_GROUP (cls_node->canvas_group),
 	                          CLS_ARROW_DIR_DOWN,
-	                          &cls_node->canvas->style->fg[GTK_STATE_NORMAL],
+	                          &cls_node->plugin->style[STYLE_TITLE_FG],
 	                          cls_node->width - item_height,
 	                          0, cls_node->width, item_height);
 	/* Class title text */
@@ -590,9 +590,10 @@ cls_node_draw_expanded (ClsNode *cls_node)
 			                   "x", (gdouble) 20.0,
 			                   "y", (gdouble) (j + 0.5) * item_height,
 			                   "fill_color_gdk",
-			                   &cls_node->canvas->style->text[GTK_STATE_NORMAL],
+			                   &cls_node->plugin->style[STYLE_TITLE_FG],
 			                   "anchor", GTK_ANCHOR_W,
 			                   NULL);
+	g_object_set_data (G_OBJECT (canvas_item), "__text__", text_item);
 	g_signal_connect (GTK_OBJECT (text_item), "event",
 	                  G_CALLBACK (on_canvas_event_proxy),
 					  canvas_item);
@@ -612,7 +613,7 @@ cls_node_draw_expanded (ClsNode *cls_node)
 				                   "x2", (gdouble) cls_node->width,
 				                   "y2", (gdouble) (j + 1) * item_height,
 				                   "fill_color_gdk",
-				                   &cls_node->canvas->style->base[GTK_STATE_NORMAL],
+				                   &cls_node->plugin->style[STYLE_ITEM_BG],
 				                   NULL);
 		g_signal_connect (GTK_OBJECT (node_item->canvas_node_item),
 			              "event",
@@ -629,9 +630,11 @@ cls_node_draw_expanded (ClsNode *cls_node)
 			                       "x", (gdouble) 20.0,
 			                       "y", (gdouble) (j + 0.5) * item_height,
 			                       "fill_color_gdk",
-			                       &cls_node->canvas->style->text[GTK_STATE_NORMAL],
+			                       &cls_node->plugin->style[STYLE_ITEM_FG],
 			                       "anchor", GTK_ANCHOR_W,
 			                       NULL);
+		g_object_set_data (G_OBJECT (node_item->canvas_node_item),
+		                   "__text__", text_item);
 		g_signal_connect (GTK_OBJECT (text_item), "event",
 		                  G_CALLBACK (on_canvas_event_proxy),
 		                  node_item->canvas_node_item);
@@ -647,7 +650,7 @@ cls_node_draw_expanded (ClsNode *cls_node)
 					               NULL);
 		if (node_item->order == 0 || j == 1) /* Variables and methods border */
 				create_canvas_line_item (GNOME_CANVAS_GROUP (cls_node->canvas_group),
-				                         &cls_node->canvas->style->text[GTK_STATE_NORMAL],
+				                         &cls_node->plugin->style[STYLE_FG],
 				                         0, j * item_height,
 				                         cls_node->width, j * item_height);
 		j++;
@@ -666,7 +669,7 @@ cls_node_draw_expanded (ClsNode *cls_node)
 				                   "x2", (gdouble) cls_node->width,
 				                   "y2", (gdouble) (j + 1) * item_height,
 				                   "fill_color_gdk",
-				                   &cls_node->canvas->style->bg[GTK_STATE_ACTIVE],
+				                   &cls_node->plugin->style[STYLE_TITLE_BG],
 				                   NULL);
 
 		g_signal_connect (GTK_OBJECT (canvas_item), "event",
@@ -683,15 +686,16 @@ cls_node_draw_expanded (ClsNode *cls_node)
 					               "x", (gdouble) 20.0,
 					               "y", (gdouble) (j + 0.5) * item_height,
 					               "fill_color_gdk",
-					               &cls_node->canvas->style->text[GTK_STATE_NORMAL],
+					               &cls_node->plugin->style[STYLE_TITLE_FG],
 					               "anchor", GTK_ANCHOR_W,
 					               NULL);
+		g_object_set_data (G_OBJECT (canvas_item), "__text__", text_item);
 		g_signal_connect (GTK_OBJECT (text_item), "event",
 			              G_CALLBACK (on_canvas_event_proxy),
 			              canvas_item);
 
 		create_canvas_line_item (GNOME_CANVAS_GROUP (cls_node->canvas_group),
-		                         &cls_node->canvas->style->text[GTK_STATE_NORMAL],
+		                         &cls_node->plugin->style[STYLE_FG],
 		                         0, j * item_height,
 		                         cls_node->width, j * item_height);
 	}
@@ -704,7 +708,7 @@ cls_node_draw_expanded (ClsNode *cls_node)
 							"x2", (gdouble) cls_node->width,
 							"y2", (gdouble) cls_node->height,
   						   "outline_color_gdk",
-							&cls_node->canvas->style->text[GTK_STATE_ACTIVE],
+							&cls_node->plugin->style[STYLE_FG],
 							"width_units", 1.0,
 							NULL);
 }
@@ -740,9 +744,9 @@ cls_node_draw_collapsed (ClsNode *cls_node)
 		                       "x2", (gdouble) cls_node->width,
 		                       "y2", (gdouble) cls_node->height,
 		                       "fill_color_gdk",
-		                       &cls_node->canvas->style->base[GTK_STATE_NORMAL],
+		                       &cls_node->plugin->style[STYLE_BG],
 		                       "outline_color_gdk",
-		                       &cls_node->canvas->style->text[GTK_STATE_NORMAL],
+		                       &cls_node->plugin->style[STYLE_FG],
 		                       "width_units", 1.0,
 		                       NULL);
 	g_signal_connect (GTK_OBJECT (item), "event",
@@ -759,9 +763,10 @@ cls_node_draw_collapsed (ClsNode *cls_node)
 		                       "x", (gdouble) 0.0,
 		                       "y", (gdouble) cls_node->height/2,
 		                       "fill_color_gdk",
-		                       &cls_node->canvas->style->text[GTK_STATE_NORMAL],
+		                       &cls_node->plugin->style[STYLE_FG],
 		                       "anchor", GTK_ANCHOR_W,        
 		                       NULL );
+	g_object_set_data (G_OBJECT (item), "__text__", text_item);
 	g_signal_connect (GTK_OBJECT (text_item), "event",
 	                  G_CALLBACK (on_canvas_event_proxy), item);
 	
@@ -837,7 +842,7 @@ cls_node_draw_edge (ClsNode *cls_node_to, ClsNodeEdge *cls_edge, ClsNode *cls_no
 				                   gnome_canvas_bpath_get_type(),
 				                   "bpath", path_def,
 				                   "outline_color_gdk",
-				                   &cls_node_from->canvas->style->text[GTK_STATE_NORMAL],
+				                   &cls_node_from->plugin->style[STYLE_FG],
 				                   "width_pixels", 2,
 				                   NULL);
 	}
@@ -883,7 +888,7 @@ cls_node_draw_edge (ClsNode *cls_node_to, ClsNodeEdge *cls_edge, ClsNode *cls_no
 				                   gnome_canvas_line_get_type(),
 				                   "points", points,
 				                   "fill_color_gdk",
-				                   &cls_node_from->canvas->style->text[GTK_STATE_NORMAL],
+				                   &cls_node_from->plugin->style[STYLE_FG],
 				                   "last_arrowhead", TRUE,
 				                   "arrow_shape_a", 10.0,
 				                   "arrow_shape_b", 10.0,
@@ -1169,22 +1174,19 @@ cls_inherit_init (AnjutaClassInheritance *plugin)
 	                                CANVAS_MIN_SIZE/2,
 	                                CANVAS_MIN_SIZE/2);
 	gtk_container_add (GTK_CONTAINER (s_window), plugin->canvas);
-	
-	/* Use text background (normally white) for canvas background */
-	gtk_widget_modify_bg (plugin->canvas, GTK_STATE_NORMAL,
-	                      &plugin->canvas->style->base[GTK_STATE_NORMAL]);
+
+	/* Initialize styles */
+	gtk_widget_ensure_style (plugin->canvas);
+	on_style_set (plugin->canvas, NULL, plugin);
 
 	g_signal_connect (G_OBJECT (plugin->canvas), "event",
 	                  G_CALLBACK (on_canvas_event),
 	                  plugin);
-	/*
-	g_signal_connect (G_OBJECT (plugin->canvas),
-	                  "style_set",
-	                  G_CALLBACK (on_style_set),
-	                  plugin);
-	*/
+	g_signal_connect (G_OBJECT (plugin->canvas), "style_set",
+	                  G_CALLBACK (on_style_set), plugin);
 
 	plugin->widget = gtk_vbox_new (FALSE, 2);
+	
 	/* --packing-- */
 	/* vbox */
 	gtk_box_pack_start (GTK_BOX (plugin->widget), s_window, TRUE, TRUE, TRUE);

@@ -41,6 +41,20 @@ extern GType class_inheritance_get_type (GTypeModule *module);
 typedef struct _AnjutaClassInheritance AnjutaClassInheritance;
 typedef struct _AnjutaClassInheritanceClass AnjutaClassInheritanceClass;
 
+enum {
+	STYLE_BG,
+	STYLE_FG,
+	STYLE_TITLE_BG,
+	STYLE_TITLE_FG,
+	STYLE_TITLE_PRELIGHT_FG,
+	STYLE_TITLE_PRELIGHT_BG,
+	STYLE_ITEM_BG,
+	STYLE_ITEM_FG,
+	STYLE_ITEM_PRELIGHT_FG,
+	STYLE_ITEM_PRELIGHT_BG,
+	N_STYLES
+};
+
 struct _AnjutaClassInheritance {
 	AnjutaPlugin parent;
 	
@@ -59,6 +73,9 @@ struct _AnjutaClassInheritance {
 	gchar *top_dir;
 	guint root_watch_id;
 	gint uiid;
+	
+	/* Style colors */
+	GdkColor style[N_STYLES];
 };
 
 struct _AnjutaClassInheritanceClass {

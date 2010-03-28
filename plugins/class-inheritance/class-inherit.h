@@ -72,7 +72,6 @@ typedef struct
 
 	/* Used during update scan */
 	gboolean marked_for_deletion;
-	
 } ClsNode;
 
 typedef struct {
