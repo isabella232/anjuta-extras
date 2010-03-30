@@ -1,6 +1,7 @@
 [encoding: UTF-8]
 # List of source files containing translatable strings.
 # Please keep this list in alphabetical order.
+plugins/class-inheritance/class-callbacks.c
 plugins/class-inheritance/class-inherit.c
 plugins/class-inheritance/plugin.c
 plugins/profiler/gprof-call-graph-block.c

@@ -4,12 +4,12 @@ dnl Created by Anjuta application wizard.
 AC_PREREQ(2.59)
 
 m4_define(anjuta_major_version,  2)
-m4_define(anjuta_minor_version, 29)
-m4_define(anjuta_micro_version,  2)
+m4_define(anjuta_minor_version, 30)
+m4_define(anjuta_micro_version,  0)
 m4_define(anjuta_nano_version, 0)
 m4_define(anjuta_version, anjuta_major_version.anjuta_minor_version.anjuta_micro_version.anjuta_nano_version)
 
-AC_INIT(anjuta-extras, 2.28.0)
+AC_INIT(anjuta-extras, 2.30.0)
 
 ANJUTA_EXTRAS_VERSION=anjuta_version
 AC_SUBST(ANJUTA_EXTRAS_VERSION)

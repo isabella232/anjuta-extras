@@ -1,3 +1,15 @@
+anjuta-extras 2.30.0 (30 March 2010) -- James Liggett
+
+Updates
+- Class inheritance plugin completely redone
+- Use Scintilla 2.03
+
+Bugs fixed:
+bgo #600923 -  anjuta-extras: ANJUTA_PLUGIN_LDFLAGS not defined
+bgo#585529 -  Replace AnjutaMessageArea with GtkInfoBar
+bgo #610738 -  Missing license.txt in anjuta-extras scintilla plugin
+symbol-db: Fixes bgo #612089 - Styles choosen for class-inheritance is broken for some themes
+
 anjuta-extras 2.28.0 (22 September 2009) -- Johannes Schmid
 
 Updates:
