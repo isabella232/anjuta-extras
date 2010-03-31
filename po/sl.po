@@ -1,4 +1,4 @@
-# Slovenian translation for anjuta-extras
+# Slovenian translation for anjuta-extras.
 # Copyright (C) 2005-2007 Free Software Foundation, Inc.
 # This file is distributed under the same license as the anjuta package.
 #
