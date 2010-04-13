@@ -55,7 +55,7 @@ struct _GProfFlatProfileClass
 };
 
 GType gprof_flat_profile_get_type (void);
-GProfFlatProfile *gprof_flat_profile_new (FILE *stream);
+GProfFlatProfile *gprof_flat_profile_new (GIOChannel *stream);
 void gprof_flat_profile_free (GProfFlatProfile *self);
 
 GProfFlatProfileEntry *gprof_flat_profile_get_first_entry (GProfFlatProfile *self,

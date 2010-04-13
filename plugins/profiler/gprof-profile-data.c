@@ -107,7 +107,7 @@ gprof_profile_data_init_profile (GProfProfileData *self, gchar *path,
 {
 	gint stdout_pipe;
 	gint i;
-	FILE *stdout_stream;
+	GIOChannel *stdout_stream;
 	gchar *program_dir;
 	gchar *profile_data_path;
 	GPtrArray *gprof_args;
@@ -212,7 +212,7 @@ gprof_profile_data_init_profile (GProfProfileData *self, gchar *path,
 	g_free (profile_data_path);
 	g_free (program_dir);
 
-	stdout_stream = fdopen (stdout_pipe, "r");
+	stdout_stream = g_io_channel_unix_new (stdout_pipe);
 
 	if (self->priv->flat_profile)
 		gprof_flat_profile_free (self->priv->flat_profile);
@@ -225,7 +225,8 @@ gprof_profile_data_init_profile (GProfProfileData *self, gchar *path,
 	self->priv->call_graph = gprof_call_graph_new (stdout_stream, 
 												   self->priv->flat_profile);	
 	
-	fclose (stdout_stream);
+	g_io_channel_shutdown (stdout_stream, TRUE, NULL);
+	g_io_channel_unref (stdout_stream);
 	close (stdout_pipe);
 	
 	waitpid (gprof_pid, &gprof_status, 0);

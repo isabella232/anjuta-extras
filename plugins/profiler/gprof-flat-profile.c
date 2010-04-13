@@ -146,38 +146,54 @@ gprof_flat_profile_get_type (void)
 }
 
 GProfFlatProfile *
-gprof_flat_profile_new (FILE *stream)
+gprof_flat_profile_new (GIOChannel *stream)
 {
-	gchar buffer[PATH_MAX];
-	size_t length;
+	gchar *buffer;
+	gsize line_term_pos;
+	gboolean found_flat_profile;
 	gchar **fields;
 	GProfFlatProfile *flat_profile;
 	
 	flat_profile = g_object_new (GPROF_FLAT_PROFILE_TYPE, NULL);
+	found_flat_profile = FALSE;
 	
 	/* Read to beginning of flat profile data */
 	do
 	{
 		/* Don't loop infinitely if we don't have any data */
-		if (!fgets (buffer, PATH_MAX, stream))
+		if (g_io_channel_read_line (stream, &buffer, NULL, &line_term_pos, 
+		                            NULL) != G_IO_STATUS_NORMAL)
+		{
 			return flat_profile;
+		}
+
+		found_flat_profile = (gboolean) strchr (buffer, '%');
+		g_free (buffer);
 			
-	} while (!strchr (buffer, '%'));
+	} while (!found_flat_profile);
 	
 	/* Skip the second line of the column header */
-	fgets (buffer, PATH_MAX, stream);
+	g_io_channel_read_line (stream, &buffer, NULL, NULL, NULL);
+	g_free (buffer);
 	
-	while (fgets (buffer, PATH_MAX, stream))
+	while (g_io_channel_read_line (stream, &buffer, NULL, &line_term_pos,
+	                               NULL) == G_IO_STATUS_NORMAL)
 	{
+		g_print ("Line data: %s", buffer);
+
 		/* If the first character is 12, that's the end of the flat profile. */
 		if (buffer[0] == 12)
+		{
+			g_free (buffer);
 			break;
+		}
 		
-		/* Remove the newline from the buffer */
-		length = strlen (buffer);
-		buffer[length - 1] = 0;
+		/* Remove the line terminator from the buffer */
+		buffer[line_term_pos] = 0;
 		
 		fields = get_flat_profile_fields (buffer);
+
+		g_free (buffer);
 		
 		if (fields)
 		{

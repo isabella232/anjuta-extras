@@ -56,7 +56,7 @@ struct _GProfCallGraphClass
 
 GType gprof_call_graph_get_type (void);
 
-GProfCallGraph *gprof_call_graph_new (FILE *stream, 
+GProfCallGraph *gprof_call_graph_new (GIOChannel *stream, 
 									  GProfFlatProfile *flat_profile);
 void gprof_call_graph_free (GProfCallGraph *self);
 
