@@ -586,13 +586,15 @@ on_profiler_select_target (GtkAction *action, Profiler *profiler)
 			
 			while (current_target)
 			{
-				relative_path = (gchar *) current_target->data + project_root_uri_length;
+				target = g_file_get_uri (G_FILE (current_target->data));
+				relative_path = (gchar *) target + project_root_uri_length;
 				
 				gtk_list_store_append (targets_list_store, &iter);
 				gtk_list_store_set (targets_list_store, &iter, 0, relative_path, 1,
-									current_target->data, -1);
+									target, -1);
 									
-				g_free (current_target->data);
+				g_free (target);
+				g_object_unref (current_target->data);
 				current_target = g_list_next (current_target);
 			}
 			g_list_free (exec_targets);
