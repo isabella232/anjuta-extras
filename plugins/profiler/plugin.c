@@ -625,6 +625,8 @@ on_profiler_select_target (GtkAction *action, Profiler *profiler)
 		}
 		else
 				profiler_set_target (profiler, NULL);
+
+		g_free (target);
 	}
 		
 	gtk_widget_hide (select_target_dialog);
