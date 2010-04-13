@@ -5,14 +5,14 @@
 # Miloslav Trmac <mitr@volny.cz>, 2003, 2004, 2005.
 # Lucas Lommer <llommer@svn.gnome.org>, 2008, 2009.
 # Petr Kovar <pknbe@volny.cz>, 2008, 2009.
-# Marek Černocký <marek@manet.cz>, 2009.
-#
+# Marek Černocký <marek@manet.cz>, 2009, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: anjuta-extras\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-12 20:07+0100\n"
-"PO-Revision-Date: 2009-12-23 09:35+0100\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=anjuta&component=unknown\n"
+"POT-Creation-Date: 2010-03-31 17:46+0000\n"
+"PO-Revision-Date: 2010-04-07 15:11+0200\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -23,16 +23,16 @@ msgstr ""
 "X-Poedit-Language: Czech\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
-#. create the check menuitem
-#: ../plugins/class-inheritance/class-inherit.c:199
-msgid "Fixed data-view"
-msgstr "Pevný pohled na data"
+#: ../plugins/class-inheritance/class-callbacks.c:214
+#, c-format
+msgid "Args: %s"
+msgstr "Argumenty: %s"
 
-#: ../plugins/class-inheritance/class-inherit.c:1174
+#: ../plugins/class-inheritance/class-inherit.c:1202
 msgid "Update"
 msgstr "Aktualizovat"
 
-#: ../plugins/class-inheritance/plugin.c:113
+#: ../plugins/class-inheritance/plugin.c:110
 msgid "Inheritance Graph"
 msgstr "Graf dědění"
 
@@ -309,23 +309,23 @@ msgstr "Scratchbox"
 msgid "Options"
 msgstr "Možnosti"
 
-#: ../plugins/valgrind/plugin.c:254
+#: ../plugins/valgrind/plugin.c:262
 msgid "Select debugging target"
 msgstr "Zvolte cíl ladění"
 
-#: ../plugins/valgrind/plugin.c:311 ../plugins/valgrind/plugin.c:432
-#: ../plugins/valgrind/plugin.c:668 ../plugins/valgrind/plugin.c:677
+#: ../plugins/valgrind/plugin.c:319 ../plugins/valgrind/plugin.c:440
+#: ../plugins/valgrind/plugin.c:676 ../plugins/valgrind/plugin.c:685
 msgid "Valgrind"
 msgstr "Valgrind"
 
-#: ../plugins/valgrind/plugin.c:339
+#: ../plugins/valgrind/plugin.c:347
 msgid ""
 "No executable target selected for debugging with Valgrind. Please select one."
 msgstr ""
 "Cíl vybraný pro ladění pomocí nástroje Valgrind není spustitelný. Zvolte "
 "prosím jiný."
 
-#: ../plugins/valgrind/plugin.c:348
+#: ../plugins/valgrind/plugin.c:356
 msgid ""
 "There aren't any available executable targets for this project.\n"
 "Please create one first."
@@ -333,11 +333,11 @@ msgstr ""
 "Tento projekt nemá dostupné žádné spustitelné cíle.\n"
 "Nejdříve prosím nějaký vytvořte."
 
-#: ../plugins/valgrind/plugin.c:360
+#: ../plugins/valgrind/plugin.c:368
 msgid "Choose file where to save Valgrind log"
 msgstr "Zvolte soubor, do kterého se má ukládat evidence nástroje Valgrind"
 
-#: ../plugins/valgrind/plugin.c:382
+#: ../plugins/valgrind/plugin.c:390
 #, c-format
 msgid ""
 "The file '%s' already exists.\n"
@@ -346,57 +346,57 @@ msgstr ""
 "Soubor „%s“ již existuje.\n"
 "Chcete jej nahradit tím, který ukládáte?"
 
-#: ../plugins/valgrind/plugin.c:390
+#: ../plugins/valgrind/plugin.c:398
 msgid "_Replace"
 msgstr "Nah_radit"
 
-#: ../plugins/valgrind/plugin.c:410
+#: ../plugins/valgrind/plugin.c:418
 msgid "Open Valgrind log file"
 msgstr "Otevřít evidenci nástroje Valgrind"
 
 #. Action name
 #. Stock icon, if any
-#: ../plugins/valgrind/plugin.c:444
+#: ../plugins/valgrind/plugin.c:452
 msgid "_Debug"
 msgstr "La_dit"
 
 #. Action name
 #. Stock icon, if any
-#: ../plugins/valgrind/plugin.c:452
+#: ../plugins/valgrind/plugin.c:460
 msgid "_Valgrind"
 msgstr "_Valgrind"
 
 #. Action name
 #. Stock icon, if any
-#: ../plugins/valgrind/plugin.c:460
+#: ../plugins/valgrind/plugin.c:468
 msgid "_Select Tool and Run..."
 msgstr "Zvolit ná_stroj a spustit…"
 
 #. Action name
 #. Stock icon, if any
-#: ../plugins/valgrind/plugin.c:468
+#: ../plugins/valgrind/plugin.c:476
 msgid "_Kill Execution"
 msgstr "U_končit provádění"
 
 #. Action name
 #. Stock icon, if any
-#: ../plugins/valgrind/plugin.c:476
+#: ../plugins/valgrind/plugin.c:484
 msgid "_Load Log"
 msgstr "_Načíst evidenci"
 
 #. Action name
 #. Stock icon, if any
-#: ../plugins/valgrind/plugin.c:484
+#: ../plugins/valgrind/plugin.c:492
 msgid "S_ave Log"
 msgstr "_Uložit evidenci"
 
 #. Action name
 #. Stock icon, if any
-#: ../plugins/valgrind/plugin.c:492
+#: ../plugins/valgrind/plugin.c:500
 msgid "Edit Rules"
 msgstr "Upravit pravidla"
 
-#: ../plugins/valgrind/plugin.c:557
+#: ../plugins/valgrind/plugin.c:565
 msgid "Use Valgrind debug tool"
 msgstr "Použít nástroj pro ladění Valgrind"
 
@@ -725,3 +725,4 @@ msgstr "Zásuvný modul Valgrind"
 #: ../plugins/scratchbox/anjuta-scratchbox.plugin.in.h:1
 msgid "Change build commands to use scratchbox 1 or 2"
 msgstr "Změnit příkazy pro sestavování tak, aby používaly scratchbox 1 nebo 2"
+
