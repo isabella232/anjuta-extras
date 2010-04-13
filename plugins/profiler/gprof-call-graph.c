@@ -228,37 +228,52 @@ gprof_call_graph_get_type (void)
 }
 
 GProfCallGraph *
-gprof_call_graph_new (FILE *stream, GProfFlatProfile *flat_profile)
+gprof_call_graph_new (GIOChannel *stream, GProfFlatProfile *flat_profile)
 {
-	gchar buffer[PATH_MAX];
+	gchar *buffer;
+	gsize line_term_pos;
+	gboolean found_call_graph;
 	gchar **fields;
-	size_t length;
 	GProfCallGraphBlock *block;
 	GProfCallGraphBlockEntry *entry;
 	gchar *entry_name;
 	GProfCallGraph *call_graph;
-	gboolean found_primary = FALSE;  
+	gboolean found_primary;  
 	
 	call_graph = g_object_new (GPROF_CALL_GRAPH_TYPE, NULL);
+	found_call_graph = FALSE;
+	found_primary = FALSE;
 	
 	/* Find the beginning of the call graph. The call graph begins with
      * "index" */
 	do 
 	{
 		/* Don't loop infinitely if we don't have any data */
-		if (!fgets (buffer, PATH_MAX, stream))
+		if (g_io_channel_read_line (stream, &buffer, NULL, &line_term_pos, 
+		                            NULL) != G_IO_STATUS_NORMAL)
+		{
 			return call_graph;
+		}
+
+		found_call_graph = (strncmp ("index", buffer, 5) == 0);
+		g_free (buffer);
 			
-	} while (strncmp ("index", buffer, 5) != 0);
+	} while (!found_call_graph);
 	
 	block = NULL; 
 	
-	while (fgets (buffer, PATH_MAX, stream))
+	while (g_io_channel_read_line (stream, &buffer, NULL, &line_term_pos, 
+		                            NULL) == G_IO_STATUS_NORMAL)
 	{
+		g_print ("Line data: %s\n", buffer);
+
 		/* If the first character of the line is 12, that's the end of the call
 		 * graph. */
 		if (buffer[0] == 12)
+		{
+			g_free (buffer);
 			break;
+		}
 		
 		if (!block)
 		{
@@ -266,9 +281,8 @@ gprof_call_graph_new (FILE *stream, GProfFlatProfile *flat_profile)
 			found_primary = FALSE;
 		}
 		
-		/* Remove the newline from the buffer */
-		length = strlen (buffer);
-		buffer[length - 1] = 0;
+		/* Remove the line terminator from the buffer */
+		buffer[line_term_pos] = 0;
 		
 		/* If we encounter the block separator, add the block to the graph */
 		if (strcmp (BLOCK_SEPARATOR, buffer) == 0)
@@ -298,14 +312,17 @@ gprof_call_graph_new (FILE *stream, GProfFlatProfile *flat_profile)
 				/* If we don't get any fields, that means this is a 
 				 * placeholder line.*/
 				if (!fields)
+				{
+					g_free (buffer);
 					continue;
+				}
 				
 				entry = gprof_call_graph_block_secondary_entry_new (fields);
 				entry_name = gprof_call_graph_block_entry_get_name (entry);
 				
 				g_strfreev (fields);
 				
-				if (gprof_flat_profile_find_entry(flat_profile, entry_name))
+				if (gprof_flat_profile_find_entry (flat_profile, entry_name))
 				{
 					if (found_primary)
 						gprof_call_graph_block_add_child_entry (block, entry);
