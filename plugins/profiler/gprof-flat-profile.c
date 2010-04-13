@@ -179,8 +179,6 @@ gprof_flat_profile_new (GIOChannel *stream)
 	while (g_io_channel_read_line (stream, &buffer, NULL, &line_term_pos,
 	                               NULL) == G_IO_STATUS_NORMAL)
 	{
-		g_print ("Line data: %s", buffer);
-
 		/* If the first character is 12, that's the end of the flat profile. */
 		if (buffer[0] == 12)
 		{

@@ -265,8 +265,6 @@ gprof_call_graph_new (GIOChannel *stream, GProfFlatProfile *flat_profile)
 	while (g_io_channel_read_line (stream, &buffer, NULL, &line_term_pos, 
 		                            NULL) == G_IO_STATUS_NORMAL)
 	{
-		g_print ("Line data: %s\n", buffer);
-
 		/* If the first character of the line is 12, that's the end of the call
 		 * graph. */
 		if (buffer[0] == 12)
