@@ -78,4 +78,5 @@ EXTRA_DIST = \
 	$(plugin_in_files) \
 	$(editor_plugin_DATA) \
 	$(editor_ui_DATA) \
-	$(editor_glade_DATA)
+	$(editor_glade_DATA) \
+	License.txt
