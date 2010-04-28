@@ -9,7 +9,7 @@ m4_define(anjuta_micro_version,  1)
 m4_define(anjuta_nano_version, 0)
 m4_define(anjuta_version, anjuta_major_version.anjuta_minor_version.anjuta_micro_version.anjuta_nano_version)
 
-AC_INIT(anjuta-extras, 2.30.0)
+AC_INIT(anjuta-extras, anjuta_version)
 
 ANJUTA_EXTRAS_VERSION=anjuta_version
 AC_SUBST(ANJUTA_EXTRAS_VERSION)
