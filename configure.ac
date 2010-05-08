@@ -273,7 +273,6 @@ AC_OUTPUT([
 Makefile
 plugins/Makefile
 plugins/scratchbox/Makefile
-plugins/class-inheritance/Makefile
 plugins/sample1/Makefile
 plugins/valgrind/Makefile
 plugins/profiler/Makefile
@@ -290,11 +289,8 @@ echo "-------------------------------------------------------------------"
 echo "Conditionally built plugins:"
 echo "-------------------------------------------------------------------"
 if [ test x$libgraphviz_found = xyes ]; then
-        echo "Building class inheritance plugin: .....................YES"
         echo "Building performance profiler with function call chart: YES"
 else
-        echo "Building class inheritance plugin: .....................NO"
-        echo "        Requires graphviz (>= 2.6.0); http://graphviz.org"
         echo "Building performance profiler with function call chart: NO"
 	 echo "        Requires graphviz (>= 2.6.0); http://graphviz.org"
 fi
