@@ -2451,13 +2451,6 @@ itext_editor_insert (IAnjutaEditor *editor, IAnjutaIterable *position,
 	aneditor_command (TEXT_EDITOR(editor)->editor_id, ANE_INSERTTEXT,
 		pos, (long)text_to_insert);
 
-	/* Move the cursor and the iterator at the end of the insert text like
-	 * GtkSourceView */
-	pos += length;
-	text_editor_cell_set_position (TEXT_EDITOR_CELL (position), pos);
-	scintilla_send_message (SCINTILLA(TEXT_EDITOR (editor)->scintilla),
-			SCI_SETSEL, pos, pos);
-
 	g_free (text_to_insert);
 }
 
