@@ -1,9 +1,6 @@
 [encoding: UTF-8]
 # List of source files containing translatable strings.
 # Please keep this list in alphabetical order.
-plugins/class-inheritance/class-callbacks.c
-plugins/class-inheritance/class-inherit.c
-plugins/class-inheritance/plugin.c
 plugins/profiler/gprof-call-graph-block.c
 plugins/profiler/gprof-call-graph-block-entry.c
 plugins/profiler/gprof-call-graph.c
@@ -40,7 +37,6 @@ plugins/valgrind/vghelgrindprefs.c
 plugins/valgrind/vgmemcheckprefs.c
 plugins/valgrind/vgrule-editor.c
 plugins/valgrind/vgrule-list.c
-[type: gettext/ini]plugins/class-inheritance/anjuta-class-inheritance.plugin.in
 [type: gettext/ini]plugins/sample1/anjuta-sample.plugin.in
 [type: gettext/ini]plugins/profiler/profiler.plugin.in
 [type: gettext/ini]plugins/scintilla/anjuta-editor.plugin.in
