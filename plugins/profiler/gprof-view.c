@@ -118,29 +118,47 @@ gprof_view_show_symbol_in_editor (GProfView *self,
 	IAnjutaIterable *symbol_iter;
 	IAnjutaSymbol *symbol;
 	guint line;
+	IAnjutaSymbolQuery *query;
+	static IAnjutaSymbolField query_fields[] = {
+		IANJUTA_SYMBOL_FIELD_ID,
+		IANJUTA_SYMBOL_FIELD_NAME,
+		IANJUTA_SYMBOL_FIELD_TYPE
+	};
+	
 	
 	if (self->priv->symbol_manager &&
 		self->priv->document_manager)
 	{									   	
-		symbol_iter = ianjuta_symbol_manager_search (self->priv->symbol_manager,
-													 IANJUTA_SYMBOL_TYPE_FUNCTION,
-													 TRUE,
-													 IANJUTA_SYMBOL_FIELD_SIMPLE,
-													 symbol_name,
-													 FALSE,
-													 IANJUTA_SYMBOL_MANAGER_SEARCH_FS_PUBLIC,
-													 FALSE,
-													 -1,
-													 -1,
-													 NULL);
+		/* create one everytime. This method doesn't need particular performances */
+		query = ianjuta_symbol_manager_create_query (self->priv->symbol_manager,
+	    										IANJUTA_SYMBOL_QUERY_SEARCH,
+	    										IANJUTA_SYMBOL_QUERY_DB_PROJECT,
+	    										NULL);
 		
+		ianjuta_symbol_query_set_fields (query,
+	                                 G_N_ELEMENTS (query_fields),
+	                                 query_fields, NULL);
+		
+		ianjuta_symbol_query_set_file_scope (query,
+	                                     IANJUTA_SYMBOL_QUERY_SEARCH_FS_PUBLIC, NULL);
+
+		ianjuta_symbol_query_set_mode (query,
+	                               IANJUTA_SYMBOL_QUERY_MODE_SYNC, NULL);
+
+		ianjuta_symbol_query_set_filters (query, IANJUTA_SYMBOL_TYPE_FUNCTION,  
+	    							  TRUE, NULL);
+		
+		
+		/* do the search */
+		symbol_iter = ianjuta_symbol_query_search (query, symbol_name, NULL);
+				
 		if (symbol_iter &&
 			ianjuta_iterable_get_length (symbol_iter, NULL) > 0)
 		{
 			GFile* file;
 			symbol = IANJUTA_SYMBOL (symbol_iter);
 			file = ianjuta_symbol_get_file (symbol, NULL);
-			line = ianjuta_symbol_get_line (symbol, NULL);
+			line = ianjuta_symbol_get_int (symbol, IANJUTA_SYMBOL_FIELD_FILE_POS, NULL);
 			
 			ianjuta_document_manager_goto_file_line (self->priv->document_manager, 
 													file, line, NULL);
@@ -148,6 +166,8 @@ gprof_view_show_symbol_in_editor (GProfView *self,
 			g_object_unref (symbol_iter);
 			g_object_unref (file);
 		}
+
+		g_object_unref (query);
 	}
 }
 
