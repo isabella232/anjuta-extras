@@ -127,6 +127,14 @@ on_system_symbol_scanned (IAnjutaSymbolManager *manager, guint process, AnjutaSh
 	ianjuta_symbol_query_search_all (query_system, NULL);
 }
 
+static void
+on_db_ready (IAnjutaSymbolManager *manager, gpointer user_data)
+{
+	/* Initialize type list */
+	on_project_symbol_scanned (manager, 0, NULL);
+	on_system_symbol_scanned (manager, 0, NULL);	
+}
+
 static void 
 on_style_button_clicked(GtkWidget* button, AnjutaPreferences* prefs)
 {
@@ -188,13 +196,11 @@ activate_plugin (AnjutaPlugin *plugin)
 
 
 	/* Get notified when scan end, to update type list */
-	g_signal_connect (G_OBJECT (manager), "prj_scan_end", G_CALLBACK (on_project_symbol_scanned), NULL);
-	g_signal_connect (G_OBJECT (manager), "sys_scan_end", G_CALLBACK (on_system_symbol_scanned), NULL);
-	
-	/* Initialize type list */
-	on_project_symbol_scanned (manager, 0, NULL);
-	on_system_symbol_scanned (manager, 0, NULL);
+	g_signal_connect (G_OBJECT (manager), "prj-scan-end", G_CALLBACK (on_project_symbol_scanned), NULL);
+	g_signal_connect (G_OBJECT (manager), "sys-scan-end", G_CALLBACK (on_system_symbol_scanned), NULL);
+	g_signal_connect (G_OBJECT (manager), "db-ready", G_CALLBACK (on_db_ready), NULL);
 
+	
 	return TRUE;
 }
 
