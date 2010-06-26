@@ -7,13 +7,14 @@
 # Francisco Javier F. Serrador <serrador@cvs.gnome.es>, 2003, 2005.
 # Francisco Javier F. Serrador <serrador@cvs.gnome.org>, 2005, 2006.
 # Jorge González <jorgegonz@svn.gnome.org>, 2007, 2009, 2010.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: anjuta.HEAD\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=anjuta&component=unknown\n"
-"POT-Creation-Date: 2010-03-30 22:57+0000\n"
-"PO-Revision-Date: 2010-03-31 08:39+0200\n"
+"POT-Creation-Date: 2010-06-22 21:35+0000\n"
+"PO-Revision-Date: 2010-06-26 10:02+0200\n"
 "Last-Translator: Jorge González <jorgegonz@svn.gnome.org>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -22,20 +23,6 @@ msgstr ""
 "serrador@hispalinux.es>\n"
 "X-Generator: KBabel 1.11.4\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-
-#: ../plugins/class-inheritance/class-callbacks.c:214
-#, c-format
-#| msgid "Target: %s"
-msgid "Args: %s"
-msgstr "Args: %s"
-
-#: ../plugins/class-inheritance/class-inherit.c:1202
-msgid "Update"
-msgstr "Actualizar"
-
-#: ../plugins/class-inheritance/plugin.c:110
-msgid "Inheritance Graph"
-msgstr "Gráfico de herencia"
 
 #: ../plugins/profiler/gprof-call-graph-view.c:312
 #: ../plugins/profiler/gprof-call-graph-view.c:322
@@ -108,65 +95,70 @@ msgstr ""
 "Compruebe la ruta a este archivo de datos del perfilado destino."
 
 #: ../plugins/profiler/plugin.c:293
+#| msgid ""
+#| "This target does not have any profiling data.\n"
+#| "\n"
+#| "Please ensure that the target is complied with profiling support and that "
+#| "it is run at least once."
 msgid ""
 "This target does not have any profiling data.\n"
 "\n"
-"Please ensure that the target is complied with profiling support and that it "
-"is run at least once."
+"Please ensure that the target is complied with profiling support (-p)and "
+"that it is run at least once."
 msgstr ""
 "Este objetivo no tiene ningún dato de perfilado.\n"
 "\n"
-"Asegúrese de que el objetivo está compilado con soporte de perfilado y que "
-"se ejecuta al menos una vez."
+"Asegúrese de que el objetivo está compilado con soporte de perfilado (-p) y "
+"que se ejecuta al menos una vez."
 
 #. Action name
 #. Stock icon, if any
-#: ../plugins/profiler/plugin.c:750
+#: ../plugins/profiler/plugin.c:754
 msgid "Debug"
 msgstr "Depurar"
 
 #. Action name
 #. Stock icon, if any
-#: ../plugins/profiler/plugin.c:758 ../plugins/profiler/plugin.c:870
+#: ../plugins/profiler/plugin.c:762 ../plugins/profiler/plugin.c:874
 #: ../plugins/profiler/profiler.plugin.in.h:3
 msgid "Profiler"
 msgstr "Perfilador"
 
 #. Action name
 #. Stock icon, if any
-#: ../plugins/profiler/plugin.c:766
+#: ../plugins/profiler/plugin.c:770
 msgid "Select Target..."
 msgstr "Seleccionar objetivo…"
 
 #. Action name
 #. Stock icon, if any
-#: ../plugins/profiler/plugin.c:774
+#: ../plugins/profiler/plugin.c:778
 msgid "Refresh"
 msgstr "Actualizar"
 
 #. Action name
 #. Stock icon, if any
-#: ../plugins/profiler/plugin.c:782
+#: ../plugins/profiler/plugin.c:786
 msgid "Delete Data"
 msgstr "Eliminar datos"
 
-#: ../plugins/profiler/plugin.c:825
+#: ../plugins/profiler/plugin.c:829
 msgid "Application Performance Profiler"
 msgstr "Perfilador del rendimiento de la aplicación"
 
-#: ../plugins/profiler/plugin.c:847
+#: ../plugins/profiler/plugin.c:851
 msgid "Flat Profile"
 msgstr "Perfil plano"
 
-#: ../plugins/profiler/plugin.c:852
+#: ../plugins/profiler/plugin.c:856
 msgid "Call Graph"
 msgstr "Gráfica de llamadas"
 
-#: ../plugins/profiler/plugin.c:857
+#: ../plugins/profiler/plugin.c:861
 msgid "Function Call Tree"
 msgstr "Árbol de llamadas de funciones"
 
-#: ../plugins/profiler/plugin.c:864
+#: ../plugins/profiler/plugin.c:868
 msgid "Function Call Chart"
 msgstr "Gráfica de las llamadas a funciones"
 
@@ -183,7 +175,7 @@ msgstr "No se puede obtener un búfer de texto para imprimir"
 msgid "No file to print!"
 msgstr "No hay archivo para imprimir."
 
-#: ../plugins/scintilla/plugin.c:258 ../plugins/scintilla/plugin.c:270
+#: ../plugins/scintilla/plugin.c:294 ../plugins/scintilla/plugin.c:306
 #: ../plugins/scintilla/anjuta-editor.plugin.in.h:2
 msgid "Scintilla Editor"
 msgstr "Editor Scintilla"
@@ -689,14 +681,6 @@ msgstr "No se pueden guardar las reglas de supresión: %s"
 msgid "You have not set a suppressions file in your settings."
 msgstr "No ha establecido un archivo de supresiones en su configuración."
 
-#: ../plugins/class-inheritance/anjuta-class-inheritance.plugin.in.h:1
-msgid "A graph painter for the inheritance of the classes."
-msgstr "Un dibujador de gráficas para la herencia de las clases."
-
-#: ../plugins/class-inheritance/anjuta-class-inheritance.plugin.in.h:2
-msgid "Class Inheritance"
-msgstr "Herencia de la clase"
-
 #: ../plugins/sample1/anjuta-sample.plugin.in.h:1
 msgid "Sample Plugin"
 msgstr "Complemento de ejemplo"
@@ -728,6 +712,22 @@ msgstr "Complemento Valgrind"
 #: ../plugins/scratchbox/anjuta-scratchbox.plugin.in.h:1
 msgid "Change build commands to use scratchbox 1 or 2"
 msgstr "Cambiar los comandos de construcción para usar scratchbox 1 o 2"
+
+#~| msgid "Target: %s"
+#~ msgid "Args: %s"
+#~ msgstr "Args: %s"
+
+#~ msgid "Update"
+#~ msgstr "Actualizar"
+
+#~ msgid "Inheritance Graph"
+#~ msgstr "Gráfico de herencia"
+
+#~ msgid "A graph painter for the inheritance of the classes."
+#~ msgstr "Un dibujador de gráficas para la herencia de las clases."
+
+#~ msgid "Class Inheritance"
+#~ msgstr "Herencia de la clase"
 
 #~ msgid "Anjuta IDE"
 #~ msgstr "EID Anjuta"
