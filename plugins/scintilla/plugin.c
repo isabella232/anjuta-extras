@@ -160,7 +160,7 @@ activate_plugin (AnjutaPlugin *plugin)
 	ianjuta_symbol_query_set_file_scope (query_project,
 	                                     IANJUTA_SYMBOL_QUERY_SEARCH_FS_IGNORE, NULL);
 	ianjuta_symbol_query_set_mode (query_project,
-	                               IANJUTA_SYMBOL_QUERY_MODE_ASYNC, NULL);
+	                               IANJUTA_SYMBOL_QUERY_MODE_QUEUED, NULL);
 	ianjuta_symbol_query_set_filters (query_project, IANJUTA_SYMBOL_TYPE_TYPEDEF,  
 	    							  TRUE, NULL);	
 	g_signal_connect (query_project, "async-result",
@@ -179,7 +179,7 @@ activate_plugin (AnjutaPlugin *plugin)
 	ianjuta_symbol_query_set_file_scope (query_system,
 	                                     IANJUTA_SYMBOL_QUERY_SEARCH_FS_IGNORE, NULL);
 	ianjuta_symbol_query_set_mode (query_system,
-	                               IANJUTA_SYMBOL_QUERY_MODE_ASYNC, NULL);
+	                               IANJUTA_SYMBOL_QUERY_MODE_QUEUED, NULL);
 	ianjuta_symbol_query_set_filters (query_system, IANJUTA_SYMBOL_TYPE_TYPEDEF,  
 	    							  TRUE, NULL);
 	
