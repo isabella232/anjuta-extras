@@ -100,7 +100,8 @@ update_type_list (AnjutaShell *shell, IAnjutaIterable *iter, const gchar *name)
 			anjuta_shell_add_value (shell, name, &value, NULL);
 		}
 	}
-	g_value_unset (&value);
+	if (G_IS_VALUE (&value))
+		g_value_unset (&value);
 }
 
 static void
