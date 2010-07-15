@@ -9,10 +9,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: anjuta-extras\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
-"product=anjuta&component=unknown\n"
-"POT-Creation-Date: 2010-03-31 17:46+0000\n"
-"PO-Revision-Date: 2010-04-07 15:11+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-07-15 21:30+0200\n"
+"PO-Revision-Date: 2010-06-25 22:59+0200\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -22,19 +21,6 @@ msgstr ""
 "X-Generator: KBabel 1.11.4\n"
 "X-Poedit-Language: Czech\n"
 "X-Poedit-SourceCharset: utf-8\n"
-
-#: ../plugins/class-inheritance/class-callbacks.c:214
-#, c-format
-msgid "Args: %s"
-msgstr "Argumenty: %s"
-
-#: ../plugins/class-inheritance/class-inherit.c:1202
-msgid "Update"
-msgstr "Aktualizovat"
-
-#: ../plugins/class-inheritance/plugin.c:110
-msgid "Inheritance Graph"
-msgstr "Graf dědění"
 
 #: ../plugins/profiler/gprof-call-graph-view.c:312
 #: ../plugins/profiler/gprof-call-graph-view.c:322
@@ -110,62 +96,62 @@ msgstr ""
 msgid ""
 "This target does not have any profiling data.\n"
 "\n"
-"Please ensure that the target is complied with profiling support and that it "
-"is run at least once."
+"Please ensure that the target is complied with profiling support (-p)and "
+"that it is run at least once."
 msgstr ""
 "Tento cíl nemá žádná data profilování.\n"
 "\n"
-"Ujistěte se prosím, že cíl je přeložený s podporou profilování a že byl "
+"Ujistěte se prosím, že cíl je přeložený s podporou profilování (-p) a že byl "
 "nejméně jednou spuštěn."
 
 #. Action name
 #. Stock icon, if any
-#: ../plugins/profiler/plugin.c:750
+#: ../plugins/profiler/plugin.c:754
 msgid "Debug"
 msgstr "Ladění"
 
 #. Action name
 #. Stock icon, if any
-#: ../plugins/profiler/plugin.c:758 ../plugins/profiler/plugin.c:870
+#: ../plugins/profiler/plugin.c:762 ../plugins/profiler/plugin.c:874
 #: ../plugins/profiler/profiler.plugin.in.h:3
 msgid "Profiler"
 msgstr "Profilovací program"
 
 #. Action name
 #. Stock icon, if any
-#: ../plugins/profiler/plugin.c:766
+#: ../plugins/profiler/plugin.c:770
 msgid "Select Target..."
 msgstr "Zvolit cíl…"
 
 #. Action name
 #. Stock icon, if any
-#: ../plugins/profiler/plugin.c:774
+#: ../plugins/profiler/plugin.c:778
 msgid "Refresh"
 msgstr "Občerstvit"
 
 #. Action name
 #. Stock icon, if any
-#: ../plugins/profiler/plugin.c:782
+#: ../plugins/profiler/plugin.c:786
 msgid "Delete Data"
 msgstr "Odstranit data"
 
-#: ../plugins/profiler/plugin.c:825
+#: ../plugins/profiler/plugin.c:829
 msgid "Application Performance Profiler"
 msgstr "Program na profilování výkonu aplikace"
 
-#: ../plugins/profiler/plugin.c:847
+#: ../plugins/profiler/plugin.c:851
 msgid "Flat Profile"
 msgstr "Jednoduchý profil"
 
-#: ../plugins/profiler/plugin.c:852
+#: ../plugins/profiler/plugin.c:856
 msgid "Call Graph"
 msgstr "Graf volání"
 
-#: ../plugins/profiler/plugin.c:857
+#: ../plugins/profiler/plugin.c:861
 msgid "Function Call Tree"
 msgstr "Strom volání funkce"
 
-#: ../plugins/profiler/plugin.c:864
+#: ../plugins/profiler/plugin.c:868
 msgid "Function Call Chart"
 msgstr "Graf volání funkce"
 
@@ -182,7 +168,7 @@ msgstr "Nelze získat textovou vyrovnávací paměť pro tisk"
 msgid "No file to print!"
 msgstr "Neexistuje soubor k tisku!"
 
-#: ../plugins/scintilla/plugin.c:258 ../plugins/scintilla/plugin.c:270
+#: ../plugins/scintilla/plugin.c:295 ../plugins/scintilla/plugin.c:307
 #: ../plugins/scintilla/anjuta-editor.plugin.in.h:2
 msgid "Scintilla Editor"
 msgstr "Editor Scintilla"
@@ -686,14 +672,6 @@ msgstr "Nelze uložit pravidla potlačení chyb: %s"
 msgid "You have not set a suppressions file in your settings."
 msgstr "Nemáte ve svém nastavení určený soubor potlačení chyb."
 
-#: ../plugins/class-inheritance/anjuta-class-inheritance.plugin.in.h:1
-msgid "A graph painter for the inheritance of the classes."
-msgstr "Grafické znázornění dědičnosti tříd."
-
-#: ../plugins/class-inheritance/anjuta-class-inheritance.plugin.in.h:2
-msgid "Class Inheritance"
-msgstr "Dědění třídy"
-
 #: ../plugins/sample1/anjuta-sample.plugin.in.h:1
 msgid "Sample Plugin"
 msgstr "Ukázkový zásuvný modul"
@@ -726,3 +704,17 @@ msgstr "Zásuvný modul Valgrind"
 msgid "Change build commands to use scratchbox 1 or 2"
 msgstr "Změnit příkazy pro sestavování tak, aby používaly scratchbox 1 nebo 2"
 
+#~ msgid "Args: %s"
+#~ msgstr "Argumenty: %s"
+
+#~ msgid "Update"
+#~ msgstr "Aktualizovat"
+
+#~ msgid "Inheritance Graph"
+#~ msgstr "Graf dědění"
+
+#~ msgid "A graph painter for the inheritance of the classes."
+#~ msgstr "Grafické znázornění dědičnosti tříd."
+
+#~ msgid "Class Inheritance"
+#~ msgstr "Dědění třídy"
