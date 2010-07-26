@@ -69,7 +69,6 @@ update_type_list (AnjutaShell *shell, IAnjutaIterable *iter, const gchar *name)
 			} while (ianjuta_iterable_next (iter, NULL));
 			list =  g_string_free(s, FALSE);
 		}
-		g_object_unref (iter);
 	}
 	
 	anjuta_shell_get_value (shell, name, &value, NULL);
