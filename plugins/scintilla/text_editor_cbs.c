@@ -179,6 +179,7 @@ on_text_editor_scintilla_notify (GtkWidget * sci, gint wParam, gpointer lParam,
 	case SCN_UPDATEUI:
 		te->current_line = text_editor_get_current_lineno (te);
 		g_signal_emit_by_name(G_OBJECT (te), "update_ui");
+		g_signal_emit_by_name(G_OBJECT (te), "cursor-moved");
 		return;
 		
 	case SCN_CHARADDED:
