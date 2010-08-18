@@ -1,3 +1,9 @@
+anjuta-extras 2.31.90 (17 August 2010) -- James Liggett
+
+Updates:
+- Profiler updated to use new symbol-db API (Massimo Cora)
+- Some changes to Scintilla for snippets support (Dragos Dena)
+
 anjuta-extras 2.30.1 (28 April 2010) -- Johannes Schmid
 
 Bugs fixed:
