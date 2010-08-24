@@ -41,10 +41,21 @@
 
 gpointer parent_class;
 
-static IAnjutaSymbolQuery *query_project = NULL;
-static IAnjutaSymbolQuery *query_system = NULL;
-static IAnjutaSymbolManager *manager = NULL;
+/* Plugin types
+ *---------------------------------------------------------------------------*/
 
+struct _EditorPlugin{
+	AnjutaPlugin parent;
+
+	GtkWidget* style_button;
+	
+	IAnjutaSymbolQuery *query_system;
+	IAnjutaSymbolQuery *query_project;
+};
+
+struct _EditorPluginClass{
+	AnjutaPluginClass parent_class;
+};
 
 /* Keep an up to date list of type name
  *---------------------------------------------------------------------------*/
@@ -116,13 +127,13 @@ system_symbol_found (IAnjutaSymbolQuery *query, IAnjutaIterable* symbols, gpoint
 }
 
 static void
-on_project_symbol_scanned (IAnjutaSymbolManager *manager, guint process, AnjutaShell *shell)
+on_project_symbol_scanned (IAnjutaSymbolManager *manager, guint process, IAnjutaSymbolQuery *query_project)
 {
 	ianjuta_symbol_query_search_all (query_project, NULL);
 }
 
 static void
-on_system_symbol_scanned (IAnjutaSymbolManager *manager, guint process, AnjutaShell *shell)
+on_system_symbol_scanned (IAnjutaSymbolManager *manager, guint process, IAnjutaSymbolQuery *query_system)
 {
 	ianjuta_symbol_query_search_all (query_system, NULL);
 }
@@ -143,6 +154,10 @@ activate_plugin (AnjutaPlugin *plugin)
 		IANJUTA_SYMBOL_FIELD_KIND,
 		IANJUTA_SYMBOL_FIELD_TYPE
 	};
+	EditorPlugin* editor = ANJUTA_PLUGIN_EDITOR (plugin);
+	IAnjutaSymbolManager *manager;
+	IAnjutaSymbolQuery *query_project;
+	IAnjutaSymbolQuery *query_system;
 	
 	manager = anjuta_shell_get_interface (plugin->shell, 
 	    IAnjutaSymbolManager, NULL);
@@ -188,33 +203,33 @@ activate_plugin (AnjutaPlugin *plugin)
 
 
 	/* Get notified when scan end, to update type list */
-	g_signal_connect (G_OBJECT (manager), "prj_scan_end", G_CALLBACK (on_project_symbol_scanned), NULL);
-	g_signal_connect (G_OBJECT (manager), "sys_scan_end", G_CALLBACK (on_system_symbol_scanned), NULL);
+	g_signal_connect (G_OBJECT (manager), "prj_scan_end", G_CALLBACK (on_project_symbol_scanned), query_project);
+	g_signal_connect (G_OBJECT (manager), "sys_scan_end", G_CALLBACK (on_system_symbol_scanned), query_system);
 	
 	/* Initialize type list */
-	on_project_symbol_scanned (manager, 0, NULL);
-	on_system_symbol_scanned (manager, 0, NULL);
+	on_project_symbol_scanned (manager, 0, query_project);
+	on_system_symbol_scanned (manager, 0, query_system);
 
+	/* Keep queries to be able to unref them when needed */
+	editor->query_project = query_project;
+	editor->query_system = query_system;
+
+	
 	return TRUE;
 }
 
 static gboolean
 deactivate_plugin (AnjutaPlugin *plugin)
 {
+	EditorPlugin* editor = ANJUTA_PLUGIN_EDITOR (plugin);
 	IAnjutaSymbolManager *manager = anjuta_shell_get_interface (plugin->shell, IAnjutaSymbolManager, NULL);
 
 	/* Disconnect signals */
-	g_signal_handlers_disconnect_by_func (G_OBJECT (manager), G_CALLBACK (on_project_symbol_scanned), plugin->shell);
-	g_signal_handlers_disconnect_by_func (G_OBJECT (manager), G_CALLBACK (on_system_symbol_scanned), plugin->shell);
+	g_signal_handlers_disconnect_by_func (G_OBJECT (manager), G_CALLBACK (on_project_symbol_scanned), editor->query_project);
+	g_signal_handlers_disconnect_by_func (G_OBJECT (manager), G_CALLBACK (on_system_symbol_scanned), editor->query_system);
 
-	if (query_project)
-		g_object_unref (query_project);
-
-	if (query_system)
-		g_object_unref (query_system);	
-
-	if (manager)
-		g_object_unref (manager);
+	g_object_unref (editor->query_project);
+	g_object_unref (editor->query_system);	
 	
 	return TRUE;
 }
