@@ -1,4 +1,4 @@
-# translation of anjuta.HEAD.po to Español
+# translation of anjuta-extras.master.po to Español
 # traducción de Anjuta al Español
 # Copyright © 2001-2003, 2006, 2007, 2008 Free Software Foundation, Inc.
 # This file is distributed under the same license as the anjuta package.
@@ -10,11 +10,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: anjuta.HEAD\n"
+"Project-Id-Version: anjuta-extras.master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=anjuta&component=unknown\n"
-"POT-Creation-Date: 2010-06-22 21:35+0000\n"
-"PO-Revision-Date: 2010-06-26 10:02+0200\n"
+"POT-Creation-Date: 2010-08-28 09:36+0000\n"
+"PO-Revision-Date: 2010-08-28 17:22+0200\n"
 "Last-Translator: Jorge González <jorgegonz@svn.gnome.org>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -98,12 +98,12 @@ msgstr ""
 #| msgid ""
 #| "This target does not have any profiling data.\n"
 #| "\n"
-#| "Please ensure that the target is complied with profiling support and that "
-#| "it is run at least once."
+#| "Please ensure that the target is complied with profiling support (-p)and "
+#| "that it is run at least once."
 msgid ""
 "This target does not have any profiling data.\n"
 "\n"
-"Please ensure that the target is complied with profiling support (-p)and "
+"Please ensure that the target is compiled with profiling support (-p)and "
 "that it is run at least once."
 msgstr ""
 "Este objetivo no tiene ningún dato de perfilado.\n"
@@ -175,7 +175,7 @@ msgstr "No se puede obtener un búfer de texto para imprimir"
 msgid "No file to print!"
 msgstr "No hay archivo para imprimir."
 
-#: ../plugins/scintilla/plugin.c:294 ../plugins/scintilla/plugin.c:306
+#: ../plugins/scintilla/plugin.c:309 ../plugins/scintilla/plugin.c:321
 #: ../plugins/scintilla/anjuta-editor.plugin.in.h:2
 msgid "Scintilla Editor"
 msgstr "Editor Scintilla"
