@@ -293,7 +293,7 @@ profiler_set_target (Profiler *profiler, const gchar *profile_target_uri)
 									   _("This target does not have any "
 									     "profiling data.\n\n"
 									     "Please ensure that the target is "
-									     "complied with profiling support (-p)"
+									     "compiled with profiling support (-p)"
 										 "and that it is run at least "
 										 "once."));
 		}
