@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: anjuta-ekstras master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=anjuta&component=unknown\n"
-"POT-Creation-Date: 2010-06-27 16:57+0000\n"
-"PO-Revision-Date: 2010-06-28 07:46+0100\n"
+"POT-Creation-Date: 2010-08-28 15:23+0000\n"
+"PO-Revision-Date: 2010-08-29 11:32+0100\n"
 "Last-Translator: Matej Urbančič <mateju@svn.gnome.org>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -96,9 +96,9 @@ msgstr ""
 msgid ""
 "This target does not have any profiling data.\n"
 "\n"
-"Please ensure that the target is complied with profiling support (-p)and that it is run at least once."
+"Please ensure that the target is compiled with profiling support (-p)and that it is run at least once."
 msgstr ""
-"Cilj nima navedenih ustreznih podatkov profila.\n"
+"Cilj nima ustreznih podatkov profila.\n"
 "\n"
 "Prepričajte se, da je cilj izgrajen s podporo profilov (-p) in da je zagnan vsaj enkrat."
 
@@ -167,8 +167,8 @@ msgstr "Ni mogoče pridobiti medpomnilnika besedila za tiskanje"
 msgid "No file to print!"
 msgstr "Ni datoteke za tiskanje!"
 
-#: ../plugins/scintilla/plugin.c:300
-#: ../plugins/scintilla/plugin.c:312
+#: ../plugins/scintilla/plugin.c:309
+#: ../plugins/scintilla/plugin.c:321
 #: ../plugins/scintilla/anjuta-editor.plugin.in.h:2
 msgid "Scintilla Editor"
 msgstr "Urejevalnik Scintilla"
@@ -694,15 +694,12 @@ msgstr "Spremeni ukaze izgradnje za uporabo Scratchbox 1 ali 2"
 
 #~ msgid "Args: %s"
 #~ msgstr "Argumenti: %s"
-
 #~ msgid "Update"
 #~ msgstr "Posodobi"
-
 #~ msgid "Inheritance Graph"
 #~ msgstr "Graf zgradbe"
-
 #~ msgid "A graph painter for the inheritance of the classes."
 #~ msgstr "Risalnik za podedovane lastnosti razredov"
-
 #~ msgid "Class Inheritance"
 #~ msgstr "Dedovanje razredov"
+
