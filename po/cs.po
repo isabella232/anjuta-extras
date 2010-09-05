@@ -6,12 +6,14 @@
 # Lucas Lommer <llommer@svn.gnome.org>, 2008, 2009.
 # Petr Kovar <pknbe@volny.cz>, 2008, 2009.
 # Marek Černocký <marek@manet.cz>, 2009, 2010.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: anjuta-extras\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-15 21:30+0200\n"
-"PO-Revision-Date: 2010-06-25 22:59+0200\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=anjuta&component=unknown\n"
+"POT-Creation-Date: 2010-08-30 22:14+0000\n"
+"PO-Revision-Date: 2010-09-05 18:35+0200\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -96,7 +98,7 @@ msgstr ""
 msgid ""
 "This target does not have any profiling data.\n"
 "\n"
-"Please ensure that the target is complied with profiling support (-p)and "
+"Please ensure that the target is compiled with profiling support (-p)and "
 "that it is run at least once."
 msgstr ""
 "Tento cíl nemá žádná data profilování.\n"
@@ -168,7 +170,7 @@ msgstr "Nelze získat textovou vyrovnávací paměť pro tisk"
 msgid "No file to print!"
 msgstr "Neexistuje soubor k tisku!"
 
-#: ../plugins/scintilla/plugin.c:295 ../plugins/scintilla/plugin.c:307
+#: ../plugins/scintilla/plugin.c:309 ../plugins/scintilla/plugin.c:321
 #: ../plugins/scintilla/anjuta-editor.plugin.in.h:2
 msgid "Scintilla Editor"
 msgstr "Editor Scintilla"
@@ -704,17 +706,3 @@ msgstr "Zásuvný modul Valgrind"
 msgid "Change build commands to use scratchbox 1 or 2"
 msgstr "Změnit příkazy pro sestavování tak, aby používaly scratchbox 1 nebo 2"
 
-#~ msgid "Args: %s"
-#~ msgstr "Argumenty: %s"
-
-#~ msgid "Update"
-#~ msgstr "Aktualizovat"
-
-#~ msgid "Inheritance Graph"
-#~ msgstr "Graf dědění"
-
-#~ msgid "A graph painter for the inheritance of the classes."
-#~ msgstr "Grafické znázornění dědičnosti tříd."
-
-#~ msgid "Class Inheritance"
-#~ msgstr "Dědění třídy"
