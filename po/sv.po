@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: anjuta\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-06 15:53+0200\n"
-"PO-Revision-Date: 2010-08-06 15:54+0100\n"
+"POT-Creation-Date: 2010-09-12 20:13+0200\n"
+"PO-Revision-Date: 2010-09-12 20:13+0100\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "MIME-Version: 1.0\n"
@@ -91,7 +91,7 @@ msgstr ""
 msgid ""
 "This target does not have any profiling data.\n"
 "\n"
-"Please ensure that the target is complied with profiling support (-p)and that it is run at least once."
+"Please ensure that the target is compiled with profiling support (-p)and that it is run at least once."
 msgstr ""
 "Detta mål har inget profileringsdata.\n"
 "\n"
@@ -163,8 +163,8 @@ msgstr "Kan inte få tag i textbuffert för utskrift"
 msgid "No file to print!"
 msgstr "Ingen fil att skriva ut!"
 
-#: ../plugins/scintilla/plugin.c:294
-#: ../plugins/scintilla/plugin.c:306
+#: ../plugins/scintilla/plugin.c:309
+#: ../plugins/scintilla/plugin.c:321
 #: ../plugins/scintilla/anjuta-editor.plugin.in.h:2
 msgid "Scintilla Editor"
 msgstr "Redigeraren Scintilla"
