@@ -1,14 +1,14 @@
-# translation of eu.po to Basque
+# translation of eu_to_be_translate.po to Basque
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 #
-# Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>, 2008, 2009.
+# Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>, 2008, 2009, 2010.
 msgid ""
 msgstr ""
-"Project-Id-Version: eu\n"
+"Project-Id-Version: eu_to_be_translate\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-29 17:23+0200\n"
-"PO-Revision-Date: 2009-08-29 17:25+0200\n"
+"POT-Creation-Date: 2010-10-07 23:28+0200\n"
+"PO-Revision-Date: 2010-10-07 23:30+0200\n"
 "Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>\n"
 "Language-Team: Basque <itzulpena@euskalgnu.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,19 +16,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: KBabel 1.11.4\n"
-
-#. create the check menuitem
-#: ../plugins/class-inheritance/class-inherit.c:199
-msgid "Fixed data-view"
-msgstr "Datu-ikuspegi finkoa"
-
-#: ../plugins/class-inheritance/class-inherit.c:1174
-msgid "Update"
-msgstr "Eguneratu"
-
-#: ../plugins/class-inheritance/plugin.c:113
-msgid "Inheritance Graph"
-msgstr "Herentzia-grafikoa"
 
 #: ../plugins/profiler/gprof-call-graph-view.c:312
 #: ../plugins/profiler/gprof-call-graph-view.c:322
@@ -90,7 +77,7 @@ msgstr "Beraren ms, deiko"
 msgid "Total ms/call"
 msgstr "ms totalak, deiko"
 
-#: ../plugins/profiler/plugin.c:178
+#: ../plugins/profiler/plugin.c:179
 msgid ""
 "Could not get profiling data.\n"
 "\n"
@@ -100,66 +87,66 @@ msgstr ""
 "\n"
 "Begiratu helburuaren analizatze-datuen fitxategiaren bide-izena ondo dagoen."
 
-#: ../plugins/profiler/plugin.c:292
+#: ../plugins/profiler/plugin.c:293
 msgid ""
 "This target does not have any profiling data.\n"
 "\n"
-"Please ensure that the target is complied with profiling support and that it "
-"is run at least once."
+"Please ensure that the target is compiled with profiling support (-p)and "
+"that it is run at least once."
 msgstr ""
-"Helburu horrek ez du analizatze-daturik.\n"
+"Helburu horrek ez du profilaren daturik.\n"
 "\n"
-"Egiaztatu analizatzea onartzeko konpilatua dagoela helburua, eta behin "
-"bederen exekutatua izan dela."
+"Egiaztatu profilaren euskarriarekin (-p) konpilatua dagoela helburua, eta "
+"behin bederen exekutatua izan dela."
 
 #. Action name
 #. Stock icon, if any
-#: ../plugins/profiler/plugin.c:749
+#: ../plugins/profiler/plugin.c:754
 msgid "Debug"
 msgstr "Araztu"
 
 #. Action name
 #. Stock icon, if any
-#: ../plugins/profiler/plugin.c:757 ../plugins/profiler/plugin.c:869
+#: ../plugins/profiler/plugin.c:762 ../plugins/profiler/plugin.c:874
 #: ../plugins/profiler/profiler.plugin.in.h:3
 msgid "Profiler"
 msgstr "Analizatzailea"
 
 #. Action name
 #. Stock icon, if any
-#: ../plugins/profiler/plugin.c:765
+#: ../plugins/profiler/plugin.c:770
 msgid "Select Target..."
 msgstr "Helburua hautatzea..."
 
 #. Action name
 #. Stock icon, if any
-#: ../plugins/profiler/plugin.c:773
+#: ../plugins/profiler/plugin.c:778
 msgid "Refresh"
 msgstr "Freskatu"
 
 #. Action name
 #. Stock icon, if any
-#: ../plugins/profiler/plugin.c:781
+#: ../plugins/profiler/plugin.c:786
 msgid "Delete Data"
 msgstr "Ezabatu datuak"
 
-#: ../plugins/profiler/plugin.c:824
+#: ../plugins/profiler/plugin.c:829
 msgid "Application Performance Profiler"
 msgstr "Aplikazioaren errendimenduaren analizatzailea"
 
-#: ../plugins/profiler/plugin.c:846
+#: ../plugins/profiler/plugin.c:851
 msgid "Flat Profile"
 msgstr "Profil soila"
 
-#: ../plugins/profiler/plugin.c:851
+#: ../plugins/profiler/plugin.c:856
 msgid "Call Graph"
 msgstr "Dei-grafikoa"
 
-#: ../plugins/profiler/plugin.c:856
+#: ../plugins/profiler/plugin.c:861
 msgid "Function Call Tree"
 msgstr "Funtzioaren dei-zuhaitza"
 
-#: ../plugins/profiler/plugin.c:863
+#: ../plugins/profiler/plugin.c:868
 msgid "Function Call Chart"
 msgstr "Funtzioaren dei-diagrama"
 
@@ -176,12 +163,12 @@ msgstr "Ezin izan da inprimatzeko testu-bufferra hartu"
 msgid "No file to print!"
 msgstr "Ez dago inprimatzeko fitxategirik!"
 
-#: ../plugins/scintilla/plugin.c:258 ../plugins/scintilla/plugin.c:270
+#: ../plugins/scintilla/plugin.c:309 ../plugins/scintilla/plugin.c:321
 #: ../plugins/scintilla/anjuta-editor.plugin.in.h:2
 msgid "Scintilla Editor"
 msgstr "Scintilla editorea"
 
-#: ../plugins/scintilla/text_editor.c:412
+#: ../plugins/scintilla/text_editor.c:438
 #, c-format
 msgid ""
 "The file '%s' has been changed.\n"
@@ -190,7 +177,7 @@ msgstr ""
 "'%s' fitxategia aldatu egin da.\n"
 "Birkargatu nahi duzu?"
 
-#: ../plugins/scintilla/text_editor.c:418
+#: ../plugins/scintilla/text_editor.c:444
 #, c-format
 msgid ""
 "The file '%s' has been changed.\n"
@@ -199,7 +186,7 @@ msgstr ""
 "'%s' fitxategia aldatu egin da.\n"
 "Aldaketak galtzea eta berriro kargatzea nahi duzu?"
 
-#: ../plugins/scintilla/text_editor.c:438
+#: ../plugins/scintilla/text_editor.c:464
 #, c-format
 msgid ""
 "The file '%s' has been deleted.\n"
@@ -208,7 +195,7 @@ msgstr ""
 "'%s' fitxategia ezabatu egin da.\n"
 "Hura berresten eta ixten duzu?"
 
-#: ../plugins/scintilla/text_editor.c:445
+#: ../plugins/scintilla/text_editor.c:471
 #, c-format
 msgid ""
 "The file '%s' has been deleted.\n"
@@ -217,24 +204,24 @@ msgstr ""
 "'%s' fitxategia ezabatu egin da.\n"
 "Aldaketak galtzea eta berriro kargatzea nahi duzu?"
 
-#: ../plugins/scintilla/text_editor.c:1422
+#: ../plugins/scintilla/text_editor.c:1458
 msgid "Could not get file info"
 msgstr "Ezin izan da fitxategiaren informazioa eskuratu"
 
 #. DEBUG_PRINT ("%s", "This file is too big. Unable to allocate memory.");
-#: ../plugins/scintilla/text_editor.c:1434
+#: ../plugins/scintilla/text_editor.c:1470
 msgid "This file is too big. Unable to allocate memory."
 msgstr "Fitxategi hori handiegia da. Ezin izan da memoria esleitu."
 
-#: ../plugins/scintilla/text_editor.c:1443
+#: ../plugins/scintilla/text_editor.c:1479
 msgid "Could not open file"
 msgstr "Ezin izan da fitxategia ireki"
 
-#: ../plugins/scintilla/text_editor.c:1454
+#: ../plugins/scintilla/text_editor.c:1490
 msgid "Error while reading from file"
 msgstr "Errorea gertatu da fitxategia irakurtzean."
 
-#: ../plugins/scintilla/text_editor.c:1500
+#: ../plugins/scintilla/text_editor.c:1536
 msgid ""
 "The file does not look like a text file or the file encoding is not "
 "supported. Please check if the encoding of file is in the supported "
@@ -244,11 +231,11 @@ msgstr ""
 "dago onartua. Begiratu fitxategiaren kodetzea kodetze-zerrendan dagoen. Ez "
 "badago, gehitu hobespenetan."
 
-#: ../plugins/scintilla/text_editor.c:1647
+#: ../plugins/scintilla/text_editor.c:1683
 msgid "Loading file..."
 msgstr "Fitxategia kargatzea..."
 
-#: ../plugins/scintilla/text_editor.c:1656
+#: ../plugins/scintilla/text_editor.c:1692
 #, c-format
 msgid ""
 "Could not load file: %s\n"
@@ -259,24 +246,24 @@ msgstr ""
 "\n"
 "Xehetasunak: %s"
 
-#: ../plugins/scintilla/text_editor.c:1677
+#: ../plugins/scintilla/text_editor.c:1713
 msgid "File loaded successfully"
 msgstr "Fitxategia behar bezala kargatu da"
 
-#: ../plugins/scintilla/text_editor.c:1695
+#: ../plugins/scintilla/text_editor.c:1731
 msgid "Saving file..."
 msgstr "Fitxategia gordetzen..."
 
-#: ../plugins/scintilla/text_editor.c:1704
+#: ../plugins/scintilla/text_editor.c:1740
 #, c-format
 msgid "Could not save intermediate file %s: %s"
 msgstr "Ezin izan da %s tarteko fitxategia gorde: %s"
 
-#: ../plugins/scintilla/text_editor.c:1720
+#: ../plugins/scintilla/text_editor.c:1756
 msgid "File saved successfully"
 msgstr "Fitxategia behar bezala gorde da"
 
-#: ../plugins/scintilla/text_editor.c:2093
+#: ../plugins/scintilla/text_editor.c:2129
 #, c-format
 msgid ""
 "Cannot load Global defaults and configuration files:\n"
@@ -300,24 +287,26 @@ msgstr "'%s' programarik ez dago"
 msgid "Scratchbox"
 msgstr "Scratchbox"
 
-#: ../plugins/valgrind/plugin.c:133
+#: ../plugins/valgrind/plugin.c:134
 msgid "Options"
 msgstr "Aukerak"
 
-#: ../plugins/valgrind/plugin.c:253
+#: ../plugins/valgrind/plugin.c:262
 msgid "Select debugging target"
 msgstr "Hautatu arazte-helburua"
 
-#: ../plugins/valgrind/plugin.c:310 ../plugins/valgrind/plugin.c:431
-#: ../plugins/valgrind/plugin.c:667 ../plugins/valgrind/plugin.c:676
+#: ../plugins/valgrind/plugin.c:319 ../plugins/valgrind/plugin.c:440
+#: ../plugins/valgrind/plugin.c:676 ../plugins/valgrind/plugin.c:685
 msgid "Valgrind"
 msgstr "Valgrind"
 
-#: ../plugins/valgrind/plugin.c:338
-msgid "No executable target selected for debugging with Valgrind. Please select one."
-msgstr "Ez da hautatu Valgrind-ekin arazteko helburu exekutagarririk. Hautatu bat."
-
 #: ../plugins/valgrind/plugin.c:347
+msgid ""
+"No executable target selected for debugging with Valgrind. Please select one."
+msgstr ""
+"Ez da hautatu Valgrind-ekin arazteko helburu exekutagarririk. Hautatu bat."
+
+#: ../plugins/valgrind/plugin.c:356
 msgid ""
 "There aren't any available executable targets for this project.\n"
 "Please create one first."
@@ -325,11 +314,11 @@ msgstr ""
 "Proiektu honentzat ez dago helburu exekutagarri erabilgarririk.\n"
 "Sortu bat, lehenik eta behin."
 
-#: ../plugins/valgrind/plugin.c:359
+#: ../plugins/valgrind/plugin.c:368
 msgid "Choose file where to save Valgrind log"
 msgstr "Aukeratu Valgrind egunkaria gordetzeko fitxategia"
 
-#: ../plugins/valgrind/plugin.c:381
+#: ../plugins/valgrind/plugin.c:390
 #, c-format
 msgid ""
 "The file '%s' already exists.\n"
@@ -338,57 +327,57 @@ msgstr ""
 "'%s' fitxategia badago lehendik.\n"
 "Gordetzen ari zarenarekin ordeztu nahi duzu?"
 
-#: ../plugins/valgrind/plugin.c:389
+#: ../plugins/valgrind/plugin.c:398
 msgid "_Replace"
 msgstr "Orde_ztu"
 
-#: ../plugins/valgrind/plugin.c:409
+#: ../plugins/valgrind/plugin.c:418
 msgid "Open Valgrind log file"
 msgstr "Ireki Valgrind egunkari-fitxategia"
 
 #. Action name
 #. Stock icon, if any
-#: ../plugins/valgrind/plugin.c:443
+#: ../plugins/valgrind/plugin.c:452
 msgid "_Debug"
 msgstr "_Araztu"
 
 #. Action name
 #. Stock icon, if any
-#: ../plugins/valgrind/plugin.c:451
+#: ../plugins/valgrind/plugin.c:460
 msgid "_Valgrind"
 msgstr "_Valgrind"
 
 #. Action name
 #. Stock icon, if any
-#: ../plugins/valgrind/plugin.c:459
+#: ../plugins/valgrind/plugin.c:468
 msgid "_Select Tool and Run..."
 msgstr "_Hautatu tresna eta exekutatu..."
 
 #. Action name
 #. Stock icon, if any
-#: ../plugins/valgrind/plugin.c:467
+#: ../plugins/valgrind/plugin.c:476
 msgid "_Kill Execution"
 msgstr "_Eten exekutatzea"
 
 #. Action name
 #. Stock icon, if any
-#: ../plugins/valgrind/plugin.c:475
+#: ../plugins/valgrind/plugin.c:484
 msgid "_Load Log"
 msgstr "_Kargatu egunkaria"
 
 #. Action name
 #. Stock icon, if any
-#: ../plugins/valgrind/plugin.c:483
+#: ../plugins/valgrind/plugin.c:492
 msgid "S_ave Log"
 msgstr "_Gorde egunkaria"
 
 #. Action name
 #. Stock icon, if any
-#: ../plugins/valgrind/plugin.c:491
+#: ../plugins/valgrind/plugin.c:500
 msgid "Edit Rules"
 msgstr "Editatu arauak"
 
-#: ../plugins/valgrind/plugin.c:556
+#: ../plugins/valgrind/plugin.c:565
 msgid "Use Valgrind debug tool"
 msgstr "Erabili Valgrind arazteko tresna"
 
@@ -551,7 +540,8 @@ msgstr "Biribildu malloc-en tamainak hurrengo hitzera"
 
 #: ../plugins/valgrind/vggeneralprefs.c:222
 msgid "Trace any child processes forked off by the program being debugged"
-msgstr "Jarraitu arazten ari zaren programatik sardetutako prozesu umeen aztarnari"
+msgstr ""
+"Jarraitu arazten ari zaren programatik sardetutako prozesu umeen aztarnari"
 
 #: ../plugins/valgrind/vggeneralprefs.c:230
 msgid "Track open file descriptors"
@@ -563,7 +553,8 @@ msgstr "Gehitu ordu-/data-zigilua egunkari-mezuei"
 
 #: ../plugins/valgrind/vggeneralprefs.c:246
 msgid "Call __libc_freeres() at exit before checking for memory leaks"
-msgstr "Deitu _libc_freeres() irtetean, memoria-galerik dagoen begiratu aurretik"
+msgstr ""
+"Deitu _libc_freeres() irtetean, memoria-galerik dagoen begiratu aurretik"
 
 #: ../plugins/valgrind/vggeneralprefs.c:254
 msgid "Suppressions File:"
@@ -676,14 +667,6 @@ msgstr "Ezin dira ezabapen-arauak gorde: %s"
 msgid "You have not set a suppressions file in your settings."
 msgstr "Ez duzu ezarri ezabapenen fitxategi bat zure ezarpenetan."
 
-#: ../plugins/class-inheritance/anjuta-class-inheritance.plugin.in.h:1
-msgid "A graph painter for the inheritance of the classes."
-msgstr "Klaseen herentzien grafikoak marrazteko tresna."
-
-#: ../plugins/class-inheritance/anjuta-class-inheritance.plugin.in.h:2
-msgid "Class Inheritance"
-msgstr "Klase-herentzia"
-
 #: ../plugins/sample1/anjuta-sample.plugin.in.h:1
 msgid "Sample Plugin"
 msgstr "Adibide plugina"
@@ -716,3 +699,17 @@ msgstr "Valgrind plugina"
 msgid "Change build commands to use scratchbox 1 or 2"
 msgstr "Aldatu eraikitzeko komandoak  scratchbox 1 edo 2 erabiltzeko"
 
+#~ msgid "Fixed data-view"
+#~ msgstr "Datu-ikuspegi finkoa"
+
+#~ msgid "Update"
+#~ msgstr "Eguneratu"
+
+#~ msgid "Inheritance Graph"
+#~ msgstr "Herentzia-grafikoa"
+
+#~ msgid "A graph painter for the inheritance of the classes."
+#~ msgstr "Klaseen herentzien grafikoak marrazteko tresna."
+
+#~ msgid "Class Inheritance"
+#~ msgstr "Klase-herentzia"
