@@ -26,6 +26,7 @@ AC_HEADER_STDC
 AC_PROG_CPP
 AC_LANG_C
 
+ANJUTA_REQUIRED=anjuta_major_version.anjuta_minor_version.0
 BINUTILS_REQUIRED=2.15.92
 LIBGRAPHVIZ_REQUIRED=1.0
 GTK_REQUIRED=2.17.10
@@ -39,7 +40,6 @@ AC_SUBST(GTK_REQUIRED)
 AC_SUBST(GLIB_REQUIRED)
 AC_SUBST(GCONF_REQUIRED)
 AC_SUBST(GNOME_REQUIRED)
-
 
 dnl ***************************************************************************
 dnl Check for pkgconfig
@@ -99,7 +99,7 @@ dnl maintainer mode
 AM_MAINTAINER_MODE
 
 dnl Check for libanjuta
-PKG_CHECK_MODULES(LIBANJUTA, [libanjuta-1.0 >= $ANJUTA_EXTRAS_VERSION])
+PKG_CHECK_MODULES(LIBANJUTA, [libanjuta-1.0 >= $ANJUTA_REQUIRED])
 
 dnl Check for libgnome
 PKG_CHECK_MODULES(GNOME, libgnomecanvas-2.0 >= $GNOME_REQUIRED)
