@@ -24,7 +24,6 @@
 #include <glib-object.h>
 
 #include <gio/gio.h>
-#include <libanjuta/anjuta-preferences.h>
 #include <libanjuta/anjuta-shell.h>
 #include <libanjuta/interfaces/ianjuta-provider.h>
 
@@ -83,7 +82,9 @@ struct _TextEditor
 	
 	glong current_line;
 
-	AnjutaPreferences *preferences;
+	/* Settings */
+	GSettings *settings;
+	GSettings *docman_settings;
 
 	/* Editor ID and widget for AnEditor */
 	AnEditorID editor_id;
@@ -142,7 +143,7 @@ struct _TextEditorClass
 GType text_editor_get_type (void);
 
 /* New instance of TextEditor */
-GtkWidget* text_editor_new (AnjutaStatus *status, AnjutaPreferences * pr, AnjutaShell* shell, const gchar *uri,
+GtkWidget* text_editor_new (AnjutaStatus *status, AnjutaShell* shell, const gchar *uri,
 							const gchar *tab_name);
 
 /* Freeze and thaw editor */
@@ -283,53 +284,48 @@ void text_editor_scintilla_command (TextEditor *te, gint command,
 #define linenum_text_editor_to_scintilla(x) (x-1)
 #define linenum_scintilla_to_text_editor(x) (x+1)
 
+#define DOCMAN_PREF_SCHEMA  "org.gnome.anjuta.document-manager"
+#define TEXT_ZOOM_FACTOR           "text-zoom-factor"
+
+#define PREF_SCHEMA		"org.gnome.anjuta.scintilla"
 /* Editor preferences */
-#define DISABLE_SYNTAX_HILIGHTING  "disable.syntax.hilighting"
-#define SAVE_AUTOMATIC             "save.automatic"
+#define DISABLE_SYNTAX_HILIGHTING  "disable-syntax-hilighting"
 /*
-#define INDENT_AUTOMATIC           "indent.automatic"
+#define INDENT_AUTOMATIC           "indent-automatic"
 */
-#define USE_TABS                   "use.tabs"
-#define BRACES_CHECK               "braces.check"
-#define DOS_EOL_CHECK              "editor.doseol"
-#define WRAP_BOOKMARKS             "editor.wrapbookmarks"
+#define USE_TABS                   "use-tabs"
+#define BRACES_CHECK               "braces-check"
+#define DOS_EOL_CHECK              "editor-doseol"
+#define WRAP_BOOKMARKS             "editor-wrapbookmarks"
 #define TAB_SIZE                   "tabsize"
-#define INDENT_SIZE                "indent.size"
+#define INDENT_SIZE                "indent-size"
 /*
-#define INDENT_OPENING             "indent.opening"
-#define INDENT_CLOSING             "indent.closing"
+#define INDENT_OPENING             "indent-opening"
+#define INDENT_CLOSING             "indent-closing"
 */
-#define INDENT_MAINTAIN            "indent.maintain"
+#define INDENT_MAINTAIN            "indent-maintain"
 
-#define TAB_INDENTS                "tab.indents"
-#define BACKSPACE_UNINDENTS        "backspace.unindents"
-#define AUTOSAVE_TIMER             "autosave.timer"
-#define SAVE_SESSION_TIMER         "save.session.timer"
+#define TAB_INDENTS                "tab-indents"
+#define BACKSPACE_UNINDENTS        "backspace-unindents"
 
-#define AUTOFORMAT_DISABLE         "autoformat.disable"
-#define AUTOFORMAT_STYLE           "autoformat.style"
-#define AUTOFORMAT_LIST_STYLE      "autoformat.list.style"
-#define AUTOFORMAT_OPTS            "autoformat.opts"
+#define FOLD_SYMBOLS               "fold-symbols"
+#define FOLD_UNDERLINE             "fold-underline"
 
-#define FOLD_SYMBOLS               "fold.symbols"
-#define FOLD_UNDERLINE             "fold.underline"
+#define STRIP_TRAILING_SPACES      "strip-trailing-spaces"
+#define FOLD_ON_OPEN               "fold-on-open"
+#define CARET_FORE_COLOR           "caret-fore"
+#define CALLTIP_BACK_COLOR         "calltip-back"
+#define SELECTION_FORE_COLOR       "selection-fore"
+#define SELECTION_BACK_COLOR       "selection-back"
 
-#define STRIP_TRAILING_SPACES      "strip.trailing.spaces"
-#define FOLD_ON_OPEN               "fold.on.open"
-#define CARET_FORE_COLOR           "caret.fore"
-#define CALLTIP_BACK_COLOR         "calltip.back"
-#define SELECTION_FORE_COLOR       "selection.fore"
-#define SELECTION_BACK_COLOR       "selection.back"
-
-#define VIEW_LINENUMBERS_MARGIN    "margin.linenumber.visible"
-#define VIEW_MARKER_MARGIN         "margin.marker.visible"
-#define VIEW_FOLD_MARGIN           "margin.fold.visible"
-#define VIEW_INDENTATION_GUIDES    "view.indentation.guides"
-#define VIEW_WHITE_SPACES          "view.whitespace"
-#define VIEW_EOL                   "view.eol"
-#define VIEW_LINE_WRAP             "view.line.wrap"
-#define EDGE_COLUMN                "edge.column"
-#define TEXT_ZOOM_FACTOR           "text.zoom.factor"
+#define VIEW_LINENUMBERS_MARGIN    "margin-linenumber-visible"
+#define VIEW_MARKER_MARGIN         "margin-marker-visible"
+#define VIEW_FOLD_MARGIN           "margin-fold-visible"
+#define VIEW_INDENTATION_GUIDES    "view-indentation-guides"
+#define VIEW_WHITE_SPACES          "view-whitespace"
+#define VIEW_EOL                   "view-eol"
+#define VIEW_LINE_WRAP             "view-line-wrap"
+#define EDGE_COLUMN                "edge-column"
 
 G_END_DECLS
 

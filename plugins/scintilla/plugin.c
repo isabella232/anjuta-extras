@@ -51,6 +51,10 @@ struct _EditorPlugin{
 	
 	IAnjutaSymbolQuery *query_system;
 	IAnjutaSymbolQuery *query_project;
+
+	/* Settings */
+	GSettings *settings;
+	AnjutaPreferences* prefs;
 };
 
 struct _EditorPluginClass{
@@ -139,9 +143,9 @@ on_system_symbol_scanned (IAnjutaSymbolManager *manager, guint process, IAnjutaS
 }
 
 static void 
-on_style_button_clicked(GtkWidget* button, AnjutaPreferences* prefs)
+on_style_button_clicked(GtkWidget* button, EditorPlugin *plugin)
 {
-	StyleEditor* se = style_editor_new(prefs);
+	StyleEditor* se = style_editor_new(plugin->prefs, plugin->settings);
 	style_editor_show(se);
 }
 
@@ -237,7 +241,9 @@ deactivate_plugin (AnjutaPlugin *plugin)
 static void
 dispose (GObject *obj)
 {
-	/* EditorPlugin *eplugin = ANJUTA_PLUGIN_EDITOR (obj); */
+	EditorPlugin *plugin = ANJUTA_PLUGIN_EDITOR (obj);
+
+	g_object_unref (plugin->settings);
 
 	G_OBJECT_CLASS (parent_class)->dispose (obj);
 }
@@ -252,7 +258,10 @@ finalize (GObject *obj)
 static void
 editor_plugin_instance_init (GObject *obj)
 {
-	/* EditorPlugin *plugin = ANJUTA_PLUGIN_EDITOR (obj); */
+	EditorPlugin *plugin = ANJUTA_PLUGIN_EDITOR (obj);
+
+	plugin->settings = g_settings_new (PREF_SCHEMA);
+	plugin->prefs = NULL;
 }
 
 static void
@@ -275,11 +284,10 @@ itext_editor_factory_new_editor(IAnjutaEditorFactory* factory,
 								GError** error)
 {
 	AnjutaShell *shell = ANJUTA_PLUGIN (factory)->shell;
-	AnjutaPreferences *prefs = anjuta_shell_get_preferences (shell, NULL);
 	AnjutaStatus *status = anjuta_shell_get_status (shell, NULL);
 	/* file can be NULL, if we open a buffer, not a file */
 	gchar* uri = file ? g_file_get_uri (file) : NULL;
-	IAnjutaEditor* editor = IANJUTA_EDITOR(text_editor_new(status, prefs, shell,
+	IAnjutaEditor* editor = IANJUTA_EDITOR(text_editor_new(status,shell,
 														   uri, filename));
 	g_free(uri);
 	return editor;
@@ -302,11 +310,12 @@ ipreferences_merge(IAnjutaPreferences* ipref, AnjutaPreferences* prefs, GError**
 		g_warning ("Couldn't load builder file: %s", error->message);
 		g_error_free (error);
 	}
+	plugin->prefs = prefs;
 	plugin->style_button = GTK_WIDGET (gtk_builder_get_object (bxml, "style_button"));
 	g_signal_connect(G_OBJECT(plugin->style_button), "clicked", 
-		G_CALLBACK(on_style_button_clicked), prefs);
+		G_CALLBACK(on_style_button_clicked), plugin);
 	anjuta_preferences_add_from_builder (prefs,
-								 bxml, "prefs_editor", _("Scintilla Editor"),  ICON_FILE);
+								 bxml, plugin->settings, "prefs_editor", _("Scintilla Editor"),  ICON_FILE);
 	g_object_unref(bxml);
 }
 

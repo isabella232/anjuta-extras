@@ -41,6 +41,9 @@ AC_SUBST(GLIB_REQUIRED)
 AC_SUBST(GCONF_REQUIRED)
 AC_SUBST(GNOME_REQUIRED)
 
+dnl GSettings
+GLIB_GSETTINGS
+
 dnl ***************************************************************************
 dnl Check for pkgconfig
 dnl ***************************************************************************

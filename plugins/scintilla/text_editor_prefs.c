@@ -77,396 +77,357 @@ pref_notify (GConfClient *gclient, guint cnxn_id,
 #endif
 
 static gint
-set_n_get_prop_int (TextEditor *te, const gchar *key)
+set_n_get_prop_int (GSettings *settings, const gchar *key)
 {
 	gint val;
-	AnjutaPreferences *pr;
-	pr = te->preferences;
-	val = anjuta_preferences_get_int (pr, key);
+	val = g_settings_get_int (settings, key);
 	sci_prop_set_int_with_key (text_editor_get_props (), key, val);
 	return val;
 }
 
 static gint
-set_n_get_prop_bool (TextEditor *te, const gchar *key)
+set_n_get_prop_bool (GSettings *settings, const gchar *key)
 {
 	gboolean val;
-	AnjutaPreferences *pr;
-	pr = te->preferences;
-	val = anjuta_preferences_get_bool (pr, key);
+	val = g_settings_get_boolean (settings, key);
 	sci_prop_set_int_with_key (text_editor_get_props (), key, val);
 	return val;
 }
 
 static gchar *
-set_n_get_prop_string (TextEditor *te, const gchar *key)
+set_n_get_prop_string (GSettings *settings, const gchar *key)
 {
 	gchar *val;
-	AnjutaPreferences *pr;
-	pr = te->preferences;
-	val = anjuta_preferences_get (pr, key);
+	val = g_settings_get_string (settings, key);
 	sci_prop_set_with_key (text_editor_get_props (), key, val);
 	return val;
 }
 
 static void
-on_notify_disable_hilite (AnjutaPreferences* prefs,
+on_notify_disable_hilite (GSettings *settings,
                           const gchar* key,
-                          gboolean value,
                           gpointer user_data)
 {
 	TextEditor *te;
 	
 	te = TEXT_EDITOR (user_data);
-	set_n_get_prop_bool (te, DISABLE_SYNTAX_HILIGHTING);
+	set_n_get_prop_bool (settings, key);
 	text_editor_hilite (te, TRUE);
 }
 
 static void
-on_notify_zoom_factor(AnjutaPreferences* prefs,
+on_notify_zoom_factor(GSettings* settings,
                       const gchar* key,
-                      gint value,
                       gpointer user_data)
 {
 	TextEditor *te;
 	gint zoom_factor;
 
 	te = TEXT_EDITOR (user_data);
-	zoom_factor = set_n_get_prop_int (te, TEXT_ZOOM_FACTOR);
+	zoom_factor = set_n_get_prop_int (settings, key);
 	text_editor_set_zoom_factor (te, zoom_factor);
 	g_signal_emit_by_name(G_OBJECT (te), "update_ui");
 }
 
 static void
-on_notify_tab_size (AnjutaPreferences* prefs,
+on_notify_tab_size (GSettings* settings,
                     const gchar* key,
-                    gint value,
                     gpointer user_data)
 {
 	TextEditor *te;
 	gint tab_size;
 
 	te = TEXT_EDITOR (user_data);
-	tab_size = set_n_get_prop_int (te, TAB_SIZE);
+	tab_size = set_n_get_prop_int (settings, key);
 	text_editor_command (te, ANE_SETTABSIZE, tab_size, 0);
 }
 
 static void
-on_notify_use_tab_for_indentation(AnjutaPreferences* prefs,
+on_notify_use_tab_for_indentation(GSettings* settings,
                                   const gchar* key,
-                                  gboolean value,
                                   gpointer user_data)
 {
 	TextEditor *te;
 	gboolean use_tabs;
 
 	te = TEXT_EDITOR (user_data);
-	use_tabs = set_n_get_prop_bool (te, USE_TABS);
+	use_tabs = set_n_get_prop_bool (settings, key);
 	text_editor_command (te, ANE_SETUSETABFORINDENT, use_tabs, 0);
-	// text_editor_scintilla_command (te, SCI_SETTABWIDTH,	use_tabs, 0);
 }
 
 static void
-on_notify_indent_size (AnjutaPreferences* prefs,
+on_notify_indent_size (GSettings* settings,
                        const gchar* key,
-                       gint value,
                        gpointer user_data)
 {
 	TextEditor *te;
 	gint indent_size;
 
 	te = TEXT_EDITOR (user_data);
-	indent_size = set_n_get_prop_int (te, INDENT_SIZE);
+	indent_size = set_n_get_prop_int (settings, key);
 	text_editor_command (te, ANE_SETINDENTSIZE, indent_size, 0);
 }
 
 static void
-on_notify_wrap_bookmarks(AnjutaPreferences* prefs,
+on_notify_wrap_bookmarks(GSettings* settings,
                          const gchar* key,
-                         gboolean value,
                          gpointer user_data)
 {
 	TextEditor *te;
 	gboolean state;
 
 	te = TEXT_EDITOR (user_data);
-	state = set_n_get_prop_bool (te, WRAP_BOOKMARKS);
+	state = set_n_get_prop_bool (settings, key);
 	text_editor_command (te, ANE_SETWRAPBOOKMARKS, state, 0);
 }
 
 static void
-on_notify_braces_check (AnjutaPreferences* prefs,
+on_notify_braces_check (GSettings* settings,
                         const gchar* key,
-                        gboolean value,
                         gpointer user_data)
 {
 	TextEditor *te;
 	gboolean state;
 
 	te = TEXT_EDITOR (user_data);
-	state = set_n_get_prop_bool (te, BRACES_CHECK);
+	state = set_n_get_prop_bool (settings, key);
 	text_editor_command (te, ANE_SETINDENTBRACESCHECK, state, 0);
 }
 
 static void
-on_notify_indent_maintain (AnjutaPreferences* prefs,
+on_notify_indent_maintain (GSettings* settings,
                            const gchar* key,
-                           gboolean value,
                            gpointer user_data)
 {
 	TextEditor *te;
 	gboolean state;
 
 	te = TEXT_EDITOR (user_data);
-	state = set_n_get_prop_bool (te, INDENT_MAINTAIN);
+	state = set_n_get_prop_bool (settings, key);
 	text_editor_command (te, ANE_SETINDENTMAINTAIN, state, 0);
 }
 
 static void
-on_notify_tab_indents (AnjutaPreferences* prefs,
+on_notify_tab_indents (GSettings* settings,
                        const gchar* key,
-                       gboolean value,
                        gpointer user_data)
 {
 	TextEditor *te;
 	gboolean state;
 
 	te = TEXT_EDITOR (user_data);
-	state = set_n_get_prop_bool (te, TAB_INDENTS);
+	state = set_n_get_prop_bool (settings, key);
 	text_editor_command (te, ANE_SETTABINDENTS, state, 0);
 }
 
 static void
-on_notify_backspace_unindents (AnjutaPreferences* prefs,
+on_notify_backspace_unindents (GSettings* settings,
                                const gchar* key,
-                               gboolean value,
                                gpointer user_data)
 {
 	TextEditor *te;
 	gboolean state;
 
 	te = TEXT_EDITOR (user_data);
-	state = set_n_get_prop_bool (te, BACKSPACE_UNINDENTS);
+	state = set_n_get_prop_bool (settings, key);
 	text_editor_command (te, ANE_SETBACKSPACEUNINDENTS, state, 0);
 }
 
 static void
-on_notify_view_eols (AnjutaPreferences* prefs,
+on_notify_view_eols (GSettings* settings,
                      const gchar* key,
-                     gint value,
                      gpointer user_data)
 {
 	TextEditor *te;
 	gboolean state;
 
 	te = TEXT_EDITOR (user_data);
-	state = set_n_get_prop_bool (te, VIEW_EOL);
+	state = set_n_get_prop_bool (settings, key);
 	text_editor_command (te, ANE_VIEWEOL, state, 0);
 }
 
 static void
-on_notify_view_whitespaces (AnjutaPreferences* prefs,
+on_notify_view_whitespaces (GSettings* settings,
                             const gchar* key,
-                            gint value,
                             gpointer user_data)
 {
 	TextEditor *te;
 	gboolean state;
 
 	te = TEXT_EDITOR (user_data);
-	state = set_n_get_prop_bool (te, VIEW_WHITE_SPACES);
+	state = set_n_get_prop_bool (settings, key);
 	text_editor_command (te, ANE_VIEWSPACE, state, 0);
 }
 
 static void
-on_notify_view_linewrap (AnjutaPreferences* prefs,
+on_notify_view_linewrap (GSettings* settings,
                          const gchar* key,
-                         gint value,
                          gpointer user_data)
 {
 	TextEditor *te;
 	gboolean state;
 
 	te = TEXT_EDITOR (user_data);
-	state = set_n_get_prop_bool (te, VIEW_LINE_WRAP);
+	state = set_n_get_prop_bool (settings, key);
 	text_editor_command (te, ANE_LINEWRAP, state, 0);
 }
 
 static void
-on_notify_view_indentation_guides (AnjutaPreferences* prefs,
+on_notify_view_indentation_guides (GSettings* settings,
                                    const gchar* key,
-                                   gint value,
                                    gpointer user_data)
 {
 	TextEditor *te;
 	gboolean state;
 
 	te = TEXT_EDITOR (user_data);
-	state = set_n_get_prop_bool (te, VIEW_INDENTATION_GUIDES);
+	state = set_n_get_prop_bool (settings, key);
 	text_editor_command (te, ANE_VIEWGUIDES, state, 0);
 }
 
 static void
-on_notify_view_folds (AnjutaPreferences* prefs,
+on_notify_view_folds (GSettings* settings,
                       const gchar* key,
-                      gint value,
                       gpointer user_data)
 {
 	TextEditor *te;
 	gboolean state;
 
 	te = TEXT_EDITOR (user_data);
-	state = set_n_get_prop_bool (te, VIEW_FOLD_MARGIN);
+	state = set_n_get_prop_bool (settings, key);
 	text_editor_command (te, ANE_FOLDMARGIN, state, 0);
 }
 
 static void
-on_notify_view_markers (AnjutaPreferences* prefs,
+on_notify_view_markers (GSettings* settings,
                         const gchar* key,
-                        gint value,
                         gpointer user_data)
 {
 	TextEditor *te;
 	gboolean state;
 
 	te = TEXT_EDITOR (user_data);
-	state = set_n_get_prop_bool (te, VIEW_MARKER_MARGIN);
+	state = set_n_get_prop_bool (settings, key);
 	text_editor_command (te, ANE_SELMARGIN, state, 0);
 }
 
 static void
-on_notify_view_linenums (AnjutaPreferences* prefs,
+on_notify_view_linenums (GSettings* settings,
                          const gchar* key,
-                         gint value,
                          gpointer user_data)
 {
 	TextEditor *te;
 	gboolean state;
 
 	te = TEXT_EDITOR (user_data);
-	state = set_n_get_prop_bool (te, VIEW_LINENUMBERS_MARGIN);
+	state = set_n_get_prop_bool (settings, key);
 	text_editor_command (te, ANE_LINENUMBERMARGIN, state, 0);
 	/* text_editor_set_line_number_width (te); */
 }
 
 static void
-on_notify_fold_symbols (AnjutaPreferences* prefs,
+on_notify_fold_symbols (GSettings* settings,
                         const gchar* key,
-                        gint value,
                         gpointer user_data)
 {
 	TextEditor *te;
 	gchar *symbols;
 
 	te = TEXT_EDITOR (user_data);
-	symbols = set_n_get_prop_string (te, FOLD_SYMBOLS);
+	symbols = set_n_get_prop_string (settings, key);
 	text_editor_command (te, ANE_SETFOLDSYMBOLS, (long)symbols, 0);
 	g_free (symbols);
 }
 
 static void
-on_notify_fold_underline (AnjutaPreferences* prefs,
+on_notify_fold_underline (GSettings* settings,
                           const gchar* key,
-                          gint value,
                           gpointer user_data)
 {
 	TextEditor *te;
 	gboolean state;
 
 	te = TEXT_EDITOR (user_data);
-	state = set_n_get_prop_bool (te, FOLD_UNDERLINE);
+	state = set_n_get_prop_bool (settings, key);
 	text_editor_command (te, ANE_SETFOLDUNDERLINE, state, 0);
 }
 
 static void
-on_notify_edge_column (AnjutaPreferences* prefs,
+on_notify_edge_column (GSettings* settings,
                        const gchar* key,
-                       gint value,
                        gpointer user_data)
 {
 	TextEditor *te;
 	gint size;
 
 	te = TEXT_EDITOR (user_data);
-	size = set_n_get_prop_int (te, EDGE_COLUMN);
+	size = set_n_get_prop_int (settings, key);
 	text_editor_command (te, ANE_SETEDGECOLUMN, size, 0);
 }
 
-#define REGISTER_NOTIFY(key, func, type) \
-	notify_id = anjuta_preferences_notify_add_##type (te->preferences, \
-											   key, func, te, NULL); \
-	te->notify_ids = g_list_prepend (te->notify_ids, \
-										   GUINT_TO_POINTER (notify_id));
+#define REGISTER_NOTIFY(settings, key, func) \
+	g_signal_connect (settings, "changed::" key, G_CALLBACK(func), te);
 
 void
 text_editor_prefs_init (TextEditor *te)
 {
 	gint val;
-	guint notify_id;
+	GSettings *settings = te->settings;
+	GSettings *docman_settings = te->docman_settings;
 	
 	/* Sync prefs from gconf to props */
-	set_n_get_prop_int (te, TAB_SIZE);
-	set_n_get_prop_int (te, TEXT_ZOOM_FACTOR);
-	set_n_get_prop_int (te, INDENT_SIZE);
-	set_n_get_prop_bool (te, USE_TABS);
-	set_n_get_prop_bool (te, DISABLE_SYNTAX_HILIGHTING);
-	set_n_get_prop_bool (te, WRAP_BOOKMARKS);
-	set_n_get_prop_bool (te, BRACES_CHECK);
+	set_n_get_prop_int (settings, TAB_SIZE);
+	set_n_get_prop_int (docman_settings, TEXT_ZOOM_FACTOR);
+	set_n_get_prop_int (settings, INDENT_SIZE);
+	set_n_get_prop_bool (settings, USE_TABS);
+	set_n_get_prop_bool (settings, DISABLE_SYNTAX_HILIGHTING);
+	set_n_get_prop_bool (settings, WRAP_BOOKMARKS);
+	set_n_get_prop_bool (settings, BRACES_CHECK);
 
 	
 	/* This one is special */
-	val = set_n_get_prop_bool (te, INDENT_MAINTAIN);
+	val = set_n_get_prop_bool (settings, INDENT_MAINTAIN);
 	sci_prop_set_int_with_key (te->props_base, INDENT_MAINTAIN".*", val);
 	
-	set_n_get_prop_bool (te, TAB_INDENTS);
-	set_n_get_prop_bool (te, BACKSPACE_UNINDENTS);
+	set_n_get_prop_bool (settings, TAB_INDENTS);
+	set_n_get_prop_bool (settings, BACKSPACE_UNINDENTS);
 	
-	set_n_get_prop_bool (te, VIEW_EOL);
-	set_n_get_prop_bool (te, VIEW_LINE_WRAP);
-	set_n_get_prop_bool (te, VIEW_WHITE_SPACES);
-	set_n_get_prop_bool (te, VIEW_INDENTATION_GUIDES);
-	set_n_get_prop_bool (te, VIEW_FOLD_MARGIN);
-	set_n_get_prop_bool (te, VIEW_MARKER_MARGIN);
-	set_n_get_prop_bool (te, VIEW_LINENUMBERS_MARGIN);
-	g_free (set_n_get_prop_string (te, FOLD_SYMBOLS));
-	set_n_get_prop_bool (te, FOLD_UNDERLINE);
-	set_n_get_prop_int (te, EDGE_COLUMN);
+	set_n_get_prop_bool (settings, VIEW_EOL);
+	set_n_get_prop_bool (settings, VIEW_LINE_WRAP);
+	set_n_get_prop_bool (settings, VIEW_WHITE_SPACES);
+	set_n_get_prop_bool (settings, VIEW_INDENTATION_GUIDES);
+	set_n_get_prop_bool (settings, VIEW_FOLD_MARGIN);
+	set_n_get_prop_bool (settings, VIEW_MARKER_MARGIN);
+	set_n_get_prop_bool (settings, VIEW_LINENUMBERS_MARGIN);
+	g_free (set_n_get_prop_string (settings, FOLD_SYMBOLS));
+	set_n_get_prop_bool (settings, FOLD_UNDERLINE);
+	set_n_get_prop_int (settings, EDGE_COLUMN);
 	
 	/* Register gconf notifications */
-	REGISTER_NOTIFY (TAB_SIZE, on_notify_tab_size, int);
-	REGISTER_NOTIFY (TEXT_ZOOM_FACTOR, on_notify_zoom_factor, int);
-	REGISTER_NOTIFY (INDENT_SIZE, on_notify_indent_size, int);
-	REGISTER_NOTIFY (USE_TABS, on_notify_use_tab_for_indentation, bool);
-	REGISTER_NOTIFY (DISABLE_SYNTAX_HILIGHTING, on_notify_disable_hilite, bool);
-	/* REGISTER_NOTIFY (INDENT_AUTOMATIC, on_notify_automatic_indentation); */
-	REGISTER_NOTIFY (WRAP_BOOKMARKS, on_notify_wrap_bookmarks, bool);
-	REGISTER_NOTIFY (BRACES_CHECK, on_notify_braces_check, bool);
-	REGISTER_NOTIFY (INDENT_MAINTAIN, on_notify_indent_maintain, bool);
-	REGISTER_NOTIFY (TAB_INDENTS, on_notify_tab_indents, bool);
-	REGISTER_NOTIFY (BACKSPACE_UNINDENTS, on_notify_backspace_unindents, bool);
-	REGISTER_NOTIFY (VIEW_EOL, on_notify_view_eols, bool);
-	REGISTER_NOTIFY (VIEW_LINE_WRAP, on_notify_view_linewrap, bool);
-	REGISTER_NOTIFY (VIEW_WHITE_SPACES, on_notify_view_whitespaces, bool);
-	REGISTER_NOTIFY (VIEW_INDENTATION_GUIDES, on_notify_view_indentation_guides, bool);
-	REGISTER_NOTIFY (VIEW_FOLD_MARGIN, on_notify_view_folds, bool);
-	REGISTER_NOTIFY (VIEW_MARKER_MARGIN, on_notify_view_markers, bool);
-	REGISTER_NOTIFY (VIEW_LINENUMBERS_MARGIN, on_notify_view_linenums, bool);
-	REGISTER_NOTIFY (FOLD_SYMBOLS, on_notify_fold_symbols, bool);
-	REGISTER_NOTIFY (FOLD_UNDERLINE, on_notify_fold_underline, bool);
-	REGISTER_NOTIFY (EDGE_COLUMN, on_notify_edge_column, int);
+	REGISTER_NOTIFY (settings, TAB_SIZE, on_notify_tab_size);
+	REGISTER_NOTIFY (docman_settings, TEXT_ZOOM_FACTOR, on_notify_zoom_factor);
+	REGISTER_NOTIFY (settings, INDENT_SIZE, on_notify_indent_size);
+	REGISTER_NOTIFY (settings, USE_TABS, on_notify_use_tab_for_indentation);
+	REGISTER_NOTIFY (settings, DISABLE_SYNTAX_HILIGHTING, on_notify_disable_hilite);
+	/* REGISTER_NOTIFY (settings, INDENT_AUTOMATIC, on_notify_automatic_indentation); */
+	REGISTER_NOTIFY (settings, WRAP_BOOKMARKS, on_notify_wrap_bookmarks);
+	REGISTER_NOTIFY (settings, BRACES_CHECK, on_notify_braces_check);
+	REGISTER_NOTIFY (settings, INDENT_MAINTAIN, on_notify_indent_maintain);
+	REGISTER_NOTIFY (settings, TAB_INDENTS, on_notify_tab_indents);
+	REGISTER_NOTIFY (settings, BACKSPACE_UNINDENTS, on_notify_backspace_unindents);
+	REGISTER_NOTIFY (settings, VIEW_EOL, on_notify_view_eols);
+	REGISTER_NOTIFY (settings, VIEW_LINE_WRAP, on_notify_view_linewrap);
+	REGISTER_NOTIFY (settings, VIEW_WHITE_SPACES, on_notify_view_whitespaces);
+	REGISTER_NOTIFY (settings, VIEW_INDENTATION_GUIDES, on_notify_view_indentation_guides);
+	REGISTER_NOTIFY (settings, VIEW_FOLD_MARGIN, on_notify_view_folds);
+	REGISTER_NOTIFY (settings, VIEW_MARKER_MARGIN, on_notify_view_markers);
+	REGISTER_NOTIFY (settings, VIEW_LINENUMBERS_MARGIN, on_notify_view_linenums);
+	REGISTER_NOTIFY (settings, FOLD_SYMBOLS, on_notify_fold_symbols);
+	REGISTER_NOTIFY (settings, FOLD_UNDERLINE, on_notify_fold_underline);
+	REGISTER_NOTIFY (settings, EDGE_COLUMN, on_notify_edge_column);
 }
 
 void
 text_editor_prefs_finalize (TextEditor *te)
 {
-	GList *node;
-	node = te->notify_ids;
-	while (node)
-	{
-		anjuta_preferences_notify_remove (te->preferences,
-										  GPOINTER_TO_UINT (node->data));
-		node = g_list_next (node);
-	}
-	g_list_free (te->notify_ids);
-	te->notify_ids = NULL;
 }

@@ -38,12 +38,13 @@
 #define ICON_FILE "anjuta-scratchbox-48.png"
 #define GLADE_FILE PACKAGE_DATA_DIR"/glade/anjuta-scratchbox.ui"
 
-#define SB_ENTRY "preferences_folder:text:/scratchbox:0:build.scratchbox.path"
+#define SB_SCHEMA "org.gnome.anjuta.scratchbox"
+#define SB_ENTRY "preferences_folder:text:/scratchbox:0:build-scratchbox-path"
 #define SB_TARGET_ENTRY "combo_target"
-#define SB_SBOX_ENTRY "preferences_combo:text:Sbox1,Sbox2:0:scratchbox.version"
+#define SB_SBOX_ENTRY "preferences_combo:text:Sbox1,Sbox2:0:scratchbox-version"
 
-#define PREF_SB_PATH "build.scratchbox.path"
-#define PREF_SB_VERSION "scratchbox.version"
+#define PREF_SB_PATH "build-scratchbox-path"
+#define PREF_SB_VERSION "scratchbox-version"
 
 /* Type defintions
  *---------------------------------------------------------------------------*/
@@ -66,6 +67,9 @@ struct _ScratchboxPlugin
 	gint id;
 	gint combo_element;
 	GString *buffer;
+
+	/* Settings */
+	GSettings *settings;
 };
 
 GtkBuilder *bxml;
@@ -177,7 +181,7 @@ on_change_target(GtkComboBox *combo, ScratchboxPlugin *plugin)
 static void
 on_update_target(GtkComboBox *combo, ScratchboxPlugin *plugin)
 {
-	AnjutaPreferences* prefs;
+	GSettings* settings;
 	GString* command = g_string_new (NULL);
 	gchar* sbox_commands;
 	gchar* sbox_args;
@@ -186,11 +190,10 @@ on_update_target(GtkComboBox *combo, ScratchboxPlugin *plugin)
 
 	g_return_if_fail (plugin != NULL);
 
-	prefs = anjuta_shell_get_preferences (ANJUTA_PLUGIN (plugin)->shell,
-						NULL);
-        sb_ver = anjuta_preferences_get(prefs, PREF_SB_VERSION);
+	settings = plugin->settings;
+        sb_ver = g_settings_get_string (settings, PREF_SB_VERSION);
 
-	sb_dir = anjuta_preferences_get(prefs, PREF_SB_PATH);
+	sb_dir = g_settings_get_string (settings, PREF_SB_PATH);
 
         if (!sb_dir)
                 return;
@@ -309,7 +312,7 @@ static void
 sbox2_environment_override (IAnjutaEnvironment* environment, gchar **dir, gchar ***argvp, gchar ***envp, GError** err)
 {
 	ScratchboxPlugin *plugin = ANJUTA_PLUGIN_SCRATCHBOX (environment);
-	AnjutaPreferences* prefs;
+	GSettings* settings;
 	gchar **new_argv;
 	gchar* sb_dir;
 	int i;
@@ -317,8 +320,8 @@ sbox2_environment_override (IAnjutaEnvironment* environment, gchar **dir, gchar 
 	if (plugin->target == NULL || !strcmp(plugin->target, "host"))
 		return;
 
-	prefs = anjuta_shell_get_preferences (ANJUTA_PLUGIN (plugin)->shell, NULL);
-	sb_dir = anjuta_preferences_get(prefs, PREF_SB_PATH);
+	settings = plugin->settings;
+	sb_dir = g_settings_get_string (settings, PREF_SB_PATH);
 
 	if (plugin->user_dir) g_free (plugin->user_dir);
 	plugin->user_dir = g_strconcat (sb_dir, G_DIR_SEPARATOR_S, NULL);
@@ -345,13 +348,13 @@ static void
 sbox1_environment_override (IAnjutaEnvironment* environment, gchar **dir, gchar ***argvp, gchar ***envp, GError** err)
 {
 	ScratchboxPlugin *plugin = ANJUTA_PLUGIN_SCRATCHBOX (environment);
-	AnjutaPreferences* prefs;
+	GSettings* settings;
 	gchar* sb_dir;
 	gsize len;
 
-	prefs = anjuta_shell_get_preferences (ANJUTA_PLUGIN (plugin)->shell, NULL);
+	settings = plugin->settings;
 
-	sb_dir = anjuta_preferences_get(prefs, PREF_SB_PATH);
+	sb_dir = g_settings_get_string (settings, PREF_SB_PATH);
 	
 	if (plugin->user_dir) g_free (plugin->user_dir);
 	plugin->user_dir = g_strconcat (sb_dir, G_DIR_SEPARATOR_S,
@@ -389,17 +392,17 @@ static gboolean
 ienvironment_override (IAnjutaEnvironment* environment, gchar **dir, gchar ***argvp, gchar ***envp, GError** err)
 {
 	ScratchboxPlugin *plugin = ANJUTA_PLUGIN_SCRATCHBOX (environment);
-	AnjutaPreferences* prefs;
+	GSettings* settings;
 	gchar* sb_dir;
 	gchar* sb_ver;
 
-	prefs = anjuta_shell_get_preferences (ANJUTA_PLUGIN (plugin)->shell, NULL);
-	sb_dir = anjuta_preferences_get(prefs, PREF_SB_PATH);
+	settings = plugin->settings;
+	sb_dir = g_settings_get_string (settings, PREF_SB_PATH);
 
 	if (!sb_dir)
 		return FALSE;
 
-	sb_ver = anjuta_preferences_get(prefs, PREF_SB_VERSION);
+	sb_ver = g_settings_get_string (settings, PREF_SB_VERSION);
 	if (!strcmp(sb_ver, "Sbox1"))
 		sbox1_environment_override(environment, dir, argvp, envp, err);
 	else
@@ -461,7 +464,7 @@ ipreferences_merge(IAnjutaPreferences* ipref, AnjutaPreferences* prefs, GError**
 	
 	plugin->id = anjuta_preferences_get_int(prefs, SB_TARGET_ENTRY);
 
-	anjuta_preferences_add_from_builder (prefs, bxml, "Scratchbox", _("Scratchbox"),  ICON_FILE);
+	anjuta_preferences_add_from_builder (prefs, bxml, plugin->settings, "Scratchbox", _("Scratchbox"),  ICON_FILE);
 	g_signal_connect(chooser_dir_entry, "current-folder-changed",
 			 G_CALLBACK(on_change_directory),
 			 plugin);
@@ -513,6 +516,7 @@ scratchbox_plugin_instance_init (GObject *obj)
 	plugin->launcher = NULL;
 	plugin->id = 0;
 	plugin->target = NULL;
+	plugin->settings = g_settings_new (SB_SCHEMA);
 }
 
 /* dispose is used to unref object created with instance_init */
@@ -529,6 +533,8 @@ scratchbox_plugin_dispose (GObject *obj)
 		g_free (plugin->user_dir);
 		plugin->user_dir = NULL;
 	}
+
+	g_object_unref (plugin->settings);
 	
 	G_OBJECT_CLASS (parent_class)->dispose (obj);
 }

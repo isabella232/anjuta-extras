@@ -68,6 +68,8 @@ libanjuta_editor_la_SOURCES= \
 	anjuta-pcmark-16.xpm \
 	anjuta-linemark-16.xpm
 
+prefs_name = org.gnome.anjuta.scintilla
+prefs_keyfile = anjuta-editor-scintilla.gschema-part.xml
 prefs_ui_files = anjuta-editor-scintilla.ui
 include $(top_srcdir)/scripts/build-schemas.mk
 

@@ -27,13 +27,13 @@
 
 G_BEGIN_DECLS
 
-void anjuta_print (gboolean preview, AnjutaPreferences *p, TextEditor *te);
+void anjuta_print (gboolean preview, GSettings *settings, TextEditor *te);
 
-#define PRINT_HEADER               "print.header"
-#define PRINT_WRAP                 "print.linewrap"
-#define PRINT_LINENUM_COUNT        "print.linenumber.count"
-#define PRINT_LANDSCAPE            "print.landscape"
-#define PRINT_COLOR                "print.color"
+#define PRINT_HEADER               "print-header"
+#define PRINT_WRAP                 "print-linewrap"
+#define PRINT_LINENUM_COUNT        "print-linenumber-count"
+#define PRINT_LANDSCAPE            "print-landscape"
+#define PRINT_COLOR                "print-color"
 
 G_END_DECLS
 

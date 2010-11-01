@@ -40,10 +40,11 @@ struct _StyleEditor
 	PropsID props;
 	StyleEditorPriv *priv;
 	AnjutaPreferences *prefs;
+	GSettings *settings;
 };
 
 StyleEditor *
-style_editor_new (AnjutaPreferences *prefs);
+style_editor_new (AnjutaPreferences *prefs, GSettings *settings);
 
 void style_editor_destroy (StyleEditor *se);
 

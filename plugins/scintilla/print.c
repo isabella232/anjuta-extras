@@ -908,7 +908,7 @@ anjuta_print_begin (GtkPrintOperation        *operation,
 
 /* First print function called before displayed print dialog */
 static GtkPrintOperation*
-anjuta_print_setup (AnjutaPreferences *p, TextEditor *te)
+anjuta_print_setup (GSettings *settings, TextEditor *te)
 {
 	PrintJobInfo *pji;
 	GtkPrintOperation* operation;
@@ -920,17 +920,16 @@ anjuta_print_setup (AnjutaPreferences *p, TextEditor *te)
 	
 	/* Set preferences */
 	pji->print_line_numbers =
-		anjuta_preferences_get_bool_with_default (p, PRINT_LINENUM_COUNT, 1);
+		g_settings_get_boolean (settings, PRINT_LINENUM_COUNT);
 	pji->print_header =
-		anjuta_preferences_get_bool_with_default (p, PRINT_HEADER, 1);
+		g_settings_get_boolean (settings, PRINT_HEADER);
 	pji->print_color =
-		anjuta_preferences_get_bool_with_default (p, PRINT_COLOR, 1);
+		g_settings_get_boolean (settings, PRINT_COLOR);
 	pji->wrapping =
-		anjuta_preferences_get_bool_with_default (p, PRINT_WRAP, 1);
+		g_settings_get_boolean (settings, PRINT_WRAP);
 	pji->tab_width =
-		anjuta_preferences_get_int_with_default (p, TAB_SIZE, 8);
-	pji->zoom_factor = anjuta_preferences_get_int (te->preferences,
-						       TEXT_ZOOM_FACTOR);
+		g_settings_get_int (settings, TAB_SIZE);
+	pji->zoom_factor = g_settings_get_int (settings, TEXT_ZOOM_FACTOR);
 	
 	
 	/* Set progress bar */
@@ -957,7 +956,7 @@ anjuta_print_setup (AnjutaPreferences *p, TextEditor *te)
 }
 
 void
-anjuta_print (gboolean preview, AnjutaPreferences *p, TextEditor *te)
+anjuta_print (gboolean preview, GSettings *settings, TextEditor *te)
 {
 	GtkPrintOperation* operation;
 
@@ -968,7 +967,7 @@ anjuta_print (gboolean preview, AnjutaPreferences *p, TextEditor *te)
 		return;
 	}
 	
-	operation = anjuta_print_setup (p, te);
+	operation = anjuta_print_setup (settings, te);
 	gtk_print_operation_run (operation, 
 							 preview ? GTK_PRINT_OPERATION_ACTION_PREVIEW :
 								 GTK_PRINT_OPERATION_ACTION_PRINT_DIALOG,

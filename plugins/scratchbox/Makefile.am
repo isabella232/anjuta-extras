@@ -36,6 +36,10 @@ libanjuta_scratchbox_la_SOURCES = \
 	plugin.c \
 	plugin.h
 
+prefs_ui_files = anjuta-scratchbox.ui
+prefs_name = org.gnome.anjuta.scratchbox
+include $(top_srcdir)/scripts/build-schemas.mk
+
 EXTRA_DIST = \
 	$(plugin_in_files) \
 	$(anjuta_pixmaps_DATA) \

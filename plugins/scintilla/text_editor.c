@@ -125,7 +125,6 @@ text_editor_instance_init (TextEditor *te)
 	te->popup_menu = NULL;
 	
 	te->monitor = NULL;
-	te->preferences = NULL;
 	te->force_hilite = NULL;
 	te->force_pref = FALSE;
 	te->freeze_count = 0;
@@ -144,6 +143,9 @@ text_editor_instance_init (TextEditor *te)
 	te->completion_count = 0;
 	te->completion_string = g_string_sized_new (256);
 	te->completion_finished = FALSE;
+
+	te->settings = g_settings_new (PREF_SCHEMA);
+	te->docman_settings = g_settings_new (DOCMAN_PREF_SCHEMA);
 }
 
 static GtkWidget *
@@ -551,7 +553,7 @@ on_shell_value_changed  (TextEditor *te, const char *name)
 }
 
 GtkWidget *
-text_editor_new (AnjutaStatus *status, AnjutaPreferences *eo, AnjutaShell *shell, const gchar *uri, const gchar *name)
+text_editor_new (AnjutaStatus *status, AnjutaShell *shell, const gchar *uri, const gchar *name)
 {
 	gint zoom_factor;
 	static guint new_file_count;
@@ -560,7 +562,6 @@ text_editor_new (AnjutaStatus *status, AnjutaPreferences *eo, AnjutaShell *shell
 	te->status = status; 
 	te->shell = shell;
 	
-	te->preferences = eo;
 	te->props_base = text_editor_get_props();
 	if (name && strlen(name) > 0)
 		te->filename = g_strdup(name); 
@@ -599,7 +600,7 @@ text_editor_new (AnjutaStatus *status, AnjutaPreferences *eo, AnjutaShell *shell
 	text_editor_update_controls (te);
 	
 	/* Apply font zoom separately */
-	zoom_factor = anjuta_preferences_get_int (te->preferences, TEXT_ZOOM_FACTOR);
+	zoom_factor = g_settings_get_int (te->docman_settings, TEXT_ZOOM_FACTOR);
 	/* DEBUG_PRINT ("%s", "Initializing zoom factor to: %d", zoom_factor); */
 	text_editor_set_zoom_factor (te, zoom_factor);
 
@@ -678,6 +679,8 @@ text_editor_dispose (GObject *obj)
 		te->completion_string = NULL;
 	}
 	te->completion_count = 0;
+	g_object_unref (te->settings);
+	g_object_unref (te->docman_settings);
 	G_OBJECT_CLASS (parent_class)->dispose (obj);
 }
 
@@ -734,7 +737,7 @@ text_editor_hilite_one (TextEditor * te, AnEditorID editor_id)
 	
 	/* syntax highlighting is disabled if te->force_pref && pref is disabled */
 	if (!te->force_pref ||
-		!anjuta_preferences_get_bool (ANJUTA_PREFERENCES (te->preferences),
+		!g_settings_get_boolean (te->settings,
 									DISABLE_SYNTAX_HILIGHTING))
 	{
 		if (te->force_hilite)
@@ -1504,7 +1507,7 @@ load_from_file (TextEditor *te, gchar *uri, gchar **err)
 		/* DEBUG_PRINT ("File size and loaded size not matching"); */
 	}
 	dos_filter = 
-		anjuta_preferences_get_bool (ANJUTA_PREFERENCES (te->preferences),
+		g_settings_get_boolean (te->settings,
 									DOS_EOL_CHECK);
 	
 	/* Set editor mode */
@@ -1626,7 +1629,7 @@ save_to_file (TextEditor *te, gchar *uri, GError **error)
 		}				
 		
 		/* Strip trailing spaces */
-		strip = anjuta_preferences_get_bool (te->preferences,
+		strip = g_settings_get_boolean (te->settings,
 											STRIP_TRAILING_SPACES);
 		if (strip)
 		{
@@ -1638,7 +1641,7 @@ save_to_file (TextEditor *te, gchar *uri, GError **error)
 			data[size] = '\n';
 			++ size;
 		}
-		dos_filter = anjuta_preferences_get_bool (te->preferences,
+		dos_filter = g_settings_get_boolean (te->settings,
 												 DOS_EOL_CHECK);
 		editor_mode =  scintilla_send_message (SCINTILLA (te->scintilla),
 											   SCI_GETEOLMODE, 0, 0);
@@ -1705,7 +1708,7 @@ text_editor_load_file (TextEditor * te)
 	scintilla_send_message (SCINTILLA (te->scintilla),
 							SCI_EMPTYUNDOBUFFER, 0, 0);
 	text_editor_set_hilite_type (te, NULL);
-	if (anjuta_preferences_get_bool (te->preferences, FOLD_ON_OPEN))
+	if (g_settings_get_boolean (te->settings, FOLD_ON_OPEN))
 	{
 		aneditor_command (te->editor_id, ANE_CLOSE_FOLDALL, 0, 0);
 	}
@@ -2158,8 +2161,8 @@ void
 text_editor_set_line_number_width (TextEditor* te)
 {
 	/* Set line numbers with according to file size */
-	if (anjuta_preferences_get_bool_with_default(te->preferences,
-			"margin.linenumber.visible", FALSE))
+	if (g_settings_get_boolean (te->settings,
+			VIEW_LINENUMBERS_MARGIN))
 	{
 		int lines, line_number_width;
 		gchar* line_number;
@@ -3446,14 +3449,14 @@ static void
 iprint_print(IAnjutaPrint* print, GError** e)
 {
 	TextEditor* te = TEXT_EDITOR(print);
-	anjuta_print(FALSE, te->preferences, te);
+	anjuta_print(FALSE, te->settings, te);
 }
 
 static void
 iprint_preview(IAnjutaPrint* print, GError** e)
 {
 	TextEditor* te = TEXT_EDITOR(print);
-	anjuta_print(TRUE, te->preferences, te);
+	anjuta_print(TRUE, te->settings, te);
 }
 
 static void
@@ -3499,7 +3502,7 @@ static void
 izoom_in(IAnjutaEditorZoom* zoom, GError** e)
 {
 	TextEditor* te = TEXT_EDITOR(zoom);
-	gint zoom_factor = anjuta_preferences_get_int (te->preferences,
+	gint zoom_factor = g_settings_get_int (te->docman_settings,
 												   TEXT_ZOOM_FACTOR) + 1;
 	
 	if (zoom_factor > MAX_ZOOM_FACTOR)
@@ -3507,14 +3510,14 @@ izoom_in(IAnjutaEditorZoom* zoom, GError** e)
 	else if (zoom_factor < MIN_ZOOM_FACTOR)
 		zoom_factor = MIN_ZOOM_FACTOR;
 	
-	anjuta_preferences_set_int (te->preferences, TEXT_ZOOM_FACTOR, zoom_factor);
+	g_settings_set_int (te->docman_settings, TEXT_ZOOM_FACTOR, zoom_factor);
 }
 
 static void
 izoom_out(IAnjutaEditorZoom* zoom, GError** e)
 {
 	TextEditor* te = TEXT_EDITOR(zoom);
-	gint zoom_factor = anjuta_preferences_get_int (te->preferences,
+	gint zoom_factor = g_settings_get_int (te->docman_settings,
 												   TEXT_ZOOM_FACTOR) - 1;
 	
 	if (zoom_factor > MAX_ZOOM_FACTOR)
@@ -3522,7 +3525,7 @@ izoom_out(IAnjutaEditorZoom* zoom, GError** e)
 	else if (zoom_factor < MIN_ZOOM_FACTOR)
 		zoom_factor = MIN_ZOOM_FACTOR;
 	
-	anjuta_preferences_set_int (te->preferences, TEXT_ZOOM_FACTOR, zoom_factor);
+	g_settings_set_int (te->docman_settings, TEXT_ZOOM_FACTOR, zoom_factor);
 }
 
 static void
