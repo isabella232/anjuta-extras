@@ -427,7 +427,6 @@ gprof_options_load (GProfOptions *self, const gchar *path)
 		gprof_options_parse_tree (self, root);
 		
 		xmlFreeDoc (settings_doc);
-		xmlCleanupParser ();
 	}
 }
 
@@ -447,5 +446,4 @@ gprof_options_save (GProfOptions *self, const gchar *path)
 	xmlSaveFormatFile (path, settings_doc, TRUE);
 	
 	xmlFreeDoc (settings_doc);
-	xmlCleanupParser ();
 }
