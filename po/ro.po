@@ -1,21 +1,23 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
 # , 2010.
+# Lucian Adrian Grijincu <lucian.grijincu@gmail.com>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
-"product=anjuta&component=unknown\n"
+"Report-Msgid-Bugs-To: "
+"http://bugzilla.gnome.org/enter_bug.cgi?product=anjuta&component=unknown\n"
 "POT-Creation-Date: 2010-11-01 14:42+0000\n"
-"PO-Revision-Date: 2010-12-12 04:52+0200\n"
-"Last-Translator: \n"
-"Language-Team: American English <kde-i18n-doc@kde.org>\n"
+"PO-Revision-Date: 2011-03-19 01:13+0200\n"
+"Last-Translator: Lucian Adrian Grijincu <lucian.grijincu@gmail.com>\n"
+"Language-Team: Romanian Gnome Team <gnomero-list@lists.sourceforge.net>\n"
+"Language: ro\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.1\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
+"20)) ? 1 : 2);;\n"
+"X-Generator: Virtaal 0.6.1\n"
 
 #: ../plugins/profiler/gprof-call-graph-view.c:312
 #: ../plugins/profiler/gprof-call-graph-view.c:322
@@ -36,7 +38,6 @@ msgstr "Timp"
 #: ../plugins/profiler/gprof-call-graph-view.c:361
 #: ../plugins/profiler/gprof-call-graph-view.c:375
 #: ../plugins/profiler/gprof-call-graph-view.c:389
-#, fuzzy
 msgid "Self"
 msgstr "Individual"
 
@@ -51,11 +52,11 @@ msgstr "Copii"
 #: ../plugins/profiler/gprof-call-graph-view.c:459
 #: ../plugins/profiler/gprof-flat-profile-view.c:113
 msgid "Calls"
-msgstr "Apelări"
+msgstr "Apeluri"
 
 #: ../plugins/profiler/gprof-flat-profile-view.c:68
 msgid "% Time"
-msgstr "de % ori"
+msgstr "% timp"
 
 #: ../plugins/profiler/gprof-flat-profile-view.c:82
 msgid "Cumulative Seconds"
@@ -98,7 +99,7 @@ msgstr ""
 "Ținta nu are date de profilare.\n"
 "\n"
 "Asigurați-vă că ținta este compilată cu suportul de compilare (-p) și că a "
-"fost rulată cel puțin odata."
+"fost rulată cel puțin o dată."
 
 #. Action name
 #. Stock icon, if any
@@ -132,12 +133,10 @@ msgid "Delete Data"
 msgstr "Șterge datele"
 
 #: ../plugins/profiler/plugin.c:829
-#, fuzzy
 msgid "Application Performance Profiler"
 msgstr "Profilator de performanțe ale aplicației"
 
 #: ../plugins/profiler/plugin.c:851
-#, fuzzy
 msgid "Flat Profile"
 msgstr "Profil neted"
 
@@ -231,7 +230,7 @@ msgid ""
 "encodings list. If not, add it from the preferences."
 msgstr ""
 "Fișierul nu pare a fi un fișier text sau codarea nu este suportată. "
-"Verificați dacă în lista de codări suportate se află și codarea fișierului."
+"Verificați dacă în lista de codări suportate se află și codarea fișierului. "
 "Dacă nu, adăugați-o din panoul de preferințe."
 
 #: ../plugins/scintilla/text_editor.c:1686
@@ -267,26 +266,26 @@ msgid "File saved successfully"
 msgstr "Fișierul a fost salvat cu succes"
 
 #: ../plugins/scintilla/text_editor.c:2132
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Cannot load Global defaults and configuration files:\n"
 "%s.\n"
 "This may result in improper behaviour or instabilities.\n"
 "Anjuta will fall back to built in (limited) settings"
 msgstr ""
-"Nu s-au putut încărca implicitele globale și fișierele de configurație:\n"
+"Nu s-au putut încărca valorile implicite globale și fișierele de "
+"configurație:\n"
 "%s.\n"
-"Aceasta ar putea duce la un comportament impropriu sau destabilizări.\n"
-"Anjuta va reveni la stadiul de construire (limitată) în setări"
+"Aceasta ar putea duce la un comportament greșit sau instabil.\n"
+"Anjuta va reveni la setările cu care a fost construit (limitate)"
 
 #: ../plugins/scratchbox/plugin.c:216
-#, c-format
+#, c-format, 
 msgid "Program '%s' does not exists"
 msgstr "Programul „%s” nu există"
 
 #: ../plugins/scratchbox/plugin.c:467 ../plugins/scratchbox/plugin.c:489
 #: ../plugins/scratchbox/anjuta-scratchbox.plugin.in.h:2
-#, fuzzy
 msgid "Scratchbox"
 msgstr "Scratchbox"
 
@@ -316,7 +315,7 @@ msgid ""
 "Please create one first."
 msgstr ""
 "Nu sunt ținte executabile valabile pentru acest proiect.\n"
-"Creeați unul întâi."
+"creați unul întâi."
 
 #: ../plugins/valgrind/plugin.c:368
 msgid "Choose file where to save Valgrind log"
@@ -355,7 +354,7 @@ msgstr "_Valgrind"
 #. Stock icon, if any
 #: ../plugins/valgrind/plugin.c:468
 msgid "_Select Tool and Run..."
-msgstr "A_lege unealta si rulează..."
+msgstr "A_lege unealta și rulează..."
 
 #. Action name
 #. Stock icon, if any
@@ -403,17 +402,17 @@ msgstr "Previzualizare"
 
 #: ../plugins/valgrind/preferences.c:174
 msgid "lines above and below the target line."
-msgstr "liniile de sub și de deasupra de linia țintă."
+msgstr "linii sub și deasupra liniei țintă."
 
 #: ../plugins/valgrind/process.c:55
 #, c-format
 msgid "Failed to create pipe to '%s': %s"
-msgstr "Nu s-a putut creea conexiune la „%s”: %s"
+msgstr "Nu s-a putut crea conexiunea la „%s”: %s"
 
 #: ../plugins/valgrind/process.c:110
 #, c-format
 msgid "Failed to create child process '%s': %s"
-msgstr "Nu s-a putut creea procesul de ramificare a „%s”: %s"
+msgstr "Nu s-a putut crea procesul de copil „%s”: %s"
 
 #: ../plugins/valgrind/vgactions.c:168
 msgid "Reached the end of the input file or error in parsing valgrind output."
@@ -452,7 +451,6 @@ msgstr ""
 "Introduceți o valoare de forma „<integer>,<integer>,<integer>”."
 
 #: ../plugins/valgrind/vgcachegrindprefs.c:234
-#, fuzzy
 msgid "Override default settings"
 msgstr "Suprascrie setările implicite"
 
@@ -463,7 +461,6 @@ msgid "Enter <size>,<assoc>,<line_size>:"
 msgstr "Introduceți <size>,<assoc>,<line_size>:"
 
 #: ../plugins/valgrind/vgcachegrindprefs.c:280
-#, fuzzy
 msgid "Cachegrind"
 msgstr "Cachegrind"
 
@@ -513,7 +510,7 @@ msgstr "Li_pește"
 
 #: ../plugins/valgrind/vgdefaultview.c:1170
 msgid "Suppress"
-msgstr "Suprimează"
+msgstr "Suprimă"
 
 #: ../plugins/valgrind/vgdefaultview.c:1172
 msgid "Edit in Custom Editor"
@@ -525,9 +522,8 @@ msgstr "Generale"
 
 #. demangle = decode C++ name encoding
 #: ../plugins/valgrind/vggeneralprefs.c:179
-#, fuzzy
 msgid "Demangle C++ symbol names"
-msgstr "Numele simbolurilor Demangle C++"
+msgstr "Demangle pe simbolurile C++"
 
 #: ../plugins/valgrind/vggeneralprefs.c:187
 msgid "Show"
@@ -535,7 +531,7 @@ msgstr "Arată"
 
 #: ../plugins/valgrind/vggeneralprefs.c:199
 msgid "callers in stack trace"
-msgstr "apelatori în urma liniei"
+msgstr "apelatori în trasarea stivei"
 
 #: ../plugins/valgrind/vggeneralprefs.c:206
 msgid "Stop showing errors if there are too many"
@@ -543,20 +539,19 @@ msgstr "Nu mai arăta erori dacă sunt prea multe"
 
 #: ../plugins/valgrind/vggeneralprefs.c:214
 msgid "Round malloc sizes to next word"
-msgstr ""
+msgstr "Rotunjește dimensiunea pentru malloc() la următorul cuvânt"
 
 #: ../plugins/valgrind/vggeneralprefs.c:222
-#, fuzzy
 msgid "Trace any child processes forked off by the program being debugged"
-msgstr "Găsește orice proces de ramificare desprins de programul în depanare"
+msgstr "Trasează orice proces de copil desprins de programul depanat"
 
 #: ../plugins/valgrind/vggeneralprefs.c:230
 msgid "Track open file descriptors"
-msgstr "Pista deschide descriptorii fișierului"
+msgstr "Urmărește descriptorii de fișier deschiși"
 
 #: ../plugins/valgrind/vggeneralprefs.c:238
 msgid "Add time stamps to log messages"
-msgstr "Adaugă ștampile de timp la mesajele de istoric"
+msgstr "Adaugă marcaje de timp la mesajele de istoric"
 
 #: ../plugins/valgrind/vggeneralprefs.c:246
 msgid "Call __libc_freeres() at exit before checking for memory leaks"
@@ -566,7 +561,7 @@ msgstr ""
 
 #: ../plugins/valgrind/vggeneralprefs.c:254
 msgid "Suppressions File:"
-msgstr "Fișier suprimat:"
+msgstr "Fișier de suprimare:"
 
 #: ../plugins/valgrind/vggeneralprefs.c:274
 msgid "Choose Valgrind Suppressions File..."
@@ -578,15 +573,15 @@ msgstr "Helgrind"
 
 #: ../plugins/valgrind/vghelgrindprefs.c:185
 msgid "Assume thread stacks are used privately"
-msgstr ""
+msgstr "Presupune că stivele firelor de execuție sunt utilizate privat"
 
 #: ../plugins/valgrind/vghelgrindprefs.c:194
 msgid "Show location of last word access on error:"
-msgstr "Arată locația ultimului acces text la eroare:"
+msgstr "Arată locația ultimului cuvânt accesat la eroare:"
 
 #: ../plugins/valgrind/vgmemcheckprefs.c:204
 msgid "Memcheck"
-msgstr "Verificare de memorie"
+msgstr "Memcheck"
 
 #: ../plugins/valgrind/vgmemcheckprefs.c:209
 msgid "Memory leaks"
@@ -598,7 +593,7 @@ msgstr "Verificare de scurgeri:"
 
 #: ../plugins/valgrind/vgmemcheckprefs.c:225
 msgid "Show reachable blocks in leak check"
-msgstr "Arată blocurile în verificarea de scurgeri"
+msgstr "Arată blocurile la care se poate ajunge la verificarea de scurgeri"
 
 #: ../plugins/valgrind/vgmemcheckprefs.c:233
 msgid "Leak resolution:"
@@ -606,11 +601,11 @@ msgstr "Rezoluția scurgerilor:"
 
 #: ../plugins/valgrind/vgmemcheckprefs.c:251
 msgid "Keep up to"
-msgstr "Păstrează pentru"
+msgstr "Păstrează până la"
 
 #: ../plugins/valgrind/vgmemcheckprefs.c:263
 msgid "bytes in the queue after being free()'d"
-msgstr "octeții în coadă după ce au fost free()'d"
+msgstr "octeții în coadă după ce au fost eliberați cu free()"
 
 #: ../plugins/valgrind/vgmemcheckprefs.c:270
 msgid "Work around bugs generated by gcc 2.96"
@@ -638,11 +633,11 @@ msgstr "Numele regulii:"
 
 #: ../plugins/valgrind/vgrule-editor.c:249
 msgid "Suppress messages of type:"
-msgstr "Mesaj de suprimare de tipul:"
+msgstr "Suprimă mesajele de tipul:"
 
 #: ../plugins/valgrind/vgrule-editor.c:259
 msgid "Suppress when using:"
-msgstr "Suprimare când se folosește:"
+msgstr "Suprimă când se folosește:"
 
 #: ../plugins/valgrind/vgrule-editor.c:272
 msgid "System call:"
@@ -656,7 +651,7 @@ msgstr "Lanț de apel:"
 #: ../plugins/valgrind/vgrule-editor.c:555
 #, c-format
 msgid "Error saving to suppression file '%s': %s"
-msgstr "Eroare la salvarea în suprimarea fișierului „%s”: %s"
+msgstr "Eroare la salvarea în fișierul de suprimare „%s”: %s"
 
 #: ../plugins/valgrind/vgrule-list.c:177 ../plugins/valgrind/vgrule-list.c:246
 msgid "You have forgotten to name your suppression rule."
