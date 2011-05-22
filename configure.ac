@@ -3,9 +3,9 @@ dnl Created by Anjuta application wizard.
 
 AC_PREREQ(2.59)
 
-m4_define(anjuta_major_version,  2)
-m4_define(anjuta_minor_version, 32)
-m4_define(anjuta_micro_version,  1)
+m4_define(anjuta_major_version,  3)
+m4_define(anjuta_minor_version,  0)
+m4_define(anjuta_micro_version,  0)
 m4_define(anjuta_nano_version,   0)
 m4_define(anjuta_version, anjuta_major_version.anjuta_minor_version.anjuta_micro_version.anjuta_nano_version)
 
@@ -29,7 +29,7 @@ AC_LANG_C
 ANJUTA_REQUIRED=anjuta_major_version.anjuta_minor_version.0
 BINUTILS_REQUIRED=2.15.92
 LIBGRAPHVIZ_REQUIRED=1.0
-GTK_REQUIRED=2.17.10
+GTK_REQUIRED=3.0.0
 GLIB_REQUIRED=2.16.0
 GCONF_REQUIRED=2.12.0
 GNOME_REQUIRED=2.12.0
@@ -102,7 +102,7 @@ dnl maintainer mode
 AM_MAINTAINER_MODE
 
 dnl Check for libanjuta
-PKG_CHECK_MODULES(LIBANJUTA, [libanjuta-1.0 >= $ANJUTA_REQUIRED])
+PKG_CHECK_MODULES(LIBANJUTA, [libanjuta-3.0 >= $ANJUTA_REQUIRED])
 
 dnl Check for libgnome
 PKG_CHECK_MODULES(GNOME, libgnomecanvas-2.0 >= $GNOME_REQUIRED)

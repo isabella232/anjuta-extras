@@ -90,11 +90,13 @@ int AnEditor::GetLineIndentPosition(int line) {
 }
 
 bool AnEditor::RangeIsAllWhitespace(int start, int end) {
-	WindowAccessor acc(wEditor.GetID(), *props);
+	//FIXME WindowAccessor acc(wEditor.GetID(), *props);
+#if 0
 	for (int i = start;i < end;i++) {
 		if ((acc[i] != ' ') && (acc[i] != '\t'))
 			return false;
 	}
+#endif
 	return true;
 }
 

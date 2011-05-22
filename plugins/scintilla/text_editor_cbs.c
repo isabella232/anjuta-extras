@@ -76,7 +76,7 @@ on_text_editor_text_keyrelease_event (GtkWidget * widget,
 									   GdkEventKey * event,
 									   gpointer user_data)
 {
-    if (event->keyval == GDK_BackSpace)
+    if (event->keyval == GDK_KEY_BackSpace)
     {
         TextEditor *te = user_data;
         g_signal_emit_by_name(G_OBJECT(te), "backspace");
@@ -120,14 +120,15 @@ static void
 scintilla_uri_dropped (TextEditor *te, const char *uri)
 {
 	GtkWidget *parent;
-	GtkSelectionData tmp;
-	
-	tmp.data = (guchar *) uri;
+	// FIXME: Not possible to create a selection data anymore
+	//GtkSelectionData tmp;
+
+	//tmp.data = (guchar *) uri;
 
 	parent = gtk_widget_get_toplevel (GTK_WIDGET (te));
-	if (parent)
-		g_signal_emit_by_name (G_OBJECT (parent), "drag_data_received",
-							   NULL, 0, 0, &tmp, 0, 0);
+	//if (parent)
+	//	g_signal_emit_by_name (G_OBJECT (parent), "drag_data_received",
+	//							   NULL, 0, 0, &tmp, 0, 0);
 	return;
 }
 

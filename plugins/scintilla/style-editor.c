@@ -572,7 +572,7 @@ on_hilite_style_entry_changed (GtkComboBox * combobox, gpointer user_data)
 	g_return_if_fail (user_data);
 	p = user_data;
 
-	style_item = gtk_combo_box_get_active_text (combobox);
+	style_item = gtk_combo_box_text_get_active_text (GTK_COMBO_BOX_TEXT (combobox));
 	if (!style_item || strlen (style_item) <= 0)
 		return;
 	if (p->priv->current_style)
@@ -917,7 +917,7 @@ create_style_editor_gui (StyleEditor * se)
 	{
 		if (hilite_style[i] == NULL)
 			break;
-		gtk_combo_box_append_text (GTK_COMBO_BOX (se->priv->hilite_item_combobox), hilite_style[i]);
+		gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (se->priv->hilite_item_combobox), hilite_style[i]);
 
 	}
 	

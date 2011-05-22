@@ -118,7 +118,7 @@ AnEditor::AnEditor(PropSetFile* p) {
 	
 	wEditor = scintilla_new();
 	g_object_ref (G_OBJECT (wEditor.GetID()));
-	gtk_object_sink (GTK_OBJECT (wEditor.GetID()));
+	g_object_ref_sink (G_OBJECT (wEditor.GetID()));
 	scintilla_set_id(SCINTILLA(wEditor.GetID()), 0);
 
 	fnEditor = reinterpret_cast<SciFnDirect>(Platform::SendScintilla(
@@ -541,7 +541,8 @@ bool AnEditor::FindMatchingBracePosition(bool editor, int &braceAtCaret, int &br
 	braceOpposite = -1;
 	char charBefore = '\0';
 	char styleBefore = '\0';
-	WindowAccessor acc(win.GetID(), *props);
+	//FIXME WindowAccessor acc(win.GetID(), *props);
+#if 0
 	if (caretPos > 0) {
 		charBefore = acc[caretPos - 1];
 		styleBefore = static_cast<char>(acc.StyleAt(caretPos - 1) & 31);
@@ -584,6 +585,7 @@ bool AnEditor::FindMatchingBracePosition(bool editor, int &braceAtCaret, int &br
 			isInside = !isAfter;
 		}
 	}
+#endif
 	return isInside;
 }
 
@@ -644,7 +646,8 @@ void AnEditor::SelectionWord(char *word, int len) {
 	int selStart = cr.cpMin;
 	int selEnd = cr.cpMax;
 	if (selStart == selEnd) {
-		WindowAccessor acc(wEditor.GetID(), *props);
+		//FIXME WindowAccessor acc(wEditor.GetID(), *props);
+#if 0
 		// Try and find a word at the caret
 		if (iswordcharforsel(acc[selStart])) {
 			while ((selStart > 0) && (iswordcharforsel(acc[selStart - 1])))
@@ -654,6 +657,7 @@ void AnEditor::SelectionWord(char *word, int len) {
 			if (selStart < selEnd)
 				selEnd++;   	// Because normal selections end one past
 		}
+#endif
 	}
 	word[0] = '\0';
 	if ((selStart < selEnd) && ((selEnd - selStart + 1) < len)) {
@@ -667,7 +671,8 @@ void AnEditor::WordSelect() {
 	int selEnd;
 	
 	selStart = selEnd = SendEditor(SCI_GETCURRENTPOS);
-	WindowAccessor acc(wEditor.GetID(), *props);
+	//FIXME WindowAccessor acc(wEditor.GetID(), *props);
+#if 0
 	if (iswordcharforsel(acc[selStart])) {
 			while ((selStart > 0) && (iswordcharforsel(acc[selStart - 1])))
 				selStart--;
@@ -676,6 +681,7 @@ void AnEditor::WordSelect() {
 			if (selStart < selEnd)
 				selEnd++;   	// Because normal selections end one past
 	}
+#endif
 	SetSelection(selStart, selEnd);
 }
 
