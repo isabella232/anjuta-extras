@@ -16,7 +16,7 @@ extern "C" {
 #endif
 
 #define SCINTILLA(obj)          G_TYPE_CHECK_INSTANCE_CAST (obj, scintilla_get_type (), ScintillaObject)
-#define SCINTILLA_CLASS(klass)  GTK_CHECK_CLASS_CAST (klass, scintilla_get_type (), ScintillaClass)
+#define SCINTILLA_CLASS(klass)  G_TYPE_CHECK_CLASS_CAST (klass, scintilla_get_type (), ScintillaClass)
 #define IS_SCINTILLA(obj)       G_TYPE_CHECK_INSTANCE_TYPE (obj, scintilla_get_type ())
 
 typedef struct _ScintillaObject ScintillaObject;

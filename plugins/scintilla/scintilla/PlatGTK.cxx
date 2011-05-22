@@ -694,6 +694,7 @@ FontID FontCached::CreateNewFont(const char *fontName, int characterSet,
 	}
 	return new FontHandle(newid);
 #else
+	// Try to use pango font even if it's not specified
 	PangoFontDescription *pfd = pango_font_description_new();
 	if (pfd) {
 		pango_font_description_set_family(pfd, fontName+1);

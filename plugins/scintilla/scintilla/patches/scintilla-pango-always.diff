@@ -1,28 +1,19 @@
---- scintilla/scintilla/gtk/PlatGTK.cxx	2010-01-23 22:56:07.000000000 +0100
-+++ scintilla/PlatGTK.cxx	2010-01-31 19:42:12.000000000 +0100
-@@ -513,16 +513,16 @@
- 	charset[0] = '\0';
- 
- #ifdef USE_PANGO
--	if (fontName[0] == '!') {
--		PangoFontDescription *pfd = pango_font_description_new();
--		if (pfd) {
--			pango_font_description_set_family(pfd, fontName+1);
--			pango_font_description_set_size(pfd, size * PANGO_SCALE);
--			pango_font_description_set_weight(pfd, bold ? PANGO_WEIGHT_BOLD : PANGO_WEIGHT_NORMAL);
--			pango_font_description_set_style(pfd, italic ? PANGO_STYLE_ITALIC : PANGO_STYLE_NORMAL);
--			return new FontHandle(pfd, characterSet);
--		}
-+	//if (fontName[0] == '!') {
+--- scintilla/gtk/PlatGTK.cxx	2011-05-21 22:36:30.332130001 +0200
++++ PlatGTK.cxx	2011-05-22 19:40:17.540959001 +0200
+@@ -694,6 +694,16 @@
+ 	}
+ 	return new FontHandle(newid);
+ #else
++	// Try to use pango font even if it's not specified
 +	PangoFontDescription *pfd = pango_font_description_new();
 +	if (pfd) {
-+		pango_font_description_set_family(pfd, fontName);
++		pango_font_description_set_family(pfd, fontName+1);
 +		pango_font_description_set_size(pfd, size * PANGO_SCALE);
 +		pango_font_description_set_weight(pfd, bold ? PANGO_WEIGHT_BOLD : PANGO_WEIGHT_NORMAL);
 +		pango_font_description_set_style(pfd, italic ? PANGO_STYLE_ITALIC : PANGO_STYLE_NORMAL);
 +		return new FontHandle(pfd, characterSet);
- 	}
-+	//}
++	}
++
+ 	return new FontHandle();
  #endif
- 
- 	GdkFont *newid = 0;
+ }

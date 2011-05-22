@@ -32,12 +32,18 @@ int Scintilla_LinkLexers();
 #if defined(_WIN32)
 #include <basetsd.h>
 #endif
+#ifdef HAVE_STDINT_H
+#include <stdint.h>
+typedef uintptr_t uptr_t;
+typedef intptr_t sptr_t;
+#else
 #ifdef MAXULONG_PTR
 typedef ULONG_PTR uptr_t;
 typedef LONG_PTR sptr_t;
 #else
 typedef unsigned long uptr_t;
 typedef long sptr_t;
+#endif
 #endif
 
 typedef sptr_t (*SciFnDirect)(sptr_t ptr, unsigned int iMessage, uptr_t wParam, sptr_t lParam);
