@@ -296,7 +296,6 @@ protected:
 	void ClearDocument();
 	void CountLineEnds(int &linesCR, int &linesLF, int &linesCRLF);
 	CharacterRange GetSelection();
-	void SelectionWord(char *word, int len);
 	void WordSelect();
 	void LineSelect();
 	void SelectionIntoProperties();

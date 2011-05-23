@@ -90,14 +90,18 @@ int AnEditor::GetLineIndentPosition(int line) {
 }
 
 bool AnEditor::RangeIsAllWhitespace(int start, int end) {
-	//FIXME WindowAccessor acc(wEditor.GetID(), *props);
-#if 0
+	char *buffer = new char [end - start + 1];
+	bool all_white = true;
+	
+	GetRange(wEditor, start, end, buffer);
+	
 	for (int i = start;i < end;i++) {
-		if ((acc[i] != ' ') && (acc[i] != '\t'))
-			return false;
+		if ((buffer[i] != ' ') && (buffer[i] != '\t'))
+			all_white = false;
+			break;
 	}
-#endif
-	return true;
+
+	return all_white;
 }
 
 #if 0

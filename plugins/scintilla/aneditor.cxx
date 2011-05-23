@@ -541,12 +541,18 @@ bool AnEditor::FindMatchingBracePosition(bool editor, int &braceAtCaret, int &br
 	braceOpposite = -1;
 	char charBefore = '\0';
 	char styleBefore = '\0';
-	//FIXME WindowAccessor acc(win.GetID(), *props);
-#if 0
+	char buffer[6];
+
 	if (caretPos > 0) {
-		charBefore = acc[caretPos - 1];
-		styleBefore = static_cast<char>(acc.StyleAt(caretPos - 1) & 31);
+		GetRange (caretPos - 1, caretPos + 1, buffer, true);
+		charBefore = buffer[0];
+		styleBefore = buffer[1];
 	}
+	else
+	{
+		GetRange (caretPos, caretPos + 1, buffer + 2, true);
+	}
+	
 	// Priority goes to character before caret
 	if (charBefore && strchr("[](){}", charBefore) &&
 			((styleBefore == bracesStyleCheck) || (!bracesStyle))) {
@@ -560,8 +566,8 @@ bool AnEditor::FindMatchingBracePosition(bool editor, int &braceAtCaret, int &br
 	bool isAfter = true;
 	if (sloppy && (braceAtCaret < 0)) {
 		// No brace found so check other side
-		char charAfter = acc[caretPos];
-		char styleAfter = static_cast<char>(acc.StyleAt(caretPos) & 31);
+		char charAfter = buffer[2];
+		char styleAfter = buffer[3] & 31;
 		if (charAfter && strchr("[](){}", charAfter) && (styleAfter == bracesStyleCheck)) {
 			braceAtCaret = caretPos;
 			isAfter = false;
@@ -585,7 +591,7 @@ bool AnEditor::FindMatchingBracePosition(bool editor, int &braceAtCaret, int &br
 			isInside = !isAfter;
 		}
 	}
-#endif
+
 	return isInside;
 }
 
@@ -640,48 +646,32 @@ bool AnEditor::iswordcharforsel(char ch) {
 	return !strchr("\t\n\r !\"#$%&'()*+,-./:;<=>?@[\\]^`{|}~", ch);
 }
 
-void AnEditor::SelectionWord(char *word, int len) {
-	int lengthDoc = LengthDocument();
-	CharacterRange cr = GetSelection();
-	int selStart = cr.cpMin;
-	int selEnd = cr.cpMax;
-	if (selStart == selEnd) {
-		//FIXME WindowAccessor acc(wEditor.GetID(), *props);
-#if 0
-		// Try and find a word at the caret
-		if (iswordcharforsel(acc[selStart])) {
-			while ((selStart > 0) && (iswordcharforsel(acc[selStart - 1])))
-				selStart--;
-			while ((selEnd < lengthDoc - 1) && (iswordcharforsel(acc[selEnd + 1])))
-				selEnd++;
-			if (selStart < selEnd)
-				selEnd++;   	// Because normal selections end one past
-		}
-#endif
-	}
-	word[0] = '\0';
-	if ((selStart < selEnd) && ((selEnd - selStart + 1) < len)) {
-		GetRange(wEditor, selStart, selEnd, word);
-	}
-}
-
 void AnEditor::WordSelect() {
 	int lengthDoc = LengthDocument();
 	int selStart;
 	int selEnd;
-	
+	int line; 	
+	int lineStart;
+	int lineEnd;
+	char *buffer;
+
 	selStart = selEnd = SendEditor(SCI_GETCURRENTPOS);
-	//FIXME WindowAccessor acc(wEditor.GetID(), *props);
-#if 0
-	if (iswordcharforsel(acc[selStart])) {
-			while ((selStart > 0) && (iswordcharforsel(acc[selStart - 1])))
+	line = SendEditor(SCI_LINEFROMPOSITION, selStart);
+	lineStart = SendEditor(SCI_POSITIONFROMLINE, line);
+	lineEnd = SendEditor(SCI_GETLINEENDPOSITION, line);
+
+	buffer = new char [lineEnd - lineStart + 1];
+	GetRange(wEditor, lineStart, lineEnd, buffer);
+	
+	if (iswordcharforsel(buffer[selStart - lineStart])) {
+			while ((selStart > lineStart) && (iswordcharforsel(buffer[selStart - 1 - lineStart])))
 				selStart--;
-			while ((selEnd < lengthDoc - 1) && (iswordcharforsel(acc[selEnd + 1])))
+			while ((selEnd < lineEnd - 1) && (iswordcharforsel(buffer[selEnd + 1 + lineStart])))
 				selEnd++;
 			if (selStart < selEnd)
 				selEnd++;   	// Because normal selections end one past
 	}
-#endif
+	delete []buffer;
 	SetSelection(selStart, selEnd);
 }
 
@@ -692,23 +682,6 @@ void AnEditor::LineSelect() {
 	int lineEnd = SendEditor(SCI_GETLINEENDPOSITION, line);
 	
 	SetSelection(lineStart, lineEnd);
-}
-
-void AnEditor::SelectionIntoProperties() {
-	CharacterRange cr = GetSelection();
-	char currentSelection[1000];
-	if ((cr.cpMin < cr.cpMax) && ((cr.cpMax - cr.cpMin + 1) < static_cast<int>(sizeof(currentSelection)))) {
-		GetRange(wEditor, cr.cpMin, cr.cpMax, currentSelection);
-		int len = strlen(currentSelection);
-		if (len > 2 && iscntrl(currentSelection[len - 1]))
-			currentSelection[len - 1] = '\0';
-		if (len > 2 && iscntrl(currentSelection[len - 2]))
-			currentSelection[len - 2] = '\0';
-		props->Set("CurrentSelection", currentSelection);
-	}
-	char word[200];
-	SelectionWord(word, sizeof(word));
-	props->Set("CurrentWord", word);
 }
 
 long AnEditor::Find (long flags, char* findWhat) {
