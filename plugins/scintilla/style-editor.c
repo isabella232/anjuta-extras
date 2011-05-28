@@ -883,6 +883,7 @@ create_style_editor_gui (StyleEditor * se)
 {
 	GtkBuilder *bxml = gtk_builder_new ();
 	GtkWidget *pref_dialog;
+	GtkListStore *store;
 	gint i;
 	GError* error = NULL;
 
@@ -912,14 +913,23 @@ create_style_editor_gui (StyleEditor * se)
 	se->priv->calltip_back_color = GTK_WIDGET (gtk_builder_get_object (bxml, "calltip"));
 	se->priv->selection_fore_color = GTK_WIDGET (gtk_builder_get_object (bxml, "selection_fore"));
 	se->priv->selection_back_color = GTK_WIDGET (gtk_builder_get_object (bxml, "selection_back"));
-	
+		
+	/* Fill combo box with modules */
+    store = gtk_list_store_new(1, G_TYPE_STRING);
+    gtk_combo_box_set_entry_text_column (GTK_COMBO_BOX (se->priv->hilite_item_combobox), 0);
+
 	for (i = 0;; i += 2)
 	{
+		GtkTreeIter iter;
+		
 		if (hilite_style[i] == NULL)
 			break;
-		gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (se->priv->hilite_item_combobox), hilite_style[i]);
-
+		gtk_list_store_append (store, &iter);
+		gtk_list_store_set (store, &iter, 0, hilite_style[i], -1);
 	}
+    gtk_combo_box_set_model (GTK_COMBO_BOX(se->priv->hilite_item_combobox), GTK_TREE_MODEL(store));
+    g_object_unref (store);
+	gtk_combo_box_set_active (GTK_COMBO_BOX (se->priv->hilite_item_combobox), 0);
 	
 	pref_dialog = anjuta_preferences_get_dialog (se->prefs);
 	gtk_window_set_transient_for (GTK_WINDOW (se->priv->dialog),
