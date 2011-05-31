@@ -250,8 +250,8 @@ else
 	pkg_prefix="--define-variable=prefix=$prefix"
 fi
 
-anjutalibdir=`pkg-config $pkg_prefix --variable=libdir libanjuta-1.0`
-anjutadatadir=`pkg-config $pkg_prefix --variable=datadir libanjuta-1.0`
+anjutalibdir=`pkg-config $pkg_prefix --variable=libdir libanjuta-3.0`
+anjutadatadir=`pkg-config $pkg_prefix --variable=datadir libanjuta-3.0`
 AC_SUBST(anjutalibdir)
 AC_SUBST(anjutadatadir)
 anjuta_plugin_dir='$(anjutalibdir)/anjuta'
