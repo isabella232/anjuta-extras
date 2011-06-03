@@ -88,6 +88,7 @@ LEXER_OBJS = \
 	LexYAML.o
 
 LEXER_SRCS = \
+	LexerNoExceptions.h\
 	LexA68k.cxx\
 	LexAbaqus.cxx\
 	LexAda.cxx\

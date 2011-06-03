@@ -61,6 +61,9 @@ libanjuta_scintilla_la_SOURCES =\
 	Indicator.h \
 	KeyMap.h \
 	LexAccessor.h \
+	LexerModule.h \
+	LexerBase.h \
+	LexerSimple.h \
 	LineMarker.h \
 	OptionSet.h \
 	Partitioning.h \
@@ -106,7 +109,8 @@ $(srcdir)/lexers.make:
 	done; \
 	echo "" >> $(notdir $@); \
 	echo "" >> $(notdir $@); \
-	echo -n 'LEXER_SRCS = ' >> $(notdir $@); \
+	echo 'LEXER_SRCS = \' >> $(notdir $@); \
+	echo -n '	LexerNoExceptions.h' >> $(notdir $@); \
 	for lex in Lex*.cxx; do \
 		echo '\' >> $(notdir $@); \
 		echo -n "	$$lex" >> $(notdir $@); \

@@ -3,6 +3,7 @@
 
 scintilla_AM_CPPFLAGS = \
 	Accessor.h \
+	ILexer.h \
 	KeyWords.h \
 	Platform.h \
 	PropSet.h \
