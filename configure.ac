@@ -3,9 +3,9 @@ dnl Created by Anjuta application wizard.
 
 AC_PREREQ(2.59)
 
-m4_define(anjuta_major_version,  2)
-m4_define(anjuta_minor_version, 32)
-m4_define(anjuta_micro_version,  1)
+m4_define(anjuta_major_version,  3)
+m4_define(anjuta_minor_version,  0)
+m4_define(anjuta_micro_version,  0)
 m4_define(anjuta_nano_version,   0)
 m4_define(anjuta_version, anjuta_major_version.anjuta_minor_version.anjuta_micro_version.anjuta_nano_version)
 
@@ -29,7 +29,7 @@ AC_LANG_C
 ANJUTA_REQUIRED=anjuta_major_version.anjuta_minor_version.0
 BINUTILS_REQUIRED=2.15.92
 LIBGRAPHVIZ_REQUIRED=1.0
-GTK_REQUIRED=2.17.10
+GTK_REQUIRED=3.0.0
 GLIB_REQUIRED=2.16.0
 GCONF_REQUIRED=2.12.0
 GNOME_REQUIRED=2.12.0
@@ -59,18 +59,6 @@ GLIB_GENMARSHAL="`$PKG_CONFIG --variable=glib_genmarshal glib-2.0`"
 AC_SUBST(GLIB_GENMARSHAL)
 GLIB_MKENUMS="`$PKG_CONFIG --variable=glib_mkenums glib-2.0`"
 AC_SUBST(GLIB_MKENUMS)
-
-
-dnl ***************************************************************************
-dnl we need gconftool-2 in order to install the schema
-dnl ***************************************************************************
-AC_PATH_PROG(GCONFTOOL, gconftool-2, no)
-
-if test "x$GCONFTOOL" = "xno"; then
-  AC_MSG_ERROR([gconftool-2 executable not found in your path - should be installed with GConf])
-fi
-AM_GCONF_SOURCE_2
-
 
 dnl Compiler settings
 dnl ---------------------------------------------------------------------------
@@ -102,7 +90,7 @@ dnl maintainer mode
 AM_MAINTAINER_MODE
 
 dnl Check for libanjuta
-PKG_CHECK_MODULES(LIBANJUTA, [libanjuta-1.0 >= $ANJUTA_REQUIRED])
+PKG_CHECK_MODULES(LIBANJUTA, [libanjuta-3.0 >= $ANJUTA_REQUIRED])
 
 dnl Check for libgnome
 PKG_CHECK_MODULES(GNOME, libgnomecanvas-2.0 >= $GNOME_REQUIRED)
@@ -209,15 +197,6 @@ if test "$libgraphviz_found" = yes; then
 	AC_DEFINE(HAVE_GRAPHVIZ, [], [Define if we have GraphViz >= 2.6.0])
 fi
 
-dnl we need gconftool-2 in order to install the schema
-AC_PATH_PROG(GCONFTOOL, gconftool-2, no)
-
-if test "x$GCONFTOOL" = "xno"; then
-  AC_MSG_ERROR([gconftool-2 executable not found in your path - should be installed with GConf])
-fi
-
-AM_GCONF_SOURCE_2
-
 dnl Scintilla Editor
 dnl -------------------------------------------------------------
 
@@ -250,8 +229,8 @@ else
 	pkg_prefix="--define-variable=prefix=$prefix"
 fi
 
-anjutalibdir=`pkg-config $pkg_prefix --variable=libdir libanjuta-1.0`
-anjutadatadir=`pkg-config $pkg_prefix --variable=datadir libanjuta-1.0`
+anjutalibdir=`pkg-config $pkg_prefix --variable=libdir libanjuta-3.0`
+anjutadatadir=`pkg-config $pkg_prefix --variable=datadir libanjuta-3.0`
 AC_SUBST(anjutalibdir)
 AC_SUBST(anjutadatadir)
 anjuta_plugin_dir='$(anjutalibdir)/anjuta'

@@ -15,24 +15,25 @@ AM_CXXFLAGS = -DGTK -DSCI_LEXER -DUSE_XIM
 include $(srcdir)/lexers.make
 
 libanjuta_scintilla_la_SOURCES =\
+	Accessor.cxx \
 	AutoComplete.cxx \
 	CallTip.cxx \
+	Catalogue.cxx \
 	CellBuffer.cxx \
 	CharClassify.cxx \
+	CharacterSet.cxx \
 	ContractionState.cxx \
 	Decoration.cxx \
-	DocumentAccessor.cxx \
 	Document.cxx \
 	Editor.cxx \
 	ExternalLexer.cxx \
 	Indicator.cxx \
 	KeyMap.cxx \
-	KeyWords.cxx \
 	LineMarker.cxx \
 	PerLine.cxx \
 	PlatGTK.cxx \
 	PositionCache.cxx \
-	PropSet.cxx \
+	PropSetSimple.cxx \
 	RESearch.cxx \
 	RunStyles.cxx \
 	ScintillaBase.cxx \
@@ -42,23 +43,29 @@ libanjuta_scintilla_la_SOURCES =\
 	Style.cxx \
 	UniConversion.cxx \
 	ViewStyle.cxx \
-	WindowAccessor.cxx \
+	WordList.cxx \
 	XPM.cxx\
+	Accessor.h \
 	AutoComplete.h \
 	CallTip.h \
+	Catalogue.h \
 	CellBuffer.h \
 	CharacterSet.h \
 	CharClassify.h \
 	ContractionState.h \
 	Converter.h \
 	Decoration.h \
-	DocumentAccessor.h \
 	Document.h \
 	Editor.h \
 	ExternalLexer.h \
 	Indicator.h \
 	KeyMap.h \
+	LexAccessor.h \
+	LexerModule.h \
+	LexerBase.h \
+	LexerSimple.h \
 	LineMarker.h \
+	OptionSet.h \
 	Partitioning.h \
 	PerLine.h \
 	PositionCache.h \
@@ -67,12 +74,14 @@ libanjuta_scintilla_la_SOURCES =\
 	RunStyles.h \
 	ScintillaBase.h \
 	Selection.h \
+	SparseState.h \
 	SplitVector.h \
 	StyleContext.h\
 	Style.h \
 	SVector.h \
 	UniConversion.h \
 	ViewStyle.h\
+	WordList.h \
 	XPM.h\
 	scintilla-marshal.h\
 	scintilla-marshal.c\
@@ -88,6 +97,26 @@ test_scintilla_CXXFLAGS = -DGTK
 test_scintilla_SOURCES = test-scintilla.cxx
 test_scintilla_LDADD = libanjuta-scintilla.la
 
+$(srcdir)/lexers.make:
+	cd $(srcdir); \
+	echo "## Lexers make file" > $(notdir $@); \
+	echo 'LEXER_OBJS = \' >> $(notdir $@); \
+	echo -n '	StyleContext.o' >> $(notdir $@); \
+	for lex in Lex*.cxx; do \
+		lex=`echo $$lex | sed -e "s,.*/,," -e "s/cxx$$/o/"`; \
+		echo '\' >> $(notdir $@); \
+		echo -n "	$$lex" >> $(notdir $@); \
+	done; \
+	echo "" >> $(notdir $@); \
+	echo "" >> $(notdir $@); \
+	echo 'LEXER_SRCS = \' >> $(notdir $@); \
+	echo -n '	LexerNoExceptions.h' >> $(notdir $@); \
+	for lex in Lex*.cxx; do \
+		echo '\' >> $(notdir $@); \
+		echo -n "	$$lex" >> $(notdir $@); \
+	done; \
+	echo "" >> $(notdir $@)
+
 update-scintilla:
 	cd $(srcdir); \
 	cp scintilla/gtk/*.cxx .; \
@@ -97,26 +126,10 @@ update-scintilla:
 	cp scintilla/include/*.h include; \
 	cp scintilla/include/*.py include; \
 	cp scintilla/include/*.iface include; \
-	echo "## Lexers make file" > lexers.make; \
-	echo 'LEXER_OBJS = \' >> lexers.make; \
-	echo -n '	StyleContext.o' >> lexers.make; \
-	for lex in Lex*.cxx; do \
-		lex=`echo $$lex | sed -e "s,.*/,," -e "s/cxx$$/o/"`; \
-		echo '\' >> lexers.make; \
-		echo -n "	$$lex" >> lexers.make; \
-	done; \
-	echo "" >> lexers.make; \
-	echo "" >> lexers.make; \
-	echo -n 'LEXER_SRCS = ' >> lexers.make; \
-	for lex in Lex*.cxx; do \
-		echo '\' >> lexers.make; \
-		echo -n "	$$lex" >> lexers.make; \
-	done; \
-	echo "" >> lexers.make
 	echo "Patching files ..."
 	cd $(srcdir); \
 	for patchfile in patches/*.diff; do \
-		patch -p1 < $$patchfile; \
+		patch -p0 < $$patchfile; \
 	done
 	echo "Updating properties file..."
 	cd $(srcdir); \

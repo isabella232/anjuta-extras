@@ -1,6 +1,6 @@
---- scintilla/scintilla/include/Scintilla.h	2009-11-02 05:51:51.000000000 +0100
-+++ scintilla/include/Scintilla.h	2010-01-31 19:42:12.000000000 +0100
-@@ -36,6 +36,11 @@
+--- scintilla/include/Scintilla.h	2011-05-21 22:36:30.346130001 +0200
++++ include/Scintilla.h	2011-05-22 19:33:32.031959002 +0200
+@@ -32,6 +32,11 @@
  #if defined(_WIN32)
  #include <basetsd.h>
  #endif
@@ -12,7 +12,7 @@
  #ifdef MAXULONG_PTR
  typedef ULONG_PTR uptr_t;
  typedef LONG_PTR sptr_t;
-@@ -43,6 +48,7 @@
+@@ -39,6 +44,7 @@
  typedef unsigned long uptr_t;
  typedef long sptr_t;
  #endif

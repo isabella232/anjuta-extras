@@ -41,7 +41,6 @@
 #include "Platform.h"
 #include "PropSet.h"
 #include "Accessor.h"
-#include "WindowAccessor.h"
 #include "KeyWords.h"
 #include "Scintilla.h"
 #include "ScintillaWidget.h"
@@ -297,7 +296,6 @@ protected:
 	void ClearDocument();
 	void CountLineEnds(int &linesCR, int &linesLF, int &linesCRLF);
 	CharacterRange GetSelection();
-	void SelectionWord(char *word, int len);
 	void WordSelect();
 	void LineSelect();
 	void SelectionIntoProperties();

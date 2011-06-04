@@ -1,6 +1,7 @@
 ## Lexers make file
 LEXER_OBJS = \
 	StyleContext.o\
+	LexA68k.o\
 	LexAbaqus.o\
 	LexAda.o\
 	LexAPDL.o\
@@ -24,7 +25,11 @@ LEXER_OBJS = \
 	LexCSS.o\
 	LexD.o\
 	LexEiffel.o\
+	LexerBase.o\
 	LexErlang.o\
+	LexerModule.o\
+	LexerNoExceptions.o\
+	LexerSimple.o\
 	LexEScript.o\
 	LexFlagship.o\
 	LexForth.o\
@@ -43,6 +48,7 @@ LEXER_OBJS = \
 	LexMatlab.o\
 	LexMetapost.o\
 	LexMMIXAL.o\
+	LexModula.o\
 	LexMPT.o\
 	LexMSSQL.o\
 	LexMySQL.o\
@@ -75,12 +81,15 @@ LEXER_OBJS = \
 	LexTAL.o\
 	LexTCL.o\
 	LexTeX.o\
+	LexTxt2tags.o\
 	LexVB.o\
 	LexVerilog.o\
 	LexVHDL.o\
 	LexYAML.o
 
 LEXER_SRCS = \
+	LexerNoExceptions.h\
+	LexA68k.cxx\
 	LexAbaqus.cxx\
 	LexAda.cxx\
 	LexAPDL.cxx\
@@ -104,7 +113,11 @@ LEXER_SRCS = \
 	LexCSS.cxx\
 	LexD.cxx\
 	LexEiffel.cxx\
+	LexerBase.cxx\
 	LexErlang.cxx\
+	LexerModule.cxx\
+	LexerNoExceptions.cxx\
+	LexerSimple.cxx\
 	LexEScript.cxx\
 	LexFlagship.cxx\
 	LexForth.cxx\
@@ -123,6 +136,7 @@ LEXER_SRCS = \
 	LexMatlab.cxx\
 	LexMetapost.cxx\
 	LexMMIXAL.cxx\
+	LexModula.cxx\
 	LexMPT.cxx\
 	LexMSSQL.cxx\
 	LexMySQL.cxx\
@@ -155,6 +169,7 @@ LEXER_SRCS = \
 	LexTAL.cxx\
 	LexTCL.cxx\
 	LexTeX.cxx\
+	LexTxt2tags.cxx\
 	LexVB.cxx\
 	LexVerilog.cxx\
 	LexVHDL.cxx\

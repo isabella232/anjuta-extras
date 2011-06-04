@@ -8,6 +8,40 @@
 #include <Scintilla.h>
 #include <ScintillaWidget.h>
 
+
+static int IntFromHexDigit(int ch) {
+        if ((ch >= '0') && (ch <= '9')) {
+                return ch - '0';
+        } else if (ch >= 'A' && ch <= 'F') {
+                return ch - 'A' + 10;
+        } else if (ch >= 'a' && ch <= 'f') {
+                return ch - 'a' + 10;
+        } else {
+                return 0;
+        }
+}
+
+static int IntFromHexByte(const char *hexByte) {
+        return IntFromHexDigit(hexByte[0]) * 16 + IntFromHexDigit(hexByte[1]);
+}
+
+typedef long Colour;
+Colour ColourRGB(unsigned int red, unsigned int green, unsigned int blue)
+{
+	return red | (green << 8) | (blue << 16);
+}
+
+static Colour ColourFromString(const char *s) {
+        if ((s != NULL) && (*s != '\0')) {
+                int r = IntFromHexByte(s + 1);
+                int g = IntFromHexByte(s + 3);
+                int b = IntFromHexByte(s + 5);
+                return ColourRGB(r, g, b);
+        } else {
+                return 0;
+        }
+}
+
 void SetOneStyle(GtkWidget *sci, int style, const char *s) {
 	char *val = strdup(s);
 	char *opt = val;
@@ -29,11 +63,11 @@ void SetOneStyle(GtkWidget *sci, int style, const char *s) {
 		if (0 == strcmp(opt, "font"))
 			scintilla_send_message(SCINTILLA(sci), SCI_STYLESETFONT, style, reinterpret_cast<long>(colon));
 		if (0 == strcmp(opt, "fore"))
-			//scintilla_send_message(SCINTILLA(sci), SCI_STYLESETFORE, style, ColourFromString(colon).AsLong());
+			scintilla_send_message(SCINTILLA(sci), SCI_STYLESETFORE, style, ColourFromString(colon));
 		if (0 == strcmp(opt, "back"))
-			//scintilla_send_message(SCINTILLA(sci), SCI_STYLESETBACK, style, ColourFromString(colon).AsLong());
+			scintilla_send_message(SCINTILLA(sci), SCI_STYLESETBACK, style, ColourFromString(colon));
 		if (0 == strcmp(opt, "size"))
-			scintilla_send_message(SCINTILLA(sci), SCI_STYLESETSIZE, style, atoi(colon));
+				scintilla_send_message(SCINTILLA(sci), SCI_STYLESETSIZE, style, atoi(colon));
 		if (0 == strcmp(opt, "eolfilled"))
 			scintilla_send_message(SCINTILLA(sci), SCI_STYLESETEOLFILLED, style, 1);
 		if (0 == strcmp(opt, "noteolfilled"))
@@ -91,7 +125,7 @@ int main(int argc, char **argv)
 	scintilla_send_message(SCINTILLA(sci), SCI_SETHSCROLLBAR, 0, 0);
 	scintilla_send_message(SCINTILLA(sci), SCI_SETCODEPAGE, SC_CP_UTF8, 0);
 	scintilla_send_message(SCINTILLA(sci), SCI_SETMARGINWIDTHN, 0, 40);
-	//scintilla_set_id(SCINTILLA(sci), 0);
+	scintilla_set_id(SCINTILLA(sci), 0);
 	gtk_container_add (GTK_CONTAINER(win), sci);
 	g_signal_connect (G_OBJECT (win), "delete-event",
 					  G_CALLBACK (gtk_main_quit), NULL);
