@@ -115,10 +115,6 @@ MARSHAL_GENERATED = \
 		vgmarshal.c \
 		vgmarshal.h
 
-
-schemadir   = @GCONF_SCHEMA_FILE_DIR@
-schema_DATA = anjuta-valgrind.schemas
-
 EXTRA_DIST = \
 	$(plugin_in_files) \
 	$(valgrind_plugin_DATA) \
@@ -127,18 +123,6 @@ EXTRA_DIST = \
 	$(valgrind_pixmaps_DATA) \
 	$(schema_DATA) \
 	vgmarshal.list
-
-if GCONF_SCHEMAS_INSTALL
-install-data-local:
-	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(srcdir)/$(schema_DATA)
-
-uninstall-local:
-	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-uninstall-rule $(srcdir)/$(schema_DATA)
-else
-install-data-local:
-
-uninstall-local:
-endif
 	
 noinst_PROGRAMS = \
 	bugged-prg-test 
@@ -147,5 +131,3 @@ bugged_prg_test_SOURCES = \
 	bugged-prg-test.c 
 
 endif
-
-
