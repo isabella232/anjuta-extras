@@ -1,44 +1,12 @@
 [encoding: UTF-8]
 # List of source files containing translatable strings.
 # Please keep this list in alphabetical order.
-plugins/profiler/gprof-call-graph-block.c
-plugins/profiler/gprof-call-graph-block-entry.c
-plugins/profiler/gprof-call-graph.c
-plugins/profiler/gprof-call-graph-view.c
-plugins/profiler/gprof-flat-profile.c
-plugins/profiler/gprof-flat-profile-entry.c
-plugins/profiler/gprof-flat-profile.h
-plugins/profiler/gprof-flat-profile-view.c
-plugins/profiler/gprof-function-call-tree-view.c
-plugins/profiler/gprof-profile-data.c
-plugins/profiler/gprof-view.c
-plugins/profiler/gprof-view-manager.c
-plugins/profiler/plugin.c
-plugins/profiler/profiler-call-graph.ui
-plugins/profiler/profiler-flat-profile.ui
-plugins/profiler/profiler-function-call-tree.ui
-plugins/profiler/profiler.ui
-plugins/profiler/string-utils.c
 plugins/scintilla/anjuta-editor-scintilla.ui
 plugins/scintilla/print.c
 plugins/scintilla/plugin.c
 plugins/scintilla/text_editor.c
 plugins/scratchbox/anjuta-scratchbox.ui
 plugins/scratchbox/plugin.c
-plugins/valgrind/anjuta-valgrind.ui
-plugins/valgrind/plugin.c
-plugins/valgrind/preferences.c
-plugins/valgrind/process.c
-plugins/valgrind/vgactions.c
-plugins/valgrind/vgcachegrindprefs.c
-plugins/valgrind/vgdefaultview.c
-plugins/valgrind/vggeneralprefs.c
-plugins/valgrind/vghelgrindprefs.c
-plugins/valgrind/vgmemcheckprefs.c
-plugins/valgrind/vgrule-editor.c
-plugins/valgrind/vgrule-list.c
 [type: gettext/ini]plugins/sample1/anjuta-sample.plugin.in
-[type: gettext/ini]plugins/profiler/profiler.plugin.in
 [type: gettext/ini]plugins/scintilla/anjuta-editor.plugin.in
-[type: gettext/ini]plugins/valgrind/anjuta-valgrind.plugin.in
 [type: gettext/ini]plugins/scratchbox/anjuta-scratchbox.plugin.in

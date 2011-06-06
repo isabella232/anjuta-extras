@@ -27,16 +27,11 @@ AC_PROG_CPP
 AC_LANG_C
 
 ANJUTA_REQUIRED=anjuta_major_version.anjuta_minor_version.0
-BINUTILS_REQUIRED=2.15.92
-LIBGRAPHVIZ_REQUIRED=1.0
 GTK_REQUIRED=3.0.0
 GLIB_REQUIRED=2.16.0
 
-AC_SUBST(LIBGRAPHVIZ_REQUIRED)
-AC_SUBST(BINUTILS_REQUIRED)
 AC_SUBST(GTK_REQUIRED)
 AC_SUBST(GLIB_REQUIRED)
-AC_SUBST(GCONF_REQUIRED)
 
 dnl GSettings
 GLIB_GSETTINGS
@@ -91,105 +86,6 @@ PKG_CHECK_MODULES(LIBANJUTA, [libanjuta-3.0 >= $ANJUTA_REQUIRED])
 
 dnl check for gthread
 PKG_CHECK_MODULES(GTHREAD, gthread-2.0 >= $GLIB_REQUIRED)
-
-dnl Valgrind plugin
-dnl check for libbfd
-dnl -------------------------------------------------------------
-
-AC_ARG_ENABLE(plugin-valgrind,
-	AC_HELP_STRING([--disable-plugin-valgrind],[Disable Valgrind plugin]), 
-	[ if test "$enableval" = "no"; then
-		user_disabled_valgrind=1
-	  fi ],
-	[ user_disabled_valgrind=0 ])
-
-AC_MSG_CHECKING(if valgrind plugin is disabled)
-if test "$user_disabled_valgrind" = 1; then
-	AC_MSG_RESULT(yes)
-	valgrind="no"
-else
-	AC_MSG_RESULT(no)
-	valgrind="yes"
-fi
-
-AC_CHECK_LIB(bfd, bfd_get_error, [PLUGIN_VALGRIND_LIBS="-Wl,-Bstatic -lbfd -liberty -Wl,-Bdynamic -lz -ldl"],
-   valgrind="no",
-  [-liberty -lz -ldl])
-
-AC_SUBST(PLUGIN_VALGRIND_LIBS)
-AM_CONDITIONAL(HAVE_PLUGIN_VALGRIND, [test x$valgrind = xyes])
-
-dnl check for bfd_get_section_size_before_reloc() in libbfd
-AC_MSG_CHECKING(for bfd_get_section_size_before_reloc)
-AC_TRY_LINK([
-        #include <bfd.h>
-        ], [
-        asection *section;
-
-        bfd_get_section_size_before_reloc (section);
-        ],
-        AC_MSG_RESULT(yes)
-        AC_DEFINE(HAVE_BFD_GET_SECTION_SIZE_BEFORE_RELOC, [], [Define if libbfd
-contains the function bfd_get_section_size_before_reloc])
-,
-        AC_MSG_RESULT(no)
-)
-
-dnl Check for graphviz (class inheritance and profiler plugins)
-dnl --------------------------------------------------------------------------
-dnl FIXME: For some strange reason graphviz-devel rpm install the *.pc files
-dnl in /usr/lib/graphviz/pkgconfig, instead of usual /usr/lib/pkgconfig. This
-dnl makes pkgconfig check fail if we don't add the above path in
-dnl PKG_CONFIG_PATH. We have added both /usr/lib/graphviz/pkgconfig and
-dnl /usr/local/lib/pkgconfig paths. If graphviz is installed in other prefix
-dnl (other than /usr or /usr/local or the current installation prefix),
-dnl following pkgconfig check will fail.
-dnl --------------------------------------------------------------------------
-AC_ARG_ENABLE(graphviz,
-	AC_HELP_STRING([--disable-graphviz],[Disable GraphViz support in Anjuta]), 
-	[ if test "$enableval" = "no"; then
-		user_disabled_graphviz=1
-	  fi ],
-	[ user_disabled_graphviz=0 ])
-
-AC_MSG_CHECKING(if GraphViz support is disabled)
-if test "$user_disabled_graphviz" = 1; then
-	AC_MSG_RESULT(yes)
-	libgraphviz_found="no"
-else
-	AC_MSG_RESULT(no)
-	
-	dnl Set pkgconfig path
-	ANJUTA_PKG_CONFIG_PATH_SAVE="${PKG_CONFIG_PATH}"
-	PKG_CONFIG_PATH="/usr/lib/graphviz/pkgconfig:$PKG_CONFIG_PATH"
-	PKG_CONFIG_PATH="/usr/local/lib/graphviz/pkgconfig:$PKG_CONFIG_PATH"
-	PKG_CONFIG_PATH="/usr/lib64/graphviz/pkgconfig:$PKG_CONFIG_PATH"
-	PKG_CONFIG_PATH="/usr/local/lib64/graphviz/pkgconfig:$PKG_CONFIG_PATH"
-	
-	anjuta_save_prefix="$prefix"
-	test "x$prefix" = xNONE && prefix=$ac_default_prefix
-	graphviz_pkgconfig=`eval echo ${libdir}/graphviz/pkgconfig`
-	PKG_CONFIG_PATH="$graphviz_pkgconfig:$PKG_CONFIG_PATH"
-	prefix="$anjuta_save_prefix"
-
-	export PKG_CONFIG_PATH
-	PKG_CHECK_MODULES(GRAPHVIZ,
-		[libgvc >= $LIBGRAPHVIZ_REQUIRED libgraph >= $LIBGRAPHVIZ_REQUIRED], 
-		[libgraphviz_found="yes"],
-		[libgraphviz_found="no"])
-	
-	dnl Restore pkgconfig path
-	PKG_CONFIG_PATH="${ANJUTA_PKG_CONFIG_PATH_SAVE}"
-	export PKG_CONFIG_PATH
-fi
-
-AM_CONDITIONAL(HAVE_GRAPHVIZ, [test x$libgraphviz_found = xyes])
-
-dnl Define HAVE_GRAPHVIZ to disable Function Call Chart in the Profiler if 
-dnl Graphviz isn't on the system
-if test "$libgraphviz_found" = yes; then
-	AC_DEFINE(HAVE_GRAPHVIZ, [], [Define if we have GraphViz >= 2.6.0])
-fi
 
 dnl Scintilla Editor
 dnl -------------------------------------------------------------
@@ -250,8 +146,6 @@ Makefile
 plugins/Makefile
 plugins/scratchbox/Makefile
 plugins/sample1/Makefile
-plugins/valgrind/Makefile
-plugins/profiler/Makefile
 plugins/scintilla/Makefile
 plugins/scintilla/scintilla/Makefile
 plugins/scintilla/scintilla/include/Makefile
@@ -264,18 +158,6 @@ echo " "
 echo "-------------------------------------------------------------------"
 echo "Conditionally built plugins:"
 echo "-------------------------------------------------------------------"
-if [ test x$libgraphviz_found = xyes ]; then
-        echo "Building performance profiler with function call chart: YES"
-else
-        echo "Building performance profiler with function call chart: NO"
-	 echo "        Requires graphviz (>= 2.6.0); http://graphviz.org"
-fi
-if [ test x$valgrind = xyes ]; then
-        echo "Building Valgrind debugger plugin: .....................YES"
-else
-        echo "Building Valgrind debugger plugin: .....................NO"
-	echo "		Requires binutils-dev"
-fi
 if [ test x$scintilla = xyes ]; then
         echo "Building Scintilla based editor: .......................YES"
 else
