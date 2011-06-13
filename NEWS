@@ -1,3 +1,10 @@
+anjuta-extras 3.1.2 (13 Jun 2011) -- James Liggett
+
+Updates:
+- Sample, scinitlla, and scratchbox plugins updated to work with GTK+ 3.x
+  (Sébastien Granjoux)
+- Profiler and valgrind plugins removed
+
 anjuta-extras 2.32.1 (25 October 2010) -- James Liggett
 
 Updates:
