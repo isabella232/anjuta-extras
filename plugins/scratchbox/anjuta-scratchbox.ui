@@ -1,8 +1,9 @@
-<?xml version="1.0"?>
-<!--*- mode: xml -*-->
+<?xml version="1.0" encoding="UTF-8"?>
 <interface>
+  <!-- interface-requires gtk+ 2.12 -->
   <object class="GtkListStore" id="model1">
     <columns>
+      <!-- column-name gchararray -->
       <column type="gchararray"/>
     </columns>
     <data>
@@ -16,6 +17,7 @@
   </object>
   <object class="GtkListStore" id="model2">
     <columns>
+      <!-- column-name gchararray -->
       <column type="gchararray"/>
     </columns>
     <data>
@@ -25,29 +27,34 @@
     </data>
   </object>
   <object class="GtkWindow" id="preferences_dialog_scratchbox">
+    <property name="can_focus">False</property>
     <property name="title" translatable="yes">window1</property>
     <child>
       <object class="GtkFrame" id="Scratchbox">
         <property name="visible">True</property>
+        <property name="can_focus">False</property>
         <property name="border_width">10</property>
         <property name="label_xalign">0</property>
         <property name="label_yalign">0</property>
-        <property name="shadow_type">GTK_SHADOW_NONE</property>
+        <property name="shadow_type">none</property>
         <child>
           <object class="GtkAlignment" id="alignment1">
             <property name="visible">True</property>
+            <property name="can_focus">False</property>
             <property name="xalign">0</property>
             <property name="yalign">0</property>
             <property name="left_padding">12</property>
             <child>
               <object class="GtkTable" id="table1">
                 <property name="visible">True</property>
+                <property name="can_focus">False</property>
                 <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
                 <property name="column_spacing">5</property>
                 <property name="row_spacing">5</property>
                 <child>
                   <object class="GtkHSeparator" id="hseparator2">
                     <property name="visible">True</property>
+                    <property name="can_focus">False</property>
                   </object>
                   <packing>
                     <property name="right_attach">2</property>
@@ -58,6 +65,7 @@
                 <child>
                   <object class="GtkHSeparator" id="hseparator1">
                     <property name="visible">True</property>
+                    <property name="can_focus">False</property>
                   </object>
                   <packing>
                     <property name="right_attach">2</property>
@@ -70,9 +78,10 @@
                 <child>
                   <object class="GtkLabel" id="label1">
                     <property name="visible">True</property>
+                    <property name="can_focus">False</property>
                     <property name="xpad">5</property>
                     <property name="label" translatable="yes">Scratchbox directory:</property>
-                    <property name="justify">GTK_JUSTIFY_RIGHT</property>
+                    <property name="justify">right</property>
                   </object>
                   <packing>
                     <property name="top_attach">2</property>
@@ -84,32 +93,12 @@
                 <child>
                   <object class="GtkLabel" id="label2">
                     <property name="visible">True</property>
+                    <property name="can_focus">False</property>
                     <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
                     <property name="label" translatable="yes">Scratchbox version:</property>
-                    <property name="justify">GTK_JUSTIFY_RIGHT</property>
+                    <property name="justify">right</property>
                   </object>
                   <packing>
-                    <property name="top_attach">1</property>
-                    <property name="bottom_attach">2</property>
-                    <property name="x_options">GTK_FILL</property>
-                    <property name="y_options">GTK_FILL</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkComboBox" id="preferences_combo:text:Sbox1,Sbox2:0:scratchbox-version">
-                    <property name="visible">True</property>
-                    <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                    <property name="model">model1</property>
-                    <child>
-                      <object class="GtkCellRendererText" id="renderer1"/>
-                      <attributes>
-                        <attribute name="text">0</attribute>
-                      </attributes>
-                    </child>
-                  </object>
-                  <packing>
-                    <property name="left_attach">1</property>
-                    <property name="right_attach">2</property>
                     <property name="top_attach">1</property>
                     <property name="bottom_attach">2</property>
                     <property name="x_options">GTK_FILL</property>
@@ -119,9 +108,10 @@
                 <child>
                   <object class="GtkFileChooserButton" id="preferences_folder:text:/scratchbox:0:build-scratchbox-path">
                     <property name="visible">True</property>
+                    <property name="can_focus">False</property>
                     <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
+                    <property name="action">select-folder</property>
                     <property name="preview_widget_active">False</property>
-                    <property name="action">GTK_FILE_CHOOSER_ACTION_SELECT_FOLDER</property>
                     <property name="title" translatable="yes">Select Scratchbox Folder</property>
                   </object>
                   <packing>
@@ -130,15 +120,16 @@
                     <property name="top_attach">2</property>
                     <property name="bottom_attach">3</property>
                     <property name="x_options">GTK_FILL</property>
-                    <property name="y_options"/>
+                    <property name="y_options"></property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="label3">
                     <property name="visible">True</property>
+                    <property name="can_focus">False</property>
                     <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
                     <property name="label" translatable="yes">Scratchbox target:</property>
-                    <property name="justify">GTK_JUSTIFY_RIGHT</property>
+                    <property name="justify">right</property>
                   </object>
                   <packing>
                     <property name="top_attach">3</property>
@@ -148,23 +139,34 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkComboBox" id="combo_target">
+                  <object class="GtkComboBoxText" id="preferences_combo:text:Sbox1,Sbox2:0:scratchbox-version">
                     <property name="visible">True</property>
-                    <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                    <property name="model">model2</property>
-                    <child>
-                      <object class="GtkCellRendererText" id="renderer2"/>
-                      <attributes>
-                        <attribute name="text">0</attribute>
-                      </attributes>
-                    </child>
+                    <property name="can_focus">False</property>
+                    <items>
+                      <item translatable="yes">Sbox1</item>
+                      <item translatable="yes">Sbox2</item>
+                    </items>
+                  </object>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="right_attach">2</property>
+                    <property name="top_attach">1</property>
+                    <property name="bottom_attach">2</property>
+                    <property name="x_options">GTK_FILL</property>
+                    <property name="y_options">GTK_FILL</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkComboBoxText" id="preferences_combo:text:None:0:scratchbox-target">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
                     <property name="right_attach">2</property>
                     <property name="top_attach">3</property>
                     <property name="bottom_attach">4</property>
-                    <property name="y_options"/>
+                    <property name="y_options">GTK_FILL</property>
                   </packing>
                 </child>
               </object>
@@ -174,17 +176,19 @@
         <child type="label">
           <object class="GtkTable" id="table2">
             <property name="visible">True</property>
+            <property name="can_focus">False</property>
             <property name="homogeneous">True</property>
             <child>
               <object class="GtkLabel" id="label106">
                 <property name="visible">True</property>
+                <property name="can_focus">False</property>
                 <property name="xalign">1</property>
                 <property name="yalign">0</property>
                 <property name="ypad">14</property>
                 <property name="label" translatable="yes">&lt;b&gt;Scratchbox Options&lt;/b&gt;
 </property>
                 <property name="use_markup">True</property>
-                <property name="justify">GTK_JUSTIFY_FILL</property>
+                <property name="justify">fill</property>
               </object>
               <packing>
                 <property name="left_attach">1</property>
@@ -194,11 +198,12 @@
             <child>
               <object class="GtkImage" id="anjuta-scratchbox-panel">
                 <property name="visible">True</property>
+                <property name="can_focus">False</property>
                 <property name="pixbuf">anjuta-scratchbox-panel.png</property>
               </object>
               <packing>
-                <property name="x_options"/>
-                <property name="y_options"/>
+                <property name="x_options"></property>
+                <property name="y_options"></property>
               </packing>
             </child>
           </object>

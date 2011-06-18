@@ -36,15 +36,16 @@
  *---------------------------------------------------------------------------*/
 
 #define ICON_FILE "anjuta-scratchbox-48.png"
-#define GLADE_FILE PACKAGE_DATA_DIR"/glade/anjuta-scratchbox.ui"
+#define GLADE_FILE PACKAGE_DATA_DIR "/glade/anjuta-scratchbox.ui"
 
 #define SB_SCHEMA "org.gnome.anjuta.scratchbox"
 #define SB_ENTRY "preferences_folder:text:/scratchbox:0:build-scratchbox-path"
-#define SB_TARGET_ENTRY "combo_target"
+#define SB_TARGET_ENTRY "preferences_combo:text:None:0:scratchbox-target"
 #define SB_SBOX_ENTRY "preferences_combo:text:Sbox1,Sbox2:0:scratchbox-version"
 
 #define PREF_SB_PATH "build-scratchbox-path"
 #define PREF_SB_VERSION "scratchbox-version"
+#define PREF_SB_TARGET "scratchbox-target"
 
 /* Type defintions
  *---------------------------------------------------------------------------*/
@@ -64,7 +65,6 @@ struct _ScratchboxPlugin
 	gchar **target_list;
 	gchar *sb_dir;
 	gchar *target;
-	gint id;
 	gint combo_element;
 	GString *buffer;
 
@@ -129,18 +129,18 @@ static void on_list_terminated (AnjutaLauncher *launcher, gint child_pid,
 							  SB_TARGET_ENTRY));
 
 		for (i = 1; i < plugin->combo_element; i++)
-			gtk_combo_box_remove_text(GTK_COMBO_BOX(combo_target_entry), 1);
+			gtk_combo_box_text_remove (GTK_COMBO_BOX_TEXT(combo_target_entry), 1);
 		plugin->combo_element = 1;
 
 		for (i = 0; i < str_splitted_length; i++) {
-			gtk_combo_box_append_text(GTK_COMBO_BOX(combo_target_entry), plugin->target_list[i]);
+			gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT(combo_target_entry), plugin->target_list[i]);
+			if (g_strcmp0 (plugin->target, plugin->target_list[i]) == 0) gtk_combo_box_set_active (GTK_COMBO_BOX(combo_target_entry), i);
 			plugin->combo_element++;
 		}
                 
 		/* enable target combo box */
-		gtk_combo_box_set_active (GTK_COMBO_BOX(combo_target_entry),
-					  plugin->id);
-                gtk_widget_set_sensitive(combo_target_entry, TRUE);
+
+        gtk_widget_set_sensitive(combo_target_entry, TRUE);
 		g_strfreev (plugin->target_list);
 	}
 
@@ -161,21 +161,14 @@ static void on_target (AnjutaLauncher *launcher, AnjutaLauncherOutputType out,
 static void
 on_change_target(GtkComboBox *combo, ScratchboxPlugin *plugin)
 {
-	AnjutaShell* shell = ANJUTA_PLUGIN (plugin)->shell;
-	gint id;
-	
 	g_return_if_fail (plugin != NULL);
-	id = gtk_combo_box_get_active (combo);
 	if (plugin->target) {
 		g_free(plugin->target);
 		plugin->target = NULL;
 	}
-	plugin->target = gtk_combo_box_get_active_text (combo);
-	plugin->id = id > 0 ? id :0;
+	plugin->target = gtk_combo_box_text_get_active_text (GTK_COMBO_BOX_TEXT (combo));
 
-	anjuta_preferences_set_int (anjuta_shell_get_preferences (shell, NULL),
-                                SB_TARGET_ENTRY,
-                                plugin->id);
+	g_settings_set_string (plugin->settings, PREF_SB_TARGET, plugin->target);
 }
 
 static void
@@ -462,7 +455,7 @@ ipreferences_merge(IAnjutaPreferences* ipref, AnjutaPreferences* prefs, GError**
 	combo_sbox_entry = GTK_WIDGET(gtk_builder_get_object(bxml, SB_SBOX_ENTRY));
 	chooser_dir_entry = GTK_WIDGET(gtk_builder_get_object(bxml, SB_ENTRY));
 	
-	plugin->id = anjuta_preferences_get_int(prefs, SB_TARGET_ENTRY);
+	plugin->target = g_settings_get_string (plugin->settings , PREF_SB_TARGET);
 
 	anjuta_preferences_add_from_builder (prefs, bxml, plugin->settings, "Scratchbox", _("Scratchbox"),  ICON_FILE);
 	g_signal_connect(chooser_dir_entry, "current-folder-changed",
@@ -475,8 +468,8 @@ ipreferences_merge(IAnjutaPreferences* ipref, AnjutaPreferences* prefs, GError**
 			 "changed", G_CALLBACK(on_change_target),
 			 plugin);
 
-        plugin->target = gtk_combo_box_get_active_text (
-				GTK_COMBO_BOX(combo_target_entry));
+        plugin->target = gtk_combo_box_text_get_active_text (
+				GTK_COMBO_BOX_TEXT(combo_target_entry));
 }
 
 static void
@@ -514,7 +507,6 @@ scratchbox_plugin_instance_init (GObject *obj)
 	plugin->buffer = NULL;
 	plugin->combo_element = 1;
 	plugin->launcher = NULL;
-	plugin->id = 0;
 	plugin->target = NULL;
 	plugin->settings = g_settings_new (SB_SCHEMA);
 }
