@@ -1,3 +1,9 @@
+anjuta-extras 3.1.4 (25 July 2011) -- James Liggett
+
+Bugs fixed:
+scintilla: bgo #631157 - unix is not defined on OpenBSD
+bgo #654073 - Avoid to pass a directory to builder2schema when there is no key file
+
 anjuta-extras 3.1.3 (5 July 2011) -- James Liggett
 
 Bugs fixed:
