@@ -849,8 +849,7 @@ apply_styles (StyleEditor *se)
 		fclose (ofile);
 		g_free (filename);
 	}
-	g_settings_set_int (se->settings, DISABLE_SYNTAX_HILIGHTING, 1);
-	g_settings_set_int (se->settings, DISABLE_SYNTAX_HILIGHTING, 0);
+	g_signal_emit_by_name (se->plugin, "style-changed");
 }
 
 static void
@@ -959,7 +958,7 @@ create_style_editor_gui (StyleEditor * se)
 }
 
 StyleEditor *
-style_editor_new (AnjutaPreferences *prefs, GSettings *settings)
+style_editor_new (AnjutaPlugin *plugin, AnjutaPreferences *prefs, GSettings *settings)
 {
 	StyleEditor *se;
 	se = g_new0 (StyleEditor, 1);
@@ -968,6 +967,7 @@ style_editor_new (AnjutaPreferences *prefs, GSettings *settings)
 	se->priv->dialog = NULL;
 	se->prefs = prefs;
 	se->settings = g_object_ref (settings);
+	se->plugin = g_object_ref (plugin);
 	return se;
 }
 
@@ -978,6 +978,7 @@ void style_editor_destroy (StyleEditor *se)
 		gtk_widget_destroy (se->priv->dialog);
 	g_free (se->priv);
 	g_object_unref (se->settings);
+	g_object_unref (se->plugin);
 	g_free (se);
 }
 

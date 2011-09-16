@@ -552,12 +552,21 @@ on_shell_value_changed  (TextEditor *te, const char *name)
 	}
 }
 
-GtkWidget *
-text_editor_new (AnjutaStatus *status, AnjutaShell *shell, const gchar *uri, const gchar *name)
+static void
+on_style_changed  (TextEditor *te)
 {
+	/* Refresh highlight */
+	text_editor_hilite (te,  te->force_pref);
+}
+
+GtkWidget *
+text_editor_new (AnjutaPlugin *plugin, const gchar *uri, const gchar *name)
+{
+	AnjutaShell *shell = plugin->shell;
+	AnjutaStatus *status = anjuta_shell_get_status (shell, NULL);
+	TextEditor *te = TEXT_EDITOR (gtk_widget_new (TYPE_TEXT_EDITOR, NULL));
 	gint zoom_factor;
 	static guint new_file_count;
-	TextEditor *te = TEXT_EDITOR (gtk_widget_new (TYPE_TEXT_EDITOR, NULL));
 	
 	te->status = status; 
 	te->shell = shell;
@@ -607,6 +616,8 @@ text_editor_new (AnjutaStatus *status, AnjutaShell *shell, const gchar *uri, con
 	/* Get type name notification */
 	g_signal_connect_swapped (G_OBJECT (shell), "value-added", G_CALLBACK (on_shell_value_changed), te);
 	g_signal_connect_swapped (G_OBJECT (shell), "value-removed", G_CALLBACK (on_shell_value_changed), te);
+	g_signal_connect_swapped (G_OBJECT (plugin), "style-changed", G_CALLBACK(on_style_changed), te);
+
 	
 #ifdef DEBUG
 	g_object_weak_ref (G_OBJECT (te), on_te_already_destroyed, te);
@@ -3014,7 +3025,7 @@ marker_ianjuta_to_editor (IAnjutaMarkableMarker marker)
 
 static gint
 imarkable_mark (IAnjutaMarkable* editor, gint location,
-				IAnjutaMarkableMarker marker, GError** e)
+				IAnjutaMarkableMarker marker, const gchar *tooltip, GError** e)
 {
 	return text_editor_set_marker (TEXT_EDITOR (editor), location,
 								   marker_ianjuta_to_editor (marker));

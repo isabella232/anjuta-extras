@@ -29,6 +29,7 @@
 
 #include "aneditor.h"
 
+#include <libanjuta/anjuta-plugin.h>
 #include <libanjuta/anjuta-status.h>
 #include <libanjuta/anjuta-encodings.h>
 
@@ -143,7 +144,7 @@ struct _TextEditorClass
 GType text_editor_get_type (void);
 
 /* New instance of TextEditor */
-GtkWidget* text_editor_new (AnjutaStatus *status, AnjutaShell* shell, const gchar *uri,
+GtkWidget* text_editor_new (AnjutaPlugin *plugin, const gchar *uri,
 							const gchar *tab_name);
 
 /* Freeze and thaw editor */

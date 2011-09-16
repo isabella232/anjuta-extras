@@ -24,6 +24,7 @@
 #  include <config.h>
 #endif
 
+#include <libanjuta/anjuta-plugin.h>
 #include <libanjuta/anjuta-preferences.h>
 #include "properties.h"
 
@@ -41,10 +42,11 @@ struct _StyleEditor
 	StyleEditorPriv *priv;
 	AnjutaPreferences *prefs;
 	GSettings *settings;
+	AnjutaPlugin *plugin;
 };
 
 StyleEditor *
-style_editor_new (AnjutaPreferences *prefs, GSettings *settings);
+style_editor_new (AnjutaPlugin *plugin, AnjutaPreferences *prefs, GSettings *settings);
 
 void style_editor_destroy (StyleEditor *se);
 

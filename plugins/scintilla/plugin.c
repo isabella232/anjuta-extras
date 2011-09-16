@@ -39,7 +39,16 @@
 #define PREFS_GLADE PACKAGE_DATA_DIR "/glade/anjuta-editor-scintilla.ui"
 #define ICON_FILE "anjuta-editor-scintilla-plugin-48.png"
 
-gpointer parent_class;
+static gpointer parent_class;
+
+/* signals */
+enum
+{
+        STYLE_CHANGED,
+        LAST_SIGNAL
+};
+
+static unsigned int signals[LAST_SIGNAL] = { 0 };
 
 /* Plugin types
  *---------------------------------------------------------------------------*/
@@ -59,6 +68,9 @@ struct _EditorPlugin{
 
 struct _EditorPluginClass{
 	AnjutaPluginClass parent_class;
+
+	/* signals */
+	void (* style_changed)     ();
 };
 
 /* Keep an up to date list of type name
@@ -145,7 +157,7 @@ on_system_symbol_scanned (IAnjutaSymbolManager *manager, guint process, IAnjutaS
 static void 
 on_style_button_clicked(GtkWidget* button, EditorPlugin *plugin)
 {
-	StyleEditor* se = style_editor_new(plugin->prefs, plugin->settings);
+	StyleEditor* se = style_editor_new(ANJUTA_PLUGIN (plugin), plugin->prefs, plugin->settings);
 	style_editor_show(se);
 }
 
@@ -267,6 +279,7 @@ editor_plugin_instance_init (GObject *obj)
 static void
 editor_plugin_class_init (GObjectClass *klass) 
 {
+	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 	AnjutaPluginClass *plugin_class = ANJUTA_PLUGIN_CLASS (klass);
 
 	parent_class = g_type_class_peek_parent (klass);
@@ -275,6 +288,13 @@ editor_plugin_class_init (GObjectClass *klass)
 	plugin_class->deactivate = deactivate_plugin;
 	klass->dispose = dispose;
 	klass->finalize = finalize;
+	
+	signals[STYLE_CHANGED] = g_signal_new ("style-changed",
+                                                G_OBJECT_CLASS_TYPE (object_class),
+                                                G_SIGNAL_RUN_FIRST,
+                                                G_STRUCT_OFFSET (EditorPluginClass, style_changed),
+                                                NULL, NULL,
+                                                g_cclosure_marshal_VOID__VOID, G_TYPE_NONE, 0);
 }
 
 static IAnjutaEditor*
@@ -283,11 +303,9 @@ itext_editor_factory_new_editor(IAnjutaEditorFactory* factory,
 								const gchar* filename, 
 								GError** error)
 {
-	AnjutaShell *shell = ANJUTA_PLUGIN (factory)->shell;
-	AnjutaStatus *status = anjuta_shell_get_status (shell, NULL);
 	/* file can be NULL, if we open a buffer, not a file */
 	gchar* uri = file ? g_file_get_uri (file) : NULL;
-	IAnjutaEditor* editor = IANJUTA_EDITOR(text_editor_new(status,shell,
+	IAnjutaEditor* editor = IANJUTA_EDITOR(text_editor_new(ANJUTA_PLUGIN (factory),
 														   uri, filename));
 	g_free(uri);
 	return editor;
