@@ -116,6 +116,7 @@ static void text_editor_hilite_one (TextEditor * te, AnEditorID editor);
 
 static GtkVBoxClass *parent_class;
 
+
 static void
 text_editor_instance_init (TextEditor *te)
 {
@@ -146,6 +147,7 @@ text_editor_instance_init (TextEditor *te)
 
 	te->settings = g_settings_new (PREF_SCHEMA);
 	te->docman_settings = g_settings_new (DOCMAN_PREF_SCHEMA);
+	te->msgman_settings = g_settings_new (MSGMAN_PREF_SCHEMA);
 }
 
 static GtkWidget *
@@ -227,6 +229,35 @@ on_te_already_destroyed (gpointer te, GObject *obj)
 	/* DEBUG_PRINT ("%s", "TextEditor object has been destroyed"); */
 }
 #endif
+
+/* Indicators are setup in both TextEditor and AnEditor object.
+ * AnEditor reads the property file while TexEditor uses the
+ * GSettings object. TextEditor can overwrite properties
+ * set by AnEditor.
+ */ 
+static void
+text_editor_setup_indicators_color (TextEditor *te)
+{
+	char* spec;
+	GdkColor color;
+	
+	/* Warning color */
+	spec = g_settings_get_string (te->msgman_settings, MSGMAN_COLOR_WARNING);
+	if (gdk_color_parse (spec, &color))
+	{
+		glong param = ((color.red >> 8) & 0xFF) + (color.green & 0xFF00) + ((color.blue << 8) & 0x00FF0000);
+		scintilla_send_message (SCINTILLA (te->scintilla), SCI_INDICSETFORE, 1, param);
+	}
+	g_free (spec);
+	/* Error color */
+	spec = g_settings_get_string (te->msgman_settings, MSGMAN_COLOR_ERROR);
+	if (gdk_color_parse (spec, &color))
+	{
+		glong param = ((color.red >> 8) & 0xFF) + (color.green & 0xFF00) + ((color.blue << 8) & 0x00FF0000);
+		scintilla_send_message (SCINTILLA (te->scintilla), SCI_INDICSETFORE, 2, param);
+	}
+	g_free (spec);
+}
 
 void
 text_editor_add_view (TextEditor *te)
@@ -559,6 +590,13 @@ on_style_changed  (TextEditor *te)
 	text_editor_hilite (te,  te->force_pref);
 }
 
+static void
+on_indicators_changed (TextEditor *te)
+{
+	/* Refresh indicator */
+	text_editor_setup_indicators_color (te);
+}
+
 GtkWidget *
 text_editor_new (AnjutaPlugin *plugin, const gchar *uri, const gchar *name)
 {
@@ -612,12 +650,14 @@ text_editor_new (AnjutaPlugin *plugin, const gchar *uri, const gchar *name)
 	zoom_factor = g_settings_get_int (te->docman_settings, TEXT_ZOOM_FACTOR);
 	/* DEBUG_PRINT ("%s", "Initializing zoom factor to: %d", zoom_factor); */
 	text_editor_set_zoom_factor (te, zoom_factor);
-
+	text_editor_setup_indicators_color (te);
+	
 	/* Get type name notification */
 	g_signal_connect_swapped (G_OBJECT (shell), "value-added", G_CALLBACK (on_shell_value_changed), te);
 	g_signal_connect_swapped (G_OBJECT (shell), "value-removed", G_CALLBACK (on_shell_value_changed), te);
 	g_signal_connect_swapped (G_OBJECT (plugin), "style-changed", G_CALLBACK(on_style_changed), te);
-
+	
+    g_signal_connect_swapped (G_OBJECT(te->msgman_settings), "changed", G_CALLBACK (on_indicators_changed), te);
 	
 #ifdef DEBUG
 	g_object_weak_ref (G_OBJECT (te), on_te_already_destroyed, te);
@@ -692,6 +732,7 @@ text_editor_dispose (GObject *obj)
 	te->completion_count = 0;
 	g_object_unref (te->settings);
 	g_object_unref (te->docman_settings);
+	g_object_unref (te->msgman_settings);
 	G_OBJECT_CLASS (parent_class)->dispose (obj);
 }
 
@@ -802,6 +843,8 @@ text_editor_hilite (TextEditor * te, gboolean override_by_pref)
 		text_editor_hilite_one (te, GPOINTER_TO_INT (node->data));
 		node = g_list_next (node);
 	}
+
+	text_editor_setup_indicators_color (te);
 }
 
 void
@@ -1119,88 +1162,56 @@ gint
 text_editor_set_indicator (TextEditor *te, gint start,
 						   gint end, gint indicator)
 {
-	gchar ch;
-	glong indic_mask[] = {INDIC0_MASK, INDIC1_MASK, INDIC2_MASK};
-	gint current_styling_pos;
+	g_return_val_if_fail (te != NULL, -1);
+	g_return_val_if_fail (IS_SCINTILLA (te->scintilla) == TRUE, -1);
+
+	scintilla_send_message (SCINTILLA (te->scintilla),
+	                        SCI_SETINDICATORCURRENT, indicator, 0);
+	scintilla_send_message (SCINTILLA (te->scintilla),
+	                        SCI_INDICATORFILLRANGE, start, end - start);
+
+	return 0;
+}
+
+static gint
+text_editor_clear_indicator (TextEditor *te, gint start,
+						   gint end)
+{
+	gint i;
 	
 	g_return_val_if_fail (te != NULL, -1);
 	g_return_val_if_fail (IS_SCINTILLA (te->scintilla) == TRUE, -1);
 
-	if (start >= 0) {
-		end --;	/* supplied end-location is one-past the last char to process */
-		if (end < start)
-			return -1;
-
-		do
-		{
-			ch = scintilla_send_message (SCINTILLA (te->scintilla),
-										 SCI_GETCHARAT, start, 0);
-			start++;
-		} while (isspace(ch));
-		start--;
-		
-		do {
-			ch = scintilla_send_message (SCINTILLA (te->scintilla),
-										 SCI_GETCHARAT, end, 0);
-			end--;
-		} while (isspace(ch));
-		end++;
-		if (end < start) return -1;
-		
-		current_styling_pos = scintilla_send_message (SCINTILLA (te->scintilla),
-													  SCI_GETENDSTYLED, 0, 0);
-		if (indicator >= 0 && indicator < 3) {
-			char current_mask;
-			current_mask =
-				scintilla_send_message (SCINTILLA (te->scintilla),
-										SCI_GETSTYLEAT, start, 0);
-			current_mask &= INDICS_MASK;
-			current_mask |= indic_mask[indicator];
-			scintilla_send_message (SCINTILLA (te->scintilla),
-									SCI_STARTSTYLING, start, INDICS_MASK);
-			scintilla_send_message (SCINTILLA (te->scintilla),
-									SCI_SETSTYLING, end-start+1, current_mask);
-		} else {
-			scintilla_send_message (SCINTILLA (te->scintilla),
-									SCI_STARTSTYLING, start, INDICS_MASK);
-			scintilla_send_message (SCINTILLA (te->scintilla),
-									SCI_SETSTYLING, end-start+1, 0);
-		}
-		if (current_styling_pos < start)
-			scintilla_send_message (SCINTILLA (te->scintilla),
-									SCI_STARTSTYLING, current_styling_pos,
-									0x1F);
-	} else {
-		if (indicator < 0) {
-			char current_mask;
-			glong i, last, start_style_pos = 0;
-			
-			last = scintilla_send_message (SCINTILLA (te->scintilla),
-										   SCI_GETTEXTLENGTH, 0, 0);
-			current_styling_pos = scintilla_send_message (SCINTILLA (te->scintilla),
-														  SCI_GETENDSTYLED, 0, 0);
-			for (i = 0; i < last; i++)
-			{
-				current_mask =
-					scintilla_send_message (SCINTILLA (te->scintilla),
-											SCI_GETSTYLEAT, i, 0);
-				current_mask &= INDICS_MASK;
-				if (current_mask != 0)
-				{
-					if (start_style_pos == 0)
-						start_style_pos = i;
-					scintilla_send_message (SCINTILLA (te->scintilla),
-											SCI_STARTSTYLING, i, INDICS_MASK);
-					scintilla_send_message (SCINTILLA (te->scintilla),
-											SCI_SETSTYLING, 1, 0);
-				}
-			}
-			if (current_styling_pos < start_style_pos)
-				scintilla_send_message (SCINTILLA (te->scintilla),
-										SCI_STARTSTYLING, current_styling_pos,
-										0x1F);
-		}
+	for (i = 0; i < 3; i++)
+	{
+		scintilla_send_message (SCINTILLA (te->scintilla),
+		                        SCI_SETINDICATORCURRENT, i, 0);
+		scintilla_send_message (SCINTILLA (te->scintilla),
+		                        SCI_INDICATORCLEARRANGE, start, end - start);
 	}
+
+	return 0;
+}
+
+static gint
+text_editor_clear_all_indicator (TextEditor *te)
+{
+	glong last;
+	gint i;
+	
+	g_return_val_if_fail (te != NULL, -1);
+	g_return_val_if_fail (IS_SCINTILLA (te->scintilla) == TRUE, -1);
+
+	last = scintilla_send_message (SCINTILLA (te->scintilla),
+	                               SCI_GETTEXTLENGTH, 0, 0);
+	for (i = 0; i < 3; i++)
+	{
+		scintilla_send_message (SCINTILLA (te->scintilla),
+		                        SCI_SETINDICATORCURRENT, i, 0);
+		scintilla_send_message (SCINTILLA (te->scintilla),
+		                        SCI_INDICATORCLEARRANGE, 0, last);
+	}
+
 	return 0;
 }
 
@@ -3425,7 +3436,7 @@ iindicable_set (IAnjutaIndicable *te, IAnjutaIterable *begin_location,
 	switch (indicator)
 	{
 		case IANJUTA_INDICABLE_NONE:
-			text_editor_set_indicator (TEXT_EDITOR (te), begin, end, -1);
+			text_editor_clear_indicator (TEXT_EDITOR (te), begin, end);
 		break;
 		case IANJUTA_INDICABLE_IMPORTANT:
 			text_editor_set_indicator (TEXT_EDITOR (te), begin, end, 0);
@@ -3438,7 +3449,7 @@ iindicable_set (IAnjutaIndicable *te, IAnjutaIterable *begin_location,
 		break;
 		default:
 			g_warning ("Unsupported indicator %d", indicator);
-			text_editor_set_indicator (TEXT_EDITOR (te),  begin, end, -1);
+			text_editor_clear_indicator (TEXT_EDITOR (te),  begin, end);
 		break;
 	}
 }
@@ -3446,7 +3457,7 @@ iindicable_set (IAnjutaIndicable *te, IAnjutaIterable *begin_location,
 static void
 iindicable_clear (IAnjutaIndicable *te, GError **err)
 {
-	text_editor_set_indicator (TEXT_EDITOR (te), -1, -1, -1);
+	text_editor_clear_all_indicator (TEXT_EDITOR (te));
 }
 
 static void

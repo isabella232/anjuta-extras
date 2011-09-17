@@ -2641,9 +2641,8 @@ void AnEditor::ReadProperties(const char *fileForExt, char **typedef_hl) {
 		SString value_str;
 		long default_indic_type[] = {INDIC_TT, INDIC_DIAGONAL, INDIC_SQUIGGLE};
 		const char *default_indic_color[] = {"0000FF", "#00FF00", "#FF0000"};
-		const char *style_name[] = {"normal", "warning", "error"};
 		char key[200];
-		sprintf(key, "indicators.style.%s", style_name[i]);
+		sprintf(key, "indicator.%d.style", i);
 
 		value_str = props->Get(key);
 		if (value_str.length() > 0) {
@@ -2657,6 +2656,22 @@ void AnEditor::ReadProperties(const char *fileForExt, char **typedef_hl) {
 				SendEditor(SCI_INDICSETSTYLE, i, INDIC_STRIKE);
 			} else if (strcasecmp (value_str.c_str(), "diagonal") == 0) {
 				SendEditor(SCI_INDICSETSTYLE, i, INDIC_DIAGONAL);
+			} else if (strcasecmp (value_str.c_str(), "hidden") == 0) {
+				SendEditor(SCI_INDICSETSTYLE, i, INDIC_HIDDEN);
+			} else if (strcasecmp (value_str.c_str(), "box") == 0) {
+				SendEditor(SCI_INDICSETSTYLE, i, INDIC_BOX);
+			} else if (strcasecmp (value_str.c_str(), "roundbox") == 0) {
+				SendEditor(SCI_INDICSETSTYLE, i, INDIC_ROUNDBOX);
+			} else if (strcasecmp (value_str.c_str(), "straightbox") == 0) {
+				SendEditor(SCI_INDICSETSTYLE, i, INDIC_STRAIGHTBOX);
+			} else if (strcasecmp (value_str.c_str(), "underline-dash") == 0) {
+				SendEditor(SCI_INDICSETSTYLE, i, INDIC_DASH);
+			} else if (strcasecmp (value_str.c_str(), "underline-dots") == 0) {
+				SendEditor(SCI_INDICSETSTYLE, i, INDIC_DOTS);
+			} else if (strcasecmp (value_str.c_str(), "underline-low-squiggle") == 0) {
+				SendEditor(SCI_INDICSETSTYLE, i, INDIC_SQUIGGLELOW);
+			} else if (strcasecmp (value_str.c_str(), "dotbox") == 0) {
+				SendEditor(SCI_INDICSETSTYLE, i, INDIC_DOTBOX);
 			} else {
 				SendEditor(SCI_INDICSETSTYLE, i, default_indic_type[i]);
 			}
@@ -2669,6 +2684,18 @@ void AnEditor::ReadProperties(const char *fileForExt, char **typedef_hl) {
 			SendEditor(SCI_INDICSETFORE, i, ColourFromString(value_str.c_str()).AsLong());
 		} else {
 			SendEditor(SCI_INDICSETFORE, i, ColourFromString(default_indic_color[i]).AsLong());
+		}
+
+		sprintf(key, "indicator.%d.under", i);
+		value_str = props->GetExpanded(key);
+		if (value_str.length()) {
+			SendEditor(SCI_INDICSETUNDER, i, props->GetInt(key));
+		}
+
+		sprintf(key, "indicator.%d.alpha", i);
+		value_str = props->GetExpanded(key);
+		if (value_str.length()) {
+			SendEditor(SCI_INDICSETALPHA, i, props->GetInt(key));
 		}
 	}
 	
