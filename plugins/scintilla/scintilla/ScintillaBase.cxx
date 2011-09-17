@@ -405,7 +405,6 @@ int ScintillaBase::AutoCompleteGetCurrentText(char *buffer) {
 
 void ScintillaBase::CallTipShow(Point pt, const char *defn) {
 	ac.Cancel();
-	pt.y += vs.lineHeight;
 	// If container knows about STYLE_CALLTIP then use it in place of the
 	// STYLE_DEFAULT for the face name, size and character set. Also use it
 	// for the foreground and background colour.
@@ -421,12 +420,12 @@ void ScintillaBase::CallTipShow(Point pt, const char *defn) {
 		vs.styles[ctStyle].characterSet,
 		wMain);
 	// If the call-tip window would be out of the client
-	// space, adjust so it displays above the text.
+	// space, adjust so it displays below the text.
 	PRectangle rcClient = GetClientRectangle();
-	if (rc.bottom > rcClient.bottom) {
+	if (rc.top < rcClient.top) {
 		int offset = vs.lineHeight + rc.Height();
-		rc.top -= offset;
-		rc.bottom -= offset;
+		rc.top += offset;
+		rc.bottom += offset;
 	}
 	// Now display the window.
 	CreateCallTipWindow(rc);

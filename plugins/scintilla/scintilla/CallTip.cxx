@@ -294,7 +294,7 @@ PRectangle CallTip::CallTipStart(int pos, Point pt, const char *defn,
 	// the tip text, else to the tip text left edge.
 	int height = lineHeight * numLines - surfaceMeasure->InternalLeading(font) + 2 + 2;
 	delete surfaceMeasure;
-	return PRectangle(pt.x - offsetMain, pt.y + 1, pt.x + width - offsetMain, pt.y + 1 + height);
+	return PRectangle(pt.x - offsetMain, pt.y - 1 - height, pt.x + width - offsetMain, pt.y - 1);
 }
 
 void CallTip::CallTipCancel() {
