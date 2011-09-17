@@ -1,6 +1,6 @@
-diff -u3 scintilla/include/ScintillaWidget.h include/ScintillaWidget.h
---- scintilla/include/ScintillaWidget.h	2011-05-21 22:36:30.352130001 +0200
-+++ include/ScintillaWidget.h	2011-05-22 19:45:53.725959000 +0200
+diff -u3 include/ScintillaWidget.orig.h include/ScintillaWidget.h
+--- include/ScintillaWidget.orig.h	2011-08-01 04:49:04.000000000 +0200
++++ include/ScintillaWidget.h	2011-09-17 09:38:24.315041004 +0200
 @@ -16,8 +16,8 @@
  #endif
  

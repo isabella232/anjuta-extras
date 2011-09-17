@@ -1,5 +1,6 @@
---- scintilla/include/Scintilla.h	2011-05-21 22:36:30.346130001 +0200
-+++ include/Scintilla.h	2011-05-22 19:33:32.031959002 +0200
+diff -u3 include/Scintilla.orig.h include/Scintilla.h
+--- include/Scintilla.orig.h	2011-08-01 04:49:04.000000000 +0200
++++ include/Scintilla.h	2011-09-17 10:54:12.743040993 +0200
 @@ -32,6 +32,11 @@
  #if defined(_WIN32)
  #include <basetsd.h>

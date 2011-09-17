@@ -121,6 +121,11 @@ update-scintilla:
 	cd $(srcdir); \
 	cp scintilla/gtk/*.cxx .; \
 	cp scintilla/gtk/*.h .; \
+	cp scintilla/gtk/*.list h.; \
+	cp scintilla/lexers/*.cxx .; \
+	cp scintilla/lexers/*.h .; \
+	cp scintilla/lexlib/*.cxx .; \
+	cp scintilla/lexlib/*.h .; \
 	cp scintilla/src/*.cxx .; \
 	cp scintilla/src/*.h .; \
 	cp scintilla/include/*.h include; \

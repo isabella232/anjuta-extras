@@ -1,6 +1,7 @@
---- scintilla/gtk/PlatGTK.cxx	2011-05-21 22:36:30.332130001 +0200
-+++ PlatGTK.cxx	2011-05-22 19:40:17.540959001 +0200
-@@ -694,6 +694,16 @@
+diff -u3 scintilla/gtk/PlatGTK.orig.cxx scintilla/PlatGTK.cxx
+--- scintilla/gtk/PlatGTK.orig.cxx	2011-09-16 11:13:20.000000000 +0200
++++ scintilla/PlatGTK.cxx	2011-09-17 10:33:32.458041001 +0200
+@@ -719,6 +719,16 @@
  	}
  	return new FontHandle(newid);
  #else
