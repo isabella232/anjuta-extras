@@ -1,3 +1,10 @@
+anjuta-extras-3.1.92 (19 September 2011) -- James Liggett
+
+Updates
+- Scintilla updated to 2.29 (Sébastien Granjoux)
+- Various other Scintilla fixes (Sébastien Granjoux)
+- Translations (lv)
+
 anjuta-extras 3.1.4 (25 July 2011) -- James Liggett
 
 Bugs fixed:
