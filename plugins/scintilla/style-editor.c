@@ -431,241 +431,203 @@ style_data_new_parse (gchar * style_string)
 	return style_data;
 }
 
+/* Select a new style, update all entries */
 static void
-on_use_default_font_toggled (GtkToggleButton * tb, gpointer data)
+on_hilite_style_item_changed (StyleEditor *se)
 {
-	StyleEditor *p;
-	gchar* font_name;
-	gboolean state;
-
-	g_return_if_fail (data);
-	p = data;
-
-	gtk_widget_set_sensitive (p->priv->font_picker, TRUE);
-	state = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (tb));
-	if (state)
-	{
-		font_name = g_strdup_printf ("%s %d",
-									 p->priv->default_style->font,
-									 p->priv->default_style->size);
-	}
-	else
-	{
-		if (p->priv->current_style->font &&
-			strlen (p->priv->current_style->font))
-		{
-			font_name = g_strdup_printf ("%s %d",
-										 p->priv->current_style->font,
-										 p->priv->current_style->size);
-		}
-		else
-		{
-			font_name = g_strdup_printf ("%s %d",
-										 p->priv->default_style->font,
-										 p->priv->default_style->size);
-		}
-	}
-	gtk_widget_set_sensitive (p->priv->font_picker, !state);
-	gtk_font_button_set_font_name (GTK_FONT_BUTTON (p->priv->font_picker),
-		font_name);
-	g_free(font_name);
-}
-
-static void
-on_use_default_attrib_toggled (GtkToggleButton * tb, gpointer data)
-{
-	StyleEditor *p;
-
-	g_return_if_fail (data);
-	p = data;
-	gtk_widget_set_sensitive (p->priv->font_bold_check, TRUE);
-	gtk_widget_set_sensitive (p->priv->font_italics_check, TRUE);
-	gtk_widget_set_sensitive (p->priv->font_underlined_check, TRUE);
-	if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (tb)))
-	{
-		gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON
-					      (p->priv->font_bold_check),
-					      p->priv->default_style->bold);
-		gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON
-					      (p->priv->font_italics_check),
-					      p->priv->default_style->italics);
-		gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON
-					      (p->priv->
-					       font_underlined_check),
-					      p->priv->default_style->underlined);
-		gtk_widget_set_sensitive (p->priv->font_bold_check, FALSE);
-		gtk_widget_set_sensitive (p->priv->font_italics_check,
-					  FALSE);
-		gtk_widget_set_sensitive (p->priv->font_underlined_check,
-					  FALSE);
-	}
-	else
-	{
-		gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON
-					      (p->priv->font_bold_check),
-					      p->priv->current_style->bold);
-		gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON
-					      (p->priv->font_italics_check),
-					      p->priv->current_style->italics);
-		gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON
-					      (p->priv->
-					       font_underlined_check),
-					      p->priv->current_style->underlined);
-	}
-}
-
-static void
-on_use_default_fore_toggled (GtkToggleButton * tb, gpointer data)
-{
-	StyleEditor *p;
+	gchar *style_item;
+	StyleData *used_style;
+	StyleData *current_style;
+	PangoFontDescription *desc;
+	gchar *font_name;
 	GdkColor color;
 
-	g_return_if_fail (data);
-	p = data;
+	
+	
+	/* Find current style */
+	style_item = gtk_combo_box_text_get_active_text (GTK_COMBO_BOX_TEXT (se->priv->hilite_item_combobox));
+	if (style_item != NULL)
+	{
+		current_style = g_object_get_data (G_OBJECT (se->priv->dialog), style_item);
+		g_free (style_item);
+	}
 
-	gtk_widget_set_sensitive (p->priv->fore_colorpicker, TRUE);
-	if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (tb)))
-	{
-		gdk_color_parse (p->priv->default_style->fore, &color);
-		gtk_color_button_set_color (GTK_COLOR_BUTTON (p->priv->fore_colorpicker),
-									&color);
-		gtk_widget_set_sensitive (p->priv->fore_colorpicker, FALSE);
-	}
-	else
-	{
-		gdk_color_parse (p->priv->current_style->fore, &color);
-		gtk_color_button_set_color (GTK_COLOR_BUTTON (p->priv->fore_colorpicker),
-									&color);
-	}
+	g_return_if_fail (current_style);
+
+	/* Disable current style to avoid changed notification */
+	se->priv->current_style = NULL;
+	
+	/* Get font */
+	used_style = ((current_style->font_use_default) ||
+    	(current_style->font == NULL) ||
+    	(*(current_style->font) == '\0')) ? se->priv->default_style : current_style;
+	desc = pango_font_description_from_string (used_style->font);
+	pango_font_description_set_size (desc, used_style->size * PANGO_SCALE);
+	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON(se->priv->font_use_default_check), se->priv->default_style == used_style);
+	gtk_widget_set_sensitive (se->priv->font_use_default_check, current_style != se->priv->default_style);
+	gtk_widget_set_sensitive (se->priv->font_picker, current_style == used_style);
+
+	/* Get attribute */
+	used_style = current_style->attrib_use_default ?
+		se->priv->default_style : current_style;
+	if (used_style->bold) pango_font_description_set_weight (desc, PANGO_WEIGHT_BOLD);
+	if (used_style->italics) pango_font_description_set_style (desc, PANGO_STYLE_ITALIC);
+
+	font_name = pango_font_description_to_string (desc);
+	gtk_font_button_set_font_name (GTK_FONT_BUTTON (se->priv->font_picker), font_name);
+	g_free (font_name);
+
+	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON(se->priv->font_attrib_use_default_check), se->priv->default_style == used_style);
+	gtk_widget_set_sensitive (se->priv->font_attrib_use_default_check, current_style != se->priv->default_style);
+	
+	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON(se->priv->font_bold_check), used_style->bold);
+	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON(se->priv->font_italics_check), used_style->italics);
+	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON(se->priv->font_underlined_check), used_style->underlined);
+	gtk_widget_set_sensitive (se->priv->font_bold_check, current_style == used_style);
+	gtk_widget_set_sensitive (se->priv->font_italics_check, current_style == used_style);
+	gtk_widget_set_sensitive (se->priv->font_underlined_check, current_style == used_style);
+
+
+	/* Get foreground color */
+	used_style = current_style->fore_use_default ?
+		se->priv->default_style : current_style;
+	gdk_color_parse (used_style->fore, &color);
+
+	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON(se->priv->fore_color_use_default_check), se->priv->default_style == used_style);
+	gtk_widget_set_sensitive (se->priv->fore_color_use_default_check, current_style != se->priv->default_style);
+
+	gtk_color_button_set_color (GTK_COLOR_BUTTON (se->priv->fore_colorpicker), &color);
+	gtk_widget_set_sensitive (se->priv->fore_colorpicker, current_style == used_style);
+
+	/* Get background color */
+	used_style = current_style->back_use_default ?
+		se->priv->default_style : current_style;
+	gdk_color_parse (used_style->back, &color);
+
+	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON(se->priv->back_color_use_default_check), se->priv->default_style == used_style);
+	gtk_widget_set_sensitive (se->priv->back_color_use_default_check, current_style != se->priv->default_style);
+	
+	gtk_color_button_set_color (GTK_COLOR_BUTTON (se->priv->back_colorpicker), &color);
+	gtk_widget_set_sensitive (se->priv->back_colorpicker, current_style == used_style);
+
+	/* Set current style after setting all entries */
+	se->priv->current_style = current_style;
 }
 
+/* Font button allow to select bold and italic attribute,
+ * so update those check buttons too */
 static void
-on_use_default_back_toggled (GtkToggleButton * tb, gpointer data)
+on_font_changed (StyleEditor *se)
 {
-	StyleEditor *p;
-	GdkColor color;
+	const gchar *font;
 
-	g_return_if_fail (data);
-	p = data;
-	gtk_widget_set_sensitive (p->priv->back_colorpicker, TRUE);
-	if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (tb)))
+	if (se->priv->current_style == NULL) return;
+	
+	font = gtk_font_button_get_font_name (GTK_FONT_BUTTON (se->priv->font_picker));
+	if (font)
 	{
-		gdk_color_parse (p->priv->current_style->back, &color);
-		gtk_color_button_set_color (GTK_COLOR_BUTTON (p->priv->back_colorpicker),
-									&color);
-		gtk_widget_set_sensitive (p->priv->back_colorpicker, FALSE);
-	}
-	else
-	{
-		gdk_color_parse (p->priv->default_style->back, &color);
-		gtk_color_button_set_color (GTK_COLOR_BUTTON (p->priv->back_colorpicker),
-									&color);
-	}
-}
+		PangoFontDescription *desc = pango_font_description_from_string (font);
+		gboolean bold;
+		gboolean italic;
+		gboolean underline;
 
-static void
-on_hilite_style_entry_changed (GtkComboBox * combobox, gpointer user_data)
-{
-	StyleEditor *p;
-	const gchar *style_item;
+		bold = pango_font_description_get_weight (desc) >= PANGO_WEIGHT_BOLD;
+		italic = pango_font_description_get_style (desc) != PANGO_STYLE_NORMAL;
+		pango_font_description_free (desc);
 
-	g_return_if_fail (user_data);
-	p = user_data;
-
-	style_item = gtk_combo_box_text_get_active_text (GTK_COMBO_BOX_TEXT (combobox));
-	if (!style_item || strlen (style_item) <= 0)
-		return;
-	if (p->priv->current_style)
-	{
-		GdkColor color;
-		gchar *str;
-		const gchar *font;
-
-		font = gtk_font_button_get_font_name (GTK_FONT_BUTTON
-												(p->priv->font_picker));
-		if (font)
-		{
-			style_data_set_font (p->priv->current_style, font);
-			style_data_set_font_size_from_pango (p->priv->current_style, font);
-		}
-		else
-		{
-			style_data_set_font (p->priv->current_style,
-								 p->priv->default_style->font);
-			p->priv->current_style->size = p->priv->default_style->size;
-		}
+		style_data_set_font (se->priv->current_style, font);
+		style_data_set_font_size_from_pango (se->priv->current_style, font);
+		se->priv->current_style->bold = bold;
+		se->priv->current_style->italics = italic;
 		
-		p->priv->current_style->bold =
-			gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON
-						      (p->priv->font_bold_check));
-		p->priv->current_style->italics =
-			gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON
-						      (p->priv->font_italics_check));
-		p->priv->current_style->underlined =
-			gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON
-						      (p->priv->font_underlined_check));
-		p->priv->current_style->eolfilled =
-			(strcmp (style_item, hilite_style[1]) == 0);
-
-		gtk_color_button_get_color (GTK_COLOR_BUTTON (p->priv->fore_colorpicker),
-									&color);
-		str = anjuta_util_string_from_color (color.red,
-											 color.green,
-											 color.blue);
-		style_data_set_fore (p->priv->current_style, str);
-		g_free (str);
-
-		gtk_color_button_get_color (GTK_COLOR_BUTTON (p->priv->back_colorpicker),
-									&color);
-		str = anjuta_util_string_from_color (color.red,
-											 color.green,
-											 color.blue);
-		style_data_set_back (p->priv->current_style, str);
-		g_free (str);
-
-		p->priv->current_style->font_use_default =
-			gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON
-						      (p->priv->font_use_default_check));
-		p->priv->current_style->attrib_use_default =
-			gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON
-						      (p->priv->font_attrib_use_default_check));
-		p->priv->current_style->fore_use_default =
-			gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON
-						      (p->priv->fore_color_use_default_check));
-		p->priv->current_style->back_use_default =
-			gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON
-						      (p->priv->back_color_use_default_check));
+		underline = se->priv->current_style->attrib_use_default ? se->priv->default_style->underlined :se->priv->current_style->underlined;
+		se->priv->current_style->attrib_use_default = ((bold == se->priv->default_style->bold) &&
+		                                               (italic == se->priv->default_style->italics) &&
+		                                               (underline == se->priv->default_style->underlined) &&
+		                                               (se->priv->current_style != se->priv->default_style));
+		
+		/* Changing bold and italic attribute could need a change in font */
+		on_hilite_style_item_changed (se);
 	}
-	p->priv->current_style =
-		g_object_get_data (G_OBJECT (p->priv->dialog),
-				     style_item);
+}
+
+/* Change a style entry, store values */
+static void
+on_hilite_style_entry_changed (StyleEditor *se)
+{
+	GdkColor color;
+	gchar *str;
+	const gchar *font;
+
+	g_return_if_fail (se);
+
+	if (se->priv->current_style == NULL) return;
 	
-	g_return_if_fail (p->priv->current_style);
-	
-	/* We need to first toggle then set active to work properly */
-	gtk_toggle_button_toggled (GTK_TOGGLE_BUTTON
-				   (p->priv->font_use_default_check));
-	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON
-				      (p->priv->font_use_default_check),
-				      p->priv->current_style->font_use_default);
+	font = gtk_font_button_get_font_name (GTK_FONT_BUTTON
+											(se->priv->font_picker));
+	if (font)
+	{
+		style_data_set_font (se->priv->current_style, font);
+		style_data_set_font_size_from_pango (se->priv->current_style, font);
+	}
+	else
+	{
+		style_data_set_font (se->priv->current_style,
+							 se->priv->default_style->font);
+		se->priv->current_style->size = se->priv->default_style->size;
+	}
+		
+	se->priv->current_style->bold =
+		gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON
+					      (se->priv->font_bold_check));
+	se->priv->current_style->italics =
+		gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON
+					      (se->priv->font_italics_check));
+	se->priv->current_style->underlined =
+		gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON
+					      (se->priv->font_underlined_check));
 
-	gtk_toggle_button_toggled (GTK_TOGGLE_BUTTON
-				   (p->priv->font_attrib_use_default_check));
-	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON
-				      (p->priv->font_attrib_use_default_check),
-				      p->priv->current_style->attrib_use_default);
+	gtk_color_button_get_color (GTK_COLOR_BUTTON (se->priv->fore_colorpicker),
+								&color);
+	str = anjuta_util_string_from_color (color.red,
+										 color.green,
+										 color.blue);
+	style_data_set_fore (se->priv->current_style, str);
+	g_free (str);
 
-	gtk_toggle_button_toggled (GTK_TOGGLE_BUTTON
-				   (p->priv->fore_color_use_default_check));
-	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON
-				      (p->priv->fore_color_use_default_check),
-				      p->priv->current_style->fore_use_default);
+	gtk_color_button_get_color (GTK_COLOR_BUTTON (se->priv->back_colorpicker),
+								&color);
+	str = anjuta_util_string_from_color (color.red,
+										 color.green,
+										 color.blue);
+	style_data_set_back (se->priv->current_style, str);
+	g_free (str);
 
-	gtk_toggle_button_toggled (GTK_TOGGLE_BUTTON
-				   (p->priv->back_color_use_default_check));
-	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON
-				      (p->priv->back_color_use_default_check),
-				      p->priv->current_style->back_use_default);
+	if (se->priv->current_style == se->priv->default_style)
+	{
+		se->priv->current_style->font_use_default = FALSE;
+		se->priv->current_style->attrib_use_default = FALSE;
+		se->priv->current_style->fore_use_default = FALSE;
+		se->priv->current_style->back_use_default = FALSE;
+	}
+	else
+	{
+		se->priv->current_style->font_use_default =
+			gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON
+						      (se->priv->font_use_default_check));
+		se->priv->current_style->attrib_use_default =
+			gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON
+						      (se->priv->font_attrib_use_default_check));
+		se->priv->current_style->fore_use_default =
+			gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON
+						      (se->priv->fore_color_use_default_check));
+		se->priv->current_style->back_use_default =
+			gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON
+						      (se->priv->back_color_use_default_check));
+	}
+
+	/* Changing bold and italic attribute could need a change in font */
+	on_hilite_style_item_changed (se);
 }
 
 static void
@@ -698,7 +660,7 @@ sync_from_props (StyleEditor *se)
 				     hilite_style[0]);
 	se->priv->current_style = NULL;
 
-	on_hilite_style_entry_changed (GTK_COMBO_BOX (se->priv->hilite_item_combobox), se);
+	on_hilite_style_item_changed (se);
 
 	str = sci_prop_get (se->props, CARET_FORE_COLOR);
 	if(str)
@@ -800,8 +762,6 @@ sync_to_props (StyleEditor *se)
 	gchar *str;
 
 	g_return_if_fail (se);
-	/* Sync the current item */	
-	on_hilite_style_entry_changed (GTK_COMBO_BOX (se->priv->hilite_item_combobox), se);
 	
 	/* Transfer to props */
 	for (i = 0;; i += 2)
@@ -934,19 +894,37 @@ create_style_editor_gui (StyleEditor * se)
 	gtk_window_set_transient_for (GTK_WINDOW (se->priv->dialog),
 								  GTK_WINDOW (pref_dialog));
 	
-	g_signal_connect (se->priv->hilite_item_combobox, "changed", G_CALLBACK (on_hilite_style_entry_changed),
+	g_signal_connect_swapped (se->priv->hilite_item_combobox, "changed", G_CALLBACK (on_hilite_style_item_changed),
 					  se);
-	g_signal_connect (G_OBJECT (se->priv->font_use_default_check),
-					  "toggled", G_CALLBACK (on_use_default_font_toggled),
+	g_signal_connect_swapped (G_OBJECT (se->priv->font_use_default_check),
+					  "toggled", G_CALLBACK (on_hilite_style_entry_changed),
 					  se);
-	g_signal_connect (G_OBJECT (se->priv->font_attrib_use_default_check),
-					  "toggled", G_CALLBACK (on_use_default_attrib_toggled),
+	g_signal_connect_swapped (G_OBJECT (se->priv->font_picker),
+					  "font-set", G_CALLBACK (on_font_changed),
 					  se);
-	g_signal_connect (G_OBJECT (se->priv->fore_color_use_default_check),
-					  "toggled", G_CALLBACK (on_use_default_fore_toggled),
+	g_signal_connect_swapped (G_OBJECT (se->priv->font_attrib_use_default_check),
+					  "toggled", G_CALLBACK (on_hilite_style_entry_changed),
 					  se);
-	g_signal_connect (G_OBJECT (se->priv->back_color_use_default_check),
-					  "toggled", G_CALLBACK (on_use_default_back_toggled),
+	g_signal_connect_swapped (G_OBJECT (se->priv->font_bold_check),
+					  "toggled", G_CALLBACK (on_hilite_style_entry_changed),
+					  se);
+	g_signal_connect_swapped (G_OBJECT (se->priv->font_italics_check),
+					  "toggled", G_CALLBACK (on_hilite_style_entry_changed),
+					  se);
+	g_signal_connect_swapped (G_OBJECT (se->priv->font_underlined_check),
+					  "toggled", G_CALLBACK (on_hilite_style_entry_changed),
+					  se);
+	g_signal_connect_swapped (G_OBJECT (se->priv->fore_color_use_default_check),
+					  "toggled", G_CALLBACK (on_hilite_style_entry_changed),
+					  se);
+	g_signal_connect_swapped (G_OBJECT (se->priv->fore_colorpicker),
+					  "color-set", G_CALLBACK (on_hilite_style_entry_changed),
+					  se);
+	g_signal_connect_swapped (G_OBJECT (se->priv->back_color_use_default_check),
+					  "toggled", G_CALLBACK (on_hilite_style_entry_changed),
+					  se);
+	g_signal_connect_swapped (G_OBJECT (se->priv->back_colorpicker),
+					  "color-set", G_CALLBACK (on_hilite_style_entry_changed),
 					  se);
 	g_signal_connect (G_OBJECT (se->priv->dialog),
 					  "delete_event", G_CALLBACK (on_delete_event),
