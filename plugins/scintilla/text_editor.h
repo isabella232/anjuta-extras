@@ -319,10 +319,10 @@ void text_editor_scintilla_command (TextEditor *te, gint command,
 
 #define STRIP_TRAILING_SPACES      "strip-trailing-spaces"
 #define FOLD_ON_OPEN               "fold-on-open"
-#define CARET_FORE_COLOR           "caret-fore"
-#define CALLTIP_BACK_COLOR         "calltip-back"
-#define SELECTION_FORE_COLOR       "selection-fore"
-#define SELECTION_BACK_COLOR       "selection-back"
+#define CARET_FORE_COLOR           "caret.fore"
+#define CALLTIP_BACK_COLOR         "calltip.back"
+#define SELECTION_FORE_COLOR       "selection.fore"
+#define SELECTION_BACK_COLOR       "selection.back"
 
 #define VIEW_LINENUMBERS_MARGIN    "margin-linenumber-visible"
 #define VIEW_MARKER_MARGIN         "margin-marker-visible"
