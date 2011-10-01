@@ -1588,6 +1588,42 @@ load_from_file (TextEditor *te, gchar *uri, gchar **err)
 	return TRUE;
 }
 
+static void
+strip_trailing_space (gchar *data, gsize *size)
+{
+	gchar *space;
+	gsize len;
+
+	/* Search first trailing space */
+	for (len = 0;;len++)
+	{
+		while ((len != *size) && (data[len] != ' ') && (data[len] != '\t')) len++;
+		if (len == *size) break;
+		space = &data[len];
+		while ((len != *size) && ((data[len] == ' ') || (data[len] == '\t'))) len++;
+		if ((len == *size) || (data[len] == '\n') || (data[len] == '\r'))
+		{
+			gchar *strip = space;
+
+			/* Search next trailing space */
+			for (;;)
+			{
+				while ((len != *size) && (data[len] != ' ') && (data[len] != '\t')) *strip++ = data[len++];
+				if (len == *size) break;
+				space = &data[len];
+				while ((len != *size) && ((data[len] == ' ') || (data[len] == '\t'))) *strip++ = data[len++];
+				if ((len == *size) || (data[len] == '\n') || (data[len] == '\r')) 
+				{
+					strip -= (&data[len] - space);
+				}
+			}
+			*size -= (&data[len] - strip);
+			break;
+		}
+	}
+	
+}
+
 static gboolean
 save_to_file (TextEditor *te, gchar *uri, GError **error)
 {
@@ -1655,8 +1691,7 @@ save_to_file (TextEditor *te, gchar *uri, GError **error)
 											STRIP_TRAILING_SPACES);
 		if (strip)
 		{
-			while (size > 0 && isspace(data[size - 1]))
-				-- size;
+			strip_trailing_space (data, &size);
 		}
 		if ((size > 1) && ('\n' != data[size-1]))
 		{
