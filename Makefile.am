@@ -1,1 +1,1 @@
-SUBDIRS = po scripts plugins
+SUBDIRS = po scripts plugins help

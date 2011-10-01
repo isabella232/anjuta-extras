@@ -77,6 +77,11 @@ AM_GLIB_GNU_GETTEXT
 IT_PROG_INTLTOOL([0.35.0])
 AM_PROG_LIBTOOL
 
+
+dnl Help files
+GNOME_DOC_INIT([0.18])
+
+
 dnl maintainer mode
 AM_MAINTAINER_MODE
 
@@ -149,6 +154,7 @@ plugins/scintilla/Makefile
 plugins/scintilla/scintilla/Makefile
 plugins/scintilla/scintilla/include/Makefile
 plugins/scintilla/properties/Makefile
+help/Makefile
 po/Makefile.in
 scripts/Makefile
 ])
