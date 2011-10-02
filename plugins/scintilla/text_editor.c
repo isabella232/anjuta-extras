@@ -87,6 +87,8 @@
 #define TEXT_EDITOR_PROGRAM_COUNTER         3
 #define TEXT_EDITOR_LINEMARKER              4
 
+#define RATE_LIMIT_IN_MS	2000
+
 /* Include marker pixmaps */
 #include "anjuta-bookmark-16.xpm"
 #include "anjuta-breakpoint-disabled-16.xpm"
@@ -556,6 +558,7 @@ text_editor_update_monitor (TextEditor *te, gboolean disable_it)
 										G_FILE_MONITOR_NONE, 
 										NULL, 
 										&error);
+		g_file_monitor_set_rate_limit (te->monitor, RATE_LIMIT_IN_MS);
 		g_signal_connect (te->monitor, "changed",
 				  G_CALLBACK (on_text_editor_uri_changed), te);
 		g_object_unref (gio_uri);
@@ -1718,6 +1721,7 @@ save_to_file (TextEditor *te, gchar *uri, GError **error)
 	}
 	
 	/* Set last content saved to data */
+	data[size] = '\0';
 	g_free (te->last_saved_content);
 	te->last_saved_content = data;
 	
