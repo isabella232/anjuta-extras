@@ -1718,10 +1718,10 @@ save_to_file (TextEditor *te, gchar *uri, GError **error)
 														data, size, 
 														&nchars, NULL, error);
 		}
+		data[size] = '\0';
 	}
 	
 	/* Set last content saved to data */
-	data[size] = '\0';
 	g_free (te->last_saved_content);
 	te->last_saved_content = data;
 	
