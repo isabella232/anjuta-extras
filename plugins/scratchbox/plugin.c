@@ -133,7 +133,7 @@ static void on_list_terminated (AnjutaLauncher *launcher, gint child_pid,
 		plugin->combo_element = 1;
 
 		for (i = 0; i < str_splitted_length; i++) {
-			gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT(combo_target_entry), plugin->target_list[i]);
+			gtk_combo_box_text_append (GTK_COMBO_BOX_TEXT(combo_target_entry), plugin->target_list[i], plugin->target_list[i]);
 			if (g_strcmp0 (plugin->target, plugin->target_list[i]) == 0) gtk_combo_box_set_active (GTK_COMBO_BOX(combo_target_entry), i);
 			plugin->combo_element++;
 		}
