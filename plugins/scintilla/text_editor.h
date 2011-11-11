@@ -293,7 +293,7 @@ void text_editor_scintilla_command (TextEditor *te, gint command,
 #define MSGMAN_COLOR_ERROR                "msgman-color-error"
 #define MSGMAN_COLOR_WARNING              "msgman-color-warning"
 
-#define PREF_SCHEMA		"org.gnome.anjuta.scintilla"
+#define PREF_SCHEMA		"org.gnome.anjuta.plugins.scintilla"
 /* Editor preferences */
 #define DISABLE_SYNTAX_HILIGHTING  "disable-syntax-hilighting"
 /*

@@ -1,0 +1,151 @@
+<schemalist>
+	<schema id="org.gnome.anjuta.plugins.scintilla" path="/org/gnome/anjuta/plugins/scintilla/">
+		<key name="caret-fore" type="s">
+			<default>""</default>
+		</key>
+		<key name="calltip-back" type="s">
+			<default>""</default>
+		</key>
+		<key name="selection-fore" type="s">
+			<default>""</default>
+		</key>
+		<key name="selection-back" type="s">
+			<default>""</default>
+		</key>
+		<key name="view-whitespace" type="b">
+			<default>false</default>
+		</key>
+		<key name="autocomplete-choose-single" type="b">
+			<default>false</default>
+		</key>
+		<key name="xml-auto-close-tags" type="b">
+			<default>true</default>
+		</key>
+		<key name="autocompleteword-automatic" type="i">
+			<default>3</default>
+		</key>
+		<key name="fold" type="b">
+			<default>true</default>
+		</key>
+		<key name="fold-comment" type="b">
+			<default>true</default>
+		</key>
+		<key name="fold-comment-python" type="b">
+			<default>true</default>
+		</key>
+		<key name="fold-quotes-python" type="b">
+			<default>true</default>
+		</key>
+		<key name="fold-html" type="b">
+			<default>true</default>
+		</key>
+		<key name="fold-compact" type="b">
+			<default>true</default>
+		</key>
+		<key name="fold-underline" type="b">
+			<default>true</default>
+		</key>
+		<key name="fold-on-open" type="b">
+			<default>false</default>
+		</key>
+		<key name="fold-symbols" type="s">
+			<choices>
+				<choice value="Plus/Minus" />
+				<choice value="Arrows" />
+				<choice value="Circular" />
+				<choice value="Squares" />
+			</choices>
+			<default>"Plus/Minus"</default>
+		</key>
+		<key name="disable-syntax-hilighting" type="b">
+			<default>false</default>
+		</key>
+		<key name="braces-check" type="b">
+			<default>true</default>
+		</key>
+		<key name="strip-trailing-spaces" type="b">
+			<default>false</default>
+		</key>
+		<key name="editor-doseol" type="b">
+			<default>false</default>
+		</key>
+		<key name="editor-wrapbookmarks" type="b">
+			<default>true</default>
+		</key>
+		<key name="edge-column" type="i">
+			<default>80</default>
+		</key>
+		<key name="caret-period" type="i">
+			<default>350</default>
+		</key>
+		<key name="caret-width" type="i">
+			<default>2</default>
+		</key>
+		<key name="margin-linenumber-width" type="i">
+			<default>40</default>
+		</key>
+		<key name="indent-automatic" type="b">
+			<default>true</default>
+		</key>
+		<key name="indent-maintain" type="b">
+			<default>false</default>
+		</key>
+		<key name="tab-indents" type="b">
+			<default>false</default>
+		</key>
+		<key name="backspace-unindents" type="b">
+			<default>false</default>
+		</key>
+		<key name="indent-closing" type="b">
+			<default>false</default>
+		</key>
+		<key name="indent-opening" type="b">
+			<default>false</default>
+		</key>
+		<key name="use-tabs" type="b">
+			<default>true</default>
+		</key>
+		<key name="indent-size" type="i">
+			<default>4</default>
+		</key>
+		<key name="tabsize" type="i">
+			<default>4</default>
+		</key>
+		<key name="view-eol" type="b">
+			<default>false</default>
+		</key>
+		<key name="view-indentation-guides" type="b">
+			<default>false</default>
+		</key>
+		<key name="whitespace" type="b">
+			<default>false</default>
+		</key>
+		<key name="view-indentation-whitespace" type="b">
+			<default>false</default>
+		</key>
+		<key name="view-line-wrap" type="b">
+			<default>false</default>
+		</key>
+		<key name="margin-linenumber-visible" type="b">
+			<default>true</default>
+		</key>
+		<key name="margin-marker-visible" type="b">
+			<default>true</default>
+		</key>
+		<key name="margin-fold-visible" type="b">
+			<default>true</default>
+		</key>
+		<key name="print-linenumber-count" type="i">
+			<default>1</default>
+		</key>
+		<key name="print-linewrap" type="b">
+			<default>true</default>
+		</key>
+		<key name="print-header" type="b">
+			<default>true</default>
+		</key>
+		<key name="print-color" type="b">
+			<default>true</default>
+		</key>
+	</schema>
+</schemalist>

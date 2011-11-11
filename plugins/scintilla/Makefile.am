@@ -68,10 +68,10 @@ libanjuta_editor_la_SOURCES= \
 	anjuta-pcmark-16.xpm \
 	anjuta-linemark-16.xpm
 
-prefs_name = org.gnome.anjuta.scintilla
-prefs_keyfile = anjuta-editor-scintilla.gschema-part.xml
-prefs_ui_files = anjuta-editor-scintilla.ui
-include $(top_srcdir)/scripts/build-schemas.mk
+gsettings_in_file = org.gnome.anjuta.plugins.scintilla.gschema.xml.in
+gsettings_SCHEMAS = $(gsettings_in_file:.xml.in=.xml)
+@INTLTOOL_XML_NOMERGE_RULE@
+@GSETTINGS_RULES@
 
 endif
 
@@ -81,5 +81,8 @@ EXTRA_DIST = \
 	$(editor_plugin_DATA) \
 	$(editor_ui_DATA) \
 	$(editor_glade_DATA) \
-	$(prefs_keyfile) \
+	$(gsettings_in_file) \
 	License.txt
+
+CLEANFILES = \
+        $(gsettings_SCHEMAS)

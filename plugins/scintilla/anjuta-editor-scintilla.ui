@@ -120,7 +120,7 @@
                         <property name="border_width">5</property>
                         <property name="spacing">5</property>
                         <child>
-                          <object class="GtkCheckButton" id="preferences_toggle:bool:0:0:autocomplete-choose-single">
+                          <object class="GtkCheckButton" id="preferences:autocomplete-choose-single">
                             <property name="label" translatable="yes">Choose autocomplete for single match</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
@@ -137,7 +137,7 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkCheckButton" id="preferences_toggle:bool:1:0:xml-auto-close-tags">
+                          <object class="GtkCheckButton" id="preferences:xml-auto-close-tags">
                             <property name="label" translatable="yes">Autocomplete XML/HTML closing tags</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
@@ -159,7 +159,7 @@
                             <property name="can_focus">False</property>
                             <property name="spacing">5</property>
                             <child>
-                              <object class="GtkSpinButton" id="preferences_spin:int:3:0:autocompleteword-automatic">
+                              <object class="GtkSpinButton" id="preferences:autocompleteword-automatic">
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="adjustment">adjustment1</property>
@@ -222,7 +222,7 @@
                         <property name="border_width">5</property>
                         <property name="spacing">5</property>
                         <child>
-                          <object class="GtkCheckButton" id="preferences_toggle:bool:1:0:fold">
+                          <object class="GtkCheckButton" id="preferences:fold">
                             <property name="label" translatable="yes">Enable code folding</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
@@ -239,7 +239,7 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkCheckButton" id="preferences_toggle:bool:1:0:fold-comment">
+                          <object class="GtkCheckButton" id="preferences:fold-comment">
                             <property name="label" translatable="yes">Enable comments folding</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">False</property>
@@ -255,7 +255,7 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkCheckButton" id="preferences_toggle:bool:1:0:fold-comment-python">
+                          <object class="GtkCheckButton" id="preferences:fold-comment-python">
                             <property name="label" translatable="yes">Enable python comments folding</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">False</property>
@@ -271,7 +271,7 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkCheckButton" id="preferences_toggle:bool:1:0:fold-quotes-python">
+                          <object class="GtkCheckButton" id="preferences:fold-quotes-python">
                             <property name="label" translatable="yes">Enable python quoted strings folding</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">False</property>
@@ -287,7 +287,7 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkCheckButton" id="preferences_toggle:bool:1:0:fold-html">
+                          <object class="GtkCheckButton" id="preferences:fold-html">
                             <property name="label" translatable="yes">Enable HTML tags folding</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">False</property>
@@ -303,7 +303,7 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkCheckButton" id="preferences_toggle:bool:1:0:fold-compact">
+                          <object class="GtkCheckButton" id="preferences:fold-compact">
                             <property name="label" translatable="yes">Compact folding</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">False</property>
@@ -319,7 +319,7 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkCheckButton" id="preferences_toggle:bool:1:0:fold-underline">
+                          <object class="GtkCheckButton" id="preferences:fold-underline">
                             <property name="label" translatable="yes">Draw line below folded lines</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
@@ -336,7 +336,7 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkCheckButton" id="preferences_toggle:bool:0:0:fold-on-open">
+                          <object class="GtkCheckButton" id="preferences:fold-on-open">
                             <property name="label" translatable="yes">Collapse all code folds on file open</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
@@ -369,7 +369,7 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkComboBox" id="preferences_combo:text:Plus/Minus,Arrows,Circular,Squares:0:fold-symbols">
+                              <object class="GtkComboBox" id="preferences:fold-symbols">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
                                 <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
@@ -437,7 +437,7 @@
                         <property name="border_width">5</property>
                         <property name="spacing">5</property>
                         <child>
-                          <object class="GtkCheckButton" id="preferences_toggle:bool:0:0:disable-syntax-hilighting">
+                          <object class="GtkCheckButton" id="preferences:disable-syntax-hilighting">
                             <property name="label" translatable="yes">Disable syntax highlighting</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
@@ -454,7 +454,7 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkCheckButton" id="preferences_toggle:bool:1:0:braces-check">
+                          <object class="GtkCheckButton" id="preferences:braces-check">
                             <property name="label" translatable="yes">Enable braces check</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">False</property>
@@ -470,7 +470,7 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkCheckButton" id="preferences_toggle:bool:0:0:strip-trailing-spaces">
+                          <object class="GtkCheckButton" id="preferences:strip-trailing-spaces">
                             <property name="label" translatable="yes">Strip trailling spaces on file save</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
@@ -487,7 +487,7 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkCheckButton" id="preferences_toggle:bool:0:0:editor-doseol">
+                          <object class="GtkCheckButton" id="preferences:editor-doseol">
                             <property name="label" translatable="yes">Filter extraneous characters in DOS mode</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">False</property>
@@ -503,7 +503,7 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkCheckButton" id="preferences_toggle:bool:1:0:editor-wrapbookmarks">
+                          <object class="GtkCheckButton" id="preferences:editor-wrapbookmarks">
                             <property name="label" translatable="yes" comments="Next bookmark at the end of the file will jump to the first bookmark from the beginning">Wrap bookmarks search around</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">False</property>
@@ -527,7 +527,7 @@
                             <property name="column_spacing">5</property>
                             <property name="row_spacing">5</property>
                             <child>
-                              <object class="GtkSpinButton" id="preferences_spin:int:80:0:edge-column">
+                              <object class="GtkSpinButton" id="preferences:edge-column">
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="adjustment">adjustment2</property>
@@ -541,7 +541,7 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkSpinButton" id="preferences_spin:int:350:0:caret-period">
+                              <object class="GtkSpinButton" id="preferences:caret-period">
                                 <property name="can_focus">True</property>
                                 <property name="adjustment">adjustment3</property>
                                 <property name="climb_rate">10</property>
@@ -555,7 +555,7 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkSpinButton" id="preferences_spin:int:2:0:caret-width">
+                              <object class="GtkSpinButton" id="preferences:caret-width">
                                 <property name="can_focus">True</property>
                                 <property name="adjustment">adjustment4</property>
                                 <property name="climb_rate">1</property>
@@ -615,7 +615,7 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkSpinButton" id="preferences_spin:int:40:0:margin-linenumber-width">
+                              <object class="GtkSpinButton" id="preferences:margin-linenumber-width">
                                 <property name="can_focus">True</property>
                                 <property name="adjustment">adjustment5</property>
                                 <property name="climb_rate">1</property>
@@ -718,7 +718,7 @@
                     <property name="column_spacing">5</property>
                     <property name="row_spacing">5</property>
                     <child>
-                      <object class="GtkCheckButton" id="preferences_toggle:bool:1:1:indent-automatic">
+                      <object class="GtkCheckButton" id="preferences:indent-automatic">
                         <property name="label" translatable="yes">Enable automatic indentation</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">False</property>
@@ -735,7 +735,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkCheckButton" id="preferences_toggle:bool:0:1:indent-maintain">
+                      <object class="GtkCheckButton" id="preferences:indent-maintain">
                         <property name="label" translatable="yes" comments="If the user presses enter, the indentation of the current line will automatically be added to the next line">Maintain past Indentation</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -751,7 +751,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkCheckButton" id="preferences_toggle:bool:0:0:tab-indents">
+                      <object class="GtkCheckButton" id="preferences:tab-indents">
                         <property name="label" translatable="yes">Pressing tab inserts indentation</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -771,7 +771,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkCheckButton" id="preferences_toggle:bool:0:0:backspace-unindents">
+                      <object class="GtkCheckButton" id="preferences:backspace-unindents">
                         <property name="label" translatable="yes">Pressing backspace un-indents</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -804,7 +804,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkCheckButton" id="preferences_toggle:bool:0:1:indent-closing">
+                      <object class="GtkCheckButton" id="preferences:indent-closing">
                         <property name="label" translatable="yes">Indent closing braces</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">False</property>
@@ -821,7 +821,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkCheckButton" id="preferences_toggle:bool:0:1:indent-opening">
+                      <object class="GtkCheckButton" id="preferences:indent-opening">
                         <property name="label" translatable="yes">Indent opening braces</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">False</property>
@@ -838,7 +838,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkCheckButton" id="preferences_toggle:bool:1:1:use-tabs">
+                      <object class="GtkCheckButton" id="preferences:use-tabs">
                         <property name="label" translatable="yes">Use tabs for indentation</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -856,7 +856,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkSpinButton" id="preferences_spin:int:4:1:indent-size">
+                      <object class="GtkSpinButton" id="preferences:indent-size">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="adjustment">adjustment6</property>
@@ -873,7 +873,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkSpinButton" id="preferences_spin:int:4:1:tabsize">
+                      <object class="GtkSpinButton" id="preferences:tabsize">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="adjustment">adjustment7</property>
@@ -985,7 +985,7 @@
                   <object class="GtkVBox" id="vbox1127">
                     <property name="can_focus">False</property>
                     <child>
-                      <object class="GtkCheckButton" id="preferences_toggle:bool:0:0:view-eol">
+                      <object class="GtkCheckButton" id="preferences:view-eol">
                         <property name="label" translatable="yes">View EOL chars</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -1002,7 +1002,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkCheckButton" id="preferences_toggle:bool:0:0:view-indentation-guides">
+                      <object class="GtkCheckButton" id="preferences:view-indentation-guides">
                         <property name="label" translatable="yes">View Indentation Guides</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -1019,7 +1019,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkCheckButton" id="preferences_toggle:bool:0:0:whitespace">
+                      <object class="GtkCheckButton" id="preferences:whitespace">
                         <property name="label" translatable="yes">View Whitespaces</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -1036,7 +1036,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkCheckButton" id="preferences_toggle:bool:0:0:view-indentation-whitespace">
+                      <object class="GtkCheckButton" id="preferences:view-indentation-whitespace">
                         <property name="label" translatable="yes">View indentation whitespaces</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -1053,7 +1053,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkCheckButton" id="preferences_toggle:bool:0:0:view-line-wrap">
+                      <object class="GtkCheckButton" id="preferences:view-line-wrap">
                         <property name="label" translatable="yes">View Line Wrap</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -1070,7 +1070,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkCheckButton" id="preferences_toggle:bool:1:0:margin-linenumber-visible">
+                      <object class="GtkCheckButton" id="preferences:margin-linenumber-visible">
                         <property name="label" translatable="yes">Margin Linenum visible</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -1087,7 +1087,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkCheckButton" id="preferences_toggle:bool:1:0:margin-marker-visible">
+                      <object class="GtkCheckButton" id="preferences:margin-marker-visible">
                         <property name="label" translatable="yes">Margin Marker visible</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -1104,7 +1104,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkCheckButton" id="preferences_toggle:bool:1:0:margin-fold-visible">
+                      <object class="GtkCheckButton" id="preferences:margin-fold-visible">
                         <property name="label" translatable="yes">Margin Fold visible</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -1144,7 +1144,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkSpinButton" id="preferences_spin:int:1:0:print-linenumber-count">
+                  <object class="GtkSpinButton" id="preferences:print-linenumber-count">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="adjustment">adjustment8</property>
@@ -1175,7 +1175,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkCheckButton" id="preferences_toggle:bool:1:0:print-linewrap">
+                  <object class="GtkCheckButton" id="preferences:print-linewrap">
                     <property name="label" translatable="yes">Enable line wrap</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
@@ -1194,7 +1194,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkCheckButton" id="preferences_toggle:bool:1:0:print-header">
+                  <object class="GtkCheckButton" id="preferences:print-header">
                     <property name="label" translatable="yes">Add page header</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
@@ -1221,7 +1221,7 @@
                     <property name="use_action_appearance">False</property>
                     <property name="use_underline">True</property>
                     <property name="draw_indicator">True</property>
-                    <property name="group">preferences_toggle:bool:1:0:print-color</property>
+                    <property name="group">preferences:print-color</property>
                   </object>
                   <packing>
                     <property name="left_attach">2</property>
@@ -1231,7 +1231,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkRadioButton" id="preferences_toggle:bool:1:0:print-color">
+                  <object class="GtkRadioButton" id="preferences:print-color">
                     <property name="label" translatable="yes">Colour</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
