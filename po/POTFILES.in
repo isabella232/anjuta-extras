@@ -6,6 +6,7 @@ plugins/scintilla/print.c
 plugins/scintilla/plugin.c
 plugins/scintilla/text_editor.c
 plugins/scratchbox/anjuta-scratchbox.ui
+plugins/scratchbox/org.gnome.anjuta.plugins.scratchbox.gschema.xml.in
 plugins/scratchbox/plugin.c
 [type: gettext/ini]plugins/sample1/anjuta-sample.plugin.in
 [type: gettext/ini]plugins/scintilla/anjuta-editor.plugin.in

@@ -81,7 +81,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkFileChooserButton" id="preferences_folder:text:/scratchbox:0:build-scratchbox-path">
+                  <object class="GtkFileChooserButton" id="preferences:build-path">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
@@ -114,7 +114,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkComboBoxText" id="preferences_combo:text:Sbox1,Sbox2:0:scratchbox-version">
+                  <object class="GtkComboBoxText" id="preferences:version">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="id_column">0</property>
@@ -133,7 +133,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkComboBoxText" id="preferences_combo:text:None:0:scratchbox-target">
+                  <object class="GtkComboBoxText" id="preferences:target">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="id_column">0</property>

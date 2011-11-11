@@ -36,12 +36,17 @@ libanjuta_scratchbox_la_SOURCES = \
 	plugin.c \
 	plugin.h
 
-prefs_ui_files = anjuta-scratchbox.ui
-prefs_name = org.gnome.anjuta.scratchbox
-include $(top_srcdir)/scripts/build-schemas.mk
+gsettings_in_file = org.gnome.anjuta.plugins.scratchbox.gschema.xml.in
+gsettings_SCHEMAS = $(gsettings_in_file:.xml.in=.xml)
+@INTLTOOL_XML_NOMERGE_RULE@
+@GSETTINGS_RULES@
 
 EXTRA_DIST = \
 	$(plugin_in_files) \
 	$(anjuta_pixmaps_DATA) \
 	$(anjuta_plugin_DATA) \
-	$(anjuta_glade_DATA)
+	$(anjuta_glade_DATA) \
+        $(gsettings_in_file)
+
+CLEANFILES = \
+        $(gsettings_SCHEMAS)

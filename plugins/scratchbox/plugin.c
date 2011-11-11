@@ -38,14 +38,14 @@
 #define ICON_FILE "anjuta-scratchbox-48.png"
 #define GLADE_FILE PACKAGE_DATA_DIR "/glade/anjuta-scratchbox.ui"
 
-#define SB_SCHEMA "org.gnome.anjuta.scratchbox"
-#define SB_ENTRY "preferences_folder:text:/scratchbox:0:build-scratchbox-path"
-#define SB_TARGET_ENTRY "preferences_combo:text:None:0:scratchbox-target"
-#define SB_SBOX_ENTRY "preferences_combo:text:Sbox1,Sbox2:0:scratchbox-version"
+#define SB_SCHEMA "org.gnome.anjuta.plugins.scratchbox"
+#define SB_ENTRY "preferences:build-path"
+#define SB_TARGET_ENTRY "preferences:target"
+#define SB_SBOX_ENTRY "preferences:version"
 
-#define PREF_SB_PATH "build-scratchbox-path"
-#define PREF_SB_VERSION "scratchbox-version"
-#define PREF_SB_TARGET "scratchbox-target"
+#define PREF_SB_PATH "build-path"
+#define PREF_SB_VERSION "version"
+#define PREF_SB_TARGET "target"
 
 /* Type defintions
  *---------------------------------------------------------------------------*/

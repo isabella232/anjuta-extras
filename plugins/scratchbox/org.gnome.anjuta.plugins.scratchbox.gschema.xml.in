@@ -1,0 +1,17 @@
+<schemalist>
+	<schema id="org.gnome.anjuta.plugins.scratchbox" path="/org/gnome/anjuta/plugins/scratchbox/">
+		<key name="build-path" type="s">
+			<default>"/scratchbox"</default>
+		</key>
+		<key name="version" type="s">
+			<choices>
+				<choice value="Sbox1" />
+				<choice value="Sbox2" />
+			</choices>
+			<default>"Sbox1"</default>
+		</key>
+		<key name="target" type="s">
+			<default>"None"</default>
+		</key>
+	</schema>
+</schemalist>
