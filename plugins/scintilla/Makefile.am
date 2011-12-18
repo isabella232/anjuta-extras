@@ -6,6 +6,10 @@ SUBDIRS = scintilla properties
 editor_gladedir = $(anjuta_glade_dir)
 editor_glade_DATA = anjuta-editor-scintilla.ui
 
+# Plugin UI file
+editor_uidir = $(anjuta_ui_dir)
+editor_ui_DATA = anjuta-scintilla.xml
+
 # Plugin Icon file
 editor_pixmapsdir = $(anjuta_image_dir)
 editor_pixmaps_DATA = \
@@ -79,6 +83,7 @@ EXTRA_DIST = \
 	$(editor_pixmaps_DATA) \
 	$(plugin_in_files) \
 	$(editor_plugin_DATA) \
+	$(editor_ui_DATA) \
 	$(editor_ui_DATA) \
 	$(editor_glade_DATA) \
 	$(gsettings_in_file) \

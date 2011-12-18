@@ -38,6 +38,7 @@
 
 #define PREFS_GLADE PACKAGE_DATA_DIR "/glade/anjuta-editor-scintilla.ui"
 #define ICON_FILE "anjuta-editor-scintilla-plugin-48.png"
+#define UI_FILE PACKAGE_DATA_DIR"/ui/anjuta-scintilla.xml"
 
 static gpointer parent_class;
 
@@ -63,6 +64,8 @@ struct _EditorPlugin{
 
 	/* Settings */
 	GSettings *settings;
+	GtkActionGroup *group;
+	gint uiid;
 	AnjutaPreferences* prefs;
 };
 
@@ -72,6 +75,138 @@ struct _EditorPluginClass{
 	/* signals */
 	void (* style_changed)     ();
 };
+
+/* Editor preferences
+ *---------------------------------------------------------------------------*/
+
+static void
+on_editor_linenos_activate (GtkAction *action, gpointer user_data)
+{
+	gboolean state;
+	EditorPlugin* plugin = ANJUTA_PLUGIN_EDITOR (user_data);
+
+	state = gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action));
+	g_settings_set_boolean (plugin->settings,
+	                        VIEW_LINENUMBERS_MARGIN, state);
+}
+
+static void
+on_editor_markers_activate (GtkAction *action, gpointer user_data)
+{
+	gboolean state;
+	EditorPlugin* plugin = ANJUTA_PLUGIN_EDITOR (user_data);
+
+	state = gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action));
+	g_settings_set_boolean (plugin->settings,
+	                        VIEW_MARKER_MARGIN, state);
+}
+
+static void
+on_editor_codefold_activate (GtkAction *action, gpointer user_data)
+{
+	gboolean state;
+	EditorPlugin* plugin = ANJUTA_PLUGIN_EDITOR (user_data);
+
+	state = gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action));
+	g_settings_set_boolean (plugin->settings,
+	                        VIEW_FOLD_MARGIN, state);
+}
+
+static void
+on_editor_indentguides_activate (GtkAction *action, gpointer user_data)
+{
+	gboolean state;
+	EditorPlugin* plugin = ANJUTA_PLUGIN_EDITOR (user_data);
+
+	state = gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action));
+	g_settings_set_boolean (plugin->settings,
+	                        VIEW_INDENTATION_GUIDES, state);
+}
+
+static void
+on_editor_whitespaces_activate (GtkAction *action, gpointer user_data)
+{
+	gboolean state;
+	EditorPlugin* plugin = ANJUTA_PLUGIN_EDITOR (user_data);
+
+	state = gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action));
+	g_settings_set_boolean (plugin->settings,
+	                        VIEW_WHITE_SPACES, state);
+}
+
+static void
+on_editor_eolchars_activate (GtkAction *action, gpointer user_data)
+{
+	gboolean state;
+	EditorPlugin* plugin = ANJUTA_PLUGIN_EDITOR (user_data);
+
+	state = gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action));
+	g_settings_set_boolean (plugin->settings,
+	                        VIEW_EOL, state);
+}
+
+static void
+on_editor_linewrap_activate (GtkAction *action, gpointer user_data)
+{
+	gboolean state;
+	EditorPlugin* plugin = ANJUTA_PLUGIN_EDITOR (user_data);
+
+	state = gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action));
+	g_settings_set_boolean (plugin->settings,
+	                        VIEW_LINE_WRAP, state);
+}
+
+static GtkToggleActionEntry actions_view[] = {
+  { "ActionViewEditorLinenumbers", NULL, N_("_Line Number Margin"), NULL,
+	N_("Show/Hide line numbers"),
+    G_CALLBACK (on_editor_linenos_activate), FALSE},
+  { "ActionViewEditorMarkers", NULL, N_("_Marker Margin"), NULL,
+	N_("Show/Hide marker margin"),
+    G_CALLBACK (on_editor_markers_activate), FALSE},
+  { "ActionViewEditorFolds", NULL, N_("_Code Fold Margin"), NULL,
+	N_("Show/Hide code fold margin"),
+    G_CALLBACK (on_editor_codefold_activate), FALSE},
+  { "ActionViewEditorGuides", NULL, N_("_Indentation Guides"), NULL,
+	N_("Show/Hide indentation guides"),
+    G_CALLBACK (on_editor_indentguides_activate), FALSE},
+  { "ActionViewEditorSpaces", NULL, N_("_White Space"), NULL,
+	N_("Show/Hide white spaces"),
+    G_CALLBACK (on_editor_whitespaces_activate), FALSE},
+  { "ActionViewEditorEOL", NULL, N_("_Line End Characters"), NULL,
+	N_("Show/Hide line end characters"),
+    G_CALLBACK (on_editor_eolchars_activate), FALSE},
+  { "ActionViewEditorWrapping", NULL, N_("Line _Wrapping"), NULL,
+	N_("Enable/disable line wrapping"),
+    G_CALLBACK (on_editor_linewrap_activate), FALSE}
+};
+
+static void
+ui_states_init (EditorPlugin* plugin, AnjutaUI *ui)
+{
+	static const gchar *prefs[] = {
+		VIEW_LINENUMBERS_MARGIN,
+		VIEW_MARKER_MARGIN,
+		VIEW_FOLD_MARGIN,
+		VIEW_INDENTATION_GUIDES,
+		VIEW_WHITE_SPACES,
+		VIEW_EOL,
+		VIEW_LINE_WRAP
+	};
+	gint i;
+
+	for (i = 0; i < sizeof (prefs)/sizeof(const gchar *); i++)
+	{
+		GtkAction *action;
+		gboolean state;
+
+		state = g_settings_get_boolean (plugin->settings, prefs[i]);
+		action = anjuta_ui_get_action (ui, "ActionGroupEditorView",
+		                               actions_view[i].name);
+		g_object_set (G_OBJECT (action), "sensitive", TRUE, "visible", TRUE, NULL);
+		gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), state);
+	}
+}
+
 
 /* Keep an up to date list of type name
  *---------------------------------------------------------------------------*/
@@ -174,6 +309,7 @@ activate_plugin (AnjutaPlugin *plugin)
 	IAnjutaSymbolManager *manager;
 	IAnjutaSymbolQuery *query_project;
 	IAnjutaSymbolQuery *query_system;
+	AnjutaUI *ui;
 	
 	manager = anjuta_shell_get_interface (plugin->shell, 
 	    IAnjutaSymbolManager, NULL);
@@ -230,7 +366,16 @@ activate_plugin (AnjutaPlugin *plugin)
 	editor->query_project = query_project;
 	editor->query_system = query_system;
 
-	
+	/* Add menu entries */
+	ui = anjuta_shell_get_ui (plugin->shell, NULL);
+	editor->group = anjuta_ui_add_toggle_action_group_entries (ui, "ActionGroupEditorView",
+	                                                           _("Editor view settings"),
+	                                                           actions_view,
+	                                                           G_N_ELEMENTS (actions_view),
+	                                                           GETTEXT_PACKAGE, TRUE, editor);
+	ui_states_init (editor, ui);
+	editor->uiid = anjuta_ui_merge (ui, UI_FILE);
+
 	return TRUE;
 }
 
@@ -239,6 +384,12 @@ deactivate_plugin (AnjutaPlugin *plugin)
 {
 	EditorPlugin* editor = ANJUTA_PLUGIN_EDITOR (plugin);
 	IAnjutaSymbolManager *manager = anjuta_shell_get_interface (plugin->shell, IAnjutaSymbolManager, NULL);
+	AnjutaUI *ui;
+
+	/* Remove menu items */
+	ui = anjuta_shell_get_ui (ANJUTA_PLUGIN (plugin)->shell, NULL);
+	anjuta_ui_unmerge (ui, editor->uiid);
+	anjuta_ui_remove_action_group (ui, editor->group);
 
 	/* Disconnect signals */
 	g_signal_handlers_disconnect_by_func (G_OBJECT (manager), G_CALLBACK (on_project_symbol_scanned), editor->query_project);
