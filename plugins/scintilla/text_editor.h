@@ -2,17 +2,17 @@
 /*
  * text_editor.h
  * Copyright (C) 2000  Kh. Naba Kumar Singh
- * 
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
  * (at your option) any later version.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
@@ -69,18 +69,18 @@ struct _ScintillaCompletion
 struct _TextEditor
 {
 	GtkVBox parent;
-	
+
 	gchar *filename;
 	gchar *uri;
 	GFileMonitor *monitor;
-	
+
 	AnjutaStatus *status;
 	AnjutaShell *shell;
-	
+
 	/* File extension that will be used to force hilite type */
 	gchar *force_hilite;
 	gboolean force_pref;
-	
+
 	glong current_line;
 
 	/* Settings */
@@ -100,33 +100,33 @@ struct _TextEditor
 
 	/* Something to stop unecessary signalings */
 	gint freeze_count;
-	
+
 	/* First time exposer */
 	gboolean first_time_expose;
 
 	/* File encoding */
 	const AnjutaEncoding *encoding;
-	
+
 	/* Popup menu widget */
 	GtkWidget *popup_menu;
-	
+
 	/* notify IDs */
 	GList* notify_ids;
-	
+
 	/* Current zoom factor */
 	gint zoom_factor;
-	
+
 	/* message area widget */
 	GtkWidget *message_area;
 
-	/* Last saved content for comparision on external modifications on 
+	/* Last saved content for comparision on external modifications on
 	 * the file. The content is copied here during file saves.
-	 */ 	 
+	 */
 	gchar *last_saved_content;
 
 	/* Set buffer as modified until next save */
 	gboolean force_not_saved;
-	
+
 	gboolean hover_tip_on;
 
 	/* AutoCompletion IAnjutaProvider list */
@@ -294,44 +294,6 @@ void text_editor_scintilla_command (TextEditor *te, gint command,
 #define MSGMAN_COLOR_WARNING              "msgman-color-warning"
 
 #define PREF_SCHEMA		"org.gnome.anjuta.plugins.scintilla"
-/* Editor preferences */
-#define DISABLE_SYNTAX_HILIGHTING  "disable-syntax-hilighting"
-/*
-#define INDENT_AUTOMATIC           "indent-automatic"
-*/
-#define USE_TABS                   "use-tabs"
-#define BRACES_CHECK               "braces-check"
-#define DOS_EOL_CHECK              "editor-doseol"
-#define WRAP_BOOKMARKS             "editor-wrapbookmarks"
-#define TAB_SIZE                   "tabsize"
-#define INDENT_SIZE                "indent-size"
-/*
-#define INDENT_OPENING             "indent-opening"
-#define INDENT_CLOSING             "indent-closing"
-*/
-#define INDENT_MAINTAIN            "indent-maintain"
-
-#define TAB_INDENTS                "tab-indents"
-#define BACKSPACE_UNINDENTS        "backspace-unindents"
-
-#define FOLD_SYMBOLS               "fold-symbols"
-#define FOLD_UNDERLINE             "fold-underline"
-
-#define STRIP_TRAILING_SPACES      "strip-trailing-spaces"
-#define FOLD_ON_OPEN               "fold-on-open"
-#define CARET_FORE_COLOR           "caret.fore"
-#define CALLTIP_BACK_COLOR         "calltip.back"
-#define SELECTION_FORE_COLOR       "selection.fore"
-#define SELECTION_BACK_COLOR       "selection.back"
-
-#define VIEW_LINENUMBERS_MARGIN    "margin-linenumber-visible"
-#define VIEW_MARKER_MARGIN         "margin-marker-visible"
-#define VIEW_FOLD_MARGIN           "margin-fold-visible"
-#define VIEW_INDENTATION_GUIDES    "view-indentation-guides"
-#define VIEW_WHITE_SPACES          "view-whitespace"
-#define VIEW_EOL                   "view-eol"
-#define VIEW_LINE_WRAP             "view-line-wrap"
-#define EDGE_COLUMN                "edge-column"
 
 G_END_DECLS
 

@@ -55,7 +55,7 @@ AnEditor::AnEditor(PropSetFile* p) {
 	*/
 	indentMaintain = true;
 	indentAutomatic = true;
-	
+
 	wrapLine = true;
 	isReadOnly = false;
 	fnEditor = 0;
@@ -93,14 +93,14 @@ AnEditor::AnEditor(PropSetFile* p) {
 	callTipIgnoreCase = false;
 	autoCCausedByOnlyOne = false;
 //	startCalltipWord = 0;
- 
+
 	// init calltips
 	SetCallTipDefaults( );
 	call_tip_node_queue = g_queue_new();
 	lastPos = 0;
-		
+
 	autocompletion = NULL;
-	
+
 	margin = false;
 	marginWidth = marginWidthDefault;
 	foldMargin = true;
@@ -112,10 +112,10 @@ AnEditor::AnEditor(PropSetFile* p) {
 	accelGroup = NULL;
 	calltipShown = false;
 	// debugTipOn = false;
-	
+
 	fileName[0] = '\0';
 	props = p;
-	
+
 	wEditor = scintilla_new();
 	g_object_ref (G_OBJECT (wEditor.GetID()));
 	g_object_ref_sink (G_OBJECT (wEditor.GetID()));
@@ -124,7 +124,7 @@ AnEditor::AnEditor(PropSetFile* p) {
 	fnEditor = reinterpret_cast<SciFnDirect>(Platform::SendScintilla(
 		wEditor.GetID(), SCI_GETDIRECTFUNCTION, 0, 0));
 
-	ptrEditor = Platform::SendScintilla(wEditor.GetID(), 
+	ptrEditor = Platform::SendScintilla(wEditor.GetID(),
 		SCI_GETDIRECTPOINTER, 0, 0);
 
 	g_signal_connect(wEditor.GetID(), "sci-notify", G_CALLBACK(NotifySignal), this);
@@ -138,7 +138,7 @@ AnEditor::AnEditor(PropSetFile* p) {
 	SendEditor(SCI_SETEOLMODE, SC_EOL_LF);
 	/* Allow multiple typing */
 	SendEditor(SCI_SETADDITIONALSELECTIONTYPING, true);
-	
+
 #if 0
 	// Trap 'TAB' key for automatic indentation.
 	// SendEditor (SCI_ASSIGNCMDKEY, SCK_TAB, SCI_NULL);
@@ -187,7 +187,7 @@ sv_get_node_type (TMTag *tag)
 
 	if (!tag || (tm_tag_file_t == tag->type))
 		return sv_none_t;
-  
+
 	access = tag->atts.entry.access;
 	switch (tag->type)
 	{
@@ -203,13 +203,13 @@ sv_get_node_type (TMTag *tag)
 			{
 				case TAG_ACCESS_PRIVATE:
 					return sv_private_func_t;
-					
+
 				case TAG_ACCESS_PROTECTED:
 					return sv_protected_func_t;
-					
+
 				case TAG_ACCESS_PUBLIC:
 					return sv_public_func_t;
-					
+
 				default:
 					return sv_function_t;
 			}
@@ -218,30 +218,30 @@ sv_get_node_type (TMTag *tag)
 			{
 				case TAG_ACCESS_PRIVATE:
 					return sv_private_var_t;
-					
+
 				case TAG_ACCESS_PROTECTED:
 					return sv_protected_var_t;
 
 				case TAG_ACCESS_PUBLIC:
 					return sv_public_var_t;
-					
+
 				default:
-					return sv_variable_t;				
+					return sv_variable_t;
 			}
-	
+
 		case tm_tag_externvar_t:
 		case tm_tag_variable_t:
 			return sv_variable_t;
-			
+
 		case tm_tag_macro_t:
 		case tm_tag_macro_with_arg_t:
 			return sv_macro_t;
-			
+
 		default:
 			return sv_none_t;
-			
+
 	}
-	
+
 }
 #endif
 
@@ -330,7 +330,7 @@ int AnEditor::GetFullLine(SString & text, int line) {
 		lineEnd = SendEditor(SCI_GETLINEENDPOSITION, line);
 		caret = lineEnd - lineStart - 1;
 	}
-	int count = 25, current; 
+	int count = 25, current;
 	int len =  lineEnd - lineStart + 1;
 	text.clear();
 	while(count)
@@ -351,12 +351,12 @@ int AnEditor::GetFullLine(SString & text, int line) {
 				return caret;
 			}
 			current--;
-		}	
+		}
 		line--;
 		if(line < 0) break;
 		lineStart = SendEditor(SCI_POSITIONFROMLINE, line);
 		lineEnd = SendEditor(SCI_GETLINEENDPOSITION, line);
-		len =  lineEnd - lineStart;	
+		len =  lineEnd - lineStart;
 		caret += len;
 		len++;
 		count--;
@@ -552,7 +552,7 @@ bool AnEditor::FindMatchingBracePosition(bool editor, int &braceAtCaret, int &br
 	{
 		GetRange (caretPos, caretPos + 1, buffer + 2, true);
 	}
-	
+
 	// Priority goes to character before caret
 	if (charBefore && strchr("[](){}", charBefore) &&
 			((styleBefore == bracesStyleCheck) || (!bracesStyle))) {
@@ -650,7 +650,7 @@ void AnEditor::WordSelect() {
 	int lengthDoc = LengthDocument();
 	int selStart;
 	int selEnd;
-	int line; 	
+	int line;
 	int lineStart;
 	int lineEnd;
 	char *buffer;
@@ -662,7 +662,7 @@ void AnEditor::WordSelect() {
 
 	buffer = new char [lineEnd - lineStart + 1];
 	GetRange(wEditor, lineStart, lineEnd, buffer);
-	
+
 	if (iswordcharforsel(buffer[selStart - lineStart])) {
 			while ((selStart > lineStart) && (iswordcharforsel(buffer[selStart - 1 - lineStart])))
 				selStart--;
@@ -680,7 +680,7 @@ void AnEditor::LineSelect() {
 	int line = SendEditor(SCI_LINEFROMPOSITION, pos);
 	int lineStart = SendEditor(SCI_POSITIONFROMLINE, line);
 	int lineEnd = SendEditor(SCI_GETLINEENDPOSITION, line);
-	
+
 	SetSelection(lineStart, lineEnd);
 }
 
@@ -708,11 +708,11 @@ long AnEditor::Find (long flags, char* findWhat) {
 
 void AnEditor::BookmarkToggle( int lineno ) {
 	if (lineno == -1)
-		
-		
-		
-		
-		
+
+
+
+
+
 		lineno = GetCurrentLineNumber();
 	int state = SendEditor(SCI_MARKERGET, lineno);
 	if ( state & (1 << ANE_MARKER_BOOKMARK))
@@ -761,7 +761,7 @@ void AnEditor::BookmarkNext() {
 			int nextLine1 = SendEditor(SCI_MARKERNEXT, 0, 1 << ANE_MARKER_BOOKMARK);
 			if (nextLine1 < 0 || nextLine1 == lineno) {
 				gdk_beep(); // how do I beep? -- like this ;-)
-			} else {				
+			} else {
 				SendEditor(SCI_ENSUREVISIBLE, nextLine1);
 				SendEditor(SCI_GOTOLINE, nextLine1);
 			}
@@ -907,8 +907,8 @@ bool AnEditor::CanBeCommented(bool box_stream) {
 	white_space += end_comment;
 	end_comment = white_space;
 	size_t start_comment_length = start_comment.length();
-	size_t end_comment_length = end_comment.length(); 
-	size_t middle_cmt_length = middle_cmt.length();	
+	size_t end_comment_length = end_comment.length();
+	size_t middle_cmt_length = middle_cmt.length();
 	SString start_base_stream ("comment.stream.start.");
 	start_base_stream += language;
 	SString end_base_stream ("comment.stream.end.");
@@ -922,8 +922,8 @@ bool AnEditor::CanBeCommented(bool box_stream) {
 	white_space_stream +=end_comment_stream;
 	end_comment_stream = white_space_stream ;
 	size_t end_comment_stream_length = end_comment_stream.length();
-	
-	char linebuf[1000]; 
+
+	char linebuf[1000];
 	size_t selectionStart = SendEditor(SCI_GETSELECTIONSTART);
 	size_t selectionEnd = SendEditor(SCI_GETSELECTIONEND);
 	if (selectionStart == selectionEnd)
@@ -953,17 +953,17 @@ bool AnEditor::CanBeCommented(bool box_stream) {
 		for (index = lineEnd1-lineStart1; index >= 0; index--)
 		{
 			if (end1= ((end_comment_length > 1 && !memcmp(linebuf+index,
-				end_comment.c_str(), end_comment_length ))  
-			    || (end_comment_stream_length > 0 && !memcmp(linebuf+index, 
+				end_comment.c_str(), end_comment_length ))
+			    || (end_comment_stream_length > 0 && !memcmp(linebuf+index,
 			    end_comment_stream.c_str(), end_comment_stream_length))))
 				break;
-			if (start1=((start_comment_length > 1 && !memcmp(linebuf+index, 
+			if (start1=((start_comment_length > 1 && !memcmp(linebuf+index,
 				start_comment.c_str(), start_comment_length))
-				|| (start_comment_stream_length > 0 && !memcmp(linebuf+index, 
-			    start_comment_stream.c_str(), start_comment_stream_length)))) 
+				|| (start_comment_stream_length > 0 && !memcmp(linebuf+index,
+			    start_comment_stream.c_str(), start_comment_stream_length))))
 				break;
-		}	
-		line --; 
+		}
+		line --;
 		lineEnd1= SendEditor(SCI_GETLINEENDPOSITION, line);
 	}
 	start_cmt = index + lineStart1;
@@ -974,26 +974,26 @@ bool AnEditor::CanBeCommented(bool box_stream) {
 		lineStart1 = selectionEnd - start_comment_stream_length;
 	int last_line = SendEditor(SCI_GETLINECOUNT);
 	// Find Forward EndComment
-	while (line <= last_line && start2 == false && end2 == false) 
+	while (line <= last_line && start2 == false && end2 == false)
 	{
 		lineEnd1= SendEditor(SCI_GETLINEENDPOSITION, line);
 		GetRange(wEditor, lineStart1, lineEnd1, linebuf);
 		for (index = 0; index <= (lineEnd1-lineStart1); index++)
 		{
-			if (start2= ((start_comment_length > 1 && !memcmp(linebuf+index, 
+			if (start2= ((start_comment_length > 1 && !memcmp(linebuf+index,
 				start_comment.c_str(), start_comment_length))
-				|| (start_comment_stream_length > 0 && !memcmp(linebuf+index, 
-			    start_comment_stream.c_str(), start_comment_stream_length)))) 
+				|| (start_comment_stream_length > 0 && !memcmp(linebuf+index,
+			    start_comment_stream.c_str(), start_comment_stream_length))))
 				break;
-			if (end2= ((end_comment_length > 1 && !memcmp(linebuf+index, 
+			if (end2= ((end_comment_length > 1 && !memcmp(linebuf+index,
 				end_comment.c_str(), end_comment_length ))
-				|| (end_comment_stream_length > 0 && !memcmp(linebuf+index, 
+				|| (end_comment_stream_length > 0 && !memcmp(linebuf+index,
 			    end_comment_stream.c_str(), end_comment_stream_length))))
 				break;
 		}
 		line ++;
 		end_cmt = lineStart1 + index;
-		lineStart1 = SendEditor(SCI_POSITIONFROMLINE, line);	
+		lineStart1 = SendEditor(SCI_POSITIONFROMLINE, line);
 	}
 	//  Uncomment
 	if(start1 || end2)
@@ -1003,14 +1003,14 @@ bool AnEditor::CanBeCommented(bool box_stream) {
 			SendEditor(SCI_BEGINUNDOACTION);
 			if (box_stream)	// Box
 			{
-				SendEditor(SCI_SETSEL, start_cmt, start_cmt + 
-				           start_comment_length);  
-				end_cmt -= start_comment_length; 
+				SendEditor(SCI_SETSEL, start_cmt, start_cmt +
+				           start_comment_length);
+				end_cmt -= start_comment_length;
 			}
 			else            // Stream
 			{
-				SendEditor(SCI_SETSEL, start_cmt, start_cmt + 
-				           start_comment_stream_length); 
+				SendEditor(SCI_SETSEL, start_cmt, start_cmt +
+				           start_comment_stream_length);
 				end_cmt -= start_comment_stream_length;
 			}
 			SendEditorString(SCI_REPLACESEL, 0, "");
@@ -1019,7 +1019,7 @@ bool AnEditor::CanBeCommented(bool box_stream) {
 			for (int i = line; i < last_line; i++)
 			{
 				int s = SendEditor(SCI_POSITIONFROMLINE, i);
-				int e = SendEditor(SCI_GETLINEENDPOSITION, i);					
+				int e = SendEditor(SCI_GETLINEENDPOSITION, i);
 				GetRange(wEditor, s, e, linebuf);
 				if (!memcmp(linebuf, middle_cmt.c_str(), middle_cmt_length))
 				{
@@ -1037,7 +1037,7 @@ bool AnEditor::CanBeCommented(bool box_stream) {
 		}
 		return false;
 	}
-	return true;	
+	return true;
 }
 
 
@@ -1206,7 +1206,7 @@ bool AnEditor::StartStreamComment() {
 
 #if 0
 SString AnEditor::GetMode(SString language) {
-	SString mode;	
+	SString mode;
 	if (strcmp(language.c_str(), "cpp") == 0)
 	{
 		mode += " Mode: C;";
@@ -1222,11 +1222,11 @@ SString AnEditor::GetMode(SString language) {
 	return mode;
 }
 
-/*	Insert or Modify a Comment line 
+/*	Insert or Modify a Comment line
 	giving File indent  */
 bool AnEditor::InsertCustomIndent() {
 	#define MAXBUF 1000
-	
+
 	SString fileNameForExtension = ExtensionFileName();
 	SString language = props->GetNewExpand("lexer.", fileNameForExtension.c_str());
 	SString start_box_base("comment.box.start.");
@@ -1245,13 +1245,13 @@ bool AnEditor::InsertCustomIndent() {
 	int text_length = SendEditor(SCI_GETTEXTLENGTH);
 	char buf[MAXBUF];
 	int bufmax = text_length < MAXBUF ? text_length : MAXBUF;
-	
+
 	GetRange(wEditor, 0, bufmax - 1, buf);
-	
+
 	bool start_comment = false;
 	bool indent_comment = false;
 	int end_indent_comment = 0;
-	
+
 	for (int index = 0; index < bufmax; index++)
 	{
 		if (!start_comment)
@@ -1298,7 +1298,7 @@ bool AnEditor::InsertCustomIndent() {
 					break;
 				}
 			}
-		}		
+		}
 	}
 	SString mode = GetMode(language);
 	if (mode.c_str() != "")
@@ -1311,7 +1311,7 @@ bool AnEditor::InsertCustomIndent() {
 		comment += mark.c_str();
 		comment += " ";
 		comment += end_stream.c_str() ;
-	
+
 		if (indent_comment)
 		{
 			SendEditor(SCI_SETSEL, 0, end_indent_comment + 1);
@@ -1325,7 +1325,7 @@ bool AnEditor::InsertCustomIndent() {
 	}
 	return TRUE;
 }
-	
+
 #endif
 
 /**
@@ -1496,11 +1496,11 @@ int ControlIDOfCommand(unsigned long wParam) {
 
 long AnEditor::Command(int cmdID, long wParam, long lParam) {
 	switch (cmdID) {
-			
+
 	case ANE_INSERTTEXT:
 		SendEditor(SCI_INSERTTEXT,wParam,lParam);
 		break;
-	
+
 	case ANE_GETBOOKMARK_POS:
 		return GetBookmarkLine( wParam );
 		break;	/* pleonastico */
@@ -1543,7 +1543,7 @@ long AnEditor::Command(int cmdID, long wParam, long lParam) {
 	case ANE_GOTOLINE:
 		SendEditor(SCI_GOTOLINE, wParam);
 		break;
-	
+
 	case ANE_SETZOOM:
 		SendEditor(SCI_SETZOOM, wParam);
 		break;
@@ -1559,16 +1559,16 @@ long AnEditor::Command(int cmdID, long wParam, long lParam) {
 	case ANE_SELECTTOBRACE:
 		GoMatchingBrace(true);
 		break;
-	
+
 	case ANE_GETBLOCKSTARTLINE:
 		return GetBlockStartLine();
 
 	case ANE_GETBLOCKENDLINE:
 		return GetBlockEndLine();
-	
+
 	case ANE_GETCURRENTWORD:
 		return GetCurrentWord((char*)wParam, (int)lParam);
-		
+
 	case ANE_GETWORDBEFORECARAT:
 		return GetWordBeforeCarat((char*)wParam, (int)lParam);
 
@@ -1577,7 +1577,7 @@ long AnEditor::Command(int cmdID, long wParam, long lParam) {
 		break;
 
 	case ANE_COMPLETECALLTIP:
-		CompleteCallTip();	
+		CompleteCallTip();
 		break;
 	/*
 	case ANE_COMPLETE:
@@ -1678,7 +1678,7 @@ long AnEditor::Command(int cmdID, long wParam, long lParam) {
 	case ANE_WORDPARTRIGHTEXTEND:
 		SendEditor(SCI_WORDPARTRIGHTEXTEND);
 		break;
-	
+
 	case ANE_VIEWSPACE:
 		ViewWhitespace(wParam);
 		break;
@@ -1738,25 +1738,25 @@ long AnEditor::Command(int cmdID, long wParam, long lParam) {
 	case ANE_INDENT_INCREASE:
 		IndentationIncrease();
 		break;
-	
+
 	case ANE_INDENT_DECREASE:
 		IndentationDecrease();
 		break;
-	
+
 	case ANE_GETLENGTH:
 		return SendEditor(SCI_GETLENGTH);
 
 	case ANE_GET_LINENO:
 		return GetCurrentLineNumber();
-	
+
 	case ANE_LINEWRAP:
 		SetLineWrap((bool)wParam);
 		break;
-	
+
 	case ANE_READONLY:
 		SetReadOnly((bool)wParam);
 		break;
-	
+
 	case ANE_GETSTYLEDTEXT: {
 			guint start, end;
 			if(wParam == lParam) return 0;
@@ -1778,10 +1778,10 @@ long AnEditor::Command(int cmdID, long wParam, long lParam) {
 
 	case ANE_BLOCKCOMMENT:
 		return StartBlockComment();
-	
+
 	case ANE_BOXCOMMENT:
 		return StartBoxComment();
-	
+
 	case ANE_STREAMCOMMENT:
 		return StartStreamComment();
 	/*
@@ -1791,21 +1791,21 @@ long AnEditor::Command(int cmdID, long wParam, long lParam) {
 	case ANE_WORDSELECT:
 		WordSelect();
 		break;
-	
+
 	case ANE_LINESELECT:
 		LineSelect();
 		break;
-	
+
 	case ANE_GETCURRENTPOS:
 		return SendEditor(SCI_GETCURRENTPOS);
-	
+
 	case ANE_GOTOPOS:
 		return SendEditor(SCI_GOTOPOS, wParam);
-	
+
 	case ANE_SETWRAPBOOKMARKS:
 		// Nothing to do.
 		break;
-	
+
 	case ANE_SETAUTOINDENTATION:
 		indentAutomatic = wParam;
 		break;
@@ -1813,12 +1813,12 @@ long AnEditor::Command(int cmdID, long wParam, long lParam) {
 	case ANE_SETUSETABFORINDENT:
 		SendEditor(SCI_SETUSETABS, wParam);
 		break;
-		
+
 	case ANE_SETINDENTSIZE:
 		indentSize = wParam;
 		SendEditor(SCI_SETINDENT, wParam);
 		break;
-	
+
 	case ANE_SETINDENTBRACESCHECK:
 		bracesCheck = wParam;
 		break;
@@ -1826,7 +1826,7 @@ long AnEditor::Command(int cmdID, long wParam, long lParam) {
 	case ANE_SETINDENTOPENING:
 		indentOpening = wParam;
 		break;
-		
+
 	case ANE_SETINDENTCLOSING:
 		indentClosing = wParam;
 		break;
@@ -1835,19 +1835,19 @@ long AnEditor::Command(int cmdID, long wParam, long lParam) {
 		props->Set ("indent.maintain.*", wParam ? "1" : "0");
 		indentMaintain = wParam;
 		break;
-	
+
 	case ANE_SETTABINDENTS:
 		SendEditor(SCI_SETTABINDENTS, wParam);
 		break;
-		
+
 	case ANE_SETBACKSPACEUNINDENTS:
 		SendEditor(SCI_SETBACKSPACEUNINDENTS, wParam);
 		break;
-	
+
 	case ANE_SETFOLDSYMBOLS:
 		SetFoldSymbols(reinterpret_cast<char *> (wParam));
 		break;
-		
+
 	case ANE_SETFOLDUNDERLINE:
 		if (wParam)
 			SendEditor(SCI_SETFOLDFLAGS, props->GetInt("fold.flags"));
@@ -2107,7 +2107,7 @@ eval_output_arrived_for_aneditor(GList* lines, gpointer data)
 
 	if (data == NULL)
 		return;
-	
+
 	auto_ptr<ExpressionEvaluationTipInfo> info(
 			(ExpressionEvaluationTipInfo *) data);
 
@@ -2122,7 +2122,7 @@ eval_output_arrived_for_aneditor(GList* lines, gpointer data)
 
 void AnEditor::EvalOutputArrived(GList* lines, int textPos,
 								 const string &expression) {
-	
+
 	if (textPos <= 0)
 	    return;
 
@@ -2231,11 +2231,11 @@ int AnEditor::KeyPress(unsigned int state, unsigned int keyval){
 		(props->GetInt("indent.automatic")) &&
 		(!SendEditor(SCI_CALLTIPACTIVE)) &&
 		(!SendEditor(SCI_AUTOCACTIVE))) {
-			
+
 		CharacterRange crange = GetSelection();
 		int selStart = crange.cpMin;
 		int selEnd = crange.cpMax;
-		
+
 		if (selStart == selEnd) {
 			AutomaticIndentation('\t');
 			return true;
@@ -2276,7 +2276,7 @@ void AnEditor::Notify(SCNotification *notification) {
 	case SCN_CHARADDED:
 		CharAdded(static_cast<char>(notification->ch));
 		break;
-	
+
 	case SCN_SAVEPOINTREACHED:
 		isDirty = false;
 		break;
@@ -2473,7 +2473,7 @@ void AnEditor::ReadProperties(const char *fileForExt, char **typedef_hl) {
 		strcpy (fileName, fileForExt);
 	else
 		fileName[0] = '\0';
-	
+
 	SString fileNameForExtension;
 	if(overrideExtension.length())
 		fileNameForExtension = overrideExtension;
@@ -2491,7 +2491,7 @@ void AnEditor::ReadProperties(const char *fileForExt, char **typedef_hl) {
 		SendEditor(SCI_SETSTYLEBITS, 5);
 
 	SendEditor(SCI_SETLEXER, lexLanguage);
-	
+
 	SString kw0 = props->GetNewExpand("keywords.", fileNameForExtension.c_str());
 	SendEditorString(SCI_SETKEYWORDS, 0, kw0.c_str());
 	SString kw2 = props->GetNewExpand("keywords3.", fileNameForExtension.c_str());
@@ -2540,17 +2540,17 @@ void AnEditor::ReadProperties(const char *fileForExt, char **typedef_hl) {
 	ForwardPropertyToEditor("styling.within.preprocessor");
 	ForwardPropertyToEditor("tab.timmy.whinge.level");
 	ForwardPropertyToEditor("asp.default.language");
-	
+
 	// codePage = props->GetInt("code.page");
 	//if (unicodeMode != uni8Bit) {
 		// Override properties file to ensure Unicode displayed.
 		// codePage = SC_CP_UTF8;
 	// }
 	// SendEditor(SCI_SETCODEPAGE, codePage);
-	
+
 	// Use unicode everytime.
 	SendEditor(SCI_SETCODEPAGE, SC_CP_UTF8);
-	
+
 	characterSet = props->GetInt("character.set");
 	setlocale(LC_CTYPE, props->Get("LC_CTYPE").c_str());
 
@@ -2558,7 +2558,7 @@ void AnEditor::ReadProperties(const char *fileForExt, char **typedef_hl) {
 	           ColourOfProperty(props, "caret.fore", ColourDesired(0, 0, 0)));
 	SendEditor(SCI_SETCARETWIDTH, props->GetInt("caret.width", 1));
 	SendEditor(SCI_SETMOUSEDWELLTIME, props->GetInt("dwell.period", 750), 0);
-	
+
 	SString caretLineBack = props->Get("caret.line.back");
 	if (caretLineBack.length()) {
 		SendEditor(SCI_SETCARETLINEVISIBLE, 1);
@@ -2567,17 +2567,17 @@ void AnEditor::ReadProperties(const char *fileForExt, char **typedef_hl) {
 	} else {
 		SendEditor(SCI_SETCARETLINEVISIBLE, 0);
 	}
-	
+
 	SString controlCharSymbol = props->Get("control.char.symbol");
 	if (controlCharSymbol.length()) {
 		SendEditor(SCI_SETCONTROLCHARSYMBOL, static_cast<unsigned char>(controlCharSymbol[0]));
 	} else {
 		SendEditor(SCI_SETCONTROLCHARSYMBOL, 0);
 	}
-	
+
 	SendEditor(SCI_CALLTIPSETBACK,
 	           ColourOfProperty(props, "calltip.back", ColourDesired(0xff, 0xff, 0xff)));
-	
+
 	SString caretPeriod = props->Get("caret.period");
 	if (caretPeriod.length()) {
 		SendEditor(SCI_SETCARETPERIOD, caretPeriod.value());
@@ -2637,7 +2637,7 @@ void AnEditor::ReadProperties(const char *fileForExt, char **typedef_hl) {
 	}
 
 	for (int i = 0; i < 3; i++) {
-		
+
 		SString value_str;
 		long default_indic_type[] = {INDIC_TT, INDIC_DIAGONAL, INDIC_SQUIGGLE};
 		const char *default_indic_color[] = {"0000FF", "#00FF00", "#FF0000"};
@@ -2698,7 +2698,7 @@ void AnEditor::ReadProperties(const char *fileForExt, char **typedef_hl) {
 			SendEditor(SCI_INDICSETALPHA, i, props->GetInt(key));
 		}
 	}
-	
+
 	char bracesStyleKey[200];
 	sprintf(bracesStyleKey, "braces.%s.style", language.c_str());
 	bracesStyle = props->GetInt(bracesStyleKey, 0);
@@ -2713,7 +2713,7 @@ void AnEditor::ReadProperties(const char *fileForExt, char **typedef_hl) {
 		"_abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ");
 
 	calltipEndDefinition = FindLanguageProperty("calltip.*.end.definition");
-	
+
 	sprintf(key, "autocomplete.%s.start.characters", language.c_str());
 	autoCompleteStartCharacters = props->GetExpanded(key);
 	if (autoCompleteStartCharacters == "")
@@ -2770,7 +2770,7 @@ void AnEditor::ReadProperties(const char *fileForExt, char **typedef_hl) {
 
 	/* Gtk handles it correctly */
 	SendEditor(SCI_SETUSEPALETTE, 0);
-	
+
 	SendEditor(SCI_SETPRINTMAGNIFICATION, props->GetInt("print.magnification"));
 	SendEditor(SCI_SETPRINTCOLOURMODE, props->GetInt("print.colour.mode"));
 
@@ -2823,7 +2823,7 @@ void AnEditor::ReadProperties(const char *fileForExt, char **typedef_hl) {
 	blockStart = GetStyleAndWords("block.start.");
 	blockEnd = GetStyleAndWords("block.end.");
 	*/
-	
+
 	/*
 	SString list;
 	list = props->GetNewExpand("preprocessor.symbol.", fileNameForExtension.c_str());
@@ -2838,7 +2838,7 @@ void AnEditor::ReadProperties(const char *fileForExt, char **typedef_hl) {
 	preprocCondEnd.Clear();
 	preprocCondEnd.Set(list.c_str());
 	*/
-	
+
 	if (props->GetInt("vc.home.key", 1)) {
 		AssignKey(SCK_HOME, 0, SCI_VCHOME);
 		AssignKey(SCK_HOME, SCMOD_SHIFT, SCI_VCHOMEEXTEND);
@@ -2850,7 +2850,7 @@ void AnEditor::ReadProperties(const char *fileForExt, char **typedef_hl) {
 		SendEditor(SCI_SETFOLDFLAGS, props->GetInt("fold.flags"));
 	else
 		SendEditor(SCI_SETFOLDFLAGS, 0);
-	
+
 	// To put the folder markers in the line number region
 	//SendEditor(SCI_SETMARGINMASKN, 0, SC_MASK_FOLDERS);
 
@@ -2875,10 +2875,10 @@ void AnEditor::ReadProperties(const char *fileForExt, char **typedef_hl) {
 	SendEditor(SCI_SETMARGINMASKN, 2, SC_MASK_FOLDERS);
 	SendEditor(SCI_SETMARGINSENSITIVEN, 1, 1); // Breakpoints-Bookmarks
 	SendEditor(SCI_SETMARGINSENSITIVEN, 2, 1);
-	
+
 	SString fold_symbols = props->Get("fold.symbols");
 	SetFoldSymbols (fold_symbols);
-	
+
 	// Well, unlike scite, we want it everytime.
 	firstPropertiesRead = true;
 }
@@ -2930,12 +2930,13 @@ void AnEditor::SetFoldSymbols(SString fold_symbols)
 // Anjuta: In our case, we read it everytime
 void AnEditor::ReadPropertiesInitial() {
 	indentationWSVisible = props->GetInt("view.indentation.whitespace", 1);
-	ViewWhitespace(props->GetInt("view.whitespace"));
-	SendEditor(SCI_SETINDENTATIONGUIDES, props->GetInt("view.indentation.guides"));
-	SendEditor(SCI_SETVIEWEOL, props->GetInt("view.eol"));
+
+	ViewWhitespace(props->GetInt(VIEW_WHITE_SPACES));
+	SendEditor(SCI_SETINDENTATIONGUIDES, props->GetInt(VIEW_INDENTATION_GUIDES));
+	SendEditor(SCI_SETVIEWEOL, props->GetInt(VIEW_EOL));
 
 	SetReadOnly(props->GetInt("file.readonly", 0));
-	SetLineWrap(props->GetInt("view.line.wrap", 1));
+	SetLineWrap(props->GetInt(VIEW_LINE_WRAP, 1));
 
 	//lineNumbersWidth = 0;
 	/* FIXME: This is nowhere configureable
@@ -2946,7 +2947,7 @@ void AnEditor::ReadPropertiesInitial() {
 	/* We do this dynamicly in text_editor_load_file now */
 	/* if (lineNumbersWidth == 0)
 		lineNumbersWidth = lineNumbersWidthDefault;*/
-			
+
 	marginWidth = 0;
 	SString margwidth = props->Get("margin.marker.width");
 	if (margwidth.length())
@@ -2960,13 +2961,9 @@ void AnEditor::ReadPropertiesInitial() {
 	if (foldMarginWidth == 0)
 		foldMarginWidth = foldMarginWidthDefault;
 
-	lineNumbers = props->GetInt("margin.linenumber.visible", 0);
-	SendEditor(SCI_SETMARGINWIDTHN, 0, lineNumbers ? lineNumbersWidth : 0);
-	margin = props->GetInt("margin.marker.visible", 0);
-	SendEditor(SCI_SETMARGINWIDTHN, 1, margin ? marginWidth : 0);
-
-	foldMargin = props->GetInt("margin.fold.visible", 1);
-	SendEditor(SCI_SETMARGINWIDTHN, 2, foldMargin ? foldMarginWidth : 0);
+	lineNumbers = props->GetInt(VIEW_LINENUMBERS_MARGIN, 0);
+	margin = props->GetInt(VIEW_MARKER_MARGIN, 0);
+	foldMargin = props->GetInt(VIEW_FOLD_MARGIN, 1);
 }
 
 void AnEditor::DefineMarker(int marker, int markerType, Colour fore, Colour back)
@@ -3004,7 +3001,7 @@ void AnEditor::FocusOutEvent(GtkWidget* widget)
 	else
 	{
 		calltipShown = false;
-	}	
+	}
 }
 
 static GList* editors;
@@ -3036,9 +3033,9 @@ aneditor_new(gpointer propset)
      DEBUG_PRINT("%s", "Memory allocation error.");
      return ANE_ID_INVALID;
   }
-  g_signal_connect(ed->GetID(), "focus_in_event", 
+  g_signal_connect(ed->GetID(), "focus_in_event",
 				   G_CALLBACK(on_aneditor_focus_in), ed);
-  g_signal_connect(ed->GetID(), "focus_out_event", 
+  g_signal_connect(ed->GetID(), "focus_out_event",
 				   G_CALLBACK(on_aneditor_focus_out), ed);
   editors = g_list_append(editors, ed);
   return (AnEditorID)(g_list_length(editors) - 1);
@@ -3051,13 +3048,13 @@ aneditor_destroy(AnEditorID id)
 
   ed = aneditor_get(id);
   if(!ed) return;
-  
+
   /* We will not remove the editor from the list */
   /* so that already assigned handles work properly */
   /* We'll simply make it NULL to indicate that the */
   /* editor is destroyed */
   g_list_nth(editors, id)->data = NULL;
-	
+
   /* Disconnect the focus in/out signals */
   g_signal_handlers_disconnect_by_func (ed->GetID(),
 				   (void*)G_CALLBACK(on_aneditor_focus_in), ed);
@@ -3098,7 +3095,7 @@ aneditor_set_parent(AnEditorID id, AnEditorID parent_id)
 {
 	AnEditor *editor;
 	AnEditor *parent;
-	
+
 	editor = aneditor_get (id);
 	parent = aneditor_get (parent_id);
 	editor->SetParent(parent);
