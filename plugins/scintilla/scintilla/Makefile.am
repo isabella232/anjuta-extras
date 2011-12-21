@@ -8,6 +8,7 @@ AM_CPPFLAGS = \
 	-I$(srcdir)/include \
 	$(LIBANJUTA_CFLAGS) \
 	$(GTHREAD_CFLAGS) \
+	$(GMODULE_CFLAGS) \
 	-DGTK -DSCI_LEXER -DUSE_XIM
 
 AM_CXXFLAGS = -DGTK -DSCI_LEXER -DUSE_XIM
@@ -89,7 +90,8 @@ libanjuta_scintilla_la_SOURCES =\
 
 libanjuta_scintilla_la_LIBADD = \
 	$(LIBANJUTA_LIBS) \
-	$(GTHREAD_LIBS)
+	$(GTHREAD_LIBS) \
+	$(GMODULE_LIBS)
 
 noinst_PROGRAMS = test-scintilla
 

@@ -91,6 +91,9 @@ PKG_CHECK_MODULES(LIBANJUTA, [libanjuta-3.0 >= $ANJUTA_REQUIRED])
 dnl check for gthread
 PKG_CHECK_MODULES(GTHREAD, gthread-2.0 >= $GLIB_REQUIRED)
 
+dnl check for gthread
+PKG_CHECK_MODULES(GMODULE, gmodule-2.0 >= $GLIB_REQUIRED)
+
 dnl Scintilla Editor
 dnl -------------------------------------------------------------
 
