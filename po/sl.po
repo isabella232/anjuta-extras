@@ -7,11 +7,12 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: anjuta-ekstras master\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=anjuta&component=unknown\n"
-"POT-Creation-Date: 2010-08-28 15:23+0000\n"
-"PO-Revision-Date: 2010-08-29 11:32+0100\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=anjuta&keywords=I18N+L10N&component=unknown\n"
+"POT-Creation-Date: 2011-12-21 18:57+0000\n"
+"PO-Revision-Date: 2011-12-26 17:57+0100\n"
 "Last-Translator: Matej Urbančič <mateju@svn.gnome.org>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -22,138 +23,6 @@ msgstr ""
 "X-Poedit-Language: Slovenian\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
-#: ../plugins/profiler/gprof-call-graph-view.c:312
-#: ../plugins/profiler/gprof-call-graph-view.c:322
-#: ../plugins/profiler/gprof-call-graph-view.c:332
-#: ../plugins/profiler/gprof-flat-profile-view.c:56
-#: ../plugins/profiler/gprof-function-call-tree-view.c:60
-msgid "Function Name"
-msgstr "Ime funkcije"
-
-#: ../plugins/profiler/gprof-call-graph-view.c:344
-msgid "Time"
-msgstr "Čas"
-
-#. Total amount of time spent in this function, excluding those it calla.
-#. * This is the same as the "Seconds" field in the flat profile.
-#. Time spent in a subroutine of a function.
-#. Time spent in this function when it was called by its caller
-#: ../plugins/profiler/gprof-call-graph-view.c:361
-#: ../plugins/profiler/gprof-call-graph-view.c:375
-#: ../plugins/profiler/gprof-call-graph-view.c:389
-msgid "Self"
-msgstr "Samo"
-
-#: ../plugins/profiler/gprof-call-graph-view.c:402
-#: ../plugins/profiler/gprof-call-graph-view.c:414
-#: ../plugins/profiler/gprof-call-graph-view.c:426
-msgid "Children"
-msgstr "Podrejeno"
-
-#: ../plugins/profiler/gprof-call-graph-view.c:439
-#: ../plugins/profiler/gprof-call-graph-view.c:449
-#: ../plugins/profiler/gprof-call-graph-view.c:459
-#: ../plugins/profiler/gprof-flat-profile-view.c:113
-msgid "Calls"
-msgstr "Klici"
-
-#: ../plugins/profiler/gprof-flat-profile-view.c:68
-msgid "% Time"
-msgstr "% čas"
-
-#: ../plugins/profiler/gprof-flat-profile-view.c:82
-msgid "Cumulative Seconds"
-msgstr "Zbirni čas v sekundah"
-
-#. The number of seconds that this function, excluding other functions it
-#. * calls, takes to execute.
-#: ../plugins/profiler/gprof-flat-profile-view.c:99
-msgid "Self Seconds"
-msgstr "Lastni čas v sekundah"
-
-#. The average number of milliseconds spent in a function, excluding
-#. * the functions that it calls.
-#: ../plugins/profiler/gprof-flat-profile-view.c:127
-msgid "Self ms/call"
-msgstr "Lastni ms/klic"
-
-#. Same as self ms/call, but includes called functions.
-#: ../plugins/profiler/gprof-flat-profile-view.c:143
-msgid "Total ms/call"
-msgstr "Skupaj ms/klic"
-
-#: ../plugins/profiler/plugin.c:179
-msgid ""
-"Could not get profiling data.\n"
-"\n"
-"Please check the path to this target's profiling data file."
-msgstr ""
-"Ni mogoče pridobiti podatkov profila.\n"
-"\n"
-"Preverite pot do datoteke profila cilja."
-
-#: ../plugins/profiler/plugin.c:293
-msgid ""
-"This target does not have any profiling data.\n"
-"\n"
-"Please ensure that the target is compiled with profiling support (-p)and that it is run at least once."
-msgstr ""
-"Cilj nima ustreznih podatkov profila.\n"
-"\n"
-"Prepričajte se, da je cilj izgrajen s podporo profilov (-p) in da je zagnan vsaj enkrat."
-
-#. Action name
-#. Stock icon, if any
-#: ../plugins/profiler/plugin.c:754
-msgid "Debug"
-msgstr "Razhroščevanje"
-
-#. Action name
-#. Stock icon, if any
-#: ../plugins/profiler/plugin.c:762
-#: ../plugins/profiler/plugin.c:874
-#: ../plugins/profiler/profiler.plugin.in.h:3
-msgid "Profiler"
-msgstr "Upravljalnik profilov"
-
-#. Action name
-#. Stock icon, if any
-#: ../plugins/profiler/plugin.c:770
-msgid "Select Target..."
-msgstr "Izbor cilja ..."
-
-#. Action name
-#. Stock icon, if any
-#: ../plugins/profiler/plugin.c:778
-msgid "Refresh"
-msgstr "Osveži"
-
-#. Action name
-#. Stock icon, if any
-#: ../plugins/profiler/plugin.c:786
-msgid "Delete Data"
-msgstr "Izbriši podatke"
-
-#: ../plugins/profiler/plugin.c:829
-msgid "Application Performance Profiler"
-msgstr "Profiliranje izvajanja programov"
-
-#: ../plugins/profiler/plugin.c:851
-msgid "Flat Profile"
-msgstr "Ploski profil"
-
-#: ../plugins/profiler/plugin.c:856
-msgid "Call Graph"
-msgstr "Graf klicev"
-
-#: ../plugins/profiler/plugin.c:861
-msgid "Function Call Tree"
-msgstr "Zgradba klica funkcije"
-
-#: ../plugins/profiler/plugin.c:868
-msgid "Function Call Chart"
-msgstr "Preglednica klica funkcije"
-
 #: ../plugins/scintilla/print.c:659
 #, c-format
 msgid "File: %s"
@@ -163,17 +32,77 @@ msgstr "Datoteka: %s"
 msgid "Unable to get text buffer for printing"
 msgstr "Ni mogoče pridobiti medpomnilnika besedila za tiskanje"
 
-#: ../plugins/scintilla/print.c:967
+#: ../plugins/scintilla/print.c:966
 msgid "No file to print!"
 msgstr "Ni datoteke za tiskanje!"
 
-#: ../plugins/scintilla/plugin.c:309
-#: ../plugins/scintilla/plugin.c:321
+#: ../plugins/scintilla/plugin.c:160
+msgid "_Line Number Margin"
+msgstr "_Rob številk vrstic"
+
+#: ../plugins/scintilla/plugin.c:161
+msgid "Show/Hide line numbers"
+msgstr "Pokaži/Skrij prikaz številk vrstic"
+
+#: ../plugins/scintilla/plugin.c:163
+msgid "_Marker Margin"
+msgstr "Rob _zaznamovanj"
+
+#: ../plugins/scintilla/plugin.c:164
+msgid "Show/Hide marker margin"
+msgstr "Pokaži/Skrij prikaz robu zaznamovanj"
+
+#: ../plugins/scintilla/plugin.c:166
+msgid "_Code Fold Margin"
+msgstr "_Rob zvijanja kode"
+
+#: ../plugins/scintilla/plugin.c:167
+msgid "Show/Hide code fold margin"
+msgstr "Pokaži/Skrij prikaz robov zvijanja kode"
+
+#: ../plugins/scintilla/plugin.c:169
+msgid "_Indentation Guides"
+msgstr "_Vodila zamika"
+
+#: ../plugins/scintilla/plugin.c:170
+msgid "Show/Hide indentation guides"
+msgstr "Pokaži/Skrij vodila zamika"
+
+#: ../plugins/scintilla/plugin.c:172
+msgid "_White Space"
+msgstr "_Presledni znak"
+
+#: ../plugins/scintilla/plugin.c:173
+msgid "Show/Hide white spaces"
+msgstr "Pokaži/Skrij presledne znake"
+
+#: ../plugins/scintilla/plugin.c:175
+msgid "_Line End Characters"
+msgstr "_Znaki konca vrstice"
+
+#: ../plugins/scintilla/plugin.c:176
+msgid "Show/Hide line end characters"
+msgstr "Pokaži/Skrij znake konca vrstice"
+
+#: ../plugins/scintilla/plugin.c:178
+msgid "Line _Wrapping"
+msgstr "_Prelom vrstic"
+
+#: ../plugins/scintilla/plugin.c:179
+msgid "Enable/disable line wrapping"
+msgstr "Omogoči/Onemogoči prelom vrstic"
+
+#: ../plugins/scintilla/plugin.c:372
+msgid "Editor view settings"
+msgstr "Nastavitve pogleda urejevalnika"
+
+#: ../plugins/scintilla/plugin.c:487
+#: ../plugins/scintilla/plugin.c:499
 #: ../plugins/scintilla/anjuta-editor.plugin.in.h:2
 msgid "Scintilla Editor"
 msgstr "Urejevalnik Scintilla"
 
-#: ../plugins/scintilla/text_editor.c:438
+#: ../plugins/scintilla/text_editor.c:473
 #, c-format
 msgid ""
 "The file '%s' has been changed.\n"
@@ -182,7 +111,7 @@ msgstr ""
 "Datoteka '%s' je bila spremenjena.\n"
 "Ali želite datoteko ponovno naložiti?"
 
-#: ../plugins/scintilla/text_editor.c:444
+#: ../plugins/scintilla/text_editor.c:479
 #, c-format
 msgid ""
 "The file '%s' has been changed.\n"
@@ -191,7 +120,7 @@ msgstr ""
 "Datoteka '%s' je bila spremenjena.\n"
 "Ali želite izgubiti spremembe in datoteko ponovno naložiti?"
 
-#: ../plugins/scintilla/text_editor.c:464
+#: ../plugins/scintilla/text_editor.c:499
 #, c-format
 msgid ""
 "The file '%s' has been deleted.\n"
@@ -200,7 +129,7 @@ msgstr ""
 "Datoteka '%s' je bila izbrisana.\n"
 "Ali potrdite dejanje in zaprete pogovorno okno?"
 
-#: ../plugins/scintilla/text_editor.c:471
+#: ../plugins/scintilla/text_editor.c:506
 #, c-format
 msgid ""
 "The file '%s' has been deleted.\n"
@@ -209,32 +138,32 @@ msgstr ""
 "Datoteka '%s' je bila izbrisana. \n"
 "Ali želite preklicati spremembe in datoteko zapreti?"
 
-#: ../plugins/scintilla/text_editor.c:1458
+#: ../plugins/scintilla/text_editor.c:1486
 msgid "Could not get file info"
 msgstr "Ni mogoče pridobiti podrobnosti datoteke"
 
 #. DEBUG_PRINT ("%s", "This file is too big. Unable to allocate memory.");
-#: ../plugins/scintilla/text_editor.c:1470
+#: ../plugins/scintilla/text_editor.c:1498
 msgid "This file is too big. Unable to allocate memory."
 msgstr "Datoteka je prevelika, ni mogoče odločiti pomnilnika"
 
-#: ../plugins/scintilla/text_editor.c:1479
+#: ../plugins/scintilla/text_editor.c:1507
 msgid "Could not open file"
 msgstr "Ni mogoče odpreti datoteke"
 
-#: ../plugins/scintilla/text_editor.c:1490
+#: ../plugins/scintilla/text_editor.c:1518
 msgid "Error while reading from file"
 msgstr "Napaka med branjem iz datoteke"
 
-#: ../plugins/scintilla/text_editor.c:1536
+#: ../plugins/scintilla/text_editor.c:1564
 msgid "The file does not look like a text file or the file encoding is not supported. Please check if the encoding of file is in the supported encodings list. If not, add it from the preferences."
 msgstr "Datoteka ni videti kot običajna besedilna datoteka ali pa ni zapisana v podprtem kodiranju. Preverite, da je kodni nabor ustrezen in sovpada s seznamom. V primeru, da ne, ga dodajte med možnostmi."
 
-#: ../plugins/scintilla/text_editor.c:1683
+#: ../plugins/scintilla/text_editor.c:1747
 msgid "Loading file..."
 msgstr "Nalaganje datoteke ..."
 
-#: ../plugins/scintilla/text_editor.c:1692
+#: ../plugins/scintilla/text_editor.c:1756
 #, c-format
 msgid ""
 "Could not load file: %s\n"
@@ -245,24 +174,24 @@ msgstr ""
 "\n"
 "Podrobnosti: %s."
 
-#: ../plugins/scintilla/text_editor.c:1713
+#: ../plugins/scintilla/text_editor.c:1777
 msgid "File loaded successfully"
 msgstr "Datoteka je uspešno naložena"
 
-#: ../plugins/scintilla/text_editor.c:1731
+#: ../plugins/scintilla/text_editor.c:1795
 msgid "Saving file..."
 msgstr "Shranjevanje datoteke ..."
 
-#: ../plugins/scintilla/text_editor.c:1740
+#: ../plugins/scintilla/text_editor.c:1804
 #, c-format
 msgid "Could not save intermediate file %s: %s"
 msgstr "Ni mogoče shraniti vmesne datoteke %s: %s."
 
-#: ../plugins/scintilla/text_editor.c:1756
+#: ../plugins/scintilla/text_editor.c:1820
 msgid "File saved successfully"
 msgstr "Datoteka uspešno shranjena"
 
-#: ../plugins/scintilla/text_editor.c:2129
+#: ../plugins/scintilla/text_editor.c:2193
 #, c-format
 msgid ""
 "Cannot load Global defaults and configuration files:\n"
@@ -275,391 +204,19 @@ msgstr ""
 "Napaka se lahko pojavi kadar program ne deluje stabilno.\n"
 "Program Anjuta bo povrnil prvotne privzete in omejene nastavitve."
 
-#: ../plugins/scratchbox/plugin.c:213
+#: ../plugins/scratchbox/plugin.c:209
 #, c-format
 msgid "Program '%s' does not exists"
 msgstr "Program '%s' ne obstaja"
 
-#: ../plugins/scratchbox/plugin.c:464
-#: ../plugins/scratchbox/plugin.c:486
+#: ../plugins/scratchbox/plugin.c:460
+#: ../plugins/scratchbox/plugin.c:482
 #: ../plugins/scratchbox/anjuta-scratchbox.plugin.in.h:2
 msgid "Scratchbox"
 msgstr "Scratchbox"
 
-#: ../plugins/valgrind/plugin.c:134
-msgid "Options"
-msgstr "Možnosti"
-
-#: ../plugins/valgrind/plugin.c:262
-msgid "Select debugging target"
-msgstr "Izbor cilja razhroščevanja"
-
-#: ../plugins/valgrind/plugin.c:319
-#: ../plugins/valgrind/plugin.c:440
-#: ../plugins/valgrind/plugin.c:676
-#: ../plugins/valgrind/plugin.c:685
-msgid "Valgrind"
-msgstr "Valgrind"
-
-#: ../plugins/valgrind/plugin.c:347
-msgid "No executable target selected for debugging with Valgrind. Please select one."
-msgstr "Ni izbranega izvedljivega cilja za razhroščevanje z valgrind vstavkom. Izberite enega."
-
-#: ../plugins/valgrind/plugin.c:356
-msgid ""
-"There aren't any available executable targets for this project.\n"
-"Please create one first."
-msgstr ""
-"Na voljo ni prostih izvedljivih ciljev projekta.\n"
-"Najprej enega ustvarite."
-
-#: ../plugins/valgrind/plugin.c:368
-msgid "Choose file where to save Valgrind log"
-msgstr "Izberite datoteko za shranjevanje Valgrind beleženja"
-
-#: ../plugins/valgrind/plugin.c:390
-#, c-format
-msgid ""
-"The file '%s' already exists.\n"
-"Do you want to replace it with the one you are saving?"
-msgstr ""
-"Datoteka '%s' že obstaja. \n"
-"Ali jo želite prepisati z datoteko, ki jo shranjujete?"
-
-#: ../plugins/valgrind/plugin.c:398
-msgid "_Replace"
-msgstr "_Zamenjaj"
-
-#: ../plugins/valgrind/plugin.c:418
-msgid "Open Valgrind log file"
-msgstr "Odpri Valgrind datoteko beleženja"
-
-#. Action name
-#. Stock icon, if any
-#: ../plugins/valgrind/plugin.c:452
-msgid "_Debug"
-msgstr "_Razhroščevanje"
-
-#. Action name
-#. Stock icon, if any
-#: ../plugins/valgrind/plugin.c:460
-msgid "_Valgrind"
-msgstr "_Valgrind"
-
-#. Action name
-#. Stock icon, if any
-#: ../plugins/valgrind/plugin.c:468
-msgid "_Select Tool and Run..."
-msgstr "_Izbor orodja in zagon"
-
-#. Action name
-#. Stock icon, if any
-#: ../plugins/valgrind/plugin.c:476
-msgid "_Kill Execution"
-msgstr "_Uniči izvajanje"
-
-#. Action name
-#. Stock icon, if any
-#: ../plugins/valgrind/plugin.c:484
-msgid "_Load Log"
-msgstr "_Naloži beležnico"
-
-#. Action name
-#. Stock icon, if any
-#: ../plugins/valgrind/plugin.c:492
-msgid "S_ave Log"
-msgstr "_Shrani dnevnik"
-
-#. Action name
-#. Stock icon, if any
-#: ../plugins/valgrind/plugin.c:500
-msgid "Edit Rules"
-msgstr "Uredi pravila"
-
-#: ../plugins/valgrind/plugin.c:565
-msgid "Use Valgrind debug tool"
-msgstr "Uporabi Valgrind orodje razhroščevanja"
-
-#: ../plugins/valgrind/preferences.c:122
-msgid "<b>Valgrind general preferences</b>"
-msgstr "<b>Splošne možnosti Valgrind</b>"
-
-#: ../plugins/valgrind/preferences.c:128
-msgid "Valgrind binary file path:"
-msgstr "Pot do Valgrind dvojiške datoteke:"
-
-#: ../plugins/valgrind/preferences.c:142
-msgid "Choose Valgrind Binary File Path..."
-msgstr "Izberite pot do Valgrind dvojiške datoteke ..."
-
-#: ../plugins/valgrind/preferences.c:161
-msgid "Preview"
-msgstr "Predogled"
-
-#: ../plugins/valgrind/preferences.c:174
-msgid "lines above and below the target line."
-msgstr "vrstice nad in pod ciljno vrstico."
-
-#: ../plugins/valgrind/process.c:55
-#, c-format
-msgid "Failed to create pipe to '%s': %s"
-msgstr "Napaka med ustvarjanjem cevi '%s': %s"
-
-#: ../plugins/valgrind/process.c:110
-#, c-format
-msgid "Failed to create child process '%s': %s"
-msgstr "Ni mogoče ustvariti podrejenega opravila '%s': %s"
-
-#: ../plugins/valgrind/vgactions.c:168
-msgid "Reached the end of the input file or error in parsing valgrind output."
-msgstr "Dosežen je konec vhodne datoteke ali pa je prišlo do napake med razčlenjevanjem valgrind odvoda."
-
-#: ../plugins/valgrind/vgactions.c:177
-msgid "Process exited."
-msgstr "opravilo se je zaključilo."
-
-#: ../plugins/valgrind/vgactions.c:197
-msgid "Could not get the right valgrind-binary gconf key:"
-msgstr "Ni mogoče pridobiti ustreznega valgrind-binary gconf ključa:"
-
-#: ../plugins/valgrind/vgactions.c:205
-#, c-format
-msgid "Valgrind binary [%s] does not exist. Please check the preferences or install Valgrind package."
-msgstr "Valgrind binarna datoteka [%s] ne obstaja. Preverite možnosti in namestite ta paket."
-
-#: ../plugins/valgrind/vgactions.c:241
-#: ../plugins/valgrind/vgactions.c:248
-msgid "Could not get the right pipe for the process."
-msgstr "Ni mogoče dobiti ustrezne cevi opravila."
-
-#: ../plugins/valgrind/vgcachegrindprefs.c:197
-#, c-format
-msgid ""
-"Invalid syntax in settings '%s'.\n"
-"Please enter a value of the form \"<integer>,<integer>,<integer>\"."
-msgstr ""
-"Neveljavna skladnja med nastavitvami '%s'.\n"
-"Vnesite vrednost v obliki \"<število>,<število>,<število>\"."
-
-#: ../plugins/valgrind/vgcachegrindprefs.c:234
-msgid "Override default settings"
-msgstr "Prepiši privzete nastavitve"
-
-#. This is the format of the preference, simply translate the words
-#. * inside the <>
-#: ../plugins/valgrind/vgcachegrindprefs.c:246
-msgid "Enter <size>,<assoc>,<line_size>:"
-msgstr "Vnesite <velikost>,<povezave>,<velikost_vrstice>:"
-
-#: ../plugins/valgrind/vgcachegrindprefs.c:280
-msgid "Cachegrind"
-msgstr "Cachegrind"
-
-#: ../plugins/valgrind/vgdefaultview.c:189
-msgid "Error contains"
-msgstr "Napaka vsebuje"
-
-#: ../plugins/valgrind/vgdefaultview.c:190
-msgid "Function contains"
-msgstr "Funkcija vsebuje"
-
-#: ../plugins/valgrind/vgdefaultview.c:191
-msgid "Object contains"
-msgstr "Predmet vsebuje"
-
-#: ../plugins/valgrind/vgdefaultview.c:192
-msgid "Source filename contains"
-msgstr "Izvorno ime datoteke vsebuje"
-
-#: ../plugins/valgrind/vgdefaultview.c:229
-#, c-format
-msgid "Invalid regular expression: '%s': %s"
-msgstr "Neveljaven logični izraz: '%s': %s"
-
-#. FIXME: we should really get this title from somewhere else?
-#: ../plugins/valgrind/vgdefaultview.c:773
-msgid "Valgrind Suppression Rules"
-msgstr "Valgrind pravila preprečevanja"
-
-#. FIXME: we should really get this title from somewhere else?
-#: ../plugins/valgrind/vgdefaultview.c:1118
-#: ../plugins/valgrind/vgrule-list.c:135
-msgid "Valgrind Suppression"
-msgstr "Valgrind preprečevanje"
-
-#: ../plugins/valgrind/vgdefaultview.c:1166
-msgid "Cu_t"
-msgstr "I_zreži"
-
-#: ../plugins/valgrind/vgdefaultview.c:1167
-msgid "_Copy"
-msgstr "_Kopiraj"
-
-#: ../plugins/valgrind/vgdefaultview.c:1168
-msgid "_Paste"
-msgstr "_Prilepi"
-
-#: ../plugins/valgrind/vgdefaultview.c:1170
-msgid "Suppress"
-msgstr "Prepreči"
-
-#: ../plugins/valgrind/vgdefaultview.c:1172
-msgid "Edit in Custom Editor"
-msgstr "Uredi v privzetem urejevalniku"
-
-#: ../plugins/valgrind/vggeneralprefs.c:172
-msgid "General"
-msgstr "Splošno"
-
-#. demangle = decode C++ name encoding
-#: ../plugins/valgrind/vggeneralprefs.c:179
-msgid "Demangle C++ symbol names"
-msgstr "Razločevanje C++ imen simbolov"
-
-#: ../plugins/valgrind/vggeneralprefs.c:187
-msgid "Show"
-msgstr "Pokaži"
-
-#: ../plugins/valgrind/vggeneralprefs.c:199
-msgid "callers in stack trace"
-msgstr "klici v zaznanem skladu"
-
-#: ../plugins/valgrind/vggeneralprefs.c:206
-msgid "Stop showing errors if there are too many"
-msgstr "Prekini prikazovanje napak, kadar je teh preveč"
-
-#: ../plugins/valgrind/vggeneralprefs.c:214
-msgid "Round malloc sizes to next word"
-msgstr "Zaokroži malloc velikosti do naslednje besede"
-
-#: ../plugins/valgrind/vggeneralprefs.c:222
-msgid "Trace any child processes forked off by the program being debugged"
-msgstr "Zaznavanje podrejenih opravil odločenih med razhroščevanjem programa"
-
-#: ../plugins/valgrind/vggeneralprefs.c:230
-msgid "Track open file descriptors"
-msgstr "Sledi opisovalnikom odprtih datotek"
-
-#: ../plugins/valgrind/vggeneralprefs.c:238
-msgid "Add time stamps to log messages"
-msgstr "Dodaj časovni žig sporočilom dnevnika"
-
-#: ../plugins/valgrind/vggeneralprefs.c:246
-msgid "Call __libc_freeres() at exit before checking for memory leaks"
-msgstr "Call __libc_freeres() ob izhodu pred preverjanjem uhajanja pomnilnika"
-
-#: ../plugins/valgrind/vggeneralprefs.c:254
-msgid "Suppressions File:"
-msgstr "Datoteka preprečevanja:"
-
-#: ../plugins/valgrind/vggeneralprefs.c:274
-msgid "Choose Valgrind Suppressions File..."
-msgstr "Izbor Valgrind datoteke preprečevanja ..."
-
-#: ../plugins/valgrind/vghelgrindprefs.c:180
-msgid "Helgrind"
-msgstr "Helgrind"
-
-#: ../plugins/valgrind/vghelgrindprefs.c:185
-msgid "Assume thread stacks are used privately"
-msgstr "Predvidi zasebno uporabo skladov"
-
-#: ../plugins/valgrind/vghelgrindprefs.c:194
-msgid "Show location of last word access on error:"
-msgstr "Pokaži mesto zadnjega dostopa pred napako:"
-
-#: ../plugins/valgrind/vgmemcheckprefs.c:204
-msgid "Memcheck"
-msgstr "Preverjanje pomnilnika"
-
-#: ../plugins/valgrind/vgmemcheckprefs.c:209
-msgid "Memory leaks"
-msgstr "Uhajanje pomnilnika"
-
-#: ../plugins/valgrind/vgmemcheckprefs.c:214
-msgid "Leak check:"
-msgstr "Preverjanje uhajanja:"
-
-#: ../plugins/valgrind/vgmemcheckprefs.c:225
-msgid "Show reachable blocks in leak check"
-msgstr "Pokaži dostopne bloke med preverjanjem uhajanja"
-
-#: ../plugins/valgrind/vgmemcheckprefs.c:233
-msgid "Leak resolution:"
-msgstr "Ločljivost uhajanja:"
-
-#: ../plugins/valgrind/vgmemcheckprefs.c:251
-msgid "Keep up to"
-msgstr "Ohrani na"
-
-#: ../plugins/valgrind/vgmemcheckprefs.c:263
-msgid "bytes in the queue after being free()'d"
-msgstr "bajti v vrsti po sprostitvi"
-
-#: ../plugins/valgrind/vgmemcheckprefs.c:270
-msgid "Work around bugs generated by gcc 2.96"
-msgstr "Ustvarjanje obhodov hroščev preko gcc 2.96"
-
-#: ../plugins/valgrind/vgrule-editor.c:146
-msgid "Function"
-msgstr "Funkcija"
-
-#: ../plugins/valgrind/vgrule-editor.c:149
-msgid "Shared Object"
-msgstr "Souporabljeni predmeti"
-
-#: ../plugins/valgrind/vgrule-editor.c:209
-msgid "Grow"
-msgstr "Razširi"
-
-#: ../plugins/valgrind/vgrule-editor.c:213
-msgid "Shrink"
-msgstr "Skrči"
-
-#: ../plugins/valgrind/vgrule-editor.c:239
-msgid "Rule name:"
-msgstr "Ime pravila:"
-
-#: ../plugins/valgrind/vgrule-editor.c:249
-msgid "Suppress messages of type:"
-msgstr "Prepreči sporočila vrste:"
-
-#: ../plugins/valgrind/vgrule-editor.c:259
-msgid "Suppress when using:"
-msgstr "Prepreči med uporabo:"
-
-#: ../plugins/valgrind/vgrule-editor.c:272
-msgid "System call:"
-msgstr "Sistemski klic:"
-
-#: ../plugins/valgrind/vgrule-editor.c:283
-msgid "Call chain:"
-msgstr "Klicna veriga:"
-
-#: ../plugins/valgrind/vgrule-editor.c:540
-#: ../plugins/valgrind/vgrule-editor.c:555
-#, c-format
-msgid "Error saving to suppression file '%s': %s"
-msgstr "Napaka med pisanjem v datoteko preprečevanja '%s': %s"
-
-#: ../plugins/valgrind/vgrule-list.c:177
-#: ../plugins/valgrind/vgrule-list.c:246
-msgid "You have forgotten to name your suppression rule."
-msgstr "Pravilo preprečevanja mora biti poimenovano."
-
-#: ../plugins/valgrind/vgrule-list.c:406
-msgid "_Edit"
-msgstr "_Uredi"
-
-#: ../plugins/valgrind/vgrule-list.c:651
-#, c-format
-msgid "Cannot save suppression rules: %s"
-msgstr "Ni mogoče shraniti pravil preprečevanja: %s"
-
-#: ../plugins/valgrind/vgrule-list.c:653
-msgid "You have not set a suppressions file in your settings."
-msgstr "Med nastavitvami ni nastavljenih pravil preprečevanja."
-
+#. Public functions
+#. *---------------------------------------------------------------------------
 #: ../plugins/sample1/anjuta-sample.plugin.in.h:1
 msgid "Sample Plugin"
 msgstr "Vzorčni vstavek"
@@ -668,38 +225,388 @@ msgstr "Vzorčni vstavek"
 msgid "Sample Plugin for Anjuta."
 msgstr "Vzorčni vstavek za program Anjuta."
 
-#: ../plugins/profiler/profiler.plugin.in.h:1
-msgid "Application performance profiler"
-msgstr "Profiliranje izvajanja programov"
-
-#: ../plugins/profiler/profiler.plugin.in.h:2
-msgid "Profile"
-msgstr "Profil"
-
 #: ../plugins/scintilla/anjuta-editor.plugin.in.h:1
 msgid "An alternate editor based on Scintilla"
 msgstr "Alternativni urejevalnik na osnovi Scintilla"
-
-#: ../plugins/valgrind/anjuta-valgrind.plugin.in.h:1
-msgid "Powerful debugging tool."
-msgstr "Mogočno orodje za razhroščevanje"
-
-#: ../plugins/valgrind/anjuta-valgrind.plugin.in.h:2
-msgid "Valgrind Plugin"
-msgstr "Vstavek Valgrind"
 
 #: ../plugins/scratchbox/anjuta-scratchbox.plugin.in.h:1
 msgid "Change build commands to use scratchbox 1 or 2"
 msgstr "Spremeni ukaze izgradnje za uporabo Scratchbox 1 ali 2"
 
+#~ msgid "Function Name"
+#~ msgstr "Ime funkcije"
+
+#~ msgid "Time"
+#~ msgstr "Čas"
+
+#~ msgid "Self"
+#~ msgstr "Samo"
+
+#~ msgid "Children"
+#~ msgstr "Podrejeno"
+
+#~ msgid "Calls"
+#~ msgstr "Klici"
+
+#~ msgid "% Time"
+#~ msgstr "% čas"
+
+#~ msgid "Cumulative Seconds"
+#~ msgstr "Zbirni čas v sekundah"
+
+#~ msgid "Self Seconds"
+#~ msgstr "Lastni čas v sekundah"
+
+#~ msgid "Self ms/call"
+#~ msgstr "Lastni ms/klic"
+
+#~ msgid "Total ms/call"
+#~ msgstr "Skupaj ms/klic"
+
+#~ msgid ""
+#~ "Could not get profiling data.\n"
+#~ "\n"
+#~ "Please check the path to this target's profiling data file."
+#~ msgstr ""
+#~ "Ni mogoče pridobiti podatkov profila.\n"
+#~ "\n"
+#~ "Preverite pot do datoteke profila cilja."
+
+#~ msgid ""
+#~ "This target does not have any profiling data.\n"
+#~ "\n"
+#~ "Please ensure that the target is compiled with profiling support (-p)and "
+#~ "that it is run at least once."
+#~ msgstr ""
+#~ "Cilj nima ustreznih podatkov profila.\n"
+#~ "\n"
+#~ "Prepričajte se, da je cilj izgrajen s podporo profilov (-p) in da je "
+#~ "zagnan vsaj enkrat."
+
+#~ msgid "Debug"
+#~ msgstr "Razhroščevanje"
+
+#~ msgid "Profiler"
+#~ msgstr "Upravljalnik profilov"
+
+#~ msgid "Select Target..."
+#~ msgstr "Izbor cilja ..."
+
+#~ msgid "Refresh"
+#~ msgstr "Osveži"
+
+#~ msgid "Delete Data"
+#~ msgstr "Izbriši podatke"
+
+#~ msgid "Application Performance Profiler"
+#~ msgstr "Profiliranje izvajanja programov"
+
+#~ msgid "Flat Profile"
+#~ msgstr "Ploski profil"
+
+#~ msgid "Call Graph"
+#~ msgstr "Graf klicev"
+
+#~ msgid "Function Call Tree"
+#~ msgstr "Zgradba klica funkcije"
+
+#~ msgid "Function Call Chart"
+#~ msgstr "Diagram klica funkcije"
+
+#~ msgid "Options"
+#~ msgstr "Možnosti"
+
+#~ msgid "Select debugging target"
+#~ msgstr "Izbor cilja razhroščevanja"
+
+#~ msgid "Valgrind"
+#~ msgstr "Valgrind"
+
+#~ msgid ""
+#~ "No executable target selected for debugging with Valgrind. Please select "
+#~ "one."
+#~ msgstr ""
+#~ "Ni izbranega izvedljivega cilja za razhroščevanje z valgrind vstavkom. "
+#~ "Izberite enega."
+
+#~ msgid ""
+#~ "There aren't any available executable targets for this project.\n"
+#~ "Please create one first."
+#~ msgstr ""
+#~ "Na voljo ni prostih izvedljivih ciljev projekta.\n"
+#~ "Najprej enega ustvarite."
+
+#~ msgid "Choose file where to save Valgrind log"
+#~ msgstr "Izberite datoteko za shranjevanje Valgrind beleženja"
+
+#~ msgid ""
+#~ "The file '%s' already exists.\n"
+#~ "Do you want to replace it with the one you are saving?"
+#~ msgstr ""
+#~ "Datoteka '%s' že obstaja. \n"
+#~ "Ali jo želite prepisati z datoteko, ki jo shranjujete?"
+
+#~ msgid "_Replace"
+#~ msgstr "_Zamenjaj"
+
+#~ msgid "Open Valgrind log file"
+#~ msgstr "Odpri Valgrind datoteko beleženja"
+
+#~ msgid "_Debug"
+#~ msgstr "_Razhroščevanje"
+
+#~ msgid "_Valgrind"
+#~ msgstr "_Valgrind"
+
+#~ msgid "_Select Tool and Run..."
+#~ msgstr "_Izbor orodja in zagon"
+
+#~ msgid "_Kill Execution"
+#~ msgstr "_Uniči izvajanje"
+
+#~ msgid "_Load Log"
+#~ msgstr "_Naloži beležnico"
+
+#~ msgid "S_ave Log"
+#~ msgstr "_Shrani dnevnik"
+
+#~ msgid "Edit Rules"
+#~ msgstr "Uredi pravila"
+
+#~ msgid "Use Valgrind debug tool"
+#~ msgstr "Uporabi Valgrind orodje razhroščevanja"
+
+#~ msgid "<b>Valgrind general preferences</b>"
+#~ msgstr "<b>Splošne možnosti Valgrind</b>"
+
+#~ msgid "Valgrind binary file path:"
+#~ msgstr "Pot do Valgrind dvojiške datoteke:"
+
+#~ msgid "Choose Valgrind Binary File Path..."
+#~ msgstr "Izberite pot do Valgrind dvojiške datoteke ..."
+
+#~ msgid "Preview"
+#~ msgstr "Predogled"
+
+#~ msgid "lines above and below the target line."
+#~ msgstr "vrstice nad in pod ciljno vrstico."
+
+#~ msgid "Failed to create pipe to '%s': %s"
+#~ msgstr "Napaka med ustvarjanjem cevi '%s': %s"
+
+#~ msgid "Failed to create child process '%s': %s"
+#~ msgstr "Ni mogoče ustvariti podrejenega opravila '%s': %s"
+
+#~ msgid ""
+#~ "Reached the end of the input file or error in parsing valgrind output."
+#~ msgstr ""
+#~ "Dosežen je konec vhodne datoteke ali pa je prišlo do napake med "
+#~ "razčlenjevanjem valgrind odvoda."
+
+#~ msgid "Process exited."
+#~ msgstr "opravilo se je zaključilo."
+
+#~ msgid "Could not get the right valgrind-binary gconf key:"
+#~ msgstr "Ni mogoče pridobiti ustreznega valgrind-binary gconf ključa:"
+
+#~ msgid ""
+#~ "Valgrind binary [%s] does not exist. Please check the preferences or "
+#~ "install Valgrind package."
+#~ msgstr ""
+#~ "Valgrind binarna datoteka [%s] ne obstaja. Preverite možnosti in "
+#~ "namestite ta paket."
+
+#~ msgid "Could not get the right pipe for the process."
+#~ msgstr "Ni mogoče dobiti ustrezne cevi opravila."
+
+#~ msgid ""
+#~ "Invalid syntax in settings '%s'.\n"
+#~ "Please enter a value of the form \"<integer>,<integer>,<integer>\"."
+#~ msgstr ""
+#~ "Neveljavna skladnja med nastavitvami '%s'.\n"
+#~ "Vnesite vrednost v obliki \"<število>,<število>,<število>\"."
+
+#~ msgid "Override default settings"
+#~ msgstr "Prepiši privzete nastavitve"
+
+#~ msgid "Enter <size>,<assoc>,<line_size>:"
+#~ msgstr "Vnesite <velikost>,<povezave>,<velikost_vrstice>:"
+
+#~ msgid "Cachegrind"
+#~ msgstr "Cachegrind"
+
+#~ msgid "Error contains"
+#~ msgstr "Napaka vsebuje"
+
+#~ msgid "Function contains"
+#~ msgstr "Funkcija vsebuje"
+
+#~ msgid "Object contains"
+#~ msgstr "Predmet vsebuje"
+
+#~ msgid "Source filename contains"
+#~ msgstr "Izvorno ime datoteke vsebuje"
+
+#~ msgid "Invalid regular expression: '%s': %s"
+#~ msgstr "Neveljaven logični izraz: '%s': %s"
+
+#~ msgid "Valgrind Suppression Rules"
+#~ msgstr "Valgrind pravila preprečevanja"
+
+#~ msgid "Valgrind Suppression"
+#~ msgstr "Valgrind preprečevanje"
+
+#~ msgid "Cu_t"
+#~ msgstr "I_zreži"
+
+#~ msgid "_Copy"
+#~ msgstr "_Kopiraj"
+
+#~ msgid "_Paste"
+#~ msgstr "_Prilepi"
+
+#~ msgid "Suppress"
+#~ msgstr "Prepreči"
+
+#~ msgid "Edit in Custom Editor"
+#~ msgstr "Uredi v privzetem urejevalniku"
+
+#~ msgid "General"
+#~ msgstr "Splošno"
+
+#~ msgid "Demangle C++ symbol names"
+#~ msgstr "Razločevanje C++ imen simbolov"
+
+#~ msgid "Show"
+#~ msgstr "Pokaži"
+
+#~ msgid "callers in stack trace"
+#~ msgstr "klici v zaznanem skladu"
+
+#~ msgid "Stop showing errors if there are too many"
+#~ msgstr "Prekini prikazovanje napak, kadar je teh preveč"
+
+#~ msgid "Round malloc sizes to next word"
+#~ msgstr "Zaokroži malloc velikosti do naslednje besede"
+
+#~ msgid "Trace any child processes forked off by the program being debugged"
+#~ msgstr ""
+#~ "Zaznavanje podrejenih opravil odločenih med razhroščevanjem programa"
+
+#~ msgid "Track open file descriptors"
+#~ msgstr "Sledi opisovalnikom odprtih datotek"
+
+#~ msgid "Add time stamps to log messages"
+#~ msgstr "Dodaj časovni žig sporočilom dnevnika"
+
+#~ msgid "Call __libc_freeres() at exit before checking for memory leaks"
+#~ msgstr ""
+#~ "Call __libc_freeres() ob izhodu pred preverjanjem uhajanja pomnilnika"
+
+#~ msgid "Suppressions File:"
+#~ msgstr "Datoteka preprečevanja:"
+
+#~ msgid "Choose Valgrind Suppressions File..."
+#~ msgstr "Izbor Valgrind datoteke preprečevanja ..."
+
+#~ msgid "Helgrind"
+#~ msgstr "Helgrind"
+
+#~ msgid "Assume thread stacks are used privately"
+#~ msgstr "Predvidi zasebno uporabo skladov"
+
+#~ msgid "Show location of last word access on error:"
+#~ msgstr "Pokaži mesto zadnjega dostopa pred napako:"
+
+#~ msgid "Memcheck"
+#~ msgstr "Preverjanje pomnilnika"
+
+#~ msgid "Memory leaks"
+#~ msgstr "Uhajanje pomnilnika"
+
+#~ msgid "Leak check:"
+#~ msgstr "Preverjanje uhajanja:"
+
+#~ msgid "Show reachable blocks in leak check"
+#~ msgstr "Pokaži dostopne bloke med preverjanjem uhajanja"
+
+#~ msgid "Leak resolution:"
+#~ msgstr "Ločljivost uhajanja:"
+
+#~ msgid "Keep up to"
+#~ msgstr "Ohrani na"
+
+#~ msgid "bytes in the queue after being free()'d"
+#~ msgstr "bajti v vrsti po sprostitvi"
+
+#~ msgid "Work around bugs generated by gcc 2.96"
+#~ msgstr "Ustvarjanje obhodov hroščev preko gcc 2.96"
+
+#~ msgid "Function"
+#~ msgstr "Funkcija"
+
+#~ msgid "Shared Object"
+#~ msgstr "Souporabljeni predmeti"
+
+#~ msgid "Grow"
+#~ msgstr "Razširi"
+
+#~ msgid "Shrink"
+#~ msgstr "Skrči"
+
+#~ msgid "Rule name:"
+#~ msgstr "Ime pravila:"
+
+#~ msgid "Suppress messages of type:"
+#~ msgstr "Prepreči sporočila vrste:"
+
+#~ msgid "Suppress when using:"
+#~ msgstr "Prepreči med uporabo:"
+
+#~ msgid "System call:"
+#~ msgstr "Sistemski klic:"
+
+#~ msgid "Call chain:"
+#~ msgstr "Klicna veriga:"
+
+#~ msgid "Error saving to suppression file '%s': %s"
+#~ msgstr "Napaka med pisanjem v datoteko preprečevanja '%s': %s"
+
+#~ msgid "You have forgotten to name your suppression rule."
+#~ msgstr "Pravilo preprečevanja mora biti poimenovano."
+
+#~ msgid "_Edit"
+#~ msgstr "_Uredi"
+
+#~ msgid "Cannot save suppression rules: %s"
+#~ msgstr "Ni mogoče shraniti pravil preprečevanja: %s"
+
+#~ msgid "You have not set a suppressions file in your settings."
+#~ msgstr "Med nastavitvami ni nastavljenih pravil preprečevanja."
+
+#~ msgid "Application performance profiler"
+#~ msgstr "Profiliranje izvajanja programov"
+
+#~ msgid "Profile"
+#~ msgstr "Profil"
+
+#~ msgid "Powerful debugging tool."
+#~ msgstr "Mogočno orodje za razhroščevanje"
+
+#~ msgid "Valgrind Plugin"
+#~ msgstr "Vstavek Valgrind"
+
 #~ msgid "Args: %s"
 #~ msgstr "Argumenti: %s"
+
 #~ msgid "Update"
 #~ msgstr "Posodobi"
+
 #~ msgid "Inheritance Graph"
 #~ msgstr "Graf zgradbe"
+
 #~ msgid "A graph painter for the inheritance of the classes."
 #~ msgstr "Risalnik za podedovane lastnosti razredov"
+
 #~ msgid "Class Inheritance"
 #~ msgstr "Dedovanje razredov"
-
