@@ -1,3 +1,33 @@
+anjuta-extras-3.3.4 (26 January 2011) -- James Liggett
+
+Jiro Matsuzawa (1):
+      Updated Japanese translation
+
+Kristjan SCHMIDT (1):
+      Add Esperanto translation
+
+Marek Černocký (1):
+      Updated Czech translation
+
+Matej Urbančič (1):
+      Updated Slovenian translation
+
+Sébastien Granjoux (10):
+      scintilla: Improve style setting dialog
+      scintilla: bgo#610371 - Scite adds a trailing white space after pressing e
+      scintilla: Add one page of documentation in Mallard format
+      scintilla: Fix reload comparison when removing trailing space
+      scintilla: Fix a crash when saving an empty file
+      scratchbox, scintilla: Add an id column to GtkComboBox used in preferences
+      scratchbox: Move preferences to org/gnome/anjuta/plugins/scratchbox
+      scintilla: Move preferences to org/gnome/anjuta/plugins/scintilla
+      scintilla: Add editor view settings
+      scintilla: bgo #664514 - view->editor->* margin doesn't work
+
+Vincent Untz (1):
+      scintilla: Link to gmodule to fix build against glib >= 2.31
+
+
 anjuta-extras-3.2.0 (26 September 2011) -- James Liggett
 
 Updates
