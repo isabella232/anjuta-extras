@@ -243,6 +243,14 @@ text_editor_setup_indicators_color (TextEditor *te)
 	char* spec;
 	GdkColor color;
 	
+	/* Important color */
+	spec = g_settings_get_string (te->msgman_settings, MSGMAN_COLOR_IMPORTANT);
+	if (gdk_color_parse (spec, &color))
+	{
+		glong param = ((color.red >> 8) & 0xFF) + (color.green & 0xFF00) + ((color.blue << 8) & 0x00FF0000);
+		scintilla_send_message (SCINTILLA (te->scintilla), SCI_INDICSETFORE, 0, param);
+	}
+	g_free (spec);
 	/* Warning color */
 	spec = g_settings_get_string (te->msgman_settings, MSGMAN_COLOR_WARNING);
 	if (gdk_color_parse (spec, &color))

@@ -289,9 +289,10 @@ void text_editor_scintilla_command (TextEditor *te, gint command,
 #define DOCMAN_PREF_SCHEMA  "org.gnome.anjuta.document-manager"
 #define TEXT_ZOOM_FACTOR           "text-zoom-factor"
 
-#define MSGMAN_PREF_SCHEMA "org.gnome.anjuta.message-manager"
-#define MSGMAN_COLOR_ERROR                "msgman-color-error"
-#define MSGMAN_COLOR_WARNING              "msgman-color-warning"
+#define MSGMAN_PREF_SCHEMA "org.gnome.anjuta.plugins.message-manager"
+#define MSGMAN_COLOR_ERROR                "color-error"
+#define MSGMAN_COLOR_WARNING              "color-warning"
+#define MSGMAN_COLOR_IMPORTANT            "color-important"
 
 #define PREF_SCHEMA		"org.gnome.anjuta.plugins.scintilla"
 
