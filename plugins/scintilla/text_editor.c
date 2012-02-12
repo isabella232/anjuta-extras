@@ -218,6 +218,15 @@ initialize_markers (TextEditor* te, GtkWidget *scintilla)
 	}
 }
 
+/* Hack to simulate async loading */
+static gboolean
+emit_opened (TextEditor* te)
+{
+	g_signal_emit_by_name (te, "opened");
+	return FALSE;
+}
+	
+
 #ifdef DEBUG
 static void
 on_scintila_already_destroyed (gpointer te, GObject *obj)
@@ -1782,7 +1791,10 @@ text_editor_load_file (TextEditor * te)
 		aneditor_command (te->editor_id, ANE_CLOSE_FOLDALL, 0, 0);
 	}
 	text_editor_set_line_number_width(te);
-	anjuta_status (te->status, _("File loaded successfully"), 5); 
+	anjuta_status (te->status, _("File loaded successfully"), 5);
+
+	g_idle_add ((GSourceFunc) emit_opened, te);
+	
 	return TRUE;
 }
 
