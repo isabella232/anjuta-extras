@@ -2,17 +2,17 @@
 /*
  * text_editor.c
  * Copyright (C) 2000 - 2004  Naba Kumar
- * 
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
  * (at your option) any later version.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
@@ -96,7 +96,7 @@
 #include "anjuta-pcmark-16.xpm"
 #include "anjuta-linemark-16.xpm"
 
-static gchar** marker_pixmap[] = 
+static gchar** marker_pixmap[] =
 {
 	anjuta_bookmark_16_xpm,
 	anjuta_breakpoint_disabled_16_xpm,
@@ -126,7 +126,7 @@ text_editor_instance_init (TextEditor *te)
 	te->uri = NULL;
 	te->views = NULL;
 	te->popup_menu = NULL;
-	
+
 	te->monitor = NULL;
 	te->force_hilite = NULL;
 	te->force_pref = FALSE;
@@ -159,7 +159,7 @@ anjuta_message_area_new (const gchar    *text,
 	GtkInfoBar *message_area;
 	GtkWidget *content_area;
 	GtkWidget *message_label = gtk_label_new ("");
-	
+
 	message_area = GTK_INFO_BAR (gtk_info_bar_new ());
 	gtk_info_bar_set_message_type (message_area, type);
 	content_area = gtk_info_bar_get_content_area (GTK_INFO_BAR (message_area));
@@ -177,7 +177,7 @@ static void
 text_editor_class_init (TextEditorClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
-	
+
 	parent_class = g_type_class_peek_parent (klass);
 	object_class->finalize = text_editor_finalize;
 	object_class->dispose = text_editor_dispose;
@@ -208,7 +208,7 @@ initialize_markers (TextEditor* te, GtkWidget *scintilla)
 	gint marker;
 	gchar ***xpm;
 	g_return_if_fail (te != NULL);
-	
+
 	marker = 0;
 	for (xpm = marker_pixmap;*xpm != NULL; xpm++)
 	{
@@ -225,7 +225,7 @@ emit_opened (TextEditor* te)
 	g_signal_emit_by_name (te, "opened");
 	return FALSE;
 }
-	
+
 
 #ifdef DEBUG
 static void
@@ -245,13 +245,13 @@ on_te_already_destroyed (gpointer te, GObject *obj)
  * AnEditor reads the property file while TexEditor uses the
  * GSettings object. TextEditor can overwrite properties
  * set by AnEditor.
- */ 
+ */
 static void
 text_editor_setup_indicators_color (TextEditor *te)
 {
 	char* spec;
 	GdkColor color;
-	
+
 	/* Important color */
 	spec = g_settings_get_string (te->msgman_settings, MSGMAN_COLOR_IMPORTANT);
 	if (gdk_color_parse (spec, &color))
@@ -285,7 +285,7 @@ text_editor_add_view (TextEditor *te)
 	GtkWidget *scintilla;
 	gint current_line;
 	gint current_point;
-	
+
 	if (te->views)
 	{
 		current_line = text_editor_get_current_lineno (te);
@@ -298,11 +298,11 @@ text_editor_add_view (TextEditor *te)
 	}
 	editor_id = aneditor_new (sci_prop_get_pointer (te->props_base));
 	scintilla = aneditor_get_widget (editor_id);
-	
+
 	/* Set notifications to receive */
 	scintilla_send_message (SCINTILLA (scintilla), SCI_SETMODEVENTMASK,
 							(SC_MOD_INSERTTEXT | SC_MOD_DELETETEXT), 0);
-	
+
 	/* Set parent, if it is not primary view */
 	if (te->views)
 	{
@@ -311,15 +311,15 @@ text_editor_add_view (TextEditor *te)
 	te->views = g_list_prepend (te->views, GINT_TO_POINTER (editor_id));
 	te->editor_id = editor_id;
 	te->scintilla = scintilla;
-	
+
 	/*
 	aneditor_command (te->editor_id, ANE_SETACCELGROUP,
 			  (glong) app->accel_group, 0);
 	*/
-	
+
 	gtk_widget_set_size_request (scintilla, 50, 50);
 	gtk_widget_show (scintilla);
-	
+
 	gtk_box_set_spacing (GTK_BOX (te->vbox), 3);
 	gtk_box_pack_start (GTK_BOX (te->vbox), scintilla, TRUE, TRUE, 0);
 	gtk_widget_grab_focus (scintilla);
@@ -336,16 +336,16 @@ text_editor_add_view (TextEditor *te)
 			    G_CALLBACK (on_text_editor_scintilla_notify), te);
 	g_signal_connect (G_OBJECT (scintilla), "focus_in_event",
 				G_CALLBACK (on_text_editor_scintilla_focus_in), te);
-	
+
 	initialize_markers (te, scintilla);
 	text_editor_hilite_one (te, editor_id);
 	text_editor_set_line_number_width (te);
-	
+
 	if (current_line)
 		text_editor_goto_line (te, current_line, FALSE, TRUE);
 	if (current_point)
 		text_editor_goto_point (te, current_point);
-	
+
 #ifdef DEBUG
 	g_object_weak_ref (G_OBJECT (scintilla), on_scintila_already_destroyed, te);
 #endif
@@ -360,7 +360,7 @@ text_editor_remove_view (TextEditor *te)
 	if (te->views == NULL ||
 		g_list_length (te->views) <= 1)
 		return;
-	
+
 	g_signal_handlers_disconnect_by_func (G_OBJECT (te->scintilla),
 				G_CALLBACK (on_text_editor_text_event), te);
 	g_signal_handlers_disconnect_by_func (G_OBJECT (te->scintilla),
@@ -373,11 +373,11 @@ text_editor_remove_view (TextEditor *te)
 				G_CALLBACK (on_text_editor_scintilla_notify), te);
 	g_signal_handlers_disconnect_by_func (G_OBJECT (te->scintilla),
 				G_CALLBACK (on_text_editor_scintilla_focus_in), te);
-	
+
 	te->views = g_list_remove (te->views, GINT_TO_POINTER(te->editor_id));
 	gtk_container_remove (GTK_CONTAINER (te->vbox), te->scintilla);
 	aneditor_destroy(te->editor_id);
-	
+
 	/* Set current view */
 	if (te->views)
 	{
@@ -398,7 +398,9 @@ on_reload_dialog_response (GtkWidget *message_area, gint res, TextEditor *te)
 {
 	if (res == GTK_RESPONSE_YES)
 	{
+		gint visible_line = scintilla_send_message (SCINTILLA (te->scintilla), SCI_GETFIRSTVISIBLELINE, 0, 0);
 		text_editor_load_file (te);
+		scintilla_send_message (SCINTILLA (te->scintilla), SCI_SETFIRSTVISIBLELINE, visible_line, 0);
 	}
 	else
 	{
@@ -411,7 +413,7 @@ static void
 on_destroy_message_area (gpointer data, GObject *finalized_object)
 {
 	TextEditor *te = (TextEditor *)data;
-	
+
 	te->message_area = NULL;
 	g_signal_emit_by_name (G_OBJECT (te), "update-save-ui");
 }
@@ -422,7 +424,7 @@ on_close_dialog_response (GtkWidget *message_area, gint res, TextEditor *te)
 	if (res == GTK_RESPONSE_YES)
 	{
 		IAnjutaDocumentManager *docman;
-		
+
 		docman = anjuta_shell_get_interface (te->shell, IAnjutaDocumentManager, NULL);
 		if (docman == NULL) return;
 
@@ -444,7 +446,7 @@ text_editor_set_message_area (TextEditor *te,  GtkWidget *message_area)
 
 	if (te->message_area == NULL)
 		return;
-		
+
 	gtk_widget_show (message_area);
 	gtk_box_pack_start (GTK_BOX (te),
 						message_area,
@@ -453,7 +455,7 @@ text_editor_set_message_area (TextEditor *te,  GtkWidget *message_area)
 						0);
 	g_object_weak_ref (G_OBJECT (te->message_area),
 					   on_destroy_message_area, te);
-	
+
 	g_signal_emit_by_name (G_OBJECT (te), "update-save-ui");
 }
 
@@ -467,13 +469,13 @@ on_text_editor_uri_changed (GFileMonitor *monitor,
 	TextEditor *te = TEXT_EDITOR (user_data);
 	GtkWidget *message_area;
 	gchar *buff;
-	
+
 	/* DEBUG_PRINT ("%s", "File changed!!!"); */
-		
+
 	switch (event_type)
 	{
 		case G_FILE_MONITOR_EVENT_CHANGES_DONE_HINT:
-			
+
 			if (!anjuta_util_diff (te->uri, te->last_saved_content))
 			{
 				/* The file content is same. Remove any previous prompt for reload */
@@ -545,7 +547,7 @@ on_text_editor_uri_changed (GFileMonitor *monitor,
 			g_warn_if_reached ();
 			return;
 	}
-	
+
 	text_editor_set_message_area (te, message_area);
 }
 
@@ -558,7 +560,7 @@ text_editor_update_monitor (TextEditor *te, gboolean disable_it)
 		g_file_monitor_cancel (te->monitor);
 		te->monitor = NULL;
 	}
-	if (te->message_area) 
+	if (te->message_area)
 	{
 		/* Remove existing message area */
 		gtk_widget_destroy (te->message_area);
@@ -571,22 +573,22 @@ text_editor_update_monitor (TextEditor *te, gboolean disable_it)
 		/* DEBUG_PRINT ("%s", "Setting up Monitor for %s", te->uri); */
 
 		gio_uri = g_file_new_for_uri (te->uri);
-		te->monitor = g_file_monitor_file (gio_uri, 
-										G_FILE_MONITOR_NONE, 
-										NULL, 
+		te->monitor = g_file_monitor_file (gio_uri,
+										G_FILE_MONITOR_NONE,
+										NULL,
 										&error);
 		g_file_monitor_set_rate_limit (te->monitor, RATE_LIMIT_IN_MS);
 		g_signal_connect (te->monitor, "changed",
 				  G_CALLBACK (on_text_editor_uri_changed), te);
 		g_object_unref (gio_uri);
-		
+
 		if (error != NULL)
 		{
 			DEBUG_PRINT ("Error while setting up file monitor: %s",
 					   error->message);
 			g_error_free (error);
 		}
-		
+
 	}
 }
 
@@ -594,7 +596,7 @@ static void
 on_shell_value_changed  (TextEditor *te, const char *name)
 {
 	g_return_if_fail (name != NULL);
-	
+
 	if ((strcmp (name, TEXT_EDITOR_PROJECT_TYPE_LIST) == 0) ||
 	    (strcmp (name, TEXT_EDITOR_SYSTEM_TYPE_LIST) == 0))
 	{
@@ -625,17 +627,17 @@ text_editor_new (AnjutaPlugin *plugin, const gchar *uri, const gchar *name)
 	TextEditor *te = TEXT_EDITOR (gtk_widget_new (TYPE_TEXT_EDITOR, NULL));
 	gint zoom_factor;
 	static guint new_file_count;
-	
-	te->status = status; 
+
+	te->status = status;
 	te->shell = shell;
-	
+
 	te->props_base = text_editor_get_props();
 	if (name && strlen(name) > 0)
-		te->filename = g_strdup(name); 
-	else 
+		te->filename = g_strdup(name);
+	else
 		te->filename = g_strdup_printf ("Newfile#%d", ++new_file_count);
 	if (uri && strlen(uri) > 0)
-	{	
+	{
 		new_file_count--;
 		g_free (te->filename);
 		g_free (te->uri);
@@ -647,16 +649,16 @@ text_editor_new (AnjutaPlugin *plugin, const gchar *uri, const gchar *name)
 
 		te->uri = g_strdup (uri);
 	}
-	
+
 	text_editor_prefs_init (te);
-	
+
 	/* Create primary view */
 	te->vbox = gtk_vbox_new (TRUE, 3);
 	gtk_box_pack_end (GTK_BOX (te), te->vbox, TRUE, TRUE, 0);
 	text_editor_add_view (te);
 
 	if (te->uri)
-	{	
+	{
 		if (text_editor_load_file (te) == FALSE)
 		{
 			/* Unable to load file */
@@ -665,20 +667,20 @@ text_editor_new (AnjutaPlugin *plugin, const gchar *uri, const gchar *name)
 		}
 	}
 	text_editor_update_controls (te);
-	
+
 	/* Apply font zoom separately */
 	zoom_factor = g_settings_get_int (te->docman_settings, TEXT_ZOOM_FACTOR);
 	/* DEBUG_PRINT ("%s", "Initializing zoom factor to: %d", zoom_factor); */
 	text_editor_set_zoom_factor (te, zoom_factor);
 	text_editor_setup_indicators_color (te);
-	
+
 	/* Get type name notification */
 	g_signal_connect_swapped (G_OBJECT (shell), "value-added", G_CALLBACK (on_shell_value_changed), te);
 	g_signal_connect_swapped (G_OBJECT (shell), "value-removed", G_CALLBACK (on_shell_value_changed), te);
 	g_signal_connect_swapped (G_OBJECT (plugin), "style-changed", G_CALLBACK(on_style_changed), te);
-	
+
     g_signal_connect_swapped (G_OBJECT(te->msgman_settings), "changed", G_CALLBACK (on_indicators_changed), te);
-	
+
 #ifdef DEBUG
 	g_object_weak_ref (G_OBJECT (te), on_te_already_destroyed, te);
 #endif
@@ -692,7 +694,7 @@ text_editor_dispose (GObject *obj)
 
 	/* Disconnect signal */
 	g_signal_handlers_disconnect_by_func (te->shell, G_CALLBACK (on_shell_value_changed), te);
-	
+
 	if (te->monitor)
 	{
 		text_editor_update_monitor (te, TRUE);
@@ -708,13 +710,13 @@ text_editor_dispose (GObject *obj)
 		GtkWidget *scintilla;
 		AnEditorID editor_id;
 		GList *node;
-		
+
 		node = te->views;
 		while (node)
 		{
 			editor_id = GPOINTER_TO_INT (node->data);
 			scintilla = aneditor_get_widget (editor_id);
-			
+
 			g_signal_handlers_disconnect_by_func (G_OBJECT (scintilla),
 						G_CALLBACK (on_text_editor_text_event), te);
 			g_signal_handlers_disconnect_by_func (G_OBJECT (scintilla),
@@ -727,10 +729,10 @@ text_editor_dispose (GObject *obj)
 						G_CALLBACK (on_text_editor_scintilla_notify), te);
 			g_signal_handlers_disconnect_by_func (G_OBJECT (scintilla),
 						G_CALLBACK (on_text_editor_scintilla_focus_in), te);
-			
+
 			aneditor_destroy (editor_id);
 			node = g_list_next (node);
-		}			
+		}
 		te->scintilla = NULL;
 		te->editor_id = 0;
 		te->views = NULL;
@@ -764,7 +766,7 @@ text_editor_finalize (GObject *obj)
 	g_free (te->uri);
 	g_free (te->force_hilite);
 	g_free (te->last_saved_content);
-	
+
 	G_OBJECT_CLASS (parent_class)->finalize (obj);
 }
 
@@ -787,15 +789,15 @@ text_editor_set_hilite_type (TextEditor * te, const gchar *file_extension)
 {
 	const gchar *past_language;
 	const gchar *curr_language;
-	
+
 	past_language = ianjuta_editor_language_get_language (IANJUTA_EDITOR_LANGUAGE (te), NULL);
-	
+
 	g_free (te->force_hilite);
 	if (file_extension)
 		te->force_hilite = g_strdup (file_extension);
 	else
 		te->force_hilite = NULL;
-	
+
 	curr_language = ianjuta_editor_language_get_language (IANJUTA_EDITOR_LANGUAGE (te), NULL);
 	if (past_language != curr_language)
 		g_signal_emit_by_name (te, "language-changed", curr_language);
@@ -806,7 +808,7 @@ text_editor_hilite_one (TextEditor * te, AnEditorID editor_id)
 {
 	const gchar *name = NULL;
 	gchar *basename = NULL;
-	
+
 	/* syntax highlighting is disabled if te->force_pref && pref is disabled */
 	if (!te->force_pref ||
 		!g_settings_get_boolean (te->settings,
@@ -879,7 +881,7 @@ text_editor_get_attribute (TextEditor *te, gint position)
 	int lexer;
 	int style;
 	TextEditorAttrib attrib = TEXT_EDITOR_ATTRIB_TEXT;
-	
+
 	lexer = scintilla_send_message (SCINTILLA (te->scintilla), SCI_GETLEXER,
 									0, 0);
 	style = scintilla_send_message (SCINTILLA (te->scintilla), SCI_GETSTYLEAT,
@@ -938,15 +940,15 @@ text_editor_find (TextEditor * te, const gchar * str, gint scope,
 	GtkWidget *editor;
 	glong flags;
 	int current_pos, current_anchor;
-	
+
 	if (!te) return -1;
 	editor = te->scintilla;
-	
+
 	flags = (ignore_case ? 0 : SCFIND_MATCHCASE)
 		| (regexp ? SCFIND_REGEXP : 0)
 		| (whole_word ? SCFIND_WHOLEWORD : 0)
 		| (forward ? 0 : ANEFIND_REVERSE_FLAG);
-		
+
 	switch (scope)
 	{
 		case TEXT_EDITOR_FIND_SCOPE_WHOLE:
@@ -1039,7 +1041,7 @@ guint
 text_editor_get_current_lineno (TextEditor * te)
 {
 	guint count;
-	
+
 	g_return_val_if_fail (te != NULL, 0);
 
 	count =	scintilla_send_message (SCINTILLA (te->scintilla),
@@ -1081,7 +1083,7 @@ guint
 text_editor_get_line_from_position (TextEditor * te, glong pos)
 {
 	guint count;
-	
+
 	g_return_val_if_fail (te != NULL, 0);
 
 	count =	scintilla_send_message (SCINTILLA (te->scintilla),
@@ -1093,7 +1095,7 @@ glong
 text_editor_get_current_position (TextEditor * te)
 {
 	guint count;
-	
+
 	g_return_val_if_fail (te != NULL, 0);
 
 	count =	scintilla_send_message (SCINTILLA (te->scintilla),
@@ -1133,11 +1135,11 @@ text_editor_goto_line (TextEditor * te, glong line,
 							SCI_SETSELECTIONSTART, selpos, 0);
 	scintilla_send_message (SCINTILLA (te->scintilla),
 							SCI_SETSELECTIONEND, selpos, 0);
-	
+
 	/* This ensures that we have arround 5 lines visible below the mark */
-	scintilla_send_message (SCINTILLA (te->scintilla), SCI_GOTOLINE, 
+	scintilla_send_message (SCINTILLA (te->scintilla), SCI_GOTOLINE,
 		linenum_text_editor_to_scintilla (line)+5, 0);
-	scintilla_send_message (SCINTILLA (te->scintilla), SCI_GOTOLINE, 
+	scintilla_send_message (SCINTILLA (te->scintilla), SCI_GOTOLINE,
 		linenum_text_editor_to_scintilla (line), 0);
 	return TRUE;
 }
@@ -1198,7 +1200,7 @@ text_editor_clear_indicator (TextEditor *te, gint start,
 						   gint end)
 {
 	gint i;
-	
+
 	g_return_val_if_fail (te != NULL, -1);
 	g_return_val_if_fail (IS_SCINTILLA (te->scintilla) == TRUE, -1);
 
@@ -1218,7 +1220,7 @@ text_editor_clear_all_indicator (TextEditor *te)
 {
 	glong last;
 	gint i;
-	
+
 	g_return_val_if_fail (te != NULL, -1);
 	g_return_val_if_fail (IS_SCINTILLA (te->scintilla) == TRUE, -1);
 
@@ -1248,11 +1250,11 @@ text_editor_set_line_marker (TextEditor *te, glong line)
 
 /* Support for DOS-Files
  *
- * On load, Anjuta will detect DOS-files by finding <CR><LF>. 
+ * On load, Anjuta will detect DOS-files by finding <CR><LF>.
  * Anjuta will translate some chars >= 128 to native charset.
  * On save the DOS_EOL_CHECK(preferences->editor) will be checked
- * and chars >=128 will be replaced by DOS-codes, if any translation 
- * match(see struct tr_dos in this file) and <CR><LF> will used 
+ * and chars >=128 will be replaced by DOS-codes, if any translation
+ * match(see struct tr_dos in this file) and <CR><LF> will used
  * instead of <LF>.
  * The DOS_EOL_CHECK-checkbox will be set on loading a DOS-file.
  *
@@ -1260,7 +1262,7 @@ text_editor_set_line_marker (TextEditor *te, glong line)
  */
 
 /*
- * this is a translation table from unix->dos 
+ * this is a translation table from unix->dos
  * this table will be used by filter_chars and save filtered.
  */
 static struct {
@@ -1295,7 +1297,7 @@ static struct {
 };
 
 /*
- * filter chars in buffer, by using tr_dos-table. 
+ * filter chars in buffer, by using tr_dos-table.
  *
  */
 static size_t
@@ -1339,46 +1341,46 @@ save_filtered_in_dos_mode(GFileOutputStream* stream, gchar *data_,
 	/* build the translation table */
 	tr_map = malloc( 256 );
 	memset( tr_map, 0, 256 );
-	
+
 	for ( k = 0; k < sizeof(tr_dos)/2; k++)
 	  tr_map[tr_dos[k].c] = tr_dos[k].b;
 
 	data = (unsigned char*)data_;
-	i = 0; 
+	i = 0;
 	j = 0;
 	while ( i < size )
 	{
-		if (data[i]>=128) 
+		if (data[i]>=128)
 		{
 			/* convert dos-text */
 			if ( tr_map[data[i]] != 0 )
-			{	
+			{
 				gsize bytes_written;
-				result = g_output_stream_write_all (G_OUTPUT_STREAM (stream), 
-														&tr_map[data[i]], 1, 
-														&bytes_written, 
+				result = g_output_stream_write_all (G_OUTPUT_STREAM (stream),
+														&tr_map[data[i]], 1,
+														&bytes_written,
 														NULL, NULL);
-	
+
 				j += bytes_written;
 			}
 			else
 			{
 				/* char not found, skip transform */
 				gsize bytes_written;
-				result = g_output_stream_write_all (G_OUTPUT_STREAM (stream), 
-														&data[i], 1, 
-														&bytes_written, 
+				result = g_output_stream_write_all (G_OUTPUT_STREAM (stream),
+														&data[i], 1,
+														&bytes_written,
 														NULL, NULL);
 				j += bytes_written;
 			}
 			i++;
-		} 
-		else 
+		}
+		else
 		{
 			gsize bytes_written;
-			result = g_output_stream_write_all (G_OUTPUT_STREAM (stream), 
-														&data[i], 1, 
-														&bytes_written, 
+			result = g_output_stream_write_all (G_OUTPUT_STREAM (stream),
+														&data[i], 1,
+														&bytes_written,
 														NULL, NULL);
 			j += bytes_written;
 			i++;
@@ -1398,9 +1400,9 @@ determine_editor_mode(gchar* buffer, glong size)
 	gint i;
 	guint cr, lf, crlf, max_mode;
 	gint mode;
-	
+
 	cr = lf = crlf = 0;
-	
+
 	for ( i = 0; i < size ; i++ )
 	{
 		if ( buffer[i] == 0x0a ){
@@ -1452,27 +1454,27 @@ convert_to_utf8 (PropsID props, const gchar *content, gsize len,
 	gchar* new_content;
 	gsize new_len;
 
-	new_content = anjuta_convert_to_utf8 (content, 
-										  len, 
+	new_content = anjuta_convert_to_utf8 (content,
+										  len,
 										  encoding_used,
-										  &new_len, 
+										  &new_len,
 										  &conv_error);
-	if  (new_content == NULL)	
+	if  (new_content == NULL)
 	{
 		/* Last change, let's try 8859-15 */
-		*encoding_used =  
+		*encoding_used =
 			anjuta_encoding_get_from_charset("ISO-8859-15");
-			
+
 		new_content = anjuta_convert_to_utf8 (content,
 											  len,
 											  encoding_used,
 											  &new_len,
 											  &conv_error);
 	}
-	
+
 	if (conv_error)
 		g_error_free (conv_error);
-	
+
 	return new_content;
 }
 
@@ -1487,7 +1489,7 @@ load_from_file (TextEditor *te, gchar *uri, gchar **err)
 	gint dos_filter, editor_mode;
 	gchar *file_content = NULL;
 	gchar *buffer = NULL;
-	guint64 size; 
+	guint64 size;
 
 	scintilla_send_message (SCINTILLA (te->scintilla), SCI_CLEARALL,
 							0, 0);
@@ -1517,17 +1519,17 @@ load_from_file (TextEditor *te, gchar *uri, gchar **err)
 
 		return FALSE;
 	}
-	
+
 	stream = g_file_read (gio_uri, NULL, NULL);
 	if (stream == NULL)
 	{
-		*err = g_strdup (_("Could not open file"));		
+		*err = g_strdup (_("Could not open file"));
 		g_object_unref (gio_uri);
 
 		return FALSE;
 	}
 	/* Crude way of loading, but faster */
-	result = g_input_stream_read_all (G_INPUT_STREAM (stream), 
+	result = g_input_stream_read_all (G_INPUT_STREAM (stream),
 										buffer, size, &nchars, NULL, NULL);
 	if (!result)
 	{
@@ -1537,21 +1539,21 @@ load_from_file (TextEditor *te, gchar *uri, gchar **err)
 
 		return FALSE;
 	}
-	
+
 	if (buffer)
 	{
 		buffer[size] = '\0';
 		file_content = g_strdup (buffer);
 	}
-	
+
 	if (size != nchars)
 	{
 		/* DEBUG_PRINT ("File size and loaded size not matching"); */
 	}
-	dos_filter = 
+	dos_filter =
 		g_settings_get_boolean (te->settings,
 									DOS_EOL_CHECK);
-	
+
 	/* Set editor mode */
 	editor_mode =  determine_editor_mode (buffer, nchars);
 	scintilla_send_message (SCINTILLA (te->scintilla),
@@ -1569,10 +1571,10 @@ load_from_file (TextEditor *te, gchar *uri, gchar **err)
 		else
 		{
 			gchar *converted_text;
-	
+
 			converted_text = convert_to_utf8 (te->props_base,
 											  buffer, nchars, &te->encoding);
-			
+
 			if (converted_text == NULL)
 			{
 				/* bail out */
@@ -1596,13 +1598,13 @@ load_from_file (TextEditor *te, gchar *uri, gchar **err)
 	}
 	scintilla_send_message (SCINTILLA (te->scintilla), SCI_ADDTEXT,
 							nchars, (long) buffer);
-	
+
 	g_free (buffer);
 
 	/* Save the buffer as last saved content */
 	g_free (te->last_saved_content);
 	te->last_saved_content = file_content;
-	
+
 	g_object_unref (gio_uri);
 
 	return TRUE;
@@ -1632,7 +1634,7 @@ strip_trailing_space (gchar *data, gsize *size)
 				if (len == *size) break;
 				space = &data[len];
 				while ((len != *size) && ((data[len] == ' ') || (data[len] == '\t'))) *strip++ = data[len++];
-				if ((len == *size) || (data[len] == '\n') || (data[len] == '\r')) 
+				if ((len == *size) || (data[len] == '\n') || (data[len] == '\r'))
 				{
 					strip -= (&data[len] - space);
 				}
@@ -1641,7 +1643,7 @@ strip_trailing_space (gchar *data, gsize *size)
 			break;
 		}
 	}
-	
+
 }
 
 static gboolean
@@ -1661,7 +1663,7 @@ save_to_file (TextEditor *te, gchar *uri, GError **error)
 		return FALSE;
 
 	result = TRUE;
-	
+
 	nchars = scintilla_send_message (SCINTILLA (te->scintilla),
 									 SCI_GETLENGTH, 0, 0);
 	data =	(gchar *) aneditor_command (te->editor_id,
@@ -1669,9 +1671,9 @@ save_to_file (TextEditor *te, gchar *uri, GError **error)
 	if (data)
 	{
 		gint dos_filter, editor_mode;
-		
+
 		size = strlen (data);
-		
+
 
 		/* Save in original encoding */
 		if ((te->encoding != NULL))
@@ -1679,15 +1681,15 @@ save_to_file (TextEditor *te, gchar *uri, GError **error)
 			GError *conv_error = NULL;
 			gchar* converted_file_contents = NULL;
 			gsize new_len;
-			
+
 			/* DEBUG_PRINT ("Using encoding %s", te->encoding); */
-			
+
 			/* Try to convert it from UTF-8 to original encoding */
-			converted_file_contents = anjuta_convert_from_utf8 (data, -1, 
+			converted_file_contents = anjuta_convert_from_utf8 (data, -1,
 																te->encoding,
 																&new_len,
-																&conv_error); 
-			
+																&conv_error);
+
 			if (conv_error != NULL)
 			{
 				/* Conversion error */
@@ -1704,8 +1706,8 @@ save_to_file (TextEditor *te, gchar *uri, GError **error)
 		{
 			/* Save in utf-8 */
 			/* DEBUG_PRINT ("Using utf-8 encoding"); */
-		}				
-		
+		}
+
 		/* Strip trailing spaces */
 		strip = g_settings_get_boolean (te->settings,
 											STRIP_TRAILING_SPACES);
@@ -1731,24 +1733,24 @@ save_to_file (TextEditor *te, gchar *uri, GError **error)
 		}
 		else
 		{
-			result = g_output_stream_write_all (G_OUTPUT_STREAM (stream), 
-														data, size, 
+			result = g_output_stream_write_all (G_OUTPUT_STREAM (stream),
+														data, size,
 														&nchars, NULL, error);
 		}
 		data[size] = '\0';
 	}
-	
+
 	/* Set last content saved to data */
 	g_free (te->last_saved_content);
 	te->last_saved_content = data;
-	
+
 	if (result)
 		result = g_output_stream_close (G_OUTPUT_STREAM (stream), NULL, error);
 	else
 		g_output_stream_close (G_OUTPUT_STREAM (stream), NULL, NULL);
 
 	g_object_unref (gio_uri);
-	
+
 	return result;
 }
 
@@ -1756,15 +1758,15 @@ gboolean
 text_editor_load_file (TextEditor * te)
 {
 	gchar *err = NULL;
-	
+
 	if (te == NULL || te->filename == NULL)
 		return FALSE;
 	if (IS_SCINTILLA (te->scintilla) == FALSE)
 		return FALSE;
-	anjuta_status (te->status, _("Loading file..."), 5); 
-	
+	anjuta_status (te->status, _("Loading file..."), 5);
+
 	text_editor_freeze (te);
-	
+
 	// te->modified_time = time (NULL);
 	text_editor_update_monitor (te, FALSE);
 	if (load_from_file (te, te->uri, &err) == FALSE)
@@ -1794,7 +1796,7 @@ text_editor_load_file (TextEditor * te)
 	anjuta_status (te->status, _("File loaded successfully"), 5);
 
 	g_idle_add ((GSourceFunc) emit_opened, te);
-	
+
 	return TRUE;
 }
 
@@ -1806,20 +1808,20 @@ text_editor_save_file (TextEditor * te, gboolean update)
 	gboolean ret = FALSE;
 
 	g_return_val_if_fail (te != NULL, FALSE);
-	g_return_val_if_fail (IS_SCINTILLA (te->scintilla), FALSE);	
-	
+	g_return_val_if_fail (IS_SCINTILLA (te->scintilla), FALSE);
+
 	text_editor_freeze (te);
 	text_editor_set_line_number_width(te);
 	parent = GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (te)));
-	
-	anjuta_status (te->status, _("Saving file..."), 5); 
+
+	anjuta_status (te->status, _("Saving file..."), 5);
 	text_editor_update_monitor (te, TRUE);
-	
+
 	if (!save_to_file (te, te->uri, &error))
-	{	
+	{
 		text_editor_thaw (te);
 		g_return_val_if_fail (error != NULL, FALSE);
-		
+
 		anjuta_util_dialog_error (parent,
 								  _("Could not save intermediate file %s: %s"),
 								  te->uri,
@@ -1945,7 +1947,7 @@ glong text_editor_get_selection_start (TextEditor * te)
 	return scintilla_send_message (SCINTILLA (te->scintilla),
 				       SCI_GETSELECTIONSTART, 0, 0);
 }
-	
+
 glong text_editor_get_selection_end (TextEditor * te)
 {
 	return scintilla_send_message (SCINTILLA (te->scintilla),
@@ -1979,7 +1981,7 @@ text_editor_is_marker_set (TextEditor* te, glong line, gint marker)
 	g_return_val_if_fail (te != NULL, FALSE);
 	g_return_val_if_fail (line >= 0, FALSE);
 	g_return_val_if_fail (marker < 32, FALSE);
-	
+
 	state = scintilla_send_message (SCINTILLA(te->scintilla),
 		SCI_MARKERGET, linenum_text_editor_to_scintilla (line), 0);
 	return ((state & (1 << marker)));
@@ -2000,7 +2002,7 @@ text_editor_delete_marker (TextEditor* te, glong line, gint marker)
 	g_return_if_fail (IS_TEXT_EDITOR (te));
 	g_return_if_fail (line >= 0);
 	g_return_if_fail (marker < 32);
-	
+
 	scintilla_send_message (SCINTILLA(te->scintilla),
 		SCI_MARKERDELETE, linenum_text_editor_to_scintilla (line), marker);
 }
@@ -2009,12 +2011,12 @@ gint
 text_editor_line_from_handle (TextEditor* te, gint marker_handle)
 {
 	gint line;
-	
+
 	g_return_val_if_fail (te != NULL, -1);
-	
+
 	line = scintilla_send_message (SCINTILLA(te->scintilla),
 		SCI_MARKERLINEFROMHANDLE, marker_handle, 0);
-	
+
 	return linenum_scintilla_to_text_editor (line);
 }
 
@@ -2029,7 +2031,7 @@ text_editor_get_num_bookmarks(TextEditor* te)
 {
 	gint	nLineNo = -1 ;
 	gint	nMarkers = 0 ;
-	
+
 	g_return_val_if_fail (te != NULL, 0 );
 
 	while( ( nLineNo = text_editor_get_bookmark_line( te, nLineNo ) ) >= 0 )
@@ -2098,37 +2100,37 @@ text_editor_function_select(TextEditor *te)
 	gint pos;
 	gint line;
 	gint fold_level;
-	gint start, end;	
+	gint start, end;
 	gint line_count;
 	gint tmp;
 
-	line_count = scintilla_send_message(SCINTILLA(te->scintilla), 
+	line_count = scintilla_send_message(SCINTILLA(te->scintilla),
 	                                    SCI_GETLINECOUNT, 0, 0);
-	pos = scintilla_send_message(SCINTILLA(te->scintilla), 
+	pos = scintilla_send_message(SCINTILLA(te->scintilla),
 	                             SCI_GETCURRENTPOS, 0, 0);
 	line = scintilla_send_message(SCINTILLA(te->scintilla),
 	                              SCI_LINEFROMPOSITION, pos, 0);
 
-	tmp = line + 1;	
-	fold_level = scintilla_send_message(SCINTILLA(te->scintilla), 
-	                                    SCI_GETFOLDLEVEL, line, 0) ;	
+	tmp = line + 1;
+	fold_level = scintilla_send_message(SCINTILLA(te->scintilla),
+	                                    SCI_GETFOLDLEVEL, line, 0) ;
 	if ((fold_level & 0xFF) != 0)
 	{
 		while((fold_level & 0x10FF) != 0x1000 && line >= 0)
-			fold_level = scintilla_send_message(SCINTILLA(te->scintilla), 
+			fold_level = scintilla_send_message(SCINTILLA(te->scintilla),
 	                                    SCI_GETFOLDLEVEL, --line, 0) ;
-		start = scintilla_send_message(SCINTILLA(te->scintilla), 
+		start = scintilla_send_message(SCINTILLA(te->scintilla),
 	                                    SCI_POSITIONFROMLINE, line + 1, 0);
 		line = tmp;
-		fold_level = scintilla_send_message(SCINTILLA(te->scintilla), 
+		fold_level = scintilla_send_message(SCINTILLA(te->scintilla),
 	                                        SCI_GETFOLDLEVEL, line, 0) ;
 		while((fold_level & 0x10FF) != 0x1000 && line < line_count)
-			fold_level = scintilla_send_message(SCINTILLA(te->scintilla), 
+			fold_level = scintilla_send_message(SCINTILLA(te->scintilla),
 	                                            SCI_GETFOLDLEVEL, ++line, 0) ;
 
-		end = scintilla_send_message(SCINTILLA(te->scintilla), 
+		end = scintilla_send_message(SCINTILLA(te->scintilla),
 	                                 SCI_POSITIONFROMLINE, line , 0);
-		scintilla_send_message(SCINTILLA(te->scintilla), 
+		scintilla_send_message(SCINTILLA(te->scintilla),
 	                           SCI_SETSEL, start, end) ;
 	}
 }
@@ -2166,24 +2168,24 @@ text_editor_get_props ()
 {
 	/* Built in values */
 	static PropsID props_built_in = 0;
-	
+
 	/* System values */
 	static PropsID props_global = 0;
-	
-	/* User values */ 
+
+	/* User values */
 	// static PropsID props_local = 0;
-	
+
 	/* Session values */
 	static PropsID props_session = 0;
-	
+
 	/* Instance values */
 	static PropsID props = 0;
-	
+
 	gchar *propdir, *propfile;
 
 	if (props)
 		return props;
-	
+
 	props_built_in = sci_prop_set_new ();
 	props_global = sci_prop_set_new ();
 	// props_local = sci_prop_set_new ();
@@ -2201,12 +2203,12 @@ text_editor_get_props ()
 	// sci_prop_set_parent (props_session, props_local);
 	sci_prop_set_parent (props_session, props_global);
 	sci_prop_set_parent (props, props_session);
-	
+
 	propdir = g_build_filename (PACKAGE_DATA_DIR, "properties/", NULL);
 	propfile = g_build_filename (PACKAGE_DATA_DIR, "properties",
 								 "anjuta.properties", NULL);
 	/* DEBUG_PRINT ("Reading file: %s", propfile); */
-	
+
 	if (g_file_test (propfile, G_FILE_TEST_EXISTS) == FALSE)
 	{
 		anjuta_util_dialog_error (NULL,
@@ -2223,7 +2225,7 @@ text_editor_get_props ()
 	propdir = anjuta_util_get_user_config_file_path ("scintilla/",NULL);
 	propfile = anjuta_util_get_user_config_file_path ("scintilla","editor-style.properties",NULL);
 	/* DEBUG_PRINT ("Reading file: %s", propfile); */
-	
+
 	/* Create user.properties file, if it doesn't exist */
 	if (g_file_test (propfile, G_FILE_TEST_EXISTS) == FALSE) {
 		gchar* old_propfile = anjuta_util_get_user_config_file_path ("scintilla", "session.properties", NULL);
@@ -2248,13 +2250,13 @@ text_editor_set_line_number_width (TextEditor* te)
 		int lines, line_number_width;
 		gchar* line_number;
 		gchar* line_number_dummy;
-		
-		lines = 
+
+		lines =
 			(int) scintilla_send_message
 				(SCINTILLA(te->scintilla), SCI_GETLINECOUNT, 0,0);
 		line_number = g_strdup_printf("%d", lines);
 		line_number_dummy = g_strnfill(strlen(line_number) + 1, '9');
-		line_number_width = 
+		line_number_width =
 			(int) scintilla_send_message (SCINTILLA(te->scintilla),
 										  SCI_TEXTWIDTH,
 										  STYLE_LINENUMBER,
@@ -2341,12 +2343,12 @@ text_editor_select_completion (TextEditor *te)
 											   0, 0);
 	scintilla_send_message (SCINTILLA (te->scintilla),
 							SCI_AUTOCCANCEL, 0, 0);
-	
+
 	g_return_if_fail (autoc_sel < te->completion_count);
-	
+
 	position = text_editor_get_current_position (te);
 	iter = text_editor_cell_new (te, position);
-           
+
 	ianjuta_provider_activate (IANJUTA_PROVIDER (te->completion[autoc_sel].provider),
 	    IANJUTA_ITERABLE (iter),
 	    te->completion[autoc_sel].data, NULL);
@@ -2357,7 +2359,7 @@ void
 text_editor_command (TextEditor *te, gint command, glong wparam, glong lparam)
 {
 	GList *node;
-	
+
 	node = te->views;
 	while (node)
 	{
@@ -2371,7 +2373,7 @@ text_editor_scintilla_command (TextEditor *te, gint command, glong wparam,
 							   glong lparam)
 {
 	GList *node;
-	
+
 	node = te->views;
 	while (node)
 	{
@@ -2547,7 +2549,7 @@ itext_editor_append (IAnjutaEditor *editor, const gchar *txt,
 		text_to_insert = g_strndup (txt, length);
 	else
 		text_to_insert = g_strdup (txt);
-	
+
 	scintilla_send_message (SCINTILLA (TEXT_EDITOR (editor)->scintilla),
 							SCI_APPENDTEXT, strlen(text_to_insert),
 							(long)text_to_insert);
@@ -2560,22 +2562,22 @@ itext_editor_erase (IAnjutaEditor *editor,
 					IAnjutaIterable *position_end, GError **e)
 {
 	gint start, end;
-	
+
 	/* If both positions are NULL, erase all */
 	if (position_start == NULL && position_end == NULL)
 	{
-		scintilla_send_message (SCINTILLA (TEXT_EDITOR (editor)->scintilla), 
+		scintilla_send_message (SCINTILLA (TEXT_EDITOR (editor)->scintilla),
 								SCI_CLEARALL,
 								0, 0);
 		return;
 	}
-	
+
 	/* Determine correct start and end byte positions */
 	if (position_start)
 		start = text_editor_cell_get_position (TEXT_EDITOR_CELL (position_start));
 	else
 		start = 0;
-	
+
 	if (position_end)
 		end = text_editor_cell_get_position (TEXT_EDITOR_CELL (position_end));
 	else
@@ -2592,7 +2594,7 @@ itext_editor_erase (IAnjutaEditor *editor,
 static void
 itext_editor_erase_all (IAnjutaEditor *editor, GError **e)
 {
-	scintilla_send_message (SCINTILLA (TEXT_EDITOR (editor)->scintilla), 
+	scintilla_send_message (SCINTILLA (TEXT_EDITOR (editor)->scintilla),
 							SCI_CLEARALL,
 							0, 0);
 }
@@ -2629,7 +2631,7 @@ itext_editor_get_line_begin_position (IAnjutaEditor *editor, gint line,
 {
 	gint ln, byte_pos;
 	TextEditor *te;
-	
+
 	g_return_val_if_fail (line > 0, NULL);
 	te = TEXT_EDITOR (editor);
 	ln = linenum_text_editor_to_scintilla (line);
@@ -2644,10 +2646,10 @@ itext_editor_get_line_end_position (IAnjutaEditor *editor, gint line,
 {
 	gint ln, byte_pos;
 	TextEditor *te;
-	
+
 	g_return_val_if_fail (line > 0, NULL);
 	te = TEXT_EDITOR (editor);
-	
+
 	ln = linenum_text_editor_to_scintilla (line);
 	byte_pos = scintilla_send_message (SCINTILLA (te->scintilla),
 								   SCI_GETLINEENDPOSITION, ln, 0);
@@ -2687,7 +2689,7 @@ itext_editor_iface_init (IAnjutaEditorIface *iface)
 	iface->set_tabsize = itext_editor_set_tab_size;
 	iface->get_use_spaces = itext_editor_get_use_spaces;
 	iface->set_use_spaces = itext_editor_set_use_spaces;
-	iface->set_auto_indent = itext_editor_set_auto_indent;	
+	iface->set_auto_indent = itext_editor_set_auto_indent;
 	iface->goto_line = itext_editor_goto_line;
 	iface->goto_start = itext_editor_goto_start;
 	iface->goto_end = itext_editor_goto_end;
@@ -2732,27 +2734,27 @@ idocument_can_redo(IAnjutaDocument *editor, GError **e)
 	return text_editor_can_redo(TEXT_EDITOR(editor));
 }
 
-static void 
+static void
 idocument_undo(IAnjutaDocument* te, GError** ee)
 {
 	text_editor_command(TEXT_EDITOR(te), ANE_UNDO, 0, 0);
 }
 
-static void 
+static void
 idocument_begin_undo_action (IAnjutaDocument* te, GError** ee)
 {
 	scintilla_send_message (SCINTILLA (TEXT_EDITOR (te)->scintilla),
 							SCI_BEGINUNDOACTION, 0, 0);
 }
 
-static void 
+static void
 idocument_end_undo_action (IAnjutaDocument* te, GError** ee)
 {
 	scintilla_send_message (SCINTILLA (TEXT_EDITOR (te)->scintilla),
 							SCI_ENDUNDOACTION, 0, 0);
 }
 
-static void 
+static void
 idocument_redo(IAnjutaDocument* te, GError** ee)
 {
 	text_editor_command(TEXT_EDITOR(te), ANE_REDO, 0, 0);
@@ -2764,25 +2766,25 @@ idocument_grab_focus (IAnjutaDocument *editor, GError **e)
 	text_editor_grab_focus (TEXT_EDITOR (editor));
 }
 
-static void 
+static void
 idocument_cut(IAnjutaDocument * te, GError** ee)
 {
 	text_editor_command(TEXT_EDITOR(te), ANE_CUT, 0, 0);
 }
 
-static void 
+static void
 idocument_copy(IAnjutaDocument * te, GError** ee)
 {
 	text_editor_command(TEXT_EDITOR(te), ANE_COPY, 0, 0);
 }
 
-static void 
+static void
 idocument_paste(IAnjutaDocument * te, GError** ee)
 {
 	text_editor_command(TEXT_EDITOR(te), ANE_PASTE, 0, 0);
 }
 
-static void 
+static void
 idocument_clear(IAnjutaDocument * te, GError** ee)
 {
 	text_editor_command(TEXT_EDITOR(te), ANE_CLEAR, 0, 0);
@@ -2814,7 +2816,7 @@ iselection_get (IAnjutaEditorSelection *editor, GError **error)
 }
 
 static void
-iselection_set (IAnjutaEditorSelection* edit, 
+iselection_set (IAnjutaEditorSelection* edit,
 				IAnjutaIterable* istart,
 				IAnjutaIterable* iend,
 				gboolean scroll, /* TODO: Is is possible to set this in scintilla? */
@@ -2824,7 +2826,7 @@ iselection_set (IAnjutaEditorSelection* edit,
 	TextEditorCell* end = TEXT_EDITOR_CELL (iend);
 	int start_pos = text_editor_cell_get_position (start);
 	int end_pos = text_editor_cell_get_position (end);
-	
+
 	scintilla_send_message (SCINTILLA (TEXT_EDITOR (edit)->scintilla),
 						    SCI_SETSEL, start_pos, end_pos);
 }
@@ -2874,7 +2876,7 @@ iselection_replace (IAnjutaEditorSelection *editor, const gchar *txt,
 		text_to_insert = g_strndup (txt, length);
 	else
 		text_to_insert = g_strdup (txt);
-	
+
 	text_editor_replace_selection (TEXT_EDITOR (editor), text_to_insert);
 
 	g_free (text_to_insert);
@@ -2899,37 +2901,37 @@ iselection_select_function (IAnjutaEditorSelection *editor, GError **e)
 	gint pos;
 	gint line;
 	gint fold_level;
-	gint start, end;	
+	gint start, end;
 	gint line_count;
 	gint tmp;
 
-	line_count = scintilla_send_message (SCINTILLA (te->scintilla), 
+	line_count = scintilla_send_message (SCINTILLA (te->scintilla),
 										 SCI_GETLINECOUNT, 0, 0);
-	pos = scintilla_send_message (SCINTILLA (te->scintilla), 
+	pos = scintilla_send_message (SCINTILLA (te->scintilla),
 								  SCI_GETCURRENTPOS, 0, 0);
 	line = scintilla_send_message (SCINTILLA (te->scintilla),
 								   SCI_LINEFROMPOSITION, pos, 0);
 
-	tmp = line + 1;	
-	fold_level = scintilla_send_message (SCINTILLA (te->scintilla), 
-										 SCI_GETFOLDLEVEL, line, 0) ;	
+	tmp = line + 1;
+	fold_level = scintilla_send_message (SCINTILLA (te->scintilla),
+										 SCI_GETFOLDLEVEL, line, 0) ;
 	if ((fold_level & 0xFF) != 0)
 	{
 		while ((fold_level & 0x10FF) != 0x1000 && line >= 0)
-			fold_level = scintilla_send_message (SCINTILLA (te->scintilla), 
+			fold_level = scintilla_send_message (SCINTILLA (te->scintilla),
 												 SCI_GETFOLDLEVEL, --line, 0) ;
-		start = scintilla_send_message (SCINTILLA (te->scintilla), 
+		start = scintilla_send_message (SCINTILLA (te->scintilla),
 										SCI_POSITIONFROMLINE, line + 1, 0);
 		line = tmp;
-		fold_level = scintilla_send_message (SCINTILLA (te->scintilla), 
+		fold_level = scintilla_send_message (SCINTILLA (te->scintilla),
 											 SCI_GETFOLDLEVEL, line, 0) ;
 		while ((fold_level & 0x10FF) != 0x1000 && line < line_count)
-			fold_level = scintilla_send_message (SCINTILLA (te->scintilla), 
+			fold_level = scintilla_send_message (SCINTILLA (te->scintilla),
 												 SCI_GETFOLDLEVEL, ++line, 0) ;
 
-		end = scintilla_send_message (SCINTILLA (te->scintilla), 
+		end = scintilla_send_message (SCINTILLA (te->scintilla),
 									  SCI_POSITIONFROMLINE, line , 0);
-		scintilla_send_message (SCINTILLA (te->scintilla), 
+		scintilla_send_message (SCINTILLA (te->scintilla),
 								SCI_SETSEL, start, end) ;
 	}
 }
@@ -2993,11 +2995,11 @@ isavable_save_as (IAnjutaFileSavable* editor, GFile* file, GError** e)
 	const gchar *past_language;
 	const gchar *curr_language;
 	TextEditor *text_editor = TEXT_EDITOR(editor);
-	
+
 	past_language =
 		ianjuta_editor_language_get_language (IANJUTA_EDITOR_LANGUAGE (text_editor),
 											  NULL);
-	
+
 	/* Remove path */
 	g_free (text_editor->uri);
 	text_editor->uri = g_file_get_uri (file);
@@ -3006,7 +3008,7 @@ isavable_save_as (IAnjutaFileSavable* editor, GFile* file, GError** e)
 	text_editor_save_file (text_editor, FALSE);
 	text_editor_set_hilite_type (text_editor, NULL);
 	text_editor_hilite (text_editor, FALSE);
-	
+
 	/* We have to take care of 'language-change' signal ourself because
 	 * text_editor_set_hilite_type() only emits it for forced hilite type
 	 */
@@ -3015,7 +3017,7 @@ isavable_save_as (IAnjutaFileSavable* editor, GFile* file, GError** e)
 											  NULL);
 	if (past_language != curr_language)
 		g_signal_emit_by_name (text_editor, "language-changed", curr_language);
-	
+
 }
 
 static gboolean
@@ -3164,7 +3166,7 @@ iconvert_to_lower(IAnjutaEditorConvert* te, IAnjutaIterable *start_position,
 	end = text_editor_cell_get_position (TEXT_EDITOR_CELL (end_position));
 	scintilla_send_message (SCINTILLA (TEXT_EDITOR(te)->scintilla),
 							SCI_SETSEL, start, end);
-	text_editor_command (TEXT_EDITOR (te), ANE_LWRCASE, 0, 0);	
+	text_editor_command (TEXT_EDITOR (te), ANE_LWRCASE, 0, 0);
 }
 
 static void
@@ -3181,12 +3183,12 @@ ilinemode_get (IAnjutaEditorLineMode* te, GError** err)
 {
 	glong eolmode;
 	IAnjutaEditorLineModeType retmode;
-	
+
 	g_return_val_if_fail (IS_TEXT_EDITOR (te), IANJUTA_EDITOR_LINE_MODE_LF);
-	
+
 	eolmode = scintilla_send_message (SCINTILLA (TEXT_EDITOR (te)->scintilla),
 									  SCI_GETEOLMODE, 0, 0);
-	
+
 	switch (eolmode) {
 		case SC_EOL_CR:
 			retmode = IANJUTA_EDITOR_LINE_MODE_CR;
@@ -3209,21 +3211,21 @@ ilinemode_set (IAnjutaEditorLineMode* te, IAnjutaEditorLineModeType mode,
 			   GError** err)
 {
 	g_return_if_fail (IS_TEXT_EDITOR (te));
-	
+
 	switch (mode)
 	{
 		case IANJUTA_EDITOR_LINE_MODE_LF:
 			text_editor_command(TEXT_EDITOR(te), ANE_EOL_LF, 0, 0);
 		break;
-		
+
 		case IANJUTA_EDITOR_LINE_MODE_CR:
 			text_editor_command(TEXT_EDITOR(te), ANE_EOL_CR, 0, 0);
 		break;
-		
+
 		case IANJUTA_EDITOR_LINE_MODE_CRLF:
 			text_editor_command(TEXT_EDITOR(te), ANE_EOL_CRLF, 0, 0);
 		break;
-		
+
 		default:
 			g_warning ("Should not reach here");
 		break;
@@ -3240,17 +3242,17 @@ ilinemode_convert (IAnjutaEditorLineMode *te, IAnjutaEditorLineModeType mode,
 			text_editor_command (TEXT_EDITOR (te), ANE_EOL_CONVERT,
 								ANE_EOL_LF, 0);
 		break;
-		
+
 		case IANJUTA_EDITOR_LINE_MODE_CR:
 			text_editor_command (TEXT_EDITOR (te), ANE_EOL_CONVERT,
 								 ANE_EOL_CR, 0);
 		break;
-		
+
 		case IANJUTA_EDITOR_LINE_MODE_CRLF:
 			text_editor_command (TEXT_EDITOR (te), ANE_EOL_CONVERT,
 								 ANE_EOL_CRLF, 0);
 		break;
-		
+
 		default:
 			g_warning ("Should not reach here");
 		break;
@@ -3273,7 +3275,7 @@ ilinemode_iface_init (IAnjutaEditorLineModeIface *iface)
 	iface->fix = ilinemode_fix;
 }
 
-static void 
+static void
 itip_show (IAnjutaEditorTip *itip, GList* tips,
            IAnjutaIterable *position, GError **err)
 {
@@ -3283,14 +3285,14 @@ itip_show (IAnjutaEditorTip *itip, GList* tips,
 	TextEditor *te = TEXT_EDITOR (itip);
 	TextEditorCell *cell = TEXT_EDITOR_CELL (position);
 	gint calltip_pos;
-	
+
 	g_return_if_fail (IS_TEXT_EDITOR (te));
 	g_return_if_fail (tips != NULL);
 	tips_count = g_list_length (tips);
 	g_return_if_fail (tips_count > 0);
-	
+
 	DEBUG_PRINT ("Number of calltips found %d\n", tips_count);
-	
+
 	calltip = g_string_sized_new (256);
 	tip = tips;
 	while (tip)
@@ -3300,12 +3302,12 @@ itip_show (IAnjutaEditorTip *itip, GList* tips,
 		g_string_append (calltip, (gchar*) tip->data);
 		tip = g_list_next (tip);
 	}
-	
+
 	/* It is not possible to display the calltip above, as the position is defined
 	 * in characters. We cannot be sure that there is enough characters in
 	 * the line above */
 	calltip_pos = text_editor_cell_get_position (cell);
-	
+
 	scintilla_send_message (SCINTILLA (te->scintilla),
 							SCI_CALLTIPSHOW,
 							calltip_pos,
@@ -3355,7 +3357,7 @@ static void
 iassist_invoke(IAnjutaEditorAssist* iassist, IAnjutaProvider* provider, GError** err)
 {
 	TextEditor *te = TEXT_EDITOR (iassist);
-	
+
     text_editor_suggest_completion (te);
 }
 
@@ -3371,7 +3373,7 @@ iassist_proposals(IAnjutaEditorAssist* iassist, IAnjutaProvider* provider,
 	{
 		te->completion_count = 0;
 		g_string_truncate (te->completion_string, 0);
-		
+
 		scintilla_send_message (SCINTILLA (te->scintilla), SCI_AUTOCCANCEL,
 								0, 0);
 		return;
@@ -3383,11 +3385,11 @@ iassist_proposals(IAnjutaEditorAssist* iassist, IAnjutaProvider* provider,
 		g_string_truncate (te->completion_string, 0);
 	}
 	te->completion_finished = finished;
-		
+
 	for (node = proposals; node != NULL; node = g_list_next (node))
 	{
 		IAnjutaEditorAssistProposal* prop = node->data;
-		
+
 		/* Give up if there is too much completion */
 		if (te->completion_count >= SCINTILLA_MAX_COMPLETION) return;
 		if (prop->label)
@@ -3400,7 +3402,7 @@ iassist_proposals(IAnjutaEditorAssist* iassist, IAnjutaProvider* provider,
 			te->completion_count++;
 		}
 	}
-	
+
 	scintilla_send_message (SCINTILLA (te->scintilla),
 							SCI_AUTOCSETAUTOHIDE, 1, 0);
 	scintilla_send_message (SCINTILLA (te->scintilla),
@@ -3585,12 +3587,12 @@ izoom_in(IAnjutaEditorZoom* zoom, GError** e)
 	TextEditor* te = TEXT_EDITOR(zoom);
 	gint zoom_factor = g_settings_get_int (te->docman_settings,
 												   TEXT_ZOOM_FACTOR) + 1;
-	
+
 	if (zoom_factor > MAX_ZOOM_FACTOR)
 		zoom_factor = MAX_ZOOM_FACTOR;
 	else if (zoom_factor < MIN_ZOOM_FACTOR)
 		zoom_factor = MIN_ZOOM_FACTOR;
-	
+
 	g_settings_set_int (te->docman_settings, TEXT_ZOOM_FACTOR, zoom_factor);
 }
 
@@ -3600,12 +3602,12 @@ izoom_out(IAnjutaEditorZoom* zoom, GError** e)
 	TextEditor* te = TEXT_EDITOR(zoom);
 	gint zoom_factor = g_settings_get_int (te->docman_settings,
 												   TEXT_ZOOM_FACTOR) - 1;
-	
+
 	if (zoom_factor > MAX_ZOOM_FACTOR)
 		zoom_factor = MAX_ZOOM_FACTOR;
 	else if (zoom_factor < MIN_ZOOM_FACTOR)
 		zoom_factor = MIN_ZOOM_FACTOR;
-	
+
 	g_settings_set_int (te->docman_settings, TEXT_ZOOM_FACTOR, zoom_factor);
 }
 
@@ -3654,21 +3656,21 @@ ilanguage_get_supported_languages (IAnjutaEditorLanguage *ilanguage,
 		gchar **strv;
 		gchar **token;
 		gchar *menu_entries;
-		
+
 		supported_languages_name =
 			g_hash_table_new_full (g_str_hash, g_str_equal,
 								   NULL, g_free);
 		supported_languages_ext =
 			g_hash_table_new_full (g_str_hash, g_str_equal,
 								   NULL, g_free);
-		
+
 		supported_languages_by_lexer =
 			g_hash_table_new_full (g_str_hash, g_str_equal,
 								   g_free, NULL);
-			
+
 		menu_entries = sci_prop_get (text_editor_get_props (), "menu.language");
 		g_return_val_if_fail (menu_entries != NULL, NULL);
-		
+
 		strv = g_strsplit (menu_entries, "|", -1);
 		token = strv;
 		while (*token)
@@ -3678,21 +3680,21 @@ ilanguage_get_supported_languages (IAnjutaEditorLanguage *ilanguage,
 			gchar *iter;
 			gchar *name, *extension;
 			GString *lang;
-			
+
 			lang = g_string_new ("");
-			
+
 			name = *token++;
 			if (!name)
 				break;
-			
+
 			extension = *token++;
 			if (!extension)
 				break;
 			token++;
-			
+
 			if (name[0] == '#')
 				continue;
-			
+
 			iter = name;
 			while (*iter)
 			{
@@ -3706,13 +3708,13 @@ ilanguage_get_supported_languages (IAnjutaEditorLanguage *ilanguage,
 				}
 				iter++;
 			}
-			
+
 			/* HACK: Convert the weird c++ name to cpp */
 			if (strcmp (lang->str, "c / c++") == 0)
 			{
 				g_string_assign (lang, "cpp");
 			}
-			
+
 			/* Updated mapping hash tables */
 			g_hash_table_insert (supported_languages_name, lang->str,
 								 g_strdup (name));
@@ -3754,7 +3756,7 @@ ilanguage_get_language_name (IAnjutaEditorLanguage *ilanguage,
 {
 	if (!supported_languages_name)
 		ilanguage_get_supported_languages (ilanguage, NULL);
-	
+
 	return g_hash_table_lookup (supported_languages_name, language);
 }
 
@@ -3771,7 +3773,7 @@ ilanguage_set_language (IAnjutaEditorLanguage *ilanguage,
 														  language));
 	else /* Autodetect */
 		text_editor_set_hilite_type (TEXT_EDITOR (ilanguage), NULL);
-		
+
 	text_editor_hilite (TEXT_EDITOR (ilanguage), FALSE);
 }
 
@@ -3781,24 +3783,24 @@ ilanguage_get_language (IAnjutaEditorLanguage *ilanguage, GError **err)
 	const gchar *language = NULL;
 	const gchar *filename = NULL;
 	TextEditor *te = TEXT_EDITOR (ilanguage);
-	
+
 	if (te->force_hilite)
 		filename = te->force_hilite;
 	else if (te->filename)
 		filename = te->filename;
-	
+
 	if (filename)
 	{
 		gchar *lexer = NULL;
 		lexer = sci_prop_get_new_expand (te->props_base,
 										 "lexer.", filename);
-		
+
 		/* No lexer, no language */
 		if (lexer)
 		{
 			if (!supported_languages_by_lexer)
 				ilanguage_get_supported_languages (ilanguage, NULL);
-			
+
 			language = g_hash_table_lookup (supported_languages_by_lexer, lexer);
 			/* DEBUG_PRINT ("Found (language)%s for (lexer)%s", language, lexer); */
 			g_free (lexer);
@@ -3820,7 +3822,7 @@ static gboolean
 isearch_forward (IAnjutaEditorSearch* isearch,
 				 const gchar* search,
 				 gboolean case_sensitive,
-				 IAnjutaEditorCell* istart, 
+				 IAnjutaEditorCell* istart,
 				 IAnjutaEditorCell* iend,
 				 IAnjutaEditorCell** iresult_start,
 				 IAnjutaEditorCell** iresult_end,
@@ -3832,19 +3834,19 @@ isearch_forward (IAnjutaEditorSearch* isearch,
 
 	gint flags = 0;
 	gint retval;
-	
+
 	if (case_sensitive)
 	{
 		flags = SCFIND_MATCHCASE;
 	}
-	
+
 	struct TextToFind to_find;
-	
+
 	to_find.chrg.cpMin = start;
 	to_find.chrg.cpMax = end;
-	
+
 	to_find.lpstrText = (gchar*) search;
-	
+
 	retval = scintilla_send_message (SCINTILLA (te->scintilla),
 									 SCI_FINDTEXT, flags, (long) &to_find);
 	if (retval == -1)
@@ -3861,7 +3863,7 @@ static gboolean
 isearch_backward (IAnjutaEditorSearch* isearch,
 				  const gchar* search,
 				  gboolean case_sensitive,
-				  IAnjutaEditorCell* istart, 
+				  IAnjutaEditorCell* istart,
 				  IAnjutaEditorCell* iend,
 				  IAnjutaEditorCell** iresult_start,
 				  IAnjutaEditorCell** iresult_end,
@@ -3873,19 +3875,19 @@ isearch_backward (IAnjutaEditorSearch* isearch,
 
 	gint flags = 0;
 	gint retval;
-	
+
 	if (case_sensitive)
 	{
 		flags = SCFIND_MATCHCASE;
 	}
-	
+
 	struct TextToFind to_find;
-	
+
 	to_find.chrg.cpMin = start;
 	to_find.chrg.cpMax = end;
-	
+
 	to_find.lpstrText = (gchar*) search;
-	
+
 	retval = scintilla_send_message (SCINTILLA (te->scintilla), SCI_FINDTEXT, flags, (long) &to_find);
 	if (retval == -1)
 		return FALSE;
