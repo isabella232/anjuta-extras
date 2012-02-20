@@ -1,4 +1,15 @@
-anjuta-extras-3.3.4 (16 January 2011) -- James Liggett
+anjuta-extras-3.3.90 (20 February 2012) -- James Liggett
+
+Johannes Schmid (2):
+      configure: Use AM_SILENT_RULES when available
+      scintilla: Implement "opened" signal
+
+Sébastien Granjoux (2):
+      scintilla: bgo #669359 - Yellow debugger color in dark theme
+      scintilla: Keep window position when reloading a file
+      
+
+anjuta-extras-3.3.4 (16 January 2012) -- James Liggett
 
 Jiro Matsuzawa (1):
       Updated Japanese translation
