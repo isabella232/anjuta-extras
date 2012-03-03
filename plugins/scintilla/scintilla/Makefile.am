@@ -6,6 +6,8 @@ noinst_LTLIBRARIES = libanjuta-scintilla.la
 
 AM_CPPFLAGS = \
 	-I$(srcdir)/include \
+	-I$(srcdir)/src \
+	-I$(srcdir)/lexlib \
 	$(LIBANJUTA_CFLAGS) \
 	$(GTHREAD_CFLAGS) \
 	$(GMODULE_CFLAGS) \
@@ -16,77 +18,80 @@ AM_CXXFLAGS = -DGTK -DSCI_LEXER -DUSE_XIM
 include $(srcdir)/lexers.make
 
 libanjuta_scintilla_la_SOURCES =\
-	Accessor.cxx \
-	AutoComplete.cxx \
-	CallTip.cxx \
-	Catalogue.cxx \
-	CellBuffer.cxx \
-	CharClassify.cxx \
-	CharacterSet.cxx \
-	ContractionState.cxx \
-	Decoration.cxx \
-	Document.cxx \
-	Editor.cxx \
-	ExternalLexer.cxx \
-	Indicator.cxx \
-	KeyMap.cxx \
-	LineMarker.cxx \
-	PerLine.cxx \
-	PlatGTK.cxx \
-	PositionCache.cxx \
-	PropSetSimple.cxx \
-	RESearch.cxx \
-	RunStyles.cxx \
-	ScintillaBase.cxx \
-	ScintillaGTK.cxx \
-	Selection.cxx \
-	StyleContext.cxx\
-	Style.cxx \
-	UniConversion.cxx \
-	ViewStyle.cxx \
-	WordList.cxx \
-	XPM.cxx\
-	Accessor.h \
-	AutoComplete.h \
-	CallTip.h \
-	Catalogue.h \
-	CellBuffer.h \
-	CharacterSet.h \
-	CharClassify.h \
-	ContractionState.h \
-	Converter.h \
-	Decoration.h \
-	Document.h \
-	Editor.h \
-	ExternalLexer.h \
-	Indicator.h \
-	KeyMap.h \
-	LexAccessor.h \
-	LexerModule.h \
-	LexerBase.h \
-	LexerSimple.h \
-	LineMarker.h \
-	OptionSet.h \
-	Partitioning.h \
-	PerLine.h \
-	PositionCache.h \
-	PropSetSimple.h \
-	RESearch.h \
-	RunStyles.h \
-	ScintillaBase.h \
-	Selection.h \
-	SparseState.h \
-	SplitVector.h \
-	StyleContext.h\
-	Style.h \
-	SVector.h \
-	UniConversion.h \
-	ViewStyle.h\
-	WordList.h \
-	XPM.h\
-	scintilla-marshal.h\
-	scintilla-marshal.c\
-	$(LEXER_SRCS)
+	src/AutoComplete.cxx \
+	src/AutoComplete.h \
+	src/CallTip.cxx \
+	src/CallTip.h \
+	src/Catalogue.cxx \
+	src/Catalogue.h \
+	src/CellBuffer.cxx \
+	src/CellBuffer.h \
+	src/CharClassify.cxx \
+	src/CharClassify.h \
+	src/ContractionState.cxx \
+	src/ContractionState.h \
+	src/Decoration.cxx \
+	src/Decoration.h \
+	src/Document.cxx \
+	src/Document.h \
+	src/Editor.cxx \
+	src/Editor.h \
+	src/ExternalLexer.cxx \
+	src/ExternalLexer.h \
+	src/Indicator.cxx \
+	src/Indicator.h \
+	src/KeyMap.cxx \
+	src/KeyMap.h \
+	src/LineMarker.cxx \
+	src/LineMarker.h \
+	src/Partitioning.h \
+	src/PerLine.h \
+	src/PerLine.cxx \
+	src/PositionCache.cxx \
+	src/PositionCache.h \
+	src/RESearch.cxx \
+	src/RESearch.h \
+	src/RunStyles.cxx \
+	src/RunStyles.h \
+	src/ScintillaBase.cxx \
+	src/ScintillaBase.h \
+	src/Selection.cxx \
+	src/Selection.h \
+	src/Style.cxx \
+	src/Style.h \
+	src/SVector.h \
+	src/UniConversion.cxx \
+	src/UniConversion.h \
+	src/ViewStyle.cxx \
+	src/ViewStyle.h\
+	src/XPM.cxx\
+	src/XPM.h\
+	lexlib/Accessor.cxx \
+	lexlib/Accessor.h \
+	lexlib/CharacterSet.cxx \
+	lexlib/CharacterSet.h \
+	lexlib/LexAccessor.h \
+	lexlib/LexerBase.cxx \
+	lexlib/LexerBase.h \
+	lexlib/LexerModule.cxx \
+	lexlib/LexerModule.h \
+	lexlib/LexerNoExceptions.cxx \
+	lexlib/LexerNoExceptions.h \
+	lexlib/LexerSimple.cxx \
+	lexlib/LexerSimple.h \
+	lexlib/OptionSet.h \
+	lexlib/PropSetSimple.cxx \
+	lexlib/PropSetSimple.h \
+	lexlib/SparseState.h \
+	lexlib/StyleContext.cxx\
+	lexlib/StyleContext.h\
+	lexlib/WordList.cxx \
+	lexlib/WordList.h \
+	gtk/Converter.h \
+	gtk/PlatGTK.cxx \
+	gtk/ScintillaGTK.cxx \
+	$(LEXER_SRCS) \
+	$(BUILT_SOURCES)
 
 libanjuta_scintilla_la_LIBADD = \
 	$(LIBANJUTA_LIBS) \
@@ -102,18 +107,16 @@ test_scintilla_LDADD = libanjuta-scintilla.la
 $(srcdir)/lexers.make:
 	cd $(srcdir); \
 	echo "## Lexers make file" > $(notdir $@); \
-	echo 'LEXER_OBJS = \' >> $(notdir $@); \
-	echo -n '	StyleContext.o' >> $(notdir $@); \
-	for lex in Lex*.cxx; do \
-		lex=`echo $$lex | sed -e "s,.*/,," -e "s/cxx$$/o/"`; \
+	echo -n 'LEXER_OBJS = ' >> $(notdir $@); \
+	for lex in lexers/*.cxx; do \
 		echo '\' >> $(notdir $@); \
+		lex=`echo $$lex | sed -e "s/cxx$$/o/"`; \
 		echo -n "	$$lex" >> $(notdir $@); \
 	done; \
 	echo "" >> $(notdir $@); \
 	echo "" >> $(notdir $@); \
-	echo 'LEXER_SRCS = \' >> $(notdir $@); \
-	echo -n '	LexerNoExceptions.h' >> $(notdir $@); \
-	for lex in Lex*.cxx; do \
+	echo -n 'LEXER_SRCS = ' >> $(notdir $@); \
+	for lex in lexers/*.cxx; do \
 		echo '\' >> $(notdir $@); \
 		echo -n "	$$lex" >> $(notdir $@); \
 	done; \
@@ -121,15 +124,14 @@ $(srcdir)/lexers.make:
 
 update-scintilla:
 	cd $(srcdir); \
-	cp scintilla/gtk/*.cxx .; \
-	cp scintilla/gtk/*.h .; \
-	cp scintilla/gtk/*.list h.; \
-	cp scintilla/lexers/*.cxx .; \
-	cp scintilla/lexers/*.h .; \
-	cp scintilla/lexlib/*.cxx .; \
-	cp scintilla/lexlib/*.h .; \
-	cp scintilla/src/*.cxx .; \
-	cp scintilla/src/*.h .; \
+	cp scintilla/gtk/*.cxx gtk; \
+	cp scintilla/gtk/*.h gtk; \
+	cp scintilla/gtk/*.list gtk; \
+	cp scintilla/lexers/*.cxx lexers; \
+	cp scintilla/lexlib/*.cxx lexlib; \
+	cp scintilla/lexlib/*.h lexlib; \
+	cp scintilla/src/*.cxx src; \
+	cp scintilla/src/*.h src; \
 	cp scintilla/include/*.h include; \
 	cp scintilla/include/*.py include; \
 	cp scintilla/include/*.iface include; \
@@ -142,8 +144,18 @@ update-scintilla:
 	cd $(srcdir); \
 	./update-properties.pl ../properties/styles.properties scite/src
 
-marshallers: scintilla-marshal.list
-	glib-genmarshal --prefix scintilla_marshal scintilla-marshal.list --header > scintilla-marshal.h
-	glib-genmarshal --prefix scintilla_marshal scintilla-marshal.list --body > scintilla-marshal.c 
+BUILT_SOURCES=scintilla-marshal.c scintilla-marshal.h
 
-EXTRA_DIST=lexers.make
+
+scintilla-marshal.h: gtk/scintilla-marshal.list
+	$(AM_V_GEN)@GLIB_GENMARSHAL@  --prefix scintilla_marshal $(srcdir)/gtk/scintilla-marshal.list --header > xgen-gmc \
+        && cp xgen-gmc $(@F) \
+        && rm -f xgen-gmc
+
+scintilla-marshal.c: gtk/scintilla-marshal.list
+	$(AM_V_GEN)@GLIB_GENMARSHAL@  --prefix scintilla_marshal $(srcdir)/gtk/scintilla-marshal.list --body > xgen-gmc \
+        && cp xgen-gmc $(@F) \
+        && rm -f xgen-gmc
+
+EXTRA_DIST=lexers.make \
+	gtk/scintilla-marshal.list
