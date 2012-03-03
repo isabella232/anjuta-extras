@@ -63,6 +63,7 @@ libanjuta_editor_la_SOURCES= \
 	print.h \
 	PropSetFile.h \
 	PropSetFile.cxx \
+	PropSet.h \
 	SString.h \
 	FilePath.cxx \
 	FilePath.h \

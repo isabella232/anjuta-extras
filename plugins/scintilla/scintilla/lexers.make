@@ -10,6 +10,7 @@ LEXER_OBJS = \
 	LexASY.o\
 	LexAU3.o\
 	LexAVE.o\
+	LexAVS.o\
 	LexBaan.o\
 	LexBash.o\
 	LexBasic.o\
@@ -18,6 +19,7 @@ LEXER_OBJS = \
 	LexCLW.o\
 	LexCmake.o\
 	LexCOBOL.o\
+	LexCoffeeScript.o\
 	LexConf.o\
 	LexCPP.o\
 	LexCrontab.o\
@@ -80,6 +82,7 @@ LEXER_OBJS = \
 	LexTADS3.o\
 	LexTAL.o\
 	LexTCL.o\
+	LexTCMD.o\
 	LexTeX.o\
 	LexTxt2tags.o\
 	LexVB.o\
@@ -98,6 +101,7 @@ LEXER_SRCS = \
 	LexASY.cxx\
 	LexAU3.cxx\
 	LexAVE.cxx\
+	LexAVS.cxx\
 	LexBaan.cxx\
 	LexBash.cxx\
 	LexBasic.cxx\
@@ -106,6 +110,7 @@ LEXER_SRCS = \
 	LexCLW.cxx\
 	LexCmake.cxx\
 	LexCOBOL.cxx\
+	LexCoffeeScript.cxx\
 	LexConf.cxx\
 	LexCPP.cxx\
 	LexCrontab.cxx\
@@ -168,6 +173,7 @@ LEXER_SRCS = \
 	LexTADS3.cxx\
 	LexTAL.cxx\
 	LexTCL.cxx\
+	LexTCMD.cxx\
 	LexTeX.cxx\
 	LexTxt2tags.cxx\
 	LexVB.cxx\

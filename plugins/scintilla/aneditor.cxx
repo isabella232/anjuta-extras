@@ -2769,8 +2769,6 @@ void AnEditor::ReadProperties(const char *fileForExt, char **typedef_hl) {
 	}
 
 	/* Gtk handles it correctly */
-	SendEditor(SCI_SETUSEPALETTE, 0);
-
 	SendEditor(SCI_SETPRINTMAGNIFICATION, props->GetInt("print.magnification"));
 	SendEditor(SCI_SETPRINTCOLOURMODE, props->GetInt("print.colour.mode"));
 

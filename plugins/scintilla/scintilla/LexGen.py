@@ -268,7 +268,6 @@ def RegenerateAll():
         for k in documents.keys():
             propertyDocuments[k] = documents[k]
     sortListInsensitive(lexerModules)
-    del lexerProperties["fold.comment.python"]
     lexerProperties = list(lexerProperties.keys())
     sortListInsensitive(lexerProperties)
 
@@ -278,8 +277,8 @@ def RegenerateAll():
     sortListInsensitive(documentProperties)
     propertiesHTML = []
     for k in documentProperties:
-        propertiesHTML.append("\t<tr>\n\t<td>%s</td>\n\t<td>%s</td>\n\t</tr>" %
-            (k, propertyDocuments[k]))
+        propertiesHTML.append("\t<tr id='property-%s'>\n\t<td>%s</td>\n\t<td>%s</td>\n\t</tr>" %
+            (k, k, propertyDocuments[k]))
 
     # Find all the SciTE properties files
     otherProps = ["abbrev.properties", "Embedded.properties", "SciTEGlobal.properties", "SciTE.properties"]

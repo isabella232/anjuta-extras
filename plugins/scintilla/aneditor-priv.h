@@ -40,8 +40,6 @@
 #define GTK
 #include "Platform.h"
 #include "PropSet.h"
-#include "Accessor.h"
-#include "KeyWords.h"
 #include "Scintilla.h"
 #include "ScintillaWidget.h"
 #include "SciLexer.h"
