@@ -57,6 +57,7 @@ libanjuta_scintilla_la_SOURCES =\
 	src/ScintillaBase.h \
 	src/Selection.cxx \
 	src/Selection.h \
+	src/SplitVector.h \
 	src/Style.cxx \
 	src/Style.h \
 	src/SVector.h \
