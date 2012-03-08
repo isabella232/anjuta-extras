@@ -135,7 +135,7 @@ typedef struct _CallTipNode {
 	int rootlen;
 	int start_pos;					// start position in editor
 	int call_tip_start_pos;		// start position in calltip
-	
+
 } CallTipNode, *CallTipNode_ptr;
 
 // Related to Utf8_16::encodingType but with additional values at end
@@ -173,7 +173,7 @@ protected:
 	bool indentOpening;
 	bool indentClosing;
 	*/
-	
+
 	bool indentMaintain;
 	bool indentAutomatic;
 	/*
@@ -188,7 +188,7 @@ protected:
 	WordList preprocCondMiddle;	///< List of preprocessor conditional middle keywords (in C: else elif)
 	WordList preprocCondEnd;	///< List of preprocessor conditional end keywords (in C: endif)
 	*/
-	
+
 	Window wEditor;
 
 	SciFnDirect fnEditor;
@@ -231,15 +231,15 @@ protected:
 	SString autoCompleteFillUpCharacters;
 	SString wordCharacters;
 	int startCalltipWord;
-	
+
 	GQueue *call_tip_node_queue;
 	CallTipNode call_tip_node;
-	
+
 	GCompletion *autocompletion;
-	
+
 	// needed for calltips caret moving
 	int lastPos;
-	
+
 	bool margin;
 	int marginWidth;
 	enum { marginWidthDefault = 20};
@@ -256,7 +256,7 @@ protected:
 	bool clearBeforeExecute;
 	bool allowMenuActions;
 	bool isDirty;
-	
+
 	bool calltipShown;
 	//bool debugTipOn;
 	static AnEditorID focusedID;
@@ -290,7 +290,7 @@ protected:
 
 	void IndentationIncrease();
 	void IndentationDecrease();
-	
+
 	void ClearDocument();
 	void CountLineEnds(int &linesCR, int &linesLF, int &linesCRLF);
 	CharacterRange GetSelection();
@@ -321,7 +321,7 @@ protected:
 	bool CanBeCommented(bool box_stream);
 	bool StartBoxComment();
 	bool StartStreamComment();
-	// SString GetMode(SString language); 
+	// SString GetMode(SString language);
 	// bool InsertCustomIndent();
 
 	// unsigned int GetLinePartsInStyle(int line, int style1, int style2,
@@ -337,7 +337,7 @@ protected:
 	void CharAdded(char ch);
 	void FoldChanged(int line, int levelNow, int levelPrev);
 	void FoldChanged(int position);
-	void Expand(int &line, bool doExpand, bool force=false, 
+	void Expand(int &line, bool doExpand, bool force=false,
 				int visLevels=0, int level=-1);
 	bool MarginClick(int position,int modifiers);
 	//void HandleDwellStart(int mousePos);
@@ -358,6 +358,7 @@ protected:
 
 	void AssignKey(int key, int mods, int cmd);
 	StyleAndWords GetStyleAndWords(const char *base);
+	void SetGtkStyle(Window &win, int style);
 	void SetOneStyle(Window &win, int style, const char *s);
 	void SetStyleFor(Window &win, const char *language);
 	SString ExtensionFileName();
@@ -396,7 +397,7 @@ protected:
 	void SetReadOnly(bool readonly);
 	void SetFoldSymbols(SString fold_symbols);
 	bool iswordcharforsel(char ch);
-	
+
 public:
 
 	AnEditor(PropSetFile* p);

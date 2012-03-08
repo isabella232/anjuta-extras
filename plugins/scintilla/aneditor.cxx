@@ -2354,6 +2354,28 @@ static long ColourOfProperty(PropSetFile *props, const char *key, ColourDesired 
 	return colourDefault.AsLong();
 }
 
+void AnEditor::SetGtkStyle(Window &win, int style) {
+	GtkWidgetPath *path;
+	GtkStyleContext *context;
+	GdkRGBA fore;
+	GdkRGBA back;
+	const PangoFontDescription *desc;
+
+	/* Get theme style information for view widget */
+	path = gtk_widget_path_new ();
+	gtk_widget_path_append_type (path, GTK_TYPE_WIDGET);
+	context = gtk_style_context_new ();
+	gtk_style_context_set_path (context, path);
+	gtk_widget_path_free (path);
+	gtk_style_context_add_class (context, GTK_STYLE_CLASS_VIEW);
+	gtk_style_context_get_color (context, GTK_STATE_FLAG_NORMAL, &fore);
+	gtk_style_context_get_background_color (context, GTK_STATE_FLAG_NORMAL, &back);
+	g_object_unref (context);
+
+	Platform::SendScintilla(win.GetID(), SCI_STYLESETFORE, style, (gint)(fore.red * 255) | ((gint)(fore.green * 255) << 8) | ((gint)(fore.blue *255) << 16));
+	Platform::SendScintilla(win.GetID(), SCI_STYLESETBACK, style, (gint)(back.red * 255) | ((gint)(back.green * 255) << 8) | ((gint)(back.blue *255) << 16));
+}
+
 void AnEditor::SetOneStyle(Window &win, int style, const char *s) {
 	char *val = StringDup(s);
 	char *opt = val;
@@ -2750,6 +2772,8 @@ void AnEditor::ReadProperties(const char *fileForExt, char **typedef_hl) {
 	// then the other language styles
 
 	SendEditor(SCI_STYLERESETDEFAULT, 0, 0);
+
+	SetGtkStyle(wEditor, STYLE_DEFAULT);
 
 	sprintf(key, "style.%s.%0d", "*", STYLE_DEFAULT);
 	sval = props->GetNewExpand(key, "");

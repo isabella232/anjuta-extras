@@ -678,6 +678,7 @@ text_editor_new (AnjutaPlugin *plugin, const gchar *uri, const gchar *name)
 	g_signal_connect_swapped (G_OBJECT (shell), "value-added", G_CALLBACK (on_shell_value_changed), te);
 	g_signal_connect_swapped (G_OBJECT (shell), "value-removed", G_CALLBACK (on_shell_value_changed), te);
 	g_signal_connect_swapped (G_OBJECT (plugin), "style-changed", G_CALLBACK(on_style_changed), te);
+	g_signal_connect_swapped (G_OBJECT (te), "style-updated", G_CALLBACK(on_style_changed), te);
 
     g_signal_connect_swapped (G_OBJECT(te->msgman_settings), "changed", G_CALLBACK (on_indicators_changed), te);
 
