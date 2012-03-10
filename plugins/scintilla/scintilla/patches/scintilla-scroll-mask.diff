@@ -1,0 +1,10 @@
+--- gtk/ScintillaGTK.orig.cxx	2012-03-10 21:29:43.299266688 +0100
++++ gtk/ScintillaGTK.cxx	2012-03-10 21:22:10.719873561 +0100
+@@ -719,6 +719,7 @@
+ #endif
+ 	gtk_widget_set_events(PWidget(wMain),
+ 	                      GDK_EXPOSURE_MASK
++	                      | GDK_SCROLL_MASK
+ 	                      | GDK_STRUCTURE_MASK
+ 	                      | GDK_KEY_PRESS_MASK
+ 	                      | GDK_KEY_RELEASE_MASK
