@@ -2491,6 +2491,8 @@ SString AnEditor::FindLanguageProperty(const char *pattern, const char *defaultV
 
 void AnEditor::ReadProperties(const char *fileForExt, char **typedef_hl) {
 	//DWORD dwStart = timeGetTime();
+	int blink_time = 500;
+
 	if (fileForExt)
 		strcpy (fileName, fileForExt);
 	else
@@ -2602,8 +2604,20 @@ void AnEditor::ReadProperties(const char *fileForExt, char **typedef_hl) {
 
 	SString caretPeriod = props->Get("caret.period");
 	if (caretPeriod.length()) {
-		SendEditor(SCI_SETCARETPERIOD, caretPeriod.value());
+		blink_time = caretPeriod.value();
 	}
+	else {
+		GtkSettings *settings = gtk_settings_get_default();
+		gboolean blink;
+
+        g_object_get(G_OBJECT (settings),
+                     "gtk-cursor-blink", &blink,
+                     "gtk-cursor-blink-time", &blink_time,
+                     NULL);
+		blink_time /= 2;
+		if (!blink) blink_time = 0;
+	}
+	SendEditor(SCI_SETCARETPERIOD, blink_time);
 
 	int caretSlop = props->GetInt("caret.policy.xslop", 1) ? CARET_SLOP : 0;
 	int caretZone = props->GetInt("caret.policy.width", 50);
