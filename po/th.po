@@ -1,155 +1,22 @@
 # Thai translation of anjuta.
-# Copyright (C) 2008-2011 Free Software Foundation, Inc.
+# Copyright (C) 2008-2012 Free Software Foundation, Inc.
 # This file is distributed under the same license as the anjuta package.
-# Akom Chotiphantawanon <knight2000@gmail.com>, 2008-2011.
 # Theppitak Karoonboonyanan <thep@linux.thai.net>, 2008-2009.
+# Akom Chotiphantawanon <knight2000@gmail.com>, 2008-2012.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: anjuta\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
-"product=anjuta&component=unknown\n"
-"POT-Creation-Date: 2010-12-25 14:44+0000\n"
-"PO-Revision-Date: 2011-02-23 12:02+0700\n"
+"product=anjuta&keywords=I18N+L10N&component=unknown\n"
+"POT-Creation-Date: 2012-03-10 23:13+0000\n"
+"PO-Revision-Date: 2012-03-14 21:37+0700\n"
 "Last-Translator: Akom Chotiphantawanon <knight2000@gmail.com>\n"
 "Language-Team: Thai <thai-l10n@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-
-#: ../plugins/profiler/gprof-call-graph-view.c:312
-#: ../plugins/profiler/gprof-call-graph-view.c:322
-#: ../plugins/profiler/gprof-call-graph-view.c:332
-#: ../plugins/profiler/gprof-flat-profile-view.c:56
-#: ../plugins/profiler/gprof-function-call-tree-view.c:60
-msgid "Function Name"
-msgstr "ชื่อฟังก์ชัน"
-
-#: ../plugins/profiler/gprof-call-graph-view.c:344
-msgid "Time"
-msgstr "เวลา"
-
-#. Total amount of time spent in this function, excluding those it calla.
-#. * This is the same as the "Seconds" field in the flat profile.
-#. Time spent in a subroutine of a function.
-#. Time spent in this function when it was called by its caller
-#: ../plugins/profiler/gprof-call-graph-view.c:361
-#: ../plugins/profiler/gprof-call-graph-view.c:375
-#: ../plugins/profiler/gprof-call-graph-view.c:389
-msgid "Self"
-msgstr "ตัวเอง"
-
-#: ../plugins/profiler/gprof-call-graph-view.c:402
-#: ../plugins/profiler/gprof-call-graph-view.c:414
-#: ../plugins/profiler/gprof-call-graph-view.c:426
-msgid "Children"
-msgstr "ลูก"
-
-#: ../plugins/profiler/gprof-call-graph-view.c:439
-#: ../plugins/profiler/gprof-call-graph-view.c:449
-#: ../plugins/profiler/gprof-call-graph-view.c:459
-#: ../plugins/profiler/gprof-flat-profile-view.c:113
-msgid "Calls"
-msgstr "การเรียก"
-
-#: ../plugins/profiler/gprof-flat-profile-view.c:68
-msgid "% Time"
-msgstr "% เวลา"
-
-#: ../plugins/profiler/gprof-flat-profile-view.c:82
-msgid "Cumulative Seconds"
-msgstr "วินาทีสะสม"
-
-#. The number of seconds that this function, excluding other functions it
-#. * calls, takes to execute.
-#: ../plugins/profiler/gprof-flat-profile-view.c:99
-msgid "Self Seconds"
-msgstr "วินาทีตัวเอง"
-
-#. The average number of milliseconds spent in a function, excluding
-#. * the functions that it calls.
-#: ../plugins/profiler/gprof-flat-profile-view.c:127
-msgid "Self ms/call"
-msgstr "มิลลิวินาทีตัวเอง/การเรียก"
-
-#. Same as self ms/call, but includes called functions.
-#: ../plugins/profiler/gprof-flat-profile-view.c:143
-msgid "Total ms/call"
-msgstr "มิลลิวินาทีทั้งหมด/การเรียก"
-
-#: ../plugins/profiler/plugin.c:179
-msgid ""
-"Could not get profiling data.\n"
-"\n"
-"Please check the path to this target's profiling data file."
-msgstr ""
-"ไม่สามารถอ่านข้อมูลการวัดประสิทธิภาพ\n"
-"\n"
-"กรุณาตรวจสอบพาธของแฟ้มข้อมูลการวัดประสิทธิภาพของเป้าหมายนี้"
-
-#: ../plugins/profiler/plugin.c:293
-msgid ""
-"This target does not have any profiling data.\n"
-"\n"
-"Please ensure that the target is compiled with profiling support (-p)and "
-"that it is run at least once."
-msgstr ""
-"เป้าหมายนี้ไม่มีข้อมูลการวัดประสิทธิภาพใดๆ เลย\n"
-"\n"
-"กรุณาตรวจสอบให้แน่ใจว่าเป้าหมายได้ถูกคอมไพล์โดยรองรับการวัดประสิทธิภาพ (-p) "
-"และมีการเรียกทำงานอย่างน้อยหนึ่งครั้ง"
-
-#. Action name
-#. Stock icon, if any
-#: ../plugins/profiler/plugin.c:754
-msgid "Debug"
-msgstr "ดีบั๊ก"
-
-#. Action name
-#. Stock icon, if any
-#: ../plugins/profiler/plugin.c:762 ../plugins/profiler/plugin.c:874
-#: ../plugins/profiler/profiler.plugin.in.h:3
-msgid "Profiler"
-msgstr "เครื่องวัดประสิทธิภาพ"
-
-#. Action name
-#. Stock icon, if any
-#: ../plugins/profiler/plugin.c:770
-msgid "Select Target..."
-msgstr "เลือกเป้าหมาย..."
-
-#. Action name
-#. Stock icon, if any
-#: ../plugins/profiler/plugin.c:778
-msgid "Refresh"
-msgstr "ปรับแสดง"
-
-#. Action name
-#. Stock icon, if any
-#: ../plugins/profiler/plugin.c:786
-msgid "Delete Data"
-msgstr "ลบข้อมูล"
-
-#: ../plugins/profiler/plugin.c:829
-msgid "Application Performance Profiler"
-msgstr "เครื่องมือวัดประสิทธิภาพของโปรแกรม"
-
-#: ../plugins/profiler/plugin.c:851
-msgid "Flat Profile"
-msgstr "โพรไฟล์แบบแบน"
-
-#: ../plugins/profiler/plugin.c:856
-msgid "Call Graph"
-msgstr "กราฟของการเรียก"
-
-#: ../plugins/profiler/plugin.c:861
-msgid "Function Call Tree"
-msgstr "แผนภาพต้นไม้ของการเรียกฟังก์ชัน"
-
-#: ../plugins/profiler/plugin.c:868
-msgid "Function Call Chart"
-msgstr "แผนภูมิการเรียกฟังกชัน"
 
 #: ../plugins/scintilla/print.c:659
 #, c-format
@@ -164,12 +31,72 @@ msgstr "ดึงบัฟเฟอร์ข้อความไปพิมพ
 msgid "No file to print!"
 msgstr "ไม่มีแฟ้มที่จะพิมพ์!"
 
-#: ../plugins/scintilla/plugin.c:318 ../plugins/scintilla/plugin.c:330
-#: ../plugins/scintilla/anjuta-editor.plugin.in.h:2
+#: ../plugins/scintilla/plugin.c:160
+msgid "_Line Number Margin"
+msgstr "ขอบแสดงเ_ลขบรรทัด"
+
+#: ../plugins/scintilla/plugin.c:161
+msgid "Show/Hide line numbers"
+msgstr "แสดง/ซ่อนเลขบรรทัด"
+
+#: ../plugins/scintilla/plugin.c:163
+msgid "_Marker Margin"
+msgstr "ขอบทำเ_ครื่องหมาย"
+
+#: ../plugins/scintilla/plugin.c:164
+msgid "Show/Hide marker margin"
+msgstr "แสดง/ซ่อนขอบทำเครื่องหมาย"
+
+#: ../plugins/scintilla/plugin.c:166
+msgid "_Code Fold Margin"
+msgstr "ขอบ_พับโค้ด"
+
+#: ../plugins/scintilla/plugin.c:167
+msgid "Show/Hide code fold margin"
+msgstr "แสดง/ซ่อนขอบพับโค้ด"
+
+#: ../plugins/scintilla/plugin.c:169
+msgid "_Indentation Guides"
+msgstr "แ_นวการร่นย่อหน้า"
+
+#: ../plugins/scintilla/plugin.c:170
+msgid "Show/Hide indentation guides"
+msgstr "แสดง/ซ่อนแนวการร่นย่อหน้า"
+
+#: ../plugins/scintilla/plugin.c:172
+msgid "_White Space"
+msgstr "_ช่องว่าง"
+
+#: ../plugins/scintilla/plugin.c:173
+msgid "Show/Hide white spaces"
+msgstr "แสดง/ซ่อนช่องว่าง"
+
+#: ../plugins/scintilla/plugin.c:175
+msgid "_Line End Characters"
+msgstr "_อักขระปิดบรรทัด"
+
+#: ../plugins/scintilla/plugin.c:176
+msgid "Show/Hide line end characters"
+msgstr "แสดง/ซ่อนอักขระปิดบรรทัด"
+
+#: ../plugins/scintilla/plugin.c:178
+msgid "Line _Wrapping"
+msgstr "_ตัดบรรทัด"
+
+#: ../plugins/scintilla/plugin.c:179
+msgid "Enable/disable line wrapping"
+msgstr "เปิด/ปิดการตัดบรรทัด"
+
+#: ../plugins/scintilla/plugin.c:372
+msgid "Editor view settings"
+msgstr "ค่าตั้งมุมมองของเครื่องมือแก้ไข"
+
+#: ../plugins/scintilla/plugin.c:487 ../plugins/scintilla/plugin.c:499
+#: ../plugins/scintilla/anjuta-editor.plugin.in.h:1
 msgid "Scintilla Editor"
 msgstr "เครื่องมือแก้ไข Scintilla"
 
-#: ../plugins/scintilla/text_editor.c:440
+#: ../plugins/scintilla/text_editor.c:492
 #, c-format
 msgid ""
 "The file '%s' has been changed.\n"
@@ -178,7 +105,7 @@ msgstr ""
 "แฟ้ม '%s' มีการเปลี่ยนแปลง\n"
 "คุณต้องการเรียกอ่านใหม่หรือไม่?"
 
-#: ../plugins/scintilla/text_editor.c:446
+#: ../plugins/scintilla/text_editor.c:498
 #, c-format
 msgid ""
 "The file '%s' has been changed.\n"
@@ -187,7 +114,7 @@ msgstr ""
 "แฟ้ม '%s' มีการเปลี่ยนแปลง\n"
 "คุณต้องการทิ้งสิ่งที่ได้แก้ไขมา แล้วเรียกอ่านใหม่หรือไม่?"
 
-#: ../plugins/scintilla/text_editor.c:466
+#: ../plugins/scintilla/text_editor.c:518
 #, c-format
 msgid ""
 "The file '%s' has been deleted.\n"
@@ -196,7 +123,7 @@ msgstr ""
 "แฟ้ม '%s' ถูกลบไปแล้ว\n"
 "คุณต้องการยืนยันและปิดแฟ้มดังกล่าวหรือไม่?"
 
-#: ../plugins/scintilla/text_editor.c:473
+#: ../plugins/scintilla/text_editor.c:525
 #, c-format
 msgid ""
 "The file '%s' has been deleted.\n"
@@ -205,24 +132,24 @@ msgstr ""
 "แฟ้ม '%s' ถูกลบไปแล้ว\n"
 "คุณต้องการทิ้งสิ่งที่ได้แก้ไขมา และปิดแฟ้มดังกล่าวหรือไม่?"
 
-#: ../plugins/scintilla/text_editor.c:1461
+#: ../plugins/scintilla/text_editor.c:1506
 msgid "Could not get file info"
 msgstr "ไม่สามารถอ่านข้อมูลของแฟ้ม"
 
 #. DEBUG_PRINT ("%s", "This file is too big. Unable to allocate memory.");
-#: ../plugins/scintilla/text_editor.c:1473
+#: ../plugins/scintilla/text_editor.c:1518
 msgid "This file is too big. Unable to allocate memory."
 msgstr "แฟ้มนี้ใหญ่เกินไป ไม่สามารถจองหน่วยความจำได้"
 
-#: ../plugins/scintilla/text_editor.c:1482
+#: ../plugins/scintilla/text_editor.c:1527
 msgid "Could not open file"
 msgstr "เปิดแฟ้มไม่ได้"
 
-#: ../plugins/scintilla/text_editor.c:1493
+#: ../plugins/scintilla/text_editor.c:1538
 msgid "Error while reading from file"
 msgstr "เกิดข้อผิดพลาดขณะอ่านจากแฟ้ม"
 
-#: ../plugins/scintilla/text_editor.c:1539
+#: ../plugins/scintilla/text_editor.c:1584
 msgid ""
 "The file does not look like a text file or the file encoding is not "
 "supported. Please check if the encoding of file is in the supported "
@@ -232,11 +159,11 @@ msgstr ""
 "กรุณาตรวจสอบว่ารหัสอักขระของแฟ้มอยู่ในรายชื่อรหัสอักขระที่รองรับหรือไม่ ถ้าไม่อยู่ "
 "ให้เพิ่มจากค่าปรับแต่ง"
 
-#: ../plugins/scintilla/text_editor.c:1686
+#: ../plugins/scintilla/text_editor.c:1767
 msgid "Loading file..."
 msgstr "กำลังโหลดแฟ้ม..."
 
-#: ../plugins/scintilla/text_editor.c:1695
+#: ../plugins/scintilla/text_editor.c:1776
 #, c-format
 msgid ""
 "Could not load file: %s\n"
@@ -247,24 +174,24 @@ msgstr ""
 "\n"
 "รายละเอียด: %s"
 
-#: ../plugins/scintilla/text_editor.c:1716
+#: ../plugins/scintilla/text_editor.c:1797
 msgid "File loaded successfully"
 msgstr "โหลดแฟ้มเรียบร้อยแล้ว"
 
-#: ../plugins/scintilla/text_editor.c:1734
+#: ../plugins/scintilla/text_editor.c:1818
 msgid "Saving file..."
 msgstr "กำลังบันทึกแฟ้ม..."
 
-#: ../plugins/scintilla/text_editor.c:1743
+#: ../plugins/scintilla/text_editor.c:1827
 #, c-format
 msgid "Could not save intermediate file %s: %s"
 msgstr "ไม่สามารถบันทึกแฟ้มชั่วคราว %s: %s"
 
-#: ../plugins/scintilla/text_editor.c:1759
+#: ../plugins/scintilla/text_editor.c:1843
 msgid "File saved successfully"
 msgstr "บันทึกแฟ้มเสร็จแล้ว"
 
-#: ../plugins/scintilla/text_editor.c:2132
+#: ../plugins/scintilla/text_editor.c:2216
 #, c-format
 msgid ""
 "Cannot load Global defaults and configuration files:\n"
@@ -277,391 +204,18 @@ msgstr ""
 "ซึ่งอาจทำให้โปรแกรมทำงานผิดเพี้ยนหรือไม่เสถียร\n"
 "แอนจูตาจะถอยกลับไปที่ค่าตั้งที่กำหนดไว้ในตัว (ซึ่งมีความสามารถจำกัด)"
 
-#: ../plugins/scratchbox/plugin.c:216
+#: ../plugins/scratchbox/plugin.c:209
 #, c-format
 msgid "Program '%s' does not exists"
 msgstr "โปรแกรม '%s' ไม่มีอยู่"
 
-#: ../plugins/scratchbox/plugin.c:467 ../plugins/scratchbox/plugin.c:489
-#: ../plugins/scratchbox/anjuta-scratchbox.plugin.in.h:2
+#: ../plugins/scratchbox/plugin.c:460 ../plugins/scratchbox/plugin.c:482
+#: ../plugins/scratchbox/anjuta-scratchbox.plugin.in.h:1
 msgid "Scratchbox"
 msgstr "Scratchbox"
 
-#: ../plugins/valgrind/plugin.c:134
-msgid "Options"
-msgstr "ตัวเลือก"
-
-#: ../plugins/valgrind/plugin.c:262
-msgid "Select debugging target"
-msgstr "เลือกเป้าหมายของการดีบั๊ก"
-
-#: ../plugins/valgrind/plugin.c:319 ../plugins/valgrind/plugin.c:440
-#: ../plugins/valgrind/plugin.c:676 ../plugins/valgrind/plugin.c:685
-msgid "Valgrind"
-msgstr "Valgrind"
-
-#: ../plugins/valgrind/plugin.c:347
-msgid ""
-"No executable target selected for debugging with Valgrind. Please select one."
-msgstr "ไม่ได้เลือกแฟ้มโปรแกรมเป้าหมายสำหรับดีบั๊กด้วย valgrind กรุณาเลือกเสียก่อน"
-
-#: ../plugins/valgrind/plugin.c:356
-msgid ""
-"There aren't any available executable targets for this project.\n"
-"Please create one first."
-msgstr ""
-"ไม่มีแฟ้มโปรแกรมเป้าหมายสำหรับโครงการนี้\n"
-"กรุณาสร้างเสียก่อน"
-
-#: ../plugins/valgrind/plugin.c:368
-msgid "Choose file where to save Valgrind log"
-msgstr "เลือกแฟ้มที่จะบันทึกปูมของ Valgrind"
-
-#: ../plugins/valgrind/plugin.c:390
-#, c-format
-msgid ""
-"The file '%s' already exists.\n"
-"Do you want to replace it with the one you are saving?"
-msgstr ""
-"มีแฟ้ม '%s' อยู่ก่อนแล้ว\n"
-"คุณต้องการบันทึกทับหรือไม่?"
-
-#: ../plugins/valgrind/plugin.c:398
-msgid "_Replace"
-msgstr "แ_ทนที่"
-
-#: ../plugins/valgrind/plugin.c:418
-msgid "Open Valgrind log file"
-msgstr "เปิดแฟ้มปูมของ Valgrind"
-
-#. Action name
-#. Stock icon, if any
-#: ../plugins/valgrind/plugin.c:452
-msgid "_Debug"
-msgstr "_ดีบั๊ก"
-
-#. Action name
-#. Stock icon, if any
-#: ../plugins/valgrind/plugin.c:460
-msgid "_Valgrind"
-msgstr "_Valgrind"
-
-#. Action name
-#. Stock icon, if any
-#: ../plugins/valgrind/plugin.c:468
-msgid "_Select Tool and Run..."
-msgstr "เ_ลือกเครื่องมือและเรียกทำงาน..."
-
-#. Action name
-#. Stock icon, if any
-#: ../plugins/valgrind/plugin.c:476
-msgid "_Kill Execution"
-msgstr "_ฆ่าการทำงาน"
-
-#. Action name
-#. Stock icon, if any
-#: ../plugins/valgrind/plugin.c:484
-msgid "_Load Log"
-msgstr "โห_ลดปูม"
-
-#. Action name
-#. Stock icon, if any
-#: ../plugins/valgrind/plugin.c:492
-msgid "S_ave Log"
-msgstr "_บันทึกปูม"
-
-#. Action name
-#. Stock icon, if any
-#: ../plugins/valgrind/plugin.c:500
-msgid "Edit Rules"
-msgstr "แก้ไขกฎ"
-
-#: ../plugins/valgrind/plugin.c:565
-msgid "Use Valgrind debug tool"
-msgstr "ใช้เครื่องมือดีบั๊ก Valgrind"
-
-#: ../plugins/valgrind/preferences.c:122
-msgid "<b>Valgrind general preferences</b>"
-msgstr "<b>การปรับแต่งค่าทั่วไปของ Valgrind</b>"
-
-#: ../plugins/valgrind/preferences.c:128
-msgid "Valgrind binary file path:"
-msgstr "พาธของแฟ้มไบนารีของ Valgrind:"
-
-#: ../plugins/valgrind/preferences.c:142
-msgid "Choose Valgrind Binary File Path..."
-msgstr "เลือกพาธของแฟ้มไบนารีของ Valgrind..."
-
-#: ../plugins/valgrind/preferences.c:161
-msgid "Preview"
-msgstr "ดูตัวอย่าง"
-
-#: ../plugins/valgrind/preferences.c:174
-msgid "lines above and below the target line."
-msgstr "บรรทัดข้างบนและข้างล่างบรรทัดเป้าหมาย"
-
-#: ../plugins/valgrind/process.c:55
-#, c-format
-msgid "Failed to create pipe to '%s': %s"
-msgstr "ไม่สามารถสร้างไปป์ไปยัง '%s': %s"
-
-#: ../plugins/valgrind/process.c:110
-#, c-format
-msgid "Failed to create child process '%s': %s"
-msgstr "ไม่สามารถสร้างโพรเซสลูก '%s': %s"
-
-#: ../plugins/valgrind/vgactions.c:168
-msgid "Reached the end of the input file or error in parsing valgrind output."
-msgstr "ถึงจุดสิ้นสุดของแฟ้มข้อมูลเข้า หรือเกิดข้อผิดพลาดขณะแจงผลลัพธ์ของ Valgrind"
-
-#: ../plugins/valgrind/vgactions.c:177
-msgid "Process exited."
-msgstr "โพรเซสจบแล้ว"
-
-#: ../plugins/valgrind/vgactions.c:197
-msgid "Could not get the right valgrind-binary gconf key:"
-msgstr "ไม่สามารถอ่านคีย์ gconf valgrind-binary ที่ถูกต้อง:"
-
-#: ../plugins/valgrind/vgactions.c:205
-#, c-format
-msgid ""
-"Valgrind binary [%s] does not exist. Please check the preferences or install "
-"Valgrind package."
-msgstr ""
-"ไม่มีแฟ้มไบนารีของ Valgrind [%s] กรุณาตรวจสอบค่าปรับแต่ง หรือติดตั้งแพกเกจ Valgrind "
-"ให้เรียบร้อย"
-
-#: ../plugins/valgrind/vgactions.c:241 ../plugins/valgrind/vgactions.c:248
-msgid "Could not get the right pipe for the process."
-msgstr "ไม่สามารถสร้างไปป์สำหรับโพรเซส"
-
-#: ../plugins/valgrind/vgcachegrindprefs.c:197
-#, c-format
-msgid ""
-"Invalid syntax in settings '%s'.\n"
-"Please enter a value of the form \"<integer>,<integer>,<integer>\"."
-msgstr ""
-"ไวยากรณ์ไม่ถูกต้องในค่าตั้ง '%s'\n"
-"กรุณาป้อนค่าในรูป \"<จำนวนเต็ม>,<จำนวนเต็ม>,<จำนวนเต็ม>\""
-
-#: ../plugins/valgrind/vgcachegrindprefs.c:234
-msgid "Override default settings"
-msgstr "ทับค่าตั้งปริยาย"
-
-#. This is the format of the preference, simply translate the words
-#. * inside the <>
-#: ../plugins/valgrind/vgcachegrindprefs.c:246
-msgid "Enter <size>,<assoc>,<line_size>:"
-msgstr "ป้อน <size>,<assoc>,<line_size>:"
-
-#: ../plugins/valgrind/vgcachegrindprefs.c:280
-msgid "Cachegrind"
-msgstr "Cachegrind"
-
-#: ../plugins/valgrind/vgdefaultview.c:189
-msgid "Error contains"
-msgstr "ข้อผิดพลาดมีคำว่า"
-
-#: ../plugins/valgrind/vgdefaultview.c:190
-msgid "Function contains"
-msgstr "ฟังก์ชันมีคำว่า"
-
-#: ../plugins/valgrind/vgdefaultview.c:191
-msgid "Object contains"
-msgstr "อ็อบเจกต์มีคำว่า"
-
-#: ../plugins/valgrind/vgdefaultview.c:192
-msgid "Source filename contains"
-msgstr "ชื่อแฟ้มซอร์สมีคำว่า"
-
-#: ../plugins/valgrind/vgdefaultview.c:229
-#, c-format
-msgid "Invalid regular expression: '%s': %s"
-msgstr "นิพจน์เรกิวลาร์ไม่ถูกต้อง: '%s': %s"
-
-#. FIXME: we should really get this title from somewhere else?
-#: ../plugins/valgrind/vgdefaultview.c:773
-msgid "Valgrind Suppression Rules"
-msgstr "กฎการละเลยของ Valgrind"
-
-#. FIXME: we should really get this title from somewhere else?
-#: ../plugins/valgrind/vgdefaultview.c:1118
-#: ../plugins/valgrind/vgrule-list.c:135
-msgid "Valgrind Suppression"
-msgstr "การละเลยของ Valgrind"
-
-#: ../plugins/valgrind/vgdefaultview.c:1166
-msgid "Cu_t"
-msgstr "_ตัด"
-
-#: ../plugins/valgrind/vgdefaultview.c:1167
-msgid "_Copy"
-msgstr "_คัดลอก"
-
-#: ../plugins/valgrind/vgdefaultview.c:1168
-msgid "_Paste"
-msgstr "_แปะ"
-
-#: ../plugins/valgrind/vgdefaultview.c:1170
-msgid "Suppress"
-msgstr "ละเลย"
-
-#: ../plugins/valgrind/vgdefaultview.c:1172
-msgid "Edit in Custom Editor"
-msgstr "แก้ไขในเครื่องมือแก้ไขที่กำหนดเอง"
-
-#: ../plugins/valgrind/vggeneralprefs.c:172
-msgid "General"
-msgstr "ทั่วไป"
-
-#. demangle = decode C++ name encoding
-#: ../plugins/valgrind/vggeneralprefs.c:179
-msgid "Demangle C++ symbol names"
-msgstr "ถอดรหัสชื่อชื่อสัญลักษณ์ของ C++"
-
-#: ../plugins/valgrind/vggeneralprefs.c:187
-msgid "Show"
-msgstr "แสดง"
-
-#: ../plugins/valgrind/vggeneralprefs.c:199
-msgid "callers in stack trace"
-msgstr "ผู้เรียกในร่องรอยของสแต็ก"
-
-#: ../plugins/valgrind/vggeneralprefs.c:206
-msgid "Stop showing errors if there are too many"
-msgstr "หยุดแสดงข้อผิดพลาดถ้ามีมากเกินไป"
-
-#: ../plugins/valgrind/vggeneralprefs.c:214
-msgid "Round malloc sizes to next word"
-msgstr "ปัดเศษของขนาดที่ malloc ขึ้นเป็นจำนวนเต็มเวิร์ด"
-
-#: ../plugins/valgrind/vggeneralprefs.c:222
-msgid "Trace any child processes forked off by the program being debugged"
-msgstr "ติดตามโพรเซสลูกที่ fork ออกจากโปรแกรมที่กำลังดีบั๊ก"
-
-#: ../plugins/valgrind/vggeneralprefs.c:230
-msgid "Track open file descriptors"
-msgstr "ติดตาม file descriptor ที่เปิดอยู่"
-
-#: ../plugins/valgrind/vggeneralprefs.c:238
-msgid "Add time stamps to log messages"
-msgstr "เพิ่มบันทึกเวลาลงในข้อความปูม"
-
-#: ../plugins/valgrind/vggeneralprefs.c:246
-msgid "Call __libc_freeres() at exit before checking for memory leaks"
-msgstr "เรียก __libc_freeres() ขณะจบ ก่อนที่จะตรวจสอบหน่วยความจำรั่ว"
-
-#: ../plugins/valgrind/vggeneralprefs.c:254
-msgid "Suppressions File:"
-msgstr "แฟ้มการละเลย:"
-
-#: ../plugins/valgrind/vggeneralprefs.c:274
-msgid "Choose Valgrind Suppressions File..."
-msgstr "เลือกแฟ้มการละเลยของ Valgrind..."
-
-#: ../plugins/valgrind/vghelgrindprefs.c:180
-msgid "Helgrind"
-msgstr "Helgrind"
-
-#: ../plugins/valgrind/vghelgrindprefs.c:185
-msgid "Assume thread stacks are used privately"
-msgstr "ถือว่าใช้สแต็กของเธรดเป็นการภายใน"
-
-#: ../plugins/valgrind/vghelgrindprefs.c:194
-msgid "Show location of last word access on error:"
-msgstr "แสดงตำแหน่งของเวิร์ดสุดท้ายที่เข้าใช้เมื่อเกิดข้อผิดพลาด:"
-
-#: ../plugins/valgrind/vgmemcheckprefs.c:204
-msgid "Memcheck"
-msgstr "Memcheck"
-
-#: ../plugins/valgrind/vgmemcheckprefs.c:209
-msgid "Memory leaks"
-msgstr "หน่วยความจำรั่ว"
-
-#: ../plugins/valgrind/vgmemcheckprefs.c:214
-msgid "Leak check:"
-msgstr "ตรวจสอบรูรั่ว:"
-
-#: ../plugins/valgrind/vgmemcheckprefs.c:225
-msgid "Show reachable blocks in leak check"
-msgstr "แสดงบล็อคที่เข้าถึงได้ในการตรวจสอบรูรั่ว"
-
-#: ../plugins/valgrind/vgmemcheckprefs.c:233
-msgid "Leak resolution:"
-msgstr "ความละเอียดของการรั่ว:"
-
-#: ../plugins/valgrind/vgmemcheckprefs.c:251
-msgid "Keep up to"
-msgstr "เก็บไว้"
-
-#: ../plugins/valgrind/vgmemcheckprefs.c:263
-msgid "bytes in the queue after being free()'d"
-msgstr "ไบต์ในคิวหลังจากการ free()"
-
-#: ../plugins/valgrind/vgmemcheckprefs.c:270
-msgid "Work around bugs generated by gcc 2.96"
-msgstr "แก้ปัญหาบั๊กที่สร้างโดย gcc 2.96"
-
-#: ../plugins/valgrind/vgrule-editor.c:146
-msgid "Function"
-msgstr "ฟังก์ชัน"
-
-#: ../plugins/valgrind/vgrule-editor.c:149
-msgid "Shared Object"
-msgstr "อ็อบเจกต์ใช้ร่วม"
-
-#: ../plugins/valgrind/vgrule-editor.c:209
-msgid "Grow"
-msgstr "ขยาย"
-
-#: ../plugins/valgrind/vgrule-editor.c:213
-msgid "Shrink"
-msgstr "หด"
-
-#: ../plugins/valgrind/vgrule-editor.c:239
-msgid "Rule name:"
-msgstr "ชื่อกฎ:"
-
-#: ../plugins/valgrind/vgrule-editor.c:249
-msgid "Suppress messages of type:"
-msgstr "ละเลยข้อความชนิด:"
-
-#: ../plugins/valgrind/vgrule-editor.c:259
-msgid "Suppress when using:"
-msgstr "ละเลยเมื่อใช้:"
-
-#: ../plugins/valgrind/vgrule-editor.c:272
-msgid "System call:"
-msgstr "การเรียกระบบ:"
-
-#: ../plugins/valgrind/vgrule-editor.c:283
-msgid "Call chain:"
-msgstr "ห่วงโซ่ของการเรียก:"
-
-#: ../plugins/valgrind/vgrule-editor.c:540
-#: ../plugins/valgrind/vgrule-editor.c:555
-#, c-format
-msgid "Error saving to suppression file '%s': %s"
-msgstr "เกิดข้อผิดพลาดขณะบันทึกแฟ้มการละเลย '%s': %s"
-
-#: ../plugins/valgrind/vgrule-list.c:177 ../plugins/valgrind/vgrule-list.c:246
-msgid "You have forgotten to name your suppression rule."
-msgstr "คุณลืมตั้งชื่อกฎการละเลยของคุณ"
-
-#: ../plugins/valgrind/vgrule-list.c:406
-msgid "_Edit"
-msgstr "แ_ก้ไข"
-
-#: ../plugins/valgrind/vgrule-list.c:651
-#, c-format
-msgid "Cannot save suppression rules: %s"
-msgstr "ไม่สามารถบันทึกกฎการละเลย: %s"
-
-#: ../plugins/valgrind/vgrule-list.c:653
-msgid "You have not set a suppressions file in your settings."
-msgstr "คุณไม่ได้กำหนดแฟ้มการละเลยในค่าตั้งของคุณ"
-
+#. Public functions
+#. *---------------------------------------------------------------------------
 #: ../plugins/sample1/anjuta-sample.plugin.in.h:1
 msgid "Sample Plugin"
 msgstr "ปลั๊กอินตัวอย่าง"
@@ -670,29 +224,370 @@ msgstr "ปลั๊กอินตัวอย่าง"
 msgid "Sample Plugin for Anjuta."
 msgstr "ปลั๊กอินตัวอย่างสำหรับแอนจูตา"
 
-#: ../plugins/profiler/profiler.plugin.in.h:1
-msgid "Application performance profiler"
-msgstr "เครื่องมือวัดประสิทธิภาพโปรแกรม"
-
-#: ../plugins/profiler/profiler.plugin.in.h:2
-msgid "Profile"
-msgstr "โพรไฟล์"
-
-#: ../plugins/scintilla/anjuta-editor.plugin.in.h:1
+#: ../plugins/scintilla/anjuta-editor.plugin.in.h:2
 msgid "An alternate editor based on Scintilla"
 msgstr "เครื่องมือแก้ไขทางเลือก โดยใช้ Scintilla"
 
-#: ../plugins/valgrind/anjuta-valgrind.plugin.in.h:1
-msgid "Powerful debugging tool."
-msgstr "เครื่องมือดีบั๊กที่มีประโยชน์"
-
-#: ../plugins/valgrind/anjuta-valgrind.plugin.in.h:2
-msgid "Valgrind Plugin"
-msgstr "ปลั๊กอิน Valgrind"
-
-#: ../plugins/scratchbox/anjuta-scratchbox.plugin.in.h:1
+#: ../plugins/scratchbox/anjuta-scratchbox.plugin.in.h:2
 msgid "Change build commands to use scratchbox 1 or 2"
 msgstr "เปลี่ยนคำสั่งสำหรับประกอบสร้างให้มาใช้ scratchbox 1 หรือ 2"
+
+#~ msgid "Function Name"
+#~ msgstr "ชื่อฟังก์ชัน"
+
+#~ msgid "Time"
+#~ msgstr "เวลา"
+
+#~ msgid "Self"
+#~ msgstr "ตัวเอง"
+
+#~ msgid "Children"
+#~ msgstr "ลูก"
+
+#~ msgid "Calls"
+#~ msgstr "การเรียก"
+
+#~ msgid "% Time"
+#~ msgstr "% เวลา"
+
+#~ msgid "Cumulative Seconds"
+#~ msgstr "วินาทีสะสม"
+
+#~ msgid "Self Seconds"
+#~ msgstr "วินาทีตัวเอง"
+
+#~ msgid "Self ms/call"
+#~ msgstr "มิลลิวินาทีตัวเอง/การเรียก"
+
+#~ msgid "Total ms/call"
+#~ msgstr "มิลลิวินาทีทั้งหมด/การเรียก"
+
+#~ msgid ""
+#~ "Could not get profiling data.\n"
+#~ "\n"
+#~ "Please check the path to this target's profiling data file."
+#~ msgstr ""
+#~ "ไม่สามารถอ่านข้อมูลการวัดประสิทธิภาพ\n"
+#~ "\n"
+#~ "กรุณาตรวจสอบพาธของแฟ้มข้อมูลการวัดประสิทธิภาพของเป้าหมายนี้"
+
+#~ msgid ""
+#~ "This target does not have any profiling data.\n"
+#~ "\n"
+#~ "Please ensure that the target is compiled with profiling support (-p)and "
+#~ "that it is run at least once."
+#~ msgstr ""
+#~ "เป้าหมายนี้ไม่มีข้อมูลการวัดประสิทธิภาพใดๆ เลย\n"
+#~ "\n"
+#~ "กรุณาตรวจสอบให้แน่ใจว่าเป้าหมายได้ถูกคอมไพล์โดยรองรับการวัดประสิทธิภาพ (-p) "
+#~ "และมีการเรียกทำงานอย่างน้อยหนึ่งครั้ง"
+
+#~ msgid "Debug"
+#~ msgstr "ดีบั๊ก"
+
+#~ msgid "Profiler"
+#~ msgstr "เครื่องวัดประสิทธิภาพ"
+
+#~ msgid "Select Target..."
+#~ msgstr "เลือกเป้าหมาย..."
+
+#~ msgid "Refresh"
+#~ msgstr "ปรับแสดง"
+
+#~ msgid "Delete Data"
+#~ msgstr "ลบข้อมูล"
+
+#~ msgid "Application Performance Profiler"
+#~ msgstr "เครื่องมือวัดประสิทธิภาพของโปรแกรม"
+
+#~ msgid "Flat Profile"
+#~ msgstr "โพรไฟล์แบบแบน"
+
+#~ msgid "Call Graph"
+#~ msgstr "กราฟของการเรียก"
+
+#~ msgid "Function Call Tree"
+#~ msgstr "แผนภาพต้นไม้ของการเรียกฟังก์ชัน"
+
+#~ msgid "Function Call Chart"
+#~ msgstr "แผนภูมิการเรียกฟังกชัน"
+
+#~ msgid "Options"
+#~ msgstr "ตัวเลือก"
+
+#~ msgid "Select debugging target"
+#~ msgstr "เลือกเป้าหมายของการดีบั๊ก"
+
+#~ msgid "Valgrind"
+#~ msgstr "Valgrind"
+
+#~ msgid ""
+#~ "No executable target selected for debugging with Valgrind. Please select "
+#~ "one."
+#~ msgstr "ไม่ได้เลือกแฟ้มโปรแกรมเป้าหมายสำหรับดีบั๊กด้วย valgrind กรุณาเลือกเสียก่อน"
+
+#~ msgid ""
+#~ "There aren't any available executable targets for this project.\n"
+#~ "Please create one first."
+#~ msgstr ""
+#~ "ไม่มีแฟ้มโปรแกรมเป้าหมายสำหรับโครงการนี้\n"
+#~ "กรุณาสร้างเสียก่อน"
+
+#~ msgid "Choose file where to save Valgrind log"
+#~ msgstr "เลือกแฟ้มที่จะบันทึกปูมของ Valgrind"
+
+#~ msgid ""
+#~ "The file '%s' already exists.\n"
+#~ "Do you want to replace it with the one you are saving?"
+#~ msgstr ""
+#~ "มีแฟ้ม '%s' อยู่ก่อนแล้ว\n"
+#~ "คุณต้องการบันทึกทับหรือไม่?"
+
+#~ msgid "_Replace"
+#~ msgstr "แ_ทนที่"
+
+#~ msgid "Open Valgrind log file"
+#~ msgstr "เปิดแฟ้มปูมของ Valgrind"
+
+#~ msgid "_Debug"
+#~ msgstr "_ดีบั๊ก"
+
+#~ msgid "_Valgrind"
+#~ msgstr "_Valgrind"
+
+#~ msgid "_Select Tool and Run..."
+#~ msgstr "เ_ลือกเครื่องมือและเรียกทำงาน..."
+
+#~ msgid "_Kill Execution"
+#~ msgstr "_ฆ่าการทำงาน"
+
+#~ msgid "_Load Log"
+#~ msgstr "โห_ลดปูม"
+
+#~ msgid "S_ave Log"
+#~ msgstr "_บันทึกปูม"
+
+#~ msgid "Edit Rules"
+#~ msgstr "แก้ไขกฎ"
+
+#~ msgid "Use Valgrind debug tool"
+#~ msgstr "ใช้เครื่องมือดีบั๊ก Valgrind"
+
+#~ msgid "<b>Valgrind general preferences</b>"
+#~ msgstr "<b>การปรับแต่งค่าทั่วไปของ Valgrind</b>"
+
+#~ msgid "Valgrind binary file path:"
+#~ msgstr "พาธของแฟ้มไบนารีของ Valgrind:"
+
+#~ msgid "Choose Valgrind Binary File Path..."
+#~ msgstr "เลือกพาธของแฟ้มไบนารีของ Valgrind..."
+
+#~ msgid "Preview"
+#~ msgstr "ดูตัวอย่าง"
+
+#~ msgid "lines above and below the target line."
+#~ msgstr "บรรทัดข้างบนและข้างล่างบรรทัดเป้าหมาย"
+
+#~ msgid "Failed to create pipe to '%s': %s"
+#~ msgstr "ไม่สามารถสร้างไปป์ไปยัง '%s': %s"
+
+#~ msgid "Failed to create child process '%s': %s"
+#~ msgstr "ไม่สามารถสร้างโพรเซสลูก '%s': %s"
+
+#~ msgid ""
+#~ "Reached the end of the input file or error in parsing valgrind output."
+#~ msgstr "ถึงจุดสิ้นสุดของแฟ้มข้อมูลเข้า หรือเกิดข้อผิดพลาดขณะแจงผลลัพธ์ของ Valgrind"
+
+#~ msgid "Process exited."
+#~ msgstr "โพรเซสจบแล้ว"
+
+#~ msgid "Could not get the right valgrind-binary gconf key:"
+#~ msgstr "ไม่สามารถอ่านคีย์ gconf valgrind-binary ที่ถูกต้อง:"
+
+#~ msgid ""
+#~ "Valgrind binary [%s] does not exist. Please check the preferences or "
+#~ "install Valgrind package."
+#~ msgstr ""
+#~ "ไม่มีแฟ้มไบนารีของ Valgrind [%s] กรุณาตรวจสอบค่าปรับแต่ง หรือติดตั้งแพกเกจ Valgrind "
+#~ "ให้เรียบร้อย"
+
+#~ msgid "Could not get the right pipe for the process."
+#~ msgstr "ไม่สามารถสร้างไปป์สำหรับโพรเซส"
+
+#~ msgid ""
+#~ "Invalid syntax in settings '%s'.\n"
+#~ "Please enter a value of the form \"<integer>,<integer>,<integer>\"."
+#~ msgstr ""
+#~ "ไวยากรณ์ไม่ถูกต้องในค่าตั้ง '%s'\n"
+#~ "กรุณาป้อนค่าในรูป \"<จำนวนเต็ม>,<จำนวนเต็ม>,<จำนวนเต็ม>\""
+
+#~ msgid "Override default settings"
+#~ msgstr "ทับค่าตั้งปริยาย"
+
+#~ msgid "Enter <size>,<assoc>,<line_size>:"
+#~ msgstr "ป้อน <size>,<assoc>,<line_size>:"
+
+#~ msgid "Cachegrind"
+#~ msgstr "Cachegrind"
+
+#~ msgid "Error contains"
+#~ msgstr "ข้อผิดพลาดมีคำว่า"
+
+#~ msgid "Function contains"
+#~ msgstr "ฟังก์ชันมีคำว่า"
+
+#~ msgid "Object contains"
+#~ msgstr "อ็อบเจกต์มีคำว่า"
+
+#~ msgid "Source filename contains"
+#~ msgstr "ชื่อแฟ้มซอร์สมีคำว่า"
+
+#~ msgid "Invalid regular expression: '%s': %s"
+#~ msgstr "นิพจน์เรกิวลาร์ไม่ถูกต้อง: '%s': %s"
+
+#~ msgid "Valgrind Suppression Rules"
+#~ msgstr "กฎการละเลยของ Valgrind"
+
+#~ msgid "Valgrind Suppression"
+#~ msgstr "การละเลยของ Valgrind"
+
+#~ msgid "Cu_t"
+#~ msgstr "_ตัด"
+
+#~ msgid "_Copy"
+#~ msgstr "_คัดลอก"
+
+#~ msgid "_Paste"
+#~ msgstr "_แปะ"
+
+#~ msgid "Suppress"
+#~ msgstr "ละเลย"
+
+#~ msgid "Edit in Custom Editor"
+#~ msgstr "แก้ไขในเครื่องมือแก้ไขที่กำหนดเอง"
+
+#~ msgid "General"
+#~ msgstr "ทั่วไป"
+
+#~ msgid "Demangle C++ symbol names"
+#~ msgstr "ถอดรหัสชื่อชื่อสัญลักษณ์ของ C++"
+
+#~ msgid "Show"
+#~ msgstr "แสดง"
+
+#~ msgid "callers in stack trace"
+#~ msgstr "ผู้เรียกในร่องรอยของสแต็ก"
+
+#~ msgid "Stop showing errors if there are too many"
+#~ msgstr "หยุดแสดงข้อผิดพลาดถ้ามีมากเกินไป"
+
+#~ msgid "Round malloc sizes to next word"
+#~ msgstr "ปัดเศษของขนาดที่ malloc ขึ้นเป็นจำนวนเต็มเวิร์ด"
+
+#~ msgid "Trace any child processes forked off by the program being debugged"
+#~ msgstr "ติดตามโพรเซสลูกที่ fork ออกจากโปรแกรมที่กำลังดีบั๊ก"
+
+#~ msgid "Track open file descriptors"
+#~ msgstr "ติดตาม file descriptor ที่เปิดอยู่"
+
+#~ msgid "Add time stamps to log messages"
+#~ msgstr "เพิ่มบันทึกเวลาลงในข้อความปูม"
+
+#~ msgid "Call __libc_freeres() at exit before checking for memory leaks"
+#~ msgstr "เรียก __libc_freeres() ขณะจบ ก่อนที่จะตรวจสอบหน่วยความจำรั่ว"
+
+#~ msgid "Suppressions File:"
+#~ msgstr "แฟ้มการละเลย:"
+
+#~ msgid "Choose Valgrind Suppressions File..."
+#~ msgstr "เลือกแฟ้มการละเลยของ Valgrind..."
+
+#~ msgid "Helgrind"
+#~ msgstr "Helgrind"
+
+#~ msgid "Assume thread stacks are used privately"
+#~ msgstr "ถือว่าใช้สแต็กของเธรดเป็นการภายใน"
+
+#~ msgid "Show location of last word access on error:"
+#~ msgstr "แสดงตำแหน่งของเวิร์ดสุดท้ายที่เข้าใช้เมื่อเกิดข้อผิดพลาด:"
+
+#~ msgid "Memcheck"
+#~ msgstr "Memcheck"
+
+#~ msgid "Memory leaks"
+#~ msgstr "หน่วยความจำรั่ว"
+
+#~ msgid "Leak check:"
+#~ msgstr "ตรวจสอบรูรั่ว:"
+
+#~ msgid "Show reachable blocks in leak check"
+#~ msgstr "แสดงบล็อคที่เข้าถึงได้ในการตรวจสอบรูรั่ว"
+
+#~ msgid "Leak resolution:"
+#~ msgstr "ความละเอียดของการรั่ว:"
+
+#~ msgid "Keep up to"
+#~ msgstr "เก็บไว้"
+
+#~ msgid "bytes in the queue after being free()'d"
+#~ msgstr "ไบต์ในคิวหลังจากการ free()"
+
+#~ msgid "Work around bugs generated by gcc 2.96"
+#~ msgstr "แก้ปัญหาบั๊กที่สร้างโดย gcc 2.96"
+
+#~ msgid "Function"
+#~ msgstr "ฟังก์ชัน"
+
+#~ msgid "Shared Object"
+#~ msgstr "อ็อบเจกต์ใช้ร่วม"
+
+#~ msgid "Grow"
+#~ msgstr "ขยาย"
+
+#~ msgid "Shrink"
+#~ msgstr "หด"
+
+#~ msgid "Rule name:"
+#~ msgstr "ชื่อกฎ:"
+
+#~ msgid "Suppress messages of type:"
+#~ msgstr "ละเลยข้อความชนิด:"
+
+#~ msgid "Suppress when using:"
+#~ msgstr "ละเลยเมื่อใช้:"
+
+#~ msgid "System call:"
+#~ msgstr "การเรียกระบบ:"
+
+#~ msgid "Call chain:"
+#~ msgstr "ห่วงโซ่ของการเรียก:"
+
+#~ msgid "Error saving to suppression file '%s': %s"
+#~ msgstr "เกิดข้อผิดพลาดขณะบันทึกแฟ้มการละเลย '%s': %s"
+
+#~ msgid "You have forgotten to name your suppression rule."
+#~ msgstr "คุณลืมตั้งชื่อกฎการละเลยของคุณ"
+
+#~ msgid "_Edit"
+#~ msgstr "แ_ก้ไข"
+
+#~ msgid "Cannot save suppression rules: %s"
+#~ msgstr "ไม่สามารถบันทึกกฎการละเลย: %s"
+
+#~ msgid "You have not set a suppressions file in your settings."
+#~ msgstr "คุณไม่ได้กำหนดแฟ้มการละเลยในค่าตั้งของคุณ"
+
+#~ msgid "Application performance profiler"
+#~ msgstr "เครื่องมือวัดประสิทธิภาพโปรแกรม"
+
+#~ msgid "Profile"
+#~ msgstr "โพรไฟล์"
+
+#~ msgid "Powerful debugging tool."
+#~ msgstr "เครื่องมือดีบั๊กที่มีประโยชน์"
+
+#~ msgid "Valgrind Plugin"
+#~ msgstr "ปลั๊กอิน Valgrind"
 
 #~ msgid "Fixed data-view"
 #~ msgstr "การแสดงข้อมูลแบบตายตัว"
@@ -885,9 +780,6 @@ msgstr "เปลี่ยนคำสั่งสำหรับประกอ
 #~ msgid "Enable comments folding"
 #~ msgstr "เปิดใช้งานการพับคำอธิบาย"
 
-#~ msgid "Enable line wrap"
-#~ msgstr "เปิดใช้การตัดบรรทัด"
-
 #~ msgid "Enable python comments folding"
 #~ msgstr "เปิดใช้งานการพับคำอธิบายของไพธอน"
 
@@ -991,15 +883,6 @@ msgstr "เปลี่ยนคำสั่งสำหรับประกอ
 
 #~ msgid "View EOL chars"
 #~ msgstr "แสดงอักขระ EOL"
-
-#~ msgid "View Indentation Guides"
-#~ msgstr "แสดงแนวการร่นย่อหน้า"
-
-#~ msgid "View Line Wrap"
-#~ msgstr "แสดงการตัดบรรทัด"
-
-#~ msgid "View Whitespaces"
-#~ msgstr "แสดงอักขระช่องว่าง"
 
 #~ msgid "View indentation whitespaces"
 #~ msgstr "แสดงอักขระช่องว่างที่ใช้ร่นย่อหน้า"
