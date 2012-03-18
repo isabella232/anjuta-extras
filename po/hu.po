@@ -1,156 +1,23 @@
 # Hungarian translation of anjuta-extras.
-# Copyright (C) 2004, 2005, 2006, 2007, 2008, 2009, 2010 Free Software Foundation, Inc.
+# Copyright (C) 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2012 Free Software Foundation, Inc.
 # This file is distributed under the same license as the anjuta-extras package.
 #
 # Andras Toth <toth_bandi at users dot sourceforge dot net>, 2004.
 # Laszlo Dvornik <dvornik at gnome dot hu>, 2004.
-# Gabor Kelemen <kelemeng at gnome dot hu>, 2004, 2005, 2006, 2007, 2008, 2009, 2010.
+# Gabor Kelemen <kelemeng at gnome dot hu>, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: anjuta-extras master\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-09-14 11:30+0200\n"
-"PO-Revision-Date: 2010-09-14 11:27+0200\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=anjuta&keywords=I18N+L10N&component=unknown\n"
+"POT-Creation-Date: 2011-12-18 16:25+0000\n"
+"PO-Revision-Date: 2012-03-18 02:19+0100\n"
 "Last-Translator: Gabor Kelemen <kelemeng at gnome dot hu>\n"
-"Language-Team: Hungarian <gnome at fsf dot hu>\n"
+"Language-Team: Hungarian <gnome-hu-list at gnome dot org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
-
-#: ../plugins/profiler/gprof-call-graph-view.c:312
-#: ../plugins/profiler/gprof-call-graph-view.c:322
-#: ../plugins/profiler/gprof-call-graph-view.c:332
-#: ../plugins/profiler/gprof-flat-profile-view.c:56
-#: ../plugins/profiler/gprof-function-call-tree-view.c:60
-msgid "Function Name"
-msgstr "Függvénynév"
-
-#: ../plugins/profiler/gprof-call-graph-view.c:344
-msgid "Time"
-msgstr "Idő"
-
-#. Total amount of time spent in this function, excluding those it calla.
-#. * This is the same as the "Seconds" field in the flat profile.
-#. Time spent in a subroutine of a function.
-#. Time spent in this function when it was called by its caller
-#: ../plugins/profiler/gprof-call-graph-view.c:361
-#: ../plugins/profiler/gprof-call-graph-view.c:375
-#: ../plugins/profiler/gprof-call-graph-view.c:389
-msgid "Self"
-msgstr "Saját"
-
-#: ../plugins/profiler/gprof-call-graph-view.c:402
-#: ../plugins/profiler/gprof-call-graph-view.c:414
-#: ../plugins/profiler/gprof-call-graph-view.c:426
-msgid "Children"
-msgstr "Gyermekek"
-
-#: ../plugins/profiler/gprof-call-graph-view.c:439
-#: ../plugins/profiler/gprof-call-graph-view.c:449
-#: ../plugins/profiler/gprof-call-graph-view.c:459
-#: ../plugins/profiler/gprof-flat-profile-view.c:113
-msgid "Calls"
-msgstr "Hívások"
-
-#: ../plugins/profiler/gprof-flat-profile-view.c:68
-msgid "% Time"
-msgstr "% Idő"
-
-#: ../plugins/profiler/gprof-flat-profile-view.c:82
-msgid "Cumulative Seconds"
-msgstr "Összesített másodperc"
-
-#. The number of seconds that this function, excluding other functions it
-#. * calls, takes to execute.
-#: ../plugins/profiler/gprof-flat-profile-view.c:99
-msgid "Self Seconds"
-msgstr "Saját másodperc"
-
-#. The average number of milliseconds spent in a function, excluding
-#. * the functions that it calls.
-#: ../plugins/profiler/gprof-flat-profile-view.c:127
-msgid "Self ms/call"
-msgstr "Saját em/hívás"
-
-#. Same as self ms/call, but includes called functions.
-#: ../plugins/profiler/gprof-flat-profile-view.c:143
-msgid "Total ms/call"
-msgstr "Összes em/hívás"
-
-#: ../plugins/profiler/plugin.c:179
-msgid ""
-"Could not get profiling data.\n"
-"\n"
-"Please check the path to this target's profiling data file."
-msgstr ""
-"Nem kérhetők le a profilozási adatok.\n"
-"\n"
-"Ellenőrizze ezen cél profilozási adatfájljának útvonalát."
-
-#: ../plugins/profiler/plugin.c:293
-msgid ""
-"This target does not have any profiling data.\n"
-"\n"
-"Please ensure that the target is compiled with profiling support (-p)and "
-"that it is run at least once."
-msgstr ""
-"Ez a cél nem rendelkezik profilozási adatokkal.\n"
-"\n"
-"Győződjön meg róla, hogy a cél profilozási támogatással lett fordítva (-p) "
-"és legalább egyszer lefutott."
-
-#. Action name
-#. Stock icon, if any
-#: ../plugins/profiler/plugin.c:754
-msgid "Debug"
-msgstr "Hibakeresés"
-
-#. Action name
-#. Stock icon, if any
-#: ../plugins/profiler/plugin.c:762 ../plugins/profiler/plugin.c:874
-#: ../plugins/profiler/profiler.plugin.in.h:3
-msgid "Profiler"
-msgstr "Profilozó"
-
-#. Action name
-#. Stock icon, if any
-#: ../plugins/profiler/plugin.c:770
-msgid "Select Target..."
-msgstr "Cél kiválasztása…"
-
-#. Action name
-#. Stock icon, if any
-#: ../plugins/profiler/plugin.c:778
-msgid "Refresh"
-msgstr "Frissítés"
-
-#. Action name
-#. Stock icon, if any
-#: ../plugins/profiler/plugin.c:786
-msgid "Delete Data"
-msgstr "Adatok törlése"
-
-#: ../plugins/profiler/plugin.c:829
-msgid "Application Performance Profiler"
-msgstr "Alkalmazásteljesítmény-profilozó"
-
-#: ../plugins/profiler/plugin.c:851
-msgid "Flat Profile"
-msgstr "Egyszerű profil"
-
-#: ../plugins/profiler/plugin.c:856
-msgid "Call Graph"
-msgstr "Hívási grafikon"
-
-#: ../plugins/profiler/plugin.c:861
-msgid "Function Call Tree"
-msgstr "Függvényhívási fa"
-
-#: ../plugins/profiler/plugin.c:868
-msgid "Function Call Chart"
-msgstr "Függvényhívási grafikon"
 
 #: ../plugins/scintilla/print.c:659
 #, c-format
@@ -161,16 +28,77 @@ msgstr "Fájl: %s"
 msgid "Unable to get text buffer for printing"
 msgstr "A nyomtatáshoz nem érhető el a szöveges puffer"
 
-#: ../plugins/scintilla/print.c:967
+#: ../plugins/scintilla/print.c:966
 msgid "No file to print!"
 msgstr "Nincs fájl a nyomtatáshoz!"
 
-#: ../plugins/scintilla/plugin.c:309 ../plugins/scintilla/plugin.c:321
+#: ../plugins/scintilla/plugin.c:160
+msgid "_Line Number Margin"
+msgstr "_Sorszámszegély"
+
+#: ../plugins/scintilla/plugin.c:161
+msgid "Show/Hide line numbers"
+msgstr "Sorszámozás megjelenítése/elrejtése"
+
+#: ../plugins/scintilla/plugin.c:163
+msgid "_Marker Margin"
+msgstr "_Könyvjelzőszegély"
+
+#: ../plugins/scintilla/plugin.c:164
+msgid "Show/Hide marker margin"
+msgstr "Könyvjelzőszegély be/ki"
+
+#: ../plugins/scintilla/plugin.c:166
+msgid "_Code Fold Margin"
+msgstr "_Kódblokkszegély"
+
+#: ../plugins/scintilla/plugin.c:167
+msgid "Show/Hide code fold margin"
+msgstr "Kódblokkszegély be/ki"
+
+#: ../plugins/scintilla/plugin.c:169
+msgid "_Indentation Guides"
+msgstr "_Bekezdésmutatók"
+
+#: ../plugins/scintilla/plugin.c:170
+msgid "Show/Hide indentation guides"
+msgstr "Bekezdésmutató megjelenítése/elrejtése"
+
+#: ../plugins/scintilla/plugin.c:172
+#| msgid "_Replace"
+msgid "_White Space"
+msgstr "Ü_reshely-karakterek"
+
+#: ../plugins/scintilla/plugin.c:173
+msgid "Show/Hide white spaces"
+msgstr "Üreshely-karakterek megjelenítése/elrejtése"
+
+#: ../plugins/scintilla/plugin.c:175
+msgid "_Line End Characters"
+msgstr "Sor_vége karakterek"
+
+#: ../plugins/scintilla/plugin.c:176
+msgid "Show/Hide line end characters"
+msgstr "Sorvége karakterek megjelenítése/elrejtése"
+
+#: ../plugins/scintilla/plugin.c:178
+msgid "Line _Wrapping"
+msgstr "Sor_törés"
+
+#: ../plugins/scintilla/plugin.c:179
+msgid "Enable/disable line wrapping"
+msgstr "Sortörés engedélyezése/tiltása"
+
+#: ../plugins/scintilla/plugin.c:372
+msgid "Editor view settings"
+msgstr "Szerkesztő nézetbeállításai"
+
+#: ../plugins/scintilla/plugin.c:487 ../plugins/scintilla/plugin.c:499
 #: ../plugins/scintilla/anjuta-editor.plugin.in.h:2
 msgid "Scintilla Editor"
 msgstr "Scintilla szerkesztő"
 
-#: ../plugins/scintilla/text_editor.c:438
+#: ../plugins/scintilla/text_editor.c:473
 #, c-format
 msgid ""
 "The file '%s' has been changed.\n"
@@ -179,7 +107,7 @@ msgstr ""
 "A(z) „%s” fájl megváltozott.\n"
 "Újratölti?"
 
-#: ../plugins/scintilla/text_editor.c:444
+#: ../plugins/scintilla/text_editor.c:479
 #, c-format
 msgid ""
 "The file '%s' has been changed.\n"
@@ -188,7 +116,7 @@ msgstr ""
 "A(z) „%s” fájl megváltozott.\n"
 "Újratölti, ezzel elveszítve a módosításokat?"
 
-#: ../plugins/scintilla/text_editor.c:464
+#: ../plugins/scintilla/text_editor.c:499
 #, c-format
 msgid ""
 "The file '%s' has been deleted.\n"
@@ -197,7 +125,7 @@ msgstr ""
 "A(z) „%s” fájl törlésre került.\n"
 "Megerősíti és bezárja?"
 
-#: ../plugins/scintilla/text_editor.c:471
+#: ../plugins/scintilla/text_editor.c:506
 #, c-format
 msgid ""
 "The file '%s' has been deleted.\n"
@@ -206,24 +134,24 @@ msgstr ""
 "A(z) „%s” fájl törlésre került.\n"
 "Újratölti, ezzel elveszítve a módosításokat?"
 
-#: ../plugins/scintilla/text_editor.c:1458
+#: ../plugins/scintilla/text_editor.c:1486
 msgid "Could not get file info"
 msgstr "Nem érhető el fájlinformáció"
 
 #. DEBUG_PRINT ("%s", "This file is too big. Unable to allocate memory.");
-#: ../plugins/scintilla/text_editor.c:1470
+#: ../plugins/scintilla/text_editor.c:1498
 msgid "This file is too big. Unable to allocate memory."
 msgstr "Ez a fájl túl nagy. Nem lehet memóriát foglalni."
 
-#: ../plugins/scintilla/text_editor.c:1479
+#: ../plugins/scintilla/text_editor.c:1507
 msgid "Could not open file"
 msgstr "Nem lehet megnyitni a fájlt"
 
-#: ../plugins/scintilla/text_editor.c:1490
+#: ../plugins/scintilla/text_editor.c:1518
 msgid "Error while reading from file"
 msgstr "Hiba a fájlból való olvasás közben"
 
-#: ../plugins/scintilla/text_editor.c:1536
+#: ../plugins/scintilla/text_editor.c:1564
 msgid ""
 "The file does not look like a text file or the file encoding is not "
 "supported. Please check if the encoding of file is in the supported "
@@ -233,11 +161,11 @@ msgstr ""
 "támogatott kódolások listáját. Ha nincs rajta, akkor adja hozzá a "
 "tulajdonságoknál."
 
-#: ../plugins/scintilla/text_editor.c:1683
+#: ../plugins/scintilla/text_editor.c:1747
 msgid "Loading file..."
 msgstr "Fájl betöltése…"
 
-#: ../plugins/scintilla/text_editor.c:1692
+#: ../plugins/scintilla/text_editor.c:1756
 #, c-format
 msgid ""
 "Could not load file: %s\n"
@@ -248,24 +176,24 @@ msgstr ""
 "\n"
 "Részletek: %s"
 
-#: ../plugins/scintilla/text_editor.c:1713
+#: ../plugins/scintilla/text_editor.c:1777
 msgid "File loaded successfully"
 msgstr "A fájl sikeresen betöltve"
 
-#: ../plugins/scintilla/text_editor.c:1731
+#: ../plugins/scintilla/text_editor.c:1795
 msgid "Saving file..."
 msgstr "Fájl mentése…"
 
-#: ../plugins/scintilla/text_editor.c:1740
+#: ../plugins/scintilla/text_editor.c:1804
 #, c-format
 msgid "Could not save intermediate file %s: %s"
 msgstr "A köztes fájl (%s) nem menthető: %s"
 
-#: ../plugins/scintilla/text_editor.c:1756
+#: ../plugins/scintilla/text_editor.c:1820
 msgid "File saved successfully"
 msgstr "A fájl sikeresen mentve"
 
-#: ../plugins/scintilla/text_editor.c:2129
+#: ../plugins/scintilla/text_editor.c:2193
 #, c-format
 msgid ""
 "Cannot load Global defaults and configuration files:\n"
@@ -278,425 +206,393 @@ msgstr ""
 "Ez helytelen működést vagy instabilitást eredményezhet.\n"
 "Az Anjuta visszatér a beépített (korlátozott) beállításokhoz"
 
-#: ../plugins/scratchbox/plugin.c:213
+#: ../plugins/scratchbox/plugin.c:209
 #, c-format
 msgid "Program '%s' does not exists"
 msgstr "A(z) „%s” program nem létezik"
 
-#: ../plugins/scratchbox/plugin.c:464 ../plugins/scratchbox/plugin.c:486
+#: ../plugins/scratchbox/plugin.c:460 ../plugins/scratchbox/plugin.c:482
 #: ../plugins/scratchbox/anjuta-scratchbox.plugin.in.h:2
 msgid "Scratchbox"
 msgstr "Scratchbox"
 
-#: ../plugins/valgrind/plugin.c:134
-msgid "Options"
-msgstr "Beállítások"
-
-#: ../plugins/valgrind/plugin.c:262
-msgid "Select debugging target"
-msgstr "Válassza ki a hibakeresés célpontját"
-
-#: ../plugins/valgrind/plugin.c:319 ../plugins/valgrind/plugin.c:440
-#: ../plugins/valgrind/plugin.c:676 ../plugins/valgrind/plugin.c:685
-msgid "Valgrind"
-msgstr "Valgrind"
-
-#: ../plugins/valgrind/plugin.c:347
-msgid ""
-"No executable target selected for debugging with Valgrind. Please select one."
-msgstr ""
-"Nem választott ki végrehajtható célt a Valgrinddal való hibakereséshez. "
-"Válasszon ki egyet."
-
-#: ../plugins/valgrind/plugin.c:356
-msgid ""
-"There aren't any available executable targets for this project.\n"
-"Please create one first."
-msgstr ""
-"Nem állnak rendelkezésre végrehajtható célok a projekthez.\n"
-"Először hozzon létre egyet."
-
-#: ../plugins/valgrind/plugin.c:368
-msgid "Choose file where to save Valgrind log"
-msgstr "Válassza ki a fájlt a Valgrind napló mentéséhez"
-
-#: ../plugins/valgrind/plugin.c:390
-#, c-format
-msgid ""
-"The file '%s' already exists.\n"
-"Do you want to replace it with the one you are saving?"
-msgstr ""
-"A(z) „%s” fájl már létezik.\n"
-"Le akarja cserélni azzal, amit épp menteni készül?"
-
-#: ../plugins/valgrind/plugin.c:398
-msgid "_Replace"
-msgstr "_Csere"
-
-#: ../plugins/valgrind/plugin.c:418
-msgid "Open Valgrind log file"
-msgstr "Valgrind naplófájl megnyitása"
-
-#. Action name
-#. Stock icon, if any
-#: ../plugins/valgrind/plugin.c:452
-msgid "_Debug"
-msgstr "_Hibakeresés"
-
-#. Action name
-#. Stock icon, if any
-#: ../plugins/valgrind/plugin.c:460
-msgid "_Valgrind"
-msgstr "_Valgrind"
-
-#. Action name
-#. Stock icon, if any
-#: ../plugins/valgrind/plugin.c:468
-msgid "_Select Tool and Run..."
-msgstr "Eszköz _kiválasztása és futtatás…"
-
-#. Action name
-#. Stock icon, if any
-#: ../plugins/valgrind/plugin.c:476
-msgid "_Kill Execution"
-msgstr "_Végrehajtás leállítása"
-
-#. Action name
-#. Stock icon, if any
-#: ../plugins/valgrind/plugin.c:484
-msgid "_Load Log"
-msgstr "Na_pló betöltése"
-
-#. Action name
-#. Stock icon, if any
-#: ../plugins/valgrind/plugin.c:492
-msgid "S_ave Log"
-msgstr "N_apló mentése"
-
-#. Action name
-#. Stock icon, if any
-#: ../plugins/valgrind/plugin.c:500
-msgid "Edit Rules"
-msgstr "Szabályok szerkesztése"
-
-#: ../plugins/valgrind/plugin.c:565
-msgid "Use Valgrind debug tool"
-msgstr "A Valgrind hibakereső eszköz használata"
-
-#: ../plugins/valgrind/preferences.c:122
-msgid "<b>Valgrind general preferences</b>"
-msgstr "<b>Valgrind általános tulajdonságai</b>"
-
-#: ../plugins/valgrind/preferences.c:128
-msgid "Valgrind binary file path:"
-msgstr "A Valgrind bináris fájl útvonala:"
-
-#: ../plugins/valgrind/preferences.c:142
-msgid "Choose Valgrind Binary File Path..."
-msgstr "Valgrind bináris fájl útvonalának kiválasztása…"
-
-#: ../plugins/valgrind/preferences.c:161
-msgid "Preview"
-msgstr "Előnézet"
-
-#: ../plugins/valgrind/preferences.c:174
-msgid "lines above and below the target line."
-msgstr "sor a célsor alatt és felett."
-
-#: ../plugins/valgrind/process.c:55
-#, c-format
-msgid "Failed to create pipe to '%s': %s"
-msgstr "Nem sikerült csővezetéket létrehozni a(z) „%s” fájlhoz: %s"
-
-#: ../plugins/valgrind/process.c:110
-#, c-format
-msgid "Failed to create child process '%s': %s"
-msgstr "Nem sikerült létrehozni a(z) „%s” gyermekfolyamatot: %s"
-
-#: ../plugins/valgrind/vgactions.c:168
-msgid "Reached the end of the input file or error in parsing valgrind output."
-msgstr ""
-"A bemeneti fájl vége elérve vagy hiba a valgrind kimenetének feldolgozásakor."
-
-#: ../plugins/valgrind/vgactions.c:177
-msgid "Process exited."
-msgstr "A folyamat kilépett."
-
-#: ../plugins/valgrind/vgactions.c:197
-msgid "Could not get the right valgrind-binary gconf key:"
-msgstr "Nem kérhető le a megfelelő valgrind-binary gconf kulcs:"
-
-#: ../plugins/valgrind/vgactions.c:205
-#, c-format
-msgid ""
-"Valgrind binary [%s] does not exist. Please check the preferences or install "
-"Valgrind package."
-msgstr ""
-"A Valgrind bináris (%s) nem létezik. Ellenőrizze a beállításokat vagy "
-"telepítse a valgrind csomagot."
-
-#: ../plugins/valgrind/vgactions.c:241 ../plugins/valgrind/vgactions.c:248
-msgid "Could not get the right pipe for the process."
-msgstr "Nem kérhető le a megfelelő csővezeték a folyamathoz."
-
-#: ../plugins/valgrind/vgcachegrindprefs.c:197
-#, c-format
-msgid ""
-"Invalid syntax in settings '%s'.\n"
-"Please enter a value of the form \"<integer>,<integer>,<integer>\"."
-msgstr ""
-"Érvénytelen szintaxis a beállításokban: „%s”.\n"
-"A következő formában adjon meg egy értéket: „<egész>,<egész>,<egész>”."
-
-#: ../plugins/valgrind/vgcachegrindprefs.c:234
-msgid "Override default settings"
-msgstr "Alapértelmezett beállítások felülbírálása"
-
-#. This is the format of the preference, simply translate the words
-#. * inside the <>
-#: ../plugins/valgrind/vgcachegrindprefs.c:246
-msgid "Enter <size>,<assoc>,<line_size>:"
-msgstr "Adja meg a <méret>,<társítás>,<sorméret> értékeit:"
-
-#: ../plugins/valgrind/vgcachegrindprefs.c:280
-msgid "Cachegrind"
-msgstr "Cachegrind"
-
-#: ../plugins/valgrind/vgdefaultview.c:189
-msgid "Error contains"
-msgstr "A hiba tartalmazza"
-
-#: ../plugins/valgrind/vgdefaultview.c:190
-msgid "Function contains"
-msgstr "A függvény tartalmazza"
-
-#: ../plugins/valgrind/vgdefaultview.c:191
-msgid "Object contains"
-msgstr "Objektum tartalmazza"
-
-#: ../plugins/valgrind/vgdefaultview.c:192
-msgid "Source filename contains"
-msgstr "Forrásfájlnév tartalmazza"
-
-#: ../plugins/valgrind/vgdefaultview.c:229
-#, c-format
-msgid "Invalid regular expression: '%s': %s"
-msgstr "Érvénytelen reguláris kifejezés: „%s”: %s"
-
-#. FIXME: we should really get this title from somewhere else?
-#: ../plugins/valgrind/vgdefaultview.c:773
-msgid "Valgrind Suppression Rules"
-msgstr "Valgrind elnyomási szabályok"
-
-#. FIXME: we should really get this title from somewhere else?
-#: ../plugins/valgrind/vgdefaultview.c:1118
-#: ../plugins/valgrind/vgrule-list.c:135
-msgid "Valgrind Suppression"
-msgstr "Valgrind elnyomások"
-
-#: ../plugins/valgrind/vgdefaultview.c:1166
-msgid "Cu_t"
-msgstr "_Kivágás"
-
-#: ../plugins/valgrind/vgdefaultview.c:1167
-msgid "_Copy"
-msgstr "Má_solás"
-
-#: ../plugins/valgrind/vgdefaultview.c:1168
-msgid "_Paste"
-msgstr "_Beillesztés"
-
-#: ../plugins/valgrind/vgdefaultview.c:1170
-msgid "Suppress"
-msgstr "Elnyomás"
-
-#: ../plugins/valgrind/vgdefaultview.c:1172
-msgid "Edit in Custom Editor"
-msgstr "Szerkesztés egyéni szerkesztőben"
-
-#: ../plugins/valgrind/vggeneralprefs.c:172
-msgid "General"
-msgstr "Általános"
-
-#. demangle = decode C++ name encoding
-#: ../plugins/valgrind/vggeneralprefs.c:179
-msgid "Demangle C++ symbol names"
-msgstr "C++ szimbólumnevek visszafejtése"
-
-#: ../plugins/valgrind/vggeneralprefs.c:187
-msgid "Show"
-msgstr "Megjelenítés"
-
-#: ../plugins/valgrind/vggeneralprefs.c:199
-msgid "callers in stack trace"
-msgstr "hívók a veremnyomkövetésben"
-
-#: ../plugins/valgrind/vggeneralprefs.c:206
-msgid "Stop showing errors if there are too many"
-msgstr "Hibák megjelenítésének leállítása, ha túl sok van"
-
-#: ../plugins/valgrind/vggeneralprefs.c:214
-msgid "Round malloc sizes to next word"
-msgstr "A malloc méretek kerekítése a következő szóra"
-
-#: ../plugins/valgrind/vggeneralprefs.c:222
-msgid "Trace any child processes forked off by the program being debugged"
-msgstr ""
-"A hibakeresés alatt álló program által indított gyermekfolyamatok "
-"nyomkövetése"
-
-#: ../plugins/valgrind/vggeneralprefs.c:230
-msgid "Track open file descriptors"
-msgstr "Nyitott fájlleírók követése"
-
-#: ../plugins/valgrind/vggeneralprefs.c:238
-msgid "Add time stamps to log messages"
-msgstr "Időbélyegek hozzáadása a naplóüzenetekhez"
-
-#: ../plugins/valgrind/vggeneralprefs.c:246
-msgid "Call __libc_freeres() at exit before checking for memory leaks"
-msgstr ""
-"A __libc_freeres() meghívása kilépéskor memóriaszivárgások ellenőrzése előtt"
-
-#: ../plugins/valgrind/vggeneralprefs.c:254
-msgid "Suppressions File:"
-msgstr "Elnyomások fájlja:"
-
-#: ../plugins/valgrind/vggeneralprefs.c:274
-msgid "Choose Valgrind Suppressions File..."
-msgstr "Válasszon ki egy Valgrind elnyomásfájlt…"
-
-#: ../plugins/valgrind/vghelgrindprefs.c:180
-msgid "Helgrind"
-msgstr "Helgrind"
-
-#: ../plugins/valgrind/vghelgrindprefs.c:185
-msgid "Assume thread stacks are used privately"
-msgstr "Szálvermek privát használatának feltételezése"
-
-#: ../plugins/valgrind/vghelgrindprefs.c:194
-msgid "Show location of last word access on error:"
-msgstr "Hiba esetén az utolsó szóhozzáférés helyének mutatása:"
-
-#: ../plugins/valgrind/vgmemcheckprefs.c:204
-msgid "Memcheck"
-msgstr "Memcheck"
-
-#: ../plugins/valgrind/vgmemcheckprefs.c:209
-msgid "Memory leaks"
-msgstr "Memóriaszivárgások"
-
-#: ../plugins/valgrind/vgmemcheckprefs.c:214
-msgid "Leak check:"
-msgstr "Szivárgás-ellenőrzés:"
-
-#: ../plugins/valgrind/vgmemcheckprefs.c:225
-msgid "Show reachable blocks in leak check"
-msgstr "Elérhető blokkok megjelenítése a szivárgás-ellenőrzésben"
-
-#: ../plugins/valgrind/vgmemcheckprefs.c:233
-msgid "Leak resolution:"
-msgstr "Szivárgásfeloldás:"
-
-#: ../plugins/valgrind/vgmemcheckprefs.c:251
-msgid "Keep up to"
-msgstr "Ennyi:"
-
-#: ../plugins/valgrind/vgmemcheckprefs.c:263
-msgid "bytes in the queue after being free()'d"
-msgstr "bájt sorban áll a free() hívása után"
-
-#: ../plugins/valgrind/vgmemcheckprefs.c:270
-msgid "Work around bugs generated by gcc 2.96"
-msgstr "A gcc 2.96 által okozott hibák megkerülése"
-
-#: ../plugins/valgrind/vgrule-editor.c:146
-msgid "Function"
-msgstr "Függvény"
-
-#: ../plugins/valgrind/vgrule-editor.c:149
-msgid "Shared Object"
-msgstr "Megosztott objektum"
-
-#: ../plugins/valgrind/vgrule-editor.c:209
-msgid "Grow"
-msgstr "Növelés"
-
-#: ../plugins/valgrind/vgrule-editor.c:213
-msgid "Shrink"
-msgstr "Zsugorítás"
-
-#: ../plugins/valgrind/vgrule-editor.c:239
-msgid "Rule name:"
-msgstr "Szabály neve:"
-
-#: ../plugins/valgrind/vgrule-editor.c:249
-msgid "Suppress messages of type:"
-msgstr "A következő típusú üzenetek elnyomása:"
-
-#: ../plugins/valgrind/vgrule-editor.c:259
-msgid "Suppress when using:"
-msgstr "Elnyomás a következő használatakor:"
-
-#: ../plugins/valgrind/vgrule-editor.c:272
-msgid "System call:"
-msgstr "Rendszerhívás:"
-
-#: ../plugins/valgrind/vgrule-editor.c:283
-msgid "Call chain:"
-msgstr "Hívási lánc:"
-
-#: ../plugins/valgrind/vgrule-editor.c:540
-#: ../plugins/valgrind/vgrule-editor.c:555
-#, c-format
-msgid "Error saving to suppression file '%s': %s"
-msgstr "Hiba a(z) „%s” elnyomási fájlba mentés közben: %s"
-
-#: ../plugins/valgrind/vgrule-list.c:177 ../plugins/valgrind/vgrule-list.c:246
-msgid "You have forgotten to name your suppression rule."
-msgstr "Elfelejtette elnevezni az elnyomási szabályt."
-
-#: ../plugins/valgrind/vgrule-list.c:406
-msgid "_Edit"
-msgstr "S_zerkesztés"
-
-#: ../plugins/valgrind/vgrule-list.c:651
-#, c-format
-msgid "Cannot save suppression rules: %s"
-msgstr "Nem lehet menteni az elnyomási szabályokat: %s"
-
-#: ../plugins/valgrind/vgrule-list.c:653
-msgid "You have not set a suppressions file in your settings."
-msgstr "Nem állított be elnyomási fájlt a beállításokban."
-
+#. Public functions
+#. *---------------------------------------------------------------------------
 #: ../plugins/sample1/anjuta-sample.plugin.in.h:1
 msgid "Sample Plugin"
 msgstr "Minta bővítmény"
 
 #: ../plugins/sample1/anjuta-sample.plugin.in.h:2
 msgid "Sample Plugin for Anjuta."
-msgstr "Minta bővítmény az Anjuta-hoz"
-
-#: ../plugins/profiler/profiler.plugin.in.h:1
-msgid "Application performance profiler"
-msgstr "Alkalmazásteljesítmény-profilozó"
-
-#: ../plugins/profiler/profiler.plugin.in.h:2
-msgid "Profile"
-msgstr "Profilozó"
+msgstr "Minta bővítmény az Anjuta-hoz."
 
 #: ../plugins/scintilla/anjuta-editor.plugin.in.h:1
 msgid "An alternate editor based on Scintilla"
 msgstr "Alternatítv Scintilla alapú szerkesztő"
 
-#: ../plugins/valgrind/anjuta-valgrind.plugin.in.h:1
-msgid "Powerful debugging tool."
-msgstr "Hatékony hibakereső eszköz"
-
-#: ../plugins/valgrind/anjuta-valgrind.plugin.in.h:2
-msgid "Valgrind Plugin"
-msgstr "Valgrind bővítmény"
-
 #: ../plugins/scratchbox/anjuta-scratchbox.plugin.in.h:1
 msgid "Change build commands to use scratchbox 1 or 2"
 msgstr "Összeállítási parancsok módosítása a scratchbox 1 vagy 2 használatára"
+
+#~ msgid "Function Name"
+#~ msgstr "Függvénynév"
+
+#~ msgid "Time"
+#~ msgstr "Idő"
+
+#~ msgid "Self"
+#~ msgstr "Saját"
+
+#~ msgid "Children"
+#~ msgstr "Gyermekek"
+
+#~ msgid "Calls"
+#~ msgstr "Hívások"
+
+#~ msgid "% Time"
+#~ msgstr "% Idő"
+
+#~ msgid "Cumulative Seconds"
+#~ msgstr "Összesített másodperc"
+
+#~ msgid "Self Seconds"
+#~ msgstr "Saját másodperc"
+
+#~ msgid "Self ms/call"
+#~ msgstr "Saját em/hívás"
+
+#~ msgid "Total ms/call"
+#~ msgstr "Összes em/hívás"
+
+#~ msgid ""
+#~ "Could not get profiling data.\n"
+#~ "\n"
+#~ "Please check the path to this target's profiling data file."
+#~ msgstr ""
+#~ "Nem kérhetők le a profilozási adatok.\n"
+#~ "\n"
+#~ "Ellenőrizze ezen cél profilozási adatfájljának útvonalát."
+
+#~ msgid ""
+#~ "This target does not have any profiling data.\n"
+#~ "\n"
+#~ "Please ensure that the target is compiled with profiling support (-p)and "
+#~ "that it is run at least once."
+#~ msgstr ""
+#~ "Ez a cél nem rendelkezik profilozási adatokkal.\n"
+#~ "\n"
+#~ "Győződjön meg róla, hogy a cél profilozási támogatással lett fordítva (-"
+#~ "p) és legalább egyszer lefutott."
+
+#~ msgid "Debug"
+#~ msgstr "Hibakeresés"
+
+#~ msgid "Profiler"
+#~ msgstr "Profilozó"
+
+#~ msgid "Select Target..."
+#~ msgstr "Cél kiválasztása…"
+
+#~ msgid "Refresh"
+#~ msgstr "Frissítés"
+
+#~ msgid "Delete Data"
+#~ msgstr "Adatok törlése"
+
+#~ msgid "Application Performance Profiler"
+#~ msgstr "Alkalmazásteljesítmény-profilozó"
+
+#~ msgid "Flat Profile"
+#~ msgstr "Egyszerű profil"
+
+#~ msgid "Call Graph"
+#~ msgstr "Hívási grafikon"
+
+#~ msgid "Function Call Tree"
+#~ msgstr "Függvényhívási fa"
+
+#~ msgid "Function Call Chart"
+#~ msgstr "Függvényhívási grafikon"
+
+#~ msgid "Options"
+#~ msgstr "Beállítások"
+
+#~ msgid "Select debugging target"
+#~ msgstr "Válassza ki a hibakeresés célpontját"
+
+#~ msgid "Valgrind"
+#~ msgstr "Valgrind"
+
+#~ msgid ""
+#~ "No executable target selected for debugging with Valgrind. Please select "
+#~ "one."
+#~ msgstr ""
+#~ "Nem választott ki végrehajtható célt a Valgrinddal való hibakereséshez. "
+#~ "Válasszon ki egyet."
+
+#~ msgid ""
+#~ "There aren't any available executable targets for this project.\n"
+#~ "Please create one first."
+#~ msgstr ""
+#~ "Nem állnak rendelkezésre végrehajtható célok a projekthez.\n"
+#~ "Először hozzon létre egyet."
+
+#~ msgid "Choose file where to save Valgrind log"
+#~ msgstr "Válassza ki a fájlt a Valgrind napló mentéséhez"
+
+#~ msgid ""
+#~ "The file '%s' already exists.\n"
+#~ "Do you want to replace it with the one you are saving?"
+#~ msgstr ""
+#~ "A(z) „%s” fájl már létezik.\n"
+#~ "Le akarja cserélni azzal, amit épp menteni készül?"
+
+#~ msgid "Open Valgrind log file"
+#~ msgstr "Valgrind naplófájl megnyitása"
+
+#~ msgid "_Debug"
+#~ msgstr "_Hibakeresés"
+
+#~ msgid "_Valgrind"
+#~ msgstr "_Valgrind"
+
+#~ msgid "_Select Tool and Run..."
+#~ msgstr "Eszköz _kiválasztása és futtatás…"
+
+#~ msgid "_Kill Execution"
+#~ msgstr "_Végrehajtás leállítása"
+
+#~ msgid "_Load Log"
+#~ msgstr "Na_pló betöltése"
+
+#~ msgid "S_ave Log"
+#~ msgstr "N_apló mentése"
+
+#~ msgid "Edit Rules"
+#~ msgstr "Szabályok szerkesztése"
+
+#~ msgid "Use Valgrind debug tool"
+#~ msgstr "A Valgrind hibakereső eszköz használata"
+
+#~ msgid "<b>Valgrind general preferences</b>"
+#~ msgstr "<b>Valgrind általános tulajdonságai</b>"
+
+#~ msgid "Valgrind binary file path:"
+#~ msgstr "A Valgrind bináris fájl útvonala:"
+
+#~ msgid "Choose Valgrind Binary File Path..."
+#~ msgstr "Valgrind bináris fájl útvonalának kiválasztása…"
+
+#~ msgid "Preview"
+#~ msgstr "Előnézet"
+
+#~ msgid "lines above and below the target line."
+#~ msgstr "sor a célsor alatt és felett."
+
+#~ msgid "Failed to create pipe to '%s': %s"
+#~ msgstr "Nem sikerült csővezetéket létrehozni a(z) „%s” fájlhoz: %s"
+
+#~ msgid "Failed to create child process '%s': %s"
+#~ msgstr "Nem sikerült létrehozni a(z) „%s” gyermekfolyamatot: %s"
+
+#~ msgid ""
+#~ "Reached the end of the input file or error in parsing valgrind output."
+#~ msgstr ""
+#~ "A bemeneti fájl vége elérve vagy hiba a valgrind kimenetének "
+#~ "feldolgozásakor."
+
+#~ msgid "Process exited."
+#~ msgstr "A folyamat kilépett."
+
+#~ msgid "Could not get the right valgrind-binary gconf key:"
+#~ msgstr "Nem kérhető le a megfelelő valgrind-binary gconf kulcs:"
+
+#~ msgid ""
+#~ "Valgrind binary [%s] does not exist. Please check the preferences or "
+#~ "install Valgrind package."
+#~ msgstr ""
+#~ "A Valgrind bináris (%s) nem létezik. Ellenőrizze a beállításokat vagy "
+#~ "telepítse a valgrind csomagot."
+
+#~ msgid "Could not get the right pipe for the process."
+#~ msgstr "Nem kérhető le a megfelelő csővezeték a folyamathoz."
+
+#~ msgid ""
+#~ "Invalid syntax in settings '%s'.\n"
+#~ "Please enter a value of the form \"<integer>,<integer>,<integer>\"."
+#~ msgstr ""
+#~ "Érvénytelen szintaxis a beállításokban: „%s”.\n"
+#~ "A következő formában adjon meg egy értéket: „<egész>,<egész>,<egész>”."
+
+#~ msgid "Override default settings"
+#~ msgstr "Alapértelmezett beállítások felülbírálása"
+
+#~ msgid "Enter <size>,<assoc>,<line_size>:"
+#~ msgstr "Adja meg a <méret>,<társítás>,<sorméret> értékeit:"
+
+#~ msgid "Cachegrind"
+#~ msgstr "Cachegrind"
+
+#~ msgid "Error contains"
+#~ msgstr "A hiba tartalmazza"
+
+#~ msgid "Function contains"
+#~ msgstr "A függvény tartalmazza"
+
+#~ msgid "Object contains"
+#~ msgstr "Objektum tartalmazza"
+
+#~ msgid "Source filename contains"
+#~ msgstr "Forrásfájlnév tartalmazza"
+
+#~ msgid "Invalid regular expression: '%s': %s"
+#~ msgstr "Érvénytelen reguláris kifejezés: „%s”: %s"
+
+#~ msgid "Valgrind Suppression Rules"
+#~ msgstr "Valgrind elnyomási szabályok"
+
+#~ msgid "Valgrind Suppression"
+#~ msgstr "Valgrind elnyomások"
+
+#~ msgid "Cu_t"
+#~ msgstr "_Kivágás"
+
+#~ msgid "_Copy"
+#~ msgstr "Má_solás"
+
+#~ msgid "_Paste"
+#~ msgstr "_Beillesztés"
+
+#~ msgid "Suppress"
+#~ msgstr "Elnyomás"
+
+#~ msgid "Edit in Custom Editor"
+#~ msgstr "Szerkesztés egyéni szerkesztőben"
+
+#~ msgid "General"
+#~ msgstr "Általános"
+
+#~ msgid "Demangle C++ symbol names"
+#~ msgstr "C++ szimbólumnevek visszafejtése"
+
+#~ msgid "Show"
+#~ msgstr "Megjelenítés"
+
+#~ msgid "callers in stack trace"
+#~ msgstr "hívók a veremnyomkövetésben"
+
+#~ msgid "Stop showing errors if there are too many"
+#~ msgstr "Hibák megjelenítésének leállítása, ha túl sok van"
+
+#~ msgid "Round malloc sizes to next word"
+#~ msgstr "A malloc méretek kerekítése a következő szóra"
+
+#~ msgid "Trace any child processes forked off by the program being debugged"
+#~ msgstr ""
+#~ "A hibakeresés alatt álló program által indított gyermekfolyamatok "
+#~ "nyomkövetése"
+
+#~ msgid "Track open file descriptors"
+#~ msgstr "Nyitott fájlleírók követése"
+
+#~ msgid "Add time stamps to log messages"
+#~ msgstr "Időbélyegek hozzáadása a naplóüzenetekhez"
+
+#~ msgid "Call __libc_freeres() at exit before checking for memory leaks"
+#~ msgstr ""
+#~ "A __libc_freeres() meghívása kilépéskor memóriaszivárgások ellenőrzése "
+#~ "előtt"
+
+#~ msgid "Suppressions File:"
+#~ msgstr "Elnyomások fájlja:"
+
+#~ msgid "Choose Valgrind Suppressions File..."
+#~ msgstr "Válasszon ki egy Valgrind elnyomásfájlt…"
+
+#~ msgid "Helgrind"
+#~ msgstr "Helgrind"
+
+#~ msgid "Assume thread stacks are used privately"
+#~ msgstr "Szálvermek privát használatának feltételezése"
+
+#~ msgid "Show location of last word access on error:"
+#~ msgstr "Hiba esetén az utolsó szóhozzáférés helyének mutatása:"
+
+#~ msgid "Memcheck"
+#~ msgstr "Memcheck"
+
+#~ msgid "Memory leaks"
+#~ msgstr "Memóriaszivárgások"
+
+#~ msgid "Leak check:"
+#~ msgstr "Szivárgás-ellenőrzés:"
+
+#~ msgid "Show reachable blocks in leak check"
+#~ msgstr "Elérhető blokkok megjelenítése a szivárgás-ellenőrzésben"
+
+#~ msgid "Leak resolution:"
+#~ msgstr "Szivárgásfeloldás:"
+
+#~ msgid "Keep up to"
+#~ msgstr "Ennyi:"
+
+#~ msgid "bytes in the queue after being free()'d"
+#~ msgstr "bájt sorban áll a free() hívása után"
+
+#~ msgid "Work around bugs generated by gcc 2.96"
+#~ msgstr "A gcc 2.96 által okozott hibák megkerülése"
+
+#~ msgid "Function"
+#~ msgstr "Függvény"
+
+#~ msgid "Shared Object"
+#~ msgstr "Megosztott objektum"
+
+#~ msgid "Grow"
+#~ msgstr "Növelés"
+
+#~ msgid "Shrink"
+#~ msgstr "Zsugorítás"
+
+#~ msgid "Rule name:"
+#~ msgstr "Szabály neve:"
+
+#~ msgid "Suppress messages of type:"
+#~ msgstr "A következő típusú üzenetek elnyomása:"
+
+#~ msgid "Suppress when using:"
+#~ msgstr "Elnyomás a következő használatakor:"
+
+#~ msgid "System call:"
+#~ msgstr "Rendszerhívás:"
+
+#~ msgid "Call chain:"
+#~ msgstr "Hívási lánc:"
+
+#~ msgid "Error saving to suppression file '%s': %s"
+#~ msgstr "Hiba a(z) „%s” elnyomási fájlba mentés közben: %s"
+
+#~ msgid "You have forgotten to name your suppression rule."
+#~ msgstr "Elfelejtette elnevezni az elnyomási szabályt."
+
+#~ msgid "_Edit"
+#~ msgstr "S_zerkesztés"
+
+#~ msgid "Cannot save suppression rules: %s"
+#~ msgstr "Nem lehet menteni az elnyomási szabályokat: %s"
+
+#~ msgid "You have not set a suppressions file in your settings."
+#~ msgstr "Nem állított be elnyomási fájlt a beállításokban."
+
+#~ msgid "Application performance profiler"
+#~ msgstr "Alkalmazásteljesítmény-profilozó"
+
+#~ msgid "Profile"
+#~ msgstr "Profilozó"
+
+#~ msgid "Powerful debugging tool."
+#~ msgstr "Hatékony hibakereső eszköz"
+
+#~ msgid "Valgrind Plugin"
+#~ msgstr "Valgrind bővítmény"
+
