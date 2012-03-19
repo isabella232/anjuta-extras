@@ -154,9 +154,10 @@ scintilla-marshal.h: gtk/scintilla-marshal.list
         && rm -f xgen-gmc
 
 scintilla-marshal.c: gtk/scintilla-marshal.list
-	$(AM_V_GEN)@GLIB_GENMARSHAL@  --prefix scintilla_marshal $(srcdir)/gtk/scintilla-marshal.list --body > xgen-gmc \
-        && cp xgen-gmc $(@F) \
-        && rm -f xgen-gmc
+	$(AM_V_GEN)echo "#include \"scintilla-marshal.h\"" > xgenc-gmc \
+	    && @GLIB_GENMARSHAL@  --prefix scintilla_marshal $(srcdir)/gtk/scintilla-marshal.list --body >> xgenc-gmc \
+        && cp xgenc-gmc $(@F) \
+        && rm -f xgenc-gmc
 
 EXTRA_DIST=lexers.make \
 	gtk/scintilla-marshal.list
