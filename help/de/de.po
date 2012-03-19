@@ -1,0 +1,62 @@
+# German translation of the anjuta-extras documentation.
+# Mario Blättermann <mario.blaettermann@gmail.com>, 2012.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: anjuta-extras master\n"
+"POT-Creation-Date: 2012-03-19 11:47+0100\n"
+"PO-Revision-Date: 2012-03-19 11:54+0100\n"
+"Last-Translator: Mario Blättermann <mario.blaettermann@gmail.com>\n"
+"Language-Team: German <gnome-de@gnome.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
+msgctxt "_"
+msgid "translator-credits"
+msgstr "Mario Blättermann <mario.blaettermann@gmail.com>, 2012"
+
+#: scintilla-plugin.page:8(info/desc) scintilla-plugin.page:17(page/title)
+msgid "Scintilla plugin"
+msgstr "Scintilla-Plugin"
+
+#: scintilla-plugin.page:12(credit/name)
+msgid "Sébastien Granjoux"
+msgstr "Sébastien Granjoux"
+
+#: scintilla-plugin.page:19(page/p)
+msgid ""
+"This plugin provides an alternative editor using Scintilla. Comparing to the "
+"default GtkSourceView editor, it has some additional features like"
+msgstr ""
+"Dieses Plugin stellt einen alternativen Editor bereit, der Scintilla "
+"verwendet. Im Vergleich zum vorgegebenen Editor, der auf GtkSourceView "
+"basiert, hat dieser einige zusätzliche Funktionsmerkmale:"
+
+#: scintilla-plugin.page:27(item/p)
+msgid ""
+"Code folding. You can show or hide the body of a function or any other code "
+"blocks by clicking in the margin."
+msgstr ""
+"Code-Faltung. Sie können den Textkörper einer Funktion oder jedes anderen "
+"Codeblocks anzeigen oder verbergen, indem Sie auf den Rand klicken."
+
+#: scintilla-plugin.page:31(item/p)
+msgid ""
+"Column mode. By pressing <key>Ctrl</key> while selecting some text, you can "
+"put the cursor on several lines and select only a part of each line."
+msgstr ""
+"Spaltenmodus. Durch Drücken der <key>Strg</key>-Taste, wenn Text ausgewählt "
+"ist, können Sie den Eingabezeiger in verschiedene Zeilen setzen und nur einen "
+"Teil jeder Zeile auswählen."
+
+#: scintilla-plugin.page:36(item/p)
+msgid ""
+"Custom types highlight. The symbol db plugin sends the types defined in the "
+"project to the editor which highlight them."
+msgstr ""
+
+#: scintilla-plugin.page:41(page/p)
+msgid "On the other hand, GtkSourceView is better integrated within GNOME."
+msgstr "Andererseits ist GtkSourceView besser in GNOME integriert."
