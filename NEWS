@@ -1,3 +1,37 @@
+anjuta-extras-3.4.0 (26 March 2012) -- James Liggett
+
+Akom Chotiphantawanon (1):
+      Updated Thai translation.
+
+Bruno Brouard (1):
+      Updated French translation
+
+Gabor Kelemen (1):
+      Updated Hungarian translation
+
+James Liggett (1):
+      scintilla: Include scintilla-marshal.h in scintilla-marshal.c
+
+Mario Blättermann (1):
+      [l10n] Added German doc translation
+
+Piotr Drąg (1):
+      Updated Polish translation
+
+Sébastien Granjoux (6):
+      scintilla: Update to include scintilla 3.0.3
+      scintilla: Reorganize files like in scintilla source archive
+      scintilla: Add a forgotten file in Makefile.am in the previous changes
+      scintilla: bgo #348850 - doesn't respect theme colours
+      bgo #351214 - Anjuta doesn't respect Gnome blinking cursor preference
+      scintilla: Explicitly set GDK_SCROLL_MASK as recent gtk+ versions require 
+
+Yuri Myasoedov (1):
+      Updated Russian translation
+
+Мирослав Николић (1):
+      Updated Serbian translation
+
 anjuta-extras-3.3.90 (20 February 2012) -- James Liggett
 
 Johannes Schmid (2):
