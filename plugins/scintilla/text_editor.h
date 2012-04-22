@@ -87,6 +87,7 @@ struct _TextEditor
 	GSettings *settings;
 	GSettings *docman_settings;
 	GSettings *msgman_settings;
+	GSettings *editor_settings;
 
 	/* Editor ID and widget for AnEditor */
 	AnEditorID editor_id;
@@ -295,6 +296,8 @@ void text_editor_scintilla_command (TextEditor *te, gint command,
 #define MSGMAN_COLOR_IMPORTANT            "color-important"
 
 #define PREF_SCHEMA		"org.gnome.anjuta.plugins.scintilla"
+
+#define ANJUTA_PREF_SCHEMA_PREFIX "org.gnome.anjuta."
 
 G_END_DECLS
 

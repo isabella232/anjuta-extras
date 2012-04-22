@@ -32,12 +32,9 @@ extern "C" {
 /*
 #define INDENT_AUTOMATIC           "indent-automatic"
 */
-#define USE_TABS                   "use-tabs"
 #define BRACES_CHECK               "braces-check"
 #define DOS_EOL_CHECK              "editor-doseol"
 #define WRAP_BOOKMARKS             "editor-wrapbookmarks"
-#define TAB_SIZE                   "tabsize"
-#define INDENT_SIZE                "indent-size"
 /*
 #define INDENT_OPENING             "indent-opening"
 #define INDENT_CLOSING             "indent-closing"

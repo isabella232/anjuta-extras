@@ -150,6 +150,7 @@ text_editor_instance_init (TextEditor *te)
 	te->settings = g_settings_new (PREF_SCHEMA);
 	te->docman_settings = g_settings_new (DOCMAN_PREF_SCHEMA);
 	te->msgman_settings = g_settings_new (MSGMAN_PREF_SCHEMA);
+	te->editor_settings = g_settings_new (ANJUTA_PREF_SCHEMA_PREFIX IANJUTA_EDITOR_PREF_SCHEMA);
 }
 
 static GtkWidget *
@@ -756,6 +757,7 @@ text_editor_dispose (GObject *obj)
 	g_object_unref (te->settings);
 	g_object_unref (te->docman_settings);
 	g_object_unref (te->msgman_settings);
+	g_object_unref (te->editor_settings);
 	G_OBJECT_CLASS (parent_class)->dispose (obj);
 }
 

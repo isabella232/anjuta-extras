@@ -102,15 +102,6 @@
 		<key name="indent-opening" type="b">
 			<default>false</default>
 		</key>
-		<key name="use-tabs" type="b">
-			<default>true</default>
-		</key>
-		<key name="indent-size" type="i">
-			<default>4</default>
-		</key>
-		<key name="tabsize" type="i">
-			<default>4</default>
-		</key>
 		<key name="view-eol" type="b">
 			<default>false</default>
 		</key>

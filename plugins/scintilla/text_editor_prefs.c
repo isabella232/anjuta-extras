@@ -17,6 +17,7 @@
     along with this program; if not, write to the Free Software
     Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 */
+#include <libanjuta/interfaces/ianjuta-editor.h>
 #include <libanjuta/anjuta-preferences.h>
 #include <libanjuta/anjuta-debug.h>
 
@@ -374,12 +375,13 @@ text_editor_prefs_init (TextEditor *te)
 	gint val;
 	GSettings *settings = te->settings;
 	GSettings *docman_settings = te->docman_settings;
+	GSettings *editor_settings = te->editor_settings;
 	
 	/* Sync prefs from gconf to props */
-	set_n_get_prop_int (settings, TAB_SIZE);
+	set_n_get_prop_int (editor_settings, IANJUTA_EDITOR_TAB_WIDTH_KEY);
 	set_n_get_prop_int (docman_settings, TEXT_ZOOM_FACTOR);
-	set_n_get_prop_int (settings, INDENT_SIZE);
-	set_n_get_prop_bool (settings, USE_TABS);
+	set_n_get_prop_int (editor_settings, IANJUTA_EDITOR_INDENT_WIDTH_KEY);
+	set_n_get_prop_bool (editor_settings, IANJUTA_EDITOR_USE_TABS_KEY);
 	set_n_get_prop_bool (settings, DISABLE_SYNTAX_HILIGHTING);
 	set_n_get_prop_bool (settings, WRAP_BOOKMARKS);
 	set_n_get_prop_bool (settings, BRACES_CHECK);
@@ -404,10 +406,10 @@ text_editor_prefs_init (TextEditor *te)
 	set_n_get_prop_int (settings, EDGE_COLUMN);
 	
 	/* Register gconf notifications */
-	REGISTER_NOTIFY (settings, TAB_SIZE, on_notify_tab_size);
+	REGISTER_NOTIFY (editor_settings, IANJUTA_EDITOR_TAB_WIDTH_KEY, on_notify_tab_size);
 	REGISTER_NOTIFY (docman_settings, TEXT_ZOOM_FACTOR, on_notify_zoom_factor);
-	REGISTER_NOTIFY (settings, INDENT_SIZE, on_notify_indent_size);
-	REGISTER_NOTIFY (settings, USE_TABS, on_notify_use_tab_for_indentation);
+	REGISTER_NOTIFY (editor_settings, IANJUTA_EDITOR_INDENT_WIDTH_KEY, on_notify_indent_size);
+	REGISTER_NOTIFY (editor_settings, IANJUTA_EDITOR_USE_TABS_KEY, on_notify_use_tab_for_indentation);
 	REGISTER_NOTIFY (settings, DISABLE_SYNTAX_HILIGHTING, on_notify_disable_hilite);
 	/* REGISTER_NOTIFY (settings, INDENT_AUTOMATIC, on_notify_automatic_indentation); */
 	REGISTER_NOTIFY (settings, WRAP_BOOKMARKS, on_notify_wrap_bookmarks);

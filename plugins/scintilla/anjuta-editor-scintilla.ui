@@ -838,7 +838,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkCheckButton" id="preferences:use-tabs">
+                      <object class="GtkCheckButton" id="preferences:.editor.use-tabs">
                         <property name="label" translatable="yes">Use tabs for indentation</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
@@ -856,7 +856,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkSpinButton" id="preferences:indent-size">
+                      <object class="GtkSpinButton" id="preferences:.editor.indent-width">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="adjustment">adjustment6</property>
@@ -873,7 +873,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkSpinButton" id="preferences:tabsize">
+                      <object class="GtkSpinButton" id="preferences:.editor.tab-width">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="adjustment">adjustment7</property>
