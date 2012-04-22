@@ -747,6 +747,7 @@ text_editor_dispose (GObject *obj)
 	if (te->provider)
 	{
 		g_list_free (te->provider);
+		te->provider = NULL;
 	}
 	if (te->completion_string)
 	{
