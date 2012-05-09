@@ -279,6 +279,22 @@ text_editor_setup_indicators_color (TextEditor *te)
 	g_free (spec);
 }
 
+static void
+text_editor_setup_indentation_settings (TextEditor *te)
+{
+	AnEditorID editor_id;
+	GtkWidget *scintilla;
+	gboolean value;
+
+	editor_id = aneditor_new (sci_prop_get_pointer (te->props_base));
+	scintilla = aneditor_get_widget (editor_id);
+
+	value = g_settings_get_boolean (te->settings, TAB_INDENTS);
+	scintilla_send_message (SCINTILLA (scintilla), SCI_SETTABINDENTS, value ? 1 : 0, 0);
+	value = g_settings_get_boolean (te->settings, BACKSPACE_UNINDENTS);
+	scintilla_send_message (SCINTILLA (scintilla), SCI_SETBACKSPACEUNINDENTS, value ? 1 : 0, 0);
+}
+
 void
 text_editor_add_view (TextEditor *te)
 {
@@ -674,6 +690,7 @@ text_editor_new (AnjutaPlugin *plugin, const gchar *uri, const gchar *name)
 	/* DEBUG_PRINT ("%s", "Initializing zoom factor to: %d", zoom_factor); */
 	text_editor_set_zoom_factor (te, zoom_factor);
 	text_editor_setup_indicators_color (te);
+	text_editor_setup_indentation_settings (te);
 
 	/* Get type name notification */
 	g_signal_connect_swapped (G_OBJECT (shell), "value-added", G_CALLBACK (on_shell_value_changed), te);
