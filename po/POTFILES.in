@@ -1,14 +1,14 @@
 [encoding: UTF-8]
 # List of source files containing translatable strings.
 # Please keep this list in alphabetical order.
-plugins/scintilla/anjuta-editor-scintilla.ui
-plugins/scintilla/org.gnome.anjuta.plugins.scintilla.gschema.xml.in
-plugins/scintilla/print.c
-plugins/scintilla/plugin.c
-plugins/scintilla/text_editor.c
-plugins/scratchbox/anjuta-scratchbox.ui
-plugins/scratchbox/org.gnome.anjuta.plugins.scratchbox.gschema.xml.in
-plugins/scratchbox/plugin.c
 [type: gettext/ini]plugins/sample1/anjuta-sample.plugin.in
 [type: gettext/ini]plugins/scintilla/anjuta-editor.plugin.in
+[type: gettext/glade]plugins/scintilla/anjuta-editor-scintilla.ui
+plugins/scintilla/org.gnome.anjuta.plugins.scintilla.gschema.xml.in
+plugins/scintilla/plugin.c
+plugins/scintilla/print.c
+plugins/scintilla/text_editor.c
 [type: gettext/ini]plugins/scratchbox/anjuta-scratchbox.plugin.in
+[type: gettext/glade]plugins/scratchbox/anjuta-scratchbox.ui
+plugins/scratchbox/org.gnome.anjuta.plugins.scratchbox.gschema.xml.in
+plugins/scratchbox/plugin.c
