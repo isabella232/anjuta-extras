@@ -7,15 +7,16 @@
 # Francisco Javier F. Serrador <serrador@cvs.gnome.es>, 2003, 2005.
 # Francisco Javier F. Serrador <serrador@cvs.gnome.org>, 2005, 2006.
 # Jorge González <jorgegonz@svn.gnome.org>, 2007, 2009, 2010.
+# Daniel Mustieles <daniel.mustieles@gmail.com>, 2012.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: anjuta-extras.master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
-"product=anjuta&component=unknown\n"
-"POT-Creation-Date: 2010-08-28 09:36+0000\n"
-"PO-Revision-Date: 2010-08-28 17:22+0200\n"
-"Last-Translator: Jorge González <jorgegonz@svn.gnome.org>\n"
+"product=anjuta&keywords=I18N+L10N&component=unknown\n"
+"POT-Creation-Date: 2012-05-15 18:36+0000\n"
+"PO-Revision-Date: 2012-05-16 11:20+0200\n"
+"Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,150 +25,392 @@ msgstr ""
 "X-Generator: KBabel 1.11.4\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../plugins/profiler/gprof-call-graph-view.c:312
-#: ../plugins/profiler/gprof-call-graph-view.c:322
-#: ../plugins/profiler/gprof-call-graph-view.c:332
-#: ../plugins/profiler/gprof-flat-profile-view.c:56
-#: ../plugins/profiler/gprof-function-call-tree-view.c:60
-msgid "Function Name"
-msgstr "Nombre de la función"
+#: ../plugins/sample1/anjuta-sample.plugin.in.h:1
+msgid "Sample Plugin"
+msgstr "Complemento de ejemplo"
 
-#: ../plugins/profiler/gprof-call-graph-view.c:344
-msgid "Time"
-msgstr "Tiempo"
+#: ../plugins/sample1/anjuta-sample.plugin.in.h:2
+msgid "Sample Plugin for Anjuta."
+msgstr "Complemento de ejemplo para Anjuta."
 
-#. Total amount of time spent in this function, excluding those it calla.
-#. * This is the same as the "Seconds" field in the flat profile.
-#. Time spent in a subroutine of a function.
-#. Time spent in this function when it was called by its caller
-#: ../plugins/profiler/gprof-call-graph-view.c:361
-#: ../plugins/profiler/gprof-call-graph-view.c:375
-#: ../plugins/profiler/gprof-call-graph-view.c:389
-msgid "Self"
-msgstr "Propio"
+#: ../plugins/scintilla/anjuta-editor.plugin.in.h:1
+#: ../plugins/scintilla/plugin.c:487 ../plugins/scintilla/plugin.c:499
+msgid "Scintilla Editor"
+msgstr "Editor Scintilla"
 
-#: ../plugins/profiler/gprof-call-graph-view.c:402
-#: ../plugins/profiler/gprof-call-graph-view.c:414
-#: ../plugins/profiler/gprof-call-graph-view.c:426
-msgid "Children"
-msgstr "Hijos"
+#: ../plugins/scintilla/anjuta-editor.plugin.in.h:2
+msgid "An alternate editor based on Scintilla"
+msgstr "Un editor alternativo basado en Scintilla"
 
-#: ../plugins/profiler/gprof-call-graph-view.c:439
-#: ../plugins/profiler/gprof-call-graph-view.c:449
-#: ../plugins/profiler/gprof-call-graph-view.c:459
-#: ../plugins/profiler/gprof-flat-profile-view.c:113
-msgid "Calls"
-msgstr "Llamadas"
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:1
+msgid "Plus/Minus"
+msgstr "Más/menos"
 
-#: ../plugins/profiler/gprof-flat-profile-view.c:68
-msgid "% Time"
-msgstr "% Tiempo"
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:2
+#| msgid "Errors:"
+msgid "Arrows"
+msgstr "Flechas"
 
-#: ../plugins/profiler/gprof-flat-profile-view.c:82
-msgid "Cumulative Seconds"
-msgstr "Segundos acumulativos"
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:3
+msgid "Circular"
+msgstr "Circular"
 
-#. The number of seconds that this function, excluding other functions it
-#. * calls, takes to execute.
-#: ../plugins/profiler/gprof-flat-profile-view.c:99
-msgid "Self Seconds"
-msgstr "Segundos propios"
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:4
+#| msgid "Squash"
+msgid "Squares"
+msgstr "Cuadrados"
 
-#. The average number of milliseconds spent in a function, excluding
-#. * the functions that it calls.
-#: ../plugins/profiler/gprof-flat-profile-view.c:127
-msgid "Self ms/call"
-msgstr "ms/llamada propio"
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:5
+msgid "Choose autocomplete for single match"
+msgstr "Elija autocompletar para coincidencia simple"
 
-#. Same as self ms/call, but includes called functions.
-#: ../plugins/profiler/gprof-flat-profile-view.c:143
-msgid "Total ms/call"
-msgstr "ms/llamada totales"
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:6
+msgid "Autocomplete XML/HTML closing tags"
+msgstr "Autocompletar etiquetas de cierre XML/HTML"
 
-#: ../plugins/profiler/plugin.c:179
-msgid ""
-"Could not get profiling data.\n"
-"\n"
-"Please check the path to this target's profiling data file."
-msgstr ""
-"No se pudo obtener los datos del perfilado.\n"
-"\n"
-"Compruebe la ruta a este archivo de datos del perfilado destino."
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:7
+msgid "Autocompletion pop up choices"
+msgstr "Autocompletar elecciones emergentes"
 
-#: ../plugins/profiler/plugin.c:293
-#| msgid ""
-#| "This target does not have any profiling data.\n"
-#| "\n"
-#| "Please ensure that the target is complied with profiling support (-p)and "
-#| "that it is run at least once."
-msgid ""
-"This target does not have any profiling data.\n"
-"\n"
-"Please ensure that the target is compiled with profiling support (-p)and "
-"that it is run at least once."
-msgstr ""
-"Este objetivo no tiene ningún dato de perfilado.\n"
-"\n"
-"Asegúrese de que el objetivo está compilado con soporte de perfilado (-p) y "
-"que se ejecuta al menos una vez."
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:8
+#| msgid "Autocomplete"
+msgid "Autocompletion"
+msgstr "Autocompletado"
 
-#. Action name
-#. Stock icon, if any
-#: ../plugins/profiler/plugin.c:754
-msgid "Debug"
-msgstr "Depurar"
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:9
+msgid "Enable code folding"
+msgstr "Activar pliegue del código"
 
-#. Action name
-#. Stock icon, if any
-#: ../plugins/profiler/plugin.c:762 ../plugins/profiler/plugin.c:874
-#: ../plugins/profiler/profiler.plugin.in.h:3
-msgid "Profiler"
-msgstr "Perfilador"
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:10
+msgid "Enable comments folding"
+msgstr "Activar pliegue de comentarios"
 
-#. Action name
-#. Stock icon, if any
-#: ../plugins/profiler/plugin.c:770
-msgid "Select Target..."
-msgstr "Seleccionar objetivo…"
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:11
+msgid "Enable python comments folding"
+msgstr "Activar pliegue de comentarios python"
 
-#. Action name
-#. Stock icon, if any
-#: ../plugins/profiler/plugin.c:778
-msgid "Refresh"
-msgstr "Actualizar"
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:12
+msgid "Enable python quoted strings folding"
+msgstr "Activar pliegue de cadenas python citadas"
 
-#. Action name
-#. Stock icon, if any
-#: ../plugins/profiler/plugin.c:786
-msgid "Delete Data"
-msgstr "Eliminar datos"
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:13
+msgid "Enable HTML tags folding"
+msgstr "Activar pliegue de etiquetas HTML"
 
-#: ../plugins/profiler/plugin.c:829
-msgid "Application Performance Profiler"
-msgstr "Perfilador del rendimiento de la aplicación"
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:14
+msgid "Compact folding"
+msgstr "Compactar plegado"
 
-#: ../plugins/profiler/plugin.c:851
-msgid "Flat Profile"
-msgstr "Perfil plano"
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:15
+msgid "Draw line below folded lines"
+msgstr "Dibujar una línea debajo de las líneas plegadas"
 
-#: ../plugins/profiler/plugin.c:856
-msgid "Call Graph"
-msgstr "Gráfica de llamadas"
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:16
+msgid "Collapse all code folds on file open"
+msgstr "Contraer todos los pliegues de código al abrir un archivo"
 
-#: ../plugins/profiler/plugin.c:861
-msgid "Function Call Tree"
-msgstr "Árbol de llamadas de funciones"
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:17
+msgid "Fold style:"
+msgstr "Estilo de pliegue:"
 
-#: ../plugins/profiler/plugin.c:868
-msgid "Function Call Chart"
-msgstr "Gráfica de las llamadas a funciones"
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:18
+#| msgid "<b>Code folding</b>"
+msgid "Code folding"
+msgstr "Plegado de código"
 
-#: ../plugins/scintilla/print.c:659
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:19
+msgid "Disable syntax highlighting"
+msgstr "Desactivar resaltado de sintaxis"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:20
+msgid "Enable braces check"
+msgstr "Activar comprobación de llaves"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:21
+msgid "Strip trailling spaces on file save"
+msgstr "Eliminar espacios finales al guardar"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:22
+msgid "Filter extraneous characters in DOS mode"
+msgstr "Filtrar caracteres extraños en modo DOS"
+
+#. Next bookmark at the end of the file will jump to the first bookmark from the beginning
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:24
+msgid "Wrap bookmarks search around"
+msgstr "Búsqueda circular de marcadores"
+
+#. Column where a vertical line will be drawn to indicate that lines should not be longer
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:26
+msgid "Edge column"
+msgstr "Columna del borde"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:27
+msgid "Caret blink period in ms"
+msgstr "Período de parpadeo del cursor en milisegundos"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:28
+msgid "Editor caret (cursor) width in pixels"
+msgstr "Ancho en píxeles del símbolo del cursor"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:29
+msgid "Line numbers margin width in pixels"
+msgstr "Ancho en píxeles del margen de número de línea"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:30
+#| msgid "<b>Misc options</b>"
+msgid "Misc options"
+msgstr "Opciones varias"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:31
+msgid "Colors & Fonts"
+msgstr "Colores y tipografías"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:32
+msgid "Editor"
+msgstr "Editor"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:33
+msgid "Enable automatic indentation"
+msgstr "Activar sangría automática"
+
+#. If the user presses enter, the indentation of the current line will automatically be added to the next line
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:35
+msgid "Maintain past Indentation"
+msgstr "Mantener sangrado anterior"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:36
+msgid "Pressing tab inserts indentation"
+msgstr "Sangrar al pulsar el tabulador"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:37
+msgid "Pressing backspace un-indents"
+msgstr "Reducir sangría al pulsar borrado"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:38
+msgid "Indent closing braces"
+msgstr "Sangrar llaves de cierre"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:39
+msgid "Indent opening braces"
+msgstr "Sangrar llaves de apertura"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:40
+msgid "Use tabs for indentation"
+msgstr "Usar tabulador para sangrar"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:41
+msgid "Indentation size in spaces:"
+msgstr "Tamaño de sangría en espacios:"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:42
+msgid "Tab size in spaces:"
+msgstr "Tamaño del tabulador en espacios:"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:43
+msgid "Basic Indentation"
+msgstr "Sangrado básico"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:44
+msgid "View EOL chars"
+msgstr "Ver caracteres de fin de línea"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:45
+msgid "View Indentation Guides"
+msgstr "Ver guías de sangría"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:46
+msgid "View Whitespaces"
+msgstr "Ver espacios en blanco"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:47
+msgid "View indentation whitespaces"
+msgstr "Ver espacios en blanco de la sangría"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:48
+msgid "View Line Wrap"
+msgstr "Ver ajuste de líneas"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:49
+msgid "Margin Linenum visible"
+msgstr "Número de línea en el margen visible"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:50
+msgid "Margin Marker visible"
+msgstr "Marcador de márgenes visible"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:51
+msgid "Margin Fold visible"
+msgstr "Pliegue en el margen visible"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:52
+msgid "Lines"
+msgstr "Líneas"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:53
+msgid "Add line number every:"
+msgstr "Añadir número de línea cada:"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:54
+msgid "Enable line wrap"
+msgstr "Activar ajuste de líneas"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:55
+msgid "Add page header"
+msgstr "Añadir cabecera de página"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:56
+msgid "Monochrome"
+msgstr "Monocromo"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:57
+msgid "Colour"
+msgstr "Color"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:58
+msgid "Mode:"
+msgstr "Modo:"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:59
+#| msgid "<b>Print options</b>"
+msgid "Print options"
+msgstr "Opciones de impresión"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:60
+msgid "Printing"
+msgstr "Impresión"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:61
+msgid "Fonts and colors for editor"
+msgstr "Tipografías y colores para el editor"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:62
+msgid "Select highlight style to edit:"
+msgstr "Selecciona el estilo de resaltado para editar:"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:63
+msgid "Bold"
+msgstr "Negrita"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:64
+msgid "Italic"
+msgstr "Itálica"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:65
+msgid "Underlined"
+msgstr "Subrayado"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:66
+msgid "Use default"
+msgstr "Usar predeterminado"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:67
+msgid "Background color:"
+msgstr "Color del fondo:"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:68
+msgid "Foreground color:"
+msgstr "Color del primer plano:"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:69
+msgid "Attributes:"
+msgstr "Atributos:"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:70
+msgid "Font:"
+msgstr "Tipografía:"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:71
+#| msgid "<b>Highlight style</b>"
+msgid "Highlight style"
+msgstr "Estilo de resaltado"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:72
+msgid "Caret (cursor) color:"
+msgstr "Color del cursor:"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:73
+msgid "Calltip background:"
+msgstr "Fondo del consejo de llamada:"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:74
+msgid "Selection background:"
+msgstr "Fondo de la selección:"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:75
+msgid "Selection foreground:"
+msgstr "Primer plano para selección:"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:76
+#| msgid "<b>Other colors</b>"
+msgid "Other colors"
+msgstr "Otros colores"
+
+#: ../plugins/scintilla/plugin.c:160
+msgid "_Line Number Margin"
+msgstr "Margen de _números línea"
+
+#: ../plugins/scintilla/plugin.c:161
+msgid "Show/Hide line numbers"
+msgstr "Mostrar/Ocultar número de línea en el margen"
+
+#: ../plugins/scintilla/plugin.c:163
+msgid "_Marker Margin"
+msgstr "_Margen de marcadores"
+
+#: ../plugins/scintilla/plugin.c:164
+msgid "Show/Hide marker margin"
+msgstr "Mostrar/Ocultar marcadores de márgenes"
+
+#: ../plugins/scintilla/plugin.c:166
+msgid "_Code Fold Margin"
+msgstr "Margen de plegado del _código"
+
+#: ../plugins/scintilla/plugin.c:167
+msgid "Show/Hide code fold margin"
+msgstr "Mostrar/Ocultar margen de persiana de código"
+
+#: ../plugins/scintilla/plugin.c:169
+msgid "_Indentation Guides"
+msgstr "Guías de _sangría"
+
+#: ../plugins/scintilla/plugin.c:170
+msgid "Show/Hide indentation guides"
+msgstr "Mostrar/Ocultar las guías de sangría"
+
+#: ../plugins/scintilla/plugin.c:172
+msgid "_White Space"
+msgstr "_Espacios en blanco"
+
+#: ../plugins/scintilla/plugin.c:173
+msgid "Show/Hide white spaces"
+msgstr "Mostrar/Ocultar espacios en blanco"
+
+#: ../plugins/scintilla/plugin.c:175
+msgid "_Line End Characters"
+msgstr "Mostrar fin de _línea"
+
+#: ../plugins/scintilla/plugin.c:176
+msgid "Show/Hide line end characters"
+msgstr "Mostrar/ocultar los caracteres de fin de línea"
+
+#: ../plugins/scintilla/plugin.c:178
+msgid "Line _Wrapping"
+msgstr "_Ajuste de línea"
+
+#: ../plugins/scintilla/plugin.c:179
+msgid "Enable/disable line wrapping"
+msgstr "Activar/desactivar ajuste de línea"
+
+#: ../plugins/scintilla/plugin.c:372
+msgid "Editor view settings"
+msgstr "Configuración de la vista del editor"
+
+#: ../plugins/scintilla/print.c:660
 #, c-format
 msgid "File: %s"
 msgstr "Archivo: %s"
 
-#: ../plugins/scintilla/print.c:888
+#: ../plugins/scintilla/print.c:889
 msgid "Unable to get text buffer for printing"
 msgstr "No se puede obtener un búfer de texto para imprimir"
 
@@ -175,12 +418,7 @@ msgstr "No se puede obtener un búfer de texto para imprimir"
 msgid "No file to print!"
 msgstr "No hay archivo para imprimir."
 
-#: ../plugins/scintilla/plugin.c:309 ../plugins/scintilla/plugin.c:321
-#: ../plugins/scintilla/anjuta-editor.plugin.in.h:2
-msgid "Scintilla Editor"
-msgstr "Editor Scintilla"
-
-#: ../plugins/scintilla/text_editor.c:438
+#: ../plugins/scintilla/text_editor.c:509
 #, c-format
 msgid ""
 "The file '%s' has been changed.\n"
@@ -189,7 +427,7 @@ msgstr ""
 "Se ha cambiado el archivo «%s».\n"
 "¿Quiere recargarlo?"
 
-#: ../plugins/scintilla/text_editor.c:444
+#: ../plugins/scintilla/text_editor.c:515
 #, c-format
 msgid ""
 "The file '%s' has been changed.\n"
@@ -198,7 +436,7 @@ msgstr ""
 "Se ha cambiado el archivo «%s».\n"
 "¿Quiere perder sus cambios y recargarlo?"
 
-#: ../plugins/scintilla/text_editor.c:464
+#: ../plugins/scintilla/text_editor.c:535
 #, c-format
 msgid ""
 "The file '%s' has been deleted.\n"
@@ -207,7 +445,7 @@ msgstr ""
 "Se ha borrado el archivo «%s».\n"
 "¿Confirmar y cerrar?"
 
-#: ../plugins/scintilla/text_editor.c:471
+#: ../plugins/scintilla/text_editor.c:542
 #, c-format
 msgid ""
 "The file '%s' has been deleted.\n"
@@ -216,25 +454,25 @@ msgstr ""
 "Se ha borrado el archivo «%s».\n"
 "¿Quiere perder sus cambios y cerrarlo?"
 
-#: ../plugins/scintilla/text_editor.c:1458
+#: ../plugins/scintilla/text_editor.c:1526
 msgid "Could not get file info"
 msgstr "No se pudo obtener la información del archivo"
 
 #. DEBUG_PRINT ("%s", "This file is too big. Unable to allocate memory.");
-#: ../plugins/scintilla/text_editor.c:1470
+#: ../plugins/scintilla/text_editor.c:1538
 msgid "This file is too big. Unable to allocate memory."
 msgstr ""
 "Este archivo es demasiado grande. No se puede reservar suficiente memoria."
 
-#: ../plugins/scintilla/text_editor.c:1479
+#: ../plugins/scintilla/text_editor.c:1547
 msgid "Could not open file"
 msgstr "No se pudo abrir el archivo"
 
-#: ../plugins/scintilla/text_editor.c:1490
+#: ../plugins/scintilla/text_editor.c:1558
 msgid "Error while reading from file"
 msgstr "Error al leer desde el archivo"
 
-#: ../plugins/scintilla/text_editor.c:1536
+#: ../plugins/scintilla/text_editor.c:1604
 msgid ""
 "The file does not look like a text file or the file encoding is not "
 "supported. Please check if the encoding of file is in the supported "
@@ -244,11 +482,11 @@ msgstr ""
 "no está soportada. Verifique que la codificación del archivo esté soportada "
 "por la lista de codificaciones. Si no, añádala desde las preferencias."
 
-#: ../plugins/scintilla/text_editor.c:1683
+#: ../plugins/scintilla/text_editor.c:1787
 msgid "Loading file..."
 msgstr "Cargando archivo…"
 
-#: ../plugins/scintilla/text_editor.c:1692
+#: ../plugins/scintilla/text_editor.c:1796
 #, c-format
 msgid ""
 "Could not load file: %s\n"
@@ -259,24 +497,24 @@ msgstr ""
 "\n"
 "Detalles: %s"
 
-#: ../plugins/scintilla/text_editor.c:1713
+#: ../plugins/scintilla/text_editor.c:1817
 msgid "File loaded successfully"
 msgstr "Archivo cargado correctamente"
 
-#: ../plugins/scintilla/text_editor.c:1731
+#: ../plugins/scintilla/text_editor.c:1838
 msgid "Saving file..."
 msgstr "Guardando archivo…"
 
-#: ../plugins/scintilla/text_editor.c:1740
+#: ../plugins/scintilla/text_editor.c:1847
 #, c-format
 msgid "Could not save intermediate file %s: %s"
 msgstr "No se puede guardar el archivo intermedio %s: %s"
 
-#: ../plugins/scintilla/text_editor.c:1756
+#: ../plugins/scintilla/text_editor.c:1863
 msgid "File saved successfully"
 msgstr "Archivo guardado correctamente"
 
-#: ../plugins/scintilla/text_editor.c:2129
+#: ../plugins/scintilla/text_editor.c:2236
 #, c-format
 msgid ""
 "Cannot load Global defaults and configuration files:\n"
@@ -290,428 +528,409 @@ msgstr ""
 "Esto puede provocar comportamientos inapropiados e inestabilidades.\n"
 "Anjuta utilizará los valores integrados para casos de fallo (más limitados)"
 
-#: ../plugins/scratchbox/plugin.c:213
+#: ../plugins/scratchbox/anjuta-scratchbox.plugin.in.h:1
+#: ../plugins/scratchbox/plugin.c:460 ../plugins/scratchbox/plugin.c:482
+msgid "Scratchbox"
+msgstr "Scratchbox"
+
+#: ../plugins/scratchbox/anjuta-scratchbox.plugin.in.h:2
+msgid "Change build commands to use scratchbox 1 or 2"
+msgstr "Cambiar los comandos de construcción para usar scratchbox 1 o 2"
+
+#: ../plugins/scratchbox/anjuta-scratchbox.ui.h:1
+msgid "Scratchbox directory:"
+msgstr "Directorio Scratchbox:"
+
+#: ../plugins/scratchbox/anjuta-scratchbox.ui.h:2
+msgid "Scratchbox version:"
+msgstr "Versión de Scratchbox:"
+
+#: ../plugins/scratchbox/anjuta-scratchbox.ui.h:3
+msgid "Select Scratchbox Folder"
+msgstr "Seleccionar el directorio Scratchbox"
+
+#: ../plugins/scratchbox/anjuta-scratchbox.ui.h:4
+msgid "Scratchbox target:"
+msgstr "Objetivo de Scratchbox:"
+
+#: ../plugins/scratchbox/anjuta-scratchbox.ui.h:5
+#| msgid "<b>Scratchbox Options</b>\n"
+msgid "Scratchbox Options"
+msgstr "Opciones del «Scratchbox»"
+
+#: ../plugins/scratchbox/plugin.c:209
 #, c-format
 msgid "Program '%s' does not exists"
 msgstr "El programa «%s» no existe"
 
-#: ../plugins/scratchbox/plugin.c:464 ../plugins/scratchbox/plugin.c:486
-#: ../plugins/scratchbox/anjuta-scratchbox.plugin.in.h:2
-msgid "Scratchbox"
-msgstr "Scratchbox"
-
-#: ../plugins/valgrind/plugin.c:134
-msgid "Options"
-msgstr "Opciones"
-
-#: ../plugins/valgrind/plugin.c:262
-msgid "Select debugging target"
-msgstr "Seleccione el objetivo de depuración"
-
-#: ../plugins/valgrind/plugin.c:319 ../plugins/valgrind/plugin.c:440
-#: ../plugins/valgrind/plugin.c:676 ../plugins/valgrind/plugin.c:685
-msgid "Valgrind"
-msgstr "Valgrind"
-
-#: ../plugins/valgrind/plugin.c:347
-msgid ""
-"No executable target selected for debugging with Valgrind. Please select one."
-msgstr ""
-"No se ha seleccionado un objetivo ejecutable para depurar con Valgrind. "
-"Seleccione uno."
-
-#: ../plugins/valgrind/plugin.c:356
-msgid ""
-"There aren't any available executable targets for this project.\n"
-"Please create one first."
-msgstr ""
-"No hay ningún objetivo ejecutable disponible para este proyecto.\n"
-"Cree uno primero."
-
-#: ../plugins/valgrind/plugin.c:368
-msgid "Choose file where to save Valgrind log"
-msgstr "Elija el archivo donde guardar el registro de Valgrind"
-
-#: ../plugins/valgrind/plugin.c:390
-#, c-format
-msgid ""
-"The file '%s' already exists.\n"
-"Do you want to replace it with the one you are saving?"
-msgstr ""
-"El archivo «%s» ya existe.\n"
-"¿Desea sobreescribirlo con el que está intentando guardar?"
-
-#: ../plugins/valgrind/plugin.c:398
-msgid "_Replace"
-msgstr "_Reemplazar"
-
-#: ../plugins/valgrind/plugin.c:418
-msgid "Open Valgrind log file"
-msgstr "Abrir archivo de registros Valgrind"
-
-#. Action name
-#. Stock icon, if any
-#: ../plugins/valgrind/plugin.c:452
-msgid "_Debug"
-msgstr "_Depurar"
-
-#. Action name
-#. Stock icon, if any
-#: ../plugins/valgrind/plugin.c:460
-msgid "_Valgrind"
-msgstr "_Valgrind"
-
-#. Action name
-#. Stock icon, if any
-#: ../plugins/valgrind/plugin.c:468
-msgid "_Select Tool and Run..."
-msgstr "_Seleccionar herramienta y ejecutar…"
-
-#. Action name
-#. Stock icon, if any
-#: ../plugins/valgrind/plugin.c:476
-msgid "_Kill Execution"
-msgstr "_Matar ejecución"
-
-#. Action name
-#. Stock icon, if any
-#: ../plugins/valgrind/plugin.c:484
-msgid "_Load Log"
-msgstr "_Cargar registro"
-
-#. Action name
-#. Stock icon, if any
-#: ../plugins/valgrind/plugin.c:492
-msgid "S_ave Log"
-msgstr "Guardar _registro"
-
-#. Action name
-#. Stock icon, if any
-#: ../plugins/valgrind/plugin.c:500
-msgid "Edit Rules"
-msgstr "Editar reglas"
-
-#: ../plugins/valgrind/plugin.c:565
-msgid "Use Valgrind debug tool"
-msgstr "Usar herramienta de depuración Valgrind"
-
-#: ../plugins/valgrind/preferences.c:122
-msgid "<b>Valgrind general preferences</b>"
-msgstr "<b>Preferencias generales de Valgrind</b>"
-
-#: ../plugins/valgrind/preferences.c:128
-msgid "Valgrind binary file path:"
-msgstr "Ruta al binario Valgrind:"
-
-#: ../plugins/valgrind/preferences.c:142
-msgid "Choose Valgrind Binary File Path..."
-msgstr "Elija la ruta al archivo binario Valgrind…"
-
-#: ../plugins/valgrind/preferences.c:161
-msgid "Preview"
-msgstr "Vista previa"
-
-#: ../plugins/valgrind/preferences.c:174
-msgid "lines above and below the target line."
-msgstr "líneas arriba y abajo de la línea objetivo."
-
-#: ../plugins/valgrind/process.c:55
-#, c-format
-msgid "Failed to create pipe to '%s': %s"
-msgstr "Falló al crear el pipe a «%s»: %s"
-
-#: ../plugins/valgrind/process.c:110
-#, c-format
-msgid "Failed to create child process '%s': %s"
-msgstr "Falló al cargar el proceso hijo «%s»: %s"
-
-#: ../plugins/valgrind/vgactions.c:168
-msgid "Reached the end of the input file or error in parsing valgrind output."
-msgstr ""
-"Se llegó al final del archivo de entrada o un error al analizar la salida de "
-"valgrind."
-
-#: ../plugins/valgrind/vgactions.c:177
-msgid "Process exited."
-msgstr "El proceso salió."
-
-#: ../plugins/valgrind/vgactions.c:197
-msgid "Could not get the right valgrind-binary gconf key:"
-msgstr "No se puedo obtener la clave gconf correcta del binario de valgrind:"
-
-#: ../plugins/valgrind/vgactions.c:205
-#, c-format
-msgid ""
-"Valgrind binary [%s] does not exist. Please check the preferences or install "
-"Valgrind package."
-msgstr ""
-"El binario Valgrind [%s] no existe. Compruebe las preferencias o instale el "
-"paquete Valgrind."
-
-#: ../plugins/valgrind/vgactions.c:241 ../plugins/valgrind/vgactions.c:248
-msgid "Could not get the right pipe for the process."
-msgstr "No se puedo obtener el conducto correcto para el proceso."
-
-#: ../plugins/valgrind/vgcachegrindprefs.c:197
-#, c-format
-msgid ""
-"Invalid syntax in settings '%s'.\n"
-"Please enter a value of the form \"<integer>,<integer>,<integer>\"."
-msgstr ""
-"Sintaxis inválida en la configuración de «%s».\n"
-"Introduzca un valor en la forma \"<integer>,<integer>,<integer>\"."
-
-#: ../plugins/valgrind/vgcachegrindprefs.c:234
-msgid "Override default settings"
-msgstr "Tomar precedencia sobre la configuración predeterminada"
-
-#. This is the format of the preference, simply translate the words
-#. * inside the <>
-#: ../plugins/valgrind/vgcachegrindprefs.c:246
-msgid "Enter <size>,<assoc>,<line_size>:"
-msgstr "Introduzca <size>,<assoc>,<line_size>:"
-
-#: ../plugins/valgrind/vgcachegrindprefs.c:280
-msgid "Cachegrind"
-msgstr "Cachegrind"
-
-#: ../plugins/valgrind/vgdefaultview.c:189
-msgid "Error contains"
-msgstr "El error contiene"
-
-#: ../plugins/valgrind/vgdefaultview.c:190
-msgid "Function contains"
-msgstr "La función contiene"
-
-#: ../plugins/valgrind/vgdefaultview.c:191
-msgid "Object contains"
-msgstr "El objeto contiene"
-
-#: ../plugins/valgrind/vgdefaultview.c:192
-msgid "Source filename contains"
-msgstr "El nombre del fuente contiene"
-
-#: ../plugins/valgrind/vgdefaultview.c:229
-#, c-format
-msgid "Invalid regular expression: '%s': %s"
-msgstr "Expresión regular inválida: «%s»: %s"
-
-#. FIXME: we should really get this title from somewhere else?
-#: ../plugins/valgrind/vgdefaultview.c:773
-msgid "Valgrind Suppression Rules"
-msgstr "Reglas de supresión Valgrind"
-
-#. FIXME: we should really get this title from somewhere else?
-#: ../plugins/valgrind/vgdefaultview.c:1118
-#: ../plugins/valgrind/vgrule-list.c:135
-msgid "Valgrind Suppression"
-msgstr "Supresión Valgrind"
-
-#: ../plugins/valgrind/vgdefaultview.c:1166
-msgid "Cu_t"
-msgstr "Cor_tar"
-
-#: ../plugins/valgrind/vgdefaultview.c:1167
-msgid "_Copy"
-msgstr "_Copiar"
-
-#: ../plugins/valgrind/vgdefaultview.c:1168
-msgid "_Paste"
-msgstr "_Pegar"
-
-#: ../plugins/valgrind/vgdefaultview.c:1170
-msgid "Suppress"
-msgstr "Supresión"
-
-#: ../plugins/valgrind/vgdefaultview.c:1172
-msgid "Edit in Custom Editor"
-msgstr "Editar en un editor personalizado"
-
-#: ../plugins/valgrind/vggeneralprefs.c:172
-msgid "General"
-msgstr "General"
-
-#. demangle = decode C++ name encoding
-#: ../plugins/valgrind/vggeneralprefs.c:179
-msgid "Demangle C++ symbol names"
-msgstr "Desrevolver los nombres de símbolos C++"
-
-#: ../plugins/valgrind/vggeneralprefs.c:187
-msgid "Show"
-msgstr "Mostrar"
-
-#: ../plugins/valgrind/vggeneralprefs.c:199
-msgid "callers in stack trace"
-msgstr "llamadores en una traza de pila"
-
-#: ../plugins/valgrind/vggeneralprefs.c:206
-msgid "Stop showing errors if there are too many"
-msgstr "Parar de mostrar errores si hay demasiados"
-
-#: ../plugins/valgrind/vggeneralprefs.c:214
-msgid "Round malloc sizes to next word"
-msgstr "Redondear tamaños de malloc a la siguiente palabra"
-
-#: ../plugins/valgrind/vggeneralprefs.c:222
-msgid "Trace any child processes forked off by the program being debugged"
-msgstr ""
-"Trazar cualquier proceso bifurcado por el programa que se está depurando"
-
-#: ../plugins/valgrind/vggeneralprefs.c:230
-msgid "Track open file descriptors"
-msgstr "Seguimiento de descriptores de archivos abiertos"
-
-#: ../plugins/valgrind/vggeneralprefs.c:238
-msgid "Add time stamps to log messages"
-msgstr "Añadir sello temporal a los mensajes de registro"
-
-#: ../plugins/valgrind/vggeneralprefs.c:246
-msgid "Call __libc_freeres() at exit before checking for memory leaks"
-msgstr ""
-"Llamar __libc_freeres() a la salida antes de comprobar fugas de memoria"
-
-#: ../plugins/valgrind/vggeneralprefs.c:254
-msgid "Suppressions File:"
-msgstr "Archivo de supresiones:"
-
-#: ../plugins/valgrind/vggeneralprefs.c:274
-msgid "Choose Valgrind Suppressions File..."
-msgstr "Elija el archivos de supresiones Valgrind…"
-
-#: ../plugins/valgrind/vghelgrindprefs.c:180
-msgid "Helgrind"
-msgstr "Helgrind"
-
-#: ../plugins/valgrind/vghelgrindprefs.c:185
-msgid "Assume thread stacks are used privately"
-msgstr "Asumir que las pilas del hilo se usan de forma privada"
-
-#: ../plugins/valgrind/vghelgrindprefs.c:194
-msgid "Show location of last word access on error:"
-msgstr "Mostrar la ubicación del acceso de la última palabra en el error:"
-
-#: ../plugins/valgrind/vgmemcheckprefs.c:204
-msgid "Memcheck"
-msgstr "Comprobación de memoria"
-
-#: ../plugins/valgrind/vgmemcheckprefs.c:209
-msgid "Memory leaks"
-msgstr "Pérdidas de memoria"
-
-#: ../plugins/valgrind/vgmemcheckprefs.c:214
-msgid "Leak check:"
-msgstr "Comprobación de pérdida:"
-
-#: ../plugins/valgrind/vgmemcheckprefs.c:225
-msgid "Show reachable blocks in leak check"
-msgstr "Mostrar bloques accesibles en la comprobación de pérdidas"
-
-#: ../plugins/valgrind/vgmemcheckprefs.c:233
-msgid "Leak resolution:"
-msgstr "Resolución de pérdidas:"
-
-#: ../plugins/valgrind/vgmemcheckprefs.c:251
-msgid "Keep up to"
-msgstr "Mantener hasta"
-
-#: ../plugins/valgrind/vgmemcheckprefs.c:263
-msgid "bytes in the queue after being free()'d"
-msgstr "bytes en la cola después de aplicarles free()"
-
-#: ../plugins/valgrind/vgmemcheckprefs.c:270
-msgid "Work around bugs generated by gcc 2.96"
-msgstr "Solucionar errores producidos por gcc 2.96"
-
-#: ../plugins/valgrind/vgrule-editor.c:146
-msgid "Function"
-msgstr "Función"
-
-#: ../plugins/valgrind/vgrule-editor.c:149
-msgid "Shared Object"
-msgstr "Objeto compartido"
-
-#: ../plugins/valgrind/vgrule-editor.c:209
-msgid "Grow"
-msgstr "Agrandar"
-
-#: ../plugins/valgrind/vgrule-editor.c:213
-msgid "Shrink"
-msgstr "Encoger"
-
-#: ../plugins/valgrind/vgrule-editor.c:239
-msgid "Rule name:"
-msgstr "Nombre de la regla:"
-
-#: ../plugins/valgrind/vgrule-editor.c:249
-msgid "Suppress messages of type:"
-msgstr "Suprimir mensajes del tipo:"
-
-#: ../plugins/valgrind/vgrule-editor.c:259
-msgid "Suppress when using:"
-msgstr "Suprimir al usar:"
-
-#: ../plugins/valgrind/vgrule-editor.c:272
-msgid "System call:"
-msgstr "Llamada al sistema:"
-
-#: ../plugins/valgrind/vgrule-editor.c:283
-msgid "Call chain:"
-msgstr "Cadena de llamadas:"
-
-#: ../plugins/valgrind/vgrule-editor.c:540
-#: ../plugins/valgrind/vgrule-editor.c:555
-#, c-format
-msgid "Error saving to suppression file '%s': %s"
-msgstr "Error al guardar en el archivo de supresión «%s»: %s"
-
-#: ../plugins/valgrind/vgrule-list.c:177 ../plugins/valgrind/vgrule-list.c:246
-msgid "You have forgotten to name your suppression rule."
-msgstr "Ha olvidado nombrar su regla de supresión."
-
-#: ../plugins/valgrind/vgrule-list.c:406
-msgid "_Edit"
-msgstr "_Editar"
-
-#: ../plugins/valgrind/vgrule-list.c:651
-#, c-format
-msgid "Cannot save suppression rules: %s"
-msgstr "No se pueden guardar las reglas de supresión: %s"
-
-#: ../plugins/valgrind/vgrule-list.c:653
-msgid "You have not set a suppressions file in your settings."
-msgstr "No ha establecido un archivo de supresiones en su configuración."
-
-#: ../plugins/sample1/anjuta-sample.plugin.in.h:1
-msgid "Sample Plugin"
-msgstr "Complemento de ejemplo"
-
-#: ../plugins/sample1/anjuta-sample.plugin.in.h:2
-msgid "Sample Plugin for Anjuta."
-msgstr "Complemento de ejemplo para Anjuta."
-
-#: ../plugins/profiler/profiler.plugin.in.h:1
-msgid "Application performance profiler"
-msgstr "Perfilador de rendimiento de la aplicación"
-
-#: ../plugins/profiler/profiler.plugin.in.h:2
-msgid "Profile"
-msgstr "Perfil"
-
-#: ../plugins/scintilla/anjuta-editor.plugin.in.h:1
-msgid "An alternate editor based on Scintilla"
-msgstr "Un editor alternativo basado en Scintilla"
-
-#: ../plugins/valgrind/anjuta-valgrind.plugin.in.h:1
-msgid "Powerful debugging tool."
-msgstr "Potente herramienta de depuración."
-
-#: ../plugins/valgrind/anjuta-valgrind.plugin.in.h:2
-msgid "Valgrind Plugin"
-msgstr "Complemento Valgrind"
-
-#: ../plugins/scratchbox/anjuta-scratchbox.plugin.in.h:1
-msgid "Change build commands to use scratchbox 1 or 2"
-msgstr "Cambiar los comandos de construcción para usar scratchbox 1 o 2"
+#~ msgid "Function Name"
+#~ msgstr "Nombre de la función"
+
+#~ msgid "Time"
+#~ msgstr "Tiempo"
+
+#~ msgid "Self"
+#~ msgstr "Propio"
+
+#~ msgid "Children"
+#~ msgstr "Hijos"
+
+#~ msgid "Calls"
+#~ msgstr "Llamadas"
+
+#~ msgid "% Time"
+#~ msgstr "% Tiempo"
+
+#~ msgid "Cumulative Seconds"
+#~ msgstr "Segundos acumulativos"
+
+#~ msgid "Self Seconds"
+#~ msgstr "Segundos propios"
+
+#~ msgid "Self ms/call"
+#~ msgstr "ms/llamada propio"
+
+#~ msgid "Total ms/call"
+#~ msgstr "ms/llamada totales"
+
+#~ msgid ""
+#~ "Could not get profiling data.\n"
+#~ "\n"
+#~ "Please check the path to this target's profiling data file."
+#~ msgstr ""
+#~ "No se pudo obtener los datos del perfilado.\n"
+#~ "\n"
+#~ "Compruebe la ruta a este archivo de datos del perfilado destino."
+
+#~| msgid ""
+#~| "This target does not have any profiling data.\n"
+#~| "\n"
+#~| "Please ensure that the target is complied with profiling support (-p)and "
+#~| "that it is run at least once."
+#~ msgid ""
+#~ "This target does not have any profiling data.\n"
+#~ "\n"
+#~ "Please ensure that the target is compiled with profiling support (-p)and "
+#~ "that it is run at least once."
+#~ msgstr ""
+#~ "Este objetivo no tiene ningún dato de perfilado.\n"
+#~ "\n"
+#~ "Asegúrese de que el objetivo está compilado con soporte de perfilado (-p) "
+#~ "y que se ejecuta al menos una vez."
+
+#~ msgid "Debug"
+#~ msgstr "Depurar"
+
+#~ msgid "Profiler"
+#~ msgstr "Perfilador"
+
+#~ msgid "Select Target..."
+#~ msgstr "Seleccionar objetivo…"
+
+#~ msgid "Refresh"
+#~ msgstr "Actualizar"
+
+#~ msgid "Delete Data"
+#~ msgstr "Eliminar datos"
+
+#~ msgid "Application Performance Profiler"
+#~ msgstr "Perfilador del rendimiento de la aplicación"
+
+#~ msgid "Flat Profile"
+#~ msgstr "Perfil plano"
+
+#~ msgid "Call Graph"
+#~ msgstr "Gráfica de llamadas"
+
+#~ msgid "Function Call Tree"
+#~ msgstr "Árbol de llamadas de funciones"
+
+#~ msgid "Function Call Chart"
+#~ msgstr "Gráfica de las llamadas a funciones"
+
+#~ msgid "Options"
+#~ msgstr "Opciones"
+
+#~ msgid "Select debugging target"
+#~ msgstr "Seleccione el objetivo de depuración"
+
+#~ msgid "Valgrind"
+#~ msgstr "Valgrind"
+
+#~ msgid ""
+#~ "No executable target selected for debugging with Valgrind. Please select "
+#~ "one."
+#~ msgstr ""
+#~ "No se ha seleccionado un objetivo ejecutable para depurar con Valgrind. "
+#~ "Seleccione uno."
+
+#~ msgid ""
+#~ "There aren't any available executable targets for this project.\n"
+#~ "Please create one first."
+#~ msgstr ""
+#~ "No hay ningún objetivo ejecutable disponible para este proyecto.\n"
+#~ "Cree uno primero."
+
+#~ msgid "Choose file where to save Valgrind log"
+#~ msgstr "Elija el archivo donde guardar el registro de Valgrind"
+
+#~ msgid ""
+#~ "The file '%s' already exists.\n"
+#~ "Do you want to replace it with the one you are saving?"
+#~ msgstr ""
+#~ "El archivo «%s» ya existe.\n"
+#~ "¿Desea sobreescribirlo con el que está intentando guardar?"
+
+#~ msgid "_Replace"
+#~ msgstr "_Reemplazar"
+
+#~ msgid "Open Valgrind log file"
+#~ msgstr "Abrir archivo de registros Valgrind"
+
+#~ msgid "_Debug"
+#~ msgstr "_Depurar"
+
+#~ msgid "_Valgrind"
+#~ msgstr "_Valgrind"
+
+#~ msgid "_Select Tool and Run..."
+#~ msgstr "_Seleccionar herramienta y ejecutar…"
+
+#~ msgid "_Kill Execution"
+#~ msgstr "_Matar ejecución"
+
+#~ msgid "_Load Log"
+#~ msgstr "_Cargar registro"
+
+#~ msgid "S_ave Log"
+#~ msgstr "Guardar _registro"
+
+#~ msgid "Edit Rules"
+#~ msgstr "Editar reglas"
+
+#~ msgid "Use Valgrind debug tool"
+#~ msgstr "Usar herramienta de depuración Valgrind"
+
+#~ msgid "<b>Valgrind general preferences</b>"
+#~ msgstr "<b>Preferencias generales de Valgrind</b>"
+
+#~ msgid "Valgrind binary file path:"
+#~ msgstr "Ruta al binario Valgrind:"
+
+#~ msgid "Choose Valgrind Binary File Path..."
+#~ msgstr "Elija la ruta al archivo binario Valgrind…"
+
+#~ msgid "Preview"
+#~ msgstr "Vista previa"
+
+#~ msgid "lines above and below the target line."
+#~ msgstr "líneas arriba y abajo de la línea objetivo."
+
+#~ msgid "Failed to create pipe to '%s': %s"
+#~ msgstr "Falló al crear el pipe a «%s»: %s"
+
+#~ msgid "Failed to create child process '%s': %s"
+#~ msgstr "Falló al cargar el proceso hijo «%s»: %s"
+
+#~ msgid ""
+#~ "Reached the end of the input file or error in parsing valgrind output."
+#~ msgstr ""
+#~ "Se llegó al final del archivo de entrada o un error al analizar la salida "
+#~ "de valgrind."
+
+#~ msgid "Process exited."
+#~ msgstr "El proceso salió."
+
+#~ msgid "Could not get the right valgrind-binary gconf key:"
+#~ msgstr ""
+#~ "No se puedo obtener la clave gconf correcta del binario de valgrind:"
+
+#~ msgid ""
+#~ "Valgrind binary [%s] does not exist. Please check the preferences or "
+#~ "install Valgrind package."
+#~ msgstr ""
+#~ "El binario Valgrind [%s] no existe. Compruebe las preferencias o instale "
+#~ "el paquete Valgrind."
+
+#~ msgid "Could not get the right pipe for the process."
+#~ msgstr "No se puedo obtener el conducto correcto para el proceso."
+
+#~ msgid ""
+#~ "Invalid syntax in settings '%s'.\n"
+#~ "Please enter a value of the form \"<integer>,<integer>,<integer>\"."
+#~ msgstr ""
+#~ "Sintaxis inválida en la configuración de «%s».\n"
+#~ "Introduzca un valor en la forma \"<integer>,<integer>,<integer>\"."
+
+#~ msgid "Override default settings"
+#~ msgstr "Tomar precedencia sobre la configuración predeterminada"
+
+#~ msgid "Enter <size>,<assoc>,<line_size>:"
+#~ msgstr "Introduzca <size>,<assoc>,<line_size>:"
+
+#~ msgid "Cachegrind"
+#~ msgstr "Cachegrind"
+
+#~ msgid "Error contains"
+#~ msgstr "El error contiene"
+
+#~ msgid "Function contains"
+#~ msgstr "La función contiene"
+
+#~ msgid "Object contains"
+#~ msgstr "El objeto contiene"
+
+#~ msgid "Source filename contains"
+#~ msgstr "El nombre del fuente contiene"
+
+#~ msgid "Invalid regular expression: '%s': %s"
+#~ msgstr "Expresión regular inválida: «%s»: %s"
+
+#~ msgid "Valgrind Suppression Rules"
+#~ msgstr "Reglas de supresión Valgrind"
+
+#~ msgid "Valgrind Suppression"
+#~ msgstr "Supresión Valgrind"
+
+#~ msgid "Cu_t"
+#~ msgstr "Cor_tar"
+
+#~ msgid "_Copy"
+#~ msgstr "_Copiar"
+
+#~ msgid "_Paste"
+#~ msgstr "_Pegar"
+
+#~ msgid "Suppress"
+#~ msgstr "Supresión"
+
+#~ msgid "Edit in Custom Editor"
+#~ msgstr "Editar en un editor personalizado"
+
+#~ msgid "General"
+#~ msgstr "General"
+
+#~ msgid "Demangle C++ symbol names"
+#~ msgstr "Desrevolver los nombres de símbolos C++"
+
+#~ msgid "Show"
+#~ msgstr "Mostrar"
+
+#~ msgid "callers in stack trace"
+#~ msgstr "llamadores en una traza de pila"
+
+#~ msgid "Stop showing errors if there are too many"
+#~ msgstr "Parar de mostrar errores si hay demasiados"
+
+#~ msgid "Round malloc sizes to next word"
+#~ msgstr "Redondear tamaños de malloc a la siguiente palabra"
+
+#~ msgid "Trace any child processes forked off by the program being debugged"
+#~ msgstr ""
+#~ "Trazar cualquier proceso bifurcado por el programa que se está depurando"
+
+#~ msgid "Track open file descriptors"
+#~ msgstr "Seguimiento de descriptores de archivos abiertos"
+
+#~ msgid "Add time stamps to log messages"
+#~ msgstr "Añadir sello temporal a los mensajes de registro"
+
+#~ msgid "Call __libc_freeres() at exit before checking for memory leaks"
+#~ msgstr ""
+#~ "Llamar __libc_freeres() a la salida antes de comprobar fugas de memoria"
+
+#~ msgid "Suppressions File:"
+#~ msgstr "Archivo de supresiones:"
+
+#~ msgid "Choose Valgrind Suppressions File..."
+#~ msgstr "Elija el archivos de supresiones Valgrind…"
+
+#~ msgid "Helgrind"
+#~ msgstr "Helgrind"
+
+#~ msgid "Assume thread stacks are used privately"
+#~ msgstr "Asumir que las pilas del hilo se usan de forma privada"
+
+#~ msgid "Show location of last word access on error:"
+#~ msgstr "Mostrar la ubicación del acceso de la última palabra en el error:"
+
+#~ msgid "Memcheck"
+#~ msgstr "Comprobación de memoria"
+
+#~ msgid "Memory leaks"
+#~ msgstr "Pérdidas de memoria"
+
+#~ msgid "Leak check:"
+#~ msgstr "Comprobación de pérdida:"
+
+#~ msgid "Show reachable blocks in leak check"
+#~ msgstr "Mostrar bloques accesibles en la comprobación de pérdidas"
+
+#~ msgid "Leak resolution:"
+#~ msgstr "Resolución de pérdidas:"
+
+#~ msgid "Keep up to"
+#~ msgstr "Mantener hasta"
+
+#~ msgid "bytes in the queue after being free()'d"
+#~ msgstr "bytes en la cola después de aplicarles free()"
+
+#~ msgid "Work around bugs generated by gcc 2.96"
+#~ msgstr "Solucionar errores producidos por gcc 2.96"
+
+#~ msgid "Function"
+#~ msgstr "Función"
+
+#~ msgid "Shared Object"
+#~ msgstr "Objeto compartido"
+
+#~ msgid "Grow"
+#~ msgstr "Agrandar"
+
+#~ msgid "Shrink"
+#~ msgstr "Encoger"
+
+#~ msgid "Rule name:"
+#~ msgstr "Nombre de la regla:"
+
+#~ msgid "Suppress messages of type:"
+#~ msgstr "Suprimir mensajes del tipo:"
+
+#~ msgid "Suppress when using:"
+#~ msgstr "Suprimir al usar:"
+
+#~ msgid "System call:"
+#~ msgstr "Llamada al sistema:"
+
+#~ msgid "Call chain:"
+#~ msgstr "Cadena de llamadas:"
+
+#~ msgid "Error saving to suppression file '%s': %s"
+#~ msgstr "Error al guardar en el archivo de supresión «%s»: %s"
+
+#~ msgid "You have forgotten to name your suppression rule."
+#~ msgstr "Ha olvidado nombrar su regla de supresión."
+
+#~ msgid "_Edit"
+#~ msgstr "_Editar"
+
+#~ msgid "Cannot save suppression rules: %s"
+#~ msgstr "No se pueden guardar las reglas de supresión: %s"
+
+#~ msgid "You have not set a suppressions file in your settings."
+#~ msgstr "No ha establecido un archivo de supresiones en su configuración."
+
+#~ msgid "Application performance profiler"
+#~ msgstr "Perfilador de rendimiento de la aplicación"
+
+#~ msgid "Profile"
+#~ msgstr "Perfil"
+
+#~ msgid "Powerful debugging tool."
+#~ msgstr "Potente herramienta de depuración."
+
+#~ msgid "Valgrind Plugin"
+#~ msgstr "Complemento Valgrind"
 
 #~| msgid "Target: %s"
 #~ msgid "Args: %s"
@@ -1997,9 +2216,6 @@ msgstr "Cambiar los comandos de construcción para usar scratchbox 1 o 2"
 #~ msgid "Information"
 #~ msgstr "Información"
 
-#~ msgid "Lines"
-#~ msgstr "Líneas"
-
 #~ msgid "Locals"
 #~ msgstr "Locales"
 
@@ -2662,48 +2878,6 @@ msgstr "Cambiar los comandos de construcción para usar scratchbox 1 o 2"
 #~ msgid "Delete the selected text from the editor"
 #~ msgstr "Borra el texto seleccionado del editor"
 
-#~ msgid "_Line Number Margin"
-#~ msgstr "Margen de _números línea"
-
-#~ msgid "Show/Hide line numbers"
-#~ msgstr "Mostrar/Ocultar número de línea en el margen"
-
-#~ msgid "_Marker Margin"
-#~ msgstr "_Margen de marcadores"
-
-#~ msgid "Show/Hide marker margin"
-#~ msgstr "Mostrar/Ocultar marcadores de márgenes"
-
-#~ msgid "_Code Fold Margin"
-#~ msgstr "Margen de plegado del _código"
-
-#~ msgid "Show/Hide code fold margin"
-#~ msgstr "Mostrar/Ocultar margen de persiana de código"
-
-#~ msgid "_Indentation Guides"
-#~ msgstr "Guías de _sangría"
-
-#~ msgid "Show/Hide indentation guides"
-#~ msgstr "Mostrar/Ocultar las guías de sangría"
-
-#~ msgid "_White Space"
-#~ msgstr "_Espacios en blanco"
-
-#~ msgid "Show/Hide white spaces"
-#~ msgstr "Mostrar/Ocultar espacios en blanco"
-
-#~ msgid "_Line End Characters"
-#~ msgstr "Mostrar fin de _línea"
-
-#~ msgid "Show/Hide line end characters"
-#~ msgstr "Mostrar/ocultar los caracteres de fin de línea"
-
-#~ msgid "Line _Wrapping"
-#~ msgstr "_Ajuste de línea"
-
-#~ msgid "Enable/disable line wrapping"
-#~ msgstr "Activar/desactivar ajuste de línea"
-
 #~ msgid "Zoom In"
 #~ msgstr "Ampliar"
 
@@ -2814,9 +2988,6 @@ msgstr "Cambiar los comandos de construcción para usar scratchbox 1 o 2"
 
 #~ msgid "Documents"
 #~ msgstr "Documentos"
-
-#~ msgid "Editor view settings"
-#~ msgstr "Configuración de la vista del editor"
 
 #~ msgid "Reload"
 #~ msgstr "Recargar"
@@ -3758,9 +3929,6 @@ msgstr "Cambiar los comandos de construcción para usar scratchbox 1 o 2"
 #~ msgid "Soft"
 #~ msgstr "Blando"
 
-#~ msgid "Squash"
-#~ msgstr "Aplastar (squash)"
-
 #~ msgid "Switch to Another Branch"
 #~ msgstr "Cambiar a otra rama"
 
@@ -4012,9 +4180,6 @@ msgstr "Cambiar los comandos de construcción para usar scratchbox 1 o 2"
 
 #~ msgid "Designer"
 #~ msgstr "Diseñador"
-
-#~ msgid "Editor"
-#~ msgstr "Editor"
 
 #~ msgid "Insert handler on edit"
 #~ msgstr "Insertar manejador al editar"
@@ -4559,9 +4724,6 @@ msgstr "Cambiar los comandos de construcción para usar scratchbox 1 o 2"
 
 #~ msgid "Error message indicator style:"
 #~ msgstr "Estilo de indicador de mensaje de error:"
-
-#~ msgid "Errors:"
-#~ msgstr "Errores:"
 
 #~ msgid "Normal message indicator style:"
 #~ msgstr "Estilo de indicador de mensaje normal:"
@@ -5654,153 +5816,6 @@ msgstr "Cambiar los comandos de construcción para usar scratchbox 1 o 2"
 #~ msgid "<b>Basic Indentation</b>"
 #~ msgstr "<b>Sangrado básico</b>"
 
-#~ msgid "<b>Code folding</b>"
-#~ msgstr "<b>Plegado de código</b>"
-
-#~ msgid "<b>Highlight style</b>"
-#~ msgstr "<b>Estilo de resaltado</b>"
-
-#~ msgid "<b>Misc options</b>"
-#~ msgstr "<b>Opciones misceláneas</b>"
-
-#~ msgid "<b>Other colors</b>"
-#~ msgstr "<b>Otros colores</b>"
-
-#~ msgid "<b>Print options</b>"
-#~ msgstr "<b>Opciones de impresión</b>"
-
-#~ msgid "Add line number every:"
-#~ msgstr "Añadir número de línea cada:"
-
-#~ msgid "Add page header"
-#~ msgstr "Añadir cabecera de página"
-
-#~ msgid "Attributes:"
-#~ msgstr "Atributos:"
-
-#~ msgid "Autocomplete XML/HTML closing tags"
-#~ msgstr "Autocompletar etiquetas de cierre XML/HTML"
-
-#~ msgid "Autocompletion pop up choices"
-#~ msgstr "Autocompletar elecciones emergentes"
-
-#~ msgid "Background color:"
-#~ msgstr "Color del fondo:"
-
-#~ msgid "Basic Indentation"
-#~ msgstr "Sangrado básico"
-
-#~ msgid "Bold"
-#~ msgstr "Negrita"
-
-#~ msgid "Calltip background:"
-#~ msgstr "Fondo del consejo de llamada:"
-
-#~ msgid "Caret (cursor) color:"
-#~ msgstr "Color del cursor:"
-
-#~ msgid "Caret blink period in ms"
-#~ msgstr "Período de parpadeo del cursor en milisegundos"
-
-#~ msgid "Choose autocomplete for single match"
-#~ msgstr "Elija autocompletar para coincidencia simple"
-
-#~ msgid "Collapse all code folds on file open"
-#~ msgstr "Contraer todos los pliegues de código al abrir un archivo"
-
-#~ msgid "Colors & Fonts"
-#~ msgstr "Colores y tipografías"
-
-#~ msgid "Colour"
-#~ msgstr "Color"
-
-#~ msgid "Compact folding"
-#~ msgstr "Compactar plegado"
-
-#~ msgid "Disable syntax highlighting"
-#~ msgstr "Desactivar resaltado de sintaxis"
-
-#~ msgid "Draw line below folded lines"
-#~ msgstr "Dibujar una línea debajo de las líneas plegadas"
-
-#~ msgid "Edge column"
-#~ msgstr "Columna del borde"
-
-#~ msgid "Editor caret (cursor) width in pixels"
-#~ msgstr "Ancho en píxeles del símbolo del cursor"
-
-#~ msgid "Enable HTML tags folding"
-#~ msgstr "Activar pliegue de etiquetas HTML"
-
-#~ msgid "Enable automatic indentation"
-#~ msgstr "Activar sangría automática"
-
-#~ msgid "Enable braces check"
-#~ msgstr "Activar comprobación de llaves"
-
-#~ msgid "Enable code folding"
-#~ msgstr "Activar pliegue del código"
-
-#~ msgid "Enable comments folding"
-#~ msgstr "Activar pliegue de comentarios"
-
-#~ msgid "Enable line wrap"
-#~ msgstr "Activar ajuste de líneas"
-
-#~ msgid "Enable python comments folding"
-#~ msgstr "Activar pliegue de comentarios python"
-
-#~ msgid "Enable python quoted strings folding"
-#~ msgstr "Activar pliegue de cadenas python citadas"
-
-#~ msgid "Filter extraneous characters in DOS mode"
-#~ msgstr "Filtrar caracteres extraños en modo DOS"
-
-#~ msgid "Fold style:"
-#~ msgstr "Estilo de pliegue:"
-
-#~ msgid "Font:"
-#~ msgstr "Tipografía:"
-
-#~ msgid "Fonts and colors for editor"
-#~ msgstr "Tipografías y colores para el editor"
-
-#~ msgid "Foreground color:"
-#~ msgstr "Color del primer plano:"
-
-#~ msgid "Indent closing braces"
-#~ msgstr "Sangrar llaves de cierre"
-
-#~ msgid "Indent opening braces"
-#~ msgstr "Sangrar llaves de apertura"
-
-#~ msgid "Indentation size in spaces:"
-#~ msgstr "Tamaño de sangría en espacios:"
-
-#~ msgid "Italic"
-#~ msgstr "Itálica"
-
-#~ msgid "Line numbers margin width in pixels"
-#~ msgstr "Ancho en píxeles del margen de número de línea"
-
-#~ msgid "Maintain past Indentation"
-#~ msgstr "Mantener sangrado anterior"
-
-#~ msgid "Margin Fold visible"
-#~ msgstr "Pliegue en el margen visible"
-
-#~ msgid "Margin Linenum visible"
-#~ msgstr "Número de línea en el margen visible"
-
-#~ msgid "Margin Marker visible"
-#~ msgstr "Marcador de márgenes visible"
-
-#~ msgid "Mode:"
-#~ msgstr "Modo:"
-
-#~ msgid "Monochrome"
-#~ msgstr "Monocromo"
-
 #~ msgid ""
 #~ "Plus/Minus\n"
 #~ "Arrows\n"
@@ -5811,72 +5826,6 @@ msgstr "Cambiar los comandos de construcción para usar scratchbox 1 o 2"
 #~ "Flechas\n"
 #~ "Circular\n"
 #~ "Cuadrados"
-
-#~ msgid "Pressing backspace un-indents"
-#~ msgstr "Reducir sangría al pulsar borrado"
-
-#~ msgid "Pressing tab inserts indentation"
-#~ msgstr "Sangrar al pulsar el tabulador"
-
-#~ msgid "Printing"
-#~ msgstr "Impresión"
-
-#~ msgid "Select highlight style to edit:"
-#~ msgstr "Selecciona el estilo de resaltado para editar:"
-
-#~ msgid "Selection background:"
-#~ msgstr "Fondo de la selección:"
-
-#~ msgid "Selection foreground:"
-#~ msgstr "Primer plano para selección:"
-
-#~ msgid "Strip trailling spaces on file save"
-#~ msgstr "Eliminar espacios finales al guardar"
-
-#~ msgid "Tab size in spaces:"
-#~ msgstr "Tamaño del tabulador en espacios:"
-
-#~ msgid "Underlined"
-#~ msgstr "Subrayado"
-
-#~ msgid "Use default"
-#~ msgstr "Usar predeterminado"
-
-#~ msgid "Use tabs for indentation"
-#~ msgstr "Usar tabulador para sangrar"
-
-#~ msgid "View EOL chars"
-#~ msgstr "Ver caracteres de fin de línea"
-
-#~ msgid "View Indentation Guides"
-#~ msgstr "Ver guías de sangría"
-
-#~ msgid "View Line Wrap"
-#~ msgstr "Ver ajuste de líneas"
-
-#~ msgid "View Whitespaces"
-#~ msgstr "Ver espacios en blanco"
-
-#~ msgid "View indentation whitespaces"
-#~ msgstr "Ver espacios en blanco de la sangría"
-
-#~ msgid "Wrap bookmarks search around"
-#~ msgstr "Búsqueda circular de marcadores"
-
-#~ msgid "<b>Scratchbox Options</b>\n"
-#~ msgstr "<b>Opciones del Scratchbox</b>\n"
-
-#~ msgid "Scratchbox directory:"
-#~ msgstr "Directorio Scratchbox:"
-
-#~ msgid "Scratchbox target:"
-#~ msgstr "Objetivo de Scratchbox:"
-
-#~ msgid "Scratchbox version:"
-#~ msgstr "Versión de Scratchbox:"
-
-#~ msgid "Select Scratchbox Folder"
-#~ msgstr "Seleccionar el directorio Scratchbox"
 
 #~ msgid "<b>Actions</b>"
 #~ msgstr "<b>Acciones</b>"
@@ -7008,9 +6957,6 @@ msgstr "Cambiar los comandos de construcción para usar scratchbox 1 o 2"
 #~ msgid "Add a space after function call autocompletion"
 #~ msgstr ""
 #~ "Añadir un espacio después de la llamada de autocompletado de la función"
-
-#~ msgid "Autocomplete"
-#~ msgstr "Autocompletar"
 
 #~ msgid "Brace indentation size in spaces:"
 #~ msgstr "Tamaño de la sangría de la llave en espacios:"
