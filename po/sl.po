@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: anjuta-ekstras master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=anjuta&keywords=I18N+L10N&component=unknown\n"
-"POT-Creation-Date: 2012-05-15 18:36+0000\n"
-"PO-Revision-Date: 2012-05-19 11:17+0100\n"
-"Last-Translator: filmsi\n"
+"POT-Creation-Date: 2012-05-19 11:09+0000\n"
+"PO-Revision-Date: 2012-05-19 13:41+0100\n"
+"Last-Translator: Matej Urbančič <mateju@svn.gnome.org>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n%100==4 ? 3 : 0);\n"
 "X-Launchpad-Export-Date: 2007-10-05 05:48+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
@@ -42,9 +42,8 @@ msgid "An alternate editor based on Scintilla"
 msgstr "Alternativni urejevalnik na osnovi Scintilla"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:1
-#, fuzzy
 msgid "Plus/Minus"
-msgstr "Plus/minus"
+msgstr "Plus/Minus"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:2
 #| msgid "Grow"
@@ -52,9 +51,8 @@ msgid "Arrows"
 msgstr "Puščice"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:3
-#, fuzzy
 msgid "Circular"
-msgstr "Krožni"
+msgstr "Krožnice"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:4
 #| msgid "Suppress"
@@ -63,67 +61,57 @@ msgstr "Kvadrati"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:5
 msgid "Choose autocomplete for single match"
-msgstr ""
+msgstr "Izbor samodejnega dopolnjevanja za en zadetek izbire"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:6
 msgid "Autocomplete XML/HTML closing tags"
-msgstr "Samodopolni zaključne oznake XML/HTML"
+msgstr "Samodejno dopolni zaključne oznake XML/HTML"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:7
 msgid "Autocompletion pop up choices"
-msgstr "Pojavne možnosti samodopolnjevanja"
+msgstr "Pokaži pojavno okno izbir za samodejno dopolnjevanje"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:8
 msgid "Autocompletion"
-msgstr "Samodopolnjevanje"
+msgstr "Samodejno dopolnjevanje"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:9
-#, fuzzy
 msgid "Enable code folding"
 msgstr "Omogoči zlaganje kode"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:10
-#, fuzzy
 msgid "Enable comments folding"
 msgstr "Omogoči zlaganje komentarjev"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:11
-#, fuzzy
 msgid "Enable python comments folding"
 msgstr "Omogoči zlaganje komentarjev python"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:12
-#, fuzzy
 msgid "Enable python quoted strings folding"
 msgstr "Omogoči zlaganje besedilnih nizov python"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:13
-#, fuzzy
 msgid "Enable HTML tags folding"
-msgstr "Omogoči zlaganje značk HTML"
+msgstr "Omogoči zlaganje oznak HTML"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:14
-#, fuzzy
 msgid "Compact folding"
 msgstr "Strnjeno zlaganje"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:15
-#, fuzzy
 msgid "Draw line below folded lines"
 msgstr "Pod zloženimi vrsticami nariši črto"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:16
-#, fuzzy
 msgid "Collapse all code folds on file open"
 msgstr "Ob odprtju datoteke strni vso zloženo kodo"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:17
-#, fuzzy
 msgid "Fold style:"
 msgstr "Slog zlaganja:"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:18
-#, fuzzy
 #| msgid "_Code Fold Margin"
 msgid "Code folding"
 msgstr "Zlaganje kode"
@@ -137,39 +125,34 @@ msgid "Enable braces check"
 msgstr "Omogoči preverjanje oklepajev"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:21
-#, fuzzy
 msgid "Strip trailling spaces on file save"
 msgstr "Ob shranjevanju poreži presledke na koncu vrstic"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:22
-#, fuzzy
 msgid "Filter extraneous characters in DOS mode"
 msgstr "Filtriraj odvečne znake v načinu DOS"
 
 #. Next bookmark at the end of the file will jump to the first bookmark from the beginning
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:24
 msgid "Wrap bookmarks search around"
-msgstr ""
+msgstr "Prelomi zadetke iskanja zaznamkov"
 
 #. Column where a vertical line will be drawn to indicate that lines should not be longer
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:26
-#, fuzzy
 msgid "Edge column"
 msgstr "Robni stolpec"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:27
 msgid "Caret blink period in ms"
-msgstr "Perioda utripanja kazalke v ms"
+msgstr "Hitrost utripanja kazalke v ms"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:28
-#, fuzzy
 msgid "Editor caret (cursor) width in pixels"
-msgstr "Širina kazalke urejevalnika v slik. točkah"
+msgstr "Širina kazalke urejevalnika v točkah"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:29
-#, fuzzy
 msgid "Line numbers margin width in pixels"
-msgstr "Širina roba za številke vrstic v slik. točkah"
+msgstr "Širina roba za številke vrstic v točkah"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:30
 #| msgid "Options"
@@ -195,22 +178,18 @@ msgid "Maintain past Indentation"
 msgstr "Ohrani preteklo zamikanje"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:36
-#, fuzzy
 msgid "Pressing tab inserts indentation"
-msgstr "S tabulatorjem vstavite zamik"
+msgstr "S tabulatorjem se vstavi zamik"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:37
-#, fuzzy
 msgid "Pressing backspace un-indents"
-msgstr "Z vračalko odstranite zamik"
+msgstr "Z vračalko se odstrani zamik"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:38
-#, fuzzy
 msgid "Indent closing braces"
 msgstr "Zamakni zaklepaje"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:39
-#, fuzzy
 msgid "Indent opening braces"
 msgstr "Zamakni oklepaje"
 
@@ -242,13 +221,11 @@ msgid "View Indentation Guides"
 msgstr "Pokaži vodila zamika"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:46
-#, fuzzy
 #| msgid "Show/Hide white spaces"
 msgid "View Whitespaces"
 msgstr "Pokaži presledne znake"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:47
-#, fuzzy
 #| msgid "Show/Hide indentation guides"
 msgid "View indentation whitespaces"
 msgstr "Pokaži presledne znake zamika"
@@ -260,20 +237,19 @@ msgstr "Pokaži prelom vrstic"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:49
 msgid "Margin Linenum visible"
-msgstr ""
+msgstr "Črta roba je vidna"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:50
-#, fuzzy
 msgid "Margin Marker visible"
 msgstr "Oznaka roba je vidna"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:51
 msgid "Margin Fold visible"
-msgstr ""
+msgstr "Rob zvijanja kode je viden"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:52
 msgid "Lines"
-msgstr "vrstic"
+msgstr "Vrstice"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:53
 msgid "Add line number every:"
@@ -290,7 +266,7 @@ msgstr "Dodaj glavo strani"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:56
 msgid "Monochrome"
-msgstr "monokromatski"
+msgstr "enobarvni"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:57
 msgid "Colour"
@@ -314,9 +290,8 @@ msgid "Fonts and colors for editor"
 msgstr "Pisave in barve urejevalnika"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:62
-#, fuzzy
 msgid "Select highlight style to edit:"
-msgstr "Izberite slog poudarjanja za urejanje:"
+msgstr "Izbor sloga poudarjanja za urejanje:"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:63
 msgid "Bold"
@@ -340,7 +315,7 @@ msgstr "Barva ozadja:"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:68
 msgid "Foreground color:"
-msgstr "Barva ospredja:"
+msgstr "Barva pisave:"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:69
 msgid "Attributes:"
@@ -360,7 +335,7 @@ msgstr "Barva kazalke:"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:73
 msgid "Calltip background:"
-msgstr ""
+msgstr "Ozadje namiga klica:"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:74
 msgid "Selection background:"
@@ -560,30 +535,25 @@ msgid "Change build commands to use scratchbox 1 or 2"
 msgstr "Spremeni ukaze izgradnje za uporabo Scratchbox 1 ali 2"
 
 #: ../plugins/scratchbox/anjuta-scratchbox.ui.h:1
-#, fuzzy
 #| msgid "Scratchbox"
 msgid "Scratchbox directory:"
 msgstr "Mapa Scratchbox:"
 
 #: ../plugins/scratchbox/anjuta-scratchbox.ui.h:2
-#, fuzzy
 #| msgid "Scratchbox"
 msgid "Scratchbox version:"
 msgstr "Različica Scratchbox:"
 
 #: ../plugins/scratchbox/anjuta-scratchbox.ui.h:3
-#, fuzzy
 msgid "Select Scratchbox Folder"
-msgstr "Izberite mapo Scratchbox"
+msgstr "Izbor mape Scratchbox"
 
 #: ../plugins/scratchbox/anjuta-scratchbox.ui.h:4
-#, fuzzy
 #| msgid "Scratchbox"
 msgid "Scratchbox target:"
 msgstr "Cilj Scratchbox:"
 
 #: ../plugins/scratchbox/anjuta-scratchbox.ui.h:5
-#, fuzzy
 #| msgid "Scratchbox"
 msgid "Scratchbox Options"
 msgstr "Možnosti Scratchbox"
