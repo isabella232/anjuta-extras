@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: anjuta-extras\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-16 21:55+0100\n"
-"PO-Revision-Date: 2012-03-16 21:56+0100\n"
+"POT-Creation-Date: 2012-06-01 17:56+0200\n"
+"PO-Revision-Date: 2012-06-01 17:57+0200\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <gnomepl@aviary.pl>\n"
 "Language: pl\n"
@@ -21,18 +21,317 @@ msgstr ""
 "X-Poedit-Language: Polish\n"
 "X-Poedit-Country: Poland\n"
 
-#: ../plugins/scintilla/print.c:659
-#, c-format
-msgid "File: %s"
-msgstr "Plik: %s"
+#: ../plugins/sample1/anjuta-sample.plugin.in.h:1
+msgid "Sample Plugin"
+msgstr "Przykładowa wtyczka"
 
-#: ../plugins/scintilla/print.c:888
-msgid "Unable to get text buffer for printing"
-msgstr "Nie można pobrać bufora tekstowego do wydrukowania"
+#: ../plugins/sample1/anjuta-sample.plugin.in.h:2
+msgid "Sample Plugin for Anjuta."
+msgstr "Przykładowa wtyczka programu Anjuta."
 
-#: ../plugins/scintilla/print.c:966
-msgid "No file to print!"
-msgstr "Brak plików do wydrukowania."
+#: ../plugins/scintilla/anjuta-editor.plugin.in.h:1
+#: ../plugins/scintilla/plugin.c:487 ../plugins/scintilla/plugin.c:499
+msgid "Scintilla Editor"
+msgstr "Edytor Scintilla"
+
+#: ../plugins/scintilla/anjuta-editor.plugin.in.h:2
+msgid "An alternate editor based on Scintilla"
+msgstr "Alternatywny edytor oparty na bibliotece Scintilla"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:1
+msgid "Plus/Minus"
+msgstr "Plus/minus"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:2
+msgid "Arrows"
+msgstr "Strzałki"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:3
+msgid "Circular"
+msgstr "Koła"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:4
+msgid "Squares"
+msgstr "Kwadraty"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:5
+msgid "Choose autocomplete for single match"
+msgstr "Wybór automatycznego uzupełniania dla pojedynczego wyniku"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:6
+msgid "Autocomplete XML/HTML closing tags"
+msgstr "Automatyczne uzupełnianie znaczników zamykających języka XML/HTML"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:7
+msgid "Autocompletion pop up choices"
+msgstr "Wyskakujący wybór automatycznego uzupełniania"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:8
+msgid "Autocompletion"
+msgstr "Automatyczne uzupełnianie"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:9
+msgid "Enable code folding"
+msgstr "Włączenie zwijania kodu"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:10
+msgid "Enable comments folding"
+msgstr "Włączenie zwijania komentarzy"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:11
+msgid "Enable python comments folding"
+msgstr "Włączenie zwijania komentarzy języka Python"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:12
+msgid "Enable python quoted strings folding"
+msgstr "Włączenie zwijania cytowanych ciągów języka Python"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:13
+msgid "Enable HTML tags folding"
+msgstr "Włączenie zwijania znaczników języka HTML"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:14
+msgid "Compact folding"
+msgstr "Zwarte zwijanie"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:15
+msgid "Draw line below folded lines"
+msgstr "Wyświetlanie linii poniżej zwiniętych wierszy"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:16
+msgid "Collapse all code folds on file open"
+msgstr "Rozwijanie wszystkich zwinięć kodu po otwarciu pliku"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:17
+msgid "Fold style:"
+msgstr "Styl zwijania:"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:18
+msgid "Code folding"
+msgstr "Zwijanie kodu"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:19
+msgid "Disable syntax highlighting"
+msgstr "Wyłączenie wyróżniania elementów składni"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:20
+msgid "Enable braces check"
+msgstr "Włączenie sprawdzania nawiasów"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:21
+msgid "Strip trailling spaces on file save"
+msgstr "Usuwanie spacji na końcu wierszy podczas zapisywania pliku"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:22
+msgid "Filter extraneous characters in DOS mode"
+msgstr "Filtrowanie błędnych znaków w trybie DOS"
+
+#. Next bookmark at the end of the file will jump to the first bookmark from the beginning
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:24
+msgid "Wrap bookmarks search around"
+msgstr "Zawijanie zakładek"
+
+#. Column where a vertical line will be drawn to indicate that lines should not be longer
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:26
+msgid "Edge column"
+msgstr "Kolumna krawędzi"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:27
+msgid "Caret blink period in ms"
+msgstr "Okres migania karetki w milisekundach"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:28
+msgid "Editor caret (cursor) width in pixels"
+msgstr "Szerokość karetki (kursora) edytora w pikselach"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:29
+msgid "Line numbers margin width in pixels"
+msgstr "Margines numerów wierszy w pikselach"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:30
+msgid "Misc options"
+msgstr "Różne opcje"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:31
+msgid "Colors & Fonts"
+msgstr "Kolory i czcionki"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:32
+msgid "Editor"
+msgstr "Edytor"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:33
+msgid "Enable automatic indentation"
+msgstr "Włączenie automatycznych wcięć"
+
+#. If the user presses enter, the indentation of the current line will automatically be added to the next line
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:35
+msgid "Maintain past Indentation"
+msgstr "Utrzymywanie poprzedniego wcięcia"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:36
+msgid "Pressing tab inserts indentation"
+msgstr "Naciśnięcie klawisza Tab wstawia wcięcie"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:37
+msgid "Pressing backspace un-indents"
+msgstr "Naciśnięcie klawisza Backspace usuwa wcięcie"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:38
+msgid "Indent closing braces"
+msgstr "Zamykające nawiasy wcięć"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:39
+msgid "Indent opening braces"
+msgstr "Otwierające nawiasy wcięć"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:40
+msgid "Use tabs for indentation"
+msgstr "Używanie tabulacji dla wcięć"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:41
+msgid "Indentation size in spaces:"
+msgstr "Rozmiar wcięć w liczbie spacji:"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:42
+msgid "Tab size in spaces:"
+msgstr "Rozmiar tabulacji w liczbie spacji:"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:43
+msgid "Basic Indentation"
+msgstr "Podstawowe wcięcia"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:44
+msgid "View EOL chars"
+msgstr "Wyświetlanie znaków końca wiersza"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:45
+msgid "View Indentation Guides"
+msgstr "Wyświetlanie prowadnic wcięć"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:46
+msgid "View Whitespaces"
+msgstr "Wyświetlanie widzialnych spacji"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:47
+msgid "View indentation whitespaces"
+msgstr "Wyświetlanie widzialnych spacji wcięć"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:48
+msgid "View Line Wrap"
+msgstr "Wyświetlanie zawijania wierszy"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:49
+msgid "Margin Linenum visible"
+msgstr "Widoczność marginesu numerów wierszy"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:50
+msgid "Margin Marker visible"
+msgstr "Widoczność marginesu znaczników"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:51
+msgid "Margin Fold visible"
+msgstr "Widoczność marginesu zwijania"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:52
+msgid "Lines"
+msgstr "Wiersze"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:53
+msgid "Add line number every:"
+msgstr "Dodanie numeru wiersza co:"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:54
+msgid "Enable line wrap"
+msgstr "Włączenie zawijania wierszy"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:55
+msgid "Add page header"
+msgstr "Dodanie nagłówka strony"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:56
+msgid "Monochrome"
+msgstr "Monochromatyczny"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:57
+msgid "Colour"
+msgstr "Kolor"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:58
+msgid "Mode:"
+msgstr "Tryb:"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:59
+msgid "Print options"
+msgstr "Opcje wydruku"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:60
+msgid "Printing"
+msgstr "Drukowanie"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:61
+msgid "Fonts and colors for editor"
+msgstr "Czcionki i kolory edytora"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:62
+msgid "Select highlight style to edit:"
+msgstr "Proszę wybrać styl wyróżniania do modyfikacji:"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:63
+msgid "Bold"
+msgstr "Pogrubienie"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:64
+msgid "Italic"
+msgstr "Pochylenie"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:65
+msgid "Underlined"
+msgstr "Podkreślenie"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:66
+msgid "Use default"
+msgstr "Użycie domyślnego"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:67
+msgid "Background color:"
+msgstr "Kolor tła:"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:68
+msgid "Foreground color:"
+msgstr "Kolor czcionki:"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:69
+msgid "Attributes:"
+msgstr "Atrybuty:"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:70
+msgid "Font:"
+msgstr "Czcionka:"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:71
+msgid "Highlight style"
+msgstr "Styl wyróżniania"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:72
+msgid "Caret (cursor) color:"
+msgstr "Kolor karetki (kursora):"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:73
+msgid "Calltip background:"
+msgstr "Tło podpowiedzi wywołań:"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:74
+msgid "Selection background:"
+msgstr "Tło zaznaczenia:"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:75
+msgid "Selection foreground:"
+msgstr "Kolor czcionki zaznaczenia:"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:76
+msgid "Other colors"
+msgstr "Inne kolory:"
 
 #: ../plugins/scintilla/plugin.c:160
 msgid "_Line Number Margin"
@@ -94,12 +393,20 @@ msgstr "Włącza/wyłącza zawijanie wierszy"
 msgid "Editor view settings"
 msgstr "Ustawienia widoku w edytorze"
 
-#: ../plugins/scintilla/plugin.c:487 ../plugins/scintilla/plugin.c:499
-#: ../plugins/scintilla/anjuta-editor.plugin.in.h:1
-msgid "Scintilla Editor"
-msgstr "Edytor Scintilla"
+#: ../plugins/scintilla/print.c:660
+#, c-format
+msgid "File: %s"
+msgstr "Plik: %s"
 
-#: ../plugins/scintilla/text_editor.c:492
+#: ../plugins/scintilla/print.c:889
+msgid "Unable to get text buffer for printing"
+msgstr "Nie można pobrać bufora tekstowego do wydrukowania"
+
+#: ../plugins/scintilla/print.c:967
+msgid "No file to print!"
+msgstr "Brak plików do wydrukowania."
+
+#: ../plugins/scintilla/text_editor.c:509
 #, c-format
 msgid ""
 "The file '%s' has been changed.\n"
@@ -108,7 +415,7 @@ msgstr ""
 "Plik \"%s\" został zmieniony.\n"
 "Wczytać go ponownie?"
 
-#: ../plugins/scintilla/text_editor.c:498
+#: ../plugins/scintilla/text_editor.c:515
 #, c-format
 msgid ""
 "The file '%s' has been changed.\n"
@@ -117,7 +424,7 @@ msgstr ""
 "Plik \"%s\" został zmieniony.\n"
 "Utracić zmiany i wczytać go ponownie?"
 
-#: ../plugins/scintilla/text_editor.c:518
+#: ../plugins/scintilla/text_editor.c:535
 #, c-format
 msgid ""
 "The file '%s' has been deleted.\n"
@@ -126,7 +433,7 @@ msgstr ""
 "Plik \"%s\" został usunięty.\n"
 "Zamknąć go?"
 
-#: ../plugins/scintilla/text_editor.c:525
+#: ../plugins/scintilla/text_editor.c:542
 #, c-format
 msgid ""
 "The file '%s' has been deleted.\n"
@@ -135,24 +442,24 @@ msgstr ""
 "Plik \"%s\" został usunięty.\n"
 "Utracić zmiany i zamknąć go?"
 
-#: ../plugins/scintilla/text_editor.c:1506
+#: ../plugins/scintilla/text_editor.c:1526
 msgid "Could not get file info"
 msgstr "Nie można uzyskać informacji o pliku"
 
 #. DEBUG_PRINT ("%s", "This file is too big. Unable to allocate memory.");
-#: ../plugins/scintilla/text_editor.c:1518
+#: ../plugins/scintilla/text_editor.c:1538
 msgid "This file is too big. Unable to allocate memory."
 msgstr "Ten plik jest za duży. Nie można przydzielić pamięci."
 
-#: ../plugins/scintilla/text_editor.c:1527
+#: ../plugins/scintilla/text_editor.c:1547
 msgid "Could not open file"
 msgstr "Nie można otworzyć pliku"
 
-#: ../plugins/scintilla/text_editor.c:1538
+#: ../plugins/scintilla/text_editor.c:1558
 msgid "Error while reading from file"
 msgstr "Błąd podczas odczytywania z pliku"
 
-#: ../plugins/scintilla/text_editor.c:1584
+#: ../plugins/scintilla/text_editor.c:1604
 msgid ""
 "The file does not look like a text file or the file encoding is not "
 "supported. Please check if the encoding of file is in the supported "
@@ -162,11 +469,11 @@ msgstr ""
 "Proszę sprawdzić, czy kodowanie pliku znajduje się na liście obsługiwanych "
 "kodowań. Jeśli nie, to należy dodać je w preferencjach."
 
-#: ../plugins/scintilla/text_editor.c:1767
+#: ../plugins/scintilla/text_editor.c:1787
 msgid "Loading file..."
 msgstr "Wczytywanie pliku..."
 
-#: ../plugins/scintilla/text_editor.c:1776
+#: ../plugins/scintilla/text_editor.c:1796
 #, c-format
 msgid ""
 "Could not load file: %s\n"
@@ -177,24 +484,24 @@ msgstr ""
 "\n"
 "Szczegóły: %s"
 
-#: ../plugins/scintilla/text_editor.c:1797
+#: ../plugins/scintilla/text_editor.c:1817
 msgid "File loaded successfully"
 msgstr "Wczytano plik"
 
-#: ../plugins/scintilla/text_editor.c:1818
+#: ../plugins/scintilla/text_editor.c:1838
 msgid "Saving file..."
 msgstr "Zapisywanie pliku..."
 
-#: ../plugins/scintilla/text_editor.c:1827
+#: ../plugins/scintilla/text_editor.c:1847
 #, c-format
 msgid "Could not save intermediate file %s: %s"
 msgstr "Nie można zapisać pliku tymczasowego %s: %s."
 
-#: ../plugins/scintilla/text_editor.c:1843
+#: ../plugins/scintilla/text_editor.c:1863
 msgid "File saved successfully"
 msgstr "Zapisano plik"
 
-#: ../plugins/scintilla/text_editor.c:2216
+#: ../plugins/scintilla/text_editor.c:2236
 #, c-format
 msgid ""
 "Cannot load Global defaults and configuration files:\n"
@@ -207,30 +514,36 @@ msgstr ""
 "To może spowodować niepoprawne zachowanie lub niestabilność.\n"
 "Program Anjuta powróci do wbudowanych (ograniczonych) ustawień"
 
-#: ../plugins/scratchbox/plugin.c:209
-#, c-format
-msgid "Program '%s' does not exists"
-msgstr "Program \"%s\" nie istnieje"
-
-#: ../plugins/scratchbox/plugin.c:460 ../plugins/scratchbox/plugin.c:482
 #: ../plugins/scratchbox/anjuta-scratchbox.plugin.in.h:1
+#: ../plugins/scratchbox/plugin.c:460 ../plugins/scratchbox/plugin.c:482
 msgid "Scratchbox"
 msgstr "Scratchbox"
-
-#. Public functions
-#. *---------------------------------------------------------------------------
-#: ../plugins/sample1/anjuta-sample.plugin.in.h:1
-msgid "Sample Plugin"
-msgstr "Przykładowa wtyczka"
-
-#: ../plugins/sample1/anjuta-sample.plugin.in.h:2
-msgid "Sample Plugin for Anjuta."
-msgstr "Przykładowa wtyczka programu Anjuta."
-
-#: ../plugins/scintilla/anjuta-editor.plugin.in.h:2
-msgid "An alternate editor based on Scintilla"
-msgstr "Edytor alternatywny oparty na bibliotece Scintilla"
 
 #: ../plugins/scratchbox/anjuta-scratchbox.plugin.in.h:2
 msgid "Change build commands to use scratchbox 1 or 2"
 msgstr "Zmiana poleceń budowania na używanie Scratchbox 1 lub 2"
+
+#: ../plugins/scratchbox/anjuta-scratchbox.ui.h:1
+msgid "Scratchbox directory:"
+msgstr "Katalog Scratchbox:"
+
+#: ../plugins/scratchbox/anjuta-scratchbox.ui.h:2
+msgid "Scratchbox version:"
+msgstr "Wersja Scratchbox:"
+
+#: ../plugins/scratchbox/anjuta-scratchbox.ui.h:3
+msgid "Select Scratchbox Folder"
+msgstr "Wybór katalogu Scratchbox"
+
+#: ../plugins/scratchbox/anjuta-scratchbox.ui.h:4
+msgid "Scratchbox target:"
+msgstr "Cel Scratchbox:"
+
+#: ../plugins/scratchbox/anjuta-scratchbox.ui.h:5
+msgid "Scratchbox Options"
+msgstr "Opcje Scratchbox"
+
+#: ../plugins/scratchbox/plugin.c:209
+#, c-format
+msgid "Program '%s' does not exists"
+msgstr "Program \"%s\" nie istnieje"
