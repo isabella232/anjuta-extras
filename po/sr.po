@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: 23.32\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=anjuta"
 "&keywords=I18N+L10N&component=unknown\n"
-"POT-Creation-Date: 2011-12-18 16:25+0000\n"
-"PO-Revision-Date: 2012-03-10 11:53+0200\n"
+"POT-Creation-Date: 2012-05-15 18:36+0000\n"
+"PO-Revision-Date: 2012-06-01 20:27+0200\n"
 "Last-Translator: Мирослав Николић <miroslavnikolic@rocketmail.com>\n"
 "Language-Team: Serbian <gnom@prevod.org>\n"
 "Language: sr\n"
@@ -21,18 +21,322 @@ msgstr ""
 "n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Project-Style: gnome\n"
 
-#: ../plugins/scintilla/print.c:659
-#, c-format
-msgid "File: %s"
-msgstr "Датотека: %s"
+#: ../plugins/sample1/anjuta-sample.plugin.in.h:1
+msgid "Sample Plugin"
+msgstr "Прикључак узорка"
 
-#: ../plugins/scintilla/print.c:888
-msgid "Unable to get text buffer for printing"
-msgstr "Не могу да припремим текст за штампу"
+#: ../plugins/sample1/anjuta-sample.plugin.in.h:2
+msgid "Sample Plugin for Anjuta."
+msgstr "Прикључак узорка за Ањуту."
 
-#: ../plugins/scintilla/print.c:966
-msgid "No file to print!"
-msgstr "Нема датотеке за штампање!"
+#: ../plugins/scintilla/anjuta-editor.plugin.in.h:1
+#: ../plugins/scintilla/plugin.c:487 ../plugins/scintilla/plugin.c:499
+msgid "Scintilla Editor"
+msgstr "Уређивач искрица"
+
+#: ../plugins/scintilla/anjuta-editor.plugin.in.h:2
+msgid "An alternate editor based on Scintilla"
+msgstr "Резервни уређивач заснован на Искрици"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:1
+msgid "Plus/Minus"
+msgstr "Плус/минус"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:2
+msgid "Arrows"
+msgstr "Стрелице"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:3
+msgid "Circular"
+msgstr "Кружно"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:4
+msgid "Squares"
+msgstr "Квадрати"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:5
+msgid "Choose autocomplete for single match"
+msgstr "Изабери аутоматску допуну за једно подударање"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:6
+msgid "Autocomplete XML/HTML closing tags"
+msgstr "Аутоматски допуни ИксМЛ/ХТМЛ завршне ознаке"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:7
+msgid "Autocompletion pop up choices"
+msgstr "Искачући избори за аутоматску допуну"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:8
+msgid "Autocompletion"
+msgstr "Самодовршавање"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:9
+msgid "Enable code folding"
+msgstr "Омогући приказивање језичких структура"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:10
+msgid "Enable comments folding"
+msgstr "Омогући приказивање структура напомена"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:11
+msgid "Enable python comments folding"
+msgstr "Омогући python структуре напомена"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:12
+msgid "Enable python quoted strings folding"
+msgstr "Омогући python структуре низова знакова под наводницима"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:13
+msgid "Enable HTML tags folding"
+msgstr "Омогући ХТМЛ језичке структуре (функције/ознаке)"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:14
+msgid "Compact folding"
+msgstr "Скупи језичку структуру"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:15
+msgid "Draw line below folded lines"
+msgstr "Исцртај линије испод скупљених језичких структура"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:16
+msgid "Collapse all code folds on file open"
+msgstr "Отвори све језичке структуре приликом отварања датотеке"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:17
+msgid "Fold style:"
+msgstr "Стил језичке структуре:"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:18
+#| msgid "<b>Code folding</b>"
+msgid "Code folding"
+msgstr "Скупљање кода"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:19
+msgid "Disable syntax highlighting"
+msgstr "Онемогући осветљавање кода"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:20
+msgid "Enable braces check"
+msgstr "Омогући проверу заграда"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:21
+msgid "Strip trailling spaces on file save"
+msgstr "Уклони пратећи вишак празних места приликом бележења датотеке"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:22
+msgid "Filter extraneous characters in DOS mode"
+msgstr "Филтрирај непознате знаке у DOS моду"
+
+#. Next bookmark at the end of the file will jump to the first bookmark from the beginning
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:24
+msgid "Wrap bookmarks search around"
+msgstr "Изврши претрагу обележивача у круг"
+
+#. Column where a vertical line will be drawn to indicate that lines should not be longer
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:26
+msgid "Edge column"
+msgstr "Ивична колона"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:27
+msgid "Caret blink period in ms"
+msgstr "Треперење курсора у мили-секундама"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:28
+msgid "Editor caret (cursor) width in pixels"
+msgstr "Ширина курсора уредника текста изражена у пикселима"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:29
+msgid "Line numbers margin width in pixels"
+msgstr "Ширина маргине са бројевима линија у пикселима"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:30
+#| msgid "<b>Misc options</b>"
+msgid "Misc options"
+msgstr "Разне опције"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:31
+msgid "Colors & Fonts"
+msgstr "Боје и писма"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:32
+msgid "Editor"
+msgstr "Уређивач"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:33
+msgid "Enable automatic indentation"
+msgstr "Омогући аутоматско увлачење кода"
+
+#. If the user presses enter, the indentation of the current line will automatically be added to the next line
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:35
+msgid "Maintain past Indentation"
+msgstr "Одржи претходно увлачење"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:36
+msgid "Pressing tab inserts indentation"
+msgstr "Притиснут табулатор умеће увлачење"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:37
+msgid "Pressing backspace un-indents"
+msgstr "Притисак на backspace извлачи"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:38
+msgid "Indent closing braces"
+msgstr "Увуци заграду краја блока"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:39
+msgid "Indent opening braces"
+msgstr "Увуци заграду почетка блока"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:40
+msgid "Use tabs for indentation"
+msgstr "Користи размак за увлачење линија кода"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:41
+msgid "Indentation size in spaces:"
+msgstr "Увлачење кода (у местима):"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:42
+msgid "Tab size in spaces:"
+msgstr "Размак (у местима):"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:43
+msgid "Basic Indentation"
+msgstr "Основно увлачење"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:44
+msgid "View EOL chars"
+msgstr "Види знаке краја реда"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:45
+msgid "View Indentation Guides"
+msgstr "Види вођице увлачења редова"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:46
+msgid "View Whitespaces"
+msgstr "Види празне знаке"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:47
+msgid "View indentation whitespaces"
+msgstr "Види празне знаке увлачења"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:48
+msgid "View Line Wrap"
+msgstr "Види прелом реда"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:49
+msgid "Margin Linenum visible"
+msgstr "Број маргине је видљив"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:50
+msgid "Margin Marker visible"
+msgstr "Ознака маргине је видљива"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:51
+msgid "Margin Fold visible"
+msgstr "Ивица маргине је видљива"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:52
+msgid "Lines"
+msgstr "Линије"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:53
+msgid "Add line number every:"
+msgstr "Додај број линије на сваких:"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:54
+msgid "Enable line wrap"
+msgstr "Омогући прелом реда"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:55
+msgid "Add page header"
+msgstr "Додај заглавље страници"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:56
+msgid "Monochrome"
+msgstr "Једнобојни"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:57
+msgid "Colour"
+msgstr "Боја"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:58
+msgid "Mode:"
+msgstr "Мод:"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:59
+#| msgid "<b>Print options</b>"
+msgid "Print options"
+msgstr "Подешавање штампања"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:60
+msgid "Printing"
+msgstr "Штампам"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:61
+msgid "Fonts and colors for editor"
+msgstr "Фонтови и боје за едитор"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:62
+msgid "Select highlight style to edit:"
+msgstr "Изаберите стил осветљења који желите да уредите:"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:63
+msgid "Bold"
+msgstr "Зацрњено"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:64
+msgid "Italic"
+msgstr "Курзив"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:65
+msgid "Underlined"
+msgstr "Подвучено"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:66
+msgid "Use default"
+msgstr "Користи подразумевано"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:67
+msgid "Background color:"
+msgstr "Боја позадине:"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:68
+msgid "Foreground color:"
+msgstr "Боја текста:"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:69
+msgid "Attributes:"
+msgstr "Особине:"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:70
+msgid "Font:"
+msgstr "Слово:"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:71
+#| msgid "<b>Highlight style</b>"
+msgid "Highlight style"
+msgstr "Стил истицања"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:72
+msgid "Caret (cursor) color:"
+msgstr "Боја курсора:"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:73
+msgid "Calltip background:"
+msgstr "Боја позадине приказа прототипа функције:"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:74
+msgid "Selection background:"
+msgstr "Боја означене позадине:"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:75
+msgid "Selection foreground:"
+msgstr "Боја означеног текста:"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:76
+#| msgid "<b>Other colors</b>"
+msgid "Other colors"
+msgstr "Остале боје"
 
 #: ../plugins/scintilla/plugin.c:160
 msgid "_Line Number Margin"
@@ -94,17 +398,21 @@ msgstr "Укључите/искључите прелом реда"
 msgid "Editor view settings"
 msgstr "Подешавања прегледа уређивача"
 
-#: ../plugins/scintilla/plugin.c:487 ../plugins/scintilla/plugin.c:499
-#: ../plugins/scintilla/anjuta-editor.plugin.in.h:2
-msgid "Scintilla Editor"
-msgstr "Уређивач искрица"
-
-#: ../plugins/scintilla/text_editor.c:473
+#: ../plugins/scintilla/print.c:660
 #, c-format
-#| msgid ""
-#| "The file '%s' on the disk is more recent than\n"
-#| "the current buffer.\n"
-#| "Do you want to reload it?"
+msgid "File: %s"
+msgstr "Датотека: %s"
+
+#: ../plugins/scintilla/print.c:889
+msgid "Unable to get text buffer for printing"
+msgstr "Не могу да припремим текст за штампу"
+
+#: ../plugins/scintilla/print.c:967
+msgid "No file to print!"
+msgstr "Нема датотеке за штампање!"
+
+#: ../plugins/scintilla/text_editor.c:509
+#, c-format
 msgid ""
 "The file '%s' has been changed.\n"
 "Do you want to reload it ?"
@@ -112,12 +420,8 @@ msgstr ""
 "Датотека „%s“ је измењена.\n"
 "Да ли желите да је поново учитате ?"
 
-#: ../plugins/scintilla/text_editor.c:479
+#: ../plugins/scintilla/text_editor.c:515
 #, c-format
-#| msgid ""
-#| "The file '%s' on the disk is more recent than\n"
-#| "the current buffer.\n"
-#| "Do you want to reload it?"
 msgid ""
 "The file '%s' has been changed.\n"
 "Do you want to loose your changes and reload it ?"
@@ -125,7 +429,7 @@ msgstr ""
 "Датотека „%s“ је измењена.\n"
 "Да ли желите да одбаците ваше измене и да је поново учитате ?"
 
-#: ../plugins/scintilla/text_editor.c:499
+#: ../plugins/scintilla/text_editor.c:535
 #, c-format
 msgid ""
 "The file '%s' has been deleted.\n"
@@ -134,11 +438,8 @@ msgstr ""
 "Датотека „%s“ је обрисана.\n"
 "Да ли потврђујете и затварате је ?"
 
-#: ../plugins/scintilla/text_editor.c:506
+#: ../plugins/scintilla/text_editor.c:542
 #, c-format
-#| msgid ""
-#| "The file '%s' already exists.\n"
-#| "Do you want to replace it with the one you are saving?"
 msgid ""
 "The file '%s' has been deleted.\n"
 "Do you want to loose your changes and close it ?"
@@ -146,24 +447,24 @@ msgstr ""
 "Датотека „%s“ је обрисана.\n"
 "Да ли желите да одбаците ваше измене и да је поново учитате ?"
 
-#: ../plugins/scintilla/text_editor.c:1486
+#: ../plugins/scintilla/text_editor.c:1526
 msgid "Could not get file info"
 msgstr "Не могу да добавим податке о датотеци"
 
 #. DEBUG_PRINT ("%s", "This file is too big. Unable to allocate memory.");
-#: ../plugins/scintilla/text_editor.c:1498
+#: ../plugins/scintilla/text_editor.c:1538
 msgid "This file is too big. Unable to allocate memory."
 msgstr "Ова датотека је превелика. Не могу да доделим меморију."
 
-#: ../plugins/scintilla/text_editor.c:1507
+#: ../plugins/scintilla/text_editor.c:1547
 msgid "Could not open file"
 msgstr "Не могу да отворим датотеку"
 
-#: ../plugins/scintilla/text_editor.c:1518
+#: ../plugins/scintilla/text_editor.c:1558
 msgid "Error while reading from file"
 msgstr "Грешка током читања из датотеке"
 
-#: ../plugins/scintilla/text_editor.c:1564
+#: ../plugins/scintilla/text_editor.c:1604
 msgid ""
 "The file does not look like a text file or the file encoding is not "
 "supported. Please check if the encoding of file is in the supported "
@@ -173,11 +474,11 @@ msgstr ""
 "записа. Молим проверите да ли се кодирање ове датотеке налази на списку "
 "подржаних кодирања. Уколико није, додајте га из поставки."
 
-#: ../plugins/scintilla/text_editor.c:1747
+#: ../plugins/scintilla/text_editor.c:1787
 msgid "Loading file..."
 msgstr "Учитавам датотеку..."
 
-#: ../plugins/scintilla/text_editor.c:1756
+#: ../plugins/scintilla/text_editor.c:1796
 #, c-format
 msgid ""
 "Could not load file: %s\n"
@@ -188,24 +489,24 @@ msgstr ""
 "\n"
 "Детаљи: %s"
 
-#: ../plugins/scintilla/text_editor.c:1777
+#: ../plugins/scintilla/text_editor.c:1817
 msgid "File loaded successfully"
 msgstr "Датотека је успешно учитана"
 
-#: ../plugins/scintilla/text_editor.c:1795
+#: ../plugins/scintilla/text_editor.c:1838
 msgid "Saving file..."
 msgstr "Чувам датотеку..."
 
-#: ../plugins/scintilla/text_editor.c:1804
+#: ../plugins/scintilla/text_editor.c:1847
 #, c-format
 msgid "Could not save intermediate file %s: %s"
 msgstr "Не могу да сачувам датотеку %s: %s"
 
-#: ../plugins/scintilla/text_editor.c:1820
+#: ../plugins/scintilla/text_editor.c:1863
 msgid "File saved successfully"
 msgstr "Датотека је успешно сачувана"
 
-#: ../plugins/scintilla/text_editor.c:2193
+#: ../plugins/scintilla/text_editor.c:2236
 #, c-format
 msgid ""
 "Cannot load Global defaults and configuration files:\n"
@@ -218,33 +519,39 @@ msgstr ""
 "Ово може резултирати неправилним понашањем или нестабилношћу.\n"
 "Ањута ће користити уграђена (ограничена) подешавања"
 
+#: ../plugins/scratchbox/anjuta-scratchbox.plugin.in.h:1
+#: ../plugins/scratchbox/plugin.c:460 ../plugins/scratchbox/plugin.c:482
+msgid "Scratchbox"
+msgstr "Шкрабалица"
+
+#: ../plugins/scratchbox/anjuta-scratchbox.plugin.in.h:2
+msgid "Change build commands to use scratchbox 1 or 2"
+msgstr "Измените уграђене наредбе да користе шкрабалицу 1 или 2"
+
+#: ../plugins/scratchbox/anjuta-scratchbox.ui.h:1
+msgid "Scratchbox directory:"
+msgstr "Директоријум шкрабалице:"
+
+#: ../plugins/scratchbox/anjuta-scratchbox.ui.h:2
+msgid "Scratchbox version:"
+msgstr "Издање шкрабалице:"
+
+#: ../plugins/scratchbox/anjuta-scratchbox.ui.h:3
+msgid "Select Scratchbox Folder"
+msgstr "Изабери фасциклу шкрабалице"
+
+#: ../plugins/scratchbox/anjuta-scratchbox.ui.h:4
+msgid "Scratchbox target:"
+msgstr "Одредиште шкрабалице:"
+
+#: ../plugins/scratchbox/anjuta-scratchbox.ui.h:5
+msgid "Scratchbox Options"
+msgstr "Опције шкрабалице"
+
 #: ../plugins/scratchbox/plugin.c:209
 #, c-format
 msgid "Program '%s' does not exists"
 msgstr "Програм „%s“ не постоји"
-
-#: ../plugins/scratchbox/plugin.c:460 ../plugins/scratchbox/plugin.c:482
-#: ../plugins/scratchbox/anjuta-scratchbox.plugin.in.h:2
-msgid "Scratchbox"
-msgstr "Шкрабалица"
-
-#. Public functions
-#. *---------------------------------------------------------------------------
-#: ../plugins/sample1/anjuta-sample.plugin.in.h:1
-msgid "Sample Plugin"
-msgstr "Прикључак узорка"
-
-#: ../plugins/sample1/anjuta-sample.plugin.in.h:2
-msgid "Sample Plugin for Anjuta."
-msgstr "Прикључак узорка за Ањуту."
-
-#: ../plugins/scintilla/anjuta-editor.plugin.in.h:1
-msgid "An alternate editor based on Scintilla"
-msgstr "Резервни уређивач заснован на Искрици"
-
-#: ../plugins/scratchbox/anjuta-scratchbox.plugin.in.h:1
-msgid "Change build commands to use scratchbox 1 or 2"
-msgstr "Измените уграђене наредбе да користе шкрабалицу 1 или 2"
 
 #~ msgid "Anjuta IDE"
 #~ msgstr "Анјута"
@@ -1445,9 +1752,6 @@ msgstr "Измените уграђене наредбе да користе ш�
 #~ msgid "Information"
 #~ msgstr "Подаци"
 
-#~ msgid "Lines"
-#~ msgstr "Линија"
-
 #~ msgid "Locals"
 #~ msgstr "Локалне"
 
@@ -2373,215 +2677,6 @@ msgstr "Измените уграђене наредбе да користе ш�
 #~ msgid "<b>Basic Indentation</b>"
 #~ msgstr "<b>Детаљи макроа:</b>"
 
-#~ msgid "<b>Code folding</b>"
-#~ msgstr "<b>Скупљање кода</b>"
-
-#~ msgid "<b>Highlight style</b>"
-#~ msgstr "<b>Стил истицања</b>"
-
-#~ msgid "<b>Misc options</b>"
-#~ msgstr "Разна подешавања"
-
-#~ msgid "<b>Other colors</b>"
-#~ msgstr "Остале боје"
-
-#~ msgid "<b>Print options</b>"
-#~ msgstr "<b>Подешавање штампања</b>"
-
-#~ msgid "Add line number every:"
-#~ msgstr "Додај број линије на сваких:"
-
-#~ msgid "Add page header"
-#~ msgstr "Додај заглавље страници"
-
-#~ msgid "Attributes:"
-#~ msgstr "Особине:"
-
-#~ msgid "Autocomplete XML/HTML closing tags"
-#~ msgstr "Аутоматски допуни XML/HTML завршне ознаке"
-
-#~ msgid "Autocompletion pop up choices"
-#~ msgstr "Искачући избори за аутоматску допуну"
-
-#, fuzzy
-#~ msgid "Background color:"
-#~ msgstr "Боја позадине:"
-
-#, fuzzy
-#~ msgid "Basic Indentation"
-#~ msgstr "Увлачење"
-
-#~ msgid "Bold"
-#~ msgstr "Зацрњено"
-
-#~ msgid "Calltip background:"
-#~ msgstr "Боја позадине приказа прототипа функције:"
-
-#~ msgid "Caret (cursor) color:"
-#~ msgstr "Боја курсора:"
-
-#, fuzzy
-#~ msgid "Caret blink period in ms"
-#~ msgstr "Треперење курсора изражено у мили-секундама"
-
-#~ msgid "Choose autocomplete for single match"
-#~ msgstr "Изабери аутоматску допуну за једно подударање"
-
-#~ msgid "Collapse all code folds on file open"
-#~ msgstr "Отвори све језичке структуре приликом отварања датотеке"
-
-#, fuzzy
-#~ msgid "Colors & Fonts"
-#~ msgstr "Боје и фонтови"
-
-#~ msgid "Colour"
-#~ msgstr "Боја"
-
-#~ msgid "Compact folding"
-#~ msgstr "Скупи језичку структуру"
-
-#~ msgid "Disable syntax highlighting"
-#~ msgstr "Онемогући осветљавање кода"
-
-#~ msgid "Draw line below folded lines"
-#~ msgstr "Исцртај линије испод скупљених језичких структура"
-
-#~ msgid "Edge column"
-#~ msgstr "Ивична колона"
-
-#, fuzzy
-#~ msgid "Editor"
-#~ msgstr "_Уредник"
-
-#~ msgid "Editor caret (cursor) width in pixels"
-#~ msgstr "Ширина курсора уредника текста изражена у пикселима"
-
-#~ msgid "Enable HTML tags folding"
-#~ msgstr "Омогући HTML језичке структуре (функције/ознаке)"
-
-#~ msgid "Enable automatic indentation"
-#~ msgstr "Омогући аутоматско увлачење кода"
-
-#~ msgid "Enable braces check"
-#~ msgstr "Омогући проверу заграда"
-
-#~ msgid "Enable code folding"
-#~ msgstr "Омогући приказивање језичких структура"
-
-#~ msgid "Enable comments folding"
-#~ msgstr "Омогући приказивање структура напомена"
-
-#~ msgid "Enable line wrap"
-#~ msgstr "Омогући прелом реда"
-
-#~ msgid "Enable python comments folding"
-#~ msgstr "Омогући python структуре напомена"
-
-#~ msgid "Enable python quoted strings folding"
-#~ msgstr "Омогући python структуре низова знакова под наводницима"
-
-#~ msgid "Filter extraneous characters in DOS mode"
-#~ msgstr "Филтрирај непознате знаке у DOS моду"
-
-#~ msgid "Fold style:"
-#~ msgstr "Стил језичке структуре:"
-
-#~ msgid "Font:"
-#~ msgstr "Слово:"
-
-#~ msgid "Fonts and colors for editor"
-#~ msgstr "Фонтови и боје за едитор"
-
-#, fuzzy
-#~ msgid "Foreground color:"
-#~ msgstr "Боја текста:"
-
-#~ msgid "Indent closing braces"
-#~ msgstr "Увуци заграду краја блока"
-
-#~ msgid "Indent opening braces"
-#~ msgstr "Увуци заграду почетка блока"
-
-#~ msgid "Indentation size in spaces:"
-#~ msgstr "Увлачење кода (у местима):"
-
-#~ msgid "Italic"
-#~ msgstr "Курзив"
-
-#~ msgid "Line numbers margin width in pixels"
-#~ msgstr "Ширина маргине са бројевима линија у пикселима"
-
-#~ msgid "Maintain past Indentation"
-#~ msgstr "Одржи претходно увлачење"
-
-#~ msgid "Margin Fold visible"
-#~ msgstr "Ивица маргине је видљива"
-
-#~ msgid "Margin Linenum visible"
-#~ msgstr "Број маргине је видљив"
-
-#~ msgid "Margin Marker visible"
-#~ msgstr "Ознака маргине је видљива"
-
-#~ msgid "Mode:"
-#~ msgstr "Мод:"
-
-#~ msgid "Monochrome"
-#~ msgstr "Једнобојни"
-
-#~ msgid "Pressing backspace un-indents"
-#~ msgstr "Притисак на backspace извлачи"
-
-#, fuzzy
-#~ msgid "Pressing tab inserts indentation"
-#~ msgstr "Притисак на табулатор увлачи"
-
-#~ msgid "Printing"
-#~ msgstr "Штампам"
-
-#~ msgid "Select highlight style to edit:"
-#~ msgstr "Изаберите стил осветљења који желите да уредите:"
-
-#~ msgid "Selection background:"
-#~ msgstr "Боја означене позадине:"
-
-#~ msgid "Selection foreground:"
-#~ msgstr "Боја означеног текста:"
-
-#~ msgid "Strip trailling spaces on file save"
-#~ msgstr "Уклони пратећи вишак празних места приликом бележења датотеке"
-
-#~ msgid "Tab size in spaces:"
-#~ msgstr "Размак (у местима):"
-
-#~ msgid "Underlined"
-#~ msgstr "Подвучено"
-
-#~ msgid "Use default"
-#~ msgstr "Користи подразумевано"
-
-#~ msgid "Use tabs for indentation"
-#~ msgstr "Користи размак за увлачење линија кода"
-
-#~ msgid "View EOL chars"
-#~ msgstr "Види EOL знаке"
-
-#, fuzzy
-#~ msgid "View Indentation Guides"
-#~ msgstr "Линије које прате увлачење редова"
-
-#~ msgid "View Line Wrap"
-#~ msgstr "Види прелом реда"
-
-#~ msgid "View Whitespaces"
-#~ msgstr "Види празне знаке"
-
-#~ msgid "View indentation whitespaces"
-#~ msgstr "Види празне знаке увлачења"
-
-#~ msgid "Wrap bookmarks search around"
-#~ msgstr "Изврши претрагу обележивача у круг"
-
 #, fuzzy
 #~ msgid "Printing..."
 #~ msgstr "Штампам ..."
@@ -3170,14 +3265,6 @@ msgstr "Измените уграђене наредбе да користе ш�
 #, fuzzy
 #~ msgid "Revision:"
 #~ msgstr "Ревизија: "
-
-#, fuzzy
-#~ msgid "Select A Folder"
-#~ msgstr "_Одабери све"
-
-#, fuzzy
-#~ msgid "Squash"
-#~ msgstr "Квадратно"
 
 #, fuzzy
 #~ msgid "Tag/Commit"
@@ -4553,14 +4640,6 @@ msgstr "Измените уграђене наредбе да користе ш�
 #~ msgid "SamplePlugin"
 #~ msgstr "Пробни додатак"
 
-#, fuzzy
-#~ msgid "<b>Scratchbox Options</b>\n"
-#~ msgstr "<b>CVS опције</b>"
-
-#, fuzzy
-#~ msgid "Scratchbox directory:"
-#~ msgstr "Изаберите директоријум"
-
 #~ msgid "<b>Actions</b>"
 #~ msgstr "<b>Акције</b>"
 
@@ -5807,10 +5886,6 @@ msgstr "Измените уграђене наредбе да користе ш�
 #~ msgstr "<b>Детаљи макроа:</b>"
 
 #, fuzzy
-#~ msgid "Autocomplete"
-#~ msgstr "_Аутоматски допуни"
-
-#, fuzzy
 #~ msgid "Brace indentation size in spaces:"
 #~ msgstr "Увлачење кода (у местима):"
 
@@ -6636,17 +6711,11 @@ msgstr "Измените уграђене наредбе да користе ш�
 #~ msgid "Anjuta coding style"
 #~ msgstr "Anjuta стил кодирања"
 
-#~ msgid "Arrows"
-#~ msgstr "Стрелице"
-
 #~ msgid "Bottom"
 #~ msgstr "Дно"
 
 #~ msgid "CVS intl po"
 #~ msgstr "CVS intl po"
-
-#~ msgid "Circular"
-#~ msgstr "Кружно"
 
 #~ msgid "Custom style"
 #~ msgstr "Произвољан стил"
@@ -6675,9 +6744,6 @@ msgstr "Измените уграђене наредбе да користе ш�
 
 #~ msgid "Original Berkeley style"
 #~ msgstr "Оригинални Беркли (Berkeley) стил"
-
-#~ msgid "Plus/Minus"
-#~ msgstr "Плус/минус"
 
 #~ msgid "Reload Session Defaults"
 #~ msgstr "Поново учитај подешавања радног окружења"
