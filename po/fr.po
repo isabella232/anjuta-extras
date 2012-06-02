@@ -244,7 +244,7 @@ msgstr "Repli en marge visible"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:52
 msgid "Lines"
-msgstr "Lignes"
+msgstr "lignes"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:53
 msgid "Add line number every:"
