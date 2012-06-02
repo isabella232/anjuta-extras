@@ -64,6 +64,11 @@
 
 #include "Converter.h"
 
+#if defined(__clang__)
+// Clang 3.0 incorrectly displays  sentinel warnings. Fixed by clang 3.1.
+#pragma GCC diagnostic ignored "-Wsentinel"
+#endif
+
 #if GTK_CHECK_VERSION(2,20,0)
 #define IS_WIDGET_REALIZED(w) (gtk_widget_get_realized(GTK_WIDGET(w)))
 #define IS_WIDGET_MAPPED(w) (gtk_widget_get_mapped(GTK_WIDGET(w)))
@@ -1074,8 +1079,8 @@ bool ScintillaGTK::PaintContains(PRectangle rc) {
 				rc.right - rc.left, rc.bottom - rc.top};
 			contains = CRectListContains(rgnUpdate, grc);
 #else
-			GdkRectangle grc = {rc.left, rc.top,
-				rc.right - rc.left, rc.bottom - rc.top};
+			GdkRectangle grc = {static_cast<gint>(rc.left), static_cast<gint>(rc.top),
+				static_cast<gint>(rc.right - rc.left), static_cast<gint>(rc.bottom - rc.top)};
 			if (gdk_region_rect_in(rgnUpdate, &grc) != GDK_OVERLAP_RECTANGLE_IN) {
 				contains = false;
 			}
@@ -1134,8 +1139,10 @@ void ScintillaGTK::ScrollText(int linesToMove) {
 	//	rc.left, rc.top, rc.right, rc.bottom);
 	GtkWidget *wi = PWidget(wText);
 
-	gdk_window_scroll(WindowFromWidget(wi), 0, -diff);
-	gdk_window_process_updates(WindowFromWidget(wi), FALSE);
+	if (IS_WIDGET_REALIZED(wi)) {
+		gdk_window_scroll(WindowFromWidget(wi), 0, -diff);
+		gdk_window_process_updates(WindowFromWidget(wi), FALSE);
+	}
 }
 
 void ScintillaGTK::SetVerticalScrollPos() {
@@ -1399,21 +1406,9 @@ std::string ScintillaGTK::CaseMapString(const std::string &s, int caseMapping) {
 }
 
 int ScintillaGTK::KeyDefault(int key, int modifiers) {
-	if (!(modifiers & SCI_CTRL) && !(modifiers & SCI_ALT)) {
-		if (key < 256) {
-			NotifyKey(key, modifiers);
-			return 0;
-		} else {
-			// Pass up to container in case it is an accelerator
-			NotifyKey(key, modifiers);
-			return 0;
-		}
-	} else {
-		// Pass up to container in case it is an accelerator
-		NotifyKey(key, modifiers);
-		return 0;
-	}
-	//Platform::DebugPrintf("SK-key: %d %x %x\n",key, modifiers);
+	// Pass up to container in case it is an accelerator
+	NotifyKey(key, modifiers);
+	return 0;
 }
 
 void ScintillaGTK::CopyToClipboard(const SelectionText &selectedText) {
@@ -1977,6 +1972,13 @@ gint ScintillaGTK::ScrollEvent(GtkWidget *widget,
 			return FALSE;
 		}
 
+#if GTK_CHECK_VERSION(3,4,0)
+		// Smooth scrolling not supported
+		if (event->direction == GDK_SCROLL_SMOOTH) {
+			return FALSE;
+		}
+#endif
+
 		// Horizontal scrolling
 		if (event->direction == GDK_SCROLL_LEFT || event->direction == GDK_SCROLL_RIGHT) {
 			sciThis->HorizontalScrollTo(sciThis->xOffset + cLineScroll);
@@ -2010,7 +2012,12 @@ gint ScintillaGTK::Motion(GtkWidget *widget, GdkEventMotion *event) {
 		int y = 0;
 		GdkModifierType state;
 		if (event->is_hint) {
+#if GTK_CHECK_VERSION(3,0,0)
+			gdk_window_get_device_position(event->window, 
+				event->device, &x, &y, &state);
+#else
 			gdk_window_get_pointer(event->window, &x, &y, &state);
+#endif
 		} else {
 			x = static_cast<int>(event->x);
 			y = static_cast<int>(event->y);
@@ -2202,8 +2209,7 @@ gboolean ScintillaGTK::KeyThis(GdkEventKey *event) {
 		bool added = KeyDown(key, shift, ctrl, alt, &consumed) != 0;
 #else
 		bool meta = ctrl;
-		ctrl = alt;
-		alt = (event->state & GDK_MOD5_MASK) != 0;
+		ctrl = (event->state & GDK_META_MASK) != 0;
 		bool added = KeyDownWithModifiers(key, (shift ? SCI_SHIFT : 0) |
 		                                       (ctrl ? SCI_CTRL : 0) |
 		                                       (alt ? SCI_ALT : 0) |

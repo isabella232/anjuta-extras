@@ -139,7 +139,7 @@ update-scintilla:
 	echo "Patching files ..."
 	cd $(srcdir); \
 	for patchfile in patches/*.diff; do \
-		patch -p0 < $$patchfile; \
+		patch -p0 < $$patchfile || true; \
 	done
 	echo "Updating properties file..."
 	cd $(srcdir); \

@@ -25,6 +25,7 @@ LEXER_OBJS = \
 	lexers/LexCsound.o\
 	lexers/LexCSS.o\
 	lexers/LexD.o\
+	lexers/LexECL.o\
 	lexers/LexEiffel.o\
 	lexers/LexErlang.o\
 	lexers/LexEScript.o\
@@ -52,6 +53,7 @@ LEXER_OBJS = \
 	lexers/LexNimrod.o\
 	lexers/LexNsis.o\
 	lexers/LexOpal.o\
+	lexers/LexOScript.o\
 	lexers/LexOthers.o\
 	lexers/LexPascal.o\
 	lexers/LexPB.o\
@@ -83,6 +85,7 @@ LEXER_OBJS = \
 	lexers/LexVB.o\
 	lexers/LexVerilog.o\
 	lexers/LexVHDL.o\
+	lexers/LexVisualProlog.o\
 	lexers/LexYAML.o
 
 LEXER_SRCS = \
@@ -111,6 +114,7 @@ LEXER_SRCS = \
 	lexers/LexCsound.cxx\
 	lexers/LexCSS.cxx\
 	lexers/LexD.cxx\
+	lexers/LexECL.cxx\
 	lexers/LexEiffel.cxx\
 	lexers/LexErlang.cxx\
 	lexers/LexEScript.cxx\
@@ -138,6 +142,7 @@ LEXER_SRCS = \
 	lexers/LexNimrod.cxx\
 	lexers/LexNsis.cxx\
 	lexers/LexOpal.cxx\
+	lexers/LexOScript.cxx\
 	lexers/LexOthers.cxx\
 	lexers/LexPascal.cxx\
 	lexers/LexPB.cxx\
@@ -169,4 +174,5 @@ LEXER_SRCS = \
 	lexers/LexVB.cxx\
 	lexers/LexVerilog.cxx\
 	lexers/LexVHDL.cxx\
+	lexers/LexVisualProlog.cxx\
 	lexers/LexYAML.cxx
