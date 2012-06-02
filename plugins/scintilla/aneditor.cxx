@@ -127,7 +127,7 @@ AnEditor::AnEditor(PropSetFile* p) {
 	ptrEditor = Platform::SendScintilla(wEditor.GetID(),
 		SCI_GETDIRECTPOINTER, 0, 0);
 
-	g_signal_connect(wEditor.GetID(), "sci-notify", G_CALLBACK(NotifySignal), this);
+	g_signal_connect (wEditor.GetID(), "sci-notify", G_CALLBACK(NotifySignal), this);
 
 	/* We will handle all accels ourself */
 	/* SendEditor(SCI_CLEARALLCMDKEYS); */
@@ -2359,12 +2359,12 @@ void AnEditor::SetGtkStyle(Window &win, int style) {
 	GtkStyleContext *context;
 	GdkRGBA fore;
 	GdkRGBA back;
-	const PangoFontDescription *desc;
 
 	/* Get theme style information for view widget */
-	path = gtk_widget_path_new ();
-	gtk_widget_path_append_type (path, GTK_TYPE_WIDGET);
 	context = gtk_style_context_new ();
+	gtk_style_context_set_parent (context, gtk_widget_get_style_context (GTK_WIDGET (win.GetID())));
+	path = gtk_widget_path_copy (gtk_widget_get_path (GTK_WIDGET (win.GetID())));
+	gtk_widget_path_append_type (path, GTK_TYPE_TEXT_VIEW);
 	gtk_style_context_set_path (context, path);
 	gtk_widget_path_free (path);
 	gtk_style_context_add_class (context, GTK_STYLE_CLASS_VIEW);
@@ -2447,6 +2447,29 @@ void AnEditor::SetStyleFor(Window &win, const char *lang) {
 			SetOneStyle(win, style, sval.c_str());
 		}
 	}
+}
+
+void AnEditor::UpdateStyle(void) {
+
+	char key[200];
+	SString sval;
+	
+	SendEditor(SCI_STYLERESETDEFAULT, 0, 0);
+
+	SetGtkStyle(wEditor, STYLE_DEFAULT);
+
+	sprintf(key, "style.%s.%0d", "*", STYLE_DEFAULT);
+	sval = props->GetNewExpand(key, "");
+	SetOneStyle(wEditor, STYLE_DEFAULT, sval.c_str());
+
+	sprintf(key, "style.%s.%0d", language.c_str(), STYLE_DEFAULT);
+	sval = props->GetNewExpand(key, "");
+	SetOneStyle(wEditor, STYLE_DEFAULT, sval.c_str());
+
+	SendEditor(SCI_STYLECLEARALL, 0, 0);
+
+	SetStyleFor(wEditor, "*");
+	SetStyleFor(wEditor, language.c_str());
 }
 
 void lowerCaseString(char *s) {
@@ -2785,22 +2808,7 @@ void AnEditor::ReadProperties(const char *fileForExt, char **typedef_hl) {
 	// then the other global styles,
 	// then the other language styles
 
-	SendEditor(SCI_STYLERESETDEFAULT, 0, 0);
-
-	SetGtkStyle(wEditor, STYLE_DEFAULT);
-
-	sprintf(key, "style.%s.%0d", "*", STYLE_DEFAULT);
-	sval = props->GetNewExpand(key, "");
-	SetOneStyle(wEditor, STYLE_DEFAULT, sval.c_str());
-
-	sprintf(key, "style.%s.%0d", language.c_str(), STYLE_DEFAULT);
-	sval = props->GetNewExpand(key, "");
-	SetOneStyle(wEditor, STYLE_DEFAULT, sval.c_str());
-
-	SendEditor(SCI_STYLECLEARALL, 0, 0);
-
-	SetStyleFor(wEditor, "*");
-	SetStyleFor(wEditor, language.c_str());
+	UpdateStyle();
 
 	if (firstPropertiesRead) {
 		ReadPropertiesInitial();

@@ -407,6 +407,7 @@ public:
 
 	void FocusInEvent(GtkWidget* widget);
 	void FocusOutEvent(GtkWidget* widget);
+	void UpdateStyle(void);
 	/*
 	void EvalOutputArrived(GList* lines, int textPos,
 						   const string &expression);
