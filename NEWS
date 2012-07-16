@@ -1,3 +1,44 @@
+anjuta-extras-3.5.4 (16 July 2012) -- James Liggett
+
+Andika Triwidada (1):
+      Updated Indonesian translation
+
+Bruno Brouard (2):
+      Updated French translation
+      Updated French translation
+
+Daniel Mustieles (1):
+      Updated Spanish translation
+
+Martin Srebotnjak (1):
+      Updated Slovenian translation
+
+Matej Urbančič (1):
+      Updated Slovenian translation
+
+Piotr Drąg (3):
+      Remove markup from strings
+      Updated POTFILES.in
+      Updated Polish translation
+
+Rūdolfs Mazurs (1):
+      Updated Latvian translation
+
+Sébastien Granjoux (6):
+      scintilla: Use common settings for indentation
+      scintilla: Fix a crash when closing editors
+      scintilla: Initialize indentation settings (indent with tab/unindent with 
+      scintilla: Fix default foreground and background text color
+      Remove gnome-doc-utils.make, this file is copied by autogen
+      scintilla: Update to scintilla 3.2.0
+
+Tom Tryfonidis (1):
+      Updated Greek translation
+
+Мирослав Николић (1):
+      Updated Serbian translation
+
+
 anjuta-extras-3.4.0 (26 March 2012) -- James Liggett
 
 Akom Chotiphantawanon (1):
