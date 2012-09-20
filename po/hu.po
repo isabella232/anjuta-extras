@@ -8,29 +8,329 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: anjuta-extras master\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=anjuta&keywords=I18N+L10N&component=unknown\n"
-"POT-Creation-Date: 2011-12-18 16:25+0000\n"
-"PO-Revision-Date: 2012-03-18 02:19+0100\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-09-20 15:44+0200\n"
+"PO-Revision-Date: 2012-09-20 15:44+0200\n"
 "Last-Translator: Gabor Kelemen <kelemeng at gnome dot hu>\n"
 "Language-Team: Hungarian <gnome-hu-list at gnome dot org>\n"
+"Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.4\n"
+"X-Generator: Lokalize 1.4\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
-#: ../plugins/scintilla/print.c:659
-#, c-format
-msgid "File: %s"
-msgstr "Fájl: %s"
+#: ../plugins/sample1/anjuta-sample.plugin.in.h:1
+msgid "Sample Plugin"
+msgstr "Minta bővítmény"
 
-#: ../plugins/scintilla/print.c:888
-msgid "Unable to get text buffer for printing"
-msgstr "A nyomtatáshoz nem érhető el a szöveges puffer"
+#: ../plugins/sample1/anjuta-sample.plugin.in.h:2
+msgid "Sample Plugin for Anjuta."
+msgstr "Minta bővítmény az Anjuta-hoz."
 
-#: ../plugins/scintilla/print.c:966
-msgid "No file to print!"
-msgstr "Nincs fájl a nyomtatáshoz!"
+#: ../plugins/scintilla/anjuta-editor.plugin.in.h:1
+#: ../plugins/scintilla/plugin.c:487 ../plugins/scintilla/plugin.c:499
+msgid "Scintilla Editor"
+msgstr "Scintilla szerkesztő"
+
+#: ../plugins/scintilla/anjuta-editor.plugin.in.h:2
+msgid "An alternate editor based on Scintilla"
+msgstr "Alternatítv Scintilla alapú szerkesztő"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:1
+msgid "Plus/Minus"
+msgstr "Pluszmínusz"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:2
+msgid "Arrows"
+msgstr "Nyilak"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:3
+msgid "Circular"
+msgstr "Körkörös"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:4
+msgid "Squares"
+msgstr "Négyzetek"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:5
+msgid "Choose autocomplete for single match"
+msgstr "Automatikus kiegészítés kiválasztása egyetlen találat esetén"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:6
+msgid "Autocomplete XML/HTML closing tags"
+msgstr "XML/HTML záró címkék automatikus kiegészítése"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:7
+msgid "Autocompletion pop up choices"
+msgstr "Lehetőség bukkanjon fel automatikus kiegészítésnél"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:8
+msgid "Autocompletion"
+msgstr "Automatikus kiegészítés"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:9
+msgid "Enable code folding"
+msgstr "Kódblokk összecsukásának engedélyezése"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:10
+msgid "Enable comments folding"
+msgstr "Megjegyzés összecsukásának engedélyezése"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:11
+msgid "Enable python comments folding"
+msgstr "Python megjegyzések összecsukásának engedélyezése"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:12
+msgid "Enable python quoted strings folding"
+msgstr "Python idézet-karakterláncok összecsukásának engedélyezése"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:13
+msgid "Enable HTML tags folding"
+msgstr "HTML címkék összecsukásának engedélyezése"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:14
+msgid "Compact folding"
+msgstr "Tömör összecsukás"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:15
+msgid "Draw line below folded lines"
+msgstr "Vonal rajzolása az összecsukott sorok alá"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:16
+msgid "Collapse all code folds on file open"
+msgstr "Az összes kódblokk összecsukása a fájl megnyitásakor"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:17
+msgid "Fold style:"
+msgstr "Összecsukás stílusa:"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:18
+msgid "Code folding"
+msgstr "Kódblokk összecsukása"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:19
+msgid "Disable syntax highlighting"
+msgstr "Nyelvtani kiemelések tiltása"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:20
+msgid "Enable braces check"
+msgstr "Zárójelek ellenőrzésének engedélyezése"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:21
+msgid "Strip trailling spaces on file save"
+msgstr "Kezdő szóközök eltávolítása fájl mentésekor"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:22
+msgid "Filter extraneous characters in DOS mode"
+msgstr "Extra karakterek szűrése DOS módban"
+
+#. Next bookmark at the end of the file will jump to the first bookmark from the beginning
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:24
+msgid "Wrap bookmarks search around"
+msgstr "Könyvjelzők keresése körbe"
+
+#. Column where a vertical line will be drawn to indicate that lines should not be longer
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:26
+msgid "Edge column"
+msgstr "Szélső oszlop"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:27
+msgid "Caret blink period in ms"
+msgstr "Kurzor villogási időtartama ezredmásodpercben"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:28
+msgid "Editor caret (cursor) width in pixels"
+msgstr "Kurzor szélessége pixelben"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:29
+msgid "Line numbers margin width in pixels"
+msgstr "Sorszámmargó szélessége képpontokban"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:30
+msgid "Misc options"
+msgstr "Egyéb beállítások"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:31
+msgid "Colors & Fonts"
+msgstr "Színek és betűkészletek"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:32
+msgid "Editor"
+msgstr "Szövegszerkesztő"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:33
+msgid "Enable automatic indentation"
+msgstr "Automatikus behúzás engedélyezése"
+
+#. If the user presses enter, the indentation of the current line will automatically be added to the next line
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:35
+msgid "Maintain past Indentation"
+msgstr "Korábbi behúzás megtartása"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:36
+msgid "Pressing tab inserts indentation"
+msgstr "A Tab billentyű beljebb húzza a sort"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:37
+msgid "Pressing backspace un-indents"
+msgstr "A Backspace törli a behúzást"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:38
+msgid "Indent closing braces"
+msgstr "Záró zárójelek behúzása"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:39
+msgid "Indent opening braces"
+msgstr "Nyitó zárójelek behúzása"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:40
+msgid "Use tabs for indentation"
+msgstr "Használjon tabokat a behúzáshoz"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:41
+msgid "Indentation size in spaces:"
+msgstr "Behúzás mérete szóközökben:"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:42
+msgid "Tab size in spaces:"
+msgstr "Tabulátor mérete szóközökben:"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:43
+msgid "Basic Indentation"
+msgstr "Alap behúzás"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:44
+msgid "View EOL chars"
+msgstr "EOL karakterek mutatása"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:45
+msgid "View Indentation Guides"
+msgstr "Bekezdésmutató mutatása"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:46
+msgid "View Whitespaces"
+msgstr "Üreshely-karakterek mutatása"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:47
+msgid "View indentation whitespaces"
+msgstr "Behúzási üreshelyek mutatása"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:48
+msgid "View Line Wrap"
+msgstr "Sortörés mutatása"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:49
+msgid "Margin Linenum visible"
+msgstr "Sorszámszegély látható"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:50
+msgid "Margin Marker visible"
+msgstr "Jelölőszegély látható"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:51
+msgid "Margin Fold visible"
+msgstr "Kódblokkszegély látható"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:52
+msgid "Lines"
+msgstr "Sor"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:53
+msgid "Add line number every:"
+msgstr "Sorszám hozzáadása:"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:54
+msgid "Enable line wrap"
+msgstr "Sortörés engedélyezése"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:55
+msgid "Add page header"
+msgstr "Oldalfejléc hozzáadása"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:56
+msgid "Monochrome"
+msgstr "Fekete-fehér"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:57
+msgid "Colour"
+msgstr "Színes"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:58
+msgid "Mode:"
+msgstr "Mód:"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:59
+msgid "Print options"
+msgstr "Nyomtatás beállításai"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:60
+msgid "Printing"
+msgstr "Nyomtatás"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:61
+msgid "Fonts and colors for editor"
+msgstr "A szerkesztő betűtípusai és színei"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:62
+msgid "Select highlight style to edit:"
+msgstr "Válassza ki a szerkesztendő kiemelési stílust:"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:63
+msgid "Bold"
+msgstr "Félkövér"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:64
+msgid "Italic"
+msgstr "Dőlt"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:65
+msgid "Underlined"
+msgstr "Aláhúzott"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:66
+msgid "Use default"
+msgstr "Alapértelmezett használata"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:67
+msgid "Background color:"
+msgstr "Háttérszín:"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:68
+msgid "Foreground color:"
+msgstr "Előtérszín:"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:69
+msgid "Attributes:"
+msgstr "Jellemzők:"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:70
+msgid "Font:"
+msgstr "Betűkészlet:"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:71
+msgid "Highlight style"
+msgstr "Kiemelés stílusa"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:72
+msgid "Caret (cursor) color:"
+msgstr "Sormutató (kurzor) színe:"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:73
+msgid "Calltip background:"
+msgstr "Gyorstipp háttérszíne:"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:74
+msgid "Selection background:"
+msgstr "Kijelölés háttérszíne:"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:75
+msgid "Selection foreground:"
+msgstr "Kijelölés szövegszíne:"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:76
+msgid "Other colors"
+msgstr "Más színek"
 
 #: ../plugins/scintilla/plugin.c:160
 msgid "_Line Number Margin"
@@ -65,7 +365,6 @@ msgid "Show/Hide indentation guides"
 msgstr "Bekezdésmutató megjelenítése/elrejtése"
 
 #: ../plugins/scintilla/plugin.c:172
-#| msgid "_Replace"
 msgid "_White Space"
 msgstr "Ü_reshely-karakterek"
 
@@ -93,12 +392,20 @@ msgstr "Sortörés engedélyezése/tiltása"
 msgid "Editor view settings"
 msgstr "Szerkesztő nézetbeállításai"
 
-#: ../plugins/scintilla/plugin.c:487 ../plugins/scintilla/plugin.c:499
-#: ../plugins/scintilla/anjuta-editor.plugin.in.h:2
-msgid "Scintilla Editor"
-msgstr "Scintilla szerkesztő"
+#: ../plugins/scintilla/print.c:660
+#, c-format
+msgid "File: %s"
+msgstr "Fájl: %s"
 
-#: ../plugins/scintilla/text_editor.c:473
+#: ../plugins/scintilla/print.c:889
+msgid "Unable to get text buffer for printing"
+msgstr "A nyomtatáshoz nem érhető el a szöveges puffer"
+
+#: ../plugins/scintilla/print.c:967
+msgid "No file to print!"
+msgstr "Nincs fájl a nyomtatáshoz!"
+
+#: ../plugins/scintilla/text_editor.c:509
 #, c-format
 msgid ""
 "The file '%s' has been changed.\n"
@@ -107,7 +414,7 @@ msgstr ""
 "A(z) „%s” fájl megváltozott.\n"
 "Újratölti?"
 
-#: ../plugins/scintilla/text_editor.c:479
+#: ../plugins/scintilla/text_editor.c:515
 #, c-format
 msgid ""
 "The file '%s' has been changed.\n"
@@ -116,7 +423,7 @@ msgstr ""
 "A(z) „%s” fájl megváltozott.\n"
 "Újratölti, ezzel elveszítve a módosításokat?"
 
-#: ../plugins/scintilla/text_editor.c:499
+#: ../plugins/scintilla/text_editor.c:535
 #, c-format
 msgid ""
 "The file '%s' has been deleted.\n"
@@ -125,7 +432,7 @@ msgstr ""
 "A(z) „%s” fájl törlésre került.\n"
 "Megerősíti és bezárja?"
 
-#: ../plugins/scintilla/text_editor.c:506
+#: ../plugins/scintilla/text_editor.c:542
 #, c-format
 msgid ""
 "The file '%s' has been deleted.\n"
@@ -134,24 +441,24 @@ msgstr ""
 "A(z) „%s” fájl törlésre került.\n"
 "Újratölti, ezzel elveszítve a módosításokat?"
 
-#: ../plugins/scintilla/text_editor.c:1486
+#: ../plugins/scintilla/text_editor.c:1526
 msgid "Could not get file info"
 msgstr "Nem érhető el fájlinformáció"
 
 #. DEBUG_PRINT ("%s", "This file is too big. Unable to allocate memory.");
-#: ../plugins/scintilla/text_editor.c:1498
+#: ../plugins/scintilla/text_editor.c:1538
 msgid "This file is too big. Unable to allocate memory."
 msgstr "Ez a fájl túl nagy. Nem lehet memóriát foglalni."
 
-#: ../plugins/scintilla/text_editor.c:1507
+#: ../plugins/scintilla/text_editor.c:1547
 msgid "Could not open file"
 msgstr "Nem lehet megnyitni a fájlt"
 
-#: ../plugins/scintilla/text_editor.c:1518
+#: ../plugins/scintilla/text_editor.c:1558
 msgid "Error while reading from file"
 msgstr "Hiba a fájlból való olvasás közben"
 
-#: ../plugins/scintilla/text_editor.c:1564
+#: ../plugins/scintilla/text_editor.c:1604
 msgid ""
 "The file does not look like a text file or the file encoding is not "
 "supported. Please check if the encoding of file is in the supported "
@@ -161,11 +468,11 @@ msgstr ""
 "támogatott kódolások listáját. Ha nincs rajta, akkor adja hozzá a "
 "tulajdonságoknál."
 
-#: ../plugins/scintilla/text_editor.c:1747
+#: ../plugins/scintilla/text_editor.c:1787
 msgid "Loading file..."
 msgstr "Fájl betöltése…"
 
-#: ../plugins/scintilla/text_editor.c:1756
+#: ../plugins/scintilla/text_editor.c:1796
 #, c-format
 msgid ""
 "Could not load file: %s\n"
@@ -176,24 +483,24 @@ msgstr ""
 "\n"
 "Részletek: %s"
 
-#: ../plugins/scintilla/text_editor.c:1777
+#: ../plugins/scintilla/text_editor.c:1817
 msgid "File loaded successfully"
 msgstr "A fájl sikeresen betöltve"
 
-#: ../plugins/scintilla/text_editor.c:1795
+#: ../plugins/scintilla/text_editor.c:1838
 msgid "Saving file..."
 msgstr "Fájl mentése…"
 
-#: ../plugins/scintilla/text_editor.c:1804
+#: ../plugins/scintilla/text_editor.c:1847
 #, c-format
 msgid "Could not save intermediate file %s: %s"
 msgstr "A köztes fájl (%s) nem menthető: %s"
 
-#: ../plugins/scintilla/text_editor.c:1820
+#: ../plugins/scintilla/text_editor.c:1863
 msgid "File saved successfully"
 msgstr "A fájl sikeresen mentve"
 
-#: ../plugins/scintilla/text_editor.c:2193
+#: ../plugins/scintilla/text_editor.c:2236
 #, c-format
 msgid ""
 "Cannot load Global defaults and configuration files:\n"
@@ -206,33 +513,39 @@ msgstr ""
 "Ez helytelen működést vagy instabilitást eredményezhet.\n"
 "Az Anjuta visszatér a beépített (korlátozott) beállításokhoz"
 
+#: ../plugins/scratchbox/anjuta-scratchbox.plugin.in.h:1
+#: ../plugins/scratchbox/plugin.c:460 ../plugins/scratchbox/plugin.c:482
+msgid "Scratchbox"
+msgstr "Scratchbox"
+
+#: ../plugins/scratchbox/anjuta-scratchbox.plugin.in.h:2
+msgid "Change build commands to use scratchbox 1 or 2"
+msgstr "Összeállítási parancsok módosítása a scratchbox 1 vagy 2 használatára"
+
+#: ../plugins/scratchbox/anjuta-scratchbox.ui.h:1
+msgid "Scratchbox directory:"
+msgstr "Scratchbox könyvtár:"
+
+#: ../plugins/scratchbox/anjuta-scratchbox.ui.h:2
+msgid "Scratchbox version:"
+msgstr "Scratchbox verzója:"
+
+#: ../plugins/scratchbox/anjuta-scratchbox.ui.h:3
+msgid "Select Scratchbox Folder"
+msgstr "Válassza ki a Scratchbox könyvtárát"
+
+#: ../plugins/scratchbox/anjuta-scratchbox.ui.h:4
+msgid "Scratchbox target:"
+msgstr "Scratchbox célja:"
+
+#: ../plugins/scratchbox/anjuta-scratchbox.ui.h:5
+msgid "Scratchbox Options"
+msgstr "Scratchbox beállításai"
+
 #: ../plugins/scratchbox/plugin.c:209
 #, c-format
 msgid "Program '%s' does not exists"
 msgstr "A(z) „%s” program nem létezik"
-
-#: ../plugins/scratchbox/plugin.c:460 ../plugins/scratchbox/plugin.c:482
-#: ../plugins/scratchbox/anjuta-scratchbox.plugin.in.h:2
-msgid "Scratchbox"
-msgstr "Scratchbox"
-
-#. Public functions
-#. *---------------------------------------------------------------------------
-#: ../plugins/sample1/anjuta-sample.plugin.in.h:1
-msgid "Sample Plugin"
-msgstr "Minta bővítmény"
-
-#: ../plugins/sample1/anjuta-sample.plugin.in.h:2
-msgid "Sample Plugin for Anjuta."
-msgstr "Minta bővítmény az Anjuta-hoz."
-
-#: ../plugins/scintilla/anjuta-editor.plugin.in.h:1
-msgid "An alternate editor based on Scintilla"
-msgstr "Alternatítv Scintilla alapú szerkesztő"
-
-#: ../plugins/scratchbox/anjuta-scratchbox.plugin.in.h:1
-msgid "Change build commands to use scratchbox 1 or 2"
-msgstr "Összeállítási parancsok módosítása a scratchbox 1 vagy 2 használatára"
 
 #~ msgid "Function Name"
 #~ msgstr "Függvénynév"
@@ -313,9 +626,6 @@ msgstr "Összeállítási parancsok módosítása a scratchbox 1 vagy 2 használ
 
 #~ msgid "Function Call Chart"
 #~ msgstr "Függvényhívási grafikon"
-
-#~ msgid "Options"
-#~ msgstr "Beállítások"
 
 #~ msgid "Select debugging target"
 #~ msgstr "Válassza ki a hibakeresés célpontját"
@@ -463,9 +773,6 @@ msgstr "Összeállítási parancsok módosítása a scratchbox 1 vagy 2 használ
 #~ msgid "_Paste"
 #~ msgstr "_Beillesztés"
 
-#~ msgid "Suppress"
-#~ msgstr "Elnyomás"
-
 #~ msgid "Edit in Custom Editor"
 #~ msgstr "Szerkesztés egyéni szerkesztőben"
 
@@ -548,9 +855,6 @@ msgstr "Összeállítási parancsok módosítása a scratchbox 1 vagy 2 használ
 #~ msgid "Shared Object"
 #~ msgstr "Megosztott objektum"
 
-#~ msgid "Grow"
-#~ msgstr "Növelés"
-
 #~ msgid "Shrink"
 #~ msgstr "Zsugorítás"
 
@@ -575,9 +879,6 @@ msgstr "Összeállítási parancsok módosítása a scratchbox 1 vagy 2 használ
 #~ msgid "You have forgotten to name your suppression rule."
 #~ msgstr "Elfelejtette elnevezni az elnyomási szabályt."
 
-#~ msgid "_Edit"
-#~ msgstr "S_zerkesztés"
-
 #~ msgid "Cannot save suppression rules: %s"
 #~ msgstr "Nem lehet menteni az elnyomási szabályokat: %s"
 
@@ -595,4 +896,3 @@ msgstr "Összeállítási parancsok módosítása a scratchbox 1 vagy 2 használ
 
 #~ msgid "Valgrind Plugin"
 #~ msgstr "Valgrind bővítmény"
-
