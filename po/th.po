@@ -9,27 +9,327 @@ msgstr ""
 "Project-Id-Version: anjuta\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=anjuta&keywords=I18N+L10N&component=unknown\n"
-"POT-Creation-Date: 2012-03-10 23:13+0000\n"
-"PO-Revision-Date: 2012-03-14 21:37+0700\n"
+"POT-Creation-Date: 2012-09-20 13:44+0000\n"
+"PO-Revision-Date: 2012-10-01 19:45+0700\n"
 "Last-Translator: Akom Chotiphantawanon <knight2000@gmail.com>\n"
 "Language-Team: Thai <thai-l10n@googlegroups.com>\n"
+"Language: th\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: ../plugins/scintilla/print.c:659
-#, c-format
-msgid "File: %s"
-msgstr "แฟ้ม: %s"
+#: ../plugins/sample1/anjuta-sample.plugin.in.h:1
+msgid "Sample Plugin"
+msgstr "ปลั๊กอินตัวอย่าง"
 
-#: ../plugins/scintilla/print.c:888
-msgid "Unable to get text buffer for printing"
-msgstr "ดึงบัฟเฟอร์ข้อความไปพิมพ์ไม่ได้"
+#: ../plugins/sample1/anjuta-sample.plugin.in.h:2
+msgid "Sample Plugin for Anjuta."
+msgstr "ปลั๊กอินตัวอย่างสำหรับแอนจูตา"
 
-#: ../plugins/scintilla/print.c:966
-msgid "No file to print!"
-msgstr "ไม่มีแฟ้มที่จะพิมพ์!"
+#: ../plugins/scintilla/anjuta-editor.plugin.in.h:1
+#: ../plugins/scintilla/plugin.c:487 ../plugins/scintilla/plugin.c:499
+msgid "Scintilla Editor"
+msgstr "เครื่องมือแก้ไข Scintilla"
+
+#: ../plugins/scintilla/anjuta-editor.plugin.in.h:2
+msgid "An alternate editor based on Scintilla"
+msgstr "เครื่องมือแก้ไขทางเลือก โดยใช้ Scintilla"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:1
+msgid "Plus/Minus"
+msgstr "บวก/ลบ"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:2
+msgid "Arrows"
+msgstr "ลูกศร"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:3
+msgid "Circular"
+msgstr "วงกลม"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:4
+msgid "Squares"
+msgstr "สี่เหลี่ยม"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:5
+msgid "Choose autocomplete for single match"
+msgstr "เลือกเติมเต็มคำอัตโนมัติเมื่อมีรายการที่ตรงรายการเดียว"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:6
+msgid "Autocomplete XML/HTML closing tags"
+msgstr "ปิดแท็ก XML/HTML อัตโนมัติ"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:7
+msgid "Autocompletion pop up choices"
+msgstr "ตัวเลือกที่ผุดขึ้นของการเติมเต็มคำอัตโนมัติ"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:8
+msgid "Autocompletion"
+msgstr "เติมเต็มคำอัตโนมัติ"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:9
+msgid "Enable code folding"
+msgstr "เปิดใช้งานการพับโค้ด"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:10
+msgid "Enable comments folding"
+msgstr "เปิดใช้งานการพับคำอธิบาย"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:11
+msgid "Enable python comments folding"
+msgstr "เปิดใช้งานการพับคำอธิบายของไพธอน"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:12
+msgid "Enable python quoted strings folding"
+msgstr "เปิดใช้งานการพับข้อความในคำพูดของไพธอน"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:13
+msgid "Enable HTML tags folding"
+msgstr "เปิดใช้งานการพับแท็ก HTML"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:14
+msgid "Compact folding"
+msgstr "บีบการพับ"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:15
+msgid "Draw line below folded lines"
+msgstr "วาดเส้นข้างล่างเส้นที่ถูกพับ"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:16
+msgid "Collapse all code folds on file open"
+msgstr "พับโค้ดทุกพับของแฟ้มที่เปิด"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:17
+msgid "Fold style:"
+msgstr "รูปแบบการพับ:"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:18
+msgid "Code folding"
+msgstr "การพับโค้ด"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:19
+msgid "Disable syntax highlighting"
+msgstr "ปิดการเน้นไวยากรณ์"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:20
+msgid "Enable braces check"
+msgstr "เปิดใช้งานการตรวจสอบวงเล็บ"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:21
+msgid "Strip trailling spaces on file save"
+msgstr "ขจัดช่องว่างท้ายบรรทัดเมื่อบันทึกแฟ้ม"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:22
+msgid "Filter extraneous characters in DOS mode"
+msgstr "กรองอักขระส่วนเกินในโหมด DOS"
+
+#. Next bookmark at the end of the file will jump to the first bookmark from the beginning
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:24
+msgid "Wrap bookmarks search around"
+msgstr "เริ่มค้นที่คั่นหน้าใหม่เมื่อจบแฟ้มแล้ว"
+
+#. Column where a vertical line will be drawn to indicate that lines should not be longer
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:26
+msgid "Edge column"
+msgstr "คอลัมน์ขอบขวา"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:27
+msgid "Caret blink period in ms"
+msgstr "ช่วงเวลาการกะพริบของเคอร์เซอร์เป็นมิลลิวินาที"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:28
+msgid "Editor caret (cursor) width in pixels"
+msgstr "ความกว้างของเคอร์เซอร์ของเครื่องมือแก้ไขเป็นพิกเซล"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:29
+msgid "Line numbers margin width in pixels"
+msgstr "ความกว้างของขอบหมายเลขบรรทัดเป็นพิกเซล"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:30
+msgid "Misc options"
+msgstr "ตัวเลือกอื่นๆ"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:31
+msgid "Colors & Fonts"
+msgstr "สีและแบบอักษร"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:32
+msgid "Editor"
+msgstr "เครื่องมือแก้ไข"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:33
+msgid "Enable automatic indentation"
+msgstr "เปิดใช้งานการร่นย่อหน้าอัตโนมัติ"
+
+#. If the user presses enter, the indentation of the current line will automatically be added to the next line
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:35
+msgid "Maintain past Indentation"
+msgstr "ใช้ระยะร่นย่อหน้าเดิมในบรรทัดใหม่"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:36
+msgid "Pressing tab inserts indentation"
+msgstr "การกดแท็บแทรกการร่นย่อหน้า"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:37
+msgid "Pressing backspace un-indents"
+msgstr "กด backspace ลดการร่นย่อหน้า"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:38
+msgid "Indent closing braces"
+msgstr "ร่นย่อหน้าวงเล็บปีกกาปิด"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:39
+msgid "Indent opening braces"
+msgstr "ร่นย่อหน้าวงเล็บปีกกาเปิด"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:40
+msgid "Use tabs for indentation"
+msgstr "ใช้แท็บในการร่นย่อหน้า"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:41
+msgid "Indentation size in spaces:"
+msgstr "ร่นย่อหน้าเป็นจำนวนช่องว่าง:"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:42
+msgid "Tab size in spaces:"
+msgstr "ขนาดแท็บเป็นจำนวนช่องว่าง:"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:43
+msgid "Basic Indentation"
+msgstr "การร่นย่อหน้าแบบธรรมดา"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:44
+msgid "View EOL chars"
+msgstr "แสดงอักขระ EOL"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:45
+msgid "View Indentation Guides"
+msgstr "แสดงแนวการร่นย่อหน้า"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:46
+msgid "View Whitespaces"
+msgstr "แสดงช่องว่าง"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:47
+msgid "View indentation whitespaces"
+msgstr "แสดงอักขระช่องว่างที่ใช้ร่นย่อหน้า"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:48
+msgid "View Line Wrap"
+msgstr "แสดงการตัดบรรทัด"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:49
+msgid "Margin Linenum visible"
+msgstr "แสดงขอบหมายเลขบรรทัด"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:50
+msgid "Margin Marker visible"
+msgstr "แสดงขอบเครื่องหมาย"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:51
+msgid "Margin Fold visible"
+msgstr "แสดงขอบพับ"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:52
+msgid "Lines"
+msgstr "บรรทัด"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:53
+msgid "Add line number every:"
+msgstr "เพิ่มเลขบรรทัดทุกๆ:"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:54
+msgid "Enable line wrap"
+msgstr "เปิดใช้การตัดบรรทัด"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:55
+msgid "Add page header"
+msgstr "เพิ่มส่วนหัวของหน้า"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:56
+msgid "Monochrome"
+msgstr "ขาวดำ"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:57
+msgid "Colour"
+msgstr "สี"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:58
+msgid "Mode:"
+msgstr "โหมด:"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:59
+msgid "Print options"
+msgstr "ตัวเลือกของการพิมพ์"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:60
+msgid "Printing"
+msgstr "การพิมพ์"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:61
+msgid "Fonts and colors for editor"
+msgstr "แบบอักษรและสีสำหรับเครื่องมือแก้ไข"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:62
+msgid "Select highlight style to edit:"
+msgstr "เลือกรูปแบบการเน้นที่จะแก้ไข:"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:63
+msgid "Bold"
+msgstr "หนา"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:64
+msgid "Italic"
+msgstr "เอียง"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:65
+msgid "Underlined"
+msgstr "ขีดเส้นใต้"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:66
+msgid "Use default"
+msgstr "ใช้ค่าปริยาย"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:67
+msgid "Background color:"
+msgstr "สีพื้นหลัง:"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:68
+msgid "Foreground color:"
+msgstr "สีข้อความ:"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:69
+msgid "Attributes:"
+msgstr "คุณลักษณะ:"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:70
+msgid "Font:"
+msgstr "แบบอักษร:"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:71
+msgid "Highlight style"
+msgstr "รูปแบบการเน้น"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:72
+msgid "Caret (cursor) color:"
+msgstr "สีของเคอร์เซอร์:"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:73
+msgid "Calltip background:"
+msgstr "สีพื้นหลังคำแนะนำการเรียก:"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:74
+msgid "Selection background:"
+msgstr "สีพื้นหลังการเลือก:"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:75
+msgid "Selection foreground:"
+msgstr "สีตัวอักษรการเลือก:"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:76
+msgid "Other colors"
+msgstr "สือื่นๆ"
 
 #: ../plugins/scintilla/plugin.c:160
 msgid "_Line Number Margin"
@@ -91,12 +391,20 @@ msgstr "เปิด/ปิดการตัดบรรทัด"
 msgid "Editor view settings"
 msgstr "ค่าตั้งมุมมองของเครื่องมือแก้ไข"
 
-#: ../plugins/scintilla/plugin.c:487 ../plugins/scintilla/plugin.c:499
-#: ../plugins/scintilla/anjuta-editor.plugin.in.h:1
-msgid "Scintilla Editor"
-msgstr "เครื่องมือแก้ไข Scintilla"
+#: ../plugins/scintilla/print.c:660
+#, c-format
+msgid "File: %s"
+msgstr "แฟ้ม: %s"
 
-#: ../plugins/scintilla/text_editor.c:492
+#: ../plugins/scintilla/print.c:889
+msgid "Unable to get text buffer for printing"
+msgstr "ดึงบัฟเฟอร์ข้อความไปพิมพ์ไม่ได้"
+
+#: ../plugins/scintilla/print.c:967
+msgid "No file to print!"
+msgstr "ไม่มีแฟ้มที่จะพิมพ์!"
+
+#: ../plugins/scintilla/text_editor.c:509
 #, c-format
 msgid ""
 "The file '%s' has been changed.\n"
@@ -105,7 +413,7 @@ msgstr ""
 "แฟ้ม '%s' มีการเปลี่ยนแปลง\n"
 "คุณต้องการเรียกอ่านใหม่หรือไม่?"
 
-#: ../plugins/scintilla/text_editor.c:498
+#: ../plugins/scintilla/text_editor.c:515
 #, c-format
 msgid ""
 "The file '%s' has been changed.\n"
@@ -114,7 +422,7 @@ msgstr ""
 "แฟ้ม '%s' มีการเปลี่ยนแปลง\n"
 "คุณต้องการทิ้งสิ่งที่ได้แก้ไขมา แล้วเรียกอ่านใหม่หรือไม่?"
 
-#: ../plugins/scintilla/text_editor.c:518
+#: ../plugins/scintilla/text_editor.c:535
 #, c-format
 msgid ""
 "The file '%s' has been deleted.\n"
@@ -123,7 +431,7 @@ msgstr ""
 "แฟ้ม '%s' ถูกลบไปแล้ว\n"
 "คุณต้องการยืนยันและปิดแฟ้มดังกล่าวหรือไม่?"
 
-#: ../plugins/scintilla/text_editor.c:525
+#: ../plugins/scintilla/text_editor.c:542
 #, c-format
 msgid ""
 "The file '%s' has been deleted.\n"
@@ -132,24 +440,24 @@ msgstr ""
 "แฟ้ม '%s' ถูกลบไปแล้ว\n"
 "คุณต้องการทิ้งสิ่งที่ได้แก้ไขมา และปิดแฟ้มดังกล่าวหรือไม่?"
 
-#: ../plugins/scintilla/text_editor.c:1506
+#: ../plugins/scintilla/text_editor.c:1526
 msgid "Could not get file info"
 msgstr "ไม่สามารถอ่านข้อมูลของแฟ้ม"
 
 #. DEBUG_PRINT ("%s", "This file is too big. Unable to allocate memory.");
-#: ../plugins/scintilla/text_editor.c:1518
+#: ../plugins/scintilla/text_editor.c:1538
 msgid "This file is too big. Unable to allocate memory."
 msgstr "แฟ้มนี้ใหญ่เกินไป ไม่สามารถจองหน่วยความจำได้"
 
-#: ../plugins/scintilla/text_editor.c:1527
+#: ../plugins/scintilla/text_editor.c:1547
 msgid "Could not open file"
 msgstr "เปิดแฟ้มไม่ได้"
 
-#: ../plugins/scintilla/text_editor.c:1538
+#: ../plugins/scintilla/text_editor.c:1558
 msgid "Error while reading from file"
 msgstr "เกิดข้อผิดพลาดขณะอ่านจากแฟ้ม"
 
-#: ../plugins/scintilla/text_editor.c:1584
+#: ../plugins/scintilla/text_editor.c:1604
 msgid ""
 "The file does not look like a text file or the file encoding is not "
 "supported. Please check if the encoding of file is in the supported "
@@ -159,11 +467,11 @@ msgstr ""
 "กรุณาตรวจสอบว่ารหัสอักขระของแฟ้มอยู่ในรายชื่อรหัสอักขระที่รองรับหรือไม่ ถ้าไม่อยู่ "
 "ให้เพิ่มจากค่าปรับแต่ง"
 
-#: ../plugins/scintilla/text_editor.c:1767
+#: ../plugins/scintilla/text_editor.c:1787
 msgid "Loading file..."
 msgstr "กำลังโหลดแฟ้ม..."
 
-#: ../plugins/scintilla/text_editor.c:1776
+#: ../plugins/scintilla/text_editor.c:1796
 #, c-format
 msgid ""
 "Could not load file: %s\n"
@@ -174,24 +482,24 @@ msgstr ""
 "\n"
 "รายละเอียด: %s"
 
-#: ../plugins/scintilla/text_editor.c:1797
+#: ../plugins/scintilla/text_editor.c:1817
 msgid "File loaded successfully"
 msgstr "โหลดแฟ้มเรียบร้อยแล้ว"
 
-#: ../plugins/scintilla/text_editor.c:1818
+#: ../plugins/scintilla/text_editor.c:1838
 msgid "Saving file..."
 msgstr "กำลังบันทึกแฟ้ม..."
 
-#: ../plugins/scintilla/text_editor.c:1827
+#: ../plugins/scintilla/text_editor.c:1847
 #, c-format
 msgid "Could not save intermediate file %s: %s"
 msgstr "ไม่สามารถบันทึกแฟ้มชั่วคราว %s: %s"
 
-#: ../plugins/scintilla/text_editor.c:1843
+#: ../plugins/scintilla/text_editor.c:1863
 msgid "File saved successfully"
 msgstr "บันทึกแฟ้มเสร็จแล้ว"
 
-#: ../plugins/scintilla/text_editor.c:2216
+#: ../plugins/scintilla/text_editor.c:2236
 #, c-format
 msgid ""
 "Cannot load Global defaults and configuration files:\n"
@@ -204,33 +512,39 @@ msgstr ""
 "ซึ่งอาจทำให้โปรแกรมทำงานผิดเพี้ยนหรือไม่เสถียร\n"
 "แอนจูตาจะถอยกลับไปที่ค่าตั้งที่กำหนดไว้ในตัว (ซึ่งมีความสามารถจำกัด)"
 
-#: ../plugins/scratchbox/plugin.c:209
-#, c-format
-msgid "Program '%s' does not exists"
-msgstr "โปรแกรม '%s' ไม่มีอยู่"
-
-#: ../plugins/scratchbox/plugin.c:460 ../plugins/scratchbox/plugin.c:482
 #: ../plugins/scratchbox/anjuta-scratchbox.plugin.in.h:1
+#: ../plugins/scratchbox/plugin.c:460 ../plugins/scratchbox/plugin.c:482
 msgid "Scratchbox"
 msgstr "Scratchbox"
-
-#. Public functions
-#. *---------------------------------------------------------------------------
-#: ../plugins/sample1/anjuta-sample.plugin.in.h:1
-msgid "Sample Plugin"
-msgstr "ปลั๊กอินตัวอย่าง"
-
-#: ../plugins/sample1/anjuta-sample.plugin.in.h:2
-msgid "Sample Plugin for Anjuta."
-msgstr "ปลั๊กอินตัวอย่างสำหรับแอนจูตา"
-
-#: ../plugins/scintilla/anjuta-editor.plugin.in.h:2
-msgid "An alternate editor based on Scintilla"
-msgstr "เครื่องมือแก้ไขทางเลือก โดยใช้ Scintilla"
 
 #: ../plugins/scratchbox/anjuta-scratchbox.plugin.in.h:2
 msgid "Change build commands to use scratchbox 1 or 2"
 msgstr "เปลี่ยนคำสั่งสำหรับประกอบสร้างให้มาใช้ scratchbox 1 หรือ 2"
+
+#: ../plugins/scratchbox/anjuta-scratchbox.ui.h:1
+msgid "Scratchbox directory:"
+msgstr "ไดเรกทอรี Scratchbox:"
+
+#: ../plugins/scratchbox/anjuta-scratchbox.ui.h:2
+msgid "Scratchbox version:"
+msgstr "รุ่นของ Scratchbox:"
+
+#: ../plugins/scratchbox/anjuta-scratchbox.ui.h:3
+msgid "Select Scratchbox Folder"
+msgstr "เลือกโฟลเดอร์ Scratchbox"
+
+#: ../plugins/scratchbox/anjuta-scratchbox.ui.h:4
+msgid "Scratchbox target:"
+msgstr "เป้าหมาย scratchbox:"
+
+#: ../plugins/scratchbox/anjuta-scratchbox.ui.h:5
+msgid "Scratchbox Options"
+msgstr "ตัวเลือกของ Scratchbox"
+
+#: ../plugins/scratchbox/plugin.c:209
+#, c-format
+msgid "Program '%s' does not exists"
+msgstr "โปรแกรม '%s' ไม่มีอยู่"
 
 #~ msgid "Function Name"
 #~ msgstr "ชื่อฟังก์ชัน"
@@ -317,9 +631,6 @@ msgstr "เปลี่ยนคำสั่งสำหรับประกอ
 
 #~ msgid "Select debugging target"
 #~ msgstr "เลือกเป้าหมายของการดีบั๊ก"
-
-#~ msgid "Valgrind"
-#~ msgstr "Valgrind"
 
 #~ msgid ""
 #~ "No executable target selected for debugging with Valgrind. Please select "
@@ -424,12 +735,6 @@ msgstr "เปลี่ยนคำสั่งสำหรับประกอ
 #~ msgid "Override default settings"
 #~ msgstr "ทับค่าตั้งปริยาย"
 
-#~ msgid "Enter <size>,<assoc>,<line_size>:"
-#~ msgstr "ป้อน <size>,<assoc>,<line_size>:"
-
-#~ msgid "Cachegrind"
-#~ msgstr "Cachegrind"
-
 #~ msgid "Error contains"
 #~ msgstr "ข้อผิดพลาดมีคำว่า"
 
@@ -459,9 +764,6 @@ msgstr "เปลี่ยนคำสั่งสำหรับประกอ
 
 #~ msgid "_Paste"
 #~ msgstr "_แปะ"
-
-#~ msgid "Suppress"
-#~ msgstr "ละเลย"
 
 #~ msgid "Edit in Custom Editor"
 #~ msgstr "แก้ไขในเครื่องมือแก้ไขที่กำหนดเอง"
@@ -502,17 +804,11 @@ msgstr "เปลี่ยนคำสั่งสำหรับประกอ
 #~ msgid "Choose Valgrind Suppressions File..."
 #~ msgstr "เลือกแฟ้มการละเลยของ Valgrind..."
 
-#~ msgid "Helgrind"
-#~ msgstr "Helgrind"
-
 #~ msgid "Assume thread stacks are used privately"
 #~ msgstr "ถือว่าใช้สแต็กของเธรดเป็นการภายใน"
 
 #~ msgid "Show location of last word access on error:"
 #~ msgstr "แสดงตำแหน่งของเวิร์ดสุดท้ายที่เข้าใช้เมื่อเกิดข้อผิดพลาด:"
-
-#~ msgid "Memcheck"
-#~ msgstr "Memcheck"
 
 #~ msgid "Memory leaks"
 #~ msgstr "หน่วยความจำรั่ว"
@@ -540,9 +836,6 @@ msgstr "เปลี่ยนคำสั่งสำหรับประกอ
 
 #~ msgid "Shared Object"
 #~ msgstr "อ็อบเจกต์ใช้ร่วม"
-
-#~ msgid "Grow"
-#~ msgstr "ขยาย"
 
 #~ msgid "Shrink"
 #~ msgstr "หด"
@@ -681,244 +974,14 @@ msgstr "เปลี่ยนคำสั่งสำหรับประกอ
 #~ msgid "Use this profiling data file:"
 #~ msgstr "ใช้แฟ้มข้อมูลการวัดประสิทธิภาพนี้:"
 
-#~ msgid "<b>Autocompletion</b>"
-#~ msgstr "<b>เติมเต็มคำอัตโนมัติ</b>"
-
 #~ msgid "<b>Basic Indentation</b>"
 #~ msgstr "<b>การร่นย่อหน้าแบบธรรมดา</b>"
-
-#~ msgid "<b>Code folding</b>"
-#~ msgstr "<b>การพับโค้ด</b>"
-
-#~ msgid "<b>Highlight style</b>"
-#~ msgstr "<b>รูปแบบการเน้น</b>"
-
-#~ msgid "<b>Misc options</b>"
-#~ msgstr "<b>ตัวเลือกอื่นๆ</b>"
-
-#~ msgid "<b>Other colors</b>"
-#~ msgstr "<b>สือื่น ๆ</b>"
-
-#~ msgid "<b>Print options</b>"
-#~ msgstr "<b>ตัวเลือกการพิมพ์</b>"
-
-#~ msgid "Add line number every:"
-#~ msgstr "เพิ่มเลขบรรทัดทุกๆ:"
-
-#~ msgid "Add page header"
-#~ msgstr "เพิ่มส่วนหัวของหน้า"
-
-#~ msgid "Attributes:"
-#~ msgstr "คุณลักษณะ:"
-
-#~ msgid "Autocomplete XML/HTML closing tags"
-#~ msgstr "ปิดแท็ก XML/HTML อัตโนมัติ"
-
-#~ msgid "Autocompletion pop up choices"
-#~ msgstr "ตัวเลือกที่ผุดขึ้นของการเติมเต็มคำอัตโนมัติ"
-
-#~ msgid "Background color:"
-#~ msgstr "สีพื้นหลัง:"
-
-#~ msgid "Basic Indentation"
-#~ msgstr "การร่นย่อหน้าแบบธรรมดา"
-
-#~ msgid "Bold"
-#~ msgstr "หนา"
-
-#~ msgid "Calltip background:"
-#~ msgstr "สีพื้นหลังคำแนะนำการเรียก:"
-
-#~ msgid "Caret (cursor) color:"
-#~ msgstr "สีของเคอร์เซอร์:"
-
-#~ msgid "Caret blink period in ms"
-#~ msgstr "ช่วงเวลาการกะพริบของเคอร์เซอร์เป็นมิลลิวินาที"
-
-#~ msgid "Choose autocomplete for single match"
-#~ msgstr "เลือกเติมเต็มคำอัตโนมัติเมื่อมีรายการที่ตรงรายการเดียว"
-
-#~ msgid "Collapse all code folds on file open"
-#~ msgstr "พับโค้ดทุกพับของแฟ้มที่เปิด"
-
-#~ msgid "Colors & Fonts"
-#~ msgstr "สีและแบบอักษร"
-
-#~ msgid "Colour"
-#~ msgstr "สี"
-
-#~ msgid "Compact folding"
-#~ msgstr "บีบการพับ"
-
-#~ msgid "Disable syntax highlighting"
-#~ msgstr "ปิดการเน้นไวยากรณ์"
-
-#~ msgid "Draw line below folded lines"
-#~ msgstr "วาดเส้นข้างล่างเส้นที่ถูกพับ"
-
-#~ msgid "Edge column"
-#~ msgstr "คอลัมน์ขอบขวา"
-
-#~ msgid "Editor"
-#~ msgstr "เครื่องมือแก้ไข"
-
-#~ msgid "Editor caret (cursor) width in pixels"
-#~ msgstr "ความกว้างของเคอร์เซอร์ของเครื่องมือแก้ไขเป็นพิกเซล"
-
-#~ msgid "Enable HTML tags folding"
-#~ msgstr "เปิดใช้งานการพับแท็ก HTML"
-
-#~ msgid "Enable automatic indentation"
-#~ msgstr "เปิดใช้งานการร่นย่อหน้าอัตโนมัติ"
-
-#~ msgid "Enable braces check"
-#~ msgstr "เปิดใช้งานการตรวจสอบวงเล็บ"
-
-#~ msgid "Enable code folding"
-#~ msgstr "เปิดใช้งานการพับโค้ด"
-
-#~ msgid "Enable comments folding"
-#~ msgstr "เปิดใช้งานการพับคำอธิบาย"
-
-#~ msgid "Enable python comments folding"
-#~ msgstr "เปิดใช้งานการพับคำอธิบายของไพธอน"
-
-#~ msgid "Enable python quoted strings folding"
-#~ msgstr "เปิดใช้งานการพับข้อความในคำพูดของไพธอน"
-
-#~ msgid "Filter extraneous characters in DOS mode"
-#~ msgstr "กรองอักขระส่วนเกินในโหมด DOS"
-
-#~ msgid "Fold style:"
-#~ msgstr "รูปแบบการพับ:"
-
-#~ msgid "Font:"
-#~ msgstr "แบบอักษร:"
-
-#~ msgid "Fonts and colors for editor"
-#~ msgstr "แบบอักษรและสีสำหรับเครื่องมือแก้ไข"
-
-#~ msgid "Foreground color:"
-#~ msgstr "สีข้อความ:"
-
-#~ msgid "Indent closing braces"
-#~ msgstr "ร่นย่อหน้าวงเล็บปีกกาปิด"
-
-#~ msgid "Indent opening braces"
-#~ msgstr "ร่นย่อหน้าวงเล็บปีกกาเปิด"
-
-#~ msgid "Indentation size in spaces:"
-#~ msgstr "ร่นย่อหน้าเป็นจำนวนช่องว่าง:"
-
-#~ msgid "Italic"
-#~ msgstr "เอียง"
-
-#~ msgid "Line numbers margin width in pixels"
-#~ msgstr "ความกว้างของขอบหมายเลขบรรทัดเป็นพิกเซล"
-
-#~ msgid "Lines"
-#~ msgstr "บรรทัด"
-
-#~ msgid "Maintain past Indentation"
-#~ msgstr "ใช้ระยะร่นย่อหน้าเดิมในบรรทัดใหม่"
-
-#~ msgid "Margin Fold visible"
-#~ msgstr "แสดงขอบพับ"
-
-#~ msgid "Margin Linenum visible"
-#~ msgstr "แสดงขอบหมายเลขบรรทัด"
-
-#~ msgid "Margin Marker visible"
-#~ msgstr "แสดงขอบเครื่องหมาย"
-
-#~ msgid "Mode:"
-#~ msgstr "โหมด:"
-
-#~ msgid "Monochrome"
-#~ msgstr "ขาวดำ"
-
-#~ msgid ""
-#~ "Plus/Minus\n"
-#~ "Arrows\n"
-#~ "Circular\n"
-#~ "Squares"
-#~ msgstr ""
-#~ "บวก/ลบ\n"
-#~ "ลูกศร\n"
-#~ "วงกลม\n"
-#~ "สี่เหลี่ยม"
-
-#~ msgid "Pressing backspace un-indents"
-#~ msgstr "กด backspace ลดการร่นย่อหน้า"
-
-#~ msgid "Pressing tab inserts indentation"
-#~ msgstr "การกดแท็บแทรกการร่นย่อหน้า"
-
-#~ msgid "Printing"
-#~ msgstr "การพิมพ์"
-
-#~ msgid "Select highlight style to edit:"
-#~ msgstr "เลือกรูปแบบการเน้นที่จะแก้ไข:"
-
-#~ msgid "Selection background:"
-#~ msgstr "สีพื้นหลังการเลือก:"
-
-#~ msgid "Selection foreground:"
-#~ msgstr "สีตัวอักษรการเลือก:"
-
-#~ msgid "Strip trailling spaces on file save"
-#~ msgstr "ขจัดช่องว่างท้ายบรรทัดเมื่อบันทึกแฟ้ม"
-
-#~ msgid "Tab size in spaces:"
-#~ msgstr "ขนาดแท็บเป็นจำนวนช่องว่าง:"
-
-#~ msgid "Underlined"
-#~ msgstr "ขีดเส้นใต้"
-
-#~ msgid "Use default"
-#~ msgstr "ใช้ค่าปริยาย"
-
-#~ msgid "Use tabs for indentation"
-#~ msgstr "ใช้แท็บในการร่นย่อหน้า"
-
-#~ msgid "View EOL chars"
-#~ msgstr "แสดงอักขระ EOL"
-
-#~ msgid "View indentation whitespaces"
-#~ msgstr "แสดงอักขระช่องว่างที่ใช้ร่นย่อหน้า"
-
-#~ msgid "Wrap bookmarks search around"
-#~ msgstr "เริ่มค้นที่คั่นหน้าใหม่เมื่อจบแฟ้มแล้ว"
-
-#~ msgid "<b>Scratchbox Options</b>\n"
-#~ msgstr "<b>ตัวเลือกของ Scratchbox</b>\n"
-
-#~ msgid "Scratchbox directory:"
-#~ msgstr "ไดเรกทอรี Scratchbox:"
-
-#~ msgid "Scratchbox target:"
-#~ msgstr "เป้าหมาย scratchbox:"
-
-#~ msgid "Scratchbox version:"
-#~ msgstr "รุ่นของ Scratchbox:"
-
-#~ msgid "Select Scratchbox Folder"
-#~ msgstr "เลือกโฟลเดอร์ Scratchbox"
 
 #~ msgid "<b>Program to test:</b>"
 #~ msgstr "<b>โปรแกรมที่จะทดสอบ:</b>"
 
 #~ msgid "<b>Valgrind</b>"
 #~ msgstr "<b>Valgrind</b>"
-
-#~ msgid ""
-#~ "Memcheck\n"
-#~ "Addrcheck\n"
-#~ "Helgrind"
-#~ msgstr ""
-#~ "Memcheck\n"
-#~ "Addrcheck\n"
-#~ "Helgrind"
 
 #~ msgid "Select Tool:"
 #~ msgstr "เลือกเครื่องมือ:"
