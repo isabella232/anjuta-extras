@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: anjuta.HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-05-16 22:11+0300\n"
-"PO-Revision-Date: 2012-05-16 22:27+0300\n"
+"POT-Creation-Date: 2012-10-14 01:39+0300\n"
+"PO-Revision-Date: 2012-10-14 01:42+0300\n"
 "Last-Translator: Rūdolfs Mazurs <rudolfs.mazurs@gmail.com>\n"
 "Language-Team: Latvian <lata-l10n@googlegroups.com>\n"
 "Language: lv\n"
@@ -22,11 +22,11 @@ msgstr ""
 
 #: ../plugins/sample1/anjuta-sample.plugin.in.h:1
 msgid "Sample Plugin"
-msgstr "Paraugspraudnis"
+msgstr "Parauga spraudnis"
 
 #: ../plugins/sample1/anjuta-sample.plugin.in.h:2
 msgid "Sample Plugin for Anjuta."
-msgstr "Paraugspraudnis Anjuta videi."
+msgstr "Parauga spraudnis Anjuta videi."
 
 #: ../plugins/scintilla/anjuta-editor.plugin.in.h:1
 #: ../plugins/scintilla/plugin.c:487 ../plugins/scintilla/plugin.c:499
@@ -78,12 +78,12 @@ msgid "Enable comments folding"
 msgstr "Aktivēt komentāru sakļaušanu"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:11
-msgid "Enable python comments folding"
-msgstr "Aktivēt python komentāru sakļaušanu"
+msgid "Enable Python comments folding"
+msgstr "Aktivēt Python komentāru sakļaušanu"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:12
-msgid "Enable python quoted strings folding"
-msgstr "Aktivēt python citēto virkņu sakļaušanu"
+msgid "Enable Python quoted strings folding"
+msgstr "Aktivēt Python citēto virkņu sakļaušanu"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:13
 msgid "Enable HTML tags folding"
@@ -99,7 +99,7 @@ msgstr "Zīmēt līnijas zem sakļautajām rindām"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:16
 msgid "Collapse all code folds on file open"
-msgstr "Sakļaut visus koda sakļāvumus, atverot failu"
+msgstr "Sakļaut visus koda sakļāvumus, atverot datni"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:17
 msgid "Fold style:"
@@ -395,7 +395,7 @@ msgstr "Redaktora skata iestatījumi"
 #: ../plugins/scintilla/print.c:660
 #, c-format
 msgid "File: %s"
-msgstr "Fails: %s"
+msgstr "Datne — %s"
 
 #: ../plugins/scintilla/print.c:889
 msgid "Unable to get text buffer for printing"
@@ -403,60 +403,60 @@ msgstr "Nevar saņemt teksta buferi drukāšanai"
 
 #: ../plugins/scintilla/print.c:967
 msgid "No file to print!"
-msgstr "Nav faila, ko drukāt!"
+msgstr "Nav datnes, ko drukāt!"
 
 #: ../plugins/scintilla/text_editor.c:509
 #, c-format
 msgid ""
 "The file '%s' has been changed.\n"
-"Do you want to reload it ?"
+"Do you want to reload it?"
 msgstr ""
-"Fails '%s' ir mainījies.\n"
+"Datne “%s” ir mainījusies.\n"
 "Vai vēlaties to pārlādēt?"
 
 #: ../plugins/scintilla/text_editor.c:515
 #, c-format
 msgid ""
 "The file '%s' has been changed.\n"
-"Do you want to loose your changes and reload it ?"
+"Do you want to loose your changes and reload it?"
 msgstr ""
-"Fails '%s' ir mainījies.\n"
+"Datne “%s” ir mainījusies.\n"
 "Vai vēlaties zaudēt savas izmaiņas un to pārlādēt?"
 
 #: ../plugins/scintilla/text_editor.c:535
 #, c-format
 msgid ""
 "The file '%s' has been deleted.\n"
-"Do you confirm and close it ?"
+"Do you confirm and close it?"
 msgstr ""
-"Fails '%s' ir dzēsts.\n"
+"Datne “%s” ir dzēsta.\n"
 "Vai vēlaties apstiprināt un to aizvērt?"
 
 #: ../plugins/scintilla/text_editor.c:542
 #, c-format
 msgid ""
 "The file '%s' has been deleted.\n"
-"Do you want to loose your changes and close it ?"
+"Do you want to loose your changes and close it?"
 msgstr ""
-"Fails '%s' ir dzēsts.\n"
+"Datne “%s” ir dzēsta.\n"
 "Vai vēlaties zaudēt savas izmaiņas un to aizvērt?"
 
 #: ../plugins/scintilla/text_editor.c:1526
 msgid "Could not get file info"
-msgstr "Nevarēja saņemt informāciju par failu"
+msgstr "Nevarēja saņemt informāciju par datni"
 
 #. DEBUG_PRINT ("%s", "This file is too big. Unable to allocate memory.");
 #: ../plugins/scintilla/text_editor.c:1538
 msgid "This file is too big. Unable to allocate memory."
-msgstr "Fails ir pārāk liels. Nevar piešķirt atmiņu."
+msgstr "Datne ir pārāk liela. Nevar piešķirt atmiņu."
 
 #: ../plugins/scintilla/text_editor.c:1547
 msgid "Could not open file"
-msgstr "Nevar atvērt failu"
+msgstr "Nevar atvērt datni"
 
 #: ../plugins/scintilla/text_editor.c:1558
 msgid "Error while reading from file"
-msgstr "Kļūda, nolasot no faila"
+msgstr "Kļūda, nolasot no datnes"
 
 #: ../plugins/scintilla/text_editor.c:1604
 msgid ""
@@ -464,13 +464,13 @@ msgid ""
 "supported. Please check if the encoding of file is in the supported "
 "encodings list. If not, add it from the preferences."
 msgstr ""
-"Fails neizskatās pēc teksta faila vai arī kodējums nav atbalstīts. Lūdzu, "
-"pārliecinieties, ka faila kodējums ir atbalstīto kodējumu sarakstā. Ja nav, "
+"Datne neizskatās pēc teksta datnes vai arī kodējums nav atbalstīts. Lūdzu, "
+"pārliecinieties, ka datnes kodējums ir atbalstīto kodējumu sarakstā. Ja nav, "
 "pievienojiet to iestatījumos."
 
 #: ../plugins/scintilla/text_editor.c:1787
 msgid "Loading file..."
-msgstr "Ielādē failu..."
+msgstr "Ielādē datni..."
 
 #: ../plugins/scintilla/text_editor.c:1796
 #, c-format
@@ -479,26 +479,26 @@ msgid ""
 "\n"
 "Details: %s"
 msgstr ""
-"Neizdevās ielādēt failu: %s\n"
+"Neizdevās ielādēt datni — %s\n"
 "\n"
-"Sīkāka informācija: %s"
+"Sīkāka informācija — %s"
 
 #: ../plugins/scintilla/text_editor.c:1817
 msgid "File loaded successfully"
-msgstr "Fails veiksmīgi ielādēts"
+msgstr "Datne veiksmīgi ielādēta"
 
 #: ../plugins/scintilla/text_editor.c:1838
 msgid "Saving file..."
-msgstr "Saglabā failu..."
+msgstr "Saglabā datni..."
 
 #: ../plugins/scintilla/text_editor.c:1847
 #, c-format
 msgid "Could not save intermediate file %s: %s"
-msgstr "Neizdevās saglabāt starpposma failu %s: %s"
+msgstr "Neizdevās saglabāt starpposma datni %s — %s"
 
 #: ../plugins/scintilla/text_editor.c:1863
 msgid "File saved successfully"
-msgstr "Fails veiksmīgi saglabāts"
+msgstr "Datne veiksmīgi saglabāta"
 
 #: ../plugins/scintilla/text_editor.c:2236
 #, c-format
@@ -508,7 +508,7 @@ msgid ""
 "This may result in improper behaviour or instabilities.\n"
 "Anjuta will fall back to built in (limited) settings"
 msgstr ""
-"Nevar ielādēt globālos noklusējumus un konfigurācijas failus:\n"
+"Nevar ielādēt globālos noklusējumus un konfigurācijas datnes:\n"
 "%s.\n"
 "Tas var beigties ar nepareizu uzvedību vai nestabilitātēm.\n"
 "Anjuta izmantos iebūvētos (ierobežotos) iestatījumus"
