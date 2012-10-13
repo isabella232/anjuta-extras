@@ -507,13 +507,13 @@ on_text_editor_uri_changed (GFileMonitor *monitor,
 			if (text_editor_is_saved (te))
 			{
 				buff = g_strdup_printf (_("The file '%s' has been changed.\n"
-								  "Do you want to reload it ?"),
+								  "Do you want to reload it?"),
 								 te->filename);
 			}
 			else
 			{
 				buff = g_strdup_printf (_("The file '%s' has been changed.\n"
-								  "Do you want to loose your changes and reload it ?"),
+								  "Do you want to loose your changes and reload it?"),
 								 te->filename);
 			}
 			message_area = anjuta_message_area_new (buff, GTK_MESSAGE_WARNING);
@@ -533,14 +533,14 @@ on_text_editor_uri_changed (GFileMonitor *monitor,
 			{
 				buff = g_strdup_printf (_
 							 ("The file '%s' has been deleted.\n"
-							  "Do you confirm and close it ?"),
+							  "Do you confirm and close it?"),
 							 te->filename);
 			}
 			else
 			{
 				buff = g_strdup_printf (_
 							 ("The file '%s' has been deleted.\n"
-							  "Do you want to loose your changes and close it ?"),
+							  "Do you want to loose your changes and close it?"),
 							 te->filename);
 			}
 			message_area = anjuta_message_area_new (buff, GTK_MESSAGE_WARNING);

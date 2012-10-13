@@ -258,7 +258,7 @@
                         </child>
                         <child>
                           <object class="GtkCheckButton" id="preferences:fold-comment-python">
-                            <property name="label" translatable="yes">Enable python comments folding</property>
+                            <property name="label" translatable="yes">Enable Python comments folding</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">False</property>
                             <property name="use_action_appearance">False</property>
@@ -274,7 +274,7 @@
                         </child>
                         <child>
                           <object class="GtkCheckButton" id="preferences:fold-quotes-python">
-                            <property name="label" translatable="yes">Enable python quoted strings folding</property>
+                            <property name="label" translatable="yes">Enable Python quoted strings folding</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">False</property>
                             <property name="use_action_appearance">False</property>
