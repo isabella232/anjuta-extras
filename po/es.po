@@ -14,16 +14,17 @@ msgstr ""
 "Project-Id-Version: anjuta-extras.master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=anjuta&keywords=I18N+L10N&component=unknown\n"
-"POT-Creation-Date: 2012-05-15 18:36+0000\n"
-"PO-Revision-Date: 2012-05-16 11:20+0200\n"
+"POT-Creation-Date: 2012-10-13 13:16+0000\n"
+"PO-Revision-Date: 2012-10-16 11:07+0200\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "serrador@hispalinux.es>\n"
 "X-Generator: KBabel 1.11.4\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
 
 #: ../plugins/sample1/anjuta-sample.plugin.in.h:1
 msgid "Sample Plugin"
@@ -47,7 +48,6 @@ msgid "Plus/Minus"
 msgstr "Más/menos"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:2
-#| msgid "Errors:"
 msgid "Arrows"
 msgstr "Flechas"
 
@@ -56,7 +56,6 @@ msgid "Circular"
 msgstr "Circular"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:4
-#| msgid "Squash"
 msgid "Squares"
 msgstr "Cuadrados"
 
@@ -73,7 +72,6 @@ msgid "Autocompletion pop up choices"
 msgstr "Autocompletar elecciones emergentes"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:8
-#| msgid "Autocomplete"
 msgid "Autocompletion"
 msgstr "Autocompletado"
 
@@ -86,12 +84,14 @@ msgid "Enable comments folding"
 msgstr "Activar pliegue de comentarios"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:11
-msgid "Enable python comments folding"
-msgstr "Activar pliegue de comentarios python"
+#| msgid "Enable python comments folding"
+msgid "Enable Python comments folding"
+msgstr "Activar pliegue de comentarios Python"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:12
-msgid "Enable python quoted strings folding"
-msgstr "Activar pliegue de cadenas python citadas"
+#| msgid "Enable python quoted strings folding"
+msgid "Enable Python quoted strings folding"
+msgstr "Activar pliegue de cadenas Python citadas"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:13
 msgid "Enable HTML tags folding"
@@ -114,7 +114,6 @@ msgid "Fold style:"
 msgstr "Estilo de pliegue:"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:18
-#| msgid "<b>Code folding</b>"
 msgid "Code folding"
 msgstr "Plegado de código"
 
@@ -157,7 +156,6 @@ msgid "Line numbers margin width in pixels"
 msgstr "Ancho en píxeles del margen de número de línea"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:30
-#| msgid "<b>Misc options</b>"
 msgid "Misc options"
 msgstr "Opciones varias"
 
@@ -271,7 +269,6 @@ msgid "Mode:"
 msgstr "Modo:"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:59
-#| msgid "<b>Print options</b>"
 msgid "Print options"
 msgstr "Opciones de impresión"
 
@@ -320,7 +317,6 @@ msgid "Font:"
 msgstr "Tipografía:"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:71
-#| msgid "<b>Highlight style</b>"
 msgid "Highlight style"
 msgstr "Estilo de resaltado"
 
@@ -341,7 +337,6 @@ msgid "Selection foreground:"
 msgstr "Primer plano para selección:"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:76
-#| msgid "<b>Other colors</b>"
 msgid "Other colors"
 msgstr "Otros colores"
 
@@ -420,38 +415,50 @@ msgstr "No hay archivo para imprimir."
 
 #: ../plugins/scintilla/text_editor.c:509
 #, c-format
+#| msgid ""
+#| "The file '%s' has been changed.\n"
+#| "Do you want to reload it ?"
 msgid ""
 "The file '%s' has been changed.\n"
-"Do you want to reload it ?"
+"Do you want to reload it?"
 msgstr ""
 "Se ha cambiado el archivo «%s».\n"
 "¿Quiere recargarlo?"
 
 #: ../plugins/scintilla/text_editor.c:515
 #, c-format
+#| msgid ""
+#| "The file '%s' has been changed.\n"
+#| "Do you want to loose your changes and reload it ?"
 msgid ""
 "The file '%s' has been changed.\n"
-"Do you want to loose your changes and reload it ?"
+"Do you want to loose your changes and reload it?"
 msgstr ""
 "Se ha cambiado el archivo «%s».\n"
 "¿Quiere perder sus cambios y recargarlo?"
 
 #: ../plugins/scintilla/text_editor.c:535
 #, c-format
+#| msgid ""
+#| "The file '%s' has been deleted.\n"
+#| "Do you confirm and close it ?"
 msgid ""
 "The file '%s' has been deleted.\n"
-"Do you confirm and close it ?"
+"Do you confirm and close it?"
 msgstr ""
-"Se ha borrado el archivo «%s».\n"
+"Se ha eliminado el archivo «%s».\n"
 "¿Confirmar y cerrar?"
 
 #: ../plugins/scintilla/text_editor.c:542
 #, c-format
+#| msgid ""
+#| "The file '%s' has been deleted.\n"
+#| "Do you want to loose your changes and close it ?"
 msgid ""
 "The file '%s' has been deleted.\n"
-"Do you want to loose your changes and close it ?"
+"Do you want to loose your changes and close it?"
 msgstr ""
-"Se ha borrado el archivo «%s».\n"
+"Se ha eliminado el archivo «%s».\n"
 "¿Quiere perder sus cambios y cerrarlo?"
 
 #: ../plugins/scintilla/text_editor.c:1526
@@ -554,7 +561,6 @@ msgid "Scratchbox target:"
 msgstr "Objetivo de Scratchbox:"
 
 #: ../plugins/scratchbox/anjuta-scratchbox.ui.h:5
-#| msgid "<b>Scratchbox Options</b>\n"
 msgid "Scratchbox Options"
 msgstr "Opciones del «Scratchbox»"
 
