@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: 23.32\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=anjuta"
 "&keywords=I18N+L10N&component=unknown\n"
-"POT-Creation-Date: 2012-05-15 18:36+0000\n"
-"PO-Revision-Date: 2012-06-01 20:27+0200\n"
+"POT-Creation-Date: 2012-10-13 13:16+0000\n"
+"PO-Revision-Date: 2012-11-09 11:58+0200\n"
 "Last-Translator: Miroslav Nikolić <miroslavnikolic@rocketmail.com>\n"
 "Language-Team: Serbian <gnom@prevod.org>\n"
 "Language: sr\n"
@@ -79,12 +79,14 @@ msgid "Enable comments folding"
 msgstr "Omogući prikazivanje struktura napomena"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:11
-msgid "Enable python comments folding"
-msgstr "Omogući python strukture napomena"
+#| msgid "Enable python comments folding"
+msgid "Enable Python comments folding"
+msgstr "Omogući Pitonove strukture napomena"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:12
-msgid "Enable python quoted strings folding"
-msgstr "Omogući python strukture nizova znakova pod navodnicima"
+#| msgid "Enable python quoted strings folding"
+msgid "Enable Python quoted strings folding"
+msgstr "Omogući Pitonove strukture nizova znakova pod navodnicima"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:13
 msgid "Enable HTML tags folding"
@@ -107,7 +109,6 @@ msgid "Fold style:"
 msgstr "Stil jezičke strukture:"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:18
-#| msgid "<b>Code folding</b>"
 msgid "Code folding"
 msgstr "Skupljanje koda"
 
@@ -150,7 +151,6 @@ msgid "Line numbers margin width in pixels"
 msgstr "Širina margine sa brojevima linija u pikselima"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:30
-#| msgid "<b>Misc options</b>"
 msgid "Misc options"
 msgstr "Razne opcije"
 
@@ -264,7 +264,6 @@ msgid "Mode:"
 msgstr "Mod:"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:59
-#| msgid "<b>Print options</b>"
 msgid "Print options"
 msgstr "Podešavanje štampanja"
 
@@ -313,7 +312,6 @@ msgid "Font:"
 msgstr "Slovo:"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:71
-#| msgid "<b>Highlight style</b>"
 msgid "Highlight style"
 msgstr "Stil isticanja"
 
@@ -334,7 +332,6 @@ msgid "Selection foreground:"
 msgstr "Boja označenog teksta:"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:76
-#| msgid "<b>Other colors</b>"
 msgid "Other colors"
 msgstr "Ostale boje"
 
@@ -413,39 +410,51 @@ msgstr "Nema datoteke za štampanje!"
 
 #: ../plugins/scintilla/text_editor.c:509
 #, c-format
+#| msgid ""
+#| "The file '%s' has been changed.\n"
+#| "Do you want to reload it ?"
 msgid ""
 "The file '%s' has been changed.\n"
-"Do you want to reload it ?"
+"Do you want to reload it?"
 msgstr ""
 "Datoteka „%s“ je izmenjena.\n"
-"Da li želite da je ponovo učitate ?"
+"Da li želite da je ponovo učitate?"
 
 #: ../plugins/scintilla/text_editor.c:515
 #, c-format
+#| msgid ""
+#| "The file '%s' has been changed.\n"
+#| "Do you want to loose your changes and reload it ?"
 msgid ""
 "The file '%s' has been changed.\n"
-"Do you want to loose your changes and reload it ?"
+"Do you want to loose your changes and reload it?"
 msgstr ""
 "Datoteka „%s“ je izmenjena.\n"
-"Da li želite da odbacite vaše izmene i da je ponovo učitate ?"
+"Da li želite da odbacite vaše izmene i da je ponovo učitate?"
 
 #: ../plugins/scintilla/text_editor.c:535
 #, c-format
+#| msgid ""
+#| "The file '%s' has been deleted.\n"
+#| "Do you confirm and close it ?"
 msgid ""
 "The file '%s' has been deleted.\n"
-"Do you confirm and close it ?"
+"Do you confirm and close it?"
 msgstr ""
 "Datoteka „%s“ je obrisana.\n"
-"Da li potvrđujete i zatvarate je ?"
+"Da li potvrđujete i zatvarate je?"
 
 #: ../plugins/scintilla/text_editor.c:542
 #, c-format
+#| msgid ""
+#| "The file '%s' has been deleted.\n"
+#| "Do you want to loose your changes and close it ?"
 msgid ""
 "The file '%s' has been deleted.\n"
-"Do you want to loose your changes and close it ?"
+"Do you want to loose your changes and close it?"
 msgstr ""
 "Datoteka „%s“ je obrisana.\n"
-"Da li želite da odbacite vaše izmene i da je ponovo učitate ?"
+"Da li želite da odbacite vaše izmene i da je ponovo učitate?"
 
 #: ../plugins/scintilla/text_editor.c:1526
 msgid "Could not get file info"
