@@ -2844,16 +2844,6 @@ void AnEditor::ReadProperties(const char *fileForExt, char **typedef_hl) {
 	// Why call this??
 	// SendEditor(SCI_MARKERDELETEALL, static_cast<unsigned long>( -1));
 
-	SendEditor(SCI_SETTABINDENTS, props->GetInt("tab.indents", 1));
-	SendEditor(SCI_SETBACKSPACEUNINDENTS, props->GetInt("backspace.unindents", 1));
-
-	SendEditor(SCI_SETUSETABS, props->GetInt("use.tabs", 1));
-	int tabSize = props->GetInt("tabsize");
-	if (tabSize) {
-		SendEditor(SCI_SETTABWIDTH, tabSize);
-	}
-	indentSize = props->GetInt("indent.size");
-	SendEditor(SCI_SETINDENT, indentSize);
 	/*
 	indentOpening = props->GetInt("indent.opening");
 	indentClosing = props->GetInt("indent.closing");
