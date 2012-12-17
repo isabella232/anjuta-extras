@@ -13,7 +13,7 @@ AC_INIT(anjuta-extras, anjuta_version)
 ANJUTA_EXTRAS_VERSION=anjuta_version
 AC_SUBST(ANJUTA_EXTRAS_VERSION)
 
-AM_INIT_AUTOMAKE(AC_PACKAGE_NAME, AC_PACKAGE_VERSION)
+AM_INIT_AUTOMAKE([1.10 dist-xz no-dist-gzip])
 AC_CONFIG_HEADERS([config.h])
 
 m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])
