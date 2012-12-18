@@ -1,3 +1,47 @@
+anjuta-extras-3.7.3 (December 17, 2012) -- James Liggett
+
+Akom Chotiphantawanon (1):
+      Updated Thai translation
+
+Andika Triwidada (1):
+      Updated Indonesian translation
+
+Christian Kirbach (1):
+      Update German translation
+
+Daniel Mustieles (1):
+      Updated Spanish translation
+
+Ihar Hrachyshka (1):
+      Deleted obsolete Belarusian translation.
+
+James Liggett (2):
+      Post-release version bump
+      Distribute tar.xz files
+
+Johannes Schmid (1):
+      bgo#684001 - i18n enhancement - typos
+
+Marek Černocký (1):
+      Updated Czech translation
+
+Matej Urbančič (1):
+      Updated Slovenian translation
+
+Piotr Drąg (1):
+      Updated Polish translation
+
+Rūdolfs Mazurs (1):
+      Updated Latvian translation
+
+Sébastien Granjoux (1):
+      scintilla: bgo#689896 - Unable to save scintilla indentation preferences
+
+Мирослав Николић (1):
+      Updated Serbian translation
+
+
+
 anjuta-extras-3.6.0 (September 26, 2012) -- James Liggett
 
 Andika Triwidada (1):
