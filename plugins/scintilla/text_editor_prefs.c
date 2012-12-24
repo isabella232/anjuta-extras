@@ -367,7 +367,8 @@ on_notify_edge_column (GSettings* settings,
 }
 
 #define REGISTER_NOTIFY(settings, key, func) \
-	g_signal_connect (settings, "changed::" key, G_CALLBACK(func), te);
+	g_signal_connect (settings, "changed::" key, G_CALLBACK(func), te); \
+	func (settings, key, te);
 
 void
 text_editor_prefs_init (TextEditor *te)

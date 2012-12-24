@@ -667,12 +667,12 @@ text_editor_new (AnjutaPlugin *plugin, const gchar *uri, const gchar *name)
 		te->uri = g_strdup (uri);
 	}
 
-	text_editor_prefs_init (te);
-
 	/* Create primary view */
 	te->vbox = gtk_vbox_new (TRUE, 3);
 	gtk_box_pack_end (GTK_BOX (te), te->vbox, TRUE, TRUE, 0);
 	text_editor_add_view (te);
+
+	text_editor_prefs_init (te);
 
 	if (te->uri)
 	{
