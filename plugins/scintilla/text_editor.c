@@ -2444,6 +2444,20 @@ itext_editor_set_auto_indent (IAnjutaEditor *editor, gboolean auto_indent, GErro
 	text_editor_command (TEXT_EDITOR(editor), ANE_SETAUTOINDENTATION, auto_indent, 0);
 }
 
+static gint
+itext_editor_get_indent_size (IAnjutaEditor *editor, GError **e)
+{
+	return scintilla_send_message (SCINTILLA (TEXT_EDITOR (editor)->scintilla),
+								   SCI_GETINDENT, 0, 0);
+}
+
+static void
+itext_editor_set_indent_size (IAnjutaEditor *editor, gint indentsize, GError **e)
+{
+	scintilla_send_message (SCINTILLA (TEXT_EDITOR (editor)->scintilla),
+							SCI_SETINDENT, indentsize, 0);
+}
+
 static void
 itext_editor_goto_line (IAnjutaEditor *editor, gint lineno, GError **e)
 {
@@ -2711,6 +2725,8 @@ itext_editor_iface_init (IAnjutaEditorIface *iface)
 	iface->get_use_spaces = itext_editor_get_use_spaces;
 	iface->set_use_spaces = itext_editor_set_use_spaces;
 	iface->set_auto_indent = itext_editor_set_auto_indent;
+	iface->get_indentsize = itext_editor_get_indent_size;
+	iface->set_indentsize = itext_editor_set_indent_size;
 	iface->goto_line = itext_editor_goto_line;
 	iface->goto_start = itext_editor_goto_start;
 	iface->goto_end = itext_editor_goto_end;
