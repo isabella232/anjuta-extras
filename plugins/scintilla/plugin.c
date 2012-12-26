@@ -328,7 +328,7 @@ activate_plugin (AnjutaPlugin *plugin)
 	                                     IANJUTA_SYMBOL_QUERY_SEARCH_FS_IGNORE, NULL);
 	ianjuta_symbol_query_set_mode (query_project,
 	                               IANJUTA_SYMBOL_QUERY_MODE_QUEUED, NULL);
-	ianjuta_symbol_query_set_filters (query_project, IANJUTA_SYMBOL_TYPE_TYPEDEF,  
+	ianjuta_symbol_query_set_filters (query_project, IANJUTA_SYMBOL_TYPE_CLASS | IANJUTA_SYMBOL_TYPE_ENUM | IANJUTA_SYMBOL_TYPE_STRUCT | IANJUTA_SYMBOL_TYPE_TYPEDEF | IANJUTA_SYMBOL_TYPE_UNION,  
 	    							  TRUE, NULL);	
 	g_signal_connect (query_project, "async-result",
 	                  G_CALLBACK (project_symbol_found), plugin->shell);
@@ -347,8 +347,8 @@ activate_plugin (AnjutaPlugin *plugin)
 	                                     IANJUTA_SYMBOL_QUERY_SEARCH_FS_IGNORE, NULL);
 	ianjuta_symbol_query_set_mode (query_system,
 	                               IANJUTA_SYMBOL_QUERY_MODE_QUEUED, NULL);
-	ianjuta_symbol_query_set_filters (query_system, IANJUTA_SYMBOL_TYPE_TYPEDEF,  
-	    							  TRUE, NULL);
+	ianjuta_symbol_query_set_filters (query_system, IANJUTA_SYMBOL_TYPE_CLASS | IANJUTA_SYMBOL_TYPE_ENUM | IANJUTA_SYMBOL_TYPE_STRUCT | IANJUTA_SYMBOL_TYPE_TYPEDEF | IANJUTA_SYMBOL_TYPE_UNION,  
+	    							  TRUE, NULL);	
 	
 	g_signal_connect (query_system, "async-result",
 	                  G_CALLBACK (system_symbol_found), plugin->shell);
