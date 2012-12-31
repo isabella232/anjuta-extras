@@ -14,8 +14,8 @@ msgstr ""
 "Project-Id-Version: anjuta-extras.master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=anjuta&keywords=I18N+L10N&component=unknown\n"
-"POT-Creation-Date: 2012-12-24 13:36+0000\n"
-"PO-Revision-Date: 2012-12-25 11:55+0100\n"
+"POT-Creation-Date: 2012-12-25 11:12+0000\n"
+"PO-Revision-Date: 2012-12-31 12:14+0100\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Español; Castellano <gnome-es-list@gnome.org>\n"
 "Language: \n"
@@ -180,7 +180,7 @@ msgstr "Sangrar al pulsar el tabulador"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:37
 msgid "Pressing backspace un-indents"
-msgstr "Reducir sangría al pulsar borrado"
+msgstr "Reducir sangría al pulsar Supr"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:38
 msgid "Indent closing braces"
@@ -440,9 +440,6 @@ msgstr ""
 
 #: ../plugins/scintilla/text_editor.c:542
 #, c-format
-#| msgid ""
-#| "The file '%s' has been deleted.\n"
-#| "Do you want to loose your changes and close it?"
 msgid ""
 "The file '%s' has been deleted.\n"
 "Do you want to lose your changes and close it?"
@@ -535,7 +532,7 @@ msgstr "Cambiar los comandos de construcción para usar scratchbox 1 o 2"
 
 #: ../plugins/scratchbox/anjuta-scratchbox.ui.h:1
 msgid "Scratchbox directory:"
-msgstr "Directorio Scratchbox:"
+msgstr "Carpeta Scratchbox:"
 
 #: ../plugins/scratchbox/anjuta-scratchbox.ui.h:2
 msgid "Scratchbox version:"
@@ -543,7 +540,7 @@ msgstr "Versión de Scratchbox:"
 
 #: ../plugins/scratchbox/anjuta-scratchbox.ui.h:3
 msgid "Select Scratchbox Folder"
-msgstr "Seleccionar el directorio Scratchbox"
+msgstr "Seleccionar la carpeta Scratchbox"
 
 #: ../plugins/scratchbox/anjuta-scratchbox.ui.h:4
 msgid "Scratchbox target:"
