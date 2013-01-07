@@ -475,10 +475,6 @@ ipreferences_merge(IAnjutaPreferences* ipref, AnjutaPreferences* prefs, GError**
 static void
 ipreferences_unmerge(IAnjutaPreferences* ipref, AnjutaPreferences* prefs, GError** e)
 {
-	GtkWidget *sb_entry;
-
-	sb_entry = GTK_WIDGET(gtk_builder_get_object(bxml, SB_ENTRY));
-		
 	anjuta_preferences_remove_page(prefs, _("Scratchbox"));
 	
 	g_object_unref (bxml);
