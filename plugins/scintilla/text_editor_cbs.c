@@ -28,6 +28,7 @@
 #include <libanjuta/resources.h>
 #include <libanjuta/anjuta-utils.h>
 #include <libanjuta/anjuta-debug.h>
+#include <libanjuta/interfaces/ianjuta-file-loader.h>
 
 #include "text_editor.h"
 #include "text_editor_cbs.h"
@@ -117,18 +118,32 @@ on_text_editor_text_event (GtkWidget * widget,
 }
 
 static void 
-scintilla_uri_dropped (TextEditor *te, const char *uri)
+scintilla_uri_dropped (TextEditor *te, const char *uris)
 {
-	GtkWidget *parent;
-	// FIXME: Not possible to create a selection data anymore
-	//GtkSelectionData tmp;
+	IAnjutaFileLoader *loader;
 
-	//tmp.data = (guchar *) uri;
+	loader = anjuta_shell_get_interface(te->shell, IAnjutaFileLoader, NULL);
+	if (loader)
+	{
+		gchar **list;
+		gchar **uri;
 
-	parent = gtk_widget_get_toplevel (GTK_WIDGET (te));
-	//if (parent)
-	//	g_signal_emit_by_name (G_OBJECT (parent), "drag_data_received",
-	//							   NULL, 0, 0, &tmp, 0, 0);
+		/* The uri list is separated by DOS end of line */
+		list = g_strsplit_set (uris, "\r\n", -1);
+		for (uri = list; *uri != NULL; uri++)
+		{
+			if (**uri != '\0')
+			{
+				GFile *file;
+			
+				file = g_file_new_for_uri (*uri);
+				ianjuta_file_loader_load(loader, file, FALSE, NULL);
+				g_object_unref (file);
+			}
+		}
+		g_strfreev (list);
+	}
+
 	return;
 }
 
