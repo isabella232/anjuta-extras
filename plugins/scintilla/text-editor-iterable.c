@@ -122,7 +122,6 @@ static void
 cell_style_load_font (CellStyle *pis)
 {
 	gchar *font_desc, *tmp;
-	gint size = 12;
 	
 	g_return_if_fail (pis->font_name);
 	
@@ -141,7 +140,6 @@ cell_style_load_font (CellStyle *pis)
 	}
 	if (pis->size > 0)
 	{
-		size = pis->size;
 		tmp = font_desc;
 		font_desc = g_strdup_printf ("%s %d", tmp, pis->size);
 		g_free (tmp);

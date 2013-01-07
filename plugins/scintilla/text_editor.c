@@ -116,7 +116,7 @@ static void text_editor_finalize (GObject *obj);
 static void text_editor_dispose (GObject *obj);
 static void text_editor_hilite_one (TextEditor * te, AnEditorID editor);
 
-static GtkVBoxClass *parent_class;
+static GtkBoxClass *parent_class;
 
 
 static void
@@ -151,6 +151,8 @@ text_editor_instance_init (TextEditor *te)
 	te->docman_settings = g_settings_new (DOCMAN_PREF_SCHEMA);
 	te->msgman_settings = g_settings_new (MSGMAN_PREF_SCHEMA);
 	te->editor_settings = g_settings_new (ANJUTA_PREF_SCHEMA_PREFIX IANJUTA_EDITOR_PREF_SCHEMA);
+
+	gtk_orientable_set_orientation (GTK_ORIENTABLE (te), GTK_ORIENTATION_VERTICAL);
 }
 
 static GtkWidget *
@@ -668,7 +670,7 @@ text_editor_new (AnjutaPlugin *plugin, const gchar *uri, const gchar *name)
 	}
 
 	/* Create primary view */
-	te->vbox = gtk_vbox_new (TRUE, 3);
+	te->vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 3);
 	gtk_box_pack_end (GTK_BOX (te), te->vbox, TRUE, TRUE, 0);
 	text_editor_add_view (te);
 
@@ -3400,11 +3402,19 @@ iassist_invoke(IAnjutaEditorAssist* iassist, IAnjutaProvider* provider, GError**
 
 static void
 iassist_proposals(IAnjutaEditorAssist* iassist, IAnjutaProvider* provider,
-    GList* proposals, gboolean finished, GError** err)
+    GList* proposals, const gchar *pre_word, gboolean finished, GError** err)
 {
 	TextEditor *te = TEXT_EDITOR (iassist);
 	GList *node;
 	glong length;
+
+	/* Hide if the only suggetions is exactly the typed word */
+	if (pre_word && proposals && g_list_length (proposals) == 1)
+	{
+		IAnjutaEditorAssistProposal* prop = proposals->data;
+		if (g_str_equal (pre_word, prop->label))
+			proposals = NULL;
+	}
 
 	if (proposals == NULL)
 	{

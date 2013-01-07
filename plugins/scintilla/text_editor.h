@@ -68,7 +68,7 @@ struct _ScintillaCompletion
 
 struct _TextEditor
 {
-	GtkVBox parent;
+	GtkBox parent;
 
 	gchar *filename;
 	gchar *uri;
@@ -140,7 +140,7 @@ struct _TextEditor
 
 struct _TextEditorClass
 {
-	GtkVBoxClass parent_class;
+	GtkBoxClass parent_class;
 };
 
 GType text_editor_get_type (void);

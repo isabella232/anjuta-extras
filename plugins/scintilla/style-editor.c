@@ -367,7 +367,7 @@ style_data_destroy (StyleData * sdata)
 	g_free (sdata);
 }
 
-void
+static void
 style_data_parse (StyleData *style_data, gchar * style_string)
 {
 	gchar *val, *opt;
@@ -451,7 +451,6 @@ style_data_parse (StyleData *style_data, gchar * style_string)
 	}
 	if (val)
 		g_free (val);
-	return style_data;
 }
 
 static void
@@ -868,8 +867,6 @@ save_props (StyleEditor *se)
 
 	for (i = 0;; i += 2)
 	{
-		StyleData *sdata;
-
 		if (hilite_style[i] == NULL)
 			break;
 		str = sci_prop_get_expanded (se->props, hilite_style[i + 1]);
@@ -900,8 +897,6 @@ restore_props (StyleEditor *se)
 	str = g_list_first (se->priv->saved_props);
 	for (i = 0;; i += 2)
 	{
-		StyleData *sdata;
-
 		if (hilite_style[i] == NULL)
 			break;
 
@@ -948,9 +943,6 @@ apply_styles (StyleEditor *se)
 static void
 cancel_styles (StyleEditor *se)
 {
-	FILE *ofile;
-	gchar *filename;
-
 	restore_props (se);
 	g_signal_emit_by_name (se->plugin, "style-changed");
 }

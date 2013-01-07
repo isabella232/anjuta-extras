@@ -797,7 +797,6 @@ bool AnEditor::GetCurrentWord(char* buffer, int length) {
 
 bool AnEditor::StartBlockComment() {
 	SString fileNameForExtension = ExtensionFileName();
-	SString language = props->GetNewExpand("lexer.", fileNameForExtension.c_str());
 	SString base("comment.block.");
 	SString comment_at_line_start("comment.block.at.line.start.");
 	base += language;
@@ -891,7 +890,6 @@ bool AnEditor::StartBlockComment() {
 //
 bool AnEditor::CanBeCommented(bool box_stream) {
 	SString fileNameForExtension = ExtensionFileName();
-	SString language = props->GetNewExpand("lexer.", fileNameForExtension.c_str());
 	SString start_base("comment.box.start.");
 	SString middle_base("comment.box.middle.");
 	SString end_base("comment.box.end.");
@@ -952,15 +950,15 @@ bool AnEditor::CanBeCommented(bool box_stream) {
 
 		for (index = lineEnd1-lineStart1; index >= 0; index--)
 		{
-			if (end1= ((end_comment_length > 1 && !memcmp(linebuf+index,
+			if ((end1= ((end_comment_length > 1 && !memcmp(linebuf+index,
 				end_comment.c_str(), end_comment_length ))
 			    || (end_comment_stream_length > 0 && !memcmp(linebuf+index,
-			    end_comment_stream.c_str(), end_comment_stream_length))))
+			    end_comment_stream.c_str(), end_comment_stream_length)))))
 				break;
-			if (start1=((start_comment_length > 1 && !memcmp(linebuf+index,
+			if ((start1=((start_comment_length > 1 && !memcmp(linebuf+index,
 				start_comment.c_str(), start_comment_length))
 				|| (start_comment_stream_length > 0 && !memcmp(linebuf+index,
-			    start_comment_stream.c_str(), start_comment_stream_length))))
+			    start_comment_stream.c_str(), start_comment_stream_length)))))
 				break;
 		}
 		line --;
@@ -980,15 +978,15 @@ bool AnEditor::CanBeCommented(bool box_stream) {
 		GetRange(wEditor, lineStart1, lineEnd1, linebuf);
 		for (index = 0; index <= (lineEnd1-lineStart1); index++)
 		{
-			if (start2= ((start_comment_length > 1 && !memcmp(linebuf+index,
+			if ((start2= ((start_comment_length > 1 && !memcmp(linebuf+index,
 				start_comment.c_str(), start_comment_length))
 				|| (start_comment_stream_length > 0 && !memcmp(linebuf+index,
-			    start_comment_stream.c_str(), start_comment_stream_length))))
+			    start_comment_stream.c_str(), start_comment_stream_length)))))
 				break;
-			if (end2= ((end_comment_length > 1 && !memcmp(linebuf+index,
+			if ((end2= ((end_comment_length > 1 && !memcmp(linebuf+index,
 				end_comment.c_str(), end_comment_length ))
 				|| (end_comment_stream_length > 0 && !memcmp(linebuf+index,
-			    end_comment_stream.c_str(), end_comment_stream_length))))
+			    end_comment_stream.c_str(), end_comment_stream_length)))))
 				break;
 		}
 		line ++;
@@ -1043,7 +1041,6 @@ bool AnEditor::CanBeCommented(bool box_stream) {
 
 bool AnEditor::StartBoxComment() {
 	SString fileNameForExtension = ExtensionFileName();
-	SString language = props->GetNewExpand("lexer.", fileNameForExtension.c_str());
 	SString start_base("comment.box.start.");
 	SString middle_base("comment.box.middle.");
 	SString end_base("comment.box.end.");
@@ -1125,7 +1122,6 @@ bool AnEditor::StartBoxComment() {
 
 bool AnEditor::StartStreamComment() {
 	SString fileNameForExtension = ExtensionFileName();
-	SString language = props->GetNewExpand("lexer.", fileNameForExtension.c_str());
 	SString start_base("comment.stream.start.");
 	SString end_base("comment.stream.end.");
 	SString white_space(" ");
@@ -1228,7 +1224,6 @@ bool AnEditor::InsertCustomIndent() {
 	#define MAXBUF 1000
 
 	SString fileNameForExtension = ExtensionFileName();
-	SString language = props->GetNewExpand("lexer.", fileNameForExtension.c_str());
 	SString start_box_base("comment.box.start.");
 	start_box_base += language;
 	SString start_stream_base("comment.stream.start.");

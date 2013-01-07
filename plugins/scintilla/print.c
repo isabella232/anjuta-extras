@@ -183,7 +183,6 @@ static void
 anjuta_print_job_info_style_load_font (PrintJobInfoStyle *pis)
 {
 	gchar *font_desc, *tmp;
-	gint size = 12;
 
 	g_return_if_fail (pis->font_name);
 
@@ -191,7 +190,6 @@ anjuta_print_job_info_style_load_font (PrintJobInfoStyle *pis)
 	font_desc = g_strdup (pis->font_name);
 	if (pis->size > 0)
 	{
-		size = pis->size;
 		tmp = font_desc;
 		font_desc = g_strdup_printf ("%s %d", tmp, pis->size);
 		g_free (tmp);
@@ -705,7 +703,6 @@ static void
 anjuta_draw_linenum (PrintJobInfo * pji, cairo_t *cr)
 {
 	gchar *text = g_strdup_printf ("%d", pji->current_line);
-	gdouble baseline;
 	gdouble layout_width;
 	PangoLayoutIter *iter;
 	PangoRectangle rect;
@@ -716,7 +713,6 @@ anjuta_draw_linenum (PrintJobInfo * pji, cairo_t *cr)
 	/* Print line number on right */
 	pango_layout_set_text (pji->line_numbers_layout, text, -1);
 	iter = pango_layout_get_iter (pji->line_numbers_layout);
-	baseline = (gdouble) pango_layout_iter_get_baseline (iter) / (gdouble) PANGO_SCALE;
 	pango_layout_iter_free (iter);
 
 	pango_layout_get_extents (pji->line_numbers_layout, NULL, &rect);
@@ -784,7 +780,6 @@ anjuta_draw_page (GtkPrintOperation        *operation,
 	{
 		PangoRectangle rect;
 		gdouble height;
-		guint start;
 
 		/* Draw line number */
 		if (pji->print_line_numbers)
@@ -793,7 +788,6 @@ anjuta_draw_page (GtkPrintOperation        *operation,
 		}
 
 		/* Layout one line */
-		start = pji->current_pos;
 		anjuta_print_layout_line (pji);
 
 		/* Draw line */
