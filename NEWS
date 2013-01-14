@@ -1,3 +1,39 @@
+anjuta-extras-3.7.4 (January 14, 2013) -- James Liggett
+
+Balázs Úr (1):
+      Updated Hungarian translation
+
+Daniel Mustieles (2):
+      Updated Spanish translation
+      Updated Spanish translation
+
+Fran Diéguez (1):
+      Updated Galician translations
+
+Johannes Schmid (1):
+      bgo#690320 - Typo: loose should be lose
+
+Matej Urbančič (1):
+      Updated Slovenian translation
+
+Piotr Drąg (1):
+      Updated Polish translation
+
+Rafael Ferreira (1):
+      Updated Brazilian Portuguese Translation
+
+Sébastien Granjoux (6):
+      scintilla: Initialize editor settings when creating a new instance
+      scintilla: Implement new indentation functions
+      scintilla: bgo #690373 - The syntax-highlighting for Gtk types does not work from version 3.x
+      scintilla: Fix compiler warnings
+      scratchbox: Fix compiler warnings
+      scintilla: Allow to open a file by dropping it in the editor pane
+
+Мирослав Николић (1):
+      Updated Serbian translation
+
+
 anjuta-extras-3.7.3 (December 17, 2012) -- James Liggett
 
 Akom Chotiphantawanon (1):
