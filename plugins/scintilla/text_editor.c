@@ -2866,8 +2866,9 @@ iselection_set (IAnjutaEditorSelection* edit,
 	int start_pos = text_editor_cell_get_position (start);
 	int end_pos = text_editor_cell_get_position (end);
 
+	/* Keep current position at the beginning of the selection like GtkSourceView */
 	scintilla_send_message (SCINTILLA (TEXT_EDITOR (edit)->scintilla),
-						    SCI_SETSEL, start_pos, end_pos);
+						    SCI_SETSEL, end_pos, start_pos);
 }
 
 static gboolean
@@ -3917,8 +3918,8 @@ isearch_backward (IAnjutaEditorSearch* isearch,
 				  GError** e)
 {
 	TextEditor *te = TEXT_EDITOR (isearch);
-	gint end = text_editor_cell_get_position (TEXT_EDITOR_CELL (istart));
-	gint start = text_editor_cell_get_position (TEXT_EDITOR_CELL (iend));
+	gint end = text_editor_cell_get_position (TEXT_EDITOR_CELL (iend));
+	gint start = text_editor_cell_get_position (TEXT_EDITOR_CELL (istart));
 
 	gint flags = 0;
 	gint retval;
