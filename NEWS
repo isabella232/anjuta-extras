@@ -1,3 +1,74 @@
+anjuta-extras-3.8.0 (March 25, 2013) -- James Liggett
+
+Akom Chotiphantawanon (1):
+      Updated Thai translation
+
+Andika Triwidada (1):
+      Updated Indonesian translation
+
+Balázs Úr (1):
+      Updated Hungarian translation
+
+Christian Kirbach (1):
+      Update German translation
+
+Daniel Mustieles (3):
+      Updated Spanish translation
+      Updated Spanish translation
+      Updated Spanish translation
+
+Fran Diéguez (1):
+      Updated Galician translations
+
+Ihar Hrachyshka (1):
+      Deleted obsolete Belarusian translation.
+
+James Liggett (4):
+      Post-release version bump
+      Distribute tar.xz files
+      Updated files for 3.7.3 release
+      Update files for 3.7.4 release
+
+Joe Hansen (1):
+      Updated Danish translation
+
+Johannes Schmid (2):
+      bgo#684001 - i18n enhancement - typos
+      bgo#690320 - Typo: loose should be lose
+
+Marek Černocký (2):
+      Updated Czech translation
+      Updated Czech translation
+
+Matej Urbančič (2):
+      Updated Slovenian translation
+      Updated Slovenian translation
+
+Piotr Drąg (3):
+      Updated Polish translation
+      Updated Polish translation
+      Updated Polish translation
+
+Rafael Ferreira (1):
+      Updated Brazilian Portuguese Translation
+
+Rūdolfs Mazurs (1):
+      Updated Latvian translation
+
+Sébastien Granjoux (8):
+      scintilla: bgo#689896 - Unable to save scintilla indentation preferences
+      scintilla: Initialize editor settings when creating a new instance
+      scintilla: Implement new indentation functions
+      scintilla: bgo #690373 - The syntax-highlighting for Gtk types does not work from version 3.x
+      scintilla: Fix compiler warnings
+      scratchbox: Fix compiler warnings
+      scintilla: Allow to open a file by dropping it in the editor pane
+      scintilla: Fix behavior of Scintilla to match GtkSourceView
+
+Мирослав Николић (2):
+      Updated Serbian translation
+      Updated Serbian translation
+
 anjuta-extras-3.7.4 (January 14, 2013) -- James Liggett
 
 Balázs Úr (1):
@@ -32,7 +103,6 @@ Sébastien Granjoux (6):
 
 Мирослав Николић (1):
       Updated Serbian translation
-
 
 anjuta-extras-3.7.3 (December 17, 2012) -- James Liggett
 
