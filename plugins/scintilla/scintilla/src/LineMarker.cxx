@@ -6,6 +6,7 @@
 // The License.txt file describes the conditions under which this software may be distributed.
 
 #include <string.h>
+#include <math.h>
 
 #include <vector>
 #include <map>
@@ -32,9 +33,9 @@ void LineMarker::SetXPM(const char *const *linesForm) {
 	markType = SC_MARK_PIXMAP;
 }
 
-void LineMarker::SetRGBAImage(Point sizeRGBAImage, const unsigned char *pixelsRGBAImage) {
+void LineMarker::SetRGBAImage(Point sizeRGBAImage, float scale, const unsigned char *pixelsRGBAImage) {
 	delete image;
-	image = new RGBAImage(sizeRGBAImage.x, sizeRGBAImage.y, pixelsRGBAImage);
+	image = new RGBAImage(sizeRGBAImage.x, sizeRGBAImage.y, scale, pixelsRGBAImage);
 	markType = SC_MARK_RGBAIMAGE;
 }
 
@@ -99,10 +100,10 @@ void LineMarker::Draw(Surface *surface, PRectangle &rcWhole, Font &fontForCharac
 	if ((markType == SC_MARK_RGBAIMAGE) && (image)) {
 		// Make rectangle just large enough to fit image centred on centre of rcWhole
 		PRectangle rcImage;
-		rcImage.top = static_cast<int>(((rcWhole.top + rcWhole.bottom) - image->GetHeight()) / 2);
-		rcImage.bottom = rcImage.top + image->GetHeight();
-		rcImage.left = static_cast<int>(((rcWhole.left + rcWhole.right) - image->GetWidth()) / 2);
-		rcImage.right = rcImage.left + image->GetWidth();
+		rcImage.top = static_cast<int>(((rcWhole.top + rcWhole.bottom) - image->GetScaledHeight()) / 2);
+		rcImage.bottom = rcImage.top + image->GetScaledHeight();
+		rcImage.left = static_cast<int>(((rcWhole.left + rcWhole.right) - image->GetScaledWidth()) / 2);
+		rcImage.right = rcImage.left + image->GetScaledWidth();
 		surface->DrawRGBAImage(rcImage, image->GetWidth(), image->GetHeight(), image->Pixels());
 		return;
 	}
@@ -112,8 +113,8 @@ void LineMarker::Draw(Surface *surface, PRectangle &rcWhole, Font &fontForCharac
 	rc.bottom--;
 	int minDim = Platform::Minimum(rc.Width(), rc.Height());
 	minDim--;	// Ensure does not go beyond edge
-	int centreX = (rc.right + rc.left) / 2;
-	int centreY = (rc.bottom + rc.top) / 2;
+	int centreX = floor((rc.right + rc.left) / 2.0);
+	int centreY = floor((rc.bottom + rc.top) / 2.0);
 	int dimOn2 = minDim / 2;
 	int dimOn4 = minDim / 4;
 	int blobSize = dimOn2-1;

@@ -38,6 +38,7 @@ LEXER_OBJS = \
 	lexers/LexHTML.o\
 	lexers/LexInno.o\
 	lexers/LexKix.o\
+	lexers/LexLaTeX.o\
 	lexers/LexLisp.o\
 	lexers/LexLout.o\
 	lexers/LexLua.o\
@@ -59,6 +60,7 @@ LEXER_OBJS = \
 	lexers/LexPB.o\
 	lexers/LexPerl.o\
 	lexers/LexPLM.o\
+	lexers/LexPO.o\
 	lexers/LexPOV.o\
 	lexers/LexPowerPro.o\
 	lexers/LexPowerShell.o\
@@ -127,6 +129,7 @@ LEXER_SRCS = \
 	lexers/LexHTML.cxx\
 	lexers/LexInno.cxx\
 	lexers/LexKix.cxx\
+	lexers/LexLaTeX.cxx\
 	lexers/LexLisp.cxx\
 	lexers/LexLout.cxx\
 	lexers/LexLua.cxx\
@@ -148,6 +151,7 @@ LEXER_SRCS = \
 	lexers/LexPB.cxx\
 	lexers/LexPerl.cxx\
 	lexers/LexPLM.cxx\
+	lexers/LexPO.cxx\
 	lexers/LexPOV.cxx\
 	lexers/LexPowerPro.cxx\
 	lexers/LexPowerShell.cxx\

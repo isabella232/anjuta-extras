@@ -86,6 +86,7 @@ libanjuta_scintilla_la_SOURCES =\
 	lexlib/SparseState.h \
 	lexlib/StyleContext.cxx\
 	lexlib/StyleContext.h\
+	lexlib/SubStyles.h \
 	lexlib/WordList.cxx \
 	lexlib/WordList.h \
 	gtk/Converter.h \
