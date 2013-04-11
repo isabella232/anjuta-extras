@@ -1,9 +1,7 @@
 # translation of anjuta.HEAD.po to Greek
 # Greek translation for anjuta.
 # Copyright (C) 2001 Free Software Foundation.
-#
 # simos (25Mar08): Reviewed first 1000 messages of translation
-#
 # Simos Xenitellis <simos@hellug.gr>, 2001.
 # Velonis Petros <velonis@freemail.gr>, 2004.
 # Socrates Vavilis <s_vavilis@yahoo.fr>,2005.
@@ -11,21 +9,25 @@
 # Giannis Katsampirhs <giannis1_86@hotmail.com>, 2008.
 # Simos Xenitellis <simos@gnome.org>, 2008.
 # Jennie Petoumenou <epetoumenou@gmail.com>, 2009.
+# Dimitris Spingos (Δημήτρης Σπίγγος) <dmtrs32@gmail.com>, 2013.
 msgid ""
 msgstr ""
 "Project-Id-Version: anjuta.HEAD\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=anjuta&keywords=I18N+L10N&component=unknown\n"
-"POT-Creation-Date: 2012-05-15 18:36+0000\n"
-"PO-Revision-Date: 2012-06-28 14:45+0200\n"
-"Last-Translator: Tom Tryfonidis <tomtryf@gmail.com>\n"
-"Language-Team: Greek <team@gnome.gr>\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=anjuta"
+"&keywords=I18N+L10N&component=unknown\n"
+"POT-Creation-Date: 2012-12-24 13:36+0000\n"
+"PO-Revision-Date: 2013-04-11 07:03+0300\n"
+"Last-Translator: Dimitris Spingos (Δημήτρης Σπίγγος) <dmtrs32@gmail.com>\n"
+"Language-Team: team@gnome.gr\n"
+"Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 0.2\n"
+"X-Generator: Virtaal 0.7.1\n"
 "X-Poedit-Language: Greek\n"
 "X-Poedit-Country: GREECE\n"
+"X-Project-Style: gnome\n"
 
 #: ../plugins/sample1/anjuta-sample.plugin.in.h:1
 msgid "Sample Plugin"
@@ -36,8 +38,7 @@ msgid "Sample Plugin for Anjuta."
 msgstr "Παράδειγμα πρόσθετης λειτουργίας για το anjuta."
 
 #: ../plugins/scintilla/anjuta-editor.plugin.in.h:1
-#: ../plugins/scintilla/plugin.c:487
-#: ../plugins/scintilla/plugin.c:499
+#: ../plugins/scintilla/plugin.c:487 ../plugins/scintilla/plugin.c:499
 msgid "Scintilla Editor"
 msgstr "Επεξεργαστή κειμένου scintilla"
 
@@ -50,7 +51,6 @@ msgid "Plus/Minus"
 msgstr "Συν/Πλην"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:2
-#| msgid "Errors:"
 msgid "Arrows"
 msgstr "Βέλη"
 
@@ -59,7 +59,6 @@ msgid "Circular"
 msgstr "Κυκλικός"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:4
-#| msgid "Squash"
 msgid "Squares"
 msgstr "Τετράγωνα"
 
@@ -76,7 +75,6 @@ msgid "Autocompletion pop up choices"
 msgstr "Αναδυόμενες επιλογές αυτόματης συμπλήρωσης"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:8
-#| msgid "Autocomplete"
 msgid "Autocompletion"
 msgstr "Αυτόματη συμπλήρωση"
 
@@ -89,12 +87,14 @@ msgid "Enable comments folding"
 msgstr "Ενεργοποίηση αναδίπλωση σχολίων"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:11
-msgid "Enable python comments folding"
+#| msgid "Enable python comments folding"
+msgid "Enable Python comments folding"
 msgstr "Ενεργοποίηση αναδίπλωσης σχολίων Python"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:12
-msgid "Enable python quoted strings folding"
-msgstr "Ενεργοποίηση αναδίπλωσης αλφαριθμητικών στην Python"
+#| msgid "Enable python quoted strings folding"
+msgid "Enable Python quoted strings folding"
+msgstr "Ενεργοποίηση αναδίπλωσης συμβολοσειρών σε εισαγωγικά στην Python"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:13
 msgid "Enable HTML tags folding"
@@ -117,7 +117,6 @@ msgid "Fold style:"
 msgstr "Στυλ αναδίπλωσης:"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:18
-#| msgid "<b>Code folding</b>"
 msgid "Code folding"
 msgstr "Αναδίπλωση κώδικα"
 
@@ -160,7 +159,6 @@ msgid "Line numbers margin width in pixels"
 msgstr "Πλάτος περιθωρίου αριθμών γραμμών σε εικονοστοιχεία"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:30
-#| msgid "<b>Misc options</b>"
 msgid "Misc options"
 msgstr "Λοιπές επιλογές"
 
@@ -280,7 +278,6 @@ msgid "Mode:"
 msgstr "Κατάσταση:"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:59
-#| msgid "<b>Print options</b>"
 msgid "Print options"
 msgstr "Επιλογές εκτύπωσης"
 
@@ -334,7 +331,6 @@ msgid "Font:"
 msgstr "Γραμματοσειρά:"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:71
-#| msgid "<b>Highlight style</b>"
 msgid "Highlight style"
 msgstr "Στυλ επισήμανσης"
 
@@ -356,7 +352,6 @@ msgstr "Επιλογή χρώματος προσκηνίου:"
 
 #
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:76
-#| msgid "<b>Other colors</b>"
 msgid "Other colors"
 msgstr "Άλλα χρώματα"
 
@@ -439,36 +434,48 @@ msgstr "Κανένα αρχείο για εκτύπωση!"
 
 #: ../plugins/scintilla/text_editor.c:509
 #, c-format
+#| msgid ""
+#| "The file '%s' has been changed.\n"
+#| "Do you want to reload it ?"
 msgid ""
 "The file '%s' has been changed.\n"
-"Do you want to reload it ?"
+"Do you want to reload it?"
 msgstr ""
 "Το αρχείο '%s' έχει αλλάξει.\n"
 "Θέλετε να το επαναφορτώσετε;"
 
 #: ../plugins/scintilla/text_editor.c:515
 #, c-format
+#| msgid ""
+#| "The file '%s' has been changed.\n"
+#| "Do you want to loose your changes and reload it ?"
 msgid ""
 "The file '%s' has been changed.\n"
-"Do you want to loose your changes and reload it ?"
+"Do you want to loose your changes and reload it?"
 msgstr ""
 "Το αρχείο '%s' έχει αλλάξει.\n"
 "Θέλετε να χάσετε τις αλλαγές σας και να το επαναφορτώσετε;"
 
 #: ../plugins/scintilla/text_editor.c:535
 #, c-format
+#| msgid ""
+#| "The file '%s' has been deleted.\n"
+#| "Do you confirm and close it ?"
 msgid ""
 "The file '%s' has been deleted.\n"
-"Do you confirm and close it ?"
+"Do you confirm and close it?"
 msgstr ""
 "Το αρχείο '%s' έχει διαγραφεί.\n"
-"Θέλετε να επιβεβαιώσετε και να το κλείσετε;"
+"Θέλετε να το επιβεβαιώσετε και να το κλείσετε;"
 
 #: ../plugins/scintilla/text_editor.c:542
 #, c-format
+#| msgid ""
+#| "The file '%s' has been deleted.\n"
+#| "Do you want to loose your changes and close it ?"
 msgid ""
 "The file '%s' has been deleted.\n"
-"Do you want to loose your changes and close it ?"
+"Do you want to lose your changes and close it?"
 msgstr ""
 "Το αρχείο '%s' έχει διαγραφεί.\n"
 "Θέλετε να χάσετε τις αλλαγές σας και να το κλείσετε;"
@@ -481,7 +488,9 @@ msgstr "Δεν ήταν δυνατή η ανάκτηση πληροφοριών 
 #. DEBUG_PRINT ("%s", "This file is too big. Unable to allocate memory.");
 #: ../plugins/scintilla/text_editor.c:1538
 msgid "This file is too big. Unable to allocate memory."
-msgstr "Το αρχείο αυτό είναι πολύ μεγάλο σε μέγεθος. Είναι αδύνατος ο καταμερισμός μνήμης."
+msgstr ""
+"Το αρχείο αυτό είναι πολύ μεγάλο σε μέγεθος. Είναι αδύνατος ο καταμερισμός "
+"μνήμης."
 
 #: ../plugins/scintilla/text_editor.c:1547
 msgid "Could not open file"
@@ -493,8 +502,15 @@ msgid "Error while reading from file"
 msgstr "Σφάλμα κατά την ανάγνωση από το αρχείο"
 
 #: ../plugins/scintilla/text_editor.c:1604
-msgid "The file does not look like a text file or the file encoding is not supported. Please check if the encoding of file is in the supported encodings list. If not, add it from the preferences."
-msgstr "Το αρχείο δεν μοιάζει με αρχείο κειμένου είτε ή κωδικοποίηση αρχείου δεν υποστηρίζεται. Παρακαλώ ελέγξτε αν η κωδικοποίηση του αρχείου περιλαμβάνεται στο κατάλογο των κωδικοποιήσεων που υποστηρίζονται. Αν όχι, προσθέστε την από τις προτιμήσεις. "
+msgid ""
+"The file does not look like a text file or the file encoding is not "
+"supported. Please check if the encoding of file is in the supported "
+"encodings list. If not, add it from the preferences."
+msgstr ""
+"Το αρχείο δεν μοιάζει με αρχείο κειμένου είτε ή κωδικοποίηση αρχείου δεν "
+"υποστηρίζεται. Παρακαλώ ελέγξτε αν η κωδικοποίηση του αρχείου περιλαμβάνεται "
+"στο κατάλογο των κωδικοποιήσεων που υποστηρίζονται. Αν όχι, προσθέστε την "
+"από τις προτιμήσεις."
 
 #: ../plugins/scintilla/text_editor.c:1787
 msgid "Loading file..."
@@ -538,14 +554,14 @@ msgid ""
 "This may result in improper behaviour or instabilities.\n"
 "Anjuta will fall back to built in (limited) settings"
 msgstr ""
-"Είναι αδύνατη η φόρτωση των γενικών προεπιλογών\n"
-"και των αρχείων ρύθμισης: %s.\n"
+"Είναι αδύνατη η φόρτωση των καθολικών προεπιλογών και των αρχείων "
+"διαμόρφωσης:\n"
+"%s.\n"
 "Αυτό μπορεί να έχει ως αποτέλεσμα παράξενη συμπεριφορά ή αστάθειες.\n"
-"Το anjuta θα επιστρέψει σε προεπιλεγμένες ρυθμίσεις."
+"Το anjuta θα επιστρέψει στη δόμηση σε (περιορισμένες) ρυθμίσεις."
 
 #: ../plugins/scratchbox/anjuta-scratchbox.plugin.in.h:1
-#: ../plugins/scratchbox/plugin.c:460
-#: ../plugins/scratchbox/plugin.c:482
+#: ../plugins/scratchbox/plugin.c:460 ../plugins/scratchbox/plugin.c:482
 msgid "Scratchbox"
 msgstr "Scratchbox"
 
@@ -570,7 +586,6 @@ msgid "Scratchbox target:"
 msgstr "Στόχος scratchbox:"
 
 #: ../plugins/scratchbox/anjuta-scratchbox.ui.h:5
-#| msgid "<b>Scratchbox Options</b>\n"
 msgid "Scratchbox Options"
 msgstr "Επιλογές scratchbox"
 
