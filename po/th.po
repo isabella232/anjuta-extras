@@ -2,15 +2,15 @@
 # Copyright (C) 2008-2012 Free Software Foundation, Inc.
 # This file is distributed under the same license as the anjuta package.
 # Theppitak Karoonboonyanan <thep@linux.thai.net>, 2008-2009.
-# Akom Chotiphantawanon <knight2000@gmail.com>, 2008-2012.
+# Akom Chotiphantawanon <knight2000@gmail.com>, 2008-2013.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: anjuta\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=anjuta&keywords=I18N+L10N&component=unknown\n"
-"POT-Creation-Date: 2012-09-20 13:44+0000\n"
-"PO-Revision-Date: 2012-10-01 19:45+0700\n"
+"POT-Creation-Date: 2013-01-07 21:37+0000\n"
+"PO-Revision-Date: 2013-06-02 18:18+0700\n"
 "Last-Translator: Akom Chotiphantawanon <knight2000@gmail.com>\n"
 "Language-Team: Thai <thai-l10n@googlegroups.com>\n"
 "Language: th\n"
@@ -77,12 +77,12 @@ msgid "Enable comments folding"
 msgstr "เปิดใช้งานการพับคำอธิบาย"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:11
-msgid "Enable python comments folding"
+msgid "Enable Python comments folding"
 msgstr "เปิดใช้งานการพับคำอธิบายของไพธอน"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:12
-msgid "Enable python quoted strings folding"
-msgstr "เปิดใช้งานการพับข้อความในคำพูดของไพธอน"
+msgid "Enable Python quoted strings folding"
+msgstr "เปิดใช้งานการพับข้อความในเครื่องหมายคำพูดของไพธอน"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:13
 msgid "Enable HTML tags folding"
@@ -391,73 +391,73 @@ msgstr "เปิด/ปิดการตัดบรรทัด"
 msgid "Editor view settings"
 msgstr "ค่าตั้งมุมมองของเครื่องมือแก้ไข"
 
-#: ../plugins/scintilla/print.c:660
+#: ../plugins/scintilla/print.c:658
 #, c-format
 msgid "File: %s"
 msgstr "แฟ้ม: %s"
 
-#: ../plugins/scintilla/print.c:889
+#: ../plugins/scintilla/print.c:883
 msgid "Unable to get text buffer for printing"
 msgstr "ดึงบัฟเฟอร์ข้อความไปพิมพ์ไม่ได้"
 
-#: ../plugins/scintilla/print.c:967
+#: ../plugins/scintilla/print.c:961
 msgid "No file to print!"
 msgstr "ไม่มีแฟ้มที่จะพิมพ์!"
 
-#: ../plugins/scintilla/text_editor.c:509
+#: ../plugins/scintilla/text_editor.c:511
 #, c-format
 msgid ""
 "The file '%s' has been changed.\n"
-"Do you want to reload it ?"
+"Do you want to reload it?"
 msgstr ""
 "แฟ้ม '%s' มีการเปลี่ยนแปลง\n"
 "คุณต้องการเรียกอ่านใหม่หรือไม่?"
 
-#: ../plugins/scintilla/text_editor.c:515
+#: ../plugins/scintilla/text_editor.c:517
 #, c-format
 msgid ""
 "The file '%s' has been changed.\n"
-"Do you want to loose your changes and reload it ?"
+"Do you want to loose your changes and reload it?"
 msgstr ""
 "แฟ้ม '%s' มีการเปลี่ยนแปลง\n"
 "คุณต้องการทิ้งสิ่งที่ได้แก้ไขมา แล้วเรียกอ่านใหม่หรือไม่?"
 
-#: ../plugins/scintilla/text_editor.c:535
+#: ../plugins/scintilla/text_editor.c:537
 #, c-format
 msgid ""
 "The file '%s' has been deleted.\n"
-"Do you confirm and close it ?"
+"Do you confirm and close it?"
 msgstr ""
 "แฟ้ม '%s' ถูกลบไปแล้ว\n"
 "คุณต้องการยืนยันและปิดแฟ้มดังกล่าวหรือไม่?"
 
-#: ../plugins/scintilla/text_editor.c:542
+#: ../plugins/scintilla/text_editor.c:544
 #, c-format
 msgid ""
 "The file '%s' has been deleted.\n"
-"Do you want to loose your changes and close it ?"
+"Do you want to lose your changes and close it?"
 msgstr ""
 "แฟ้ม '%s' ถูกลบไปแล้ว\n"
 "คุณต้องการทิ้งสิ่งที่ได้แก้ไขมา และปิดแฟ้มดังกล่าวหรือไม่?"
 
-#: ../plugins/scintilla/text_editor.c:1526
+#: ../plugins/scintilla/text_editor.c:1528
 msgid "Could not get file info"
 msgstr "ไม่สามารถอ่านข้อมูลของแฟ้ม"
 
 #. DEBUG_PRINT ("%s", "This file is too big. Unable to allocate memory.");
-#: ../plugins/scintilla/text_editor.c:1538
+#: ../plugins/scintilla/text_editor.c:1540
 msgid "This file is too big. Unable to allocate memory."
 msgstr "แฟ้มนี้ใหญ่เกินไป ไม่สามารถจองหน่วยความจำได้"
 
-#: ../plugins/scintilla/text_editor.c:1547
+#: ../plugins/scintilla/text_editor.c:1549
 msgid "Could not open file"
 msgstr "เปิดแฟ้มไม่ได้"
 
-#: ../plugins/scintilla/text_editor.c:1558
+#: ../plugins/scintilla/text_editor.c:1560
 msgid "Error while reading from file"
 msgstr "เกิดข้อผิดพลาดขณะอ่านจากแฟ้ม"
 
-#: ../plugins/scintilla/text_editor.c:1604
+#: ../plugins/scintilla/text_editor.c:1606
 msgid ""
 "The file does not look like a text file or the file encoding is not "
 "supported. Please check if the encoding of file is in the supported "
@@ -467,11 +467,11 @@ msgstr ""
 "กรุณาตรวจสอบว่ารหัสอักขระของแฟ้มอยู่ในรายชื่อรหัสอักขระที่รองรับหรือไม่ ถ้าไม่อยู่ "
 "ให้เพิ่มจากค่าปรับแต่ง"
 
-#: ../plugins/scintilla/text_editor.c:1787
+#: ../plugins/scintilla/text_editor.c:1789
 msgid "Loading file..."
 msgstr "กำลังโหลดแฟ้ม..."
 
-#: ../plugins/scintilla/text_editor.c:1796
+#: ../plugins/scintilla/text_editor.c:1798
 #, c-format
 msgid ""
 "Could not load file: %s\n"
@@ -482,24 +482,24 @@ msgstr ""
 "\n"
 "รายละเอียด: %s"
 
-#: ../plugins/scintilla/text_editor.c:1817
+#: ../plugins/scintilla/text_editor.c:1819
 msgid "File loaded successfully"
 msgstr "โหลดแฟ้มเรียบร้อยแล้ว"
 
-#: ../plugins/scintilla/text_editor.c:1838
+#: ../plugins/scintilla/text_editor.c:1840
 msgid "Saving file..."
 msgstr "กำลังบันทึกแฟ้ม..."
 
-#: ../plugins/scintilla/text_editor.c:1847
+#: ../plugins/scintilla/text_editor.c:1849
 #, c-format
 msgid "Could not save intermediate file %s: %s"
 msgstr "ไม่สามารถบันทึกแฟ้มชั่วคราว %s: %s"
 
-#: ../plugins/scintilla/text_editor.c:1863
+#: ../plugins/scintilla/text_editor.c:1865
 msgid "File saved successfully"
 msgstr "บันทึกแฟ้มเสร็จแล้ว"
 
-#: ../plugins/scintilla/text_editor.c:2236
+#: ../plugins/scintilla/text_editor.c:2238
 #, c-format
 msgid ""
 "Cannot load Global defaults and configuration files:\n"
@@ -513,7 +513,7 @@ msgstr ""
 "แอนจูตาจะถอยกลับไปที่ค่าตั้งที่กำหนดไว้ในตัว (ซึ่งมีความสามารถจำกัด)"
 
 #: ../plugins/scratchbox/anjuta-scratchbox.plugin.in.h:1
-#: ../plugins/scratchbox/plugin.c:460 ../plugins/scratchbox/plugin.c:482
+#: ../plugins/scratchbox/plugin.c:460 ../plugins/scratchbox/plugin.c:478
 msgid "Scratchbox"
 msgstr "Scratchbox"
 
