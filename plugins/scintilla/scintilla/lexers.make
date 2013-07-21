@@ -77,6 +77,7 @@ LEXER_OBJS = \
 	lexers/LexSpecman.o\
 	lexers/LexSpice.o\
 	lexers/LexSQL.o\
+	lexers/LexSTTXT.o\
 	lexers/LexTACL.o\
 	lexers/LexTADS3.o\
 	lexers/LexTAL.o\
@@ -168,6 +169,7 @@ LEXER_SRCS = \
 	lexers/LexSpecman.cxx\
 	lexers/LexSpice.cxx\
 	lexers/LexSQL.cxx\
+	lexers/LexSTTXT.cxx\
 	lexers/LexTACL.cxx\
 	lexers/LexTADS3.cxx\
 	lexers/LexTAL.cxx\

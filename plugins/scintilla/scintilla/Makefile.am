@@ -22,6 +22,11 @@ libanjuta_scintilla_la_SOURCES =\
 	src/AutoComplete.h \
 	src/CallTip.cxx \
 	src/CallTip.h \
+	src/CaseConvert.cxx \
+	src/CaseConvert.h \
+	src/CaseFolder.cxx \
+	src/CaseFolder.h \
+	src/UnicodeFromUTF8.h \
 	src/Catalogue.cxx \
 	src/Catalogue.h \
 	src/CellBuffer.cxx \
@@ -71,6 +76,8 @@ libanjuta_scintilla_la_SOURCES =\
 	lexlib/Accessor.h \
 	lexlib/CharacterSet.cxx \
 	lexlib/CharacterSet.h \
+	lexlib/CharacterCategory.cxx \
+	lexlib/CharacterCategory.h \
 	lexlib/LexAccessor.h \
 	lexlib/LexerBase.cxx \
 	lexlib/LexerBase.h \

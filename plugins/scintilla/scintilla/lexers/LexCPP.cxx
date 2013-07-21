@@ -66,9 +66,8 @@ static bool followsReturnKeyword(StyleContext &sc, LexAccessor &styler) {
 	int pos = (int) sc.currentPos;
 	int currentLine = styler.GetLine(pos);
 	int lineStartPos = styler.LineStart(currentLine);
-	char ch;
 	while (--pos > lineStartPos) {
-		ch = styler.SafeGetCharAt(pos);
+		char ch = styler.SafeGetCharAt(pos);
 		if (ch != ' ' && ch != '\t') {
 			break;
 		}
@@ -154,7 +153,7 @@ public:
 	bool IsInactive() const {
 		return state != 0;
 	}
-	bool CurrentIfTaken() {
+	bool CurrentIfTaken() const {
 		return (ifTaken & maskLevel()) != 0;
 	}
 	void StartSection(bool on) {
@@ -189,7 +188,7 @@ public:
 class PPStates {
 	std::vector<LinePPState> vlls;
 public:
-	LinePPState ForLine(int line) {
+	LinePPState ForLine(int line) const {
 		if ((line > 0) && (vlls.size() > static_cast<size_t>(line))) {
 			return vlls[line];
 		} else {
@@ -456,9 +455,9 @@ int SCI_METHOD LexerCPP::WordListSet(int n, const char *wl) {
 			if (n == 4) {
 				// Rebuild preprocessorDefinitions
 				preprocessorDefinitionsStart.clear();
-				for (int nDefinition = 0; nDefinition < ppDefinitions.len; nDefinition++) {
-					char *cpDefinition = ppDefinitions.words[nDefinition];
-					char *cpEquals = strchr(cpDefinition, '=');
+				for (int nDefinition = 0; nDefinition < ppDefinitions.Length(); nDefinition++) {
+					const char *cpDefinition = ppDefinitions.WordAt(nDefinition);
+					const char *cpEquals = strchr(cpDefinition, '=');
 					if (cpEquals) {
 						std::string name(cpDefinition, cpEquals - cpDefinition);
 						std::string val(cpEquals+1);
@@ -673,7 +672,7 @@ void SCI_METHOD LexerCPP::Lex(unsigned int startPos, int length, int initStyle, 
 					sc.SetState(SCE_C_DEFAULT|activitySet);
 				}
 				break;
-			case SCE_C_PREPROCESSOR: 	
+			case SCE_C_PREPROCESSOR:
 				if (options.stylingWithinPreprocessor) {
 					if (IsASpace(sc.ch)) {
 						sc.SetState(SCE_C_DEFAULT|activitySet);
@@ -684,7 +683,11 @@ void SCI_METHOD LexerCPP::Lex(unsigned int startPos, int length, int initStyle, 
 					if ((isIncludePreprocessor && sc.Match('<')) || sc.Match('\"')) {
 						isStringInPreprocessor = true;
 					} else if (sc.Match('/', '*')) {
-						sc.SetState(SCE_C_PREPROCESSORCOMMENT|activitySet);
+						if (sc.Match("/**") || sc.Match("/*!")) {
+							sc.SetState(SCE_C_PREPROCESSORCOMMENTDOC|activitySet);
+						} else {
+							sc.SetState(SCE_C_PREPROCESSORCOMMENT|activitySet);
+						}
 						sc.Forward();	// Eat the *
 					} else if (sc.Match('/', '/')) {
 						sc.SetState(SCE_C_DEFAULT|activitySet);
@@ -692,6 +695,7 @@ void SCI_METHOD LexerCPP::Lex(unsigned int startPos, int length, int initStyle, 
 				}
 				break;
 			case SCE_C_PREPROCESSORCOMMENT:
+			case SCE_C_PREPROCESSORCOMMENTDOC:
 				if (sc.Match('*', '/')) {
 					sc.Forward();
 					sc.ForwardSetState(SCE_C_PREPROCESSOR|activitySet);
