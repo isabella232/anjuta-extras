@@ -1,13 +1,9 @@
-include $(top_srcdir)/gnome-doc-utils.make
+@YELP_HELP_RULES@
 
-dist-hook: doc-dist-hook
+HELP_ID = anjuta-manual
 
-DOC_ID = anjuta-manual
-DOC_PAGES = \
-	scintilla-plugin.page
-	
-DOC_FIGURES =
+HELP_FILES = scintilla-plugin.page
 
-DOC_LINGUAS = de
+HELP_LINGUAS = de
 
 -include $(top_srcdir)/git.mk

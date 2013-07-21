@@ -80,8 +80,7 @@ AM_PROG_LIBTOOL
 
 
 dnl Help files
-GNOME_DOC_INIT([0.18])
-
+YELP_HELP_INIT
 
 dnl maintainer mode
 AM_MAINTAINER_MODE
