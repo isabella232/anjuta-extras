@@ -1,3 +1,25 @@
+anjuta-extras 3.9.5 (July 29, 2013) -- James Liggett
+
+Akom Chotiphantawanon (1):
+      Updated Thai translation
+
+Dimitris Spingos (1):
+      Updated Greek translation
+
+James Liggett (1):
+      Post-release version bump
+
+Jeremy Bicha (1):
+      extra: Switch from gnome-doc-utils to yelp-tools
+
+Seong-ho Cho (1):
+      Updated Korean translation
+
+Sébastien Granjoux (2):
+      scintilla: Update to scintilla 3.3.0
+      scintilla: Update to scintilla 3.3.4
+
+
 anjuta-extras-3.8.0 (March 25, 2013) -- James Liggett
 
 Akom Chotiphantawanon (1):
