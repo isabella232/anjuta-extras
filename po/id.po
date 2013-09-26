@@ -1,165 +1,23 @@
-# Indonesian translation of Anjuta.
+# Indonesian translation of anjuta-extras
 # Copyright (C) 2007 THE Anjuta'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the Anjuta package.
-# Andika Triwidada <andika@gmail.com>, 2007.
-# , fuzzy
-#
+# Andika Triwidada <andika@gmail.com>, 2009, 2013.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Anjuta 2.3.1\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=anjuta&component=unknown\n"
-"POT-Creation-Date: 2009-08-09 15:05+0000\n"
-"PO-Revision-Date: 2009-09-29 14:36+0700\n"
+"Project-Id-Version: anjuta-extras gnome-3-2\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=anjuta&keywords=I18N+L10N&component=unknown\n"
+"POT-Creation-Date: 2013-08-12 13:31+0000\n"
+"PO-Revision-Date: 2013-09-26 18:46+0700\n"
 "Last-Translator: Andika Triwidada <andika@gmail.com>\n"
-"Language-Team: Indonesian\n"
+"Language-Team: Indonesian <gnome@i15n.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-
-#. create the check menuitem
-#: ../plugins/class-inheritance/class-inherit.c:199
-msgid "Fixed data-view"
-msgstr ""
-
-#: ../plugins/class-inheritance/class-inherit.c:1174
-msgid "Update"
-msgstr "Perbarui"
-
-#: ../plugins/class-inheritance/plugin.c:113
-#, fuzzy
-msgid "Inheritance Graph"
-msgstr "Kertas grafik"
-
-#: ../plugins/profiler/gprof-call-graph-view.c:312
-#: ../plugins/profiler/gprof-call-graph-view.c:322
-#: ../plugins/profiler/gprof-call-graph-view.c:332
-#: ../plugins/profiler/gprof-flat-profile-view.c:56
-#: ../plugins/profiler/gprof-function-call-tree-view.c:60
-msgid "Function Name"
-msgstr "Nama Fungsi"
-
-#: ../plugins/profiler/gprof-call-graph-view.c:344
-msgid "Time"
-msgstr "Waktu"
-
-#. Total amount of time spent in this function, excluding those it calla.
-#. * This is the same as the "Seconds" field in the flat profile.
-#. Time spent in a subroutine of a function.
-#. Time spent in this function when it was called by its caller
-#: ../plugins/profiler/gprof-call-graph-view.c:361
-#: ../plugins/profiler/gprof-call-graph-view.c:375
-#: ../plugins/profiler/gprof-call-graph-view.c:389
-msgid "Self"
-msgstr "Sendiri"
-
-#: ../plugins/profiler/gprof-call-graph-view.c:402
-#: ../plugins/profiler/gprof-call-graph-view.c:414
-#: ../plugins/profiler/gprof-call-graph-view.c:426
-msgid "Children"
-msgstr "Anak"
-
-#: ../plugins/profiler/gprof-call-graph-view.c:439
-#: ../plugins/profiler/gprof-call-graph-view.c:449
-#: ../plugins/profiler/gprof-call-graph-view.c:459
-#: ../plugins/profiler/gprof-flat-profile-view.c:113
-msgid "Calls"
-msgstr "Panggilan"
-
-#: ../plugins/profiler/gprof-flat-profile-view.c:68
-msgid "% Time"
-msgstr "% Waktu"
-
-#: ../plugins/profiler/gprof-flat-profile-view.c:82
-msgid "Cumulative Seconds"
-msgstr "Detik Kumulatif"
-
-#. The number of seconds that this function, excluding other functions it
-#. * calls, takes to execute.
-#: ../plugins/profiler/gprof-flat-profile-view.c:99
-msgid "Self Seconds"
-msgstr "Detik Sendiri"
-
-#. The average number of milliseconds spent in a function, excluding
-#. * the functions that it calls.
-#: ../plugins/profiler/gprof-flat-profile-view.c:127
-msgid "Self ms/call"
-msgstr "Sendiri ms/panggilan"
-
-#. Same as self ms/call, but includes called functions.
-#: ../plugins/profiler/gprof-flat-profile-view.c:143
-msgid "Total ms/call"
-msgstr "Total ms/panggilan"
-
-#: ../plugins/profiler/plugin.c:178
-msgid ""
-"Could not get profiling data.\n"
-"\n"
-"Please check the path to this target's profiling data file."
-msgstr ""
-
-#: ../plugins/profiler/plugin.c:292
-msgid ""
-"This target does not have any profiling data.\n"
-"\n"
-"Please ensure that the target is complied with profiling support and that it is run at least once."
-msgstr ""
-
-#. Action name
-#. Stock icon, if any
-#: ../plugins/profiler/plugin.c:749
-msgid "Debug"
-msgstr "Awakutu"
-
-#. Action name
-#. Stock icon, if any
-#: ../plugins/profiler/plugin.c:757
-#: ../plugins/profiler/plugin.c:869
-#: ../plugins/profiler/profiler.plugin.in.h:3
-#, fuzzy
-msgid "Profiler"
-msgstr "Pemprofil Evolution"
-
-#. Action name
-#. Stock icon, if any
-#: ../plugins/profiler/plugin.c:765
-msgid "Select Target..."
-msgstr "Pilih Target..."
-
-#. Action name
-#. Stock icon, if any
-#: ../plugins/profiler/plugin.c:773
-msgid "Refresh"
-msgstr "Segarkan"
-
-#. Action name
-#. Stock icon, if any
-#: ../plugins/profiler/plugin.c:781
-msgid "Delete Data"
-msgstr "Hapus Data"
-
-#: ../plugins/profiler/plugin.c:824
-msgid "Application Performance Profiler"
-msgstr ""
-
-#: ../plugins/profiler/plugin.c:846
-msgid "Flat Profile"
-msgstr "Profil Datar"
-
-#: ../plugins/profiler/plugin.c:851
-#, fuzzy
-msgid "Call Graph"
-msgstr "\t%d catatan call-graph\n"
-
-#: ../plugins/profiler/plugin.c:856
-#, fuzzy
-msgid "Function Call Tree"
-msgstr "Fungsi lawas"
-
-#: ../plugins/profiler/plugin.c:863
-#, fuzzy
-msgid "Function Call Chart"
-msgstr "Fungsi lawas"
+"X-Generator: Poedit 1.5.7\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Language: ID\n"
 
 #: ../plugins/scintilla/print.c:659
 #, c-format
@@ -170,17 +28,16 @@ msgstr "Berkas: %s"
 msgid "Unable to get text buffer for printing"
 msgstr "Tak bisa mendapat penyangga teks bagi pencetakan"
 
-#: ../plugins/scintilla/print.c:967
+#: ../plugins/scintilla/print.c:966
 msgid "No file to print!"
 msgstr "Tidak ada berkas untuk dicetak!"
 
-#: ../plugins/scintilla/plugin.c:258
-#: ../plugins/scintilla/plugin.c:270
-#: ../plugins/scintilla/anjuta-editor.plugin.in.h:2
+#: ../plugins/scintilla/plugin.c:336 ../plugins/scintilla/plugin.c:348
+#: ../plugins/scintilla/anjuta-editor.plugin.in.h:1
 msgid "Scintilla Editor"
 msgstr "Penyunting Scintilla"
 
-#: ../plugins/scintilla/text_editor.c:412
+#: ../plugins/scintilla/text_editor.c:471
 #, c-format
 msgid ""
 "The file '%s' has been changed.\n"
@@ -189,7 +46,7 @@ msgstr ""
 "Berkas '%s' telah berubah.\n"
 "Anda ingin memuat ulang?"
 
-#: ../plugins/scintilla/text_editor.c:418
+#: ../plugins/scintilla/text_editor.c:477
 #, c-format
 msgid ""
 "The file '%s' has been changed.\n"
@@ -198,7 +55,7 @@ msgstr ""
 "Berkas '%s' telah berubah.\n"
 "Anda ingin membuang perubahan Anda dan memuat ulang?"
 
-#: ../plugins/scintilla/text_editor.c:438
+#: ../plugins/scintilla/text_editor.c:497
 #, c-format
 msgid ""
 "The file '%s' has been deleted.\n"
@@ -207,7 +64,7 @@ msgstr ""
 "Berkas '%s' telah dihapus.\n"
 "Anda setuju dan tutup?"
 
-#: ../plugins/scintilla/text_editor.c:445
+#: ../plugins/scintilla/text_editor.c:504
 #, c-format
 msgid ""
 "The file '%s' has been deleted.\n"
@@ -216,32 +73,38 @@ msgstr ""
 "Berkas '%s' telah dihapus.\n"
 "Anda ingin membuang perubahan dan menutupnya?"
 
-#: ../plugins/scintilla/text_editor.c:1403
+#: ../plugins/scintilla/text_editor.c:1483
 msgid "Could not get file info"
 msgstr "Tak bisa mendapatkan info berkas"
 
 #. DEBUG_PRINT ("%s", "This file is too big. Unable to allocate memory.");
-#: ../plugins/scintilla/text_editor.c:1415
+#: ../plugins/scintilla/text_editor.c:1495
 msgid "This file is too big. Unable to allocate memory."
 msgstr "Berkas terlalu besar. Tak bisa mengalokasikan memori."
 
-#: ../plugins/scintilla/text_editor.c:1424
+#: ../plugins/scintilla/text_editor.c:1504
 msgid "Could not open file"
 msgstr "Tak bisa membuka berkas"
 
-#: ../plugins/scintilla/text_editor.c:1435
+#: ../plugins/scintilla/text_editor.c:1515
 msgid "Error while reading from file"
 msgstr "Galat ketika membaca dari berkas"
 
-#: ../plugins/scintilla/text_editor.c:1481
-msgid "The file does not look like a text file or the file encoding is not supported. Please check if the encoding of file is in the supported encodings list. If not, add it from the preferences."
+#: ../plugins/scintilla/text_editor.c:1561
+msgid ""
+"The file does not look like a text file or the file encoding is not "
+"supported. Please check if the encoding of file is in the supported "
+"encodings list. If not, add it from the preferences."
 msgstr ""
+"Berkas ini nampaknya bukan berkas teks atau pengkodean berkas tak didukung. "
+"Harap periksa apakah pengkodean berkas ada dalam daftar pengkodean yang "
+"didukung. Bila tidak, tambahkanlah itu dalam preferensi."
 
-#: ../plugins/scintilla/text_editor.c:1628
+#: ../plugins/scintilla/text_editor.c:1708
 msgid "Loading file..."
 msgstr "Memuat berkas..."
 
-#: ../plugins/scintilla/text_editor.c:1637
+#: ../plugins/scintilla/text_editor.c:1717
 #, c-format
 msgid ""
 "Could not load file: %s\n"
@@ -252,24 +115,24 @@ msgstr ""
 "\n"
 "Rincian: %s"
 
-#: ../plugins/scintilla/text_editor.c:1658
+#: ../plugins/scintilla/text_editor.c:1738
 msgid "File loaded successfully"
 msgstr "Berkas sukses dimuat"
 
-#: ../plugins/scintilla/text_editor.c:1676
+#: ../plugins/scintilla/text_editor.c:1756
 msgid "Saving file..."
 msgstr "Menyimpan berkas..."
 
-#: ../plugins/scintilla/text_editor.c:1685
+#: ../plugins/scintilla/text_editor.c:1765
 #, c-format
 msgid "Could not save intermediate file %s: %s"
 msgstr "Tak bisa menyimpan berkas antara %s: %s"
 
-#: ../plugins/scintilla/text_editor.c:1701
+#: ../plugins/scintilla/text_editor.c:1781
 msgid "File saved successfully"
 msgstr "Berkas sukses disimpan"
 
-#: ../plugins/scintilla/text_editor.c:2074
+#: ../plugins/scintilla/text_editor.c:2154
 #, c-format
 msgid ""
 "Cannot load Global defaults and configuration files:\n"
@@ -277,400 +140,23 @@ msgid ""
 "This may result in improper behaviour or instabilities.\n"
 "Anjuta will fall back to built in (limited) settings"
 msgstr ""
+"Tak bisa memuat berkas konfigurasi dan nilai baku global:\n"
+"%s.\n"
+"Ini bisa menyebabkan perilaku yang tak semestinya atau ketidakstabilan.\n"
+"Anjuta akan memakai pengaturan bawaan (terbatas)."
 
-#: ../plugins/scratchbox/plugin.c:213
+#: ../plugins/scratchbox/plugin.c:209
 #, c-format
 msgid "Program '%s' does not exists"
 msgstr "Program '%s' tidak ada"
 
-#: ../plugins/scratchbox/plugin.c:464
-#: ../plugins/scratchbox/plugin.c:486
-#: ../plugins/scratchbox/anjuta-scratchbox.plugin.in.h:2
-#| msgid "Use scratchbox"
+#: ../plugins/scratchbox/plugin.c:460 ../plugins/scratchbox/plugin.c:482
+#: ../plugins/scratchbox/anjuta-scratchbox.plugin.in.h:1
 msgid "Scratchbox"
 msgstr "Kotak corat-coret"
 
-#: ../plugins/valgrind/plugin.c:133
-msgid "Options"
-msgstr "Pilihan"
-
-#: ../plugins/valgrind/plugin.c:253
-msgid "Select debugging target"
-msgstr "Pilih target pengawakutuan"
-
-#: ../plugins/valgrind/plugin.c:310
-#: ../plugins/valgrind/plugin.c:431
-#: ../plugins/valgrind/plugin.c:667
-#: ../plugins/valgrind/plugin.c:676
-msgid "Valgrind"
-msgstr "Valgrind"
-
-#: ../plugins/valgrind/plugin.c:338
-msgid "No executable target selected for debugging with Valgrind. Please select one."
-msgstr "Tak ada target executable yang dipilih untuk pengawakutuan dengan Valgrind. Silahakn pilih satu."
-
-#: ../plugins/valgrind/plugin.c:347
-msgid ""
-"There aren't any available executable targets for this project.\n"
-"Please create one first."
-msgstr ""
-
-#: ../plugins/valgrind/plugin.c:359
-msgid "Choose file where to save Valgrind log"
-msgstr "Pilih berkas untuk menyimpan log Valgrind"
-
-#: ../plugins/valgrind/plugin.c:381
-#, c-format
-msgid ""
-"The file '%s' already exists.\n"
-"Do you want to replace it with the one you are saving?"
-msgstr ""
-"Sudah ada berkas bernama '%s'.\n"
-"Ganti dengan yang Anda simpan ini?"
-
-#: ../plugins/valgrind/plugin.c:389
-msgid "_Replace"
-msgstr "_Timpa"
-
-#: ../plugins/valgrind/plugin.c:409
-msgid "Open Valgrind log file"
-msgstr "Buka berkas log Valgrind"
-
-#. Action name
-#. Stock icon, if any
-#: ../plugins/valgrind/plugin.c:443
-msgid "_Debug"
-msgstr "_Awakutu"
-
-#. Action name
-#. Stock icon, if any
-#: ../plugins/valgrind/plugin.c:451
-msgid "_Valgrind"
-msgstr "_Valgrind"
-
-#. Action name
-#. Stock icon, if any
-#: ../plugins/valgrind/plugin.c:459
-msgid "_Select Tool and Run..."
-msgstr "Pilih Perkaka_s dan Jalankan..."
-
-#. Action name
-#. Stock icon, if any
-#: ../plugins/valgrind/plugin.c:467
-msgid "_Kill Execution"
-msgstr "Mati_kan Eksekusi"
-
-#. Action name
-#. Stock icon, if any
-#: ../plugins/valgrind/plugin.c:475
-msgid "_Load Log"
-msgstr "Muat _Log"
-
-#. Action name
-#. Stock icon, if any
-#: ../plugins/valgrind/plugin.c:483
-msgid "S_ave Log"
-msgstr "Simp_an Log"
-
-#. Action name
-#. Stock icon, if any
-#: ../plugins/valgrind/plugin.c:491
-msgid "Edit Rules"
-msgstr "Sunting Aturan"
-
-#: ../plugins/valgrind/plugin.c:556
-msgid "Use Valgrind debug tool"
-msgstr "Pakai alat awakutu Valgrind"
-
-#: ../plugins/valgrind/preferences.c:122
-msgid "<b>Valgrind general preferences</b>"
-msgstr "<b>Preferensi umum Valgrind</b>"
-
-#: ../plugins/valgrind/preferences.c:128
-msgid "Valgrind binary file path:"
-msgstr "Path berkas biner Valgrind:"
-
-#: ../plugins/valgrind/preferences.c:142
-msgid "Choose Valgrind Binary File Path..."
-msgstr "Pilih Path Berkas Biner Valgrind..."
-
-#: ../plugins/valgrind/preferences.c:161
-msgid "Preview"
-msgstr "Pratilik"
-
-#: ../plugins/valgrind/preferences.c:174
-msgid "lines above and below the target line."
-msgstr "baris di atas dan di bawah baris target."
-
-#: ../plugins/valgrind/process.c:55
-#, c-format
-msgid "Failed to create pipe to '%s': %s"
-msgstr "Gagal membuat pipe ke '%s': %s"
-
-#: ../plugins/valgrind/process.c:110
-#, c-format
-msgid "Failed to create child process '%s': %s"
-msgstr "Gagal membuat proses anak '%s': %s"
-
-#: ../plugins/valgrind/vgactions.c:168
-msgid "Reached the end of the input file or error in parsing valgrind output."
-msgstr ""
-
-#: ../plugins/valgrind/vgactions.c:177
-msgid "Process exited."
-msgstr "Proses keluar."
-
-#: ../plugins/valgrind/vgactions.c:197
-msgid "Could not get the right valgrind-binary gconf key:"
-msgstr ""
-
-#: ../plugins/valgrind/vgactions.c:205
-#, c-format
-msgid "Valgrind binary [%s] does not exist. Please check the preferences or install Valgrind package."
-msgstr "Biner Valgrind [%s] tak ada. Silakan periksa preferensi atau pasang paket Valgrind."
-
-#: ../plugins/valgrind/vgactions.c:241
-#: ../plugins/valgrind/vgactions.c:248
-msgid "Could not get the right pipe for the process."
-msgstr "Tak bisa mendapatkan pipe yang tepat bagi proses."
-
-#: ../plugins/valgrind/vgcachegrindprefs.c:197
-#, c-format
-msgid ""
-"Invalid syntax in settings '%s'.\n"
-"Please enter a value of the form \"<integer>,<integer>,<integer>\"."
-msgstr ""
-
-#: ../plugins/valgrind/vgcachegrindprefs.c:234
-msgid "Override default settings"
-msgstr "Timpa tatanan baku"
-
-#. This is the format of the preference, simply translate the words
-#. * inside the <>
-#: ../plugins/valgrind/vgcachegrindprefs.c:246
-msgid "Enter <size>,<assoc>,<line_size>:"
-msgstr ""
-
-#: ../plugins/valgrind/vgcachegrindprefs.c:280
-msgid "Cachegrind"
-msgstr "Cachegrind"
-
-#: ../plugins/valgrind/vgdefaultview.c:189
-msgid "Error contains"
-msgstr "Galat memuat"
-
-#: ../plugins/valgrind/vgdefaultview.c:190
-msgid "Function contains"
-msgstr "Fungsi memuat"
-
-#: ../plugins/valgrind/vgdefaultview.c:191
-msgid "Object contains"
-msgstr "Objek memuat"
-
-#: ../plugins/valgrind/vgdefaultview.c:192
-msgid "Source filename contains"
-msgstr "Nama berkas sumber mengandung"
-
-#: ../plugins/valgrind/vgdefaultview.c:229
-#, c-format
-msgid "Invalid regular expression: '%s': %s"
-msgstr "Ekspresi reguler tidak valid: '%s': %s"
-
-#. FIXME: we should really get this title from somewhere else?
-#: ../plugins/valgrind/vgdefaultview.c:773
-msgid "Valgrind Suppression Rules"
-msgstr ""
-
-#. FIXME: we should really get this title from somewhere else?
-#: ../plugins/valgrind/vgdefaultview.c:1118
-#: ../plugins/valgrind/vgrule-list.c:135
-#, fuzzy
-msgid "Valgrind Suppression"
-msgstr "penekanan penempatan"
-
-#: ../plugins/valgrind/vgdefaultview.c:1166
-msgid "Cu_t"
-msgstr "Po_tong"
-
-#: ../plugins/valgrind/vgdefaultview.c:1167
-msgid "_Copy"
-msgstr "_Salin"
-
-#: ../plugins/valgrind/vgdefaultview.c:1168
-msgid "_Paste"
-msgstr "Tem_pel"
-
-#: ../plugins/valgrind/vgdefaultview.c:1170
-#, fuzzy
-msgid "Suppress"
-msgstr "Suppress pesan"
-
-#: ../plugins/valgrind/vgdefaultview.c:1172
-msgid "Edit in Custom Editor"
-msgstr "Sunting di Penyunting Gubahan"
-
-#: ../plugins/valgrind/vggeneralprefs.c:172
-msgid "General"
-msgstr "Umum"
-
-#. demangle = decode C++ name encoding
-#: ../plugins/valgrind/vggeneralprefs.c:179
-msgid "Demangle C++ symbol names"
-msgstr "Demangle nama simbol C++"
-
-#: ../plugins/valgrind/vggeneralprefs.c:187
-msgid "Show"
-msgstr "Tunjukkan"
-
-#: ../plugins/valgrind/vggeneralprefs.c:199
-msgid "callers in stack trace"
-msgstr ""
-
-#: ../plugins/valgrind/vggeneralprefs.c:206
-msgid "Stop showing errors if there are too many"
-msgstr "Berhenti menampilkan galat bila terlalu banyak"
-
-#: ../plugins/valgrind/vggeneralprefs.c:214
-msgid "Round malloc sizes to next word"
-msgstr "Bulatkan ukuran malloc ke word berikutnya"
-
-#: ../plugins/valgrind/vggeneralprefs.c:222
-msgid "Trace any child processes forked off by the program being debugged"
-msgstr ""
-
-#: ../plugins/valgrind/vggeneralprefs.c:230
-msgid "Track open file descriptors"
-msgstr "Lacak deskriptor berkas terbuka"
-
-#: ../plugins/valgrind/vggeneralprefs.c:238
-msgid "Add time stamps to log messages"
-msgstr "Tambahkan tanda waktu ke pesan log"
-
-#: ../plugins/valgrind/vggeneralprefs.c:246
-msgid "Call __libc_freeres() at exit before checking for memory leaks"
-msgstr "Panggil __libc_freeres() saat keluar sebelum menguji kebocoran memori"
-
-#: ../plugins/valgrind/vggeneralprefs.c:254
-#, fuzzy
-msgid "Suppressions File:"
-msgstr "&Atribut berkas..."
-
-#: ../plugins/valgrind/vggeneralprefs.c:274
-msgid "Choose Valgrind Suppressions File..."
-msgstr ""
-
-#: ../plugins/valgrind/vghelgrindprefs.c:180
-msgid "Helgrind"
-msgstr "Helgrind"
-
-#: ../plugins/valgrind/vghelgrindprefs.c:185
-msgid "Assume thread stacks are used privately"
-msgstr "Asumsikan stack thread dipakai secara privat"
-
-#: ../plugins/valgrind/vghelgrindprefs.c:194
-msgid "Show location of last word access on error:"
-msgstr "Tampilkan lokasi akses word terakhir pada galat:"
-
-#: ../plugins/valgrind/vgmemcheckprefs.c:204
-msgid "Memcheck"
-msgstr "Memcheck"
-
-#: ../plugins/valgrind/vgmemcheckprefs.c:209
-msgid "Memory leaks"
-msgstr "Kebocoran memori"
-
-#: ../plugins/valgrind/vgmemcheckprefs.c:214
-msgid "Leak check:"
-msgstr "Uji kebocoran:"
-
-#: ../plugins/valgrind/vgmemcheckprefs.c:225
-msgid "Show reachable blocks in leak check"
-msgstr "Tampilkan blok yang dapat dijangkau dalam uji kebocoran"
-
-#: ../plugins/valgrind/vgmemcheckprefs.c:233
-msgid "Leak resolution:"
-msgstr "Resolusi kebocoran:"
-
-#: ../plugins/valgrind/vgmemcheckprefs.c:251
-msgid "Keep up to"
-msgstr "Simpan sampai dengan"
-
-#: ../plugins/valgrind/vgmemcheckprefs.c:263
-msgid "bytes in the queue after being free()'d"
-msgstr "byte di antrian setelah di-free()"
-
-#: ../plugins/valgrind/vgmemcheckprefs.c:270
-msgid "Work around bugs generated by gcc 2.96"
-msgstr ""
-
-#: ../plugins/valgrind/vgrule-editor.c:146
-msgid "Function"
-msgstr "Fungsi"
-
-#: ../plugins/valgrind/vgrule-editor.c:149
-msgid "Shared Object"
-msgstr "Objek Dipakai Bersama"
-
-#: ../plugins/valgrind/vgrule-editor.c:209
-msgid "Grow"
-msgstr "Perbesar"
-
-#: ../plugins/valgrind/vgrule-editor.c:213
-msgid "Shrink"
-msgstr "Perkecil"
-
-#: ../plugins/valgrind/vgrule-editor.c:239
-msgid "Rule name:"
-msgstr "Nama aturan:"
-
-#: ../plugins/valgrind/vgrule-editor.c:249
-msgid "Suppress messages of type:"
-msgstr ""
-
-#: ../plugins/valgrind/vgrule-editor.c:259
-msgid "Suppress when using:"
-msgstr ""
-
-#: ../plugins/valgrind/vgrule-editor.c:272
-msgid "System call:"
-msgstr ""
-
-#: ../plugins/valgrind/vgrule-editor.c:283
-msgid "Call chain:"
-msgstr "Rantai pemanggilan:"
-
-#: ../plugins/valgrind/vgrule-editor.c:540
-#: ../plugins/valgrind/vgrule-editor.c:555
-#, c-format
-msgid "Error saving to suppression file '%s': %s"
-msgstr ""
-
-#: ../plugins/valgrind/vgrule-list.c:177
-#: ../plugins/valgrind/vgrule-list.c:246
-msgid "You have forgotten to name your suppression rule."
-msgstr ""
-
-#: ../plugins/valgrind/vgrule-list.c:406
-msgid "_Edit"
-msgstr "_Sunting"
-
-#: ../plugins/valgrind/vgrule-list.c:651
-#, c-format
-msgid "Cannot save suppression rules: %s"
-msgstr ""
-
-#: ../plugins/valgrind/vgrule-list.c:653
-msgid "You have not set a suppressions file in your settings."
-msgstr ""
-
-#: ../plugins/class-inheritance/anjuta-class-inheritance.plugin.in.h:1
-msgid "A graph painter for the inheritance of the classes."
-msgstr ""
-
-#: ../plugins/class-inheritance/anjuta-class-inheritance.plugin.in.h:2
-msgid "Class Inheritance"
-msgstr ""
-
+#. Public functions
+#. *---------------------------------------------------------------------------
 #: ../plugins/sample1/anjuta-sample.plugin.in.h:1
 msgid "Sample Plugin"
 msgstr "Contoh Plugin"
@@ -679,27 +165,10 @@ msgstr "Contoh Plugin"
 msgid "Sample Plugin for Anjuta."
 msgstr "Contoh Plugin bagi Anjuta."
 
-#: ../plugins/profiler/profiler.plugin.in.h:1
-msgid "Application performance profiler"
-msgstr ""
-
-#: ../plugins/profiler/profiler.plugin.in.h:2
-msgid "Profile"
-msgstr "Profil"
-
-#: ../plugins/scintilla/anjuta-editor.plugin.in.h:1
+#: ../plugins/scintilla/anjuta-editor.plugin.in.h:2
 msgid "An alternate editor based on Scintilla"
 msgstr "Penyunting alternatif berbasis Scintilla"
 
-#: ../plugins/valgrind/anjuta-valgrind.plugin.in.h:1
-msgid "Powerful debugging tool."
-msgstr "Perkakas pengawakutuan yang hebat."
-
-#: ../plugins/valgrind/anjuta-valgrind.plugin.in.h:2
-msgid "Valgrind Plugin"
-msgstr "Plugin Valgrind"
-
-#: ../plugins/scratchbox/anjuta-scratchbox.plugin.in.h:1
+#: ../plugins/scratchbox/anjuta-scratchbox.plugin.in.h:2
 msgid "Change build commands to use scratchbox 1 or 2"
-msgstr ""
-
+msgstr "Ubah perintah membangun untuk memakai scratchbox 1 atau 2"
