@@ -2656,7 +2656,6 @@ void AnEditor::ReadProperties(const char *fileForExt, char **typedef_hl) {
 	int visibleLines = props->GetInt("visible.policy.lines");
 	SendEditor(SCI_SETVISIBLEPOLICY, visibleStrict | visibleSlop, visibleLines);
 
-	SendEditor(SCI_SETEDGECOLUMN, props->GetInt("edge.column", 0));
 	SendEditor(SCI_SETEDGEMODE, props->GetInt("edge.mode", EDGE_NONE));
 	SendEditor(SCI_SETEDGECOLOUR,
 	           ColourOfProperty(props, "edge.colour", ColourDesired(0xff, 0xda, 0xda)));
