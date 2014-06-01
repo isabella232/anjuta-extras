@@ -26,15 +26,16 @@ msgstr ""
 "Project-Id-Version: anjuta 2.1.2\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=anjuta&keywords=I18N+L10N&component=unknown\n"
-"POT-Creation-Date: 2012-11-09 10:59+0000\n"
-"PO-Revision-Date: 2012-11-30 11:18+0100\n"
-"Last-Translator: Christian Kirbach <christian.kirbach@gmail.com>\n"
+"POT-Creation-Date: 2014-06-01 14:45+0000\n"
+"PO-Revision-Date: 2014-06-01 19:43+0100\n"
+"Last-Translator: Benjamin Steinwender <b@stbe.at>\n"
 "Language-Team: Deutsch <gnome-de@gnome.org>\n"
-"Language: \n"
+"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.6.5\n"
 
 #: ../plugins/sample1/anjuta-sample.plugin.in.h:1
 msgid "Sample Plugin"
@@ -412,20 +413,20 @@ msgstr "Zeilenumbruch aktivieren/deaktivieren"
 msgid "Editor view settings"
 msgstr "Editor-Ansichtsoptionen"
 
-#: ../plugins/scintilla/print.c:660
+#: ../plugins/scintilla/print.c:658
 #, c-format
 msgid "File: %s"
 msgstr "Datei: %s"
 
-#: ../plugins/scintilla/print.c:889
+#: ../plugins/scintilla/print.c:883
 msgid "Unable to get text buffer for printing"
 msgstr "Konnte Text-Puffer nicht zum Drucken verwenden"
 
-#: ../plugins/scintilla/print.c:967
+#: ../plugins/scintilla/print.c:961
 msgid "No file to print!"
 msgstr "Keine Datei zum Drucken!"
 
-#: ../plugins/scintilla/text_editor.c:509
+#: ../plugins/scintilla/text_editor.c:511
 #, c-format
 msgid ""
 "The file '%s' has been changed.\n"
@@ -434,7 +435,7 @@ msgstr ""
 "Die Datei »%s« wurde verändert.\n"
 "Soll die Datei neu geladen werden?"
 
-#: ../plugins/scintilla/text_editor.c:515
+#: ../plugins/scintilla/text_editor.c:517
 #, c-format
 msgid ""
 "The file '%s' has been changed.\n"
@@ -443,7 +444,7 @@ msgstr ""
 "Die Datei »%s« wurde verändert.\n"
 "Sollen Ihre Änderungen verworfen und die Datei neu geladen werden?"
 
-#: ../plugins/scintilla/text_editor.c:535
+#: ../plugins/scintilla/text_editor.c:537
 #, c-format
 msgid ""
 "The file '%s' has been deleted.\n"
@@ -452,33 +453,36 @@ msgstr ""
 "Die Datei »%s« wurde gelöscht.\n"
 "Soll die Datei wirklich geschlossen werden?"
 
-#: ../plugins/scintilla/text_editor.c:542
+#: ../plugins/scintilla/text_editor.c:544
 #, c-format
+#| msgid ""
+#| "The file '%s' has been deleted.\n"
+#| "Do you want to loose your changes and close it?"
 msgid ""
 "The file '%s' has been deleted.\n"
-"Do you want to loose your changes and close it?"
+"Do you want to lose your changes and close it?"
 msgstr ""
 "Die Datei »%s« wurde gelöscht.\n"
 "Sollen Ihre Änderungen verworfen und die Datei geschlossen werden?"
 
-#: ../plugins/scintilla/text_editor.c:1526
+#: ../plugins/scintilla/text_editor.c:1528
 msgid "Could not get file info"
 msgstr "Konnte Informationen über Datei nicht abrufen"
 
 #. DEBUG_PRINT ("%s", "This file is too big. Unable to allocate memory.");
-#: ../plugins/scintilla/text_editor.c:1538
+#: ../plugins/scintilla/text_editor.c:1540
 msgid "This file is too big. Unable to allocate memory."
 msgstr "Datei ist zu groß. Anfordern von Speicherplatz nicht möglich."
 
-#: ../plugins/scintilla/text_editor.c:1547
+#: ../plugins/scintilla/text_editor.c:1549
 msgid "Could not open file"
 msgstr "Datei konnte nicht geöffnet werden"
 
-#: ../plugins/scintilla/text_editor.c:1558
+#: ../plugins/scintilla/text_editor.c:1560
 msgid "Error while reading from file"
 msgstr "Fehler beim Lesen aus Datei"
 
-#: ../plugins/scintilla/text_editor.c:1604
+#: ../plugins/scintilla/text_editor.c:1606
 msgid ""
 "The file does not look like a text file or the file encoding is not "
 "supported. Please check if the encoding of file is in the supported "
@@ -489,11 +493,11 @@ msgstr ""
 "Kodierungen enthalten ist, anderenfalls fügen Sie diese in den Einstellungen "
 "hinzu."
 
-#: ../plugins/scintilla/text_editor.c:1787
+#: ../plugins/scintilla/text_editor.c:1789
 msgid "Loading file..."
 msgstr "Datei wird geladen …"
 
-#: ../plugins/scintilla/text_editor.c:1796
+#: ../plugins/scintilla/text_editor.c:1798
 #, c-format
 msgid ""
 "Could not load file: %s\n"
@@ -504,24 +508,24 @@ msgstr ""
 "\n"
 "Details: %s"
 
-#: ../plugins/scintilla/text_editor.c:1817
+#: ../plugins/scintilla/text_editor.c:1819
 msgid "File loaded successfully"
 msgstr "Datei erfolgreich geladen"
 
-#: ../plugins/scintilla/text_editor.c:1838
+#: ../plugins/scintilla/text_editor.c:1840
 msgid "Saving file..."
 msgstr "Datei wird gespeichert …"
 
-#: ../plugins/scintilla/text_editor.c:1847
+#: ../plugins/scintilla/text_editor.c:1849
 #, c-format
 msgid "Could not save intermediate file %s: %s"
 msgstr "Konnte Zwischenspeicher-Datei %s nicht speichern: %s"
 
-#: ../plugins/scintilla/text_editor.c:1863
+#: ../plugins/scintilla/text_editor.c:1865
 msgid "File saved successfully"
 msgstr "Datei erfolgreich gespeichert"
 
-#: ../plugins/scintilla/text_editor.c:2236
+#: ../plugins/scintilla/text_editor.c:2238
 #, c-format
 msgid ""
 "Cannot load Global defaults and configuration files:\n"
@@ -535,7 +539,7 @@ msgstr ""
 "Anjuta fällt auch die (begrenzten) Standardeinstellungen zurück"
 
 #: ../plugins/scratchbox/anjuta-scratchbox.plugin.in.h:1
-#: ../plugins/scratchbox/plugin.c:460 ../plugins/scratchbox/plugin.c:482
+#: ../plugins/scratchbox/plugin.c:460 ../plugins/scratchbox/plugin.c:478
 msgid "Scratchbox"
 msgstr "Scratchbox"
 
