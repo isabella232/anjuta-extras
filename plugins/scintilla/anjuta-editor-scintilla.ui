@@ -475,7 +475,7 @@
                         </child>
                         <child>
                           <object class="GtkCheckButton" id="preferences:strip-trailing-spaces">
-                            <property name="label" translatable="yes">Strip trailling spaces on file save</property>
+                            <property name="label" translatable="yes">Strip trailing spaces on file save</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">False</property>
