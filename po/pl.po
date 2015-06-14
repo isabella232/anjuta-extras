@@ -7,14 +7,14 @@
 # Zbigniew Chyla <chyla@alice.ci.pwr.wroc.pl>, 2001-2003.
 # Artur Flinta <aflinta@at.kernel.pl>, 2004.
 # Piotr Leszczyński <piotr@kontury.pl>, 2008.
-# Piotr Drąg <piotrdrag@gmail.com>, 2010-2013.
-# Aviary.pl <gnomepl@aviary.pl>, 2008-2013.
+# Piotr Drąg <piotrdrag@gmail.com>, 2010-2015.
+# Aviary.pl <gnomepl@aviary.pl>, 2008-2015.
 msgid ""
 msgstr ""
 "Project-Id-Version: anjuta-extras\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-16 20:46+0100\n"
-"PO-Revision-Date: 2013-02-16 20:47+0100\n"
+"POT-Creation-Date: 2015-06-14 19:54+0200\n"
+"PO-Revision-Date: 2015-06-14 19:55+0200\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <gnomepl@aviary.pl>\n"
 "Language: pl\n"
@@ -124,7 +124,7 @@ msgid "Enable braces check"
 msgstr "Włączenie sprawdzania nawiasów"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:21
-msgid "Strip trailling spaces on file save"
+msgid "Strip trailing spaces on file save"
 msgstr "Usuwanie spacji na końcu wierszy podczas zapisywania pliku"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:22
@@ -134,7 +134,7 @@ msgstr "Filtrowanie błędnych znaków w trybie DOS"
 #. Next bookmark at the end of the file will jump to the first bookmark from the beginning
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:24
 msgid "Wrap bookmarks search around"
-msgstr "Zawijanie zakładek"
+msgstr "Automatyczny powrót do początku"
 
 #. Column where a vertical line will be drawn to indicate that lines should not be longer
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:26
@@ -409,7 +409,7 @@ msgstr "Nie można pobrać bufora tekstowego do wydrukowania"
 
 #: ../plugins/scintilla/print.c:961
 msgid "No file to print!"
-msgstr "Brak plików do wydrukowania."
+msgstr "Brak pliku do wydrukowania."
 
 #: ../plugins/scintilla/text_editor.c:511
 #, c-format
