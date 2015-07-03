@@ -515,7 +515,7 @@ on_text_editor_uri_changed (GFileMonitor *monitor,
 			else
 			{
 				buff = g_strdup_printf (_("The file '%s' has been changed.\n"
-								  "Do you want to loose your changes and reload it?"),
+								  "Do you want to lose your changes and reload it?"),
 								 te->filename);
 			}
 			message_area = anjuta_message_area_new (buff, GTK_MESSAGE_WARNING);
