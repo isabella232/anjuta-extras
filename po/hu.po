@@ -11,8 +11,8 @@ msgstr ""
 "Project-Id-Version: anjuta-extras master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=anjuta&keywords=I18N+L10N&component=unknown\n"
-"POT-Creation-Date: 2015-06-22 14:50+0000\n"
-"PO-Revision-Date: 2015-06-23 00:09+0200\n"
+"POT-Creation-Date: 2015-07-17 02:51+0000\n"
+"PO-Revision-Date: 2015-07-17 14:38+0200\n"
 "Last-Translator: Balázs Úr <urbalazs@gmail.com>\n"
 "Language-Team: Hungarian <openscope at googlegroups dot com>\n"
 "Language: hu\n"
@@ -120,7 +120,6 @@ msgid "Enable braces check"
 msgstr "Zárójelek ellenőrzésének engedélyezése"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:21
-#| msgid "Strip trailling spaces on file save"
 msgid "Strip trailing spaces on file save"
 msgstr "Befejező szóközök eltávolítása fájl mentésekor"
 
@@ -419,9 +418,12 @@ msgstr ""
 
 #: ../plugins/scintilla/text_editor.c:517
 #, c-format
+#| msgid ""
+#| "The file '%s' has been changed.\n"
+#| "Do you want to loose your changes and reload it?"
 msgid ""
 "The file '%s' has been changed.\n"
-"Do you want to loose your changes and reload it?"
+"Do you want to lose your changes and reload it?"
 msgstr ""
 "A(z) „%s” fájl megváltozott.\n"
 "Újratölti, ezzel elveszítve a módosításokat?"
