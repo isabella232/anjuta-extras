@@ -13,8 +13,8 @@ msgstr ""
 "Project-Id-Version: anjuta-extras\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=anjuta&keywords=I18N+L10N&component=unknown\n"
-"POT-Creation-Date: 2012-12-24 13:36+0000\n"
-"PO-Revision-Date: 2013-01-21 22:16+0100\n"
+"POT-Creation-Date: 2015-07-21 14:50+0000\n"
+"PO-Revision-Date: 2015-07-22 01:51+0200\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: čeština <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -124,7 +124,7 @@ msgid "Enable braces check"
 msgstr "Zapnout kontrolu závorek"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:21
-msgid "Strip trailling spaces on file save"
+msgid "Strip trailing spaces on file save"
 msgstr "Při ukládání odstranit koncové mezery"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:22
@@ -398,20 +398,20 @@ msgstr "Zapnout/vypnout zalamování řádků"
 msgid "Editor view settings"
 msgstr "Nastavení zobrazení v editoru"
 
-#: ../plugins/scintilla/print.c:660
+#: ../plugins/scintilla/print.c:658
 #, c-format
 msgid "File: %s"
 msgstr "Soubor: %s"
 
-#: ../plugins/scintilla/print.c:889
+#: ../plugins/scintilla/print.c:883
 msgid "Unable to get text buffer for printing"
 msgstr "Nelze získat textovou vyrovnávací paměť pro tisk"
 
-#: ../plugins/scintilla/print.c:967
+#: ../plugins/scintilla/print.c:961
 msgid "No file to print!"
 msgstr "Neexistuje soubor k tisku!"
 
-#: ../plugins/scintilla/text_editor.c:509
+#: ../plugins/scintilla/text_editor.c:511
 #, c-format
 msgid ""
 "The file '%s' has been changed.\n"
@@ -420,16 +420,16 @@ msgstr ""
 "Soubor „%s“ byl změněn.\n"
 "Chcete jej znovu načíst?"
 
-#: ../plugins/scintilla/text_editor.c:515
+#: ../plugins/scintilla/text_editor.c:517
 #, c-format
 msgid ""
 "The file '%s' has been changed.\n"
-"Do you want to loose your changes and reload it?"
+"Do you want to lose your changes and reload it?"
 msgstr ""
 "Soubor „%s“ byl změněn.\n"
 "Chcete zahodit své změny a znovu je načíst?"
 
-#: ../plugins/scintilla/text_editor.c:535
+#: ../plugins/scintilla/text_editor.c:537
 #, c-format
 msgid ""
 "The file '%s' has been deleted.\n"
@@ -438,7 +438,7 @@ msgstr ""
 "Soubor „%s“ byl smazán.\n"
 "Potvrzujete, že jej chcete zavřít?"
 
-#: ../plugins/scintilla/text_editor.c:542
+#: ../plugins/scintilla/text_editor.c:544
 #, c-format
 msgid ""
 "The file '%s' has been deleted.\n"
@@ -447,24 +447,24 @@ msgstr ""
 "Soubor „%s“ byl smazán.\n"
 "Chcete zahodit své změny a zavřít jej?"
 
-#: ../plugins/scintilla/text_editor.c:1526
+#: ../plugins/scintilla/text_editor.c:1528
 msgid "Could not get file info"
 msgstr "Nelze získat informace o souboru"
 
 #. DEBUG_PRINT ("%s", "This file is too big. Unable to allocate memory.");
-#: ../plugins/scintilla/text_editor.c:1538
+#: ../plugins/scintilla/text_editor.c:1540
 msgid "This file is too big. Unable to allocate memory."
 msgstr "Tento soubor je příliš velký. Nelze alokovat paměť."
 
-#: ../plugins/scintilla/text_editor.c:1547
+#: ../plugins/scintilla/text_editor.c:1549
 msgid "Could not open file"
 msgstr "Nelze otevřít soubor"
 
-#: ../plugins/scintilla/text_editor.c:1558
+#: ../plugins/scintilla/text_editor.c:1560
 msgid "Error while reading from file"
 msgstr "Chyba při čtení ze souboru"
 
-#: ../plugins/scintilla/text_editor.c:1604
+#: ../plugins/scintilla/text_editor.c:1606
 msgid ""
 "The file does not look like a text file or the file encoding is not "
 "supported. Please check if the encoding of file is in the supported "
@@ -474,11 +474,11 @@ msgstr ""
 "podporováno. Zkontrolujte prosím, jestli je kódování souboru v seznamu "
 "podporovaných kódování. Pokud není, přidejte jej z předvoleb."
 
-#: ../plugins/scintilla/text_editor.c:1787
+#: ../plugins/scintilla/text_editor.c:1789
 msgid "Loading file..."
 msgstr "Načítá se soubor…"
 
-#: ../plugins/scintilla/text_editor.c:1796
+#: ../plugins/scintilla/text_editor.c:1798
 #, c-format
 msgid ""
 "Could not load file: %s\n"
@@ -489,24 +489,24 @@ msgstr ""
 "\n"
 "Podrobnosti: %s"
 
-#: ../plugins/scintilla/text_editor.c:1817
+#: ../plugins/scintilla/text_editor.c:1819
 msgid "File loaded successfully"
 msgstr "Soubor byl úspěšně načten"
 
-#: ../plugins/scintilla/text_editor.c:1838
+#: ../plugins/scintilla/text_editor.c:1840
 msgid "Saving file..."
 msgstr "Soubor se ukládá…"
 
-#: ../plugins/scintilla/text_editor.c:1847
+#: ../plugins/scintilla/text_editor.c:1849
 #, c-format
 msgid "Could not save intermediate file %s: %s"
 msgstr "Nelze uložit přechodný soubor %s: %s"
 
-#: ../plugins/scintilla/text_editor.c:1863
+#: ../plugins/scintilla/text_editor.c:1865
 msgid "File saved successfully"
 msgstr "Soubor byl úspěšně uložen"
 
-#: ../plugins/scintilla/text_editor.c:2236
+#: ../plugins/scintilla/text_editor.c:2238
 #, c-format
 msgid ""
 "Cannot load Global defaults and configuration files:\n"
@@ -520,7 +520,7 @@ msgstr ""
 "Anjuta použije vestavěná (omezená) nastavení"
 
 #: ../plugins/scratchbox/anjuta-scratchbox.plugin.in.h:1
-#: ../plugins/scratchbox/plugin.c:460 ../plugins/scratchbox/plugin.c:482
+#: ../plugins/scratchbox/plugin.c:460 ../plugins/scratchbox/plugin.c:478
 msgid "Scratchbox"
 msgstr "Scratchbox"
 
