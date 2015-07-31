@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: anjuta\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=anjuta&keywords=I18N+L10N&component=unknown\n"
-"POT-Creation-Date: 2015-03-01 03:48+0000\n"
-"PO-Revision-Date: 2015-03-08 12:53+0100\n"
+"POT-Creation-Date: 2015-07-31 02:50+0000\n"
+"PO-Revision-Date: 2015-07-31 13:01+0200\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.7.3\n"
+"X-Generator: Poedit 1.8.2\n"
 
 #: ../plugins/sample1/anjuta-sample.plugin.in.h:1
 msgid "Sample Plugin"
@@ -119,7 +119,7 @@ msgid "Enable braces check"
 msgstr "Aktivera klammerkontroll"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:21
-msgid "Strip trailling spaces on file save"
+msgid "Strip trailing spaces on file save"
 msgstr "Ta bort eftersläpande blanksteg vid filsparande"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:22
@@ -175,7 +175,7 @@ msgstr "Tryck på tabulatortangenten indenterar"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:37
 msgid "Pressing backspace un-indents"
-msgstr "Tryck på bakåtsteg tar bort indentering"
+msgstr "Tryck på backsteg tar bort indentering"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:38
 msgid "Indent closing braces"
@@ -419,7 +419,7 @@ msgstr ""
 #, c-format
 msgid ""
 "The file '%s' has been changed.\n"
-"Do you want to loose your changes and reload it?"
+"Do you want to lose your changes and reload it?"
 msgstr ""
 "Filen \"%s\" har ändrats.\n"
 "Vill du förlora dina ändringar och läsa om den?"
