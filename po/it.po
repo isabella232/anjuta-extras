@@ -3,22 +3,23 @@
 # Copyright (C) 2001-2009 Free Software Foundation, Inc.
 # Michele Campeotto <micampe@f2s.com>, 2001.
 # Andrea Zagli <azagli@libero.it>, 2007-2009, 2010.
-# Claudio Arseni <claudio.arseni@ubuntu.com>, 2013.
-#
+# Claudio Arseni <claudio.arseni@ubuntu.com>, 2013, 2015.
 msgid ""
 msgstr ""
 "Project-Id-Version: Anjuta 2.26\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-05 15:02+0200\n"
-"PO-Revision-Date: 2013-10-05 14:21+0200\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=anjuta"
+"&keywords=I18N+L10N&component=unknown\n"
+"POT-Creation-Date: 2015-09-03 02:50+0000\n"
+"PO-Revision-Date: 2015-09-03 11:12+0200\n"
 "Last-Translator: Claudio Arseni <claudio.arseni@ubuntu.com>\n"
-"Language-Team: Italian <tp@lists.linux.it>\n"
-"Language: \n"
+"Language-Team: tp@lists.linux.it\n"
+"Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Gtranslator 2.91.6\n"
+"X-Generator: Virtaal 0.7.1\n"
+"X-Project-Style: gnome\n"
 
 #: ../plugins/sample1/anjuta-sample.plugin.in.h:1
 msgid "Sample Plugin"
@@ -118,7 +119,8 @@ msgid "Enable braces check"
 msgstr "Abilitare controllo delle parentesi"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:21
-msgid "Strip trailling spaces on file save"
+#| msgid "Strip trailling spaces on file save"
+msgid "Strip trailing spaces on file save"
 msgstr "Rimuovere gli spazi finali al salvataggio del file"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:22
@@ -416,9 +418,12 @@ msgstr ""
 
 #: ../plugins/scintilla/text_editor.c:517
 #, c-format
+#| msgid ""
+#| "The file '%s' has been changed.\n"
+#| "Do you want to loose your changes and reload it?"
 msgid ""
 "The file '%s' has been changed.\n"
-"Do you want to loose your changes and reload it?"
+"Do you want to lose your changes and reload it?"
 msgstr ""
 "Il file «%s» è stato modificato.\n"
 "Perdere i cambiamenti e ricaricarlo?"
