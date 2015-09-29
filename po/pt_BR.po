@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: Anjuta\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=anjuta&keywords=I18N+L10N&component=unknown\n"
-"POT-Creation-Date: 2013-01-07 21:37+0000\n"
+"POT-Creation-Date: 2015-09-29 14:54+0000\n"
 "PO-Revision-Date: 2013-01-08 23:32-0300\n"
 "Last-Translator: Rafael Ferreira <rafael.f.f1@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
@@ -126,7 +126,7 @@ msgid "Enable braces check"
 msgstr "Habilitar verificação de chaves"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:21
-msgid "Strip trailling spaces on file save"
+msgid "Strip trailing spaces on file save"
 msgstr "Remover espaços no final de linhas ao salvar o arquivo"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:22
@@ -426,7 +426,7 @@ msgstr ""
 #, c-format
 msgid ""
 "The file '%s' has been changed.\n"
-"Do you want to loose your changes and reload it?"
+"Do you want to lose your changes and reload it?"
 msgstr ""
 "O arquivo \"%s\" foi alterado.\n"
 "Deseja perder suas alterações e recarregá-lo?"
@@ -442,9 +442,6 @@ msgstr ""
 
 #: ../plugins/scintilla/text_editor.c:544
 #, c-format
-#| msgid ""
-#| "The file '%s' has been deleted.\n"
-#| "Do you want to loose your changes and close it?"
 msgid ""
 "The file '%s' has been deleted.\n"
 "Do you want to lose your changes and close it?"
