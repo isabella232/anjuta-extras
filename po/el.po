@@ -13,20 +13,18 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: anjuta.HEAD\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=anjuta"
-"&keywords=I18N+L10N&component=unknown\n"
-"POT-Creation-Date: 2012-12-24 13:36+0000\n"
-"PO-Revision-Date: 2013-04-11 07:03+0300\n"
-"Last-Translator: Dimitris Spingos (Δημήτρης Σπίγγος) <dmtrs32@gmail.com>\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=anjuta&keywords=I18N+L10N&component=unknown\n"
+"POT-Creation-Date: 2015-10-24 02:54+0000\n"
+"PO-Revision-Date: 2015-10-24 13:23+0300\n"
+"Last-Translator: Tom Tryfonidis <tomtryf@gmail.com>\n"
 "Language-Team: team@gnome.gr\n"
 "Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Virtaal 0.7.1\n"
-"X-Poedit-Language: Greek\n"
-"X-Poedit-Country: GREECE\n"
+"X-Generator: Poedit 1.8.5\n"
 "X-Project-Style: gnome\n"
 
 #: ../plugins/sample1/anjuta-sample.plugin.in.h:1
@@ -35,12 +33,12 @@ msgstr "Παράδειγμα πρόσθετης λειτουργίας"
 
 #: ../plugins/sample1/anjuta-sample.plugin.in.h:2
 msgid "Sample Plugin for Anjuta."
-msgstr "Παράδειγμα πρόσθετης λειτουργίας για το anjuta."
+msgstr "Παράδειγμα πρόσθετης λειτουργίας για το Anjuta."
 
 #: ../plugins/scintilla/anjuta-editor.plugin.in.h:1
 #: ../plugins/scintilla/plugin.c:487 ../plugins/scintilla/plugin.c:499
 msgid "Scintilla Editor"
-msgstr "Επεξεργαστή κειμένου scintilla"
+msgstr "Επεξεργαστής κειμένου scintilla"
 
 #: ../plugins/scintilla/anjuta-editor.plugin.in.h:2
 msgid "An alternate editor based on Scintilla"
@@ -87,12 +85,10 @@ msgid "Enable comments folding"
 msgstr "Ενεργοποίηση αναδίπλωση σχολίων"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:11
-#| msgid "Enable python comments folding"
 msgid "Enable Python comments folding"
 msgstr "Ενεργοποίηση αναδίπλωσης σχολίων Python"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:12
-#| msgid "Enable python quoted strings folding"
 msgid "Enable Python quoted strings folding"
 msgstr "Ενεργοποίηση αναδίπλωσης συμβολοσειρών σε εισαγωγικά στην Python"
 
@@ -129,7 +125,7 @@ msgid "Enable braces check"
 msgstr "Ενεργοποίηση ελέγχου αγκίστρων"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:21
-msgid "Strip trailling spaces on file save"
+msgid "Strip trailing spaces on file save"
 msgstr "Αφαίρεση των κενών στο τέλος γραμμών κατά την αποθήκευση αρχείου"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:22
@@ -170,11 +166,11 @@ msgstr "Χρώματα και γραμματοσειρές"
 #
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:32
 msgid "Editor"
-msgstr "Επεξεργαστής κειμένου"
+msgstr "Επεξεργαστής"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:33
 msgid "Enable automatic indentation"
-msgstr "Ενεργοποίηση αυτόματης εσοχής παραγράφων"
+msgstr "Ενεργοποίηση αυτόματης εσοχής"
 
 #. If the user presses enter, the indentation of the current line will automatically be added to the next line
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:35
@@ -418,25 +414,22 @@ msgid "Editor view settings"
 msgstr "Προβολή ρυθμίσεων επεξεργαστή κειμένου"
 
 #
-#: ../plugins/scintilla/print.c:660
+#: ../plugins/scintilla/print.c:658
 #, c-format
 msgid "File: %s"
 msgstr "Αρχείο: %s"
 
 #
-#: ../plugins/scintilla/print.c:889
+#: ../plugins/scintilla/print.c:883
 msgid "Unable to get text buffer for printing"
 msgstr "Αδυναμία λήψης ενδιάμεσης μνήμης κειμένου για εκτύπωση"
 
-#: ../plugins/scintilla/print.c:967
+#: ../plugins/scintilla/print.c:961
 msgid "No file to print!"
 msgstr "Κανένα αρχείο για εκτύπωση!"
 
-#: ../plugins/scintilla/text_editor.c:509
+#: ../plugins/scintilla/text_editor.c:511
 #, c-format
-#| msgid ""
-#| "The file '%s' has been changed.\n"
-#| "Do you want to reload it ?"
 msgid ""
 "The file '%s' has been changed.\n"
 "Do you want to reload it?"
@@ -444,23 +437,17 @@ msgstr ""
 "Το αρχείο '%s' έχει αλλάξει.\n"
 "Θέλετε να το επαναφορτώσετε;"
 
-#: ../plugins/scintilla/text_editor.c:515
+#: ../plugins/scintilla/text_editor.c:517
 #, c-format
-#| msgid ""
-#| "The file '%s' has been changed.\n"
-#| "Do you want to loose your changes and reload it ?"
 msgid ""
 "The file '%s' has been changed.\n"
-"Do you want to loose your changes and reload it?"
+"Do you want to lose your changes and reload it?"
 msgstr ""
 "Το αρχείο '%s' έχει αλλάξει.\n"
 "Θέλετε να χάσετε τις αλλαγές σας και να το επαναφορτώσετε;"
 
-#: ../plugins/scintilla/text_editor.c:535
+#: ../plugins/scintilla/text_editor.c:537
 #, c-format
-#| msgid ""
-#| "The file '%s' has been deleted.\n"
-#| "Do you confirm and close it ?"
 msgid ""
 "The file '%s' has been deleted.\n"
 "Do you confirm and close it?"
@@ -468,11 +455,8 @@ msgstr ""
 "Το αρχείο '%s' έχει διαγραφεί.\n"
 "Θέλετε να το επιβεβαιώσετε και να το κλείσετε;"
 
-#: ../plugins/scintilla/text_editor.c:542
+#: ../plugins/scintilla/text_editor.c:544
 #, c-format
-#| msgid ""
-#| "The file '%s' has been deleted.\n"
-#| "Do you want to loose your changes and close it ?"
 msgid ""
 "The file '%s' has been deleted.\n"
 "Do you want to lose your changes and close it?"
@@ -481,27 +465,27 @@ msgstr ""
 "Θέλετε να χάσετε τις αλλαγές σας και να το κλείσετε;"
 
 #
-#: ../plugins/scintilla/text_editor.c:1526
+#: ../plugins/scintilla/text_editor.c:1528
 msgid "Could not get file info"
 msgstr "Δεν ήταν δυνατή η ανάκτηση πληροφοριών του αρχείου"
 
 #. DEBUG_PRINT ("%s", "This file is too big. Unable to allocate memory.");
-#: ../plugins/scintilla/text_editor.c:1538
+#: ../plugins/scintilla/text_editor.c:1540
 msgid "This file is too big. Unable to allocate memory."
 msgstr ""
 "Το αρχείο αυτό είναι πολύ μεγάλο σε μέγεθος. Είναι αδύνατος ο καταμερισμός "
 "μνήμης."
 
-#: ../plugins/scintilla/text_editor.c:1547
+#: ../plugins/scintilla/text_editor.c:1549
 msgid "Could not open file"
 msgstr "Δεν ήταν δυνατό το άνοιγμα αρχείου"
 
 #
-#: ../plugins/scintilla/text_editor.c:1558
+#: ../plugins/scintilla/text_editor.c:1560
 msgid "Error while reading from file"
 msgstr "Σφάλμα κατά την ανάγνωση από το αρχείο"
 
-#: ../plugins/scintilla/text_editor.c:1604
+#: ../plugins/scintilla/text_editor.c:1606
 msgid ""
 "The file does not look like a text file or the file encoding is not "
 "supported. Please check if the encoding of file is in the supported "
@@ -512,11 +496,11 @@ msgstr ""
 "στο κατάλογο των κωδικοποιήσεων που υποστηρίζονται. Αν όχι, προσθέστε την "
 "από τις προτιμήσεις."
 
-#: ../plugins/scintilla/text_editor.c:1787
+#: ../plugins/scintilla/text_editor.c:1789
 msgid "Loading file..."
 msgstr "Φόρτωση αρχείου..."
 
-#: ../plugins/scintilla/text_editor.c:1796
+#: ../plugins/scintilla/text_editor.c:1798
 #, c-format
 msgid ""
 "Could not load file: %s\n"
@@ -527,26 +511,26 @@ msgstr ""
 "\n"
 "Λεπτομέρειες: %s"
 
-#: ../plugins/scintilla/text_editor.c:1817
+#: ../plugins/scintilla/text_editor.c:1819
 msgid "File loaded successfully"
 msgstr "Το αρχείο φορτώθηκε με επιτυχία"
 
 #
-#: ../plugins/scintilla/text_editor.c:1838
+#: ../plugins/scintilla/text_editor.c:1840
 msgid "Saving file..."
 msgstr "Αποθήκευση αρχείου..."
 
 #
-#: ../plugins/scintilla/text_editor.c:1847
+#: ../plugins/scintilla/text_editor.c:1849
 #, c-format
 msgid "Could not save intermediate file %s: %s"
 msgstr "Δεν ήταν δυνατή η αποθήκευση του ενδιάμεσου αρχείου %s: %s"
 
-#: ../plugins/scintilla/text_editor.c:1863
+#: ../plugins/scintilla/text_editor.c:1865
 msgid "File saved successfully"
 msgstr "Το αρχείο αποθηκεύτηκε με επιτυχία"
 
-#: ../plugins/scintilla/text_editor.c:2236
+#: ../plugins/scintilla/text_editor.c:2238
 #, c-format
 msgid ""
 "Cannot load Global defaults and configuration files:\n"
@@ -561,7 +545,7 @@ msgstr ""
 "Το anjuta θα επιστρέψει στη δόμηση σε (περιορισμένες) ρυθμίσεις."
 
 #: ../plugins/scratchbox/anjuta-scratchbox.plugin.in.h:1
-#: ../plugins/scratchbox/plugin.c:460 ../plugins/scratchbox/plugin.c:482
+#: ../plugins/scratchbox/plugin.c:460 ../plugins/scratchbox/plugin.c:478
 msgid "Scratchbox"
 msgstr "Scratchbox"
 
