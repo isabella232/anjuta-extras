@@ -1,16 +1,16 @@
 # Serbian translation of anjuta
-# Courtesy of Prevod.org team (http://www.prevod.org/) -- 2003, 2004, 2005, 2006, 2007, 2008.
+# Courtesy of Prevod.org team (http://www.prevod.org/) -- 2003—2015.
 # Translation updated on 2008-04-25 by cp6linux team (http://cp6linux.org/)
 # This file is distributed under the same license as the anjuta package.
-# Maintainer: Слободан Средојевић <ssl@uns.ns.ac.yu>
-# Мирослав Николић <miroslavnikolic@rocketmail.com>, 2012, 2013.
+# Слободан Средојевић <ssl@uns.ns.ac.yu>, 2003—2008
+# Мирослав Николић <miroslavnikolic@rocketmail.com>, 2012—2015.
 msgid ""
 msgstr ""
 "Project-Id-Version: 23.32\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=anjuta"
-"&keywords=I18N+L10N&component=unknown\n"
-"POT-Creation-Date: 2012-12-24 13:36+0000\n"
-"PO-Revision-Date: 2013-01-05 17:27+0200\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=anjuta&"
+"keywords=I18N+L10N&component=unknown\n"
+"POT-Creation-Date: 2015-12-28 03:54+0000\n"
+"PO-Revision-Date: 2015-12-28 11:55+0200\n"
 "Last-Translator: Мирослав Николић <miroslavnikolic@rocketmail.com>\n"
 "Language-Team: Serbian <gnom@prevod.org>\n"
 "Language: sr\n"
@@ -119,8 +119,9 @@ msgid "Enable braces check"
 msgstr "Омогући проверу заграда"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:21
-msgid "Strip trailling spaces on file save"
-msgstr "Уклони пратећи вишак празних места приликом бележења датотеке"
+#| msgid "Strip trailling spaces on file save"
+msgid "Strip trailing spaces on file save"
+msgstr "Уклони пратеће празнине приликом чувања датотеке"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:22
 msgid "Filter extraneous characters in DOS mode"
@@ -393,20 +394,20 @@ msgstr "Укључите/искључите прелом реда"
 msgid "Editor view settings"
 msgstr "Подешавања прегледа уређивача"
 
-#: ../plugins/scintilla/print.c:660
+#: ../plugins/scintilla/print.c:658
 #, c-format
 msgid "File: %s"
 msgstr "Датотека: %s"
 
-#: ../plugins/scintilla/print.c:889
+#: ../plugins/scintilla/print.c:883
 msgid "Unable to get text buffer for printing"
 msgstr "Не могу да припремим текст за штампу"
 
-#: ../plugins/scintilla/print.c:967
+#: ../plugins/scintilla/print.c:961
 msgid "No file to print!"
 msgstr "Нема датотеке за штампање!"
 
-#: ../plugins/scintilla/text_editor.c:509
+#: ../plugins/scintilla/text_editor.c:511
 #, c-format
 msgid ""
 "The file '%s' has been changed.\n"
@@ -415,16 +416,19 @@ msgstr ""
 "Датотека „%s“ је измењена.\n"
 "Да ли желите да је поново учитате?"
 
-#: ../plugins/scintilla/text_editor.c:515
+#: ../plugins/scintilla/text_editor.c:517
 #, c-format
+#| msgid ""
+#| "The file '%s' has been changed.\n"
+#| "Do you want to loose your changes and reload it?"
 msgid ""
 "The file '%s' has been changed.\n"
-"Do you want to loose your changes and reload it?"
+"Do you want to lose your changes and reload it?"
 msgstr ""
 "Датотека „%s“ је измењена.\n"
-"Да ли желите да одбаците ваше измене и да је поново учитате?"
+"Да ли желите да одбаците измене и да је поново учитате?"
 
-#: ../plugins/scintilla/text_editor.c:535
+#: ../plugins/scintilla/text_editor.c:537
 #, c-format
 msgid ""
 "The file '%s' has been deleted.\n"
@@ -433,11 +437,8 @@ msgstr ""
 "Датотека „%s“ је обрисана.\n"
 "Да ли потврђујете и затварате је?"
 
-#: ../plugins/scintilla/text_editor.c:542
+#: ../plugins/scintilla/text_editor.c:544
 #, c-format
-#| msgid ""
-#| "The file '%s' has been deleted.\n"
-#| "Do you want to loose your changes and close it?"
 msgid ""
 "The file '%s' has been deleted.\n"
 "Do you want to lose your changes and close it?"
@@ -445,24 +446,24 @@ msgstr ""
 "Датотека „%s“ је обрисана.\n"
 "Да ли желите да одбаците ваше измене и да је затворите?"
 
-#: ../plugins/scintilla/text_editor.c:1526
+#: ../plugins/scintilla/text_editor.c:1528
 msgid "Could not get file info"
 msgstr "Не могу да добавим податке о датотеци"
 
 #. DEBUG_PRINT ("%s", "This file is too big. Unable to allocate memory.");
-#: ../plugins/scintilla/text_editor.c:1538
+#: ../plugins/scintilla/text_editor.c:1540
 msgid "This file is too big. Unable to allocate memory."
 msgstr "Ова датотека је превелика. Не могу да доделим меморију."
 
-#: ../plugins/scintilla/text_editor.c:1547
+#: ../plugins/scintilla/text_editor.c:1549
 msgid "Could not open file"
 msgstr "Не могу да отворим датотеку"
 
-#: ../plugins/scintilla/text_editor.c:1558
+#: ../plugins/scintilla/text_editor.c:1560
 msgid "Error while reading from file"
 msgstr "Грешка током читања из датотеке"
 
-#: ../plugins/scintilla/text_editor.c:1604
+#: ../plugins/scintilla/text_editor.c:1606
 msgid ""
 "The file does not look like a text file or the file encoding is not "
 "supported. Please check if the encoding of file is in the supported "
@@ -472,11 +473,11 @@ msgstr ""
 "записа. Молим проверите да ли се кодирање ове датотеке налази на списку "
 "подржаних кодирања. Уколико није, додајте га из поставки."
 
-#: ../plugins/scintilla/text_editor.c:1787
+#: ../plugins/scintilla/text_editor.c:1789
 msgid "Loading file..."
 msgstr "Учитавам датотеку..."
 
-#: ../plugins/scintilla/text_editor.c:1796
+#: ../plugins/scintilla/text_editor.c:1798
 #, c-format
 msgid ""
 "Could not load file: %s\n"
@@ -487,24 +488,24 @@ msgstr ""
 "\n"
 "Детаљи: %s"
 
-#: ../plugins/scintilla/text_editor.c:1817
+#: ../plugins/scintilla/text_editor.c:1819
 msgid "File loaded successfully"
 msgstr "Датотека је успешно учитана"
 
-#: ../plugins/scintilla/text_editor.c:1838
+#: ../plugins/scintilla/text_editor.c:1840
 msgid "Saving file..."
 msgstr "Чувам датотеку..."
 
-#: ../plugins/scintilla/text_editor.c:1847
+#: ../plugins/scintilla/text_editor.c:1849
 #, c-format
 msgid "Could not save intermediate file %s: %s"
 msgstr "Не могу да сачувам датотеку %s: %s"
 
-#: ../plugins/scintilla/text_editor.c:1863
+#: ../plugins/scintilla/text_editor.c:1865
 msgid "File saved successfully"
 msgstr "Датотека је успешно сачувана"
 
-#: ../plugins/scintilla/text_editor.c:2236
+#: ../plugins/scintilla/text_editor.c:2238
 #, c-format
 msgid ""
 "Cannot load Global defaults and configuration files:\n"
@@ -518,7 +519,7 @@ msgstr ""
 "Ањута ће користити уграђена (ограничена) подешавања"
 
 #: ../plugins/scratchbox/anjuta-scratchbox.plugin.in.h:1
-#: ../plugins/scratchbox/plugin.c:460 ../plugins/scratchbox/plugin.c:482
+#: ../plugins/scratchbox/plugin.c:460 ../plugins/scratchbox/plugin.c:478
 msgid "Scratchbox"
 msgstr "Шкрабалица"
 
@@ -6480,8 +6481,8 @@ msgstr "Програм „%s“ не постоји"
 
 #~ msgid "Do you prefer installing as root ?"
 #~ msgstr ""
-#~ "Да ли више волите да инсталирате програм као администратор система рут"
-#~ "(root) ?"
+#~ "Да ли више волите да инсталирате програм као администратор система "
+#~ "рут(root) ?"
 
 #~ msgid "Unable to auto generate. Check Settings->Commands."
 #~ msgstr "Не могу аутоматски направити. Проверите Подешавања -> Наредбе."
@@ -6993,8 +6994,8 @@ msgstr "Програм „%s“ не постоји"
 
 #~ msgid "Insert GPL notice with Python style comments"
 #~ msgstr ""
-#~ "Укључи ОЈЛ напомену заједно са напоменама програмског језика Пајтон"
-#~ "(Python)"
+#~ "Укључи ОЈЛ напомену заједно са напоменама програмског језика "
+#~ "Пајтон(Python)"
 
 #~ msgid "Insert name of current user"
 #~ msgstr "Убаци име тренутног корисника"
