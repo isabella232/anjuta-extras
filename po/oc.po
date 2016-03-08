@@ -1,13 +1,13 @@
-# French translation of anjuta.
+# Occitan translation of anjuta.
 # Copyright (C) 2001-2009 Free Software Foundation, Inc.
 # This file is under the same licence as the anjuta package.
 # Cédric VALMARY <cvalmary@yahoo.fr>, 2016.
 msgid ""
 msgstr ""
 "Project-Id-Version: anjuta.HEAD\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=anjuta&"
-"keywords=I18N+L10N&component=unknown\n"
-"POT-Creation-Date: 2016-02-23 15:53+0000\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=anjuta&keywords=I18N+L10N&component=unknown\n"
+"POT-Creation-Date: 2016-03-08 03:53+0000\n"
 "PO-Revision-Date: 2016-02-23 17:28+0200\n"
 "Last-Translator: Cédric VALMARY <cvalmary@yahoo.fr>\n"
 "Language-Team: Tot en òc (totenoc.eu)\n"
@@ -540,3 +540,4 @@ msgstr "Modifica las comandas de construccion per utilizar scratchbox 1 o 2"
 
 #~ msgid "Valgrind Plugin"
 #~ msgstr "Greffon Valgrind"
+
