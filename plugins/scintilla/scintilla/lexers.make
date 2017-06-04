@@ -13,6 +13,8 @@ LEXER_OBJS = \
 	lexers/LexBaan.o\
 	lexers/LexBash.o\
 	lexers/LexBasic.o\
+	lexers/LexBatch.o\
+	lexers/LexBibTeX.o\
 	lexers/LexBullant.o\
 	lexers/LexCaml.o\
 	lexers/LexCLW.o\
@@ -25,9 +27,14 @@ LEXER_OBJS = \
 	lexers/LexCsound.o\
 	lexers/LexCSS.o\
 	lexers/LexD.o\
+	lexers/LexDiff.o\
+	lexers/LexDMAP.o\
+	lexers/LexDMIS.o\
 	lexers/LexECL.o\
+	lexers/LexEDIFACT.o\
 	lexers/LexEiffel.o\
 	lexers/LexErlang.o\
+	lexers/LexErrorList.o\
 	lexers/LexEScript.o\
 	lexers/LexFlagship.o\
 	lexers/LexForth.o\
@@ -35,14 +42,19 @@ LEXER_OBJS = \
 	lexers/LexGAP.o\
 	lexers/LexGui4Cli.o\
 	lexers/LexHaskell.o\
+	lexers/LexHex.o\
 	lexers/LexHTML.o\
+	lexers/LexIndent.o\
 	lexers/LexInno.o\
+	lexers/LexJSON.o\
 	lexers/LexKix.o\
+	lexers/LexKVIrc.o\
 	lexers/LexLaTeX.o\
 	lexers/LexLisp.o\
 	lexers/LexLout.o\
 	lexers/LexLua.o\
 	lexers/LexMagik.o\
+	lexers/LexMake.o\
 	lexers/LexMarkdown.o\
 	lexers/LexMatlab.o\
 	lexers/LexMetapost.o\
@@ -53,9 +65,9 @@ LEXER_OBJS = \
 	lexers/LexMySQL.o\
 	lexers/LexNimrod.o\
 	lexers/LexNsis.o\
+	lexers/LexNull.o\
 	lexers/LexOpal.o\
 	lexers/LexOScript.o\
-	lexers/LexOthers.o\
 	lexers/LexPascal.o\
 	lexers/LexPB.o\
 	lexers/LexPerl.o\
@@ -65,11 +77,14 @@ LEXER_OBJS = \
 	lexers/LexPowerPro.o\
 	lexers/LexPowerShell.o\
 	lexers/LexProgress.o\
+	lexers/LexProps.o\
 	lexers/LexPS.o\
 	lexers/LexPython.o\
 	lexers/LexR.o\
 	lexers/LexRebol.o\
+	lexers/LexRegistry.o\
 	lexers/LexRuby.o\
+	lexers/LexRust.o\
 	lexers/LexScriptol.o\
 	lexers/LexSmalltalk.o\
 	lexers/LexSML.o\
@@ -105,6 +120,8 @@ LEXER_SRCS = \
 	lexers/LexBaan.cxx\
 	lexers/LexBash.cxx\
 	lexers/LexBasic.cxx\
+	lexers/LexBatch.cxx\
+	lexers/LexBibTeX.cxx\
 	lexers/LexBullant.cxx\
 	lexers/LexCaml.cxx\
 	lexers/LexCLW.cxx\
@@ -117,9 +134,14 @@ LEXER_SRCS = \
 	lexers/LexCsound.cxx\
 	lexers/LexCSS.cxx\
 	lexers/LexD.cxx\
+	lexers/LexDiff.cxx\
+	lexers/LexDMAP.cxx\
+	lexers/LexDMIS.cxx\
 	lexers/LexECL.cxx\
+	lexers/LexEDIFACT.cxx\
 	lexers/LexEiffel.cxx\
 	lexers/LexErlang.cxx\
+	lexers/LexErrorList.cxx\
 	lexers/LexEScript.cxx\
 	lexers/LexFlagship.cxx\
 	lexers/LexForth.cxx\
@@ -127,14 +149,19 @@ LEXER_SRCS = \
 	lexers/LexGAP.cxx\
 	lexers/LexGui4Cli.cxx\
 	lexers/LexHaskell.cxx\
+	lexers/LexHex.cxx\
 	lexers/LexHTML.cxx\
+	lexers/LexIndent.cxx\
 	lexers/LexInno.cxx\
+	lexers/LexJSON.cxx\
 	lexers/LexKix.cxx\
+	lexers/LexKVIrc.cxx\
 	lexers/LexLaTeX.cxx\
 	lexers/LexLisp.cxx\
 	lexers/LexLout.cxx\
 	lexers/LexLua.cxx\
 	lexers/LexMagik.cxx\
+	lexers/LexMake.cxx\
 	lexers/LexMarkdown.cxx\
 	lexers/LexMatlab.cxx\
 	lexers/LexMetapost.cxx\
@@ -145,9 +172,9 @@ LEXER_SRCS = \
 	lexers/LexMySQL.cxx\
 	lexers/LexNimrod.cxx\
 	lexers/LexNsis.cxx\
+	lexers/LexNull.cxx\
 	lexers/LexOpal.cxx\
 	lexers/LexOScript.cxx\
-	lexers/LexOthers.cxx\
 	lexers/LexPascal.cxx\
 	lexers/LexPB.cxx\
 	lexers/LexPerl.cxx\
@@ -157,11 +184,14 @@ LEXER_SRCS = \
 	lexers/LexPowerPro.cxx\
 	lexers/LexPowerShell.cxx\
 	lexers/LexProgress.cxx\
+	lexers/LexProps.cxx\
 	lexers/LexPS.cxx\
 	lexers/LexPython.cxx\
 	lexers/LexR.cxx\
 	lexers/LexRebol.cxx\
+	lexers/LexRegistry.cxx\
 	lexers/LexRuby.cxx\
+	lexers/LexRust.cxx\
 	lexers/LexScriptol.cxx\
 	lexers/LexSmalltalk.cxx\
 	lexers/LexSML.cxx\

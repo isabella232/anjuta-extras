@@ -38,6 +38,7 @@
 #include <gtk/gtk.h>
 
 #define GTK
+#define INCLUDE_DEPRECATED_FEATURES
 #include "Platform.h"
 #include "PropSet.h"
 #include "Scintilla.h"

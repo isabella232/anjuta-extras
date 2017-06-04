@@ -37,6 +37,7 @@
 #define GTK
 #undef PLAT_GTK
 #define PLAT_GTK 1
+#define INCLUDE_DEPRECATED_FEATURES
 #include "Scintilla.h"
 #include "SciLexer.h"
 #include "ScintillaWidget.h"

@@ -39,8 +39,12 @@ libanjuta_scintilla_la_SOURCES =\
 	src/Decoration.h \
 	src/Document.cxx \
 	src/Document.h \
+	src/EditModel.cxx \
+	src/EditModel.h \
 	src/Editor.cxx \
 	src/Editor.h \
+	src/EditView.cxx \
+	src/EditView.h \
 	src/ExternalLexer.cxx \
 	src/ExternalLexer.h \
 	src/Indicator.cxx \
@@ -49,6 +53,8 @@ libanjuta_scintilla_la_SOURCES =\
 	src/KeyMap.h \
 	src/LineMarker.cxx \
 	src/LineMarker.h \
+	src/MarginView.cxx \
+	src/MarginView.h \
 	src/Partitioning.h \
 	src/PerLine.h \
 	src/PerLine.cxx \
@@ -99,6 +105,7 @@ libanjuta_scintilla_la_SOURCES =\
 	gtk/Converter.h \
 	gtk/PlatGTK.cxx \
 	gtk/ScintillaGTK.cxx \
+	gtk/ScintillaGTKAccessible.cxx \
 	$(LEXER_SRCS) \
 	$(BUILT_SOURCES)
 
