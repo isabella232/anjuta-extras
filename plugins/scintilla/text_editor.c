@@ -72,7 +72,6 @@
 #define GTK
 #undef PLAT_GTK
 #define PLAT_GTK 1
-#define INCLUDE_DEPRECATED_FEATURES
 #include "Scintilla.h"
 #include "SciLexer.h"
 #include "ScintillaWidget.h"
@@ -1982,7 +1981,7 @@ gchar*
 text_editor_get_selection (TextEditor * te)
 {
 	guint from, to;
-	struct TextRange tr;
+	struct Sci_TextRange tr;
 
 	from = scintilla_send_message (SCINTILLA (te->scintilla),
 				       SCI_GETSELECTIONSTART, 0, 0);
@@ -3889,7 +3888,7 @@ isearch_forward (IAnjutaEditorSearch* isearch,
 		flags = SCFIND_MATCHCASE;
 	}
 
-	struct TextToFind to_find;
+	struct Sci_TextToFind to_find;
 
 	to_find.chrg.cpMin = start;
 	to_find.chrg.cpMax = end;
@@ -3930,7 +3929,7 @@ isearch_backward (IAnjutaEditorSearch* isearch,
 		flags = SCFIND_MATCHCASE;
 	}
 
-	struct TextToFind to_find;
+	struct Sci_TextToFind to_find;
 
 	to_find.chrg.cpMin = start;
 	to_find.chrg.cpMax = end;

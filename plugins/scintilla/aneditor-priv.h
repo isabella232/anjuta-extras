@@ -38,7 +38,6 @@
 #include <gtk/gtk.h>
 
 #define GTK
-#define INCLUDE_DEPRECATED_FEATURES
 #include "Platform.h"
 #include "PropSet.h"
 #include "Scintilla.h"
@@ -294,7 +293,7 @@ protected:
 
 	void ClearDocument();
 	void CountLineEnds(int &linesCR, int &linesLF, int &linesCRLF);
-	CharacterRange GetSelection();
+	Sci_CharacterRange GetSelection();
 	void WordSelect();
 	void LineSelect();
 	void SelectionIntoProperties();

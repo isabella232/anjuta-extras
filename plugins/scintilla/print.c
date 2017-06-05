@@ -39,7 +39,6 @@
 #undef PLAT_GTK
 #define PLAT_GTK 1
 
-#define INCLUDE_DEPRECATED_FEATURES
 #include "Scintilla.h"
 #include "ScintillaWidget.h"
 #include "print.h"
@@ -207,9 +206,11 @@ static void
 anjuta_print_job_info_style_clear_attributes (PrintJobInfoStyle *pis)
 {
 	if (pis->attrs != NULL)
-			g_list_foreach (pis->attrs, (GFunc)pango_attribute_destroy, NULL);
-			g_list_free (pis->attrs);
-	pis->attrs = NULL;
+	{
+		g_list_foreach (pis->attrs, (GFunc)pango_attribute_destroy, NULL);
+		g_list_free (pis->attrs);
+		pis->attrs = NULL;
+	}
 }
 
 static void

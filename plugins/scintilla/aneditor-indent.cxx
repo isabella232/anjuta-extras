@@ -21,7 +21,7 @@
 #include "aneditor-priv.h"
 
 void AnEditor::IndentationIncrease(){
-	CharacterRange crange = GetSelection();
+	Sci_CharacterRange crange = GetSelection();
 	if (crange.cpMin != crange.cpMax)
 	{
 		SendEditor (SCI_TAB);
@@ -34,7 +34,7 @@ void AnEditor::IndentationIncrease(){
 }
 
 void AnEditor::IndentationDecrease(){
-	CharacterRange crange = GetSelection();
+	Sci_CharacterRange crange = GetSelection();
 	if (crange.cpMin != crange.cpMax)
 	{
 		SendEditor (SCI_BACKTAB);
@@ -50,7 +50,7 @@ void AnEditor::IndentationDecrease(){
 void AnEditor::SetLineIndentation(int line, int indent) {
 	if (indent < 0)
 		return;
-	CharacterRange crange = GetSelection();
+	Sci_CharacterRange crange = GetSelection();
 	int posBefore = GetLineIndentPosition(line);
 	SendEditor(SCI_SETLINEINDENTATION, line, indent);
 	int posAfter = GetLineIndentPosition(line);
@@ -127,7 +127,7 @@ void AnEditor::MaintainIndentation(char ch) {
 
 #if 0
 void AnEditor::AutomaticIndentation(char ch) {
-	CharacterRange crange = GetSelection();
+	Sci_CharacterRange crange = GetSelection();
 	int selStart = crange.cpMin;
 	int curLine = GetCurrentLineNumber();
 	int thisLineStart = SendEditor(SCI_POSITIONFROMLINE, curLine);

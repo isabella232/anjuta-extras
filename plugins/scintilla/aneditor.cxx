@@ -367,7 +367,7 @@ int AnEditor::GetFullLine(SString & text, int line) {
 
 
 void AnEditor::GetRange(Window &win, int start, int end, char *text) {
-	TextRange tr;
+	Sci_TextRange tr;
 	tr.chrg.cpMin = start;
 	tr.chrg.cpMax = end;
 	tr.lpstrText = text;
@@ -375,7 +375,7 @@ void AnEditor::GetRange(Window &win, int start, int end, char *text) {
 }
 
 void AnEditor::GetRange(guint start, guint end, gchar *text, gboolean styled) {
-	TextRange tr;
+	Sci_TextRange tr;
 	tr.chrg.cpMin = start;
 	tr.chrg.cpMax = end;
 	tr.lpstrText = text;
@@ -631,8 +631,8 @@ void AnEditor::BraceMatch(bool editor) {
 	}
 }
 
-CharacterRange AnEditor::GetSelection() {
-	CharacterRange crange;
+Sci_CharacterRange AnEditor::GetSelection() {
+	Sci_CharacterRange crange;
 	crange.cpMin = SendEditor(SCI_GETSELECTIONSTART);
 	crange.cpMax = SendEditor(SCI_GETSELECTIONEND);
 	return crange;
@@ -686,8 +686,8 @@ void AnEditor::LineSelect() {
 
 long AnEditor::Find (long flags, char* findWhat) {
 	if (!findWhat) return -1;
-	TextToFind ft = {{0, 0}, 0, {0, 0}};
-	CharacterRange crange = GetSelection();
+	Sci_TextToFind ft = {{0, 0}, 0, {0, 0}};
+	Sci_CharacterRange crange = GetSelection();
 	if (flags & ANEFIND_REVERSE_FLAG) {
 		ft.chrg.cpMin = crange.cpMin - 1;
 		ft.chrg.cpMax = 1;
@@ -1331,7 +1331,7 @@ int AnEditor::GetLineLength(int line) {
 }
 
 int AnEditor::GetCurrentLineNumber() {
-	CharacterRange crange = GetSelection();
+	Sci_CharacterRange crange = GetSelection();
 	int selStart = crange.cpMin;
 	return SendEditor(SCI_LINEFROMPOSITION, selStart);
 }
@@ -1344,7 +1344,7 @@ int AnEditor::GetCurrentScrollPosition() {
 // Upon a character being added, AnEditor may decide to perform some action
 // such as displaying a completion list.
 void AnEditor::CharAdded(char ch) {
-	CharacterRange crange = GetSelection();
+	Sci_CharacterRange crange = GetSelection();
 	int selStart = crange.cpMin;
 	int selEnd = crange.cpMax;
 	if ((selEnd == selStart) && (selStart > 0)) {
@@ -2161,7 +2161,7 @@ void AnEditor::HandleDwellStart(int mousePos) {
 	if (debugTipOn)
 		return;
 
-	CharacterRange crange = GetSelection();
+	Sci_CharacterRange crange = GetSelection();
 	if (crange.cpMin == crange.cpMax
 			|| mousePos < crange.cpMin
 			|| mousePos >= crange.cpMax)
@@ -2227,7 +2227,7 @@ int AnEditor::KeyPress(unsigned int state, unsigned int keyval){
 		(!SendEditor(SCI_CALLTIPACTIVE)) &&
 		(!SendEditor(SCI_AUTOCACTIVE))) {
 
-		CharacterRange crange = GetSelection();
+		Sci_CharacterRange crange = GetSelection();
 		int selStart = crange.cpMin;
 		int selEnd = crange.cpMax;
 
