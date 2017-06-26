@@ -1,0 +1,76 @@
+# Brazilian Portuguese translation for anjuta-extras.
+# Copyright (C) 2017 anjuta-extras's COPYRIGHT HOLDER
+# This file is distributed under the same license as the anjuta-extras package.
+# Rafael Fontenelle <rafaelff@gnome.org>, 2017.
+msgid ""
+msgstr ""
+"Project-Id-Version: anjuta-extras gnome-3-8\n"
+"POT-Creation-Date: 2017-06-19 19:07+0000\n"
+"PO-Revision-Date: 2017-06-25 21:30-0200\n"
+"Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
+"Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Virtaal 1.0.0-beta1\n"
+"X-Project-Style: gnome\n"
+
+#. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
+msgctxt "_"
+msgid "translator-credits"
+msgstr "Rafael Fontenelle <rafaelff@gnome.org>, 2017"
+
+#. (itstool) path: info/desc
+#. (itstool) path: page/title
+#: C/scintilla-plugin.page:8 C/scintilla-plugin.page:17
+msgid "Scintilla plugin"
+msgstr "Plugin Scintilla"
+
+#. (itstool) path: credit/name
+#: C/scintilla-plugin.page:12
+msgid "Sébastien Granjoux"
+msgstr "Sébastien Granjoux"
+
+#. (itstool) path: page/p
+#: C/scintilla-plugin.page:19
+msgid ""
+"This plugin provides an alternative editor using Scintilla. Comparing to the "
+"default GtkSourceView editor, it has some additional features like"
+msgstr ""
+"Esse plug-in fornece um editor alternativo usando Scintilla. Comparando com "
+"o editor GtkSourceView padrão, ele possui alguns recursos adicionais como"
+
+#. (itstool) path: item/p
+#: C/scintilla-plugin.page:27
+msgid ""
+"Code folding. You can show or hide the body of a function or any other code "
+"blocks by clicking in the margin."
+msgstr ""
+"(Des)dobramento de código. Você pode mostrar ou ocultar o corpo de uma "
+"função ou qualquer outro bloco de código clicando na margem."
+
+#. (itstool) path: item/p
+#: C/scintilla-plugin.page:31
+msgid ""
+"Column mode. By pressing <key>Ctrl</key> while selecting some text, you can "
+"put the cursor on several lines and select only a part of each line."
+msgstr ""
+"Modo coluna. Ao pressionar <key>Ctrl</key> enquanto seleciona algum texto, "
+"você pode colocar o cursor em várias linhas e selecione apenas uma parte de "
+"cada linha."
+
+#. (itstool) path: item/p
+#: C/scintilla-plugin.page:36
+msgid ""
+"Custom types highlight. The symbol db plugin sends the types defined in the "
+"project to the editor which highlight them."
+msgstr ""
+"Tipos personalizados de realce. O plug-in de símbolo db envia os tipos "
+"definidos no projeto ao editor que os realça."
+
+#. (itstool) path: page/p
+#: C/scintilla-plugin.page:41
+msgid "On the other hand, GtkSourceView is better integrated within GNOME."
+msgstr "Por outro lado, GtkSourceView está melhor integrado ao GNOME."
