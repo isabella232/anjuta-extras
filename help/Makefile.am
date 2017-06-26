@@ -8,6 +8,6 @@ DOC_PAGES = \
 	
 DOC_FIGURES =
 
-DOC_LINGUAS = de
+DOC_LINGUAS = de pt_BR
 
 -include $(top_srcdir)/git.mk
