@@ -1,0 +1,76 @@
+# Swedish translation for anjuta-extras.
+# Copyright © 2016 anjuta-extras's COPYRIGHT HOLDER
+# This file is distributed under the same license as the anjuta-extras package.
+# Anders Jonsson <anders.jonsson@norsjovallen.se>, 2016.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: anjuta-extras master\n"
+"POT-Creation-Date: 2015-10-08 02:54+0000\n"
+"PO-Revision-Date: 2016-04-29 00:18+0200\n"
+"Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: sv\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
+"X-Generator: Poedit 1.8.7.1\n"
+
+#. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
+msgctxt "_"
+msgid "translator-credits"
+msgstr "Anders Jonsson <anders.jonsson@norsjovallen.se>, 2015"
+
+#. (itstool) path: info/desc
+#. (itstool) path: page/title
+#: C/scintilla-plugin.page:8 C/scintilla-plugin.page:17
+msgid "Scintilla plugin"
+msgstr "Scintilla-insticksmodul"
+
+#. (itstool) path: credit/name
+#: C/scintilla-plugin.page:12
+msgid "Sébastien Granjoux"
+msgstr "Sébastien Granjoux"
+
+#. (itstool) path: page/p
+#: C/scintilla-plugin.page:19
+msgid ""
+"This plugin provides an alternative editor using Scintilla. Comparing to the "
+"default GtkSourceView editor, it has some additional features like"
+msgstr ""
+"Denna insticksmodul tillhandahåller en alternativ redigerare som använder "
+"Scintilla. Jämfört med GtkSourceView-redigeraren som används som standard "
+"har den några ytterligare funktioner som"
+
+#. (itstool) path: item/p
+#: C/scintilla-plugin.page:27
+msgid ""
+"Code folding. You can show or hide the body of a function or any other code "
+"blocks by clicking in the margin."
+msgstr ""
+"Kodinhängning. Du kan visa eller dölja texten i en funktion eller andra "
+"kodblock genom att klicka i marginalen."
+
+#. (itstool) path: item/p
+#: C/scintilla-plugin.page:31
+msgid ""
+"Column mode. By pressing <key>Ctrl</key> while selecting some text, you can "
+"put the cursor on several lines and select only a part of each line."
+msgstr ""
+"Kolumnläge. Genom att trycka <key>Ctrl</key> medan du markerar text kan du "
+"placera markören på flera rader och välja bara en del av varje rad."
+
+#. (itstool) path: item/p
+#: C/scintilla-plugin.page:36
+msgid ""
+"Custom types highlight. The symbol db plugin sends the types defined in the "
+"project to the editor which highlight them."
+msgstr ""
+"Anpassad färgmarkering av typer. Symboldatabasinsticksmodulen skickar "
+"typerna som definierats i projektet till redigeraren vilken färgmarkerar dem."
+
+#. (itstool) path: page/p
+#: C/scintilla-plugin.page:41
+msgid "On the other hand, GtkSourceView is better integrated within GNOME."
+msgstr "Å andra sidan är GtkSourceView bättre integrerat med GNOME."
