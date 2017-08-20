@@ -1,3 +1,88 @@
+anjuta-extras 3.25.91 (August 20, 2017) -- Sébastien Granjoux
+
+Sébastien Granjoux (6)
+      bgo #690373 - The syntax-highlighting for Gtk types does not work from version 3.x
+      bgo #711771 - The edge-column variable is not taken into account by anjuta for scintilla editor
+      Update to scintilla 3.7.5
+      Update new styles to use the one defined in Anjuta
+      Replace deprecated types
+      
+Anders Jonsson (3)
+      Fix typo
+      Add Swedish help translation
+
+Matej Urbančič (1)
+      Updated Slovenian translation
+
+Cédric Valmary (3)
+      Updated Occitan translation
+
+Мирослав Николић (1)
+      Updated Serbian translation
+
+Tom Tryfonidis (1)
+      Updated Greek translation
+
+Rafael Fontenelle (2)
+      Updated Brazilian Portuguese translation
+
+Pedro Albuquerque (1)
+      Updated Portuguese translation
+
+Marek Černocký (3)
+      Add Czech translation
+
+Daniel Mustieles (1)
+      Updated Spanish translation
+
+Balázs Úr (2)
+      Updated Hungarian translation
+
+Piotr Drąg (4)
+      Updated Polish translation
+
+Jordi Mas (1)
+      Updated Catalan translation
+
+Samir Ribic (1)
+      Added Bosnian translation
+
+Anders Jonsson (2)
+      Updated Swedish translation
+
+Cheng-Chia Tseng (1)
+      Updated Chinese (Taiwan) translation
+
+Inaki Larranaga Murgoitio (1)
+      Updated Basque language
+
+Muhammet Kara (2)
+      Updated Turkish translation
+
+Mario Blättermann (2)
+Christian Kirbach (1)
+Benjamin Steinwender (1)
+      Updated German translation
+
+Lasse Liehu (1)
+      Updated Finnish translation
+
+Michael Scherer (1)
+Charles Monzat (1)
+      Updated French translation
+
+Claudio Arseni (2)
+      Updated Italian translation
+
+Rūdolfs Mazurs (2)
+      Updated Latvian translation
+
+Kukuh Syafaat (1)
+Andika Triwidada (1)
+      Updated Indonesian translation
+
+
+
 anjuta-extras 3.10.0 (September 23, 2013) -- James Liggett
 
 Akom Chotiphantawanon (1):
