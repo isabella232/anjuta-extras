@@ -6,7 +6,8 @@ scintilla_AM_CPPFLAGS = \
 	Platform.h \
 	SciLexer.h \
 	Scintilla.h \
-	ScintillaWidget.h
+	ScintillaWidget.h \
+        Sci_Position.h
 
 EXTRA_DIST = $(scintilla_AM_CPPFLAGS) \
 	Face.py \

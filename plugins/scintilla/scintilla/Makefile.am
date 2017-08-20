@@ -26,7 +26,6 @@ libanjuta_scintilla_la_SOURCES =\
 	src/CaseConvert.h \
 	src/CaseFolder.cxx \
 	src/CaseFolder.h \
-	src/UnicodeFromUTF8.h \
 	src/Catalogue.cxx \
 	src/Catalogue.h \
 	src/CellBuffer.cxx \
@@ -47,6 +46,7 @@ libanjuta_scintilla_la_SOURCES =\
 	src/EditView.h \
 	src/ExternalLexer.cxx \
 	src/ExternalLexer.h \
+        src/FontQuality.h \
 	src/Indicator.cxx \
 	src/Indicator.h \
 	src/KeyMap.cxx \
@@ -60,6 +60,7 @@ libanjuta_scintilla_la_SOURCES =\
 	src/PerLine.cxx \
 	src/PositionCache.cxx \
 	src/PositionCache.h \
+        src/Position.h \
 	src/RESearch.cxx \
 	src/RESearch.h \
 	src/RunStyles.cxx \
@@ -68,22 +69,25 @@ libanjuta_scintilla_la_SOURCES =\
 	src/ScintillaBase.h \
 	src/Selection.cxx \
 	src/Selection.h \
+	src/SparseVector.h \
 	src/SplitVector.h \
 	src/Style.cxx \
 	src/Style.h \
 	src/SVector.h \
+	src/UnicodeFromUTF8.h \
 	src/UniConversion.cxx \
 	src/UniConversion.h \
+        src/UniqueString.h \
 	src/ViewStyle.cxx \
 	src/ViewStyle.h\
 	src/XPM.cxx\
 	src/XPM.h\
 	lexlib/Accessor.cxx \
 	lexlib/Accessor.h \
-	lexlib/CharacterSet.cxx \
-	lexlib/CharacterSet.h \
 	lexlib/CharacterCategory.cxx \
 	lexlib/CharacterCategory.h \
+	lexlib/CharacterSet.cxx \
+	lexlib/CharacterSet.h \
 	lexlib/LexAccessor.h \
 	lexlib/LexerBase.cxx \
 	lexlib/LexerBase.h \
@@ -97,6 +101,7 @@ libanjuta_scintilla_la_SOURCES =\
 	lexlib/PropSetSimple.cxx \
 	lexlib/PropSetSimple.h \
 	lexlib/SparseState.h \
+	lexlib/StringCopy.h \
 	lexlib/StyleContext.cxx\
 	lexlib/StyleContext.h\
 	lexlib/SubStyles.h \
@@ -104,8 +109,10 @@ libanjuta_scintilla_la_SOURCES =\
 	lexlib/WordList.h \
 	gtk/Converter.h \
 	gtk/PlatGTK.cxx \
-	gtk/ScintillaGTK.cxx \
 	gtk/ScintillaGTKAccessible.cxx \
+	gtk/ScintillaGTKAccessible.h \
+	gtk/ScintillaGTK.cxx \
+	gtk/ScintillaGTK.h \
 	$(LEXER_SRCS) \
 	$(BUILT_SOURCES)
 
