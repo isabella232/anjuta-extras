@@ -1,0 +1,76 @@
+# Czech translation for anjuta-extras.
+# Copyright (C) 2015 anjuta-extras's COPYRIGHT HOLDER
+# This file is distributed under the same license as the anjuta-extras package.
+# Marek Černocký <marek@manet.cz>, 2017.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: anjuta-extras gnome-3.10\n"
+"POT-Creation-Date: 2017-08-27 12:02+0000\n"
+"PO-Revision-Date: 2017-08-31 09:11+0200\n"
+"Last-Translator: Marek Černocký <marek@manet.cz>\n"
+"Language-Team: Czech <gnome-cs-list@gnome.org>\n"
+"Language: cs\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: Gtranslator 2.91.7\n"
+
+#. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
+msgctxt "_"
+msgid "translator-credits"
+msgstr "Marek Černocký <marek@manet.cz>"
+
+#. (itstool) path: info/desc
+#. (itstool) path: page/title
+#: C/scintilla-plugin.page:8 C/scintilla-plugin.page:17
+msgid "Scintilla plugin"
+msgstr "Zásuvný modul Scintilla"
+
+#. (itstool) path: credit/name
+#: C/scintilla-plugin.page:12
+msgid "Sébastien Granjoux"
+msgstr "Sébastien Granjoux"
+
+#. (itstool) path: page/p
+#: C/scintilla-plugin.page:19
+msgid ""
+"This plugin provides an alternative editor using Scintilla. Comparing to the "
+"default GtkSourceView editor, it has some additional features like"
+msgstr ""
+"Tento zásuvný modul poskytuje alternativní editor pomocí komponenty "
+"Scintilla. V porovnání s výchozím editorem GtkSourceView má navíc některé "
+"zajímavé funkce."
+
+#. (itstool) path: item/p
+#: C/scintilla-plugin.page:27
+msgid ""
+"Code folding. You can show or hide the body of a function or any other code "
+"blocks by clicking in the margin."
+msgstr ""
+"Sbalování kódu: Kliknutím na okraj můžete skrýt a zase zobrazit tělo funkce "
+"nebo jiný blok kódu."
+
+#. (itstool) path: item/p
+#: C/scintilla-plugin.page:31
+msgid ""
+"Column mode. By pressing <key>Ctrl</key> while selecting some text, you can "
+"put the cursor on several lines and select only a part of each line."
+msgstr ""
+"Sloupcový režim: Zmáčknutím <key>Ctrl</key> při označování nějakého textu "
+"můžete dostat kurzor na několik řádků a vybrat jen část jednotlivých řádků."
+
+#. (itstool) path: item/p
+#: C/scintilla-plugin.page:36
+msgid ""
+"Custom types highlight. The symbol db plugin sends the types defined in the "
+"project to the editor which highlight them."
+msgstr ""
+"Zvýrazňování vlastních typů: Databáze symbolů zásuvného modulu posílá typy "
+"definované v projektu do editoru a ten je zvýrazňuje."
+
+#. (itstool) path: page/p
+#: C/scintilla-plugin.page:41
+msgid "On the other hand, GtkSourceView is better integrated within GNOME."
+msgstr "Na druhou stranu, GtkSourceView je lépe integrován do GNOME."
