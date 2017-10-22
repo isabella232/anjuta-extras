@@ -35,8 +35,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: anjuta\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-12 21:10+0100\n"
+"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?"
+"product=anjuta&keywords=I18N+L10N&component=unknown\n"
+"POT-Creation-Date: 2017-04-08 13:57+0000\n"
 "PO-Revision-Date: 2013-03-10 01:06+0100\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
@@ -146,7 +147,7 @@ msgid "Enable braces check"
 msgstr "Aktivér klammekontrol"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:21
-msgid "Strip trailling spaces on file save"
+msgid "Strip trailing spaces on file save"
 msgstr "Fjern efterstillede mellemrum når der gemmes"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:22
@@ -443,10 +444,9 @@ msgstr ""
 "Vil du genindlæse den?"
 
 #: ../plugins/scintilla/text_editor.c:517
-#, c-format
 msgid ""
 "The file '%s' has been changed.\n"
-"Do you want to loose your changes and reload it?"
+"Do you want to lose your changes and reload it?"
 msgstr ""
 "Filen \"%s\" er blevet ændret.\n"
 "Ønsker du at genindlæse den, hvorved dine ændringer går tabt?"
