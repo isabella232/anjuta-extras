@@ -37,7 +37,7 @@ msgstr ""
 "Project-Id-Version: anjuta\n"
 "Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?"
 "product=anjuta&keywords=I18N+L10N&component=unknown\n"
-"POT-Creation-Date: 2017-04-08 13:57+0000\n"
+"POT-Creation-Date: 2017-10-22 13:01+0000\n"
 "PO-Revision-Date: 2013-03-10 01:06+0100\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
@@ -421,16 +421,16 @@ msgstr "Slå linjeombrydning til/fra"
 msgid "Editor view settings"
 msgstr "Visningsindstillinger i redigering"
 
-#: ../plugins/scintilla/print.c:658
+#: ../plugins/scintilla/print.c:660
 #, c-format
 msgid "File: %s"
 msgstr "Fil: %s"
 
-#: ../plugins/scintilla/print.c:883
+#: ../plugins/scintilla/print.c:885
 msgid "Unable to get text buffer for printing"
 msgstr "Kan ikke hente tekstbuffer til udskrift"
 
-#: ../plugins/scintilla/print.c:961
+#: ../plugins/scintilla/print.c:963
 msgid "No file to print!"
 msgstr "Ingen fil at udskrive!"
 
@@ -440,15 +440,16 @@ msgid ""
 "The file '%s' has been changed.\n"
 "Do you want to reload it?"
 msgstr ""
-"Filen \"%s\" er blevet ændret.\n"
+"Filen “%s” er blevet ændret.\n"
 "Vil du genindlæse den?"
 
 #: ../plugins/scintilla/text_editor.c:517
+#, c-format
 msgid ""
 "The file '%s' has been changed.\n"
 "Do you want to lose your changes and reload it?"
 msgstr ""
-"Filen \"%s\" er blevet ændret.\n"
+"Filen “%s” er blevet ændret.\n"
 "Ønsker du at genindlæse den, hvorved dine ændringer går tabt?"
 
 #: ../plugins/scintilla/text_editor.c:537
@@ -457,7 +458,7 @@ msgid ""
 "The file '%s' has been deleted.\n"
 "Do you confirm and close it?"
 msgstr ""
-"Filen \"%s\" er blevet slettet.\n"
+"Filen “%s” er blevet slettet.\n"
 "Vil du bekræfte og lukke den?"
 
 #: ../plugins/scintilla/text_editor.c:544
@@ -466,7 +467,7 @@ msgid ""
 "The file '%s' has been deleted.\n"
 "Do you want to lose your changes and close it?"
 msgstr ""
-"Filen \"%s\" er blevet slettet.\n"
+"Filen “%s” er blevet slettet.\n"
 "Ønsker du at lukke den, hvorved dine ændringer går tabt?"
 
 #: ../plugins/scintilla/text_editor.c:1528
@@ -498,7 +499,7 @@ msgstr ""
 
 #: ../plugins/scintilla/text_editor.c:1789
 msgid "Loading file..."
-msgstr "Indlæser fil ..."
+msgstr "Indlæser fil …"
 
 #: ../plugins/scintilla/text_editor.c:1798
 #, c-format
@@ -517,7 +518,7 @@ msgstr "Fil indlæst problemfrit"
 
 #: ../plugins/scintilla/text_editor.c:1840
 msgid "Saving file..."
-msgstr "Gemmer fil ..."
+msgstr "Gemmer fil …"
 
 #: ../plugins/scintilla/text_editor.c:1849
 #, c-format
@@ -574,4 +575,4 @@ msgstr "Indstillinger for Scratchbox"
 #: ../plugins/scratchbox/plugin.c:209
 #, c-format
 msgid "Program '%s' does not exists"
-msgstr "Programmet \"%s\" findes ikke"
+msgstr "Programmet “%s” findes ikke"
