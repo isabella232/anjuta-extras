@@ -1,0 +1,78 @@
+# Hungarian translation for anjuta-extras.
+# Copyright (C) 2018 Free Software Foundation, Inc.
+# This file is distributed under the same license as the anjuta-extras package.
+#
+# Balázs Úr <urbalazs at gmail dot com>, 2018.
+msgid ""
+msgstr ""
+"Project-Id-Version: anjuta-extras master\n"
+"POT-Creation-Date: 2017-11-19 14:43+0000\n"
+"PO-Revision-Date: 2018-01-28 18:32+0100\n"
+"Last-Translator: Balázs Úr <urbalazs@gmail.com>\n"
+"Language-Team: Hungarian <gnome-hu-list@gnome.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: hu\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 1.2\n"
+
+#. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
+msgctxt "_"
+msgid "translator-credits"
+msgstr "Úr Balázs <urbalazs at gmail dot com>, 2018."
+
+#. (itstool) path: info/desc
+#. (itstool) path: page/title
+#: C/scintilla-plugin.page:8 C/scintilla-plugin.page:17
+msgid "Scintilla plugin"
+msgstr "Scintilla bővítmény"
+
+#. (itstool) path: credit/name
+#: C/scintilla-plugin.page:12
+msgid "Sébastien Granjoux"
+msgstr "Sébastien Granjoux"
+
+#. (itstool) path: page/p
+#: C/scintilla-plugin.page:19
+msgid ""
+"This plugin provides an alternative editor using Scintilla. Comparing to the "
+"default GtkSourceView editor, it has some additional features like"
+msgstr ""
+"Ez a bővítmény egy alternatív szerkesztőt biztosít Scintilla használatával. "
+"Az alapértelmezett GtkSourceView szerkesztővel összehasonlítva ennek van "
+"néhány további funkciója, mint például"
+
+#. (itstool) path: item/p
+#: C/scintilla-plugin.page:27
+msgid ""
+"Code folding. You can show or hide the body of a function or any other code "
+"blocks by clicking in the margin."
+msgstr ""
+"Kódblokk összecsukása. Megjelenítheti vagy elrejtheti egy függvény vagy "
+"bármely egyéb kódblokk törzsét a margóra kattintva."
+
+#. (itstool) path: item/p
+#: C/scintilla-plugin.page:31
+msgid ""
+"Column mode. By pressing <key>Ctrl</key> while selecting some text, you can "
+"put the cursor on several lines and select only a part of each line."
+msgstr ""
+"Oszlop mód. A <key>Ctrl</key> nyomva tartása közbeni szövegkijelöléssel "
+"ráteheti a kurzort több sorra, és kijelölheti csak az egyes sorok részeit."
+
+#. (itstool) path: item/p
+#: C/scintilla-plugin.page:36
+msgid ""
+"Custom types highlight. The symbol db plugin sends the types defined in the "
+"project to the editor which highlight them."
+msgstr ""
+"Egyéni típusok kiemelése. A szimbólum-adatbázis bővítmény elküldi a "
+"projektben meghatározott típusokat a szerkesztőnek, amely kiemeli azokat."
+
+#. (itstool) path: page/p
+#: C/scintilla-plugin.page:41
+msgid "On the other hand, GtkSourceView is better integrated within GNOME."
+msgstr ""
+"Másrészről pedig a GtkSourceView jobban integrálódik a GNOME asztallal."
+
