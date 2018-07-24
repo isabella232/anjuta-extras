@@ -2,19 +2,18 @@
 # traducción de Anjuta al Español
 # Copyright © 2001-2003, 2006, 2007, 2008 Free Software Foundation, Inc.
 # This file is distributed under the same license as the anjuta package.
-#
+# 
 # Javier Conde Rueda <f3285740@est.fib.upc.es>, 2003.
 # Francisco Javier F. Serrador <serrador@cvs.gnome.es>, 2003, 2005.
 # Francisco Javier F. Serrador <serrador@cvs.gnome.org>, 2005, 2006.
 # Jorge González <jorgegonz@svn.gnome.org>, 2007, 2009, 2010.
-#
+# 
 # Daniel Mustieles <daniel.mustieles@gmail.com>, 2012, 2015.
 msgid ""
 msgstr ""
 "Project-Id-Version: anjuta-extras.master\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
-"product=anjuta&keywords=I18N+L10N&component=unknown\n"
-"POT-Creation-Date: 2015-07-13 02:50+0000\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/anjuta-extras/issues\n"
+"POT-Creation-Date: 2018-06-10 15:50+0000\n"
 "PO-Revision-Date: 2015-07-13 \n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Español; Castellano <gnome-es-list@gnome.org>\n"
@@ -124,7 +123,6 @@ msgid "Enable braces check"
 msgstr "Activar comprobación de llaves"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:21
-#| msgid "Strip trailling spaces on file save"
 msgid "Strip trailing spaces on file save"
 msgstr "Eliminar espacios finales al guardar"
 
@@ -399,16 +397,16 @@ msgstr "Activar/desactivar ajuste de línea"
 msgid "Editor view settings"
 msgstr "Configuración de la vista del editor"
 
-#: ../plugins/scintilla/print.c:658
+#: ../plugins/scintilla/print.c:660
 #, c-format
 msgid "File: %s"
 msgstr "Archivo: %s"
 
-#: ../plugins/scintilla/print.c:883
+#: ../plugins/scintilla/print.c:885
 msgid "Unable to get text buffer for printing"
 msgstr "No se puede obtener un búfer de texto para imprimir"
 
-#: ../plugins/scintilla/print.c:961
+#: ../plugins/scintilla/print.c:963
 msgid "No file to print!"
 msgstr "No hay archivo para imprimir."
 
@@ -423,9 +421,6 @@ msgstr ""
 
 #: ../plugins/scintilla/text_editor.c:517
 #, c-format
-#| msgid ""
-#| "The file '%s' has been changed.\n"
-#| "Do you want to loose your changes and reload it?"
 msgid ""
 "The file '%s' has been changed.\n"
 "Do you want to lose your changes and reload it?"
@@ -1457,8 +1452,8 @@ msgstr "El programa «%s» no existe"
 
 #~ msgid "Can not configure project: Missing configure script in %s."
 #~ msgstr ""
-#~ "No se puede configurar el proyecto: Falta el script de configuración en %"
-#~ "s."
+#~ "No se puede configurar el proyecto: Falta el script de configuración en "
+#~ "%s."
 
 #~ msgid "_Build"
 #~ msgstr "_Construir"
@@ -3358,8 +3353,8 @@ msgstr "El programa «%s» no existe"
 
 #~ msgid "Group name can only contain alphanumeric, '_', '-' or '.' characters"
 #~ msgstr ""
-#~ "El nombre del grupo sólo puede contener caracteres alfanuméricos, «_», «-» "
-#~ "o «.»"
+#~ "El nombre del grupo sólo puede contener caracteres alfanuméricos, «_», "
+#~ "«-» o «.»"
 
 #~ msgid "Parent group doesn't exist"
 #~ msgstr "El grupo padre no existe"
@@ -4160,7 +4155,7 @@ msgstr "El programa «%s» no existe"
 #~ msgstr "Registro de Git"
 
 #~ msgid "<b>Handler template</b>"
-#~ msgstr "<b>Plantilla del manejador</b>"
+#~ msgstr "<b>Plantilla del gestor</b>"
 
 #~ msgid "<b>Manage associations</b>"
 #~ msgstr "<b>Gestionar asociaciones</b>"
@@ -4178,7 +4173,7 @@ msgstr "El programa «%s» no existe"
 #~ msgstr "Diseñador"
 
 #~ msgid "Insert handler on edit"
-#~ msgstr "Insertar manejador al editar"
+#~ msgstr "Insertar gestor al editar"
 
 #~ msgid "Position type"
 #~ msgstr "Tipo de posición"
@@ -4243,20 +4238,20 @@ msgstr "El programa «%s» no existe"
 #~ msgstr "Editor del lenguaje «%s» desconocido"
 
 #~ msgid "Error while adding a new handler stub: %s"
-#~ msgstr "Error al añadir un nuevo manejador de esbozos: %s"
+#~ msgstr "Error al añadir un nuevo gestor de esbozos: %s"
 
 #~ msgid "Couldn't find a signal information"
 #~ msgstr "No se pudo encontrar una señal de información"
 
 #~ msgid "Error while adding a new handler stub: No current editor"
 #~ msgstr ""
-#~ "Error al añadir un nuevo manejador de esbozos: No existe un editor actual"
+#~ "Error al añadir un nuevo gestor de esbozos: No existe un editor actual"
 
 #~ msgid ""
 #~ "To avoid this messages turn off \"Insert handler on edit\" flag in "
 #~ "Preferences->Glade GUI Designer"
 #~ msgstr ""
-#~ "Para evitar estos mensajes desactive la opción «Insertar manejador al "
+#~ "Para evitar estos mensajes desactive la opción «Insertar gestor al "
 #~ "editar» en Preferencias->Diseñador de IGU Glade"
 
 #~ msgid "Those documents are already associated"
@@ -4283,10 +4278,10 @@ msgstr "El programa «%s» no existe"
 #~ msgstr "Cambiar entre diseñador/código"
 
 #~ msgid "Insert handler stub"
-#~ msgstr "Insertar manejador de esbozos"
+#~ msgstr "Insertar gestor de esbozos"
 
 #~ msgid "Insert handler stub, autoposition"
-#~ msgstr "Insertar manejador de esbozos, posición automática"
+#~ msgstr "Insertar gestor de esbozos, posición automática"
 
 #~ msgid "Associate last designer and last editor"
 #~ msgstr "Asociar el último diseñador y el último editor"
@@ -6021,8 +6016,8 @@ msgstr "El programa «%s» no existe"
 
 #~ msgid "The match \"%s\" was not found. Wrap search around the document?"
 #~ msgstr ""
-#~ "No se ha encontrado ninguna coincidencia con «%s». ¿Quiere continuar desde "
-#~ "el principio del documento?"
+#~ "No se ha encontrado ninguna coincidencia con «%s». ¿Quiere continuar "
+#~ "desde el principio del documento?"
 
 #~ msgid "The match \"%s\" was not found."
 #~ msgstr "No se ha encontrado ninguna coincidencia con «%s»."
