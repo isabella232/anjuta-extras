@@ -4,6 +4,6 @@ HELP_ID = anjuta-manual
 
 HELP_FILES = scintilla-plugin.page
 
-HELP_LINGUAS = cs de hu
+HELP_LINGUAS = cs de es hu
 
 -include $(top_srcdir)/git.mk
