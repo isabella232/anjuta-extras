@@ -9,7 +9,7 @@
   <homepage rdf:resource="http://www.anjuta.org/" />
   <mailing-list rdf:resource="https://lists.sourceforge.net/lists/listinfo/anjuta-list" />
   <download-page rdf:resource="http://download.gnome.org/sources/anjuta-extras/" />
-  <bug-database rdf:resource="http://bugzilla.gnome.org/browse.cgi?product=anjuta" />
+  <bug-database rdf:resource="https://gitlab.gnome.org/GNOME/anjuta-extras/issues/" />
   <category rdf:resource="http://api.gnome.org/doap-extensions#development" />
 
   <maintainer>
