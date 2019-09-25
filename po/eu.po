@@ -3,701 +3,895 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>, 2008, 2009, 2010.
+# Asier Sarasua Garmendia <asier.sarasua@gmail.com>, 2019.
+#
 msgid ""
-msgstr ""
-"Project-Id-Version: eu_to_be_translate\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-07 23:28+0200\n"
-"PO-Revision-Date: 2010-10-07 23:30+0200\n"
-"Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>\n"
-"Language-Team: Basque <itzulpena@euskalgnu.org>\n"
+msgstr "Project-Id-Version: eu_to_be_translate\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/anjuta-extras/issues\n"
+"POT-Creation-Date: 2019-07-26 17:29+0000\n"
+"PO-Revision-Date: 2019-09-25 10:00+0100\n"
+"Last-Translator: Asier Sarasua Garmendia <asier.sarasua@gmail.com>\n"
+"Language-Team: Basque <librezale@librezale.eus>\n"
+"Language: eu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: KBabel 1.11.4\n"
 
-#: ../plugins/profiler/gprof-call-graph-view.c:312
-#: ../plugins/profiler/gprof-call-graph-view.c:322
-#: ../plugins/profiler/gprof-call-graph-view.c:332
-#: ../plugins/profiler/gprof-flat-profile-view.c:56
-#: ../plugins/profiler/gprof-function-call-tree-view.c:60
-msgid "Function Name"
-msgstr "Funtzioaren izena"
+#: ../plugins/sample1/anjuta-sample.plugin.in.h:1
+msgid "Sample Plugin"
+msgstr "Plugin adibidea"
 
-#: ../plugins/profiler/gprof-call-graph-view.c:344
-msgid "Time"
-msgstr "Ordua"
+#: ../plugins/sample1/anjuta-sample.plugin.in.h:2
+msgid "Sample Plugin for Anjuta."
+msgstr "Anjuta-ren adibide plugina."
 
-#. Total amount of time spent in this function, excluding those it calla.
-#. * This is the same as the "Seconds" field in the flat profile.
-#. Time spent in a subroutine of a function.
-#. Time spent in this function when it was called by its caller
-#: ../plugins/profiler/gprof-call-graph-view.c:361
-#: ../plugins/profiler/gprof-call-graph-view.c:375
-#: ../plugins/profiler/gprof-call-graph-view.c:389
-msgid "Self"
-msgstr "Berarenak"
+#: ../plugins/scintilla/anjuta-editor.plugin.in.h:1
+#: ../plugins/scintilla/plugin.c:487 ../plugins/scintilla/plugin.c:499
+msgid "Scintilla Editor"
+msgstr "Scintilla editorea"
 
-#: ../plugins/profiler/gprof-call-graph-view.c:402
-#: ../plugins/profiler/gprof-call-graph-view.c:414
-#: ../plugins/profiler/gprof-call-graph-view.c:426
-msgid "Children"
-msgstr "Umeak"
+#: ../plugins/scintilla/anjuta-editor.plugin.in.h:2
+msgid "An alternate editor based on Scintilla"
+msgstr "Scintilla-n oinarritutako ordezko editorea"
 
-#: ../plugins/profiler/gprof-call-graph-view.c:439
-#: ../plugins/profiler/gprof-call-graph-view.c:449
-#: ../plugins/profiler/gprof-call-graph-view.c:459
-#: ../plugins/profiler/gprof-flat-profile-view.c:113
-msgid "Calls"
-msgstr "Deiak"
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:1
+msgid "Plus/Minus"
+msgstr "Plus/minus"
 
-#: ../plugins/profiler/gprof-flat-profile-view.c:68
-msgid "% Time"
-msgstr "% Denbora"
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:2
+msgid "Arrows"
+msgstr "Geziak"
 
-#: ../plugins/profiler/gprof-flat-profile-view.c:82
-msgid "Cumulative Seconds"
-msgstr "Segundo metagarriak"
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:3
+msgid "Circular"
+msgstr "Zirkularra"
 
-#. The number of seconds that this function, excluding other functions it
-#. * calls, takes to execute.
-#: ../plugins/profiler/gprof-flat-profile-view.c:99
-msgid "Self Seconds"
-msgstr "Beraren segundoak"
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:4
+msgid "Squares"
+msgstr "Koadroak"
 
-#. The average number of milliseconds spent in a function, excluding
-#. * the functions that it calls.
-#: ../plugins/profiler/gprof-flat-profile-view.c:127
-msgid "Self ms/call"
-msgstr "Beraren ms, deiko"
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:5
+msgid "Choose autocomplete for single match"
+msgstr "Aukeratu osatze automatikoa bat etortze bakunerako"
 
-#. Same as self ms/call, but includes called functions.
-#: ../plugins/profiler/gprof-flat-profile-view.c:143
-msgid "Total ms/call"
-msgstr "ms totalak, deiko"
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:6
+msgid "Autocomplete XML/HTML closing tags"
+msgstr "Osatu automatikoki itxierako XML/HTML etiketak"
 
-#: ../plugins/profiler/plugin.c:179
-msgid ""
-"Could not get profiling data.\n"
-"\n"
-"Please check the path to this target's profiling data file."
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:7
+msgid "Autocompletion pop up choices"
+msgstr "Osatze automatikoaren laster-leihoen aukerak"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:8
+msgid "Autocompletion"
+msgstr "Osatze automatikoa"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:9
+msgid "Enable code folding"
+msgstr "Gaitu kodea tolestea"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:10
+msgid "Enable comments folding"
+msgstr "Gaitu iruzkinak tolestea"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:11
+msgid "Enable Python comments folding"
+msgstr "Gaitu Python iruzkinak tolestea"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:12
+msgid "Enable Python quoted strings folding"
+msgstr "Gaitu Python testu-aipuak tolestea"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:13
+msgid "Enable HTML tags folding"
+msgstr "Gaitu HTML etiketak tolestea"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:14
+msgid "Compact folding"
+msgstr "Toleste trinkoa"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:15
+msgid "Draw line below folded lines"
+msgstr "Marraztu lerroa tolestura-lerroen azpian"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:16
+msgid "Collapse all code folds on file open"
+msgstr "Tolestu kode osoa fitxategia irekitzean"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:17
+msgid "Fold style:"
+msgstr "Toleste-estiloa:"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:18
+msgid "Code folding"
+msgstr "Kodea tolestea"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:19
+msgid "Disable syntax highlighting"
+msgstr "Desgaitu sintaxia nabarmentzea"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:20
+msgid "Enable braces check"
+msgstr "Gaitu giltzak egiaztatzea"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:21
+msgid "Strip trailling spaces on file save"
+msgstr "Kendu amaierako zuriuneak fitxategia gordetzean"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:22
+msgid "Filter extraneous characters in DOS mode"
+msgstr "Iragazi karaktere arraroak DOS moduan"
+
+#. Next bookmark at the end of the file will jump to the first bookmark from the beginning
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:24
+msgid "Wrap bookmarks search around"
 msgstr ""
-"Ezin izan dira analizatze-datuak eskuratu.\n"
-"\n"
-"Begiratu helburuaren analizatze-datuen fitxategiaren bide-izena ondo dagoen."
 
-#: ../plugins/profiler/plugin.c:293
-msgid ""
-"This target does not have any profiling data.\n"
-"\n"
-"Please ensure that the target is compiled with profiling support (-p)and "
-"that it is run at least once."
-msgstr ""
-"Helburu horrek ez du profilaren daturik.\n"
-"\n"
-"Egiaztatu profilaren euskarriarekin (-p) konpilatua dagoela helburua, eta "
-"behin bederen exekutatua izan dela."
+#. Column where a vertical line will be drawn to indicate that lines should not be longer
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:26
+msgid "Edge column"
+msgstr "Marraztu ertza zutabeari"
 
-#. Action name
-#. Stock icon, if any
-#: ../plugins/profiler/plugin.c:754
-msgid "Debug"
-msgstr "Araztu"
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:27
+msgid "Caret blink period in ms"
+msgstr "Kurtsoaren keinukatze-tartea milisegundotan"
 
-#. Action name
-#. Stock icon, if any
-#: ../plugins/profiler/plugin.c:762 ../plugins/profiler/plugin.c:874
-#: ../plugins/profiler/profiler.plugin.in.h:3
-msgid "Profiler"
-msgstr "Analizatzailea"
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:28
+msgid "Editor caret (cursor) width in pixels"
+msgstr "Editoreare kurtsorearen zabalera pixeletan"
 
-#. Action name
-#. Stock icon, if any
-#: ../plugins/profiler/plugin.c:770
-msgid "Select Target..."
-msgstr "Helburua hautatzea..."
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:29
+msgid "Line numbers margin width in pixels"
+msgstr "Lerro-zenbakien marjinaren zabalera pixeletan"
 
-#. Action name
-#. Stock icon, if any
-#: ../plugins/profiler/plugin.c:778
-msgid "Refresh"
-msgstr "Freskatu"
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:30
+msgid "Misc options"
+msgstr "Aukera gehiago"
 
-#. Action name
-#. Stock icon, if any
-#: ../plugins/profiler/plugin.c:786
-msgid "Delete Data"
-msgstr "Ezabatu datuak"
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:31
+msgid "Colors & Fonts"
+msgstr "Koloreak eta letra-tipoak"
 
-#: ../plugins/profiler/plugin.c:829
-msgid "Application Performance Profiler"
-msgstr "Aplikazioaren errendimenduaren analizatzailea"
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:32
+msgid "Editor"
+msgstr "Editorea"
 
-#: ../plugins/profiler/plugin.c:851
-msgid "Flat Profile"
-msgstr "Profil soila"
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:33
+msgid "Enable automatic indentation"
+msgstr "Gaitu koskatze automatikoa"
 
-#: ../plugins/profiler/plugin.c:856
-msgid "Call Graph"
-msgstr "Dei-grafikoa"
+#. If the user presses enter, the indentation of the current line will automatically be added to the next line
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:35
+msgid "Maintain past Indentation"
+msgstr "Mantendu iraganeko koskatzea"
 
-#: ../plugins/profiler/plugin.c:861
-msgid "Function Call Tree"
-msgstr "Funtzioaren dei-zuhaitza"
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:36
+msgid "Pressing tab inserts indentation"
+msgstr "Tab sakatzean koska txertatzen da"
 
-#: ../plugins/profiler/plugin.c:868
-msgid "Function Call Chart"
-msgstr "Funtzioaren dei-diagrama"
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:37
+msgid "Pressing backspace un-indents"
+msgstr "Atzerako tekla sakatzean koska kentzen da"
 
-#: ../plugins/scintilla/print.c:659
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:38
+msgid "Indent closing braces"
+msgstr "Koskatu itxierako giltzak"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:39
+msgid "Indent opening braces"
+msgstr "Koskatu irekierako giltzak"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:40
+msgid "Use tabs for indentation"
+msgstr "Erabili tabuladoreak koskatzeko"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:41
+msgid "Indentation size in spaces:"
+msgstr "Kosken tamaina (zuriunetan):"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:42
+msgid "Tab size in spaces:"
+msgstr "Tabulazioen tamaina (zuriunetan):"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:43
+msgid "Basic Indentation"
+msgstr "Oinarrizko koskatzea"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:44
+msgid "View EOL chars"
+msgstr "Bistarau EOL karaktereak"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:45
+msgid "View Indentation Guides"
+msgstr "Bistaratu koskatze-gidak"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:46
+msgid "View Whitespaces"
+msgstr "Bistaratu zuriuneak"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:47
+msgid "View indentation whitespaces"
+msgstr "Bistaratu koskatze-zuriuneak"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:48
+msgid "View Line Wrap"
+msgstr "Bistaratu lerro-egokitzea"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:49
+msgid "Margin Linenum visible"
+msgstr "Marjinaren lerro-zenbakia ikusgai"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:50
+msgid "Margin Marker visible"
+msgstr "Marjinaren markatzailea ikusgai"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:51
+msgid "Margin Fold visible"
+msgstr "Marjinaren tolestura ikusgai"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:52
+msgid "Lines"
+msgstr "Lerroak"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:53
+msgid "Add line number every:"
+msgstr "Gehitu lerro-zenbakia honako tartearekin:"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:54
+msgid "Enable line wrap"
+msgstr "Gaitu lerroen egokitzea"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:55
+msgid "Add page header"
+msgstr "Gehitu orri-goiburua"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:56
+msgid "Monochrome"
+msgstr "Monokromoa"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:57
+msgid "Colour"
+msgstr "Kolorea"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:58
+msgid "Mode:"
+msgstr "Modua:"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:59
+msgid "Print options"
+msgstr "Inprimatze-aukerak"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:60
+msgid "Printing"
+msgstr "Inprimatzen"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:61
+msgid "Fonts and colors for editor"
+msgstr "Editorearen letra-tipoak eta koloreak"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:62
+msgid "Select highlight style to edit:"
+msgstr "Hautatu ediziorako nabarmentze-estiloa:"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:63
+msgid "Bold"
+msgstr "Lodia"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:64
+msgid "Italic"
+msgstr "Etzana"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:65
+msgid "Underlined"
+msgstr "Azpimarratua"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:66
+msgid "Use default"
+msgstr "Erabili lehenetsia"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:67
+msgid "Background color:"
+msgstr "Atzeko planoaren kolorea:"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:68
+msgid "Foreground color:"
+msgstr "Aurreko planoaren kolorea:"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:69
+msgid "Attributes:"
+msgstr "Atributuak:"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:70
+msgid "Font:"
+msgstr "Letra-tipoa:"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:71
+msgid "Highlight style"
+msgstr "Nabarmentze-estiloa"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:72
+msgid "Caret (cursor) color:"
+msgstr "Kurtsorearen kolorea:"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:73
+msgid "Calltip background:"
+msgstr "Argibideen atzeko planoa:"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:74
+msgid "Selection background:"
+msgstr "Hautapenaren atzeko planoa:"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:75
+msgid "Selection foreground:"
+msgstr "Hautapenaren aurreko planoa:"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:76
+msgid "Other colors"
+msgstr "Beste kolore batzuk"
+
+#: ../plugins/scintilla/plugin.c:160
+msgid "_Line Number Margin"
+msgstr "_Marjinetako lerro-zenbakiak"
+
+#: ../plugins/scintilla/plugin.c:161
+msgid "Show/Hide line numbers"
+msgstr "Lerro-zenbakiak erakusten/ezkutatzen ditu"
+
+#: ../plugins/scintilla/plugin.c:163
+msgid "_Marker Margin"
+msgstr "_Marka-marjina"
+
+#: ../plugins/scintilla/plugin.c:164
+msgid "Show/Hide marker margin"
+msgstr "Maka-marjina erakusten/ezkutatzen du"
+
+#: ../plugins/scintilla/plugin.c:166
+msgid "_Code Fold Margin"
+msgstr "_Kode-tolesturen marjina"
+
+#: ../plugins/scintilla/plugin.c:167
+msgid "Show/Hide code fold margin"
+msgstr "Erakutsi/ezkutatu kode-tolesturen marjina"
+
+#: ../plugins/scintilla/plugin.c:169
+msgid "_Indentation Guides"
+msgstr "K_oskatze-gidak"
+
+#: ../plugins/scintilla/plugin.c:170
+msgid "Show/Hide indentation guides"
+msgstr "Erakutsi/ezkutatu koskatze-gidak"
+
+#: ../plugins/scintilla/plugin.c:172
+msgid "_White Space"
+msgstr "_Zuriunea"
+
+#: ../plugins/scintilla/plugin.c:173
+msgid "Show/Hide white spaces"
+msgstr "Zuriuneak erakusten/ezkutatzen ditu"
+
+#: ../plugins/scintilla/plugin.c:175
+msgid "_Line End Characters"
+msgstr "_Lerro-amaierako karaktereak"
+
+#: ../plugins/scintilla/plugin.c:176
+msgid "Show/Hide line end characters"
+msgstr "Lerro-amaierako karaktereak erakusten/ezkutatzen ditu"
+
+#: ../plugins/scintilla/plugin.c:178
+msgid "Line _Wrapping"
+msgstr "Lerroa _egokitzea"
+
+#: ../plugins/scintilla/plugin.c:179
+msgid "Enable/disable line wrapping"
+msgstr "Lerroa egokitzea gaitzen/desgaitzen du"
+
+#: ../plugins/scintilla/plugin.c:372
+msgid "Editor view settings"
+msgstr "Editorearen ikuspegi-ezarpenak"
+
+#: ../plugins/scintilla/print.c:658
 #, c-format
 msgid "File: %s"
 msgstr "Fitxategia: %s"
 
-#: ../plugins/scintilla/print.c:888
+#: ../plugins/scintilla/print.c:883
 msgid "Unable to get text buffer for printing"
 msgstr "Ezin izan da inprimatzeko testu-bufferra hartu"
 
-#: ../plugins/scintilla/print.c:967
+#: ../plugins/scintilla/print.c:961
 msgid "No file to print!"
 msgstr "Ez dago inprimatzeko fitxategirik!"
 
-#: ../plugins/scintilla/plugin.c:309 ../plugins/scintilla/plugin.c:321
-#: ../plugins/scintilla/anjuta-editor.plugin.in.h:2
-msgid "Scintilla Editor"
-msgstr "Scintilla editorea"
-
-#: ../plugins/scintilla/text_editor.c:438
+#: ../plugins/scintilla/text_editor.c:511
 #, c-format
 msgid ""
 "The file '%s' has been changed.\n"
-"Do you want to reload it ?"
-msgstr ""
-"'%s' fitxategia aldatu egin da.\n"
+"Do you want to reload it?"
+msgstr "'%s' fitxategia aldatu egin da.\n"
 "Birkargatu nahi duzu?"
 
-#: ../plugins/scintilla/text_editor.c:444
+#: ../plugins/scintilla/text_editor.c:517
 #, c-format
 msgid ""
 "The file '%s' has been changed.\n"
-"Do you want to loose your changes and reload it ?"
-msgstr ""
-"'%s' fitxategia aldatu egin da.\n"
-"Aldaketak galtzea eta berriro kargatzea nahi duzu?"
+"Do you want to loose your changes and reload it?"
+msgstr "'%s' fitxategia aldatu egin da.\n"
+"Aldaketak galdu eta berriro kargatu nahi duzu?"
 
-#: ../plugins/scintilla/text_editor.c:464
+#: ../plugins/scintilla/text_editor.c:537
 #, c-format
 msgid ""
 "The file '%s' has been deleted.\n"
-"Do you confirm and close it ?"
-msgstr ""
-"'%s' fitxategia ezabatu egin da.\n"
-"Hura berresten eta ixten duzu?"
+"Do you confirm and close it?"
+msgstr "'%s' fitxategia ezabatu egin da.\n"
+"Hori berretsi eta itxi nahi duzu?"
 
-#: ../plugins/scintilla/text_editor.c:471
+#: ../plugins/scintilla/text_editor.c:544
 #, c-format
 msgid ""
 "The file '%s' has been deleted.\n"
-"Do you want to loose your changes and close it ?"
-msgstr ""
-"'%s' fitxategia ezabatu egin da.\n"
-"Aldaketak galtzea eta berriro kargatzea nahi duzu?"
+"Do you want to lose your changes and close it?"
+msgstr "'%s' fitxategia ezabatu egin da.\n"
+"Aldaketak galdu eta berriro kargatu nahi duzu?"
 
-#: ../plugins/scintilla/text_editor.c:1458
+#: ../plugins/scintilla/text_editor.c:1528
 msgid "Could not get file info"
 msgstr "Ezin izan da fitxategiaren informazioa eskuratu"
 
 #. DEBUG_PRINT ("%s", "This file is too big. Unable to allocate memory.");
-#: ../plugins/scintilla/text_editor.c:1470
+#: ../plugins/scintilla/text_editor.c:1540
 msgid "This file is too big. Unable to allocate memory."
 msgstr "Fitxategi hori handiegia da. Ezin izan da memoria esleitu."
 
-#: ../plugins/scintilla/text_editor.c:1479
+#: ../plugins/scintilla/text_editor.c:1549
 msgid "Could not open file"
 msgstr "Ezin izan da fitxategia ireki"
 
-#: ../plugins/scintilla/text_editor.c:1490
+#: ../plugins/scintilla/text_editor.c:1560
 msgid "Error while reading from file"
 msgstr "Errorea gertatu da fitxategia irakurtzean."
 
-#: ../plugins/scintilla/text_editor.c:1536
+#: ../plugins/scintilla/text_editor.c:1606
 msgid ""
 "The file does not look like a text file or the file encoding is not "
 "supported. Please check if the encoding of file is in the supported "
 "encodings list. If not, add it from the preferences."
-msgstr ""
-"Fitxategiak ez dirudi testu-fitxategi bat, edo fitxategiaren kodetzea ez "
-"dago onartua. Begiratu fitxategiaren kodetzea kodetze-zerrendan dagoen. Ez "
-"badago, gehitu hobespenetan."
+msgstr "Fitxategiak ez dirudi testu-fitxategi bat, edo fitxategiaren kodetzea ez dago onartua. Begiratu fitxategiaren kodetzea kodetze-zerrendan dagoen. Ez badago, gehitu hobespenetan."
 
-#: ../plugins/scintilla/text_editor.c:1683
+#: ../plugins/scintilla/text_editor.c:1789
 msgid "Loading file..."
-msgstr "Fitxategia kargatzea..."
+msgstr "Fitxategia kargatzea…"
 
-#: ../plugins/scintilla/text_editor.c:1692
+#: ../plugins/scintilla/text_editor.c:1798
 #, c-format
 msgid ""
 "Could not load file: %s\n"
 "\n"
 "Details: %s"
-msgstr ""
-"Ezin izan da fitxategia kargatu: %s\n"
+msgstr "Ezin izan da fitxategia kargatu: %s\n"
 "\n"
 "Xehetasunak: %s"
 
-#: ../plugins/scintilla/text_editor.c:1713
+#: ../plugins/scintilla/text_editor.c:1819
 msgid "File loaded successfully"
 msgstr "Fitxategia behar bezala kargatu da"
 
-#: ../plugins/scintilla/text_editor.c:1731
+#: ../plugins/scintilla/text_editor.c:1840
 msgid "Saving file..."
-msgstr "Fitxategia gordetzen..."
+msgstr "Fitxategia gordetzen…"
 
-#: ../plugins/scintilla/text_editor.c:1740
+#: ../plugins/scintilla/text_editor.c:1849
 #, c-format
 msgid "Could not save intermediate file %s: %s"
 msgstr "Ezin izan da %s tarteko fitxategia gorde: %s"
 
-#: ../plugins/scintilla/text_editor.c:1756
+#: ../plugins/scintilla/text_editor.c:1865
 msgid "File saved successfully"
 msgstr "Fitxategia behar bezala gorde da"
 
-#: ../plugins/scintilla/text_editor.c:2129
+#: ../plugins/scintilla/text_editor.c:2238
 #, c-format
 msgid ""
 "Cannot load Global defaults and configuration files:\n"
 "%s.\n"
 "This may result in improper behaviour or instabilities.\n"
 "Anjuta will fall back to built in (limited) settings"
-msgstr ""
-"Ezin dira kargatu lehenespen orokorrak eta konfigurazio-fitxategiak:\n"
+msgstr "Ezin dira kargatu lehenespen orokorrak eta konfigurazio-fitxategiak:\n"
 "%s.\n"
-"Litekeena da horren ondorioz funtzionamendu okerra edo ezegonkortasunak "
-"izatea.\n"
+"Litekeena da horren ondorioz funtzionamendu okerra edo ezegonkortasunak izatea.\n"
 "Anjuta-k atzera egingo du ezarpenak (mugatuak) eraikitzeko"
 
-#: ../plugins/scratchbox/plugin.c:213
+#: ../plugins/scratchbox/anjuta-scratchbox.plugin.in.h:1
+#: ../plugins/scratchbox/plugin.c:460 ../plugins/scratchbox/plugin.c:478
+msgid "Scratchbox"
+msgstr "Scratchbox"
+
+#: ../plugins/scratchbox/anjuta-scratchbox.plugin.in.h:2
+msgid "Change build commands to use scratchbox 1 or 2"
+msgstr "Aldatu eraikitzeko komandoak  Scratchbox 1 edo 2 erabiltzeko"
+
+#: ../plugins/scratchbox/anjuta-scratchbox.ui.h:1
+msgid "Scratchbox directory:"
+msgstr "Scratchbox direktorioa:"
+
+#: ../plugins/scratchbox/anjuta-scratchbox.ui.h:2
+msgid "Scratchbox version:"
+msgstr "Scratchbox bertsioa:"
+
+#: ../plugins/scratchbox/anjuta-scratchbox.ui.h:3
+msgid "Select Scratchbox Folder"
+msgstr "Hautatu Scratchbox karpeta"
+
+#: ../plugins/scratchbox/anjuta-scratchbox.ui.h:4
+msgid "Scratchbox target:"
+msgstr "Scratchbox helburua:"
+
+#: ../plugins/scratchbox/anjuta-scratchbox.ui.h:5
+msgid "Scratchbox Options"
+msgstr "Scratchbox aukerak"
+
+#: ../plugins/scratchbox/plugin.c:209
 #, c-format
 msgid "Program '%s' does not exists"
 msgstr "'%s' programarik ez dago"
 
-#: ../plugins/scratchbox/plugin.c:464 ../plugins/scratchbox/plugin.c:486
-#: ../plugins/scratchbox/anjuta-scratchbox.plugin.in.h:2
-msgid "Scratchbox"
-msgstr "Scratchbox"
-
-#: ../plugins/valgrind/plugin.c:134
-msgid "Options"
-msgstr "Aukerak"
-
-#: ../plugins/valgrind/plugin.c:262
-msgid "Select debugging target"
-msgstr "Hautatu arazte-helburua"
-
-#: ../plugins/valgrind/plugin.c:319 ../plugins/valgrind/plugin.c:440
-#: ../plugins/valgrind/plugin.c:676 ../plugins/valgrind/plugin.c:685
-msgid "Valgrind"
-msgstr "Valgrind"
-
-#: ../plugins/valgrind/plugin.c:347
-msgid ""
-"No executable target selected for debugging with Valgrind. Please select one."
-msgstr ""
-"Ez da hautatu Valgrind-ekin arazteko helburu exekutagarririk. Hautatu bat."
-
-#: ../plugins/valgrind/plugin.c:356
-msgid ""
-"There aren't any available executable targets for this project.\n"
-"Please create one first."
-msgstr ""
-"Proiektu honentzat ez dago helburu exekutagarri erabilgarririk.\n"
-"Sortu bat, lehenik eta behin."
-
-#: ../plugins/valgrind/plugin.c:368
-msgid "Choose file where to save Valgrind log"
-msgstr "Aukeratu Valgrind egunkaria gordetzeko fitxategia"
-
-#: ../plugins/valgrind/plugin.c:390
-#, c-format
-msgid ""
-"The file '%s' already exists.\n"
-"Do you want to replace it with the one you are saving?"
-msgstr ""
-"'%s' fitxategia badago lehendik.\n"
-"Gordetzen ari zarenarekin ordeztu nahi duzu?"
-
-#: ../plugins/valgrind/plugin.c:398
-msgid "_Replace"
-msgstr "Orde_ztu"
-
-#: ../plugins/valgrind/plugin.c:418
-msgid "Open Valgrind log file"
-msgstr "Ireki Valgrind egunkari-fitxategia"
-
-#. Action name
-#. Stock icon, if any
-#: ../plugins/valgrind/plugin.c:452
-msgid "_Debug"
-msgstr "_Araztu"
-
-#. Action name
-#. Stock icon, if any
-#: ../plugins/valgrind/plugin.c:460
-msgid "_Valgrind"
-msgstr "_Valgrind"
-
-#. Action name
-#. Stock icon, if any
-#: ../plugins/valgrind/plugin.c:468
-msgid "_Select Tool and Run..."
-msgstr "_Hautatu tresna eta exekutatu..."
-
-#. Action name
-#. Stock icon, if any
-#: ../plugins/valgrind/plugin.c:476
-msgid "_Kill Execution"
-msgstr "_Eten exekutatzea"
-
-#. Action name
-#. Stock icon, if any
-#: ../plugins/valgrind/plugin.c:484
-msgid "_Load Log"
-msgstr "_Kargatu egunkaria"
-
-#. Action name
-#. Stock icon, if any
-#: ../plugins/valgrind/plugin.c:492
-msgid "S_ave Log"
-msgstr "_Gorde egunkaria"
-
-#. Action name
-#. Stock icon, if any
-#: ../plugins/valgrind/plugin.c:500
-msgid "Edit Rules"
-msgstr "Editatu arauak"
-
-#: ../plugins/valgrind/plugin.c:565
-msgid "Use Valgrind debug tool"
-msgstr "Erabili Valgrind arazteko tresna"
-
-#: ../plugins/valgrind/preferences.c:122
-msgid "<b>Valgrind general preferences</b>"
-msgstr "<b>Valgrind hobespen orokorrak</b>"
-
-#: ../plugins/valgrind/preferences.c:128
-msgid "Valgrind binary file path:"
-msgstr "Valgrind fitxategi bitarraren bide-izena:"
-
-#: ../plugins/valgrind/preferences.c:142
-msgid "Choose Valgrind Binary File Path..."
-msgstr "Aukeratu Valgrind fitxategi bitarraren bide-izena..."
-
-#: ../plugins/valgrind/preferences.c:161
-msgid "Preview"
-msgstr "Aurrez ikusi helburuko lerroaren gaineko eta azpiko"
-
-#: ../plugins/valgrind/preferences.c:174
-msgid "lines above and below the target line."
-msgstr "lerro."
-
-#: ../plugins/valgrind/process.c:55
-#, c-format
-msgid "Failed to create pipe to '%s': %s"
-msgstr "Huts egin du '%s'(e)rako kanalizazioa sortzean: %s"
-
-#: ../plugins/valgrind/process.c:110
-#, c-format
-msgid "Failed to create child process '%s': %s"
-msgstr "Huts egin du '%s' prozesu umea sortzean: %s"
-
-#: ../plugins/valgrind/vgactions.c:168
-msgid "Reached the end of the input file or error in parsing valgrind output."
-msgstr ""
-"Sarrera-fitxategiaren amaierara heldu da, edo errorea gertatu da valgrind "
-"irteera-fitxategia analizatzean."
-
-#: ../plugins/valgrind/vgactions.c:177
-msgid "Process exited."
-msgstr "Prozesua amaitu da."
-
-#: ../plugins/valgrind/vgactions.c:197
-msgid "Could not get the right valgrind-binary gconf key:"
-msgstr " Ezin izan da valgrind bitarraren gconf gako egokia eskuratu:"
-
-#: ../plugins/valgrind/vgactions.c:205
-#, c-format
-msgid ""
-"Valgrind binary [%s] does not exist. Please check the preferences or install "
-"Valgrind package."
-msgstr ""
-"Valgrind bitarra [%s] ez dago. Begiratu hobespenak edo instalatu Valgrind "
-"paketea."
-
-#: ../plugins/valgrind/vgactions.c:241 ../plugins/valgrind/vgactions.c:248
-msgid "Could not get the right pipe for the process."
-msgstr "Ezin izan da lortu prozesuarentzako kanalizazio egokia."
-
-#: ../plugins/valgrind/vgcachegrindprefs.c:197
-#, c-format
-msgid ""
-"Invalid syntax in settings '%s'.\n"
-"Please enter a value of the form \"<integer>,<integer>,<integer>\"."
-msgstr ""
-"Sintaxi baliogabea '%s' ezarpenetan.\n"
-"Sartu forma hau duen balio bat: \"<osokoa>,<osokoa>,<osokoa>\"."
-
-#: ../plugins/valgrind/vgcachegrindprefs.c:234
-msgid "Override default settings"
-msgstr "Jaramonik ez egin ezarpen lehenetsiei"
-
-#. This is the format of the preference, simply translate the words
-#. * inside the <>
-#: ../plugins/valgrind/vgcachegrindprefs.c:246
-msgid "Enter <size>,<assoc>,<line_size>:"
-msgstr "Sartu <tamaina>,<lotura>,<lerro_tamaina>:"
-
-#: ../plugins/valgrind/vgcachegrindprefs.c:280
-msgid "Cachegrind"
-msgstr "Cachegrind"
-
-#: ../plugins/valgrind/vgdefaultview.c:189
-msgid "Error contains"
-msgstr "Erroreak hau dauka:"
-
-#: ../plugins/valgrind/vgdefaultview.c:190
-msgid "Function contains"
-msgstr "Funtzioak hau dauka:"
-
-#: ../plugins/valgrind/vgdefaultview.c:191
-msgid "Object contains"
-msgstr "Objektuak hau dauka:"
-
-#: ../plugins/valgrind/vgdefaultview.c:192
-msgid "Source filename contains"
-msgstr "Iturburuko fitxategi-izenak hau dauka:"
-
-#: ../plugins/valgrind/vgdefaultview.c:229
-#, c-format
-msgid "Invalid regular expression: '%s': %s"
-msgstr "Baliogabeko adierazpen erregularra: '%s': %s"
-
-#. FIXME: we should really get this title from somewhere else?
-#: ../plugins/valgrind/vgdefaultview.c:773
-msgid "Valgrind Suppression Rules"
-msgstr "Valgrind ezabapen-arauak"
-
-#. FIXME: we should really get this title from somewhere else?
-#: ../plugins/valgrind/vgdefaultview.c:1118
-#: ../plugins/valgrind/vgrule-list.c:135
-msgid "Valgrind Suppression"
-msgstr "Valgrind ezabapena"
-
-#: ../plugins/valgrind/vgdefaultview.c:1166
-msgid "Cu_t"
-msgstr "_Ebaki"
-
-#: ../plugins/valgrind/vgdefaultview.c:1167
-msgid "_Copy"
-msgstr "_Kopiatu"
-
-#: ../plugins/valgrind/vgdefaultview.c:1168
-msgid "_Paste"
-msgstr "_Itsatsi"
-
-#: ../plugins/valgrind/vgdefaultview.c:1170
-msgid "Suppress"
-msgstr "Kendu"
-
-#: ../plugins/valgrind/vgdefaultview.c:1172
-msgid "Edit in Custom Editor"
-msgstr "Editatu editore pertsonalizatuan"
-
-#: ../plugins/valgrind/vggeneralprefs.c:172
-msgid "General"
-msgstr "Orokorra"
-
-#. demangle = decode C++ name encoding
-#: ../plugins/valgrind/vggeneralprefs.c:179
-msgid "Demangle C++ symbol names"
-msgstr "Deszifratu C++ ikurren izenak"
-
-#: ../plugins/valgrind/vggeneralprefs.c:187
-msgid "Show"
-msgstr "Erakutsi"
-
-#: ../plugins/valgrind/vggeneralprefs.c:199
-msgid "callers in stack trace"
-msgstr "dei-egileak pila-aztarnan"
-
-#: ../plugins/valgrind/vggeneralprefs.c:206
-msgid "Stop showing errors if there are too many"
-msgstr "Ez bistaratu erroreak, errore gehiegi daudenean"
-
-#: ../plugins/valgrind/vggeneralprefs.c:214
-msgid "Round malloc sizes to next word"
-msgstr "Biribildu malloc-en tamainak hurrengo hitzera"
-
-#: ../plugins/valgrind/vggeneralprefs.c:222
-msgid "Trace any child processes forked off by the program being debugged"
-msgstr ""
-"Jarraitu arazten ari zaren programatik sardetutako prozesu umeen aztarnari"
-
-#: ../plugins/valgrind/vggeneralprefs.c:230
-msgid "Track open file descriptors"
-msgstr "Jarraitu fitxategi-deskriptore irekien aztarnari"
-
-#: ../plugins/valgrind/vggeneralprefs.c:238
-msgid "Add time stamps to log messages"
-msgstr "Gehitu ordu-/data-zigilua egunkari-mezuei"
-
-#: ../plugins/valgrind/vggeneralprefs.c:246
-msgid "Call __libc_freeres() at exit before checking for memory leaks"
-msgstr ""
-"Deitu _libc_freeres() irtetean, memoria-galerik dagoen begiratu aurretik"
-
-#: ../plugins/valgrind/vggeneralprefs.c:254
-msgid "Suppressions File:"
-msgstr "Ezabapenen fitxategia:"
-
-#: ../plugins/valgrind/vggeneralprefs.c:274
-msgid "Choose Valgrind Suppressions File..."
-msgstr "Aukeratu Valgrind ezabapen-fitxategia..."
-
-#: ../plugins/valgrind/vghelgrindprefs.c:180
-msgid "Helgrind"
-msgstr "Helgrind"
-
-#: ../plugins/valgrind/vghelgrindprefs.c:185
-msgid "Assume thread stacks are used privately"
-msgstr "Suposatu hari-pilak era pribatuan erabiltzen direla"
-
-#: ../plugins/valgrind/vghelgrindprefs.c:194
-msgid "Show location of last word access on error:"
-msgstr "Erakutsi errorea gertatu denean atzitu den azken hitzaren posizioa:"
-
-#: ../plugins/valgrind/vgmemcheckprefs.c:204
-msgid "Memcheck"
-msgstr "Memoria-egiaztapena"
-
-#: ../plugins/valgrind/vgmemcheckprefs.c:209
-msgid "Memory leaks"
-msgstr "Memoria-galerak"
-
-#: ../plugins/valgrind/vgmemcheckprefs.c:214
-msgid "Leak check:"
-msgstr "Galera-kontrola:"
-
-#: ../plugins/valgrind/vgmemcheckprefs.c:225
-msgid "Show reachable blocks in leak check"
-msgstr "Erakutsi bloke eskuragarriak galera-kontrolean"
-
-#: ../plugins/valgrind/vgmemcheckprefs.c:233
-msgid "Leak resolution:"
-msgstr "Galera-bereizmena:"
-
-#: ../plugins/valgrind/vgmemcheckprefs.c:251
-msgid "Keep up to"
-msgstr "Mantendu honaino: "
-
-#: ../plugins/valgrind/vgmemcheckprefs.c:263
-msgid "bytes in the queue after being free()'d"
-msgstr "byte ilaran, free()-rekin askatu ondoren"
-
-#: ../plugins/valgrind/vgmemcheckprefs.c:270
-msgid "Work around bugs generated by gcc 2.96"
-msgstr "Konpondu gcc 2.96ak sortutako akatsak"
-
-#: ../plugins/valgrind/vgrule-editor.c:146
-msgid "Function"
-msgstr "Funtzioa"
-
-#: ../plugins/valgrind/vgrule-editor.c:149
-msgid "Shared Object"
-msgstr "Objektu partekatua"
-
-#: ../plugins/valgrind/vgrule-editor.c:209
-msgid "Grow"
-msgstr "Handitu"
-
-#: ../plugins/valgrind/vgrule-editor.c:213
-msgid "Shrink"
-msgstr "Txikitu"
-
-#: ../plugins/valgrind/vgrule-editor.c:239
-msgid "Rule name:"
-msgstr "Arauaren izena:"
-
-#: ../plugins/valgrind/vgrule-editor.c:249
-msgid "Suppress messages of type:"
-msgstr "Ezabatu mota honetako mezuak:"
-
-#: ../plugins/valgrind/vgrule-editor.c:259
-msgid "Suppress when using:"
-msgstr "Ezabatu hau(ek) erabiltzean:"
-
-#: ../plugins/valgrind/vgrule-editor.c:272
-msgid "System call:"
-msgstr "Sistema-deia:"
-
-#: ../plugins/valgrind/vgrule-editor.c:283
-msgid "Call chain:"
-msgstr "Dei-katea:"
-
-#: ../plugins/valgrind/vgrule-editor.c:540
-#: ../plugins/valgrind/vgrule-editor.c:555
-#, c-format
-msgid "Error saving to suppression file '%s': %s"
-msgstr "Errorea gertatu da '%s' ezabapenen fitxategian gordetzean: %s"
-
-#: ../plugins/valgrind/vgrule-list.c:177 ../plugins/valgrind/vgrule-list.c:246
-msgid "You have forgotten to name your suppression rule."
-msgstr "Ahaztu egin zaizu ezabapen-arauari izena jartzea."
-
-#: ../plugins/valgrind/vgrule-list.c:406
-msgid "_Edit"
-msgstr "_Editatu"
-
-#: ../plugins/valgrind/vgrule-list.c:651
-#, c-format
-msgid "Cannot save suppression rules: %s"
-msgstr "Ezin dira ezabapen-arauak gorde: %s"
-
-#: ../plugins/valgrind/vgrule-list.c:653
-msgid "You have not set a suppressions file in your settings."
-msgstr "Ez duzu ezarri ezabapenen fitxategi bat zure ezarpenetan."
-
-#: ../plugins/sample1/anjuta-sample.plugin.in.h:1
-msgid "Sample Plugin"
-msgstr "Adibide plugina"
-
-#: ../plugins/sample1/anjuta-sample.plugin.in.h:2
-msgid "Sample Plugin for Anjuta."
-msgstr "Anjuta-ren adibide plugina."
-
-#: ../plugins/profiler/profiler.plugin.in.h:1
-msgid "Application performance profiler"
-msgstr "Aplikazioaren errendimenduaren analizatzailea"
-
-#: ../plugins/profiler/profiler.plugin.in.h:2
-msgid "Profile"
-msgstr "Profila:"
-
-#: ../plugins/scintilla/anjuta-editor.plugin.in.h:1
-msgid "An alternate editor based on Scintilla"
-msgstr "Scintilla-n oinarritutako ordezko editorea"
-
-#: ../plugins/valgrind/anjuta-valgrind.plugin.in.h:1
-msgid "Powerful debugging tool."
-msgstr "Arazteko tresna indartsua."
-
-#: ../plugins/valgrind/anjuta-valgrind.plugin.in.h:2
-msgid "Valgrind Plugin"
-msgstr "Valgrind plugina"
-
-#: ../plugins/scratchbox/anjuta-scratchbox.plugin.in.h:1
-msgid "Change build commands to use scratchbox 1 or 2"
-msgstr "Aldatu eraikitzeko komandoak  scratchbox 1 edo 2 erabiltzeko"
+#~ msgid "Function Name"
+#~ msgstr "Funtzioaren izena"
+
+#~ msgid "Time"
+#~ msgstr "Ordua"
+
+#~ msgid "Self"
+#~ msgstr "Berarenak"
+
+#~ msgid "Children"
+#~ msgstr "Umeak"
+
+#~ msgid "Calls"
+#~ msgstr "Deiak"
+
+#~ msgid "% Time"
+#~ msgstr "% Denbora"
+
+#~ msgid "Cumulative Seconds"
+#~ msgstr "Segundo metagarriak"
+
+#~ msgid "Self Seconds"
+#~ msgstr "Beraren segundoak"
+
+#~ msgid "Self ms/call"
+#~ msgstr "Beraren ms, deiko"
+
+#~ msgid "Total ms/call"
+#~ msgstr "ms totalak, deiko"
+
+#~ msgid ""
+#~ "Could not get profiling data.\n"
+#~ "\n"
+#~ "Please check the path to this target's profiling data file."
+#~ msgstr ""
+#~ "Ezin izan dira analizatze-datuak eskuratu.\n"
+#~ "\n"
+#~ "Begiratu helburuaren analizatze-datuen fitxategiaren bide-izena ondo "
+#~ "dagoen."
+
+#~ msgid ""
+#~ "This target does not have any profiling data.\n"
+#~ "\n"
+#~ "Please ensure that the target is compiled with profiling support (-p)and "
+#~ "that it is run at least once."
+#~ msgstr ""
+#~ "Helburu horrek ez du profilaren daturik.\n"
+#~ "\n"
+#~ "Egiaztatu profilaren euskarriarekin (-p) konpilatua dagoela helburua, eta "
+#~ "behin bederen exekutatua izan dela."
+
+#~ msgid "Debug"
+#~ msgstr "Araztu"
+
+#~ msgid "Profiler"
+#~ msgstr "Analizatzailea"
+
+#~ msgid "Select Target..."
+#~ msgstr "Helburua hautatzea..."
+
+#~ msgid "Refresh"
+#~ msgstr "Freskatu"
+
+#~ msgid "Delete Data"
+#~ msgstr "Ezabatu datuak"
+
+#~ msgid "Application Performance Profiler"
+#~ msgstr "Aplikazioaren errendimenduaren analizatzailea"
+
+#~ msgid "Flat Profile"
+#~ msgstr "Profil soila"
+
+#~ msgid "Call Graph"
+#~ msgstr "Dei-grafikoa"
+
+#~ msgid "Function Call Tree"
+#~ msgstr "Funtzioaren dei-zuhaitza"
+
+#~ msgid "Function Call Chart"
+#~ msgstr "Funtzioaren dei-diagrama"
+
+#~ msgid "Select debugging target"
+#~ msgstr "Hautatu arazte-helburua"
+
+#~ msgid "Valgrind"
+#~ msgstr "Valgrind"
+
+#~ msgid ""
+#~ "No executable target selected for debugging with Valgrind. Please select "
+#~ "one."
+#~ msgstr ""
+#~ "Ez da hautatu Valgrind-ekin arazteko helburu exekutagarririk. Hautatu bat."
+
+#~ msgid ""
+#~ "There aren't any available executable targets for this project.\n"
+#~ "Please create one first."
+#~ msgstr ""
+#~ "Proiektu honentzat ez dago helburu exekutagarri erabilgarririk.\n"
+#~ "Sortu bat, lehenik eta behin."
+
+#~ msgid "Choose file where to save Valgrind log"
+#~ msgstr "Aukeratu Valgrind egunkaria gordetzeko fitxategia"
+
+#~ msgid ""
+#~ "The file '%s' already exists.\n"
+#~ "Do you want to replace it with the one you are saving?"
+#~ msgstr ""
+#~ "'%s' fitxategia badago lehendik.\n"
+#~ "Gordetzen ari zarenarekin ordeztu nahi duzu?"
+
+#~ msgid "_Replace"
+#~ msgstr "Orde_ztu"
+
+#~ msgid "Open Valgrind log file"
+#~ msgstr "Ireki Valgrind egunkari-fitxategia"
+
+#~ msgid "_Debug"
+#~ msgstr "_Araztu"
+
+#~ msgid "_Valgrind"
+#~ msgstr "_Valgrind"
+
+#~ msgid "_Select Tool and Run..."
+#~ msgstr "_Hautatu tresna eta exekutatu..."
+
+#~ msgid "_Kill Execution"
+#~ msgstr "_Eten exekutatzea"
+
+#~ msgid "_Load Log"
+#~ msgstr "_Kargatu egunkaria"
+
+#~ msgid "S_ave Log"
+#~ msgstr "_Gorde egunkaria"
+
+#~ msgid "Edit Rules"
+#~ msgstr "Editatu arauak"
+
+#~ msgid "Use Valgrind debug tool"
+#~ msgstr "Erabili Valgrind arazteko tresna"
+
+#~ msgid "<b>Valgrind general preferences</b>"
+#~ msgstr "<b>Valgrind hobespen orokorrak</b>"
+
+#~ msgid "Valgrind binary file path:"
+#~ msgstr "Valgrind fitxategi bitarraren bide-izena:"
+
+#~ msgid "Choose Valgrind Binary File Path..."
+#~ msgstr "Aukeratu Valgrind fitxategi bitarraren bide-izena..."
+
+#~ msgid "Preview"
+#~ msgstr "Aurrez ikusi helburuko lerroaren gaineko eta azpiko"
+
+#~ msgid "lines above and below the target line."
+#~ msgstr "lerro."
+
+#~ msgid "Failed to create pipe to '%s': %s"
+#~ msgstr "Huts egin du '%s'(e)rako kanalizazioa sortzean: %s"
+
+#~ msgid "Failed to create child process '%s': %s"
+#~ msgstr "Huts egin du '%s' prozesu umea sortzean: %s"
+
+#~ msgid ""
+#~ "Reached the end of the input file or error in parsing valgrind output."
+#~ msgstr ""
+#~ "Sarrera-fitxategiaren amaierara heldu da, edo errorea gertatu da valgrind "
+#~ "irteera-fitxategia analizatzean."
+
+#~ msgid "Process exited."
+#~ msgstr "Prozesua amaitu da."
+
+#~ msgid "Could not get the right valgrind-binary gconf key:"
+#~ msgstr " Ezin izan da valgrind bitarraren gconf gako egokia eskuratu:"
+
+#~ msgid ""
+#~ "Valgrind binary [%s] does not exist. Please check the preferences or "
+#~ "install Valgrind package."
+#~ msgstr ""
+#~ "Valgrind bitarra [%s] ez dago. Begiratu hobespenak edo instalatu Valgrind "
+#~ "paketea."
+
+#~ msgid "Could not get the right pipe for the process."
+#~ msgstr "Ezin izan da lortu prozesuarentzako kanalizazio egokia."
+
+#~ msgid ""
+#~ "Invalid syntax in settings '%s'.\n"
+#~ "Please enter a value of the form \"<integer>,<integer>,<integer>\"."
+#~ msgstr ""
+#~ "Sintaxi baliogabea '%s' ezarpenetan.\n"
+#~ "Sartu forma hau duen balio bat: \"<osokoa>,<osokoa>,<osokoa>\"."
+
+#~ msgid "Override default settings"
+#~ msgstr "Jaramonik ez egin ezarpen lehenetsiei"
+
+#~ msgid "Enter <size>,<assoc>,<line_size>:"
+#~ msgstr "Sartu <tamaina>,<lotura>,<lerro_tamaina>:"
+
+#~ msgid "Cachegrind"
+#~ msgstr "Cachegrind"
+
+#~ msgid "Error contains"
+#~ msgstr "Erroreak hau dauka:"
+
+#~ msgid "Function contains"
+#~ msgstr "Funtzioak hau dauka:"
+
+#~ msgid "Object contains"
+#~ msgstr "Objektuak hau dauka:"
+
+#~ msgid "Source filename contains"
+#~ msgstr "Iturburuko fitxategi-izenak hau dauka:"
+
+#~ msgid "Invalid regular expression: '%s': %s"
+#~ msgstr "Baliogabeko adierazpen erregularra: '%s': %s"
+
+#~ msgid "Valgrind Suppression Rules"
+#~ msgstr "Valgrind ezabapen-arauak"
+
+#~ msgid "Valgrind Suppression"
+#~ msgstr "Valgrind ezabapena"
+
+#~ msgid "Cu_t"
+#~ msgstr "_Ebaki"
+
+#~ msgid "_Copy"
+#~ msgstr "_Kopiatu"
+
+#~ msgid "_Paste"
+#~ msgstr "_Itsatsi"
+
+#~ msgid "Suppress"
+#~ msgstr "Kendu"
+
+#~ msgid "Edit in Custom Editor"
+#~ msgstr "Editatu editore pertsonalizatuan"
+
+#~ msgid "General"
+#~ msgstr "Orokorra"
+
+#~ msgid "Demangle C++ symbol names"
+#~ msgstr "Deszifratu C++ ikurren izenak"
+
+#~ msgid "Show"
+#~ msgstr "Erakutsi"
+
+#~ msgid "callers in stack trace"
+#~ msgstr "dei-egileak pila-aztarnan"
+
+#~ msgid "Stop showing errors if there are too many"
+#~ msgstr "Ez bistaratu erroreak, errore gehiegi daudenean"
+
+#~ msgid "Round malloc sizes to next word"
+#~ msgstr "Biribildu malloc-en tamainak hurrengo hitzera"
+
+#~ msgid "Trace any child processes forked off by the program being debugged"
+#~ msgstr ""
+#~ "Jarraitu arazten ari zaren programatik sardetutako prozesu umeen aztarnari"
+
+#~ msgid "Track open file descriptors"
+#~ msgstr "Jarraitu fitxategi-deskriptore irekien aztarnari"
+
+#~ msgid "Add time stamps to log messages"
+#~ msgstr "Gehitu ordu-/data-zigilua egunkari-mezuei"
+
+#~ msgid "Call __libc_freeres() at exit before checking for memory leaks"
+#~ msgstr ""
+#~ "Deitu _libc_freeres() irtetean, memoria-galerik dagoen begiratu aurretik"
+
+#~ msgid "Suppressions File:"
+#~ msgstr "Ezabapenen fitxategia:"
+
+#~ msgid "Choose Valgrind Suppressions File..."
+#~ msgstr "Aukeratu Valgrind ezabapen-fitxategia..."
+
+#~ msgid "Helgrind"
+#~ msgstr "Helgrind"
+
+#~ msgid "Assume thread stacks are used privately"
+#~ msgstr "Suposatu hari-pilak era pribatuan erabiltzen direla"
+
+#~ msgid "Show location of last word access on error:"
+#~ msgstr "Erakutsi errorea gertatu denean atzitu den azken hitzaren posizioa:"
+
+#~ msgid "Memcheck"
+#~ msgstr "Memoria-egiaztapena"
+
+#~ msgid "Memory leaks"
+#~ msgstr "Memoria-galerak"
+
+#~ msgid "Leak check:"
+#~ msgstr "Galera-kontrola:"
+
+#~ msgid "Show reachable blocks in leak check"
+#~ msgstr "Erakutsi bloke eskuragarriak galera-kontrolean"
+
+#~ msgid "Leak resolution:"
+#~ msgstr "Galera-bereizmena:"
+
+#~ msgid "Keep up to"
+#~ msgstr "Mantendu honaino: "
+
+#~ msgid "bytes in the queue after being free()'d"
+#~ msgstr "byte ilaran, free()-rekin askatu ondoren"
+
+#~ msgid "Work around bugs generated by gcc 2.96"
+#~ msgstr "Konpondu gcc 2.96ak sortutako akatsak"
+
+#~ msgid "Function"
+#~ msgstr "Funtzioa"
+
+#~ msgid "Shared Object"
+#~ msgstr "Objektu partekatua"
+
+#~ msgid "Grow"
+#~ msgstr "Handitu"
+
+#~ msgid "Shrink"
+#~ msgstr "Txikitu"
+
+#~ msgid "Rule name:"
+#~ msgstr "Arauaren izena:"
+
+#~ msgid "Suppress messages of type:"
+#~ msgstr "Ezabatu mota honetako mezuak:"
+
+#~ msgid "Suppress when using:"
+#~ msgstr "Ezabatu hau(ek) erabiltzean:"
+
+#~ msgid "System call:"
+#~ msgstr "Sistema-deia:"
+
+#~ msgid "Call chain:"
+#~ msgstr "Dei-katea:"
+
+#~ msgid "Error saving to suppression file '%s': %s"
+#~ msgstr "Errorea gertatu da '%s' ezabapenen fitxategian gordetzean: %s"
+
+#~ msgid "You have forgotten to name your suppression rule."
+#~ msgstr "Ahaztu egin zaizu ezabapen-arauari izena jartzea."
+
+#~ msgid "Cannot save suppression rules: %s"
+#~ msgstr "Ezin dira ezabapen-arauak gorde: %s"
+
+#~ msgid "You have not set a suppressions file in your settings."
+#~ msgstr "Ez duzu ezarri ezabapenen fitxategi bat zure ezarpenetan."
+
+#~ msgid "Application performance profiler"
+#~ msgstr "Aplikazioaren errendimenduaren analizatzailea"
+
+#~ msgid "Profile"
+#~ msgstr "Profila:"
+
+#~ msgid "Powerful debugging tool."
+#~ msgstr "Arazteko tresna indartsua."
+
+#~ msgid "Valgrind Plugin"
+#~ msgstr "Valgrind plugina"
 
 #~ msgid "Fixed data-view"
 #~ msgstr "Datu-ikuspegi finkoa"
