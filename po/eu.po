@@ -8,7 +8,7 @@
 msgid ""
 msgstr "Project-Id-Version: anjuta-extras gnome-3-2\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/anjuta-extras/issues\n"
-"POT-Creation-Date: 2019-03-24 13:53+0000\n"
+"POT-Creation-Date: 2019-09-25 11:51+0000\n"
 "PO-Revision-Date: 2019-09-25 10:00+0100\n"
 "Last-Translator: Asier Sarasua Garmendia <asier.sarasua@gmail.com>\n"
 "Language-Team: Basque <librezale@librezale.eus>\n"
@@ -126,7 +126,7 @@ msgstr "Iragazi karaktere arraroak DOS moduan"
 #. Next bookmark at the end of the file will jump to the first bookmark from the beginning
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:24
 msgid "Wrap bookmarks search around"
-msgstr ""
+msgstr "Egokitu laster-marken bilaketa"
 
 #. Column where a vertical line will be drawn to indicate that lines should not be longer
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:26
@@ -139,7 +139,7 @@ msgstr "Kurtsoaren keinukatze-tartea milisegundotan"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:28
 msgid "Editor caret (cursor) width in pixels"
-msgstr "Editoreare kurtsorearen zabalera pixeletan"
+msgstr "Editorearen kurtsorearen zabalera pixeletan"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:29
 msgid "Line numbers margin width in pixels"
@@ -200,7 +200,7 @@ msgstr "Oinarrizko koskatzea"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:44
 msgid "View EOL chars"
-msgstr "Bistarau EOL karaktereak"
+msgstr "Bistaratu EOL karaktereak"
 
 #: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:45
 msgid "View Indentation Guides"
