@@ -474,7 +474,7 @@ msgid_plural ""
 msgstr[0] ""
 "<b>Има %d обект с незапазени промени. Да се запазят ли преди затваряне?</b>"
 msgstr[1] ""
-"<b>Има %d обекта с незапазени промени. Да се запазят ли преди затваряне?"
+"<b>Има %d обекта с незапазени промени. Да се запазят ли преди затваряне?</b>"
 
 #: ../libanjuta/anjuta-save-prompt.c:311
 msgid "There is an item with unsaved changes. Save changes before closing?"
