@@ -4346,7 +4346,7 @@ msgstr "<b>انتقِ ملفات لتقصيها:</b>"
 #: ../plugins/git/anjuta-git.glade.h:22
 #: ../plugins/subversion/anjuta-subversion.glade.h:13
 msgid "<b>Select Files to Commit:</b>"
-msgstr "<b>انتقِ الملفات للإيداع:/b>"
+msgstr "<b>انتقِ الملفات للإيداع:</b>"
 
 #: ../plugins/git/anjuta-git.glade.h:23
 msgid "<b>Select Files to Ignore:</b>"
@@ -5877,7 +5877,7 @@ msgstr "<b>انتقِ الهدف إلى ملف التعريف</b>"
 
 #: ../plugins/profiler/profiler.glade.h:3
 msgid "<b>Symbols</b>"
-msgstr "</b>الرموز<b>"
+msgstr "</b>الرموز</b>"
 
 #: ../plugins/profiler/profiler.glade.h:4
 msgid "<b>Time Propagation</b>"
