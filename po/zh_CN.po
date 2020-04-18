@@ -11,221 +11,458 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: anjuta-extras master\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
-"product=anjuta&component=unknown\n"
-"POT-Creation-Date: 2010-07-26 17:55+0000\n"
-"PO-Revision-Date: 2010-07-23 00:15+0800\n"
-"Last-Translator: Aron Xu <happyaron.xu@gmail.com>\n"
+"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?"
+"product=anjuta&keywords=I18N+L10N&component=unknown\n"
+"POT-Creation-Date: 2017-06-05 13:51+0000\n"
+"PO-Revision-Date: 2017-09-02 02:51+0800\n"
+"Last-Translator: Jeff Bai <jeffbaichina@members.fsf.org>\n"
 "Language-Team: Chinese (simplified) <i18n-zh@googlegroups.com>\n"
+"Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 1.7.1\n"
 
-#: ../plugins/profiler/gprof-call-graph-view.c:312
-#: ../plugins/profiler/gprof-call-graph-view.c:322
-#: ../plugins/profiler/gprof-call-graph-view.c:332
-#: ../plugins/profiler/gprof-flat-profile-view.c:56
-#: ../plugins/profiler/gprof-function-call-tree-view.c:60
-msgid "Function Name"
-msgstr "函数名"
+#: ../plugins/sample1/anjuta-sample.plugin.in.h:1
+msgid "Sample Plugin"
+msgstr "示例插件"
 
-#: ../plugins/profiler/gprof-call-graph-view.c:344
-msgid "Time"
-msgstr "时间"
+#: ../plugins/sample1/anjuta-sample.plugin.in.h:2
+msgid "Sample Plugin for Anjuta."
+msgstr "Anjuta 示例插件"
 
-#. Total amount of time spent in this function, excluding those it calla.
-#. * This is the same as the "Seconds" field in the flat profile.
-#. Time spent in a subroutine of a function.
-#. Time spent in this function when it was called by its caller
-#: ../plugins/profiler/gprof-call-graph-view.c:361
-#: ../plugins/profiler/gprof-call-graph-view.c:375
-#: ../plugins/profiler/gprof-call-graph-view.c:389
-msgid "Self"
-msgstr "自身时间："
+#: ../plugins/scintilla/anjuta-editor.plugin.in.h:1
+#: ../plugins/scintilla/plugin.c:487 ../plugins/scintilla/plugin.c:499
+msgid "Scintilla Editor"
+msgstr "Scintilla 编辑器"
 
-#: ../plugins/profiler/gprof-call-graph-view.c:402
-#: ../plugins/profiler/gprof-call-graph-view.c:414
-#: ../plugins/profiler/gprof-call-graph-view.c:426
-msgid "Children"
-msgstr "孩子"
+#: ../plugins/scintilla/anjuta-editor.plugin.in.h:2
+msgid "An alternate editor based on Scintilla"
+msgstr "基于 Scintilla 的另一个编辑器"
 
-#: ../plugins/profiler/gprof-call-graph-view.c:439
-#: ../plugins/profiler/gprof-call-graph-view.c:449
-#: ../plugins/profiler/gprof-call-graph-view.c:459
-#: ../plugins/profiler/gprof-flat-profile-view.c:113
-msgid "Calls"
-msgstr "调用"
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:1
+msgid "Plus/Minus"
+msgstr "加/减"
 
-#: ../plugins/profiler/gprof-flat-profile-view.c:68
-msgid "% Time"
-msgstr "% 时间"
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:2
+msgid "Arrows"
+msgstr "箭头"
 
-#: ../plugins/profiler/gprof-flat-profile-view.c:82
-msgid "Cumulative Seconds"
-msgstr "累积秒数"
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:3
+msgid "Circular"
+msgstr "环形"
 
-#. The number of seconds that this function, excluding other functions it
-#. * calls, takes to execute.
-#: ../plugins/profiler/gprof-flat-profile-view.c:99
-msgid "Self Seconds"
-msgstr "自身秒钟"
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:4
+msgid "Squares"
+msgstr "方框"
 
-#. The average number of milliseconds spent in a function, excluding
-#. * the functions that it calls.
-#: ../plugins/profiler/gprof-flat-profile-view.c:127
-msgid "Self ms/call"
-msgstr "除调用的函数之外的自身毫秒数"
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:5
+msgid "Choose autocomplete for single match"
+msgstr "为单次匹配选择自动补全"
 
-#. Same as self ms/call, but includes called functions.
-#: ../plugins/profiler/gprof-flat-profile-view.c:143
-msgid "Total ms/call"
-msgstr "包括调用的函数的自身毫秒数"
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:6
+msgid "Autocomplete XML/HTML closing tags"
+msgstr "自动补全 XML/HTML 关闭标签"
 
-#: ../plugins/profiler/plugin.c:179
-msgid ""
-"Could not get profiling data.\n"
-"\n"
-"Please check the path to this target's profiling data file."
-msgstr ""
-"无法获取分析数据。\n"
-"\n"
-"请检查目标分析数据文件的路径。"
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:7
+msgid "Autocompletion pop up choices"
+msgstr "自动补全弹出选择"
 
-#: ../plugins/profiler/plugin.c:293
-msgid ""
-"This target does not have any profiling data.\n"
-"\n"
-"Please ensure that the target is complied with profiling support (-p)and "
-"that it is run at least once."
-msgstr ""
-"此目标不包含任何分析数据。\n"
-"\n"
-"请确定目标编译时打开了分析支持 (-p) 并且至少运行了一次。"
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:8
+msgid "Autocompletion"
+msgstr "自动补全"
 
-#. Action name
-#. Stock icon, if any
-#: ../plugins/profiler/plugin.c:754
-msgid "Debug"
-msgstr "调试"
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:9
+msgid "Enable code folding"
+msgstr "允许代码折叠"
 
-#. Action name
-#. Stock icon, if any
-#: ../plugins/profiler/plugin.c:762 ../plugins/profiler/plugin.c:874
-#: ../plugins/profiler/profiler.plugin.in.h:3
-msgid "Profiler"
-msgstr "分析器"
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:10
+msgid "Enable comments folding"
+msgstr "允许注释折叠"
 
-#. Action name
-#. Stock icon, if any
-#: ../plugins/profiler/plugin.c:770
-msgid "Select Target..."
-msgstr "选择目标..."
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:11
+msgid "Enable Python comments folding"
+msgstr "允许 Python 注释折叠"
 
-#. Action name
-#. Stock icon, if any
-#: ../plugins/profiler/plugin.c:778
-msgid "Refresh"
-msgstr "刷新"
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:12
+msgid "Enable Python quoted strings folding"
+msgstr "允许 Python 引用字符串折叠"
 
-#. Action name
-#. Stock icon, if any
-#: ../plugins/profiler/plugin.c:786
-msgid "Delete Data"
-msgstr "删除数据"
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:13
+msgid "Enable HTML tags folding"
+msgstr "充许 HTML 标签折叠"
 
-#: ../plugins/profiler/plugin.c:829
-msgid "Application Performance Profiler"
-msgstr "应用程序性能分析器"
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:14
+msgid "Compact folding"
+msgstr "紧凑折叠"
 
-#: ../plugins/profiler/plugin.c:851
-msgid "Flat Profile"
-msgstr ""
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:15
+msgid "Draw line below folded lines"
+msgstr "在折起行下方绘制一条线"
 
-#: ../plugins/profiler/plugin.c:856
-msgid "Call Graph"
-msgstr ""
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:16
+msgid "Collapse all code folds on file open"
+msgstr "打开文件时将全部代码折叠"
 
-#: ../plugins/profiler/plugin.c:861
-msgid "Function Call Tree"
-msgstr "函数调用数"
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:17
+msgid "Fold style:"
+msgstr "折叠样式："
 
-#: ../plugins/profiler/plugin.c:868
-msgid "Function Call Chart"
-msgstr "函数调用表"
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:18
+msgid "Code folding"
+msgstr "代码展叠"
 
-#: ../plugins/scintilla/print.c:659
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:19
+msgid "Disable syntax highlighting"
+msgstr "禁用语法高亮"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:20
+msgid "Enable braces check"
+msgstr "启用括号检查"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:21
+msgid "Strip trailing spaces on file save"
+msgstr "保存文件时移去多余的空白"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:22
+msgid "Filter extraneous characters in DOS mode"
+msgstr "过滤 DOS 模式下的扩展字符"
+
+#. Next bookmark at the end of the file will jump to the first bookmark from the beginning
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:24
+msgid "Wrap bookmarks search around"
+msgstr "循环搜索书签"
+
+#. Column where a vertical line will be drawn to indicate that lines should not be longer
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:26
+msgid "Edge column"
+msgstr "边缘列"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:27
+msgid "Caret blink period in ms"
+msgstr "插入点闲烁周期 (毫秒)"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:28
+msgid "Editor caret (cursor) width in pixels"
+msgstr "编辑器插入点(光标)的宽度(像素)"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:29
+msgid "Line numbers margin width in pixels"
+msgstr "行号区的宽度(像素单位)"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:30
+msgid "Misc options"
+msgstr "杂项设置"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:31
+msgid "Colors & Fonts"
+msgstr "颜色和字体"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:32
+msgid "Editor"
+msgstr "编辑器"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:33
+msgid "Enable automatic indentation"
+msgstr "启用自动缩进"
+
+#. If the user presses enter, the indentation of the current line will automatically be added to the next line
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:35
+msgid "Maintain past Indentation"
+msgstr "保持老的缩进"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:36
+msgid "Pressing tab inserts indentation"
+msgstr "按 Tab 键缩进"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:37
+msgid "Pressing backspace un-indents"
+msgstr "按退格键取消缩进"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:38
+msgid "Indent closing braces"
+msgstr "缩进右括号"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:39
+msgid "Indent opening braces"
+msgstr "缩进左括号"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:40
+msgid "Use tabs for indentation"
+msgstr "缩进时使用 Tab 字符"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:41
+msgid "Indentation size in spaces:"
+msgstr "缩进的空白长度："
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:42
+msgid "Tab size in spaces:"
+msgstr "Tab 字符长度："
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:43
+msgid "Basic Indentation"
+msgstr "基本缩进"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:44
+msgid "View EOL chars"
+msgstr "显示行终止符"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:45
+msgid "View Indentation Guides"
+msgstr "显示缩进导线"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:46
+msgid "View Whitespaces"
+msgstr "显示空白字符"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:47
+msgid "View indentation whitespaces"
+msgstr "显示缩进空白字符"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:48
+msgid "View Line Wrap"
+msgstr "显示换行符"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:49
+msgid "Margin Linenum visible"
+msgstr "边缘行号可见"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:50
+msgid "Margin Marker visible"
+msgstr "边缘标签可见"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:51
+msgid "Margin Fold visible"
+msgstr "边缘折叠可见"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:52
+msgid "Lines"
+msgstr "行"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:53
+msgid "Add line number every:"
+msgstr "添加行号的间隔："
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:54
+msgid "Enable line wrap"
+msgstr "允许自动换行"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:55
+msgid "Add page header"
+msgstr "添加页眉"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:56
+msgid "Monochrome"
+msgstr "单色"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:57
+msgid "Colour"
+msgstr "彩色"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:58
+msgid "Mode:"
+msgstr "模式："
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:59
+msgid "Print options"
+msgstr "打印选项"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:60
+msgid "Printing"
+msgstr "打印"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:61
+msgid "Fonts and colors for editor"
+msgstr "编辑器使用的颜色和字体"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:62
+msgid "Select highlight style to edit:"
+msgstr "选择高亮样式："
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:63
+msgid "Bold"
+msgstr "粗体"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:64
+msgid "Italic"
+msgstr "斜体"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:65
+msgid "Underlined"
+msgstr "下划线"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:66
+msgid "Use default"
+msgstr "使用默认值"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:67
+msgid "Background color:"
+msgstr "背景色："
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:68
+msgid "Foreground color:"
+msgstr "前景色："
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:69
+msgid "Attributes:"
+msgstr "属性："
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:70
+msgid "Font:"
+msgstr "字体："
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:71
+msgid "Highlight style"
+msgstr "高亮样式"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:72
+msgid "Caret (cursor) color:"
+msgstr "插入点(光标)号颜色："
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:73
+msgid "Calltip background:"
+msgstr "插字符背景:"
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:74
+msgid "Selection background:"
+msgstr "选区背景："
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:75
+msgid "Selection foreground:"
+msgstr "选区前景："
+
+#: ../plugins/scintilla/anjuta-editor-scintilla.ui.h:76
+msgid "Other colors"
+msgstr "其它颜色"
+
+#: ../plugins/scintilla/plugin.c:160
+msgid "_Line Number Margin"
+msgstr "行号区(_L)"
+
+#: ../plugins/scintilla/plugin.c:161
+msgid "Show/Hide line numbers"
+msgstr "显示/隐藏行号区"
+
+#: ../plugins/scintilla/plugin.c:163
+msgid "_Marker Margin"
+msgstr "标号区(_M)"
+
+#: ../plugins/scintilla/plugin.c:164
+msgid "Show/Hide marker margin"
+msgstr "显示/隐藏标号区"
+
+#: ../plugins/scintilla/plugin.c:166
+msgid "_Code Fold Margin"
+msgstr "代码展叠区(_C)"
+
+#: ../plugins/scintilla/plugin.c:167
+msgid "Show/Hide code fold margin"
+msgstr "显示/隐藏代码展叠区"
+
+#: ../plugins/scintilla/plugin.c:169
+msgid "_Indentation Guides"
+msgstr "缩进导线(_I)"
+
+#: ../plugins/scintilla/plugin.c:170
+msgid "Show/Hide indentation guides"
+msgstr "显示/隐藏缩进导线"
+
+#: ../plugins/scintilla/plugin.c:172
+msgid "_White Space"
+msgstr "空白字符(_W)"
+
+#: ../plugins/scintilla/plugin.c:173
+msgid "Show/Hide white spaces"
+msgstr "显示/隐藏空白字符"
+
+#: ../plugins/scintilla/plugin.c:175
+msgid "_Line End Characters"
+msgstr "行尾字符(_L)"
+
+#: ../plugins/scintilla/plugin.c:176
+msgid "Show/Hide line end characters"
+msgstr "显示/隐藏行尾字符"
+
+#: ../plugins/scintilla/plugin.c:178
+msgid "Line _Wrapping"
+msgstr "自动换行(_W)"
+
+#: ../plugins/scintilla/plugin.c:179
+msgid "Enable/disable line wrapping"
+msgstr "启用/禁用自动换行"
+
+#: ../plugins/scintilla/plugin.c:372
+msgid "Editor view settings"
+msgstr "编辑器视图设置"
+
+#: ../plugins/scintilla/print.c:660
 #, c-format
 msgid "File: %s"
 msgstr "文件：%s"
 
-#: ../plugins/scintilla/print.c:888
+#: ../plugins/scintilla/print.c:885
 msgid "Unable to get text buffer for printing"
 msgstr "无法获取打印的文本缓冲区"
 
-#: ../plugins/scintilla/print.c:967
+#: ../plugins/scintilla/print.c:963
 msgid "No file to print!"
 msgstr "没有要打印的文件！"
 
-#: ../plugins/scintilla/plugin.c:294 ../plugins/scintilla/plugin.c:306
-#: ../plugins/scintilla/anjuta-editor.plugin.in.h:2
-msgid "Scintilla Editor"
-msgstr ""
-
-#: ../plugins/scintilla/text_editor.c:438
+#: ../plugins/scintilla/text_editor.c:511
 #, c-format
 msgid ""
 "The file '%s' has been changed.\n"
-"Do you want to reload it ?"
+"Do you want to reload it?"
 msgstr ""
-"警告：文件“%s”的内容已更改。\n"
-"是否需要重新载入这个文件？ "
+"文件“%s”被更改。\n"
+"是否需要重新载入这个文件？"
 
-#: ../plugins/scintilla/text_editor.c:444
+#: ../plugins/scintilla/text_editor.c:517
 #, c-format
 msgid ""
 "The file '%s' has been changed.\n"
-"Do you want to loose your changes and reload it ?"
+"Do you want to lose your changes and reload it?"
 msgstr ""
-"警告：文件“%s”已更改。\n"
-"是否要丢弃现有更改并重新载入这个文件？ "
+"文件“%s”被更改。\n"
+"是否要丢弃现有更改并重新载入这个文件？"
 
-#: ../plugins/scintilla/text_editor.c:464
+#: ../plugins/scintilla/text_editor.c:537
 #, c-format
 msgid ""
 "The file '%s' has been deleted.\n"
-"Do you confirm and close it ?"
+"Do you confirm and close it?"
 msgstr ""
 "文件“%s”已被删除。\n"
 "确定并关闭它吗？"
 
-#: ../plugins/scintilla/text_editor.c:471
+#: ../plugins/scintilla/text_editor.c:544
 #, c-format
 msgid ""
 "The file '%s' has been deleted.\n"
-"Do you want to loose your changes and close it ?"
+"Do you want to lose your changes and close it?"
 msgstr ""
 "文件“%s”已存被删除。\n"
 "是否丢弃当前更改并关闭？"
 
-#: ../plugins/scintilla/text_editor.c:1458
+#: ../plugins/scintilla/text_editor.c:1528
 msgid "Could not get file info"
 msgstr "无法获取文件信息文件"
 
 #. DEBUG_PRINT ("%s", "This file is too big. Unable to allocate memory.");
-#: ../plugins/scintilla/text_editor.c:1470
+#: ../plugins/scintilla/text_editor.c:1540
 msgid "This file is too big. Unable to allocate memory."
 msgstr "文件太大，无法分配内存。"
 
-#: ../plugins/scintilla/text_editor.c:1479
+#: ../plugins/scintilla/text_editor.c:1549
 msgid "Could not open file"
 msgstr "无法打开文件进行写入"
 
-#: ../plugins/scintilla/text_editor.c:1490
+#: ../plugins/scintilla/text_editor.c:1560
 msgid "Error while reading from file"
 msgstr "读取文件时出错。"
 
-#: ../plugins/scintilla/text_editor.c:1536
+#: ../plugins/scintilla/text_editor.c:1606
 msgid ""
 "The file does not look like a text file or the file encoding is not "
 "supported. Please check if the encoding of file is in the supported "
@@ -234,11 +471,11 @@ msgstr ""
 "该文件看上去不是一个文本文件，或者不支持该文件编码格式。清检查该文件的编码格"
 "式是否在编码格式支持列表中。如果不在，请从首选项中加入对这种编码格式的支持。"
 
-#: ../plugins/scintilla/text_editor.c:1683
+#: ../plugins/scintilla/text_editor.c:1789
 msgid "Loading file..."
 msgstr "正在载入文件..."
 
-#: ../plugins/scintilla/text_editor.c:1692
+#: ../plugins/scintilla/text_editor.c:1798
 #, c-format
 msgid ""
 "Could not load file: %s\n"
@@ -249,24 +486,24 @@ msgstr ""
 "\n"
 "详细信息：%s"
 
-#: ../plugins/scintilla/text_editor.c:1713
+#: ../plugins/scintilla/text_editor.c:1819
 msgid "File loaded successfully"
 msgstr "成功载入文件。"
 
-#: ../plugins/scintilla/text_editor.c:1731
+#: ../plugins/scintilla/text_editor.c:1840
 msgid "Saving file..."
 msgstr "正在保存文件"
 
-#: ../plugins/scintilla/text_editor.c:1740
+#: ../plugins/scintilla/text_editor.c:1849
 #, c-format
 msgid "Could not save intermediate file %s: %s"
 msgstr "无法保存中介文件 %s：%s。"
 
-#: ../plugins/scintilla/text_editor.c:1756
+#: ../plugins/scintilla/text_editor.c:1865
 msgid "File saved successfully"
 msgstr "文件成功保存"
 
-#: ../plugins/scintilla/text_editor.c:2129
+#: ../plugins/scintilla/text_editor.c:2238
 #, c-format
 msgid ""
 "Cannot load Global defaults and configuration files:\n"
@@ -279,421 +516,377 @@ msgstr ""
 "这可能导致行为不正常或者不稳定。\n"
 "Anjuta 将回设为内建设置"
 
-#: ../plugins/scratchbox/plugin.c:213
+#: ../plugins/scratchbox/anjuta-scratchbox.plugin.in.h:1
+#: ../plugins/scratchbox/plugin.c:460 ../plugins/scratchbox/plugin.c:478
+msgid "Scratchbox"
+msgstr "Scracthbox"
+
+#: ../plugins/scratchbox/anjuta-scratchbox.plugin.in.h:2
+msgid "Change build commands to use scratchbox 1 or 2"
+msgstr "更改构建命令以使用 scratchbox 1 或 2"
+
+#: ../plugins/scratchbox/anjuta-scratchbox.ui.h:1
+msgid "Scratchbox directory:"
+msgstr "Scratchbox 目录："
+
+#: ../plugins/scratchbox/anjuta-scratchbox.ui.h:2
+msgid "Scratchbox version:"
+msgstr "Scratchbox 版本："
+
+#: ../plugins/scratchbox/anjuta-scratchbox.ui.h:3
+msgid "Select Scratchbox Folder"
+msgstr "选择 Scratchbox 目录"
+
+#: ../plugins/scratchbox/anjuta-scratchbox.ui.h:4
+msgid "Scratchbox target:"
+msgstr "Scratchbox 目标："
+
+#: ../plugins/scratchbox/anjuta-scratchbox.ui.h:5
+msgid "Scratchbox Options"
+msgstr "Scratchbox 选项"
+
+#: ../plugins/scratchbox/plugin.c:209
 #, c-format
 msgid "Program '%s' does not exists"
 msgstr "程序“%s”不存在"
 
-#: ../plugins/scratchbox/plugin.c:464 ../plugins/scratchbox/plugin.c:486
-#: ../plugins/scratchbox/anjuta-scratchbox.plugin.in.h:2
-msgid "Scratchbox"
-msgstr "Scracthbox"
-
-#: ../plugins/valgrind/plugin.c:134
-msgid "Options"
-msgstr "选项"
-
-#: ../plugins/valgrind/plugin.c:262
-msgid "Select debugging target"
-msgstr "选择调试目标"
-
-#: ../plugins/valgrind/plugin.c:319 ../plugins/valgrind/plugin.c:440
-#: ../plugins/valgrind/plugin.c:676 ../plugins/valgrind/plugin.c:685
-msgid "Valgrind"
-msgstr "Valgrind"
-
-#: ../plugins/valgrind/plugin.c:347
-msgid ""
-"No executable target selected for debugging with Valgrind. Please select one."
-msgstr "没有选择使用 Valgrind 调试的可执行对象，请选择一个。"
-
-#: ../plugins/valgrind/plugin.c:356
-msgid ""
-"There aren't any available executable targets for this project.\n"
-"Please create one first."
-msgstr ""
-"此工程没有任何可执行目标。\n"
-"首先请创建一个。"
-
-#: ../plugins/valgrind/plugin.c:368
-msgid "Choose file where to save Valgrind log"
-msgstr "选择保存 Valgrind 记录的文件"
-
-#: ../plugins/valgrind/plugin.c:390
-#, c-format
-msgid ""
-"The file '%s' already exists.\n"
-"Do you want to replace it with the one you are saving?"
-msgstr ""
-"文件“%s”已存在。\n"
-"是否确定用当前文件替换这个文件？"
-
-#: ../plugins/valgrind/plugin.c:398
-msgid "_Replace"
-msgstr "替换(_R)"
-
-#: ../plugins/valgrind/plugin.c:418
-msgid "Open Valgrind log file"
-msgstr "打开 Valgrind 日志文件"
-
-#. Action name
-#. Stock icon, if any
-#: ../plugins/valgrind/plugin.c:452
-msgid "_Debug"
-msgstr "调试(_D)"
-
-#. Action name
-#. Stock icon, if any
-#: ../plugins/valgrind/plugin.c:460
-msgid "_Valgrind"
-msgstr "_Valgrind"
-
-#. Action name
-#. Stock icon, if any
-#: ../plugins/valgrind/plugin.c:468
-msgid "_Select Tool and Run..."
-msgstr "选择工具并执行(_S)..."
-
-#. Action name
-#. Stock icon, if any
-#: ../plugins/valgrind/plugin.c:476
-msgid "_Kill Execution"
-msgstr "结束执行(_K)"
-
-#. Action name
-#. Stock icon, if any
-#: ../plugins/valgrind/plugin.c:484
-msgid "_Load Log"
-msgstr "载入日志(_L)"
-
-#. Action name
-#. Stock icon, if any
-#: ../plugins/valgrind/plugin.c:492
-msgid "S_ave Log"
-msgstr "保存日志(_A)"
-
-#. Action name
-#. Stock icon, if any
-#: ../plugins/valgrind/plugin.c:500
-msgid "Edit Rules"
-msgstr "编辑规则"
-
-#: ../plugins/valgrind/plugin.c:565
-msgid "Use Valgrind debug tool"
-msgstr "使用 Valgrind 调试工具"
-
-#: ../plugins/valgrind/preferences.c:122
-msgid "<b>Valgrind general preferences</b>"
-msgstr "<b>Valgrind 常规首选项</b>"
-
-#: ../plugins/valgrind/preferences.c:128
-msgid "Valgrind binary file path:"
-msgstr "Valgrind 二进制文件路径："
-
-#: ../plugins/valgrind/preferences.c:142
-msgid "Choose Valgrind Binary File Path..."
-msgstr "选择 Valgrind 二进制文件路径..."
-
-#: ../plugins/valgrind/preferences.c:161
-msgid "Preview"
-msgstr "预览"
-
-#: ../plugins/valgrind/preferences.c:174
-msgid "lines above and below the target line."
-msgstr "目标行上面的行和下面的行。"
-
-#: ../plugins/valgrind/process.c:55
-#, c-format
-msgid "Failed to create pipe to '%s': %s"
-msgstr "创建到“%s”的管道失败：%s"
-
-#: ../plugins/valgrind/process.c:110
-#, c-format
-msgid "Failed to create child process '%s': %s"
-msgstr "创建子进程“%s”失败：%s"
-
-#: ../plugins/valgrind/vgactions.c:168
-msgid "Reached the end of the input file or error in parsing valgrind output."
-msgstr "到达输入文件的末尾或者解析 valgrind 输出时出错。"
-
-#: ../plugins/valgrind/vgactions.c:177
-msgid "Process exited."
-msgstr "进程退出"
-
-#: ../plugins/valgrind/vgactions.c:197
-msgid "Could not get the right valgrind-binary gconf key:"
-msgstr "无法过去正确的 Valgrind 二进制程序 gconf 键值："
-
-#: ../plugins/valgrind/vgactions.c:205
-#, c-format
-msgid ""
-"Valgrind binary [%s] does not exist. Please check the preferences or install "
-"Valgrind package."
-msgstr "Valgrind 二进制文件 [%s] 不存在。请检查首选项或安装 Valgrind 软件包。"
-
-#: ../plugins/valgrind/vgactions.c:241 ../plugins/valgrind/vgactions.c:248
-msgid "Could not get the right pipe for the process."
-msgstr "无法为进程获取正确的管道。"
-
-#: ../plugins/valgrind/vgcachegrindprefs.c:197
-#, c-format
-msgid ""
-"Invalid syntax in settings '%s'.\n"
-"Please enter a value of the form \"<integer>,<integer>,<integer>\"."
-msgstr ""
-"设置“%s”中有语法错误。\n"
-"请按照如下形式输入值：<integer>,<integer>,<integer>。"
-
-#: ../plugins/valgrind/vgcachegrindprefs.c:234
-msgid "Override default settings"
-msgstr "覆盖默认设置"
-
-#. This is the format of the preference, simply translate the words
-#. * inside the <>
-#: ../plugins/valgrind/vgcachegrindprefs.c:246
-msgid "Enter <size>,<assoc>,<line_size>:"
-msgstr "输入 <大小>,<assoc>,<行大小>:"
-
-#: ../plugins/valgrind/vgcachegrindprefs.c:280
-msgid "Cachegrind"
-msgstr "Cachegrind"
-
-#: ../plugins/valgrind/vgdefaultview.c:189
-msgid "Error contains"
-msgstr "错误包含"
-
-#: ../plugins/valgrind/vgdefaultview.c:190
-msgid "Function contains"
-msgstr "函数包含"
-
-#: ../plugins/valgrind/vgdefaultview.c:191
-msgid "Object contains"
-msgstr "对象包含"
-
-#: ../plugins/valgrind/vgdefaultview.c:192
-msgid "Source filename contains"
-msgstr "源文件名包含"
-
-#: ../plugins/valgrind/vgdefaultview.c:229
-#, c-format
-msgid "Invalid regular expression: '%s': %s"
-msgstr "非法的正则表达式：'%s': %s"
-
-#. FIXME: we should really get this title from somewhere else?
-#: ../plugins/valgrind/vgdefaultview.c:773
-msgid "Valgrind Suppression Rules"
-msgstr "Valgrind 抑制规则"
-
-#. FIXME: we should really get this title from somewhere else?
-#: ../plugins/valgrind/vgdefaultview.c:1118
-#: ../plugins/valgrind/vgrule-list.c:135
-msgid "Valgrind Suppression"
-msgstr "Valgrind 抑制"
-
-#: ../plugins/valgrind/vgdefaultview.c:1166
-msgid "Cu_t"
-msgstr "剪切(_T)"
-
-#: ../plugins/valgrind/vgdefaultview.c:1167
-msgid "_Copy"
-msgstr "复制(_C)"
-
-#: ../plugins/valgrind/vgdefaultview.c:1168
-msgid "_Paste"
-msgstr "粘贴(_P)"
-
-#: ../plugins/valgrind/vgdefaultview.c:1170
-msgid "Suppress"
-msgstr "抑制"
-
-#: ../plugins/valgrind/vgdefaultview.c:1172
-msgid "Edit in Custom Editor"
-msgstr "在自定义编辑器中编辑"
-
-#: ../plugins/valgrind/vggeneralprefs.c:172
-msgid "General"
-msgstr "常规"
-
-#. demangle = decode C++ name encoding
-#: ../plugins/valgrind/vggeneralprefs.c:179
-msgid "Demangle C++ symbol names"
-msgstr "Demangle C++ 符号名"
-
-#: ../plugins/valgrind/vggeneralprefs.c:187
-msgid "Show"
-msgstr "显示"
-
-#: ../plugins/valgrind/vggeneralprefs.c:199
-msgid "callers in stack trace"
-msgstr "栈跟踪中的调用者"
-
-#: ../plugins/valgrind/vggeneralprefs.c:206
-msgid "Stop showing errors if there are too many"
-msgstr "如果太多就停止显示错误"
-
-#: ../plugins/valgrind/vggeneralprefs.c:214
-msgid "Round malloc sizes to next word"
-msgstr "滚动 malloc 大小到下一个词"
-
-#: ../plugins/valgrind/vggeneralprefs.c:222
-msgid "Trace any child processes forked off by the program being debugged"
-msgstr "跟踪正在调试的程序 fork 得到的任何子进程"
-
-#: ../plugins/valgrind/vggeneralprefs.c:230
-msgid "Track open file descriptors"
-msgstr "跟踪打开的文件描述符"
-
-#: ../plugins/valgrind/vggeneralprefs.c:238
-msgid "Add time stamps to log messages"
-msgstr "向日志信息添加时间戳"
-
-#: ../plugins/valgrind/vggeneralprefs.c:246
-msgid "Call __libc_freeres() at exit before checking for memory leaks"
-msgstr "在退出时的内存泄漏检查之前调用 __libc_freeres()"
-
-#: ../plugins/valgrind/vggeneralprefs.c:254
-msgid "Suppressions File:"
-msgstr "抑制文件："
-
-#: ../plugins/valgrind/vggeneralprefs.c:274
-msgid "Choose Valgrind Suppressions File..."
-msgstr "选择 Valgrind 抑制文件..."
-
-#: ../plugins/valgrind/vghelgrindprefs.c:180
-msgid "Helgrind"
-msgstr "Helgrind"
-
-#: ../plugins/valgrind/vghelgrindprefs.c:185
-msgid "Assume thread stacks are used privately"
-msgstr "假定线程栈私有使用"
-
-#: ../plugins/valgrind/vghelgrindprefs.c:194
-msgid "Show location of last word access on error:"
-msgstr "显示错误中访问的最后一个字的位置："
-
-#: ../plugins/valgrind/vgmemcheckprefs.c:204
-msgid "Memcheck"
-msgstr "内存检查"
-
-#: ../plugins/valgrind/vgmemcheckprefs.c:209
-msgid "Memory leaks"
-msgstr "内存泄漏"
-
-#: ../plugins/valgrind/vgmemcheckprefs.c:214
-msgid "Leak check:"
-msgstr "泄漏检查："
-
-#: ../plugins/valgrind/vgmemcheckprefs.c:225
-msgid "Show reachable blocks in leak check"
-msgstr "在泄漏检查中显示可达块"
-
-#: ../plugins/valgrind/vgmemcheckprefs.c:233
-msgid "Leak resolution:"
-msgstr "泄漏解决："
-
-#: ../plugins/valgrind/vgmemcheckprefs.c:251
-msgid "Keep up to"
-msgstr "跟上"
-
-#: ../plugins/valgrind/vgmemcheckprefs.c:263
-msgid "bytes in the queue after being free()'d"
-msgstr "free() 之后队列中的字节"
-
-#: ../plugins/valgrind/vgmemcheckprefs.c:270
-msgid "Work around bugs generated by gcc 2.96"
-msgstr ""
-
-#: ../plugins/valgrind/vgrule-editor.c:146
-msgid "Function"
-msgstr "函数"
-
-#: ../plugins/valgrind/vgrule-editor.c:149
-msgid "Shared Object"
-msgstr "共享对象"
-
-#: ../plugins/valgrind/vgrule-editor.c:209
+#~ msgid "Function Name"
+#~ msgstr "函数名"
+
+#~ msgid "Time"
+#~ msgstr "时间"
+
+#~ msgid "Self"
+#~ msgstr "自身时间："
+
+#~ msgid "Children"
+#~ msgstr "孩子"
+
+#~ msgid "Calls"
+#~ msgstr "调用"
+
+#~ msgid "% Time"
+#~ msgstr "% 时间"
+
+#~ msgid "Cumulative Seconds"
+#~ msgstr "累积秒数"
+
+#~ msgid "Self Seconds"
+#~ msgstr "自身秒钟"
+
+#~ msgid "Self ms/call"
+#~ msgstr "除调用的函数之外的自身毫秒数"
+
+#~ msgid "Total ms/call"
+#~ msgstr "包括调用的函数的自身毫秒数"
+
+#~ msgid ""
+#~ "Could not get profiling data.\n"
+#~ "\n"
+#~ "Please check the path to this target's profiling data file."
+#~ msgstr ""
+#~ "无法获取分析数据。\n"
+#~ "\n"
+#~ "请检查目标分析数据文件的路径。"
+
+#~ msgid ""
+#~ "This target does not have any profiling data.\n"
+#~ "\n"
+#~ "Please ensure that the target is complied with profiling support (-p)and "
+#~ "that it is run at least once."
+#~ msgstr ""
+#~ "此目标不包含任何分析数据。\n"
+#~ "\n"
+#~ "请确定目标编译时打开了分析支持 (-p) 并且至少运行了一次。"
+
+#~ msgid "Debug"
+#~ msgstr "调试"
+
+#~ msgid "Profiler"
+#~ msgstr "分析器"
+
+#~ msgid "Select Target..."
+#~ msgstr "选择目标..."
+
+#~ msgid "Refresh"
+#~ msgstr "刷新"
+
+#~ msgid "Delete Data"
+#~ msgstr "删除数据"
+
+#~ msgid "Application Performance Profiler"
+#~ msgstr "应用程序性能分析器"
+
+#~ msgid "Function Call Tree"
+#~ msgstr "函数调用数"
+
+#~ msgid "Function Call Chart"
+#~ msgstr "函数调用表"
+
+#~ msgid "Options"
+#~ msgstr "选项"
+
+#~ msgid "Select debugging target"
+#~ msgstr "选择调试目标"
+
+#~ msgid "Valgrind"
+#~ msgstr "Valgrind"
+
+#~ msgid ""
+#~ "No executable target selected for debugging with Valgrind. Please select "
+#~ "one."
+#~ msgstr "没有选择使用 Valgrind 调试的可执行对象，请选择一个。"
+
+#~ msgid ""
+#~ "There aren't any available executable targets for this project.\n"
+#~ "Please create one first."
+#~ msgstr ""
+#~ "此工程没有任何可执行目标。\n"
+#~ "首先请创建一个。"
+
+#~ msgid "Choose file where to save Valgrind log"
+#~ msgstr "选择保存 Valgrind 记录的文件"
+
+#~ msgid ""
+#~ "The file '%s' already exists.\n"
+#~ "Do you want to replace it with the one you are saving?"
+#~ msgstr ""
+#~ "文件“%s”已存在。\n"
+#~ "是否确定用当前文件替换这个文件？"
+
+#~ msgid "_Replace"
+#~ msgstr "替换(_R)"
+
+#~ msgid "Open Valgrind log file"
+#~ msgstr "打开 Valgrind 日志文件"
+
+#~ msgid "_Debug"
+#~ msgstr "调试(_D)"
+
+#~ msgid "_Valgrind"
+#~ msgstr "_Valgrind"
+
+#~ msgid "_Select Tool and Run..."
+#~ msgstr "选择工具并执行(_S)..."
+
+#~ msgid "_Kill Execution"
+#~ msgstr "结束执行(_K)"
+
+#~ msgid "_Load Log"
+#~ msgstr "载入日志(_L)"
+
+#~ msgid "S_ave Log"
+#~ msgstr "保存日志(_A)"
+
+#~ msgid "Edit Rules"
+#~ msgstr "编辑规则"
+
+#~ msgid "Use Valgrind debug tool"
+#~ msgstr "使用 Valgrind 调试工具"
+
+#~ msgid "<b>Valgrind general preferences</b>"
+#~ msgstr "<b>Valgrind 常规首选项</b>"
+
+#~ msgid "Valgrind binary file path:"
+#~ msgstr "Valgrind 二进制文件路径："
+
+#~ msgid "Choose Valgrind Binary File Path..."
+#~ msgstr "选择 Valgrind 二进制文件路径..."
+
+#~ msgid "Preview"
+#~ msgstr "预览"
+
+#~ msgid "lines above and below the target line."
+#~ msgstr "目标行上面的行和下面的行。"
+
+#~ msgid "Failed to create pipe to '%s': %s"
+#~ msgstr "创建到“%s”的管道失败：%s"
+
+#~ msgid "Failed to create child process '%s': %s"
+#~ msgstr "创建子进程“%s”失败：%s"
+
+#~ msgid ""
+#~ "Reached the end of the input file or error in parsing valgrind output."
+#~ msgstr "到达输入文件的末尾或者解析 valgrind 输出时出错。"
+
+#~ msgid "Process exited."
+#~ msgstr "进程退出"
+
+#~ msgid "Could not get the right valgrind-binary gconf key:"
+#~ msgstr "无法过去正确的 Valgrind 二进制程序 gconf 键值："
+
+#~ msgid ""
+#~ "Valgrind binary [%s] does not exist. Please check the preferences or "
+#~ "install Valgrind package."
+#~ msgstr ""
+#~ "Valgrind 二进制文件 [%s] 不存在。请检查首选项或安装 Valgrind 软件包。"
+
+#~ msgid "Could not get the right pipe for the process."
+#~ msgstr "无法为进程获取正确的管道。"
+
+#~ msgid ""
+#~ "Invalid syntax in settings '%s'.\n"
+#~ "Please enter a value of the form \"<integer>,<integer>,<integer>\"."
+#~ msgstr ""
+#~ "设置“%s”中有语法错误。\n"
+#~ "请按照如下形式输入值：<integer>,<integer>,<integer>。"
+
+#~ msgid "Override default settings"
+#~ msgstr "覆盖默认设置"
+
+#~ msgid "Enter <size>,<assoc>,<line_size>:"
+#~ msgstr "输入 <大小>,<assoc>,<行大小>:"
+
+#~ msgid "Cachegrind"
+#~ msgstr "Cachegrind"
+
+#~ msgid "Error contains"
+#~ msgstr "错误包含"
+
+#~ msgid "Function contains"
+#~ msgstr "函数包含"
+
+#~ msgid "Object contains"
+#~ msgstr "对象包含"
+
+#~ msgid "Source filename contains"
+#~ msgstr "源文件名包含"
+
+#~ msgid "Invalid regular expression: '%s': %s"
+#~ msgstr "非法的正则表达式：'%s': %s"
+
+#~ msgid "Valgrind Suppression Rules"
+#~ msgstr "Valgrind 抑制规则"
+
+#~ msgid "Valgrind Suppression"
+#~ msgstr "Valgrind 抑制"
+
+#~ msgid "Cu_t"
+#~ msgstr "剪切(_T)"
+
+#~ msgid "_Copy"
+#~ msgstr "复制(_C)"
+
+#~ msgid "_Paste"
+#~ msgstr "粘贴(_P)"
+
+#~ msgid "Suppress"
+#~ msgstr "抑制"
+
+#~ msgid "Edit in Custom Editor"
+#~ msgstr "在自定义编辑器中编辑"
+
+#~ msgid "General"
+#~ msgstr "常规"
+
+#~ msgid "Demangle C++ symbol names"
+#~ msgstr "Demangle C++ 符号名"
+
+#~ msgid "Show"
+#~ msgstr "显示"
+
+#~ msgid "callers in stack trace"
+#~ msgstr "栈跟踪中的调用者"
+
+#~ msgid "Stop showing errors if there are too many"
+#~ msgstr "如果太多就停止显示错误"
+
+#~ msgid "Round malloc sizes to next word"
+#~ msgstr "滚动 malloc 大小到下一个词"
+
+#~ msgid "Trace any child processes forked off by the program being debugged"
+#~ msgstr "跟踪正在调试的程序 fork 得到的任何子进程"
+
+#~ msgid "Track open file descriptors"
+#~ msgstr "跟踪打开的文件描述符"
+
+#~ msgid "Add time stamps to log messages"
+#~ msgstr "向日志信息添加时间戳"
+
+#~ msgid "Call __libc_freeres() at exit before checking for memory leaks"
+#~ msgstr "在退出时的内存泄漏检查之前调用 __libc_freeres()"
+
+#~ msgid "Suppressions File:"
+#~ msgstr "抑制文件："
+
+#~ msgid "Choose Valgrind Suppressions File..."
+#~ msgstr "选择 Valgrind 抑制文件..."
+
+#~ msgid "Helgrind"
+#~ msgstr "Helgrind"
+
+#~ msgid "Assume thread stacks are used privately"
+#~ msgstr "假定线程栈私有使用"
+
+#~ msgid "Show location of last word access on error:"
+#~ msgstr "显示错误中访问的最后一个字的位置："
+
+#~ msgid "Memcheck"
+#~ msgstr "内存检查"
+
+#~ msgid "Memory leaks"
+#~ msgstr "内存泄漏"
+
+#~ msgid "Leak check:"
+#~ msgstr "泄漏检查："
+
+#~ msgid "Show reachable blocks in leak check"
+#~ msgstr "在泄漏检查中显示可达块"
+
+#~ msgid "Leak resolution:"
+#~ msgstr "泄漏解决："
+
+#~ msgid "Keep up to"
+#~ msgstr "跟上"
+
+#~ msgid "bytes in the queue after being free()'d"
+#~ msgstr "free() 之后队列中的字节"
+
+#~ msgid "Function"
+#~ msgstr "函数"
+
+#~ msgid "Shared Object"
+#~ msgstr "共享对象"
+
 #, fuzzy
-msgid "Grow"
-msgstr "执行"
+#~ msgid "Grow"
+#~ msgstr "执行"
 
-#: ../plugins/valgrind/vgrule-editor.c:213
-msgid "Shrink"
-msgstr ""
+#~ msgid "Rule name:"
+#~ msgstr "规则名称："
 
-#: ../plugins/valgrind/vgrule-editor.c:239
-msgid "Rule name:"
-msgstr "规则名称："
+#~ msgid "System call:"
+#~ msgstr "系统调用："
 
-#: ../plugins/valgrind/vgrule-editor.c:249
-msgid "Suppress messages of type:"
-msgstr ""
+#~ msgid "Call chain:"
+#~ msgstr "调用链"
 
-#: ../plugins/valgrind/vgrule-editor.c:259
-msgid "Suppress when using:"
-msgstr ""
+#~ msgid "Error saving to suppression file '%s': %s"
+#~ msgstr "保存抑制文件“%s”时出错：%s。"
 
-#: ../plugins/valgrind/vgrule-editor.c:272
-msgid "System call:"
-msgstr "系统调用："
+#~ msgid "You have forgotten to name your suppression rule."
+#~ msgstr "您忘记了给抑制规则命名。"
 
-#: ../plugins/valgrind/vgrule-editor.c:283
-msgid "Call chain:"
-msgstr "调用链"
+#~ msgid "_Edit"
+#~ msgstr "编辑(_E)"
 
-#: ../plugins/valgrind/vgrule-editor.c:540
-#: ../plugins/valgrind/vgrule-editor.c:555
-#, c-format
-msgid "Error saving to suppression file '%s': %s"
-msgstr "保存抑制文件“%s”时出错：%s。"
+#~ msgid "Cannot save suppression rules: %s"
+#~ msgstr "无法保存抑制规则：%s"
 
-#: ../plugins/valgrind/vgrule-list.c:177 ../plugins/valgrind/vgrule-list.c:246
-msgid "You have forgotten to name your suppression rule."
-msgstr "您忘记了给抑制规则命名。"
+#~ msgid "You have not set a suppressions file in your settings."
+#~ msgstr "您还没有在您的设置中设置一个抑制文件。"
 
-#: ../plugins/valgrind/vgrule-list.c:406
-msgid "_Edit"
-msgstr "编辑(_E)"
+#~ msgid "Application performance profiler"
+#~ msgstr "应用程序性能分析器"
 
-#: ../plugins/valgrind/vgrule-list.c:651
-#, c-format
-msgid "Cannot save suppression rules: %s"
-msgstr "无法保存抑制规则：%s"
+#~ msgid "Profile"
+#~ msgstr "分析器"
 
-#: ../plugins/valgrind/vgrule-list.c:653
-msgid "You have not set a suppressions file in your settings."
-msgstr "您还没有在您的设置中设置一个抑制文件。"
+#~ msgid "Powerful debugging tool."
+#~ msgstr "强大的调试工具。"
 
-#: ../plugins/sample1/anjuta-sample.plugin.in.h:1
-msgid "Sample Plugin"
-msgstr "示例插件"
-
-#: ../plugins/sample1/anjuta-sample.plugin.in.h:2
-msgid "Sample Plugin for Anjuta."
-msgstr "Anjuta 示例插件"
-
-#: ../plugins/profiler/profiler.plugin.in.h:1
-msgid "Application performance profiler"
-msgstr "应用程序性能分析器"
-
-#: ../plugins/profiler/profiler.plugin.in.h:2
-msgid "Profile"
-msgstr "分析器"
-
-#: ../plugins/scintilla/anjuta-editor.plugin.in.h:1
-msgid "An alternate editor based on Scintilla"
-msgstr "基于 Scintilla 的另一个编辑器"
-
-#: ../plugins/valgrind/anjuta-valgrind.plugin.in.h:1
-msgid "Powerful debugging tool."
-msgstr "强大的调试工具。"
-
-#: ../plugins/valgrind/anjuta-valgrind.plugin.in.h:2
-msgid "Valgrind Plugin"
-msgstr "Valgrind 插件"
-
-#: ../plugins/scratchbox/anjuta-scratchbox.plugin.in.h:1
-msgid "Change build commands to use scratchbox 1 or 2"
-msgstr "更改构建命令以使用 scratchbox 1 或 2"
+#~ msgid "Valgrind Plugin"
+#~ msgstr "Valgrind 插件"
 
 #~ msgid "Update"
 #~ msgstr "更新"
@@ -1821,9 +2014,6 @@ msgstr "更改构建命令以使用 scratchbox 1 或 2"
 #~ msgid "Information"
 #~ msgstr "信息"
 
-#~ msgid "Lines"
-#~ msgstr "行"
-
 #~ msgid "Locals"
 #~ msgstr "局部变量"
 
@@ -2461,48 +2651,6 @@ msgstr "更改构建命令以使用 scratchbox 1 或 2"
 #~ msgid "Delete the selected text from the editor"
 #~ msgstr "将选中文字从编辑器删除"
 
-#~ msgid "_Line Number Margin"
-#~ msgstr "行号区(_L)"
-
-#~ msgid "Show/Hide line numbers"
-#~ msgstr "显示/隐藏行号区"
-
-#~ msgid "_Marker Margin"
-#~ msgstr "标号区(_M)"
-
-#~ msgid "Show/Hide marker margin"
-#~ msgstr "显示/隐藏标号区"
-
-#~ msgid "_Code Fold Margin"
-#~ msgstr "代码展叠区(_C)"
-
-#~ msgid "Show/Hide code fold margin"
-#~ msgstr "显示/隐藏代码展叠区"
-
-#~ msgid "_Indentation Guides"
-#~ msgstr "缩进导线(_I)"
-
-#~ msgid "Show/Hide indentation guides"
-#~ msgstr "显示/隐藏缩进导线"
-
-#~ msgid "_White Space"
-#~ msgstr "空白字符(_W)"
-
-#~ msgid "Show/Hide white spaces"
-#~ msgstr "显示/隐藏空白字符"
-
-#~ msgid "_Line End Characters"
-#~ msgstr "行尾字符(_L)"
-
-#~ msgid "Show/Hide line end characters"
-#~ msgstr "显示/隐藏行尾字符"
-
-#~ msgid "Line _Wrapping"
-#~ msgstr "自动换行(_W)"
-
-#~ msgid "Enable/disable line wrapping"
-#~ msgstr "启用/禁用自动换行"
-
 #~ msgid "Zoom In"
 #~ msgstr "放大"
 
@@ -2607,9 +2755,6 @@ msgstr "更改构建命令以使用 scratchbox 1 或 2"
 
 #~ msgid "Documents"
 #~ msgstr "文档"
-
-#~ msgid "Editor view settings"
-#~ msgstr "编辑器视图设置"
 
 #~ msgid "Reload"
 #~ msgstr "重新载入"
@@ -3355,14 +3500,6 @@ msgstr "更改构建命令以使用 scratchbox 1 或 2"
 #~ msgstr "修订："
 
 #, fuzzy
-#~ msgid "Select A Folder"
-#~ msgstr "全选(_A)"
-
-#, fuzzy
-#~ msgid "Squash"
-#~ msgstr "方框"
-
-#, fuzzy
 #~ msgid "Tag/Commit"
 #~ msgstr "提交(_C)"
 
@@ -3605,9 +3742,6 @@ msgstr "更改构建命令以使用 scratchbox 1 或 2"
 #, fuzzy
 #~ msgid "Designer"
 #~ msgstr "调试器"
-
-#~ msgid "Editor"
-#~ msgstr "编辑器"
 
 #, fuzzy
 #~ msgid "Position type"
@@ -4791,207 +4925,6 @@ msgstr "更改构建命令以使用 scratchbox 1 或 2"
 #~ msgid "<b>Basic Indentation</b>"
 #~ msgstr "杂类选项"
 
-#~ msgid "<b>Code folding</b>"
-#~ msgstr "<b>代码展叠</b>"
-
-#~ msgid "<b>Highlight style</b>"
-#~ msgstr "<b>高亮样式</b>"
-
-#~ msgid "<b>Misc options</b>"
-#~ msgstr "<b>杂类选项</b>"
-
-#~ msgid "<b>Other colors</b>"
-#~ msgstr "<b>其它颜色</b>"
-
-#~ msgid "<b>Print options</b>"
-#~ msgstr "<b>打印选项</b>"
-
-#~ msgid "Add line number every:"
-#~ msgstr "添加行号的间隔："
-
-#~ msgid "Add page header"
-#~ msgstr "添加页眉"
-
-#~ msgid "Attributes:"
-#~ msgstr "属性："
-
-#~ msgid "Autocomplete XML/HTML closing tags"
-#~ msgstr "自动补全 XML/HTML 关闭标签"
-
-#~ msgid "Autocompletion pop up choices"
-#~ msgstr "自动补全弹出选择"
-
-#~ msgid "Background color:"
-#~ msgstr "背景色："
-
-#, fuzzy
-#~ msgid "Basic Indentation"
-#~ msgstr "缩进"
-
-#~ msgid "Bold"
-#~ msgstr "粗体"
-
-#~ msgid "Calltip background:"
-#~ msgstr "插字符背景:"
-
-#~ msgid "Caret (cursor) color:"
-#~ msgstr "插入点(光标)号颜色："
-
-#, fuzzy
-#~ msgid "Caret blink period in ms"
-#~ msgstr "插入点闲烁周期(毫秒)"
-
-#~ msgid "Choose autocomplete for single match"
-#~ msgstr "为单次匹配选择自动补全"
-
-#~ msgid "Collapse all code folds on file open"
-#~ msgstr "打开文件时将全部代码折叠"
-
-#~ msgid "Colors & Fonts"
-#~ msgstr "颜色和字体"
-
-#~ msgid "Colour"
-#~ msgstr "彩色"
-
-#~ msgid "Compact folding"
-#~ msgstr "紧凑折叠"
-
-#~ msgid "Disable syntax highlighting"
-#~ msgstr "禁用语法高亮"
-
-#~ msgid "Draw line below folded lines"
-#~ msgstr "在折起行下方绘制一条线"
-
-#~ msgid "Editor caret (cursor) width in pixels"
-#~ msgstr "编辑器插入点(光标)的宽度(像素)"
-
-#~ msgid "Enable HTML tags folding"
-#~ msgstr "充许 HTML 标签折叠"
-
-#~ msgid "Enable automatic indentation"
-#~ msgstr "启用自动缩进"
-
-#~ msgid "Enable braces check"
-#~ msgstr "启用括号检查"
-
-#~ msgid "Enable code folding"
-#~ msgstr "允许代码折叠"
-
-#~ msgid "Enable comments folding"
-#~ msgstr "允许注释折叠"
-
-#~ msgid "Enable line wrap"
-#~ msgstr "允许自动换行"
-
-#~ msgid "Enable python comments folding"
-#~ msgstr "允许 pyton 注释折叠"
-
-#~ msgid "Enable python quoted strings folding"
-#~ msgstr "允许 python 字符串折叠"
-
-#~ msgid "Filter extraneous characters in DOS mode"
-#~ msgstr "过滤 DOS 模式下的扩展字符"
-
-#~ msgid "Fold style:"
-#~ msgstr "折叠样式："
-
-#~ msgid "Font:"
-#~ msgstr "字体："
-
-#~ msgid "Foreground color:"
-#~ msgstr "前景色："
-
-#~ msgid "Indent closing braces"
-#~ msgstr "缩进右括号"
-
-#~ msgid "Indent opening braces"
-#~ msgstr "缩进左括号"
-
-#~ msgid "Indentation size in spaces:"
-#~ msgstr "缩进的空白长度："
-
-#~ msgid "Italic"
-#~ msgstr "斜体"
-
-#~ msgid "Line numbers margin width in pixels"
-#~ msgstr "行号区的宽度(像素单位)"
-
-#, fuzzy
-#~ msgid "Maintain past Indentation"
-#~ msgstr "增加缩进"
-
-#~ msgid "Mode:"
-#~ msgstr "模式："
-
-#~ msgid "Monochrome"
-#~ msgstr "单色"
-
-#~ msgid "Pressing backspace un-indents"
-#~ msgstr "按退格键取消缩进"
-
-#, fuzzy
-#~ msgid "Pressing tab inserts indentation"
-#~ msgstr "按 Tab 键缩进"
-
-#~ msgid "Printing"
-#~ msgstr "打印"
-
-#~ msgid "Select highlight style to edit:"
-#~ msgstr "选择高亮样式："
-
-#~ msgid "Selection background:"
-#~ msgstr "选区背景："
-
-#~ msgid "Selection foreground:"
-#~ msgstr "选区前景："
-
-#~ msgid "Strip trailling spaces on file save"
-#~ msgstr "保存文件时移去多余的空白"
-
-#~ msgid "Tab size in spaces:"
-#~ msgstr "Tab 字符长度："
-
-#~ msgid "Underlined"
-#~ msgstr "下划线"
-
-#~ msgid "Use default"
-#~ msgstr "使用默认值"
-
-#~ msgid "Use tabs for indentation"
-#~ msgstr "缩进时使用 Tab 字符"
-
-#, fuzzy
-#~ msgid "View Indentation Guides"
-#~ msgstr "缩进导线(_I)"
-
-#, fuzzy
-#~ msgid "View Line Wrap"
-#~ msgstr "允许自动换行"
-
-#, fuzzy
-#~ msgid "View Whitespaces"
-#~ msgstr "空白字符(_W)"
-
-#, fuzzy
-#~ msgid "View indentation whitespaces"
-#~ msgstr "缩进的空白长度："
-
-#, fuzzy
-#~ msgid "<b>Scratchbox Options</b>\n"
-#~ msgstr "<b>CVS 选项</b>"
-
-#, fuzzy
-#~ msgid "Scratchbox directory:"
-#~ msgstr "选择目录"
-
-#, fuzzy
-#~ msgid "Scratchbox target:"
-#~ msgstr "选择目录"
-
-#, fuzzy
-#~ msgid "Scratchbox version:"
-#~ msgstr "选择目录"
-
 #, fuzzy
 #~ msgid "<b>Actions</b>"
 #~ msgstr "选项"
@@ -5270,10 +5203,6 @@ msgstr "更改构建命令以使用 scratchbox 1 或 2"
 #, fuzzy
 #~ msgid "Highlight syntax"
 #~ msgstr "高亮样式"
-
-#, fuzzy
-#~ msgid "Print Linenumbers"
-#~ msgstr "转到行号(_G)"
 
 #, fuzzy
 #~ msgid "Print page header"
@@ -5969,10 +5898,6 @@ msgstr "更改构建命令以使用 scratchbox 1 或 2"
 #, fuzzy
 #~ msgid "<b>Smart Indentation</b>"
 #~ msgstr "杂类选项"
-
-#, fuzzy
-#~ msgid "Autocomplete"
-#~ msgstr "自动补全(_A)"
 
 #, fuzzy
 #~ msgid "Brace indentation size in spaces:"
