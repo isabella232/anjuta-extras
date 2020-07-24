@@ -7422,7 +7422,7 @@ msgstr "<b>Коментар:</b>"
 
 #: ../plugins/sourceview/anjuta-editor-sourceview.glade.h:3
 msgid "<b>Indentation and auto-format options</b>"
-msgstr "</b>Опции за структурата и автоматично форматиане</b>"
+msgstr "<b>Опции за структурата и автоматично форматиане</b>"
 
 #: ../plugins/sourceview/anjuta-editor-sourceview.glade.h:6
 #, fuzzy
