@@ -5877,7 +5877,7 @@ msgstr "<b>انتقِ الهدف إلى ملف التعريف</b>"
 
 #: ../plugins/profiler/profiler.glade.h:3
 msgid "<b>Symbols</b>"
-msgstr "</b>الرموز</b>"
+msgstr "<b>الرموز</b>"
 
 #: ../plugins/profiler/profiler.glade.h:4
 msgid "<b>Time Propagation</b>"
