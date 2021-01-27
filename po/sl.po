@@ -2,7 +2,7 @@
 # Copyright (C) 2005-2007 Free Software Foundation, Inc.
 # This file is distributed under the same license as the anjuta-extras package.
 #
-# Matej Urbančič <mateju@svn.gnome.org>, 2007–2017.
+# Matej Urbančič <mateju@svn.gnome.org>, 2007–2021.
 #
 msgid ""
 msgstr ""
@@ -10,7 +10,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=anjuta&keywords=I18N+L10N&component=unknown\n"
 "POT-Creation-Date: 2016-03-12 21:23+0100\n"
-"PO-Revision-Date: 2017-09-28 18:20+0200\n"
+"PO-Revision-Date: 2021-01-27 21:05+0100\n"
 "Last-Translator: Matej Urbančič <mateju@svn.gnome.org>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
 "Language: sl_SI\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
 "%100==4 ? 3 : 0);\n"
 "X-Launchpad-Export-Date: 2007-10-05 05:48+0000\n"
-"X-Generator: Poedit 2.0.1\n"
+"X-Generator: Poedit 2.4.1\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
 #: ../plugins/sample1/anjuta-sample.plugin.in.h:1
@@ -451,7 +451,7 @@ msgstr "Ni mogoče pridobiti podrobnosti datoteke"
 #. DEBUG_PRINT ("%s", "This file is too big. Unable to allocate memory.");
 #: ../plugins/scintilla/text_editor.c:1540
 msgid "This file is too big. Unable to allocate memory."
-msgstr "Datoteka je prevelika, ni mogoče odločiti pomnilnika"
+msgstr "Datoteka je prevelika, ni mogoče dodeliti pomnilnika."
 
 #: ../plugins/scintilla/text_editor.c:1549
 msgid "Could not open file"
@@ -467,9 +467,9 @@ msgid ""
 "supported. Please check if the encoding of file is in the supported "
 "encodings list. If not, add it from the preferences."
 msgstr ""
-"Datoteka ni videti kot običajna besedilna datoteka ali pa ni zapisana v "
-"podprtem kodiranju. Preverite, da je kodni nabor ustrezen in sovpada s "
-"seznamom. V primeru, da ne, ga dodajte med možnostmi."
+"Datoteka ni videti kot običajna besedilna datoteka, ali pa ni zapisana v "
+"podprtem kodiranju. Preverite, da je kodni nabor ustrezen in da sovpada s "
+"seznamom. Če ne, ga dodajte med možnostmi."
 
 #: ../plugins/scintilla/text_editor.c:1789
 msgid "Loading file..."
@@ -501,7 +501,7 @@ msgstr "Ni mogoče shraniti vmesne datoteke %s: %s."
 
 #: ../plugins/scintilla/text_editor.c:1865
 msgid "File saved successfully"
-msgstr "Datoteka uspešno shranjena"
+msgstr "Datoteka je uspešno shranjena"
 
 #: ../plugins/scintilla/text_editor.c:2238
 #, c-format
